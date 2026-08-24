@@ -46,6 +46,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrador\FormMenuAdministrador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\FormMenuAdministrador.Designer.cs">
+      <DependentUpon>FormMenuAdministrador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\GestionClientesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\GestionClientesForm.Designer.cs">
+      <DependentUpon>GestionClientesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\GestionProductosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\GestionProductosForm.Designer.cs">
+      <DependentUpon>GestionProductosForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\GestionUsuariosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\GestionUsuariosForm.Designer.cs">
+      <DependentUpon>GestionUsuariosForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\GestionVentasForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\GestionVentasForm.Designer.cs">
+      <DependentUpon>GestionVentasForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cajero\FormMenuCajero.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cajero\FormMenuCajero.Designer.cs">
+      <DependentUpon>FormMenuCajero.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +90,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vendedor\FormMenuVendedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vendedor\FormMenuVendedor.Designer.cs">
+      <DependentUpon>FormMenuVendedor.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Administrador\GestionClientesForm.resx">
+      <DependentUpon>GestionClientesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\GestionProductosForm.resx">
+      <DependentUpon>GestionProductosForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\GestionUsuariosForm.resx">
+      <DependentUpon>GestionUsuariosForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\GestionVentasForm.resx">
+      <DependentUpon>GestionVentasForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
