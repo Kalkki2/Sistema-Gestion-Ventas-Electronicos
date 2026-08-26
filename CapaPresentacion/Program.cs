@@ -1,5 +1,4 @@
-﻿using CapaPresentacion.Cajero;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,7 +16,7 @@ namespace CapaPresentacion
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMenuCajero());
+            Application.Run(new FormMenuAdministrador());
         }
     }
 }
