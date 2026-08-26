@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlCardTotalClientes = new System.Windows.Forms.Panel();
             this.lblCantTotalClientes = new System.Windows.Forms.Label();
             this.lblTituloTotalCliente = new System.Windows.Forms.Label();
@@ -83,7 +83,7 @@
             this.pnlCardTotalClientes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlCardTotalClientes.Controls.Add(this.lblCantTotalClientes);
             this.pnlCardTotalClientes.Controls.Add(this.lblTituloTotalCliente);
-            this.pnlCardTotalClientes.Location = new System.Drawing.Point(322, 121);
+            this.pnlCardTotalClientes.Location = new System.Drawing.Point(286, 121);
             this.pnlCardTotalClientes.Name = "pnlCardTotalClientes";
             this.pnlCardTotalClientes.Size = new System.Drawing.Size(173, 67);
             this.pnlCardTotalClientes.TabIndex = 25;
@@ -125,7 +125,7 @@
             this.panel1.Controls.Add(this.lblApellido);
             this.panel1.Location = new System.Drawing.Point(12, 121);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(279, 399);
+            this.panel1.Size = new System.Drawing.Size(268, 399);
             this.panel1.TabIndex = 24;
             // 
             // txtDireccion
@@ -247,9 +247,9 @@
             this.pnlContenedorListaCliente.Controls.Add(this.comboBox2);
             this.pnlContenedorListaCliente.Controls.Add(this.dgvListaCliente);
             this.pnlContenedorListaCliente.Controls.Add(this.lblTituloListaClientes);
-            this.pnlContenedorListaCliente.Location = new System.Drawing.Point(318, 209);
+            this.pnlContenedorListaCliente.Location = new System.Drawing.Point(286, 209);
             this.pnlContenedorListaCliente.Name = "pnlContenedorListaCliente";
-            this.pnlContenedorListaCliente.Size = new System.Drawing.Size(884, 311);
+            this.pnlContenedorListaCliente.Size = new System.Drawing.Size(878, 311);
             this.pnlContenedorListaCliente.TabIndex = 23;
             // 
             // btnFiltrarPorFecha
@@ -301,14 +301,14 @@
             // dgvListaCliente
             // 
             this.dgvListaCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListaCliente.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListaCliente.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvListaCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaCliente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colNroCliente,
@@ -319,14 +319,14 @@
             this.colDireccion,
             this.colFacturado,
             this.colCompras});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvListaCliente.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvListaCliente.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgvListaCliente.Location = new System.Drawing.Point(3, 101);
             this.dgvListaCliente.Name = "dgvListaCliente";
             this.dgvListaCliente.RowHeadersVisible = false;
@@ -391,9 +391,9 @@
             this.pnlEncabezado.Controls.Add(this.pnlnfoUsuario);
             this.pnlEncabezado.Controls.Add(this.lblFecha);
             this.pnlEncabezado.Controls.Add(this.lblTitulo);
-            this.pnlEncabezado.Location = new System.Drawing.Point(0, 0);
+            this.pnlEncabezado.Location = new System.Drawing.Point(-3, -2);
             this.pnlEncabezado.Name = "pnlEncabezado";
-            this.pnlEncabezado.Size = new System.Drawing.Size(1219, 64);
+            this.pnlEncabezado.Size = new System.Drawing.Size(1179, 64);
             this.pnlEncabezado.TabIndex = 26;
             // 
             // pnlnfoUsuario
@@ -402,7 +402,7 @@
             this.pnlnfoUsuario.Controls.Add(this.lblNombreUsuario);
             this.pnlnfoUsuario.Controls.Add(this.picUsuario);
             this.pnlnfoUsuario.Controls.Add(this.lblRolUsuario);
-            this.pnlnfoUsuario.Location = new System.Drawing.Point(1010, 5);
+            this.pnlnfoUsuario.Location = new System.Drawing.Point(965, 5);
             this.pnlnfoUsuario.Name = "pnlnfoUsuario";
             this.pnlnfoUsuario.Size = new System.Drawing.Size(187, 55);
             this.pnlnfoUsuario.TabIndex = 3;
@@ -459,7 +459,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1214, 561);
+            this.ClientSize = new System.Drawing.Size(1168, 561);
             this.Controls.Add(this.pnlEncabezado);
             this.Controls.Add(this.pnlCardTotalClientes);
             this.Controls.Add(this.panel1);
