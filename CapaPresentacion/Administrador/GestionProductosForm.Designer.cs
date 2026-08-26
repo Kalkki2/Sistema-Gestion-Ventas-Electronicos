@@ -92,7 +92,7 @@
             this.pnlCardTotalProductod.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlCardTotalProductod.Controls.Add(this.lblCantTotalProductos);
             this.pnlCardTotalProductod.Controls.Add(this.lblTituloTotalProductos);
-            this.pnlCardTotalProductod.Location = new System.Drawing.Point(297, 89);
+            this.pnlCardTotalProductod.Location = new System.Drawing.Point(274, 82);
             this.pnlCardTotalProductod.Name = "pnlCardTotalProductod";
             this.pnlCardTotalProductod.Size = new System.Drawing.Size(173, 67);
             this.pnlCardTotalProductod.TabIndex = 15;
@@ -131,9 +131,9 @@
             this.pnlContenedorCatalogo.Controls.Add(this.label9);
             this.pnlContenedorCatalogo.Controls.Add(this.cmbFiltroCatgegoria);
             this.pnlContenedorCatalogo.Controls.Add(this.lblCatalogo);
-            this.pnlContenedorCatalogo.Location = new System.Drawing.Point(297, 175);
+            this.pnlContenedorCatalogo.Location = new System.Drawing.Point(274, 175);
             this.pnlContenedorCatalogo.Name = "pnlContenedorCatalogo";
-            this.pnlContenedorCatalogo.Size = new System.Drawing.Size(906, 369);
+            this.pnlContenedorCatalogo.Size = new System.Drawing.Size(888, 369);
             this.pnlContenedorCatalogo.TabIndex = 14;
             // 
             // dgvListaProductos
@@ -161,7 +161,7 @@
             this.dgvListaProductos.Location = new System.Drawing.Point(3, 97);
             this.dgvListaProductos.Name = "dgvListaProductos";
             this.dgvListaProductos.RowHeadersVisible = false;
-            this.dgvListaProductos.Size = new System.Drawing.Size(904, 63);
+            this.dgvListaProductos.Size = new System.Drawing.Size(881, 63);
             this.dgvListaProductos.TabIndex = 17;
             // 
             // lblFiltrarPor
@@ -257,7 +257,7 @@
             this.pnlEncabezado.Controls.Add(this.lblTitulo);
             this.pnlEncabezado.Location = new System.Drawing.Point(-3, -2);
             this.pnlEncabezado.Name = "pnlEncabezado";
-            this.pnlEncabezado.Size = new System.Drawing.Size(1219, 65);
+            this.pnlEncabezado.Size = new System.Drawing.Size(1220, 65);
             this.pnlEncabezado.TabIndex = 13;
             // 
             // pnlnfoUsuario
@@ -266,7 +266,7 @@
             this.pnlnfoUsuario.Controls.Add(this.lblNombreUsuario);
             this.pnlnfoUsuario.Controls.Add(this.picUsuario);
             this.pnlnfoUsuario.Controls.Add(this.lblRolUsuario);
-            this.pnlnfoUsuario.Location = new System.Drawing.Point(1010, 5);
+            this.pnlnfoUsuario.Location = new System.Drawing.Point(965, 5);
             this.pnlnfoUsuario.Name = "pnlnfoUsuario";
             this.pnlnfoUsuario.Size = new System.Drawing.Size(187, 55);
             this.pnlnfoUsuario.TabIndex = 3;
@@ -342,7 +342,7 @@
             this.pnlFormularioProducto.Controls.Add(this.lblCodigo);
             this.pnlFormularioProducto.Location = new System.Drawing.Point(5, 82);
             this.pnlFormularioProducto.Name = "pnlFormularioProducto";
-            this.pnlFormularioProducto.Size = new System.Drawing.Size(276, 467);
+            this.pnlFormularioProducto.Size = new System.Drawing.Size(263, 467);
             this.pnlFormularioProducto.TabIndex = 12;
             // 
             // lblEstado
@@ -515,6 +515,7 @@
             // 
             this.colCodigo.HeaderText = "Codigo";
             this.colCodigo.Name = "colCodigo";
+            this.colCodigo.Width = 80;
             // 
             // colNombre
             // 
@@ -567,7 +568,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1214, 561);
+            this.ClientSize = new System.Drawing.Size(1168, 561);
             this.Controls.Add(this.pnlCardTotalProductod);
             this.Controls.Add(this.pnlContenedorCatalogo);
             this.Controls.Add(this.pnlEncabezado);
