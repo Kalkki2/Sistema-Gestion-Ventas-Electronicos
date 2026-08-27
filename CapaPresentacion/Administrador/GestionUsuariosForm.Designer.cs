@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlEncabezado = new System.Windows.Forms.Panel();
             this.pnlnfoUsuario = new System.Windows.Forms.Panel();
             this.lblNombreUsuario = new System.Windows.Forms.Label();
@@ -41,6 +41,14 @@
             this.lblTituloTotalUsuarios = new System.Windows.Forms.Label();
             this.pnlContenedorCatalogo = new System.Windows.Forms.Panel();
             this.dgvListaUsuarios = new System.Windows.Forms.DataGridView();
+            this.colDni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCorreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPerfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEditar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.lblFiltrarPor = new System.Windows.Forms.Label();
             this.lblFiltrarEstado = new System.Windows.Forms.Label();
             this.cmbFiltroEstado = new System.Windows.Forms.ComboBox();
@@ -67,14 +75,6 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.lblApellido = new System.Windows.Forms.Label();
-            this.colDni = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCorreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPerfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEditar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.colEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pnlEncabezado.SuspendLayout();
             this.pnlnfoUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
@@ -90,7 +90,7 @@
             this.pnlEncabezado.Controls.Add(this.pnlnfoUsuario);
             this.pnlEncabezado.Controls.Add(this.lblFecha);
             this.pnlEncabezado.Controls.Add(this.lblTitulo);
-            this.pnlEncabezado.Location = new System.Drawing.Point(1, 1);
+            this.pnlEncabezado.Location = new System.Drawing.Point(-3, -2);
             this.pnlEncabezado.Name = "pnlEncabezado";
             this.pnlEncabezado.Size = new System.Drawing.Size(1219, 65);
             this.pnlEncabezado.TabIndex = 14;
@@ -101,7 +101,7 @@
             this.pnlnfoUsuario.Controls.Add(this.lblNombreUsuario);
             this.pnlnfoUsuario.Controls.Add(this.picUsuario);
             this.pnlnfoUsuario.Controls.Add(this.lblRolUsuario);
-            this.pnlnfoUsuario.Location = new System.Drawing.Point(1010, 5);
+            this.pnlnfoUsuario.Location = new System.Drawing.Point(965, 5);
             this.pnlnfoUsuario.Name = "pnlnfoUsuario";
             this.pnlnfoUsuario.Size = new System.Drawing.Size(187, 55);
             this.pnlnfoUsuario.TabIndex = 3;
@@ -159,7 +159,7 @@
             this.pnlCardTotalUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlCardTotalUsuarios.Controls.Add(this.lblCantTotalUsuarios);
             this.pnlCardTotalUsuarios.Controls.Add(this.lblTituloTotalUsuarios);
-            this.pnlCardTotalUsuarios.Location = new System.Drawing.Point(305, 99);
+            this.pnlCardTotalUsuarios.Location = new System.Drawing.Point(308, 92);
             this.pnlCardTotalUsuarios.Name = "pnlCardTotalUsuarios";
             this.pnlCardTotalUsuarios.Size = new System.Drawing.Size(173, 67);
             this.pnlCardTotalUsuarios.TabIndex = 17;
@@ -196,22 +196,22 @@
             this.pnlContenedorCatalogo.Controls.Add(this.lblFiltrarPerfil);
             this.pnlContenedorCatalogo.Controls.Add(this.cmbFiltroPerfil);
             this.pnlContenedorCatalogo.Controls.Add(this.lblTituloListaUsusarios);
-            this.pnlContenedorCatalogo.Location = new System.Drawing.Point(305, 185);
+            this.pnlContenedorCatalogo.Location = new System.Drawing.Point(308, 180);
             this.pnlContenedorCatalogo.Name = "pnlContenedorCatalogo";
-            this.pnlContenedorCatalogo.Size = new System.Drawing.Size(906, 369);
+            this.pnlContenedorCatalogo.Size = new System.Drawing.Size(863, 369);
             this.pnlContenedorCatalogo.TabIndex = 16;
             // 
             // dgvListaUsuarios
             // 
             this.dgvListaUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListaUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListaUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvListaUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colDni,
@@ -225,8 +225,53 @@
             this.dgvListaUsuarios.Location = new System.Drawing.Point(3, 97);
             this.dgvListaUsuarios.Name = "dgvListaUsuarios";
             this.dgvListaUsuarios.RowHeadersVisible = false;
-            this.dgvListaUsuarios.Size = new System.Drawing.Size(904, 63);
+            this.dgvListaUsuarios.Size = new System.Drawing.Size(854, 63);
             this.dgvListaUsuarios.TabIndex = 17;
+            // 
+            // colDni
+            // 
+            this.colDni.HeaderText = "DNI";
+            this.colDni.Name = "colDni";
+            // 
+            // colNombre
+            // 
+            this.colNombre.HeaderText = "Nombre";
+            this.colNombre.Name = "colNombre";
+            this.colNombre.Width = 130;
+            // 
+            // colApellido
+            // 
+            this.colApellido.HeaderText = "Apellido";
+            this.colApellido.Name = "colApellido";
+            this.colApellido.Width = 130;
+            // 
+            // colCorreo
+            // 
+            this.colCorreo.HeaderText = "Correo";
+            this.colCorreo.Name = "colCorreo";
+            this.colCorreo.Width = 160;
+            // 
+            // colPerfil
+            // 
+            this.colPerfil.HeaderText = "Perfil";
+            this.colPerfil.Name = "colPerfil";
+            // 
+            // colEstado
+            // 
+            this.colEstado.HeaderText = "Estado";
+            this.colEstado.Name = "colEstado";
+            // 
+            // colEditar
+            // 
+            this.colEditar.HeaderText = "Editar";
+            this.colEditar.Name = "colEditar";
+            this.colEditar.Width = 65;
+            // 
+            // colEliminar
+            // 
+            this.colEliminar.HeaderText = "Eliminar";
+            this.colEliminar.Name = "colEliminar";
+            this.colEliminar.Width = 65;
             // 
             // lblFiltrarPor
             // 
@@ -252,6 +297,9 @@
             // 
             this.cmbFiltroEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbFiltroEstado.FormattingEnabled = true;
+            this.cmbFiltroEstado.Items.AddRange(new object[] {
+            "Activo",
+            "Inactivo"});
             this.cmbFiltroEstado.Location = new System.Drawing.Point(550, 59);
             this.cmbFiltroEstado.Name = "cmbFiltroEstado";
             this.cmbFiltroEstado.Size = new System.Drawing.Size(152, 24);
@@ -279,6 +327,11 @@
             // 
             this.cmbFiltroPerfil.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbFiltroPerfil.FormattingEnabled = true;
+            this.cmbFiltroPerfil.Items.AddRange(new object[] {
+            "Dueño",
+            "Administrador",
+            "Vendedor",
+            "Cajero"});
             this.cmbFiltroPerfil.Location = new System.Drawing.Point(392, 59);
             this.cmbFiltroPerfil.Name = "cmbFiltroPerfil";
             this.cmbFiltroPerfil.Size = new System.Drawing.Size(152, 24);
@@ -315,9 +368,9 @@
             this.panel1.Controls.Add(this.lblNombre);
             this.panel1.Controls.Add(this.txtApellido);
             this.panel1.Controls.Add(this.lblApellido);
-            this.panel1.Location = new System.Drawing.Point(12, 92);
+            this.panel1.Location = new System.Drawing.Point(7, 92);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(279, 462);
+            this.panel1.Size = new System.Drawing.Size(285, 462);
             this.panel1.TabIndex = 18;
             // 
             // txtRepetirContrasenia
@@ -370,6 +423,9 @@
             // 
             this.cmbEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEstado.FormattingEnabled = true;
+            this.cmbEstado.Items.AddRange(new object[] {
+            "Activo",
+            "Inactivo"});
             this.cmbEstado.Location = new System.Drawing.Point(142, 375);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(102, 24);
@@ -433,6 +489,11 @@
             // 
             this.cmbPerfil.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPerfil.FormattingEnabled = true;
+            this.cmbPerfil.Items.AddRange(new object[] {
+            "Dueño",
+            "Administrador",
+            "Vendedor",
+            "Cajero"});
             this.cmbPerfil.Location = new System.Drawing.Point(18, 375);
             this.cmbPerfil.Name = "cmbPerfil";
             this.cmbPerfil.Size = new System.Drawing.Size(102, 24);
@@ -483,53 +544,6 @@
             this.lblApellido.Size = new System.Drawing.Size(67, 17);
             this.lblApellido.TabIndex = 0;
             this.lblApellido.Text = "Apellido *";
-            // 
-            // colDni
-            // 
-            this.colDni.HeaderText = "DNI";
-            this.colDni.Name = "colDni";
-            // 
-            // colNombre
-            // 
-            this.colNombre.HeaderText = "Nombre";
-            this.colNombre.Name = "colNombre";
-            this.colNombre.Width = 130;
-            // 
-            // colApellido
-            // 
-            this.colApellido.HeaderText = "Apellido";
-            this.colApellido.Name = "colApellido";
-            this.colApellido.Width = 130;
-            // 
-            // colCorreo
-            // 
-            this.colCorreo.HeaderText = "Correo";
-            this.colCorreo.Name = "colCorreo";
-            this.colCorreo.Width = 160;
-            // 
-            // colPerfil
-            // 
-            this.colPerfil.HeaderText = "Perfil";
-            this.colPerfil.Name = "colPerfil";
-            this.colPerfil.Width = 125;
-            // 
-            // colEstado
-            // 
-            this.colEstado.HeaderText = "Estado";
-            this.colEstado.Name = "colEstado";
-            this.colEstado.Width = 125;
-            // 
-            // colEditar
-            // 
-            this.colEditar.HeaderText = "Editar";
-            this.colEditar.Name = "colEditar";
-            this.colEditar.Width = 65;
-            // 
-            // colEliminar
-            // 
-            this.colEliminar.HeaderText = "Eliminar";
-            this.colEliminar.Name = "colEliminar";
-            this.colEliminar.Width = 65;
             // 
             // GestionUsuariosForm
             // 

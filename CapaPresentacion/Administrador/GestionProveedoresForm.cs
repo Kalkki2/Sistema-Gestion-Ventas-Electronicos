@@ -10,13 +10,11 @@ using System.Windows.Forms;
 
 namespace CapaPresentacion.Administrador
 {
-    public partial class GestionUsuariosForm : Form
+    public partial class GestionProveedoresForm : Form
     {
-        public GestionUsuariosForm()
+        public GestionProveedoresForm()
         {
             InitializeComponent();
         }
-
-        
     }
 }

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlCardTotalClientes = new System.Windows.Forms.Panel();
             this.lblCantTotalClientes = new System.Windows.Forms.Label();
             this.lblTituloTotalCliente = new System.Windows.Forms.Label();
@@ -39,9 +39,9 @@
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.lblTelefono = new System.Windows.Forms.Label();
             this.txtDni = new System.Windows.Forms.TextBox();
-            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.lblDNI = new System.Windows.Forms.Label();
-            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnActualizar = new System.Windows.Forms.Button();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.txtApellido = new System.Windows.Forms.TextBox();
@@ -53,14 +53,6 @@
             this.lblCantidadCompra = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.dgvListaCliente = new System.Windows.Forms.DataGridView();
-            this.colNroCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDni = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colFacturado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCompras = new System.Windows.Forms.DataGridViewButtonColumn();
             this.lblTituloListaClientes = new System.Windows.Forms.Label();
             this.pnlEncabezado = new System.Windows.Forms.Panel();
             this.pnlnfoUsuario = new System.Windows.Forms.Panel();
@@ -69,6 +61,14 @@
             this.lblRolUsuario = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.colNroCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEditar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colCompras = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pnlCardTotalClientes.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlContenedorListaCliente.SuspendLayout();
@@ -116,16 +116,16 @@
             this.panel1.Controls.Add(this.txtTelefono);
             this.panel1.Controls.Add(this.lblTelefono);
             this.panel1.Controls.Add(this.txtDni);
-            this.panel1.Controls.Add(this.btnAgregar);
+            this.panel1.Controls.Add(this.btnCancelar);
             this.panel1.Controls.Add(this.lblDNI);
-            this.panel1.Controls.Add(this.btnEliminar);
+            this.panel1.Controls.Add(this.btnActualizar);
             this.panel1.Controls.Add(this.txtNombre);
             this.panel1.Controls.Add(this.lblNombre);
             this.panel1.Controls.Add(this.txtApellido);
             this.panel1.Controls.Add(this.lblApellido);
             this.panel1.Location = new System.Drawing.Point(12, 121);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(268, 399);
+            this.panel1.Size = new System.Drawing.Size(251, 399);
             this.panel1.TabIndex = 24;
             // 
             // txtDireccion
@@ -172,14 +172,14 @@
             this.txtDni.Size = new System.Drawing.Size(222, 27);
             this.txtDni.TabIndex = 21;
             // 
-            // btnAgregar
+            // btnCancelar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(28, 347);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(89, 34);
-            this.btnAgregar.TabIndex = 17;
-            this.btnAgregar.Text = "Eliminar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Location = new System.Drawing.Point(28, 347);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(89, 34);
+            this.btnCancelar.TabIndex = 17;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
             // 
             // lblDNI
             // 
@@ -191,14 +191,14 @@
             this.lblDNI.TabIndex = 20;
             this.lblDNI.Text = "DNI *";
             // 
-            // btnEliminar
+            // btnActualizar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(139, 347);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(89, 34);
-            this.btnEliminar.TabIndex = 16;
-            this.btnEliminar.Text = "Agregar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Location = new System.Drawing.Point(139, 347);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(89, 34);
+            this.btnActualizar.TabIndex = 16;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.UseVisualStyleBackColor = true;
             // 
             // txtNombre
             // 
@@ -247,9 +247,9 @@
             this.pnlContenedorListaCliente.Controls.Add(this.comboBox2);
             this.pnlContenedorListaCliente.Controls.Add(this.dgvListaCliente);
             this.pnlContenedorListaCliente.Controls.Add(this.lblTituloListaClientes);
-            this.pnlContenedorListaCliente.Location = new System.Drawing.Point(286, 209);
+            this.pnlContenedorListaCliente.Location = new System.Drawing.Point(269, 209);
             this.pnlContenedorListaCliente.Name = "pnlContenedorListaCliente";
-            this.pnlContenedorListaCliente.Size = new System.Drawing.Size(878, 311);
+            this.pnlContenedorListaCliente.Size = new System.Drawing.Size(881, 311);
             this.pnlContenedorListaCliente.TabIndex = 23;
             // 
             // btnFiltrarPorFecha
@@ -301,14 +301,14 @@
             // dgvListaCliente
             // 
             this.dgvListaCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListaCliente.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListaCliente.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvListaCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaCliente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colNroCliente,
@@ -317,63 +317,21 @@
             this.colNombre,
             this.colTelefono,
             this.colDireccion,
-            this.colFacturado,
+            this.colEditar,
             this.colCompras});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvListaCliente.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvListaCliente.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvListaCliente.Location = new System.Drawing.Point(3, 101);
             this.dgvListaCliente.Name = "dgvListaCliente";
             this.dgvListaCliente.RowHeadersVisible = false;
-            this.dgvListaCliente.Size = new System.Drawing.Size(876, 75);
+            this.dgvListaCliente.Size = new System.Drawing.Size(873, 75);
             this.dgvListaCliente.TabIndex = 1;
-            // 
-            // colNroCliente
-            // 
-            this.colNroCliente.HeaderText = "Nro Cliente";
-            this.colNroCliente.Name = "colNroCliente";
-            // 
-            // colDni
-            // 
-            this.colDni.HeaderText = "DNI";
-            this.colDni.Name = "colDni";
-            // 
-            // colApellido
-            // 
-            this.colApellido.HeaderText = "Apellido";
-            this.colApellido.Name = "colApellido";
-            // 
-            // colNombre
-            // 
-            this.colNombre.HeaderText = "Nombre";
-            this.colNombre.Name = "colNombre";
-            // 
-            // colTelefono
-            // 
-            this.colTelefono.HeaderText = "Telefono";
-            this.colTelefono.Name = "colTelefono";
-            // 
-            // colDireccion
-            // 
-            this.colDireccion.HeaderText = "Direccion";
-            this.colDireccion.Name = "colDireccion";
-            this.colDireccion.Width = 150;
-            // 
-            // colFacturado
-            // 
-            this.colFacturado.HeaderText = "Facturado";
-            this.colFacturado.Name = "colFacturado";
-            // 
-            // colCompras
-            // 
-            this.colCompras.HeaderText = "Ver compras";
-            this.colCompras.Name = "colCompras";
-            this.colCompras.Width = 120;
             // 
             // lblTituloListaClientes
             // 
@@ -455,6 +413,50 @@
             this.lblTitulo.TabIndex = 11;
             this.lblTitulo.Text = "Gestion de clientes";
             // 
+            // colNroCliente
+            // 
+            this.colNroCliente.HeaderText = "Nro Cliente";
+            this.colNroCliente.Name = "colNroCliente";
+            // 
+            // colDni
+            // 
+            this.colDni.HeaderText = "DNI";
+            this.colDni.Name = "colDni";
+            // 
+            // colApellido
+            // 
+            this.colApellido.HeaderText = "Apellido";
+            this.colApellido.Name = "colApellido";
+            // 
+            // colNombre
+            // 
+            this.colNombre.HeaderText = "Nombre";
+            this.colNombre.Name = "colNombre";
+            // 
+            // colTelefono
+            // 
+            this.colTelefono.HeaderText = "Telefono";
+            this.colTelefono.Name = "colTelefono";
+            // 
+            // colDireccion
+            // 
+            this.colDireccion.HeaderText = "Direccion";
+            this.colDireccion.Name = "colDireccion";
+            this.colDireccion.Width = 150;
+            // 
+            // colEditar
+            // 
+            this.colEditar.HeaderText = "Editar";
+            this.colEditar.Name = "colEditar";
+            this.colEditar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colEditar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // colCompras
+            // 
+            this.colCompras.HeaderText = "Ver compras";
+            this.colCompras.Name = "colCompras";
+            this.colCompras.Width = 120;
+            // 
             // GestionClientesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -493,9 +495,9 @@
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label lblTelefono;
         private System.Windows.Forms.TextBox txtDni;
-        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label lblDNI;
-        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.TextBox txtApellido;
@@ -507,14 +509,6 @@
         private System.Windows.Forms.Label lblCantidadCompra;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.DataGridView dgvListaCliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNroCliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDni;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colApellido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTelefono;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDireccion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colFacturado;
-        private System.Windows.Forms.DataGridViewButtonColumn colCompras;
         private System.Windows.Forms.Label lblTituloListaClientes;
         private System.Windows.Forms.Panel pnlEncabezado;
         private System.Windows.Forms.Panel pnlnfoUsuario;
@@ -523,5 +517,13 @@
         private System.Windows.Forms.Label lblRolUsuario;
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNroCliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDni;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colApellido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTelefono;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDireccion;
+        private System.Windows.Forms.DataGridViewButtonColumn colEditar;
+        private System.Windows.Forms.DataGridViewButtonColumn colCompras;
     }
 }

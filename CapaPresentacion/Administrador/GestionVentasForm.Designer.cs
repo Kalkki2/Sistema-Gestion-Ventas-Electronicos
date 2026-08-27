@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlContenedorHistorial = new System.Windows.Forms.Panel();
+            this.btnFiltrarPorFecha = new System.Windows.Forms.Button();
             this.dtpHasta = new System.Windows.Forms.DateTimePicker();
             this.dtpDesde = new System.Windows.Forms.DateTimePicker();
             this.btnDescargarPDFHistoria = new System.Windows.Forms.Button();
@@ -40,25 +41,18 @@
             this.lblFiltrarDesde = new System.Windows.Forms.Label();
             this.dgvListaVentas = new System.Windows.Forms.DataGridView();
             this.lblTituloHistorialVenta = new System.Windows.Forms.Label();
-            this.colNroVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colFechaVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMetodoPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colVendedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDetalles = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pnlContenedorDetallesVenta = new System.Windows.Forms.Panel();
+            this.btnDescargarPDFDetalle = new System.Windows.Forms.Button();
+            this.lblPrecioTotal = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
             this.lblNroVentaDetalle = new System.Windows.Forms.Label();
             this.dgvListaDetalle = new System.Windows.Forms.DataGridView();
-            this.lblTituloDetalleVenta = new System.Windows.Forms.Label();
             this.colDetalleNroVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDetalleProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDetalleCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDetallePrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDetalleSubtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblTotal = new System.Windows.Forms.Label();
-            this.lblPrecioTotal = new System.Windows.Forms.Label();
-            this.btnDescargarPDFDetalle = new System.Windows.Forms.Button();
-            this.btnFiltrarPorFecha = new System.Windows.Forms.Button();
+            this.lblTituloDetalleVenta = new System.Windows.Forms.Label();
             this.pnlEncabezado = new System.Windows.Forms.Panel();
             this.pnlnfoUsuario = new System.Windows.Forms.Panel();
             this.lblNombreUsuario = new System.Windows.Forms.Label();
@@ -69,6 +63,12 @@
             this.pnlCardTotalVentas = new System.Windows.Forms.Panel();
             this.lblCantTotalVentas = new System.Windows.Forms.Label();
             this.lblTituloTotalVentas = new System.Windows.Forms.Label();
+            this.colNroVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFechaVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMetodoPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colVendedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDetalles = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pnlContenedorHistorial.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaVentas)).BeginInit();
             this.pnlContenedorDetallesVenta.SuspendLayout();
@@ -93,8 +93,17 @@
             this.pnlContenedorHistorial.Controls.Add(this.lblTituloHistorialVenta);
             this.pnlContenedorHistorial.Location = new System.Drawing.Point(12, 176);
             this.pnlContenedorHistorial.Name = "pnlContenedorHistorial";
-            this.pnlContenedorHistorial.Size = new System.Drawing.Size(679, 346);
+            this.pnlContenedorHistorial.Size = new System.Drawing.Size(644, 346);
             this.pnlContenedorHistorial.TabIndex = 18;
+            // 
+            // btnFiltrarPorFecha
+            // 
+            this.btnFiltrarPorFecha.Location = new System.Drawing.Point(453, 53);
+            this.btnFiltrarPorFecha.Name = "btnFiltrarPorFecha";
+            this.btnFiltrarPorFecha.Size = new System.Drawing.Size(89, 26);
+            this.btnFiltrarPorFecha.TabIndex = 31;
+            this.btnFiltrarPorFecha.Text = "Filtrar";
+            this.btnFiltrarPorFecha.UseVisualStyleBackColor = true;
             // 
             // dtpHasta
             // 
@@ -114,7 +123,7 @@
             // 
             // btnDescargarPDFHistoria
             // 
-            this.btnDescargarPDFHistoria.Location = new System.Drawing.Point(585, 3);
+            this.btnDescargarPDFHistoria.Location = new System.Drawing.Point(546, 4);
             this.btnDescargarPDFHistoria.Name = "btnDescargarPDFHistoria";
             this.btnDescargarPDFHistoria.Size = new System.Drawing.Size(89, 26);
             this.btnDescargarPDFHistoria.TabIndex = 28;
@@ -144,14 +153,14 @@
             // dgvListaVentas
             // 
             this.dgvListaVentas.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListaVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListaVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvListaVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colNroVenta,
@@ -160,18 +169,18 @@
             this.colCliente,
             this.colVendedor,
             this.colDetalles});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvListaVentas.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvListaVentas.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgvListaVentas.Location = new System.Drawing.Point(3, 99);
             this.dgvListaVentas.Name = "dgvListaVentas";
             this.dgvListaVentas.RowHeadersVisible = false;
-            this.dgvListaVentas.Size = new System.Drawing.Size(666, 75);
+            this.dgvListaVentas.Size = new System.Drawing.Size(632, 75);
             this.dgvListaVentas.TabIndex = 1;
             // 
             // lblTituloHistorialVenta
@@ -184,39 +193,6 @@
             this.lblTituloHistorialVenta.TabIndex = 9;
             this.lblTituloHistorialVenta.Text = "Historia de ventas";
             // 
-            // colNroVenta
-            // 
-            this.colNroVenta.HeaderText = "Nro Venta";
-            this.colNroVenta.Name = "colNroVenta";
-            // 
-            // colFechaVenta
-            // 
-            this.colFechaVenta.HeaderText = "Fecha Venta";
-            this.colFechaVenta.Name = "colFechaVenta";
-            this.colFechaVenta.Width = 123;
-            // 
-            // colMetodoPago
-            // 
-            this.colMetodoPago.HeaderText = "Metodo Pago";
-            this.colMetodoPago.Name = "colMetodoPago";
-            this.colMetodoPago.Width = 120;
-            // 
-            // colCliente
-            // 
-            this.colCliente.HeaderText = "Cliente";
-            this.colCliente.Name = "colCliente";
-            // 
-            // colVendedor
-            // 
-            this.colVendedor.HeaderText = "Vendendor";
-            this.colVendedor.Name = "colVendedor";
-            // 
-            // colDetalles
-            // 
-            this.colDetalles.HeaderText = "Ver detalle";
-            this.colDetalles.Name = "colDetalles";
-            this.colDetalles.Width = 120;
-            // 
             // pnlContenedorDetallesVenta
             // 
             this.pnlContenedorDetallesVenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -226,10 +202,39 @@
             this.pnlContenedorDetallesVenta.Controls.Add(this.lblNroVentaDetalle);
             this.pnlContenedorDetallesVenta.Controls.Add(this.dgvListaDetalle);
             this.pnlContenedorDetallesVenta.Controls.Add(this.lblTituloDetalleVenta);
-            this.pnlContenedorDetallesVenta.Location = new System.Drawing.Point(697, 176);
+            this.pnlContenedorDetallesVenta.Location = new System.Drawing.Point(662, 176);
             this.pnlContenedorDetallesVenta.Name = "pnlContenedorDetallesVenta";
-            this.pnlContenedorDetallesVenta.Size = new System.Drawing.Size(513, 346);
+            this.pnlContenedorDetallesVenta.Size = new System.Drawing.Size(489, 346);
             this.pnlContenedorDetallesVenta.TabIndex = 19;
+            // 
+            // btnDescargarPDFDetalle
+            // 
+            this.btnDescargarPDFDetalle.Location = new System.Drawing.Point(383, 4);
+            this.btnDescargarPDFDetalle.Name = "btnDescargarPDFDetalle";
+            this.btnDescargarPDFDetalle.Size = new System.Drawing.Size(89, 26);
+            this.btnDescargarPDFDetalle.TabIndex = 31;
+            this.btnDescargarPDFDetalle.Text = "Descargar PDF";
+            this.btnDescargarPDFDetalle.UseVisualStyleBackColor = true;
+            // 
+            // lblPrecioTotal
+            // 
+            this.lblPrecioTotal.AutoSize = true;
+            this.lblPrecioTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrecioTotal.Location = new System.Drawing.Point(373, 306);
+            this.lblPrecioTotal.Name = "lblPrecioTotal";
+            this.lblPrecioTotal.Size = new System.Drawing.Size(99, 29);
+            this.lblPrecioTotal.TabIndex = 20;
+            this.lblPrecioTotal.Text = "$XXXX";
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.Location = new System.Drawing.Point(312, 316);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(55, 17);
+            this.lblTotal.TabIndex = 19;
+            this.lblTotal.Text = "Total: ";
             // 
             // lblNroVentaDetalle
             // 
@@ -244,14 +249,14 @@
             // dgvListaDetalle
             // 
             this.dgvListaDetalle.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListaDetalle.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListaDetalle.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dgvListaDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colDetalleNroVenta,
@@ -259,29 +264,19 @@
             this.colDetalleCantidad,
             this.colDetallePrecio,
             this.colDetalleSubtotal});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvListaDetalle.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvListaDetalle.Location = new System.Drawing.Point(6, 54);
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvListaDetalle.DefaultCellStyle = dataGridViewCellStyle12;
+            this.dgvListaDetalle.Location = new System.Drawing.Point(-1, 53);
             this.dgvListaDetalle.Name = "dgvListaDetalle";
             this.dgvListaDetalle.RowHeadersVisible = false;
             this.dgvListaDetalle.Size = new System.Drawing.Size(489, 75);
             this.dgvListaDetalle.TabIndex = 11;
-            // 
-            // lblTituloDetalleVenta
-            // 
-            this.lblTituloDetalleVenta.AutoSize = true;
-            this.lblTituloDetalleVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloDetalleVenta.Location = new System.Drawing.Point(3, 20);
-            this.lblTituloDetalleVenta.Name = "lblTituloDetalleVenta";
-            this.lblTituloDetalleVenta.Size = new System.Drawing.Size(186, 17);
-            this.lblTituloDetalleVenta.TabIndex = 10;
-            this.lblTituloDetalleVenta.Text = "Detalle de la venta Nro: ";
             // 
             // colDetalleNroVenta
             // 
@@ -312,43 +307,15 @@
             this.colDetalleSubtotal.HeaderText = "Subtotal";
             this.colDetalleSubtotal.Name = "colDetalleSubtotal";
             // 
-            // lblTotal
+            // lblTituloDetalleVenta
             // 
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(349, 316);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(55, 17);
-            this.lblTotal.TabIndex = 19;
-            this.lblTotal.Text = "Total: ";
-            // 
-            // lblPrecioTotal
-            // 
-            this.lblPrecioTotal.AutoSize = true;
-            this.lblPrecioTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrecioTotal.Location = new System.Drawing.Point(410, 306);
-            this.lblPrecioTotal.Name = "lblPrecioTotal";
-            this.lblPrecioTotal.Size = new System.Drawing.Size(99, 29);
-            this.lblPrecioTotal.TabIndex = 20;
-            this.lblPrecioTotal.Text = "$XXXX";
-            // 
-            // btnDescargarPDFDetalle
-            // 
-            this.btnDescargarPDFDetalle.Location = new System.Drawing.Point(420, 5);
-            this.btnDescargarPDFDetalle.Name = "btnDescargarPDFDetalle";
-            this.btnDescargarPDFDetalle.Size = new System.Drawing.Size(89, 26);
-            this.btnDescargarPDFDetalle.TabIndex = 31;
-            this.btnDescargarPDFDetalle.Text = "Descargar PDF";
-            this.btnDescargarPDFDetalle.UseVisualStyleBackColor = true;
-            // 
-            // btnFiltrarPorFecha
-            // 
-            this.btnFiltrarPorFecha.Location = new System.Drawing.Point(453, 53);
-            this.btnFiltrarPorFecha.Name = "btnFiltrarPorFecha";
-            this.btnFiltrarPorFecha.Size = new System.Drawing.Size(89, 26);
-            this.btnFiltrarPorFecha.TabIndex = 31;
-            this.btnFiltrarPorFecha.Text = "Filtrar";
-            this.btnFiltrarPorFecha.UseVisualStyleBackColor = true;
+            this.lblTituloDetalleVenta.AutoSize = true;
+            this.lblTituloDetalleVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloDetalleVenta.Location = new System.Drawing.Point(3, 20);
+            this.lblTituloDetalleVenta.Name = "lblTituloDetalleVenta";
+            this.lblTituloDetalleVenta.Size = new System.Drawing.Size(186, 17);
+            this.lblTituloDetalleVenta.TabIndex = 10;
+            this.lblTituloDetalleVenta.Text = "Detalle de la venta Nro: ";
             // 
             // pnlEncabezado
             // 
@@ -367,7 +334,7 @@
             this.pnlnfoUsuario.Controls.Add(this.lblNombreUsuario);
             this.pnlnfoUsuario.Controls.Add(this.picUsuario);
             this.pnlnfoUsuario.Controls.Add(this.lblRolUsuario);
-            this.pnlnfoUsuario.Location = new System.Drawing.Point(1010, 5);
+            this.pnlnfoUsuario.Location = new System.Drawing.Point(965, 5);
             this.pnlnfoUsuario.Name = "pnlnfoUsuario";
             this.pnlnfoUsuario.Size = new System.Drawing.Size(187, 55);
             this.pnlnfoUsuario.TabIndex = 3;
@@ -425,7 +392,7 @@
             this.pnlCardTotalVentas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlCardTotalVentas.Controls.Add(this.lblCantTotalVentas);
             this.pnlCardTotalVentas.Controls.Add(this.lblTituloTotalVentas);
-            this.pnlCardTotalVentas.Location = new System.Drawing.Point(12, 87);
+            this.pnlCardTotalVentas.Location = new System.Drawing.Point(12, 93);
             this.pnlCardTotalVentas.Name = "pnlCardTotalVentas";
             this.pnlCardTotalVentas.Size = new System.Drawing.Size(173, 67);
             this.pnlCardTotalVentas.TabIndex = 21;
@@ -449,6 +416,38 @@
             this.lblTituloTotalVentas.Size = new System.Drawing.Size(67, 13);
             this.lblTituloTotalVentas.TabIndex = 17;
             this.lblTituloTotalVentas.Text = "Total Ventas";
+            // 
+            // colNroVenta
+            // 
+            this.colNroVenta.HeaderText = "Nro Venta";
+            this.colNroVenta.Name = "colNroVenta";
+            // 
+            // colFechaVenta
+            // 
+            this.colFechaVenta.HeaderText = "Fecha Venta";
+            this.colFechaVenta.Name = "colFechaVenta";
+            this.colFechaVenta.Width = 110;
+            // 
+            // colMetodoPago
+            // 
+            this.colMetodoPago.HeaderText = "Metodo Pago";
+            this.colMetodoPago.Name = "colMetodoPago";
+            this.colMetodoPago.Width = 120;
+            // 
+            // colCliente
+            // 
+            this.colCliente.HeaderText = "Cliente";
+            this.colCliente.Name = "colCliente";
+            // 
+            // colVendedor
+            // 
+            this.colVendedor.HeaderText = "Vendendor";
+            this.colVendedor.Name = "colVendedor";
+            // 
+            // colDetalles
+            // 
+            this.colDetalles.HeaderText = "Ver detalle";
+            this.colDetalles.Name = "colDetalles";
             // 
             // GestionVentasForm
             // 
@@ -488,12 +487,6 @@
         private System.Windows.Forms.Label lblFiltrarDesde;
         private System.Windows.Forms.DataGridView dgvListaVentas;
         private System.Windows.Forms.Label lblTituloHistorialVenta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNroVenta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colFechaVenta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colMetodoPago;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colVendedor;
-        private System.Windows.Forms.DataGridViewButtonColumn colDetalles;
         private System.Windows.Forms.Panel pnlContenedorDetallesVenta;
         private System.Windows.Forms.Label lblNroVentaDetalle;
         private System.Windows.Forms.DataGridView dgvListaDetalle;
@@ -517,5 +510,11 @@
         private System.Windows.Forms.Panel pnlCardTotalVentas;
         private System.Windows.Forms.Label lblCantTotalVentas;
         private System.Windows.Forms.Label lblTituloTotalVentas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNroVenta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFechaVenta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMetodoPago;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colVendedor;
+        private System.Windows.Forms.DataGridViewButtonColumn colDetalles;
     }
 }

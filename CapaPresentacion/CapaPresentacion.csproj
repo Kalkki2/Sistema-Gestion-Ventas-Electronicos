@@ -64,6 +64,12 @@
     <Compile Include="Administrador\GestionProductosForm.Designer.cs">
       <DependentUpon>GestionProductosForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Administrador\GestionProveedoresForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\GestionProveedoresForm.Designer.cs">
+      <DependentUpon>GestionProveedoresForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Administrador\GestionUsuariosForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Administrador\GestionProductosForm.resx">
       <DependentUpon>GestionProductosForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\GestionProveedoresForm.resx">
+      <DependentUpon>GestionProveedoresForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Administrador\GestionUsuariosForm.resx">
       <DependentUpon>GestionUsuariosForm.cs</DependentUpon>
