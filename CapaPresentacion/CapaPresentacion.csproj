@@ -149,5 +149,20 @@
   <ItemGroup>
     <None Include="Resources\cross_wrong_close_delete_icon_191608.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_blanco_productos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_blanco_usuarios.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_blanco_clientes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_blanco_ventas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_blanco_proveedores.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
