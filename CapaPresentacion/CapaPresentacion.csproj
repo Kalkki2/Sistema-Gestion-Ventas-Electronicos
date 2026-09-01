@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -82,12 +83,6 @@
     <Compile Include="Administrador\GestionVentasForm.Designer.cs">
       <DependentUpon>GestionVentasForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cajero\FormMenuCajero.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cajero\FormMenuCajero.Designer.cs">
-      <DependentUpon>FormMenuCajero.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,9 +115,6 @@
     <EmbeddedResource Include="Administrador\GestionVentasForm.resx">
       <DependentUpon>GestionVentasForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Cajero\FormMenuCajero.resx">
-      <DependentUpon>FormMenuCajero.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -147,7 +139,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\cross_wrong_close_delete_icon_191608.png" />
+    <Folder Include="Cajero\" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
