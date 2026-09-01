@@ -83,9 +83,49 @@ namespace CapaPresentacion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap lupa {
+        internal static System.Drawing.Bitmap icono_blanco_clientes {
             get {
-                object obj = ResourceManager.GetObject("lupa", resourceCulture);
+                object obj = ResourceManager.GetObject("icono_blanco_clientes", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icono_blanco_productos {
+            get {
+                object obj = ResourceManager.GetObject("icono_blanco_productos", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icono_blanco_proveedores {
+            get {
+                object obj = ResourceManager.GetObject("icono_blanco_proveedores", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icono_blanco_usuarios {
+            get {
+                object obj = ResourceManager.GetObject("icono_blanco_usuarios", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icono_blanco_ventas {
+            get {
+                object obj = ResourceManager.GetObject("icono_blanco_ventas", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

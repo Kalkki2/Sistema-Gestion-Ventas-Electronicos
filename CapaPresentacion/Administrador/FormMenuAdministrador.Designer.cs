@@ -59,12 +59,13 @@
             this.btnMenuItemVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMenuItemVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMenuItemVenta.ForeColor = System.Drawing.Color.White;
-            this.btnMenuItemVenta.Location = new System.Drawing.Point(3, 200);
+            this.btnMenuItemVenta.Image = global::CapaPresentacion.Properties.Resources.icono_blanco_ventas;
+            this.btnMenuItemVenta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMenuItemVenta.Location = new System.Drawing.Point(0, 238);
             this.btnMenuItemVenta.Name = "btnMenuItemVenta";
-            this.btnMenuItemVenta.Size = new System.Drawing.Size(194, 36);
+            this.btnMenuItemVenta.Size = new System.Drawing.Size(185, 36);
             this.btnMenuItemVenta.TabIndex = 5;
             this.btnMenuItemVenta.Text = "Ventas";
-            this.btnMenuItemVenta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuItemVenta.UseVisualStyleBackColor = false;
             this.btnMenuItemVenta.Click += new System.EventHandler(this.btnMenuItemVenta_Click);
             // 
@@ -76,12 +77,13 @@
             this.btnMenuItemProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMenuItemProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMenuItemProveedor.ForeColor = System.Drawing.Color.White;
-            this.btnMenuItemProveedor.Location = new System.Drawing.Point(0, 242);
+            this.btnMenuItemProveedor.Image = global::CapaPresentacion.Properties.Resources.icono_blanco_proveedores;
+            this.btnMenuItemProveedor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMenuItemProveedor.Location = new System.Drawing.Point(-3, 291);
             this.btnMenuItemProveedor.Name = "btnMenuItemProveedor";
-            this.btnMenuItemProveedor.Size = new System.Drawing.Size(194, 36);
+            this.btnMenuItemProveedor.Size = new System.Drawing.Size(185, 36);
             this.btnMenuItemProveedor.TabIndex = 4;
             this.btnMenuItemProveedor.Text = "Proveedores";
-            this.btnMenuItemProveedor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuItemProveedor.UseVisualStyleBackColor = false;
             this.btnMenuItemProveedor.Click += new System.EventHandler(this.btnMenuItemProveedor_Click);
             // 
@@ -93,12 +95,13 @@
             this.btnMenuItemUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMenuItemUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMenuItemUsuario.ForeColor = System.Drawing.Color.White;
-            this.btnMenuItemUsuario.Location = new System.Drawing.Point(3, 116);
+            this.btnMenuItemUsuario.Image = global::CapaPresentacion.Properties.Resources.icono_blanco_usuarios;
+            this.btnMenuItemUsuario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMenuItemUsuario.Location = new System.Drawing.Point(0, 130);
             this.btnMenuItemUsuario.Name = "btnMenuItemUsuario";
-            this.btnMenuItemUsuario.Size = new System.Drawing.Size(194, 36);
+            this.btnMenuItemUsuario.Size = new System.Drawing.Size(185, 36);
             this.btnMenuItemUsuario.TabIndex = 3;
             this.btnMenuItemUsuario.Text = "Usuarios";
-            this.btnMenuItemUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuItemUsuario.UseVisualStyleBackColor = false;
             this.btnMenuItemUsuario.Click += new System.EventHandler(this.btnMenuItemUsuario_Click);
             // 
@@ -110,12 +113,13 @@
             this.btnMenuItemCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMenuItemCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMenuItemCliente.ForeColor = System.Drawing.Color.White;
-            this.btnMenuItemCliente.Location = new System.Drawing.Point(3, 158);
+            this.btnMenuItemCliente.Image = global::CapaPresentacion.Properties.Resources.icono_blanco_clientes;
+            this.btnMenuItemCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMenuItemCliente.Location = new System.Drawing.Point(0, 182);
             this.btnMenuItemCliente.Name = "btnMenuItemCliente";
-            this.btnMenuItemCliente.Size = new System.Drawing.Size(194, 36);
+            this.btnMenuItemCliente.Size = new System.Drawing.Size(185, 36);
             this.btnMenuItemCliente.TabIndex = 2;
             this.btnMenuItemCliente.Text = "Clientes";
-            this.btnMenuItemCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuItemCliente.UseVisualStyleBackColor = false;
             this.btnMenuItemCliente.Click += new System.EventHandler(this.btnMenuItemCliente_Click);
             // 
@@ -127,12 +131,13 @@
             this.btnMenuItemProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMenuItemProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMenuItemProducto.ForeColor = System.Drawing.Color.White;
+            this.btnMenuItemProducto.Image = global::CapaPresentacion.Properties.Resources.icono_blanco_productos;
+            this.btnMenuItemProducto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuItemProducto.Location = new System.Drawing.Point(3, 74);
             this.btnMenuItemProducto.Name = "btnMenuItemProducto";
-            this.btnMenuItemProducto.Size = new System.Drawing.Size(194, 36);
+            this.btnMenuItemProducto.Size = new System.Drawing.Size(182, 36);
             this.btnMenuItemProducto.TabIndex = 1;
             this.btnMenuItemProducto.Text = "Productos";
-            this.btnMenuItemProducto.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuItemProducto.UseVisualStyleBackColor = false;
             this.btnMenuItemProducto.Click += new System.EventHandler(this.btnMenuItemProducto_Click);
             // 

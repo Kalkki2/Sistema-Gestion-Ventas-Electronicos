@@ -1,4 +1,4 @@
-﻿using CapaPresentacion.Cajero;
+﻿using CapaPresentacion.Administrador;
 using System;
 using System.Collections.Generic;
 using System.Linq;

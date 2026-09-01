@@ -142,5 +142,20 @@
     <Folder Include="Cajero\" />
     <Folder Include="Resources\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_blanco_productos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_blanco_usuarios.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_blanco_clientes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_blanco_ventas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_blanco_proveedores.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
