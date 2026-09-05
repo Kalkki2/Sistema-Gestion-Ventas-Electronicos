@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlCardTotalClientes = new System.Windows.Forms.Panel();
             this.lblCantTotalClientes = new System.Windows.Forms.Label();
             this.lblTituloTotalCliente = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblInformacionDelCliente = new System.Windows.Forms.Label();
             this.txtDireccion = new System.Windows.Forms.TextBox();
             this.lblDireccion = new System.Windows.Forms.Label();
             this.txtTelefono = new System.Windows.Forms.TextBox();
@@ -41,17 +42,12 @@
             this.txtDni = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.lblDNI = new System.Windows.Forms.Label();
-            this.btnActualizar = new System.Windows.Forms.Button();
+            this.btnActualizarCliente = new System.Windows.Forms.Button();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.lblApellido = new System.Windows.Forms.Label();
             this.pnlContenedorListaCliente = new System.Windows.Forms.Panel();
-            this.btnFiltrarPorFecha = new System.Windows.Forms.Button();
-            this.lblOrdenarPor = new System.Windows.Forms.Label();
-            this.txtFiltrarPorDNI = new System.Windows.Forms.TextBox();
-            this.lblCantidadCompra = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.dgvListaCliente = new System.Windows.Forms.DataGridView();
             this.colNroCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDni = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,6 +58,9 @@
             this.colEditar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.colCompras = new System.Windows.Forms.DataGridViewButtonColumn();
             this.lblTituloListaClientes = new System.Windows.Forms.Label();
+            this.btnFiltrarPorFecha = new System.Windows.Forms.Button();
+            this.txtFiltrarPorDNI = new System.Windows.Forms.TextBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.pnlEncabezado = new System.Windows.Forms.Panel();
             this.pnlnfoUsuario = new System.Windows.Forms.Panel();
             this.lblNombreUsuario = new System.Windows.Forms.Label();
@@ -70,6 +69,7 @@
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblBuscarPorDniONombre = new System.Windows.Forms.Label();
             this.pnlCardTotalClientes.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlContenedorListaCliente.SuspendLayout();
@@ -82,12 +82,13 @@
             // 
             // pnlCardTotalClientes
             // 
+            this.pnlCardTotalClientes.BackColor = System.Drawing.Color.White;
             this.pnlCardTotalClientes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlCardTotalClientes.Controls.Add(this.lblCantTotalClientes);
             this.pnlCardTotalClientes.Controls.Add(this.lblTituloTotalCliente);
             this.pnlCardTotalClientes.Location = new System.Drawing.Point(529, 77);
             this.pnlCardTotalClientes.Name = "pnlCardTotalClientes";
-            this.pnlCardTotalClientes.Size = new System.Drawing.Size(173, 67);
+            this.pnlCardTotalClientes.Size = new System.Drawing.Size(187, 75);
             this.pnlCardTotalClientes.TabIndex = 25;
             // 
             // lblCantTotalClientes
@@ -103,16 +104,18 @@
             // lblTituloTotalCliente
             // 
             this.lblTituloTotalCliente.AutoSize = true;
-            this.lblTituloTotalCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloTotalCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloTotalCliente.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblTituloTotalCliente.Location = new System.Drawing.Point(12, 9);
             this.lblTituloTotalCliente.Name = "lblTituloTotalCliente";
-            this.lblTituloTotalCliente.Size = new System.Drawing.Size(70, 13);
+            this.lblTituloTotalCliente.Size = new System.Drawing.Size(93, 15);
             this.lblTituloTotalCliente.TabIndex = 17;
             this.lblTituloTotalCliente.Text = "Total clientes";
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel1.Controls.Add(this.lblInformacionDelCliente);
             this.panel1.Controls.Add(this.txtDireccion);
             this.panel1.Controls.Add(this.lblDireccion);
             this.panel1.Controls.Add(this.txtTelefono);
@@ -120,19 +123,29 @@
             this.panel1.Controls.Add(this.txtDni);
             this.panel1.Controls.Add(this.btnCancelar);
             this.panel1.Controls.Add(this.lblDNI);
-            this.panel1.Controls.Add(this.btnActualizar);
+            this.panel1.Controls.Add(this.btnActualizarCliente);
             this.panel1.Controls.Add(this.txtNombre);
             this.panel1.Controls.Add(this.lblNombre);
             this.panel1.Controls.Add(this.txtApellido);
             this.panel1.Controls.Add(this.lblApellido);
-            this.panel1.Location = new System.Drawing.Point(12, 89);
+            this.panel1.Location = new System.Drawing.Point(12, 68);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(485, 243);
+            this.panel1.Size = new System.Drawing.Size(485, 264);
             this.panel1.TabIndex = 24;
+            // 
+            // lblInformacionDelCliente
+            // 
+            this.lblInformacionDelCliente.AutoSize = true;
+            this.lblInformacionDelCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInformacionDelCliente.Location = new System.Drawing.Point(9, 9);
+            this.lblInformacionDelCliente.Name = "lblInformacionDelCliente";
+            this.lblInformacionDelCliente.Size = new System.Drawing.Size(171, 16);
+            this.lblInformacionDelCliente.TabIndex = 29;
+            this.lblInformacionDelCliente.Text = "Informacion del clientes";
             // 
             // txtDireccion
             // 
-            this.txtDireccion.Location = new System.Drawing.Point(257, 94);
+            this.txtDireccion.Location = new System.Drawing.Point(247, 145);
             this.txtDireccion.Multiline = true;
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(222, 27);
@@ -142,7 +155,7 @@
             // 
             this.lblDireccion.AutoSize = true;
             this.lblDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDireccion.Location = new System.Drawing.Point(254, 74);
+            this.lblDireccion.Location = new System.Drawing.Point(244, 125);
             this.lblDireccion.Name = "lblDireccion";
             this.lblDireccion.Size = new System.Drawing.Size(72, 17);
             this.lblDireccion.TabIndex = 24;
@@ -150,7 +163,7 @@
             // 
             // txtTelefono
             // 
-            this.txtTelefono.Location = new System.Drawing.Point(257, 28);
+            this.txtTelefono.Location = new System.Drawing.Point(247, 79);
             this.txtTelefono.Multiline = true;
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(222, 27);
@@ -160,7 +173,7 @@
             // 
             this.lblTelefono.AutoSize = true;
             this.lblTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelefono.Location = new System.Drawing.Point(262, 8);
+            this.lblTelefono.Location = new System.Drawing.Point(252, 59);
             this.lblTelefono.Name = "lblTelefono";
             this.lblTelefono.Size = new System.Drawing.Size(73, 17);
             this.lblTelefono.TabIndex = 22;
@@ -168,7 +181,7 @@
             // 
             // txtDni
             // 
-            this.txtDni.Location = new System.Drawing.Point(22, 147);
+            this.txtDni.Location = new System.Drawing.Point(12, 198);
             this.txtDni.Multiline = true;
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(222, 27);
@@ -176,7 +189,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(263, 147);
+            this.btnCancelar.Location = new System.Drawing.Point(253, 198);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(89, 34);
             this.btnCancelar.TabIndex = 17;
@@ -187,24 +200,25 @@
             // 
             this.lblDNI.AutoSize = true;
             this.lblDNI.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDNI.Location = new System.Drawing.Point(19, 127);
+            this.lblDNI.Location = new System.Drawing.Point(9, 178);
             this.lblDNI.Name = "lblDNI";
             this.lblDNI.Size = new System.Drawing.Size(40, 17);
             this.lblDNI.TabIndex = 20;
             this.lblDNI.Text = "DNI *";
             // 
-            // btnActualizar
+            // btnActualizarCliente
             // 
-            this.btnActualizar.Location = new System.Drawing.Point(374, 147);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(89, 34);
-            this.btnActualizar.TabIndex = 16;
-            this.btnActualizar.Text = "Actualizar";
-            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizarCliente.Location = new System.Drawing.Point(364, 198);
+            this.btnActualizarCliente.Name = "btnActualizarCliente";
+            this.btnActualizarCliente.Size = new System.Drawing.Size(89, 34);
+            this.btnActualizarCliente.TabIndex = 16;
+            this.btnActualizarCliente.Text = "Actualizar";
+            this.btnActualizarCliente.UseVisualStyleBackColor = true;
+            this.btnActualizarCliente.Click += new System.EventHandler(this.btnActualizarCliente_Click);
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(22, 25);
+            this.txtNombre.Location = new System.Drawing.Point(12, 76);
             this.txtNombre.Multiline = true;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(222, 27);
@@ -214,7 +228,7 @@
             // 
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(19, 5);
+            this.lblNombre.Location = new System.Drawing.Point(9, 56);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(67, 17);
             this.lblNombre.TabIndex = 2;
@@ -222,7 +236,7 @@
             // 
             // txtApellido
             // 
-            this.txtApellido.Location = new System.Drawing.Point(22, 85);
+            this.txtApellido.Location = new System.Drawing.Point(12, 136);
             this.txtApellido.Multiline = true;
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(222, 25);
@@ -232,7 +246,7 @@
             // 
             this.lblApellido.AutoSize = true;
             this.lblApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApellido.Location = new System.Drawing.Point(19, 61);
+            this.lblApellido.Location = new System.Drawing.Point(9, 112);
             this.lblApellido.Name = "lblApellido";
             this.lblApellido.Size = new System.Drawing.Size(67, 17);
             this.lblApellido.TabIndex = 0;
@@ -249,63 +263,17 @@
             this.pnlContenedorListaCliente.Size = new System.Drawing.Size(881, 203);
             this.pnlContenedorListaCliente.TabIndex = 23;
             // 
-            // btnFiltrarPorFecha
-            // 
-            this.btnFiltrarPorFecha.Location = new System.Drawing.Point(271, 127);
-            this.btnFiltrarPorFecha.Name = "btnFiltrarPorFecha";
-            this.btnFiltrarPorFecha.Size = new System.Drawing.Size(89, 26);
-            this.btnFiltrarPorFecha.TabIndex = 33;
-            this.btnFiltrarPorFecha.Text = "Filtrar";
-            this.btnFiltrarPorFecha.UseVisualStyleBackColor = true;
-            // 
-            // lblOrdenarPor
-            // 
-            this.lblOrdenarPor.AutoSize = true;
-            this.lblOrdenarPor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOrdenarPor.Location = new System.Drawing.Point(-2, 132);
-            this.lblOrdenarPor.Name = "lblOrdenarPor";
-            this.lblOrdenarPor.Size = new System.Drawing.Size(90, 17);
-            this.lblOrdenarPor.TabIndex = 32;
-            this.lblOrdenarPor.Text = "Ordenar por:";
-            // 
-            // txtFiltrarPorDNI
-            // 
-            this.txtFiltrarPorDNI.Location = new System.Drawing.Point(16, 34);
-            this.txtFiltrarPorDNI.Multiline = true;
-            this.txtFiltrarPorDNI.Name = "txtFiltrarPorDNI";
-            this.txtFiltrarPorDNI.Size = new System.Drawing.Size(277, 27);
-            this.txtFiltrarPorDNI.TabIndex = 29;
-            // 
-            // lblCantidadCompra
-            // 
-            this.lblCantidadCompra.AutoSize = true;
-            this.lblCantidadCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidadCompra.Location = new System.Drawing.Point(91, 109);
-            this.lblCantidadCompra.Name = "lblCantidadCompra";
-            this.lblCantidadCompra.Size = new System.Drawing.Size(122, 17);
-            this.lblCantidadCompra.TabIndex = 30;
-            this.lblCantidadCompra.Text = "Cantidad compras";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(94, 129);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(152, 24);
-            this.comboBox2.TabIndex = 31;
-            // 
             // dgvListaCliente
             // 
             this.dgvListaCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListaCliente.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListaCliente.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvListaCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaCliente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colNroCliente,
@@ -316,14 +284,14 @@
             this.colDireccion,
             this.colEditar,
             this.colCompras});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvListaCliente.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvListaCliente.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvListaCliente.Location = new System.Drawing.Point(3, 101);
             this.dgvListaCliente.Name = "dgvListaCliente";
             this.dgvListaCliente.RowHeadersVisible = false;
@@ -383,6 +351,32 @@
             this.lblTituloListaClientes.Size = new System.Drawing.Size(106, 17);
             this.lblTituloListaClientes.TabIndex = 9;
             this.lblTituloListaClientes.Text = "Lista Clientes";
+            // 
+            // btnFiltrarPorFecha
+            // 
+            this.btnFiltrarPorFecha.Location = new System.Drawing.Point(191, 144);
+            this.btnFiltrarPorFecha.Name = "btnFiltrarPorFecha";
+            this.btnFiltrarPorFecha.Size = new System.Drawing.Size(89, 26);
+            this.btnFiltrarPorFecha.TabIndex = 33;
+            this.btnFiltrarPorFecha.Text = "Filtrar";
+            this.btnFiltrarPorFecha.UseVisualStyleBackColor = true;
+            // 
+            // txtFiltrarPorDNI
+            // 
+            this.txtFiltrarPorDNI.Location = new System.Drawing.Point(3, 51);
+            this.txtFiltrarPorDNI.Multiline = true;
+            this.txtFiltrarPorDNI.Name = "txtFiltrarPorDNI";
+            this.txtFiltrarPorDNI.Size = new System.Drawing.Size(277, 27);
+            this.txtFiltrarPorDNI.TabIndex = 29;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(6, 129);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(152, 24);
+            this.comboBox2.TabIndex = 31;
             // 
             // pnlEncabezado
             // 
@@ -456,15 +450,24 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.lblBuscarPorDniONombre);
             this.panel2.Controls.Add(this.txtFiltrarPorDNI);
             this.panel2.Controls.Add(this.btnFiltrarPorFecha);
-            this.panel2.Controls.Add(this.lblOrdenarPor);
             this.panel2.Controls.Add(this.comboBox2);
-            this.panel2.Controls.Add(this.lblCantidadCompra);
             this.panel2.Location = new System.Drawing.Point(529, 162);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(360, 178);
             this.panel2.TabIndex = 27;
+            // 
+            // lblBuscarPorDniONombre
+            // 
+            this.lblBuscarPorDniONombre.AutoSize = true;
+            this.lblBuscarPorDniONombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBuscarPorDniONombre.Location = new System.Drawing.Point(3, 31);
+            this.lblBuscarPorDniONombre.Name = "lblBuscarPorDniONombre";
+            this.lblBuscarPorDniONombre.Size = new System.Drawing.Size(174, 17);
+            this.lblBuscarPorDniONombre.TabIndex = 34;
+            this.lblBuscarPorDniONombre.Text = "Buscar por DNI o Nombre:";
             // 
             // GestionClientesForm
             // 
@@ -509,16 +512,14 @@
         private System.Windows.Forms.TextBox txtDni;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label lblDNI;
-        private System.Windows.Forms.Button btnActualizar;
+        private System.Windows.Forms.Button btnActualizarCliente;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.Panel pnlContenedorListaCliente;
         private System.Windows.Forms.Button btnFiltrarPorFecha;
-        private System.Windows.Forms.Label lblOrdenarPor;
         private System.Windows.Forms.TextBox txtFiltrarPorDNI;
-        private System.Windows.Forms.Label lblCantidadCompra;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.DataGridView dgvListaCliente;
         private System.Windows.Forms.Label lblTituloListaClientes;
@@ -538,5 +539,7 @@
         private System.Windows.Forms.DataGridViewButtonColumn colEditar;
         private System.Windows.Forms.DataGridViewButtonColumn colCompras;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lblInformacionDelCliente;
+        private System.Windows.Forms.Label lblBuscarPorDniONombre;
     }
 }

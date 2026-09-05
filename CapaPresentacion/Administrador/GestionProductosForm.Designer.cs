@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlCardTotalProductos = new System.Windows.Forms.Panel();
             this.lblCantTotalProductos = new System.Windows.Forms.Label();
             this.lblTituloTotalProductos = new System.Windows.Forms.Label();
@@ -45,7 +45,7 @@
             this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEditar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.colEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.lblCatalogo = new System.Windows.Forms.Label();
+            this.lblTituloCatalogoProductos = new System.Windows.Forms.Label();
             this.lblFiltrarPor = new System.Windows.Forms.Label();
             this.lblFiltraMarca = new System.Windows.Forms.Label();
             this.cmbFiltroMarca = new System.Windows.Forms.ComboBox();
@@ -63,8 +63,8 @@
             this.lblTituloInformacionProducto = new System.Windows.Forms.Label();
             this.lblEstado = new System.Windows.Forms.Label();
             this.cmbEstado = new System.Windows.Forms.ComboBox();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnAgregarProducto = new System.Windows.Forms.Button();
             this.lblProveedor = new System.Windows.Forms.Label();
             this.cmbProveedor = new System.Windows.Forms.ComboBox();
             this.lblMarca = new System.Windows.Forms.Label();
@@ -79,16 +79,16 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.lblCodigo = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pnlCardStockBajo = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblTituloStockBajo = new System.Windows.Forms.Label();
-            this.lblFiltraProveedor = new System.Windows.Forms.Label();
-            this.cmbFiltroProveedor = new System.Windows.Forms.ComboBox();
+            this.pnlFiltros = new System.Windows.Forms.Panel();
+            this.lblBuscarPorCodONombre = new System.Windows.Forms.Label();
             this.lblFiltraEstado = new System.Windows.Forms.Label();
             this.cmbFiltroEstado = new System.Windows.Forms.ComboBox();
-            this.lblBuscarPorCodONombre = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblFiltraProveedor = new System.Windows.Forms.Label();
+            this.cmbFiltroProveedor = new System.Windows.Forms.ComboBox();
+            this.pnlCardStockBajo = new System.Windows.Forms.Panel();
+            this.picIconoAlerta = new System.Windows.Forms.PictureBox();
+            this.lblCantProductosStockBajo = new System.Windows.Forms.Label();
+            this.lblTituloStockBajo = new System.Windows.Forms.Label();
             this.pnlCardTotalProductos.SuspendLayout();
             this.pnlContenedorCatalogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaProductos)).BeginInit();
@@ -96,9 +96,9 @@
             this.pnlnfoUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
             this.pnlFormularioProducto.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.pnlFiltros.SuspendLayout();
             this.pnlCardStockBajo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picIconoAlerta)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlCardTotalProductos
@@ -138,7 +138,7 @@
             this.pnlContenedorCatalogo.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnlContenedorCatalogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlContenedorCatalogo.Controls.Add(this.dgvListaProductos);
-            this.pnlContenedorCatalogo.Controls.Add(this.lblCatalogo);
+            this.pnlContenedorCatalogo.Controls.Add(this.lblTituloCatalogoProductos);
             this.pnlContenedorCatalogo.Location = new System.Drawing.Point(5, 372);
             this.pnlContenedorCatalogo.Name = "pnlContenedorCatalogo";
             this.pnlContenedorCatalogo.Size = new System.Drawing.Size(1151, 177);
@@ -147,14 +147,14 @@
             // dgvListaProductos
             // 
             this.dgvListaProductos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListaProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListaProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvListaProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colCodigo,
@@ -237,15 +237,15 @@
             this.colEliminar.Name = "colEliminar";
             this.colEliminar.Width = 65;
             // 
-            // lblCatalogo
+            // lblTituloCatalogoProductos
             // 
-            this.lblCatalogo.AutoSize = true;
-            this.lblCatalogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCatalogo.Location = new System.Drawing.Point(-4, 29);
-            this.lblCatalogo.Name = "lblCatalogo";
-            this.lblCatalogo.Size = new System.Drawing.Size(172, 17);
-            this.lblCatalogo.TabIndex = 9;
-            this.lblCatalogo.Text = "Catálogo de productos";
+            this.lblTituloCatalogoProductos.AutoSize = true;
+            this.lblTituloCatalogoProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloCatalogoProductos.Location = new System.Drawing.Point(-4, 29);
+            this.lblTituloCatalogoProductos.Name = "lblTituloCatalogoProductos";
+            this.lblTituloCatalogoProductos.Size = new System.Drawing.Size(172, 17);
+            this.lblTituloCatalogoProductos.TabIndex = 9;
+            this.lblTituloCatalogoProductos.Text = "Catálogo de productos";
             // 
             // lblFiltrarPor
             // 
@@ -269,8 +269,15 @@
             // 
             // cmbFiltroMarca
             // 
+            this.cmbFiltroMarca.BackColor = System.Drawing.Color.White;
+            this.cmbFiltroMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFiltroMarca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbFiltroMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbFiltroMarca.FormattingEnabled = true;
+            this.cmbFiltroMarca.Items.AddRange(new object[] {
+            "Samsung",
+            "Lenovo",
+            "Hp"});
             this.cmbFiltroMarca.Location = new System.Drawing.Point(130, 143);
             this.cmbFiltroMarca.Name = "cmbFiltroMarca";
             this.cmbFiltroMarca.Size = new System.Drawing.Size(118, 24);
@@ -296,8 +303,14 @@
             // 
             // cmbFiltroCategoria
             // 
+            this.cmbFiltroCategoria.BackColor = System.Drawing.Color.White;
+            this.cmbFiltroCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFiltroCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbFiltroCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbFiltroCategoria.FormattingEnabled = true;
+            this.cmbFiltroCategoria.Items.AddRange(new object[] {
+            "Celulares",
+            "Notebooks"});
             this.cmbFiltroCategoria.Location = new System.Drawing.Point(12, 143);
             this.cmbFiltroCategoria.Name = "cmbFiltroCategoria";
             this.cmbFiltroCategoria.Size = new System.Drawing.Size(112, 24);
@@ -379,8 +392,8 @@
             this.pnlFormularioProducto.Controls.Add(this.lblTituloInformacionProducto);
             this.pnlFormularioProducto.Controls.Add(this.lblEstado);
             this.pnlFormularioProducto.Controls.Add(this.cmbEstado);
-            this.pnlFormularioProducto.Controls.Add(this.btnEliminar);
-            this.pnlFormularioProducto.Controls.Add(this.btnAgregar);
+            this.pnlFormularioProducto.Controls.Add(this.btnCancelar);
+            this.pnlFormularioProducto.Controls.Add(this.btnAgregarProducto);
             this.pnlFormularioProducto.Controls.Add(this.lblProveedor);
             this.pnlFormularioProducto.Controls.Add(this.cmbProveedor);
             this.pnlFormularioProducto.Controls.Add(this.lblMarca);
@@ -422,30 +435,37 @@
             // 
             // cmbEstado
             // 
+            this.cmbEstado.BackColor = System.Drawing.Color.White;
+            this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEstado.FormattingEnabled = true;
+            this.cmbEstado.Items.AddRange(new object[] {
+            "Activo",
+            "Inactivo"});
             this.cmbEstado.Location = new System.Drawing.Point(280, 98);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(222, 24);
             this.cmbEstado.TabIndex = 18;
             // 
-            // btnEliminar
+            // btnCancelar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(279, 132);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(89, 34);
-            this.btnEliminar.TabIndex = 17;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Location = new System.Drawing.Point(279, 132);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(89, 34);
+            this.btnCancelar.TabIndex = 17;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
             // 
-            // btnAgregar
+            // btnAgregarProducto
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(413, 132);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(89, 34);
-            this.btnAgregar.TabIndex = 16;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregarProducto.Location = new System.Drawing.Point(413, 132);
+            this.btnAgregarProducto.Name = "btnAgregarProducto";
+            this.btnAgregarProducto.Size = new System.Drawing.Size(89, 34);
+            this.btnAgregarProducto.TabIndex = 16;
+            this.btnAgregarProducto.Text = "Agregar";
+            this.btnAgregarProducto.UseVisualStyleBackColor = true;
+            this.btnAgregarProducto.Click += new System.EventHandler(this.btnAgregarProducto_Click);
             // 
             // lblProveedor
             // 
@@ -459,8 +479,14 @@
             // 
             // cmbProveedor
             // 
+            this.cmbProveedor.BackColor = System.Drawing.Color.White;
+            this.cmbProveedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProveedor.FormattingEnabled = true;
+            this.cmbProveedor.Items.AddRange(new object[] {
+            "TecnoDistribuidora S.A.",
+            "ElectroComponentes del Sur"});
             this.cmbProveedor.Location = new System.Drawing.Point(16, 245);
             this.cmbProveedor.Name = "cmbProveedor";
             this.cmbProveedor.Size = new System.Drawing.Size(222, 24);
@@ -478,8 +504,15 @@
             // 
             // cmbMarca
             // 
+            this.cmbMarca.BackColor = System.Drawing.Color.White;
+            this.cmbMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMarca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMarca.FormattingEnabled = true;
+            this.cmbMarca.Items.AddRange(new object[] {
+            "Samsung",
+            "Lenovo",
+            "Hp"});
             this.cmbMarca.Location = new System.Drawing.Point(17, 199);
             this.cmbMarca.Name = "cmbMarca";
             this.cmbMarca.Size = new System.Drawing.Size(222, 24);
@@ -497,8 +530,14 @@
             // 
             // cmbCategoria
             // 
+            this.cmbCategoria.BackColor = System.Drawing.Color.White;
+            this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategoria.FormattingEnabled = true;
+            this.cmbCategoria.Items.AddRange(new object[] {
+            "Celulares",
+            "Notebooks"});
             this.cmbCategoria.Location = new System.Drawing.Point(16, 152);
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(222, 24);
@@ -576,77 +615,34 @@
             this.lblCodigo.TabIndex = 0;
             this.lblCodigo.Text = "Codigo:";
             // 
-            // panel1
+            // pnlFiltros
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.lblBuscarPorCodONombre);
-            this.panel1.Controls.Add(this.lblFiltraEstado);
-            this.panel1.Controls.Add(this.cmbFiltroEstado);
-            this.panel1.Controls.Add(this.lblFiltraProveedor);
-            this.panel1.Controls.Add(this.cmbFiltroProveedor);
-            this.panel1.Controls.Add(this.txtBuscarProducto);
-            this.panel1.Controls.Add(this.lblFiltrarPor);
-            this.panel1.Controls.Add(this.cmbFiltroCategoria);
-            this.panel1.Controls.Add(this.lblFiltraCategoria);
-            this.panel1.Controls.Add(this.lblFiltraMarca);
-            this.panel1.Controls.Add(this.cmbFiltroMarca);
-            this.panel1.Location = new System.Drawing.Point(600, 183);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(556, 183);
-            this.panel1.TabIndex = 16;
+            this.pnlFiltros.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlFiltros.Controls.Add(this.lblBuscarPorCodONombre);
+            this.pnlFiltros.Controls.Add(this.lblFiltraEstado);
+            this.pnlFiltros.Controls.Add(this.cmbFiltroEstado);
+            this.pnlFiltros.Controls.Add(this.lblFiltraProveedor);
+            this.pnlFiltros.Controls.Add(this.cmbFiltroProveedor);
+            this.pnlFiltros.Controls.Add(this.txtBuscarProducto);
+            this.pnlFiltros.Controls.Add(this.lblFiltrarPor);
+            this.pnlFiltros.Controls.Add(this.cmbFiltroCategoria);
+            this.pnlFiltros.Controls.Add(this.lblFiltraCategoria);
+            this.pnlFiltros.Controls.Add(this.lblFiltraMarca);
+            this.pnlFiltros.Controls.Add(this.cmbFiltroMarca);
+            this.pnlFiltros.Location = new System.Drawing.Point(600, 183);
+            this.pnlFiltros.Name = "pnlFiltros";
+            this.pnlFiltros.Size = new System.Drawing.Size(556, 183);
+            this.pnlFiltros.TabIndex = 16;
             // 
-            // pnlCardStockBajo
+            // lblBuscarPorCodONombre
             // 
-            this.pnlCardStockBajo.BackColor = System.Drawing.Color.White;
-            this.pnlCardStockBajo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlCardStockBajo.Controls.Add(this.pictureBox1);
-            this.pnlCardStockBajo.Controls.Add(this.label1);
-            this.pnlCardStockBajo.Controls.Add(this.lblTituloStockBajo);
-            this.pnlCardStockBajo.Location = new System.Drawing.Point(805, 82);
-            this.pnlCardStockBajo.Name = "pnlCardStockBajo";
-            this.pnlCardStockBajo.Size = new System.Drawing.Size(177, 75);
-            this.pnlCardStockBajo.TabIndex = 18;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Gold;
-            this.label1.Location = new System.Drawing.Point(10, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 29);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "10";
-            // 
-            // lblTituloStockBajo
-            // 
-            this.lblTituloStockBajo.AutoSize = true;
-            this.lblTituloStockBajo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloStockBajo.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblTituloStockBajo.Location = new System.Drawing.Point(12, 9);
-            this.lblTituloStockBajo.Name = "lblTituloStockBajo";
-            this.lblTituloStockBajo.Size = new System.Drawing.Size(79, 15);
-            this.lblTituloStockBajo.TabIndex = 17;
-            this.lblTituloStockBajo.Text = "Stock Bajo:";
-            // 
-            // lblFiltraProveedor
-            // 
-            this.lblFiltraProveedor.AutoSize = true;
-            this.lblFiltraProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiltraProveedor.Location = new System.Drawing.Point(251, 123);
-            this.lblFiltraProveedor.Name = "lblFiltraProveedor";
-            this.lblFiltraProveedor.Size = new System.Drawing.Size(74, 17);
-            this.lblFiltraProveedor.TabIndex = 17;
-            this.lblFiltraProveedor.Text = "Proveedor";
-            // 
-            // cmbFiltroProveedor
-            // 
-            this.cmbFiltroProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbFiltroProveedor.FormattingEnabled = true;
-            this.cmbFiltroProveedor.Location = new System.Drawing.Point(254, 143);
-            this.cmbFiltroProveedor.Name = "cmbFiltroProveedor";
-            this.cmbFiltroProveedor.Size = new System.Drawing.Size(114, 24);
-            this.cmbFiltroProveedor.TabIndex = 18;
+            this.lblBuscarPorCodONombre.AutoSize = true;
+            this.lblBuscarPorCodONombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBuscarPorCodONombre.Location = new System.Drawing.Point(3, 30);
+            this.lblBuscarPorCodONombre.Name = "lblBuscarPorCodONombre";
+            this.lblBuscarPorCodONombre.Size = new System.Drawing.Size(195, 17);
+            this.lblBuscarPorCodONombre.TabIndex = 21;
+            this.lblBuscarPorCodONombre.Text = "Buscar por Codigo o Nombre:";
             // 
             // lblFiltraEstado
             // 
@@ -660,30 +656,87 @@
             // 
             // cmbFiltroEstado
             // 
+            this.cmbFiltroEstado.BackColor = System.Drawing.Color.White;
+            this.cmbFiltroEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFiltroEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbFiltroEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbFiltroEstado.FormattingEnabled = true;
+            this.cmbFiltroEstado.Items.AddRange(new object[] {
+            "Activo",
+            "Inactivo"});
             this.cmbFiltroEstado.Location = new System.Drawing.Point(374, 143);
             this.cmbFiltroEstado.Name = "cmbFiltroEstado";
             this.cmbFiltroEstado.Size = new System.Drawing.Size(114, 24);
             this.cmbFiltroEstado.TabIndex = 20;
             // 
-            // lblBuscarPorCodONombre
+            // lblFiltraProveedor
             // 
-            this.lblBuscarPorCodONombre.AutoSize = true;
-            this.lblBuscarPorCodONombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuscarPorCodONombre.Location = new System.Drawing.Point(3, 30);
-            this.lblBuscarPorCodONombre.Name = "lblBuscarPorCodONombre";
-            this.lblBuscarPorCodONombre.Size = new System.Drawing.Size(195, 17);
-            this.lblBuscarPorCodONombre.TabIndex = 21;
-            this.lblBuscarPorCodONombre.Text = "Buscar por Codigo o Nombre:";
+            this.lblFiltraProveedor.AutoSize = true;
+            this.lblFiltraProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFiltraProveedor.Location = new System.Drawing.Point(251, 123);
+            this.lblFiltraProveedor.Name = "lblFiltraProveedor";
+            this.lblFiltraProveedor.Size = new System.Drawing.Size(74, 17);
+            this.lblFiltraProveedor.TabIndex = 17;
+            this.lblFiltraProveedor.Text = "Proveedor";
             // 
-            // pictureBox1
+            // cmbFiltroProveedor
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(113, 9);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
+            this.cmbFiltroProveedor.BackColor = System.Drawing.Color.White;
+            this.cmbFiltroProveedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFiltroProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbFiltroProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbFiltroProveedor.FormattingEnabled = true;
+            this.cmbFiltroProveedor.Items.AddRange(new object[] {
+            "TecnoDistribuidora S.A.",
+            "ElectroComponentes del Sur"});
+            this.cmbFiltroProveedor.Location = new System.Drawing.Point(254, 143);
+            this.cmbFiltroProveedor.Name = "cmbFiltroProveedor";
+            this.cmbFiltroProveedor.Size = new System.Drawing.Size(114, 24);
+            this.cmbFiltroProveedor.TabIndex = 18;
+            // 
+            // pnlCardStockBajo
+            // 
+            this.pnlCardStockBajo.BackColor = System.Drawing.Color.White;
+            this.pnlCardStockBajo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlCardStockBajo.Controls.Add(this.picIconoAlerta);
+            this.pnlCardStockBajo.Controls.Add(this.lblCantProductosStockBajo);
+            this.pnlCardStockBajo.Controls.Add(this.lblTituloStockBajo);
+            this.pnlCardStockBajo.Location = new System.Drawing.Point(805, 82);
+            this.pnlCardStockBajo.Name = "pnlCardStockBajo";
+            this.pnlCardStockBajo.Size = new System.Drawing.Size(177, 75);
+            this.pnlCardStockBajo.TabIndex = 18;
+            // 
+            // picIconoAlerta
+            // 
+            this.picIconoAlerta.Image = global::CapaPresentacion.Properties.Resources.icono_advertencia;
+            this.picIconoAlerta.Location = new System.Drawing.Point(118, 13);
+            this.picIconoAlerta.Name = "picIconoAlerta";
+            this.picIconoAlerta.Size = new System.Drawing.Size(45, 45);
+            this.picIconoAlerta.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picIconoAlerta.TabIndex = 12;
+            this.picIconoAlerta.TabStop = false;
+            // 
+            // lblCantProductosStockBajo
+            // 
+            this.lblCantProductosStockBajo.AutoSize = true;
+            this.lblCantProductosStockBajo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantProductosStockBajo.ForeColor = System.Drawing.Color.Gold;
+            this.lblCantProductosStockBajo.Location = new System.Drawing.Point(10, 27);
+            this.lblCantProductosStockBajo.Name = "lblCantProductosStockBajo";
+            this.lblCantProductosStockBajo.Size = new System.Drawing.Size(46, 31);
+            this.lblCantProductosStockBajo.TabIndex = 17;
+            this.lblCantProductosStockBajo.Text = "10";
+            // 
+            // lblTituloStockBajo
+            // 
+            this.lblTituloStockBajo.AutoSize = true;
+            this.lblTituloStockBajo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloStockBajo.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblTituloStockBajo.Location = new System.Drawing.Point(12, 9);
+            this.lblTituloStockBajo.Name = "lblTituloStockBajo";
+            this.lblTituloStockBajo.Size = new System.Drawing.Size(79, 15);
+            this.lblTituloStockBajo.TabIndex = 17;
+            this.lblTituloStockBajo.Text = "Stock Bajo:";
             // 
             // GestionProductosForm
             // 
@@ -691,7 +744,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1168, 561);
             this.Controls.Add(this.pnlCardStockBajo);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlFiltros);
             this.Controls.Add(this.pnlCardTotalProductos);
             this.Controls.Add(this.pnlContenedorCatalogo);
             this.Controls.Add(this.pnlEncabezado);
@@ -710,11 +763,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).EndInit();
             this.pnlFormularioProducto.ResumeLayout(false);
             this.pnlFormularioProducto.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnlFiltros.ResumeLayout(false);
+            this.pnlFiltros.PerformLayout();
             this.pnlCardStockBajo.ResumeLayout(false);
             this.pnlCardStockBajo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picIconoAlerta)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -732,7 +785,7 @@
         private System.Windows.Forms.TextBox txtBuscarProducto;
         private System.Windows.Forms.Label lblFiltraCategoria;
         private System.Windows.Forms.ComboBox cmbFiltroCategoria;
-        private System.Windows.Forms.Label lblCatalogo;
+        private System.Windows.Forms.Label lblTituloCatalogoProductos;
         private System.Windows.Forms.Panel pnlEncabezado;
         private System.Windows.Forms.Panel pnlnfoUsuario;
         private System.Windows.Forms.Label lblNombreUsuario;
@@ -743,8 +796,8 @@
         private System.Windows.Forms.Panel pnlFormularioProducto;
         private System.Windows.Forms.Label lblEstado;
         private System.Windows.Forms.ComboBox cmbEstado;
-        private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnAgregarProducto;
         private System.Windows.Forms.Label lblProveedor;
         private System.Windows.Forms.ComboBox cmbProveedor;
         private System.Windows.Forms.Label lblMarca;
@@ -770,9 +823,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colEstado;
         private System.Windows.Forms.DataGridViewButtonColumn colEditar;
         private System.Windows.Forms.DataGridViewButtonColumn colEliminar;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlFiltros;
         private System.Windows.Forms.Panel pnlCardStockBajo;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblCantProductosStockBajo;
         private System.Windows.Forms.Label lblTituloStockBajo;
         private System.Windows.Forms.Label lblTituloInformacionProducto;
         private System.Windows.Forms.Label lblFiltraProveedor;
@@ -780,6 +833,6 @@
         private System.Windows.Forms.Label lblFiltraEstado;
         private System.Windows.Forms.ComboBox cmbFiltroEstado;
         private System.Windows.Forms.Label lblBuscarPorCodONombre;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox picIconoAlerta;
     }
 }

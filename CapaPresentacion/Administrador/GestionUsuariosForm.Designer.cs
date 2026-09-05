@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlEncabezado = new System.Windows.Forms.Panel();
             this.pnlnfoUsuario = new System.Windows.Forms.Panel();
             this.lblNombreUsuario = new System.Windows.Forms.Label();
@@ -39,7 +39,7 @@
             this.pnlCardTotalUsuarios = new System.Windows.Forms.Panel();
             this.lblCantTotalUsuarios = new System.Windows.Forms.Label();
             this.lblTituloTotalUsuarios = new System.Windows.Forms.Label();
-            this.pnlContenedorCatalogo = new System.Windows.Forms.Panel();
+            this.pnlContenedorListaUsuarios = new System.Windows.Forms.Panel();
             this.dgvListaUsuarios = new System.Windows.Forms.DataGridView();
             this.colDni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,7 +59,14 @@
             this.txtBuscarUsuario = new System.Windows.Forms.TextBox();
             this.lblFiltraPerfil = new System.Windows.Forms.Label();
             this.cmbFiltroPerfil = new System.Windows.Forms.ComboBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlFormularioUsuario = new System.Windows.Forms.Panel();
+            this.txtRepetirContrasenia = new System.Windows.Forms.TextBox();
+            this.lblRepetirContraseña = new System.Windows.Forms.Label();
+            this.txtDireccion = new System.Windows.Forms.TextBox();
+            this.lblDireccion = new System.Windows.Forms.Label();
+            this.txtTelefono = new System.Windows.Forms.TextBox();
+            this.lblTelefono = new System.Windows.Forms.Label();
+            this.lblInformacionDelUsuario = new System.Windows.Forms.Label();
             this.txtContrasenia = new System.Windows.Forms.TextBox();
             this.lblContrasenia = new System.Windows.Forms.Label();
             this.lblEstado = new System.Windows.Forms.Label();
@@ -67,7 +74,7 @@
             this.txtDni = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.lblDNI = new System.Windows.Forms.Label();
-            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnAgregarUsuario = new System.Windows.Forms.Button();
             this.lblPerfil = new System.Windows.Forms.Label();
             this.txtCorreo = new System.Windows.Forms.TextBox();
             this.cmbPerfil = new System.Windows.Forms.ComboBox();
@@ -77,19 +84,14 @@
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.lblApellido = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lblInformacionDelUsuario = new System.Windows.Forms.Label();
-            this.txtTelefono = new System.Windows.Forms.TextBox();
-            this.lblTelefono = new System.Windows.Forms.Label();
-            this.txtDireccion = new System.Windows.Forms.TextBox();
-            this.lblDireccion = new System.Windows.Forms.Label();
             this.lblBuscarPorDniOCorreo = new System.Windows.Forms.Label();
             this.pnlEncabezado.SuspendLayout();
             this.pnlnfoUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
             this.pnlCardTotalUsuarios.SuspendLayout();
-            this.pnlContenedorCatalogo.SuspendLayout();
+            this.pnlContenedorListaUsuarios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaUsuarios)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.pnlFormularioUsuario.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -195,28 +197,28 @@
             this.lblTituloTotalUsuarios.TabIndex = 17;
             this.lblTituloTotalUsuarios.Text = "Total Usuarios:";
             // 
-            // pnlContenedorCatalogo
+            // pnlContenedorListaUsuarios
             // 
-            this.pnlContenedorCatalogo.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlContenedorCatalogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlContenedorCatalogo.Controls.Add(this.dgvListaUsuarios);
-            this.pnlContenedorCatalogo.Controls.Add(this.lblTituloListaUsusarios);
-            this.pnlContenedorCatalogo.Location = new System.Drawing.Point(12, 367);
-            this.pnlContenedorCatalogo.Name = "pnlContenedorCatalogo";
-            this.pnlContenedorCatalogo.Size = new System.Drawing.Size(1195, 184);
-            this.pnlContenedorCatalogo.TabIndex = 16;
+            this.pnlContenedorListaUsuarios.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlContenedorListaUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlContenedorListaUsuarios.Controls.Add(this.dgvListaUsuarios);
+            this.pnlContenedorListaUsuarios.Controls.Add(this.lblTituloListaUsusarios);
+            this.pnlContenedorListaUsuarios.Location = new System.Drawing.Point(12, 367);
+            this.pnlContenedorListaUsuarios.Name = "pnlContenedorListaUsuarios";
+            this.pnlContenedorListaUsuarios.Size = new System.Drawing.Size(1195, 184);
+            this.pnlContenedorListaUsuarios.TabIndex = 16;
             // 
             // dgvListaUsuarios
             // 
             this.dgvListaUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListaUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListaUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvListaUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colDni,
@@ -328,6 +330,9 @@
             // 
             // cmbFiltroEstado
             // 
+            this.cmbFiltroEstado.BackColor = System.Drawing.Color.White;
+            this.cmbFiltroEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFiltroEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbFiltroEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbFiltroEstado.FormattingEnabled = true;
             this.cmbFiltroEstado.Items.AddRange(new object[] {
@@ -358,6 +363,9 @@
             // 
             // cmbFiltroPerfil
             // 
+            this.cmbFiltroPerfil.BackColor = System.Drawing.Color.White;
+            this.cmbFiltroPerfil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFiltroPerfil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbFiltroPerfil.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbFiltroPerfil.FormattingEnabled = true;
             this.cmbFiltroPerfil.Items.AddRange(new object[] {
@@ -370,48 +378,116 @@
             this.cmbFiltroPerfil.Size = new System.Drawing.Size(152, 24);
             this.cmbFiltroPerfil.TabIndex = 11;
             // 
-            // panel1
+            // pnlFormularioUsuario
             // 
-            this.panel1.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel1.Controls.Add(this.txtDireccion);
-            this.panel1.Controls.Add(this.lblDireccion);
-            this.panel1.Controls.Add(this.txtTelefono);
-            this.panel1.Controls.Add(this.lblTelefono);
-            this.panel1.Controls.Add(this.lblInformacionDelUsuario);
-            this.panel1.Controls.Add(this.txtContrasenia);
-            this.panel1.Controls.Add(this.lblContrasenia);
-            this.panel1.Controls.Add(this.lblEstado);
-            this.panel1.Controls.Add(this.cmbEstado);
-            this.panel1.Controls.Add(this.txtDni);
-            this.panel1.Controls.Add(this.btnCancelar);
-            this.panel1.Controls.Add(this.lblDNI);
-            this.panel1.Controls.Add(this.btnAgregar);
-            this.panel1.Controls.Add(this.lblPerfil);
-            this.panel1.Controls.Add(this.txtCorreo);
-            this.panel1.Controls.Add(this.cmbPerfil);
-            this.panel1.Controls.Add(this.lblCorreo);
-            this.panel1.Controls.Add(this.txtNombre);
-            this.panel1.Controls.Add(this.lblNombre);
-            this.panel1.Controls.Add(this.txtApellido);
-            this.panel1.Controls.Add(this.lblApellido);
-            this.panel1.Location = new System.Drawing.Point(12, 69);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(513, 292);
-            this.panel1.TabIndex = 18;
+            this.pnlFormularioUsuario.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnlFormularioUsuario.Controls.Add(this.txtRepetirContrasenia);
+            this.pnlFormularioUsuario.Controls.Add(this.lblRepetirContraseña);
+            this.pnlFormularioUsuario.Controls.Add(this.txtDireccion);
+            this.pnlFormularioUsuario.Controls.Add(this.lblDireccion);
+            this.pnlFormularioUsuario.Controls.Add(this.txtTelefono);
+            this.pnlFormularioUsuario.Controls.Add(this.lblTelefono);
+            this.pnlFormularioUsuario.Controls.Add(this.lblInformacionDelUsuario);
+            this.pnlFormularioUsuario.Controls.Add(this.txtContrasenia);
+            this.pnlFormularioUsuario.Controls.Add(this.lblContrasenia);
+            this.pnlFormularioUsuario.Controls.Add(this.lblEstado);
+            this.pnlFormularioUsuario.Controls.Add(this.cmbEstado);
+            this.pnlFormularioUsuario.Controls.Add(this.txtDni);
+            this.pnlFormularioUsuario.Controls.Add(this.btnCancelar);
+            this.pnlFormularioUsuario.Controls.Add(this.lblDNI);
+            this.pnlFormularioUsuario.Controls.Add(this.btnAgregarUsuario);
+            this.pnlFormularioUsuario.Controls.Add(this.lblPerfil);
+            this.pnlFormularioUsuario.Controls.Add(this.txtCorreo);
+            this.pnlFormularioUsuario.Controls.Add(this.cmbPerfil);
+            this.pnlFormularioUsuario.Controls.Add(this.lblCorreo);
+            this.pnlFormularioUsuario.Controls.Add(this.txtNombre);
+            this.pnlFormularioUsuario.Controls.Add(this.lblNombre);
+            this.pnlFormularioUsuario.Controls.Add(this.txtApellido);
+            this.pnlFormularioUsuario.Controls.Add(this.lblApellido);
+            this.pnlFormularioUsuario.Location = new System.Drawing.Point(12, 69);
+            this.pnlFormularioUsuario.Name = "pnlFormularioUsuario";
+            this.pnlFormularioUsuario.Size = new System.Drawing.Size(513, 292);
+            this.pnlFormularioUsuario.TabIndex = 18;
+            // 
+            // txtRepetirContrasenia
+            // 
+            this.txtRepetirContrasenia.Location = new System.Drawing.Point(271, 164);
+            this.txtRepetirContrasenia.Multiline = true;
+            this.txtRepetirContrasenia.Name = "txtRepetirContrasenia";
+            this.txtRepetirContrasenia.Size = new System.Drawing.Size(222, 25);
+            this.txtRepetirContrasenia.TabIndex = 34;
+            this.txtRepetirContrasenia.UseSystemPasswordChar = true;
+            // 
+            // lblRepetirContraseña
+            // 
+            this.lblRepetirContraseña.AutoSize = true;
+            this.lblRepetirContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRepetirContraseña.Location = new System.Drawing.Point(268, 146);
+            this.lblRepetirContraseña.Name = "lblRepetirContraseña";
+            this.lblRepetirContraseña.Size = new System.Drawing.Size(135, 17);
+            this.lblRepetirContraseña.TabIndex = 33;
+            this.lblRepetirContraseña.Text = "Repetir Contraseña:";
+            // 
+            // txtDireccion
+            // 
+            this.txtDireccion.Location = new System.Drawing.Point(271, 52);
+            this.txtDireccion.Multiline = true;
+            this.txtDireccion.Name = "txtDireccion";
+            this.txtDireccion.Size = new System.Drawing.Size(222, 25);
+            this.txtDireccion.TabIndex = 32;
+            // 
+            // lblDireccion
+            // 
+            this.lblDireccion.AutoSize = true;
+            this.lblDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDireccion.Location = new System.Drawing.Point(268, 28);
+            this.lblDireccion.Name = "lblDireccion";
+            this.lblDireccion.Size = new System.Drawing.Size(71, 17);
+            this.lblDireccion.TabIndex = 31;
+            this.lblDireccion.Text = "Direccion:";
+            // 
+            // txtTelefono
+            // 
+            this.txtTelefono.Location = new System.Drawing.Point(15, 264);
+            this.txtTelefono.Multiline = true;
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(222, 25);
+            this.txtTelefono.TabIndex = 30;
+            // 
+            // lblTelefono
+            // 
+            this.lblTelefono.AutoSize = true;
+            this.lblTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTelefono.Location = new System.Drawing.Point(13, 244);
+            this.lblTelefono.Name = "lblTelefono";
+            this.lblTelefono.Size = new System.Drawing.Size(68, 17);
+            this.lblTelefono.TabIndex = 29;
+            this.lblTelefono.Text = "Telefono:";
+            // 
+            // lblInformacionDelUsuario
+            // 
+            this.lblInformacionDelUsuario.AutoSize = true;
+            this.lblInformacionDelUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInformacionDelUsuario.Location = new System.Drawing.Point(13, 9);
+            this.lblInformacionDelUsuario.Name = "lblInformacionDelUsuario";
+            this.lblInformacionDelUsuario.Size = new System.Drawing.Size(168, 16);
+            this.lblInformacionDelUsuario.TabIndex = 28;
+            this.lblInformacionDelUsuario.Text = "Informacion del usuario";
             // 
             // txtContrasenia
             // 
-            this.txtContrasenia.Location = new System.Drawing.Point(271, 140);
+            this.txtContrasenia.Location = new System.Drawing.Point(271, 112);
             this.txtContrasenia.Multiline = true;
             this.txtContrasenia.Name = "txtContrasenia";
             this.txtContrasenia.Size = new System.Drawing.Size(222, 25);
             this.txtContrasenia.TabIndex = 25;
+            this.txtContrasenia.UseSystemPasswordChar = true;
             // 
             // lblContrasenia
             // 
             this.lblContrasenia.AutoSize = true;
             this.lblContrasenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContrasenia.Location = new System.Drawing.Point(268, 116);
+            this.lblContrasenia.Location = new System.Drawing.Point(268, 88);
             this.lblContrasenia.Name = "lblContrasenia";
             this.lblContrasenia.Size = new System.Drawing.Size(85, 17);
             this.lblContrasenia.TabIndex = 24;
@@ -421,7 +497,7 @@
             // 
             this.lblEstado.AutoSize = true;
             this.lblEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstado.Location = new System.Drawing.Point(388, 187);
+            this.lblEstado.Location = new System.Drawing.Point(388, 192);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(56, 17);
             this.lblEstado.TabIndex = 23;
@@ -429,12 +505,15 @@
             // 
             // cmbEstado
             // 
+            this.cmbEstado.BackColor = System.Drawing.Color.White;
+            this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEstado.FormattingEnabled = true;
             this.cmbEstado.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
-            this.cmbEstado.Location = new System.Drawing.Point(391, 207);
+            this.cmbEstado.Location = new System.Drawing.Point(391, 212);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(102, 24);
             this.cmbEstado.TabIndex = 22;
@@ -449,7 +528,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(280, 244);
+            this.btnCancelar.Location = new System.Drawing.Point(280, 255);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(89, 34);
             this.btnCancelar.TabIndex = 17;
@@ -466,20 +545,21 @@
             this.lblDNI.TabIndex = 20;
             this.lblDNI.Text = "DNI:";
             // 
-            // btnAgregar
+            // btnAgregarUsuario
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(391, 244);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(89, 34);
-            this.btnAgregar.TabIndex = 16;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregarUsuario.Location = new System.Drawing.Point(391, 255);
+            this.btnAgregarUsuario.Name = "btnAgregarUsuario";
+            this.btnAgregarUsuario.Size = new System.Drawing.Size(89, 34);
+            this.btnAgregarUsuario.TabIndex = 16;
+            this.btnAgregarUsuario.Text = "Agregar";
+            this.btnAgregarUsuario.UseVisualStyleBackColor = true;
+            this.btnAgregarUsuario.Click += new System.EventHandler(this.btnAgregarUsuario_Click);
             // 
             // lblPerfil
             // 
             this.lblPerfil.AutoSize = true;
             this.lblPerfil.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPerfil.Location = new System.Drawing.Point(264, 187);
+            this.lblPerfil.Location = new System.Drawing.Point(264, 192);
             this.lblPerfil.Name = "lblPerfil";
             this.lblPerfil.Size = new System.Drawing.Size(44, 17);
             this.lblPerfil.TabIndex = 14;
@@ -495,6 +575,9 @@
             // 
             // cmbPerfil
             // 
+            this.cmbPerfil.BackColor = System.Drawing.Color.White;
+            this.cmbPerfil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPerfil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbPerfil.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPerfil.FormattingEnabled = true;
             this.cmbPerfil.Items.AddRange(new object[] {
@@ -502,7 +585,7 @@
             "Administrador",
             "Vendedor",
             "Cajero"});
-            this.cmbPerfil.Location = new System.Drawing.Point(267, 207);
+            this.cmbPerfil.Location = new System.Drawing.Point(267, 212);
             this.cmbPerfil.Name = "cmbPerfil";
             this.cmbPerfil.Size = new System.Drawing.Size(102, 24);
             this.cmbPerfil.TabIndex = 13;
@@ -568,52 +651,6 @@
             this.panel2.Size = new System.Drawing.Size(524, 174);
             this.panel2.TabIndex = 19;
             // 
-            // lblInformacionDelUsuario
-            // 
-            this.lblInformacionDelUsuario.AutoSize = true;
-            this.lblInformacionDelUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInformacionDelUsuario.Location = new System.Drawing.Point(13, 9);
-            this.lblInformacionDelUsuario.Name = "lblInformacionDelUsuario";
-            this.lblInformacionDelUsuario.Size = new System.Drawing.Size(168, 16);
-            this.lblInformacionDelUsuario.TabIndex = 28;
-            this.lblInformacionDelUsuario.Text = "Informacion del usuario";
-            // 
-            // txtTelefono
-            // 
-            this.txtTelefono.Location = new System.Drawing.Point(15, 264);
-            this.txtTelefono.Multiline = true;
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(222, 25);
-            this.txtTelefono.TabIndex = 30;
-            // 
-            // lblTelefono
-            // 
-            this.lblTelefono.AutoSize = true;
-            this.lblTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelefono.Location = new System.Drawing.Point(13, 244);
-            this.lblTelefono.Name = "lblTelefono";
-            this.lblTelefono.Size = new System.Drawing.Size(68, 17);
-            this.lblTelefono.TabIndex = 29;
-            this.lblTelefono.Text = "Telefono:";
-            // 
-            // txtDireccion
-            // 
-            this.txtDireccion.Location = new System.Drawing.Point(271, 80);
-            this.txtDireccion.Multiline = true;
-            this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(222, 25);
-            this.txtDireccion.TabIndex = 32;
-            // 
-            // lblDireccion
-            // 
-            this.lblDireccion.AutoSize = true;
-            this.lblDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDireccion.Location = new System.Drawing.Point(268, 56);
-            this.lblDireccion.Name = "lblDireccion";
-            this.lblDireccion.Size = new System.Drawing.Size(71, 17);
-            this.lblDireccion.TabIndex = 31;
-            this.lblDireccion.Text = "Direccion:";
-            // 
             // lblBuscarPorDniOCorreo
             // 
             this.lblBuscarPorDniOCorreo.AutoSize = true;
@@ -630,9 +667,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1214, 561);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlFormularioUsuario);
             this.Controls.Add(this.pnlCardTotalUsuarios);
-            this.Controls.Add(this.pnlContenedorCatalogo);
+            this.Controls.Add(this.pnlContenedorListaUsuarios);
             this.Controls.Add(this.pnlEncabezado);
             this.Name = "GestionUsuariosForm";
             this.Text = "GestionUsuariosForm";
@@ -643,11 +680,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).EndInit();
             this.pnlCardTotalUsuarios.ResumeLayout(false);
             this.pnlCardTotalUsuarios.PerformLayout();
-            this.pnlContenedorCatalogo.ResumeLayout(false);
-            this.pnlContenedorCatalogo.PerformLayout();
+            this.pnlContenedorListaUsuarios.ResumeLayout(false);
+            this.pnlContenedorListaUsuarios.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaUsuarios)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnlFormularioUsuario.ResumeLayout(false);
+            this.pnlFormularioUsuario.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -666,7 +703,7 @@
         private System.Windows.Forms.Panel pnlCardTotalUsuarios;
         private System.Windows.Forms.Label lblCantTotalUsuarios;
         private System.Windows.Forms.Label lblTituloTotalUsuarios;
-        private System.Windows.Forms.Panel pnlContenedorCatalogo;
+        private System.Windows.Forms.Panel pnlContenedorListaUsuarios;
         private System.Windows.Forms.DataGridView dgvListaUsuarios;
         private System.Windows.Forms.Label lblFiltrarPor;
         private System.Windows.Forms.Label lblFiltraEstado;
@@ -675,7 +712,7 @@
         private System.Windows.Forms.Label lblFiltraPerfil;
         private System.Windows.Forms.ComboBox cmbFiltroPerfil;
         private System.Windows.Forms.Label lblTituloListaUsusarios;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlFormularioUsuario;
         private System.Windows.Forms.TextBox txtContrasenia;
         private System.Windows.Forms.Label lblContrasenia;
         private System.Windows.Forms.Label lblEstado;
@@ -683,7 +720,7 @@
         private System.Windows.Forms.TextBox txtDni;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label lblDNI;
-        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnAgregarUsuario;
         private System.Windows.Forms.Label lblPerfil;
         private System.Windows.Forms.TextBox txtCorreo;
         private System.Windows.Forms.ComboBox cmbPerfil;
@@ -710,5 +747,7 @@
         private System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.Label lblDireccion;
         private System.Windows.Forms.Label lblBuscarPorDniOCorreo;
+        private System.Windows.Forms.TextBox txtRepetirContrasenia;
+        private System.Windows.Forms.Label lblRepetirContraseña;
     }
 }

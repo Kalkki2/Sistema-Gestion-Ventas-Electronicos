@@ -164,5 +164,26 @@
   <ItemGroup>
     <None Include="Resources\icono_blanco_proveedores.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_advertencia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_blanco_ventas1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_blanco_ventas3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_blanco_productos1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_blanco_ventas4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_blanco_proveedor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_blanco_clientes1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
