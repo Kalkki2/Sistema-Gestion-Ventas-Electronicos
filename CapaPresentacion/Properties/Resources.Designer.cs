@@ -83,6 +83,16 @@ namespace CapaPresentacion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icono_administrador {
+            get {
+                object obj = ResourceManager.GetObject("icono_administrador", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icono_advertencia {
             get {
                 object obj = ResourceManager.GetObject("icono_advertencia", resourceCulture);
@@ -96,6 +106,16 @@ namespace CapaPresentacion.Properties {
         internal static System.Drawing.Bitmap icono_blanco_clientes {
             get {
                 object obj = ResourceManager.GetObject("icono_blanco_clientes", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icono_blanco_graficos_informe {
+            get {
+                object obj = ResourceManager.GetObject("icono_blanco_graficos_informe", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -136,6 +156,36 @@ namespace CapaPresentacion.Properties {
         internal static System.Drawing.Bitmap icono_blanco_ventas {
             get {
                 object obj = ResourceManager.GetObject("icono_blanco_ventas", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icono_cajero {
+            get {
+                object obj = ResourceManager.GetObject("icono_cajero", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icono_gerente_comercial {
+            get {
+                object obj = ResourceManager.GetObject("icono_gerente_comercial", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icono_vendedor {
+            get {
+                object obj = ResourceManager.GetObject("icono_vendedor", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
