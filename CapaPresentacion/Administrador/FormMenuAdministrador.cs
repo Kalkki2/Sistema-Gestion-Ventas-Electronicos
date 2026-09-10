@@ -63,5 +63,10 @@ namespace CapaPresentacion.Administrador
         {
             AbrirFormularioHijo<GestionProveedoresForm>();
         }
+
+        private void btnMenuItemCompra_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioHijo<GestionComprasForm>();
+        }
     }
 }

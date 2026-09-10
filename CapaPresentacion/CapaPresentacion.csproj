@@ -33,8 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Guna.UI2, Version=2.0.4.8, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
+      <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.8\lib\net48\Guna.UI2.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,6 +53,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrador\BuscarProductoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\BuscarProductoForm.Designer.cs">
+      <DependentUpon>BuscarProductoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\BuscarProveedorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\BuscarProveedorForm.Designer.cs">
+      <DependentUpon>BuscarProveedorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Administrador\FormMenuAdministrador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,6 +76,12 @@
     </Compile>
     <Compile Include="Administrador\GestionClientesForm.Designer.cs">
       <DependentUpon>GestionClientesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\GestionComprasForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\GestionComprasForm.Designer.cs">
+      <DependentUpon>GestionComprasForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Administrador\GestionProductosForm.cs">
       <SubType>Form</SubType>
@@ -115,11 +139,20 @@
     <Compile Include="Vendedor\FormMenuVendedor.Designer.cs">
       <DependentUpon>FormMenuVendedor.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Administrador\BuscarProductoForm.resx">
+      <DependentUpon>BuscarProductoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\BuscarProveedorForm.resx">
+      <DependentUpon>BuscarProveedorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Administrador\FormMenuAdministrador.resx">
       <DependentUpon>FormMenuAdministrador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Administrador\GestionClientesForm.resx">
       <DependentUpon>GestionClientesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\GestionComprasForm.resx">
+      <DependentUpon>GestionComprasForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Administrador\GestionProductosForm.resx">
       <DependentUpon>GestionProductosForm.cs</DependentUpon>
@@ -155,6 +188,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -221,6 +255,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icono_vendedor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_blanco_compras.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

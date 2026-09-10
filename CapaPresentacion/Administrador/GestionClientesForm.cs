@@ -17,11 +17,25 @@ namespace CapaPresentacion.Administrador
             InitializeComponent();
         }
 
-        private void btnActualizarCliente_Click(object sender, EventArgs e)
+        
+
+        private void LimpiarCampos()
+        {
+            txtNombre.Clear();
+            txtApellido.Clear();
+            txtDni.Clear();
+            txtTelefono.Clear();
+            txtDireccion.Clear();
+
+
+            txtNombre.Focus(); // Regresa el cursor al primer campo
+        }
+
+        private void btnActualizarClientes_Click(object sender, EventArgs e)
         {
             // Valida que los TextBox no estén vacíos
             if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtApellido.Text) || string.IsNullOrWhiteSpace(txtDni.Text) ||
-                string.IsNullOrWhiteSpace(txtTelefono.Text) || string.IsNullOrWhiteSpace(txtDireccion.Text) )
+                string.IsNullOrWhiteSpace(txtTelefono.Text) || string.IsNullOrWhiteSpace(txtDireccion.Text))
             {
                 MessageBox.Show("Debe completar todos los campos de texto obligatorios.", "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -46,18 +60,6 @@ namespace CapaPresentacion.Administrador
 
             //  Limpia los campos para un nuevo ingreso
             LimpiarCampos();
-        }
-
-        private void LimpiarCampos()
-        {
-            txtNombre.Clear();
-            txtApellido.Clear();
-            txtDni.Clear();
-            txtTelefono.Clear();
-            txtDireccion.Clear();
-
-
-            txtNombre.Focus(); // Regresa el cursor al primer campo
         }
     }
 }

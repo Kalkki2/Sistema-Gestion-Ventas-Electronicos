@@ -17,6 +17,23 @@ namespace CapaPresentacion.Administrador
             InitializeComponent();
         }
 
+       
+        private void LimpiarCampos()
+        {
+            txtCodigo.Clear();
+            txtNombre.Clear();
+            txtStock.Clear();
+            txtPrecio.Clear();
+
+            // Deseleccionar los ComboBoxes (vuelven a quedar en blanco)
+            cmbCategoria.SelectedIndex = -1;
+            cmbMarca.SelectedIndex = -1;
+            cmbProveedor.SelectedIndex = -1;
+            cmbEstado.SelectedIndex = -1;
+
+            txtCodigo.Focus(); // Regresa el cursor al primer campo
+        }
+
         private void btnAgregarProducto_Click(object sender, EventArgs e)
         {
             // Valida que los TextBox no estén vacíos
@@ -52,25 +69,6 @@ namespace CapaPresentacion.Administrador
 
             //  Limpia los campos para un nuevo ingreso
             LimpiarCampos();
-
-        }
-
-  
-
-        private void LimpiarCampos()
-        {
-            txtCodigo.Clear();
-            txtNombre.Clear();
-            txtStock.Clear();
-            txtPrecio.Clear();
-
-            // Deseleccionar los ComboBoxes (vuelven a quedar en blanco)
-            cmbCategoria.SelectedIndex = -1;
-            cmbMarca.SelectedIndex = -1;
-            cmbProveedor.SelectedIndex = -1;
-            cmbEstado.SelectedIndex = -1;
-
-            txtCodigo.Focus(); // Regresa el cursor al primer campo
         }
     }
 }

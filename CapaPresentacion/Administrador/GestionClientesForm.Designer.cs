@@ -30,24 +30,6 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.pnlCardTotalClientes = new System.Windows.Forms.Panel();
-            this.lblCantTotalClientes = new System.Windows.Forms.Label();
-            this.lblTituloTotalCliente = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lblInformacionDelCliente = new System.Windows.Forms.Label();
-            this.txtDireccion = new System.Windows.Forms.TextBox();
-            this.lblDireccion = new System.Windows.Forms.Label();
-            this.txtTelefono = new System.Windows.Forms.TextBox();
-            this.lblTelefono = new System.Windows.Forms.Label();
-            this.txtDni = new System.Windows.Forms.TextBox();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.lblDNI = new System.Windows.Forms.Label();
-            this.btnActualizarCliente = new System.Windows.Forms.Button();
-            this.txtNombre = new System.Windows.Forms.TextBox();
-            this.lblNombre = new System.Windows.Forms.Label();
-            this.txtApellido = new System.Windows.Forms.TextBox();
-            this.lblApellido = new System.Windows.Forms.Label();
-            this.pnlContenedorListaCliente = new System.Windows.Forms.Panel();
             this.dgvListaCliente = new System.Windows.Forms.DataGridView();
             this.colNroCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDni = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,8 +40,6 @@
             this.colEditar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.colCompras = new System.Windows.Forms.DataGridViewButtonColumn();
             this.lblTituloListaClientes = new System.Windows.Forms.Label();
-            this.btnFiltrarPorFecha = new System.Windows.Forms.Button();
-            this.txtFiltrarPorDNI = new System.Windows.Forms.TextBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.pnlEncabezado = new System.Windows.Forms.Panel();
             this.pnlnfoUsuario = new System.Windows.Forms.Panel();
@@ -68,200 +48,39 @@
             this.lblRolUsuario = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.lblBuscarPorDniONombre = new System.Windows.Forms.Label();
-            this.pnlCardTotalClientes.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.pnlContenedorListaCliente.SuspendLayout();
+            this.pnlFormularioCliente = new Guna.UI2.WinForms.Guna2Panel();
+            this.txtDireccion = new Guna.UI2.WinForms.Guna2TextBox();
+            this.lblDireccion = new System.Windows.Forms.Label();
+            this.txtTelefono = new Guna.UI2.WinForms.Guna2TextBox();
+            this.lblTelefono = new System.Windows.Forms.Label();
+            this.txtDni = new Guna.UI2.WinForms.Guna2TextBox();
+            this.lblDni = new System.Windows.Forms.Label();
+            this.lblTituloInformacionCliente = new System.Windows.Forms.Label();
+            this.lblEstado = new System.Windows.Forms.Label();
+            this.txtApellido = new Guna.UI2.WinForms.Guna2TextBox();
+            this.lblApellido = new System.Windows.Forms.Label();
+            this.lblNombre = new System.Windows.Forms.Label();
+            this.cmbEstado = new System.Windows.Forms.ComboBox();
+            this.btnActualizarClientes = new Guna.UI2.WinForms.Guna2Button();
+            this.txtNombre = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtBuscarCliente = new Guna.UI2.WinForms.Guna2TextBox();
+            this.lblFiltroEstado = new System.Windows.Forms.Label();
+            this.pnlCardTotalClientes = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.lblCantTotalUsuarios = new System.Windows.Forms.Label();
+            this.lblTituloTotalClientes = new System.Windows.Forms.Label();
+            this.pnlContenedorFiltros = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnCancelar = new Guna.UI2.WinForms.Guna2Button();
+            this.pnlContenedorClientes = new Guna.UI2.WinForms.Guna2Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaCliente)).BeginInit();
             this.pnlEncabezado.SuspendLayout();
             this.pnlnfoUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
-            this.panel2.SuspendLayout();
+            this.pnlFormularioCliente.SuspendLayout();
+            this.pnlCardTotalClientes.SuspendLayout();
+            this.pnlContenedorFiltros.SuspendLayout();
+            this.pnlContenedorClientes.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // pnlCardTotalClientes
-            // 
-            this.pnlCardTotalClientes.BackColor = System.Drawing.Color.White;
-            this.pnlCardTotalClientes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlCardTotalClientes.Controls.Add(this.lblCantTotalClientes);
-            this.pnlCardTotalClientes.Controls.Add(this.lblTituloTotalCliente);
-            this.pnlCardTotalClientes.Location = new System.Drawing.Point(529, 77);
-            this.pnlCardTotalClientes.Name = "pnlCardTotalClientes";
-            this.pnlCardTotalClientes.Size = new System.Drawing.Size(187, 75);
-            this.pnlCardTotalClientes.TabIndex = 25;
-            // 
-            // lblCantTotalClientes
-            // 
-            this.lblCantTotalClientes.AutoSize = true;
-            this.lblCantTotalClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantTotalClientes.Location = new System.Drawing.Point(19, 27);
-            this.lblCantTotalClientes.Name = "lblCantTotalClientes";
-            this.lblCantTotalClientes.Size = new System.Drawing.Size(46, 31);
-            this.lblCantTotalClientes.TabIndex = 17;
-            this.lblCantTotalClientes.Text = "10";
-            // 
-            // lblTituloTotalCliente
-            // 
-            this.lblTituloTotalCliente.AutoSize = true;
-            this.lblTituloTotalCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloTotalCliente.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblTituloTotalCliente.Location = new System.Drawing.Point(12, 9);
-            this.lblTituloTotalCliente.Name = "lblTituloTotalCliente";
-            this.lblTituloTotalCliente.Size = new System.Drawing.Size(93, 15);
-            this.lblTituloTotalCliente.TabIndex = 17;
-            this.lblTituloTotalCliente.Text = "Total clientes";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel1.Controls.Add(this.lblInformacionDelCliente);
-            this.panel1.Controls.Add(this.txtDireccion);
-            this.panel1.Controls.Add(this.lblDireccion);
-            this.panel1.Controls.Add(this.txtTelefono);
-            this.panel1.Controls.Add(this.lblTelefono);
-            this.panel1.Controls.Add(this.txtDni);
-            this.panel1.Controls.Add(this.btnCancelar);
-            this.panel1.Controls.Add(this.lblDNI);
-            this.panel1.Controls.Add(this.btnActualizarCliente);
-            this.panel1.Controls.Add(this.txtNombre);
-            this.panel1.Controls.Add(this.lblNombre);
-            this.panel1.Controls.Add(this.txtApellido);
-            this.panel1.Controls.Add(this.lblApellido);
-            this.panel1.Location = new System.Drawing.Point(12, 68);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(485, 264);
-            this.panel1.TabIndex = 24;
-            // 
-            // lblInformacionDelCliente
-            // 
-            this.lblInformacionDelCliente.AutoSize = true;
-            this.lblInformacionDelCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInformacionDelCliente.Location = new System.Drawing.Point(9, 9);
-            this.lblInformacionDelCliente.Name = "lblInformacionDelCliente";
-            this.lblInformacionDelCliente.Size = new System.Drawing.Size(171, 16);
-            this.lblInformacionDelCliente.TabIndex = 29;
-            this.lblInformacionDelCliente.Text = "Informacion del clientes";
-            // 
-            // txtDireccion
-            // 
-            this.txtDireccion.Location = new System.Drawing.Point(247, 145);
-            this.txtDireccion.Multiline = true;
-            this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(222, 27);
-            this.txtDireccion.TabIndex = 25;
-            // 
-            // lblDireccion
-            // 
-            this.lblDireccion.AutoSize = true;
-            this.lblDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDireccion.Location = new System.Drawing.Point(244, 125);
-            this.lblDireccion.Name = "lblDireccion";
-            this.lblDireccion.Size = new System.Drawing.Size(72, 17);
-            this.lblDireccion.TabIndex = 24;
-            this.lblDireccion.Text = "Direccion*";
-            // 
-            // txtTelefono
-            // 
-            this.txtTelefono.Location = new System.Drawing.Point(247, 79);
-            this.txtTelefono.Multiline = true;
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(222, 27);
-            this.txtTelefono.TabIndex = 23;
-            // 
-            // lblTelefono
-            // 
-            this.lblTelefono.AutoSize = true;
-            this.lblTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelefono.Location = new System.Drawing.Point(252, 59);
-            this.lblTelefono.Name = "lblTelefono";
-            this.lblTelefono.Size = new System.Drawing.Size(73, 17);
-            this.lblTelefono.TabIndex = 22;
-            this.lblTelefono.Text = "Telefono *";
-            // 
-            // txtDni
-            // 
-            this.txtDni.Location = new System.Drawing.Point(12, 198);
-            this.txtDni.Multiline = true;
-            this.txtDni.Name = "txtDni";
-            this.txtDni.Size = new System.Drawing.Size(222, 27);
-            this.txtDni.TabIndex = 21;
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Location = new System.Drawing.Point(253, 198);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(89, 34);
-            this.btnCancelar.TabIndex = 17;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            // 
-            // lblDNI
-            // 
-            this.lblDNI.AutoSize = true;
-            this.lblDNI.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDNI.Location = new System.Drawing.Point(9, 178);
-            this.lblDNI.Name = "lblDNI";
-            this.lblDNI.Size = new System.Drawing.Size(40, 17);
-            this.lblDNI.TabIndex = 20;
-            this.lblDNI.Text = "DNI *";
-            // 
-            // btnActualizarCliente
-            // 
-            this.btnActualizarCliente.Location = new System.Drawing.Point(364, 198);
-            this.btnActualizarCliente.Name = "btnActualizarCliente";
-            this.btnActualizarCliente.Size = new System.Drawing.Size(89, 34);
-            this.btnActualizarCliente.TabIndex = 16;
-            this.btnActualizarCliente.Text = "Actualizar";
-            this.btnActualizarCliente.UseVisualStyleBackColor = true;
-            this.btnActualizarCliente.Click += new System.EventHandler(this.btnActualizarCliente_Click);
-            // 
-            // txtNombre
-            // 
-            this.txtNombre.Location = new System.Drawing.Point(12, 76);
-            this.txtNombre.Multiline = true;
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(222, 27);
-            this.txtNombre.TabIndex = 3;
-            // 
-            // lblNombre
-            // 
-            this.lblNombre.AutoSize = true;
-            this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(9, 56);
-            this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(67, 17);
-            this.lblNombre.TabIndex = 2;
-            this.lblNombre.Text = "Nombre *";
-            // 
-            // txtApellido
-            // 
-            this.txtApellido.Location = new System.Drawing.Point(12, 136);
-            this.txtApellido.Multiline = true;
-            this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(222, 25);
-            this.txtApellido.TabIndex = 1;
-            // 
-            // lblApellido
-            // 
-            this.lblApellido.AutoSize = true;
-            this.lblApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApellido.Location = new System.Drawing.Point(9, 112);
-            this.lblApellido.Name = "lblApellido";
-            this.lblApellido.Size = new System.Drawing.Size(67, 17);
-            this.lblApellido.TabIndex = 0;
-            this.lblApellido.Text = "Apellido *";
-            // 
-            // pnlContenedorListaCliente
-            // 
-            this.pnlContenedorListaCliente.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlContenedorListaCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlContenedorListaCliente.Controls.Add(this.dgvListaCliente);
-            this.pnlContenedorListaCliente.Controls.Add(this.lblTituloListaClientes);
-            this.pnlContenedorListaCliente.Location = new System.Drawing.Point(24, 346);
-            this.pnlContenedorListaCliente.Name = "pnlContenedorListaCliente";
-            this.pnlContenedorListaCliente.Size = new System.Drawing.Size(881, 203);
-            this.pnlContenedorListaCliente.TabIndex = 23;
             // 
             // dgvListaCliente
             // 
@@ -292,7 +111,7 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvListaCliente.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvListaCliente.Location = new System.Drawing.Point(3, 101);
+            this.dgvListaCliente.Location = new System.Drawing.Point(16, 40);
             this.dgvListaCliente.Name = "dgvListaCliente";
             this.dgvListaCliente.RowHeadersVisible = false;
             this.dgvListaCliente.Size = new System.Drawing.Size(873, 75);
@@ -346,34 +165,17 @@
             // 
             this.lblTituloListaClientes.AutoSize = true;
             this.lblTituloListaClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloListaClientes.Location = new System.Drawing.Point(3, 9);
+            this.lblTituloListaClientes.Location = new System.Drawing.Point(32, 11);
             this.lblTituloListaClientes.Name = "lblTituloListaClientes";
             this.lblTituloListaClientes.Size = new System.Drawing.Size(106, 17);
             this.lblTituloListaClientes.TabIndex = 9;
             this.lblTituloListaClientes.Text = "Lista Clientes";
             // 
-            // btnFiltrarPorFecha
-            // 
-            this.btnFiltrarPorFecha.Location = new System.Drawing.Point(191, 144);
-            this.btnFiltrarPorFecha.Name = "btnFiltrarPorFecha";
-            this.btnFiltrarPorFecha.Size = new System.Drawing.Size(89, 26);
-            this.btnFiltrarPorFecha.TabIndex = 33;
-            this.btnFiltrarPorFecha.Text = "Filtrar";
-            this.btnFiltrarPorFecha.UseVisualStyleBackColor = true;
-            // 
-            // txtFiltrarPorDNI
-            // 
-            this.txtFiltrarPorDNI.Location = new System.Drawing.Point(3, 51);
-            this.txtFiltrarPorDNI.Multiline = true;
-            this.txtFiltrarPorDNI.Name = "txtFiltrarPorDNI";
-            this.txtFiltrarPorDNI.Size = new System.Drawing.Size(277, 27);
-            this.txtFiltrarPorDNI.TabIndex = 29;
-            // 
             // comboBox2
             // 
             this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(6, 129);
+            this.comboBox2.Location = new System.Drawing.Point(15, 105);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(152, 24);
             this.comboBox2.TabIndex = 31;
@@ -448,78 +250,403 @@
             this.lblTitulo.TabIndex = 11;
             this.lblTitulo.Text = "Gestion de clientes";
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.lblBuscarPorDniONombre);
-            this.panel2.Controls.Add(this.txtFiltrarPorDNI);
-            this.panel2.Controls.Add(this.btnFiltrarPorFecha);
-            this.panel2.Controls.Add(this.comboBox2);
-            this.panel2.Location = new System.Drawing.Point(529, 162);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(360, 178);
-            this.panel2.TabIndex = 27;
-            // 
             // lblBuscarPorDniONombre
             // 
             this.lblBuscarPorDniONombre.AutoSize = true;
+            this.lblBuscarPorDniONombre.BackColor = System.Drawing.Color.Transparent;
             this.lblBuscarPorDniONombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuscarPorDniONombre.Location = new System.Drawing.Point(3, 31);
+            this.lblBuscarPorDniONombre.Location = new System.Drawing.Point(18, 20);
             this.lblBuscarPorDniONombre.Name = "lblBuscarPorDniONombre";
             this.lblBuscarPorDniONombre.Size = new System.Drawing.Size(174, 17);
             this.lblBuscarPorDniONombre.TabIndex = 34;
             this.lblBuscarPorDniONombre.Text = "Buscar por DNI o Nombre:";
+            // 
+            // pnlFormularioCliente
+            // 
+            this.pnlFormularioCliente.BorderRadius = 15;
+            this.pnlFormularioCliente.Controls.Add(this.btnCancelar);
+            this.pnlFormularioCliente.Controls.Add(this.txtDireccion);
+            this.pnlFormularioCliente.Controls.Add(this.lblDireccion);
+            this.pnlFormularioCliente.Controls.Add(this.txtTelefono);
+            this.pnlFormularioCliente.Controls.Add(this.lblTelefono);
+            this.pnlFormularioCliente.Controls.Add(this.txtDni);
+            this.pnlFormularioCliente.Controls.Add(this.lblDni);
+            this.pnlFormularioCliente.Controls.Add(this.lblTituloInformacionCliente);
+            this.pnlFormularioCliente.Controls.Add(this.lblEstado);
+            this.pnlFormularioCliente.Controls.Add(this.txtApellido);
+            this.pnlFormularioCliente.Controls.Add(this.lblApellido);
+            this.pnlFormularioCliente.Controls.Add(this.lblNombre);
+            this.pnlFormularioCliente.Controls.Add(this.cmbEstado);
+            this.pnlFormularioCliente.Controls.Add(this.btnActualizarClientes);
+            this.pnlFormularioCliente.Controls.Add(this.txtNombre);
+            this.pnlFormularioCliente.FillColor = System.Drawing.Color.Gainsboro;
+            this.pnlFormularioCliente.Location = new System.Drawing.Point(12, 68);
+            this.pnlFormularioCliente.Name = "pnlFormularioCliente";
+            this.pnlFormularioCliente.Size = new System.Drawing.Size(541, 276);
+            this.pnlFormularioCliente.TabIndex = 28;
+            // 
+            // txtDireccion
+            // 
+            this.txtDireccion.BackColor = System.Drawing.Color.Transparent;
+            this.txtDireccion.BorderColor = System.Drawing.Color.DimGray;
+            this.txtDireccion.BorderRadius = 5;
+            this.txtDireccion.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtDireccion.DefaultText = "";
+            this.txtDireccion.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtDireccion.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtDireccion.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtDireccion.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtDireccion.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDireccion.ForeColor = System.Drawing.Color.Black;
+            this.txtDireccion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtDireccion.Location = new System.Drawing.Point(274, 109);
+            this.txtDireccion.Name = "txtDireccion";
+            this.txtDireccion.PlaceholderText = "";
+            this.txtDireccion.SelectedText = "";
+            this.txtDireccion.Size = new System.Drawing.Size(225, 27);
+            this.txtDireccion.TabIndex = 50;
+            // 
+            // lblDireccion
+            // 
+            this.lblDireccion.AutoSize = true;
+            this.lblDireccion.BackColor = System.Drawing.Color.Transparent;
+            this.lblDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDireccion.Location = new System.Drawing.Point(271, 89);
+            this.lblDireccion.Name = "lblDireccion";
+            this.lblDireccion.Size = new System.Drawing.Size(75, 17);
+            this.lblDireccion.TabIndex = 49;
+            this.lblDireccion.Text = "Direccion: ";
+            // 
+            // txtTelefono
+            // 
+            this.txtTelefono.BackColor = System.Drawing.Color.Transparent;
+            this.txtTelefono.BorderColor = System.Drawing.Color.DimGray;
+            this.txtTelefono.BorderRadius = 5;
+            this.txtTelefono.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtTelefono.DefaultText = "";
+            this.txtTelefono.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtTelefono.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtTelefono.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTelefono.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTelefono.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTelefono.ForeColor = System.Drawing.Color.Black;
+            this.txtTelefono.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTelefono.Location = new System.Drawing.Point(274, 46);
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.PlaceholderText = "";
+            this.txtTelefono.SelectedText = "";
+            this.txtTelefono.Size = new System.Drawing.Size(225, 27);
+            this.txtTelefono.TabIndex = 48;
+            // 
+            // lblTelefono
+            // 
+            this.lblTelefono.AutoSize = true;
+            this.lblTelefono.BackColor = System.Drawing.Color.Transparent;
+            this.lblTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTelefono.Location = new System.Drawing.Point(271, 26);
+            this.lblTelefono.Name = "lblTelefono";
+            this.lblTelefono.Size = new System.Drawing.Size(72, 17);
+            this.lblTelefono.TabIndex = 47;
+            this.lblTelefono.Text = "Telefono: ";
+            // 
+            // txtDni
+            // 
+            this.txtDni.BackColor = System.Drawing.Color.Transparent;
+            this.txtDni.BorderColor = System.Drawing.Color.DimGray;
+            this.txtDni.BorderRadius = 5;
+            this.txtDni.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtDni.DefaultText = "";
+            this.txtDni.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtDni.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtDni.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtDni.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtDni.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDni.ForeColor = System.Drawing.Color.Black;
+            this.txtDni.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtDni.Location = new System.Drawing.Point(16, 164);
+            this.txtDni.Name = "txtDni";
+            this.txtDni.PlaceholderText = "";
+            this.txtDni.SelectedText = "";
+            this.txtDni.Size = new System.Drawing.Size(225, 27);
+            this.txtDni.TabIndex = 44;
+            // 
+            // lblDni
+            // 
+            this.lblDni.AutoSize = true;
+            this.lblDni.BackColor = System.Drawing.Color.Transparent;
+            this.lblDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDni.Location = new System.Drawing.Point(13, 144);
+            this.lblDni.Name = "lblDni";
+            this.lblDni.Size = new System.Drawing.Size(39, 17);
+            this.lblDni.TabIndex = 43;
+            this.lblDni.Text = "DNI: ";
+            // 
+            // lblTituloInformacionCliente
+            // 
+            this.lblTituloInformacionCliente.AutoSize = true;
+            this.lblTituloInformacionCliente.BackColor = System.Drawing.Color.Transparent;
+            this.lblTituloInformacionCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloInformacionCliente.Location = new System.Drawing.Point(13, 10);
+            this.lblTituloInformacionCliente.Name = "lblTituloInformacionCliente";
+            this.lblTituloInformacionCliente.Size = new System.Drawing.Size(163, 16);
+            this.lblTituloInformacionCliente.TabIndex = 42;
+            this.lblTituloInformacionCliente.Text = "Informacion del cliente";
+            // 
+            // lblEstado
+            // 
+            this.lblEstado.AutoSize = true;
+            this.lblEstado.BackColor = System.Drawing.Color.Transparent;
+            this.lblEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstado.Location = new System.Drawing.Point(271, 142);
+            this.lblEstado.Name = "lblEstado";
+            this.lblEstado.Size = new System.Drawing.Size(60, 17);
+            this.lblEstado.TabIndex = 35;
+            this.lblEstado.Text = "Estado: ";
+            // 
+            // txtApellido
+            // 
+            this.txtApellido.BackColor = System.Drawing.Color.Transparent;
+            this.txtApellido.BorderColor = System.Drawing.Color.DimGray;
+            this.txtApellido.BorderRadius = 5;
+            this.txtApellido.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtApellido.DefaultText = "";
+            this.txtApellido.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtApellido.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtApellido.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtApellido.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtApellido.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtApellido.ForeColor = System.Drawing.Color.Black;
+            this.txtApellido.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtApellido.Location = new System.Drawing.Point(16, 109);
+            this.txtApellido.Name = "txtApellido";
+            this.txtApellido.PlaceholderText = "";
+            this.txtApellido.SelectedText = "";
+            this.txtApellido.Size = new System.Drawing.Size(225, 27);
+            this.txtApellido.TabIndex = 30;
+            // 
+            // lblApellido
+            // 
+            this.lblApellido.AutoSize = true;
+            this.lblApellido.BackColor = System.Drawing.Color.Transparent;
+            this.lblApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblApellido.Location = new System.Drawing.Point(13, 89);
+            this.lblApellido.Name = "lblApellido";
+            this.lblApellido.Size = new System.Drawing.Size(66, 17);
+            this.lblApellido.TabIndex = 29;
+            this.lblApellido.Text = "Apellido: ";
+            // 
+            // lblNombre
+            // 
+            this.lblNombre.AutoSize = true;
+            this.lblNombre.BackColor = System.Drawing.Color.Transparent;
+            this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.Location = new System.Drawing.Point(13, 26);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(66, 17);
+            this.lblNombre.TabIndex = 28;
+            this.lblNombre.Text = "Nombre: ";
+            // 
+            // cmbEstado
+            // 
+            this.cmbEstado.BackColor = System.Drawing.Color.White;
+            this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbEstado.FormattingEnabled = true;
+            this.cmbEstado.Items.AddRange(new object[] {
+            "TecnoDistribuidora S.A.",
+            "ElectroComponentes del Sur"});
+            this.cmbEstado.Location = new System.Drawing.Point(274, 162);
+            this.cmbEstado.Name = "cmbEstado";
+            this.cmbEstado.Size = new System.Drawing.Size(117, 24);
+            this.cmbEstado.TabIndex = 27;
+            // 
+            // btnActualizarClientes
+            // 
+            this.btnActualizarClientes.BackColor = System.Drawing.Color.Transparent;
+            this.btnActualizarClientes.BorderRadius = 5;
+            this.btnActualizarClientes.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnActualizarClientes.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnActualizarClientes.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnActualizarClientes.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnActualizarClientes.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(96)))));
+            this.btnActualizarClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizarClientes.ForeColor = System.Drawing.Color.White;
+            this.btnActualizarClientes.Location = new System.Drawing.Point(399, 229);
+            this.btnActualizarClientes.Name = "btnActualizarClientes";
+            this.btnActualizarClientes.Size = new System.Drawing.Size(100, 35);
+            this.btnActualizarClientes.TabIndex = 26;
+            this.btnActualizarClientes.Text = "Actualizar";
+            this.btnActualizarClientes.Click += new System.EventHandler(this.btnActualizarClientes_Click);
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.BackColor = System.Drawing.Color.Transparent;
+            this.txtNombre.BorderColor = System.Drawing.Color.DimGray;
+            this.txtNombre.BorderRadius = 5;
+            this.txtNombre.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtNombre.DefaultText = "";
+            this.txtNombre.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtNombre.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtNombre.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtNombre.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtNombre.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombre.ForeColor = System.Drawing.Color.Black;
+            this.txtNombre.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtNombre.Location = new System.Drawing.Point(16, 46);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.PlaceholderText = "";
+            this.txtNombre.SelectedText = "";
+            this.txtNombre.Size = new System.Drawing.Size(225, 27);
+            this.txtNombre.TabIndex = 0;
+            // 
+            // txtBuscarCliente
+            // 
+            this.txtBuscarCliente.BackColor = System.Drawing.Color.Transparent;
+            this.txtBuscarCliente.BorderColor = System.Drawing.Color.DimGray;
+            this.txtBuscarCliente.BorderRadius = 5;
+            this.txtBuscarCliente.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtBuscarCliente.DefaultText = "";
+            this.txtBuscarCliente.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtBuscarCliente.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtBuscarCliente.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscarCliente.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscarCliente.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscarCliente.ForeColor = System.Drawing.Color.Black;
+            this.txtBuscarCliente.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarCliente.Location = new System.Drawing.Point(15, 40);
+            this.txtBuscarCliente.Name = "txtBuscarCliente";
+            this.txtBuscarCliente.PlaceholderText = "";
+            this.txtBuscarCliente.SelectedText = "";
+            this.txtBuscarCliente.Size = new System.Drawing.Size(225, 27);
+            this.txtBuscarCliente.TabIndex = 51;
+            // 
+            // lblFiltroEstado
+            // 
+            this.lblFiltroEstado.AutoSize = true;
+            this.lblFiltroEstado.BackColor = System.Drawing.Color.Transparent;
+            this.lblFiltroEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFiltroEstado.Location = new System.Drawing.Point(12, 85);
+            this.lblFiltroEstado.Name = "lblFiltroEstado";
+            this.lblFiltroEstado.Size = new System.Drawing.Size(60, 17);
+            this.lblFiltroEstado.TabIndex = 52;
+            this.lblFiltroEstado.Text = "Estado: ";
+            // 
+            // pnlCardTotalClientes
+            // 
+            this.pnlCardTotalClientes.BackColor = System.Drawing.Color.Transparent;
+            this.pnlCardTotalClientes.Controls.Add(this.lblCantTotalUsuarios);
+            this.pnlCardTotalClientes.Controls.Add(this.lblTituloTotalClientes);
+            this.pnlCardTotalClientes.FillColor = System.Drawing.Color.White;
+            this.pnlCardTotalClientes.Location = new System.Drawing.Point(581, 68);
+            this.pnlCardTotalClientes.Name = "pnlCardTotalClientes";
+            this.pnlCardTotalClientes.Radius = 7;
+            this.pnlCardTotalClientes.ShadowColor = System.Drawing.Color.Black;
+            this.pnlCardTotalClientes.ShadowDepth = 50;
+            this.pnlCardTotalClientes.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
+            this.pnlCardTotalClientes.Size = new System.Drawing.Size(190, 86);
+            this.pnlCardTotalClientes.TabIndex = 53;
+            // 
+            // lblCantTotalUsuarios
+            // 
+            this.lblCantTotalUsuarios.AutoSize = true;
+            this.lblCantTotalUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantTotalUsuarios.Location = new System.Drawing.Point(10, 36);
+            this.lblCantTotalUsuarios.Name = "lblCantTotalUsuarios";
+            this.lblCantTotalUsuarios.Size = new System.Drawing.Size(41, 29);
+            this.lblCantTotalUsuarios.TabIndex = 18;
+            this.lblCantTotalUsuarios.Text = "12";
+            // 
+            // lblTituloTotalClientes
+            // 
+            this.lblTituloTotalClientes.AutoSize = true;
+            this.lblTituloTotalClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloTotalClientes.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblTituloTotalClientes.Location = new System.Drawing.Point(12, 14);
+            this.lblTituloTotalClientes.Name = "lblTituloTotalClientes";
+            this.lblTituloTotalClientes.Size = new System.Drawing.Size(99, 15);
+            this.lblTituloTotalClientes.TabIndex = 19;
+            this.lblTituloTotalClientes.Text = "Total Clientes:";
+            // 
+            // pnlContenedorFiltros
+            // 
+            this.pnlContenedorFiltros.BorderRadius = 10;
+            this.pnlContenedorFiltros.Controls.Add(this.comboBox2);
+            this.pnlContenedorFiltros.Controls.Add(this.lblFiltroEstado);
+            this.pnlContenedorFiltros.Controls.Add(this.txtBuscarCliente);
+            this.pnlContenedorFiltros.Controls.Add(this.lblBuscarPorDniONombre);
+            this.pnlContenedorFiltros.FillColor = System.Drawing.Color.Gainsboro;
+            this.pnlContenedorFiltros.Location = new System.Drawing.Point(581, 192);
+            this.pnlContenedorFiltros.Name = "pnlContenedorFiltros";
+            this.pnlContenedorFiltros.Size = new System.Drawing.Size(323, 140);
+            this.pnlContenedorFiltros.TabIndex = 54;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancelar.BorderRadius = 5;
+            this.btnCancelar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnCancelar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnCancelar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnCancelar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnCancelar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.Color.Black;
+            this.btnCancelar.Location = new System.Drawing.Point(274, 229);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(100, 35);
+            this.btnCancelar.TabIndex = 51;
+            this.btnCancelar.Text = "Cancelar";
+            // 
+            // pnlContenedorClientes
+            // 
+            this.pnlContenedorClientes.BorderColor = System.Drawing.Color.Gray;
+            this.pnlContenedorClientes.BorderRadius = 5;
+            this.pnlContenedorClientes.BorderThickness = 1;
+            this.pnlContenedorClientes.Controls.Add(this.dgvListaCliente);
+            this.pnlContenedorClientes.Controls.Add(this.lblTituloListaClientes);
+            this.pnlContenedorClientes.Location = new System.Drawing.Point(12, 363);
+            this.pnlContenedorClientes.Name = "pnlContenedorClientes";
+            this.pnlContenedorClientes.Size = new System.Drawing.Size(918, 174);
+            this.pnlContenedorClientes.TabIndex = 55;
             // 
             // GestionClientesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1168, 561);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.pnlEncabezado);
+            this.Controls.Add(this.pnlContenedorClientes);
+            this.Controls.Add(this.pnlContenedorFiltros);
             this.Controls.Add(this.pnlCardTotalClientes);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.pnlContenedorListaCliente);
+            this.Controls.Add(this.pnlFormularioCliente);
+            this.Controls.Add(this.pnlEncabezado);
             this.Name = "GestionClientesForm";
             this.Text = "GestionClientesForm";
-            this.pnlCardTotalClientes.ResumeLayout(false);
-            this.pnlCardTotalClientes.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.pnlContenedorListaCliente.ResumeLayout(false);
-            this.pnlContenedorListaCliente.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaCliente)).EndInit();
             this.pnlEncabezado.ResumeLayout(false);
             this.pnlEncabezado.PerformLayout();
             this.pnlnfoUsuario.ResumeLayout(false);
             this.pnlnfoUsuario.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.pnlFormularioCliente.ResumeLayout(false);
+            this.pnlFormularioCliente.PerformLayout();
+            this.pnlCardTotalClientes.ResumeLayout(false);
+            this.pnlCardTotalClientes.PerformLayout();
+            this.pnlContenedorFiltros.ResumeLayout(false);
+            this.pnlContenedorFiltros.PerformLayout();
+            this.pnlContenedorClientes.ResumeLayout(false);
+            this.pnlContenedorClientes.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel pnlCardTotalClientes;
-        private System.Windows.Forms.Label lblCantTotalClientes;
-        private System.Windows.Forms.Label lblTituloTotalCliente;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txtDireccion;
-        private System.Windows.Forms.Label lblDireccion;
-        private System.Windows.Forms.TextBox txtTelefono;
-        private System.Windows.Forms.Label lblTelefono;
-        private System.Windows.Forms.TextBox txtDni;
-        private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Label lblDNI;
-        private System.Windows.Forms.Button btnActualizarCliente;
-        private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.TextBox txtApellido;
-        private System.Windows.Forms.Label lblApellido;
-        private System.Windows.Forms.Panel pnlContenedorListaCliente;
-        private System.Windows.Forms.Button btnFiltrarPorFecha;
-        private System.Windows.Forms.TextBox txtFiltrarPorDNI;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.DataGridView dgvListaCliente;
         private System.Windows.Forms.Label lblTituloListaClientes;
@@ -538,8 +665,29 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colDireccion;
         private System.Windows.Forms.DataGridViewButtonColumn colEditar;
         private System.Windows.Forms.DataGridViewButtonColumn colCompras;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label lblInformacionDelCliente;
         private System.Windows.Forms.Label lblBuscarPorDniONombre;
+        private Guna.UI2.WinForms.Guna2Panel pnlFormularioCliente;
+        private Guna.UI2.WinForms.Guna2TextBox txtDireccion;
+        private System.Windows.Forms.Label lblDireccion;
+        private Guna.UI2.WinForms.Guna2TextBox txtTelefono;
+        private System.Windows.Forms.Label lblTelefono;
+        private Guna.UI2.WinForms.Guna2TextBox txtDni;
+        private System.Windows.Forms.Label lblDni;
+        private System.Windows.Forms.Label lblTituloInformacionCliente;
+        private System.Windows.Forms.Label lblEstado;
+        private Guna.UI2.WinForms.Guna2TextBox txtApellido;
+        private System.Windows.Forms.Label lblApellido;
+        private System.Windows.Forms.Label lblNombre;
+        private System.Windows.Forms.ComboBox cmbEstado;
+        private Guna.UI2.WinForms.Guna2Button btnActualizarClientes;
+        private Guna.UI2.WinForms.Guna2TextBox txtNombre;
+        private System.Windows.Forms.Label lblFiltroEstado;
+        private Guna.UI2.WinForms.Guna2TextBox txtBuscarCliente;
+        private Guna.UI2.WinForms.Guna2ShadowPanel pnlCardTotalClientes;
+        private System.Windows.Forms.Label lblCantTotalUsuarios;
+        private System.Windows.Forms.Label lblTituloTotalClientes;
+        private Guna.UI2.WinForms.Guna2Panel pnlContenedorFiltros;
+        private Guna.UI2.WinForms.Guna2Button btnCancelar;
+        private Guna.UI2.WinForms.Guna2Panel pnlContenedorClientes;
     }
 }

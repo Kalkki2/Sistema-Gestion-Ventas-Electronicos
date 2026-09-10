@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMenuAdministrador));
             this.pnlMenuAdministrador = new System.Windows.Forms.Panel();
+            this.btnMenuItemCompra = new System.Windows.Forms.Button();
             this.btnMenuItemVenta = new System.Windows.Forms.Button();
             this.btnMenuItemProveedor = new System.Windows.Forms.Button();
             this.btnMenuItemUsuario = new System.Windows.Forms.Button();
@@ -41,6 +42,7 @@
             // pnlMenuAdministrador
             // 
             this.pnlMenuAdministrador.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
+            this.pnlMenuAdministrador.Controls.Add(this.btnMenuItemCompra);
             this.pnlMenuAdministrador.Controls.Add(this.btnMenuItemVenta);
             this.pnlMenuAdministrador.Controls.Add(this.btnMenuItemProveedor);
             this.pnlMenuAdministrador.Controls.Add(this.btnMenuItemUsuario);
@@ -51,6 +53,25 @@
             this.pnlMenuAdministrador.Name = "pnlMenuAdministrador";
             this.pnlMenuAdministrador.Size = new System.Drawing.Size(185, 561);
             this.pnlMenuAdministrador.TabIndex = 1;
+            // 
+            // btnMenuItemCompra
+            // 
+            this.btnMenuItemCompra.BackColor = System.Drawing.Color.Transparent;
+            this.btnMenuItemCompra.FlatAppearance.BorderSize = 0;
+            this.btnMenuItemCompra.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
+            this.btnMenuItemCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMenuItemCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMenuItemCompra.ForeColor = System.Drawing.Color.White;
+            this.btnMenuItemCompra.Image = global::CapaPresentacion.Properties.Resources.icono_blanco_compras;
+            this.btnMenuItemCompra.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMenuItemCompra.Location = new System.Drawing.Point(-3, 415);
+            this.btnMenuItemCompra.Name = "btnMenuItemCompra";
+            this.btnMenuItemCompra.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnMenuItemCompra.Size = new System.Drawing.Size(188, 45);
+            this.btnMenuItemCompra.TabIndex = 6;
+            this.btnMenuItemCompra.Text = "Compras";
+            this.btnMenuItemCompra.UseVisualStyleBackColor = false;
+            this.btnMenuItemCompra.Click += new System.EventHandler(this.btnMenuItemCompra_Click);
             // 
             // btnMenuItemVenta
             // 
@@ -166,5 +187,6 @@
         private System.Windows.Forms.Button btnMenuItemUsuario;
         private System.Windows.Forms.Button btnMenuItemCliente;
         private System.Windows.Forms.Button btnMenuItemProducto;
+        private System.Windows.Forms.Button btnMenuItemCompra;
     }
 }
