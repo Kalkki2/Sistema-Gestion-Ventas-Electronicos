@@ -17,8 +17,6 @@ namespace CapaPresentacion.Administrador
             InitializeComponent();
         }
 
-        
-
         private void LimpiarCampos()
         {
             txtNombre.Clear();
@@ -26,6 +24,7 @@ namespace CapaPresentacion.Administrador
             txtDni.Clear();
             txtTelefono.Clear();
             txtDireccion.Clear();
+            cmbEstado.SelectedIndex = -1;
 
 
             txtNombre.Focus(); // Regresa el cursor al primer campo
@@ -60,6 +59,20 @@ namespace CapaPresentacion.Administrador
 
             //  Limpia los campos para un nuevo ingreso
             LimpiarCampos();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtNombre.Text) && string.IsNullOrWhiteSpace(txtApellido.Text) && string.IsNullOrWhiteSpace(txtDni.Text) &&
+               string.IsNullOrWhiteSpace(txtTelefono.Text) && string.IsNullOrWhiteSpace(txtDireccion.Text)  && cmbEstado.SelectedIndex == -1)
+            {
+                // Si no hay nada escrito en los campos
+                MessageBox.Show("No hay nada cargado para cancear/limpiar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                LimpiarCampos();
+            }
         }
     }
 }

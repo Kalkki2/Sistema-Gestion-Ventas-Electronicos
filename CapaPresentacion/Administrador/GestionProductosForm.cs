@@ -70,5 +70,18 @@ namespace CapaPresentacion.Administrador
             //  Limpia los campos para un nuevo ingreso
             LimpiarCampos();
         }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtCodigo.Text) && string.IsNullOrWhiteSpace(txtNombre.Text) && string.IsNullOrWhiteSpace(txtPrecio.Text) && string.IsNullOrWhiteSpace(txtStock.Text) && cmbCategoria.SelectedIndex == -1 && cmbMarca.SelectedIndex == -1 && cmbProveedor.SelectedIndex == -1 && cmbEstado.SelectedIndex == -1)
+            {
+                // Si no hay nada escrito en los campos
+                MessageBox.Show("No hay nada cargador para agregar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                LimpiarCampos();
+            }
+        }
     }
 }

@@ -29,10 +29,8 @@ namespace CapaPresentacion.Administrador
             txtCorreo.Clear();
             txtDireccion.Clear();
             txtContrasenia.Clear();
-            txtRepetirContrasenia.Clear();
 
             // Deseleccionar los ComboBoxes (vuelven a quedar en blanco)
-            
             cmbPerfil.SelectedIndex = -1;
             cmbEstado.SelectedIndex = -1;
 
@@ -43,7 +41,7 @@ namespace CapaPresentacion.Administrador
         {
             // Valida que los TextBox no estén vacíos
             if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtApellido.Text) || string.IsNullOrWhiteSpace(txtDni.Text) || string.IsNullOrWhiteSpace(txtCorreo.Text) ||
-                string.IsNullOrWhiteSpace(txtTelefono.Text) || string.IsNullOrWhiteSpace(txtDireccion.Text) || string.IsNullOrWhiteSpace(txtContrasenia.Text) || string.IsNullOrWhiteSpace(txtRepetirContrasenia.Text))
+                string.IsNullOrWhiteSpace(txtTelefono.Text) || string.IsNullOrWhiteSpace(txtDireccion.Text) || string.IsNullOrWhiteSpace(txtContrasenia.Text))
             {
                 MessageBox.Show("Debe completar todos los campos de texto obligatorios.", "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -75,6 +73,21 @@ namespace CapaPresentacion.Administrador
 
             //  Limpia los campos para un nuevo ingreso
             LimpiarCampos();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtNombre.Text) && string.IsNullOrWhiteSpace(txtApellido.Text) && string.IsNullOrWhiteSpace(txtDni.Text) && string.IsNullOrWhiteSpace(txtCorreo.Text) &&
+                string.IsNullOrWhiteSpace(txtTelefono.Text) && string.IsNullOrWhiteSpace(txtDireccion.Text) && string.IsNullOrWhiteSpace(txtContrasenia.Text) && cmbEstado.SelectedIndex == -1 && cmbPerfil.SelectedIndex == -1)
+            {
+                // Si no hay nada escrito en los campos
+                MessageBox.Show("No hay nada cargado para cancear/limpiar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                LimpiarCampos();
+            }
+
         }
     }
 }

@@ -29,30 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMenuAdministrador));
-            this.pnlMenuAdministrador = new System.Windows.Forms.Panel();
             this.btnMenuItemCompra = new System.Windows.Forms.Button();
             this.btnMenuItemVenta = new System.Windows.Forms.Button();
             this.btnMenuItemProveedor = new System.Windows.Forms.Button();
             this.btnMenuItemUsuario = new System.Windows.Forms.Button();
             this.btnMenuItemCliente = new System.Windows.Forms.Button();
             this.btnMenuItemProducto = new System.Windows.Forms.Button();
-            this.pnlMenuAdministrador.SuspendLayout();
+            this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.guna2GradientPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // pnlMenuAdministrador
-            // 
-            this.pnlMenuAdministrador.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
-            this.pnlMenuAdministrador.Controls.Add(this.btnMenuItemCompra);
-            this.pnlMenuAdministrador.Controls.Add(this.btnMenuItemVenta);
-            this.pnlMenuAdministrador.Controls.Add(this.btnMenuItemProveedor);
-            this.pnlMenuAdministrador.Controls.Add(this.btnMenuItemUsuario);
-            this.pnlMenuAdministrador.Controls.Add(this.btnMenuItemCliente);
-            this.pnlMenuAdministrador.Controls.Add(this.btnMenuItemProducto);
-            this.pnlMenuAdministrador.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlMenuAdministrador.Location = new System.Drawing.Point(0, 0);
-            this.pnlMenuAdministrador.Name = "pnlMenuAdministrador";
-            this.pnlMenuAdministrador.Size = new System.Drawing.Size(185, 561);
-            this.pnlMenuAdministrador.TabIndex = 1;
             // 
             // btnMenuItemCompra
             // 
@@ -64,7 +49,7 @@
             this.btnMenuItemCompra.ForeColor = System.Drawing.Color.White;
             this.btnMenuItemCompra.Image = global::CapaPresentacion.Properties.Resources.icono_blanco_compras;
             this.btnMenuItemCompra.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMenuItemCompra.Location = new System.Drawing.Point(-3, 415);
+            this.btnMenuItemCompra.Location = new System.Drawing.Point(0, 411);
             this.btnMenuItemCompra.Name = "btnMenuItemCompra";
             this.btnMenuItemCompra.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.btnMenuItemCompra.Size = new System.Drawing.Size(188, 45);
@@ -83,7 +68,7 @@
             this.btnMenuItemVenta.ForeColor = System.Drawing.Color.White;
             this.btnMenuItemVenta.Image = ((System.Drawing.Image)(resources.GetObject("btnMenuItemVenta.Image")));
             this.btnMenuItemVenta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMenuItemVenta.Location = new System.Drawing.Point(0, 292);
+            this.btnMenuItemVenta.Location = new System.Drawing.Point(3, 288);
             this.btnMenuItemVenta.Name = "btnMenuItemVenta";
             this.btnMenuItemVenta.Size = new System.Drawing.Size(182, 45);
             this.btnMenuItemVenta.TabIndex = 5;
@@ -101,7 +86,7 @@
             this.btnMenuItemProveedor.ForeColor = System.Drawing.Color.White;
             this.btnMenuItemProveedor.Image = global::CapaPresentacion.Properties.Resources.icono_blanco_proveedor;
             this.btnMenuItemProveedor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMenuItemProveedor.Location = new System.Drawing.Point(-3, 354);
+            this.btnMenuItemProveedor.Location = new System.Drawing.Point(0, 350);
             this.btnMenuItemProveedor.Name = "btnMenuItemProveedor";
             this.btnMenuItemProveedor.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.btnMenuItemProveedor.Size = new System.Drawing.Size(188, 45);
@@ -120,7 +105,7 @@
             this.btnMenuItemUsuario.ForeColor = System.Drawing.Color.White;
             this.btnMenuItemUsuario.Image = global::CapaPresentacion.Properties.Resources.icono_blanco_usuarios;
             this.btnMenuItemUsuario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMenuItemUsuario.Location = new System.Drawing.Point(0, 163);
+            this.btnMenuItemUsuario.Location = new System.Drawing.Point(3, 159);
             this.btnMenuItemUsuario.Name = "btnMenuItemUsuario";
             this.btnMenuItemUsuario.Size = new System.Drawing.Size(182, 45);
             this.btnMenuItemUsuario.TabIndex = 3;
@@ -138,7 +123,7 @@
             this.btnMenuItemCliente.ForeColor = System.Drawing.Color.White;
             this.btnMenuItemCliente.Image = ((System.Drawing.Image)(resources.GetObject("btnMenuItemCliente.Image")));
             this.btnMenuItemCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMenuItemCliente.Location = new System.Drawing.Point(0, 225);
+            this.btnMenuItemCliente.Location = new System.Drawing.Point(3, 221);
             this.btnMenuItemCliente.Name = "btnMenuItemCliente";
             this.btnMenuItemCliente.Size = new System.Drawing.Size(182, 45);
             this.btnMenuItemCliente.TabIndex = 2;
@@ -156,7 +141,7 @@
             this.btnMenuItemProducto.ForeColor = System.Drawing.Color.White;
             this.btnMenuItemProducto.Image = ((System.Drawing.Image)(resources.GetObject("btnMenuItemProducto.Image")));
             this.btnMenuItemProducto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMenuItemProducto.Location = new System.Drawing.Point(3, 96);
+            this.btnMenuItemProducto.Location = new System.Drawing.Point(6, 92);
             this.btnMenuItemProducto.Name = "btnMenuItemProducto";
             this.btnMenuItemProducto.Size = new System.Drawing.Size(182, 45);
             this.btnMenuItemProducto.TabIndex = 1;
@@ -164,29 +149,45 @@
             this.btnMenuItemProducto.UseVisualStyleBackColor = false;
             this.btnMenuItemProducto.Click += new System.EventHandler(this.btnMenuItemProducto_Click);
             // 
+            // guna2GradientPanel1
+            // 
+            this.guna2GradientPanel1.Controls.Add(this.btnMenuItemUsuario);
+            this.guna2GradientPanel1.Controls.Add(this.btnMenuItemCompra);
+            this.guna2GradientPanel1.Controls.Add(this.btnMenuItemCliente);
+            this.guna2GradientPanel1.Controls.Add(this.btnMenuItemVenta);
+            this.guna2GradientPanel1.Controls.Add(this.btnMenuItemProducto);
+            this.guna2GradientPanel1.Controls.Add(this.btnMenuItemProveedor);
+            this.guna2GradientPanel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.guna2GradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
+            this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(90)))));
+            this.guna2GradientPanel1.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.guna2GradientPanel1.Location = new System.Drawing.Point(0, 0);
+            this.guna2GradientPanel1.Name = "guna2GradientPanel1";
+            this.guna2GradientPanel1.Size = new System.Drawing.Size(181, 561);
+            this.guna2GradientPanel1.TabIndex = 7;
+            // 
             // FormMenuAdministrador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1344, 561);
-            this.Controls.Add(this.pnlMenuAdministrador);
+            this.Controls.Add(this.guna2GradientPanel1);
             this.IsMdiContainer = true;
             this.Name = "FormMenuAdministrador";
             this.Text = "FormMenuAdministrador";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.pnlMenuAdministrador.ResumeLayout(false);
+            this.guna2GradientPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel pnlMenuAdministrador;
         private System.Windows.Forms.Button btnMenuItemVenta;
         private System.Windows.Forms.Button btnMenuItemProveedor;
         private System.Windows.Forms.Button btnMenuItemUsuario;
         private System.Windows.Forms.Button btnMenuItemCliente;
         private System.Windows.Forms.Button btnMenuItemProducto;
         private System.Windows.Forms.Button btnMenuItemCompra;
+        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
     }
 }

@@ -259,5 +259,23 @@
   <ItemGroup>
     <None Include="Resources\icono_blanco_compras.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_blanco_advertencia_stock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_blanco_total_productos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_excel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gemini_Generated_Image_59msj059msj059ms.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_lupa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_filtro.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
