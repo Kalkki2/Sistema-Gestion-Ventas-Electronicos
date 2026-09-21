@@ -38,6 +38,9 @@
             System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.crtTendenciaVentas = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.crtVentasCategoria = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -52,7 +55,6 @@
             this.pnlEncabezado = new System.Windows.Forms.Panel();
             this.pnlnfoUsuario = new System.Windows.Forms.Panel();
             this.lblNombreUsuario = new System.Windows.Forms.Label();
-            this.picUsuario = new System.Windows.Forms.PictureBox();
             this.lblRolUsuario = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
@@ -68,6 +70,8 @@
             this.colCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.picUsuario = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.crtTendenciaVentas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.crtVentasCategoria)).BeginInit();
             this.panel4.SuspendLayout();
@@ -75,11 +79,12 @@
             this.pnlCardTotalProductos.SuspendLayout();
             this.pnlEncabezado.SuspendLayout();
             this.pnlnfoUsuario.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaProductos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
             this.SuspendLayout();
             // 
             // crtTendenciaVentas
@@ -89,7 +94,7 @@
             this.crtTendenciaVentas.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.crtTendenciaVentas.Legends.Add(legend1);
-            this.crtTendenciaVentas.Location = new System.Drawing.Point(322, 158);
+            this.crtTendenciaVentas.Location = new System.Drawing.Point(324, 325);
             this.crtTendenciaVentas.Name = "crtTendenciaVentas";
             series1.BorderWidth = 2;
             series1.ChartArea = "ChartArea1";
@@ -112,7 +117,7 @@
             this.crtVentasCategoria.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.crtVentasCategoria.Legends.Add(legend2);
-            this.crtVentasCategoria.Location = new System.Drawing.Point(0, 158);
+            this.crtVentasCategoria.Location = new System.Drawing.Point(2, 325);
             this.crtVentasCategoria.Name = "crtVentasCategoria";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
@@ -133,7 +138,7 @@
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.label5);
             this.panel4.Controls.Add(this.label6);
-            this.panel4.Location = new System.Drawing.Point(967, 70);
+            this.panel4.Location = new System.Drawing.Point(2, 152);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(187, 75);
             this.panel4.TabIndex = 27;
@@ -165,7 +170,7 @@
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label4);
-            this.panel3.Location = new System.Drawing.Point(746, 70);
+            this.panel3.Location = new System.Drawing.Point(195, 70);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(187, 75);
             this.panel3.TabIndex = 26;
@@ -197,7 +202,7 @@
             this.pnlCardTotalProductos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlCardTotalProductos.Controls.Add(this.lblCantTotalProductos);
             this.pnlCardTotalProductos.Controls.Add(this.lblTituloTotalProductos);
-            this.pnlCardTotalProductos.Location = new System.Drawing.Point(526, 70);
+            this.pnlCardTotalProductos.Location = new System.Drawing.Point(2, 70);
             this.pnlCardTotalProductos.Name = "pnlCardTotalProductos";
             this.pnlCardTotalProductos.Size = new System.Drawing.Size(187, 75);
             this.pnlCardTotalProductos.TabIndex = 25;
@@ -255,14 +260,6 @@
             this.lblNombreUsuario.TabIndex = 11;
             this.lblNombreUsuario.Text = "Perez, Juan";
             // 
-            // picUsuario
-            // 
-            this.picUsuario.Location = new System.Drawing.Point(3, 5);
-            this.picUsuario.Name = "picUsuario";
-            this.picUsuario.Size = new System.Drawing.Size(43, 42);
-            this.picUsuario.TabIndex = 3;
-            this.picUsuario.TabStop = false;
-            // 
             // lblRolUsuario
             // 
             this.lblRolUsuario.AutoSize = true;
@@ -297,7 +294,7 @@
             // 
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.dataGridView1);
-            this.panel2.Location = new System.Drawing.Point(807, 342);
+            this.panel2.Location = new System.Drawing.Point(812, 141);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(346, 178);
             this.panel2.TabIndex = 30;
@@ -327,7 +324,7 @@
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3});
-            this.dataGridView1.Location = new System.Drawing.Point(3, 64);
+            this.dataGridView1.Location = new System.Drawing.Point(4, 49);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(342, 63);
@@ -355,7 +352,7 @@
             // 
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.dgvListaProductos);
-            this.panel1.Location = new System.Drawing.Point(808, 158);
+            this.panel1.Location = new System.Drawing.Point(447, 141);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(346, 178);
             this.panel1.TabIndex = 29;
@@ -409,15 +406,40 @@
             this.colPrecio.Name = "colPrecio";
             this.colPrecio.Width = 130;
             // 
+            // chart1
+            // 
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
+            this.chart1.Location = new System.Drawing.Point(810, 325);
+            this.chart1.Name = "chart1";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chart1.Series.Add(series3);
+            this.chart1.Size = new System.Drawing.Size(369, 237);
+            this.chart1.TabIndex = 31;
+            this.chart1.Text = "chart1";
+            // 
+            // picUsuario
+            // 
+            this.picUsuario.Location = new System.Drawing.Point(3, 5);
+            this.picUsuario.Name = "picUsuario";
+            this.picUsuario.Size = new System.Drawing.Size(43, 42);
+            this.picUsuario.TabIndex = 3;
+            this.picUsuario.TabStop = false;
+            // 
             // DashboardVentasForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1170, 561);
+            this.Controls.Add(this.chart1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.pnlEncabezado);
             this.Controls.Add(this.panel4);
+            this.Controls.Add(this.pnlEncabezado);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.pnlCardTotalProductos);
             this.Controls.Add(this.crtVentasCategoria);
@@ -436,13 +458,14 @@
             this.pnlEncabezado.PerformLayout();
             this.pnlnfoUsuario.ResumeLayout(false);
             this.pnlnfoUsuario.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaProductos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -479,5 +502,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colCodigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPrecio;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }

@@ -213,6 +213,26 @@ namespace CapaPresentacion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icono_editar {
+            get {
+                object obj = ResourceManager.GetObject("icono_editar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icono_eliminar {
+            get {
+                object obj = ResourceManager.GetObject("icono_eliminar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icono_excel {
             get {
                 object obj = ResourceManager.GetObject("icono_excel", resourceCulture);
@@ -246,6 +266,26 @@ namespace CapaPresentacion.Properties {
         internal static System.Drawing.Bitmap icono_lupa {
             get {
                 object obj = ResourceManager.GetObject("icono_lupa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icono_reactivar {
+            get {
+                object obj = ResourceManager.GetObject("icono_reactivar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icono_salir {
+            get {
+                object obj = ResourceManager.GetObject("icono_salir", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

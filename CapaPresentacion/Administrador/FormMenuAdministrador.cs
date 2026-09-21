@@ -17,23 +17,21 @@ namespace CapaPresentacion.Administrador
             InitializeComponent();
         }
 
-        private void AbrirFormularioHijo<T>() where T : Form, new()
+        private void AbrirFormularioHijoUnico<T>() where T : Form, new()
         {
-            // 1. Verificar si ya está abierto
-            Form formExistente = this.MdiChildren.FirstOrDefault(f => f is T);
-
-            if (formExistente != null)
+            // 1. Cerrar todos los formularios hijos que estén abiertos actualmente
+            // Hacemos un .ToArray() para evitar errores al modificar la colección mientras la recorremos
+            foreach (Form hijo in this.MdiChildren.ToArray())
             {
-                formExistente.BringToFront();
-                return;
+                hijo.Close(); // Esto destruye y libera el formulario anterior
             }
 
-            // 2. Instanciar el nuevo formulario hijo
+            // 2. Instanciar y mostrar el nuevo formulario hijo
             T nuevoForm = new T
             {
                 MdiParent = this,
-                FormBorderStyle = FormBorderStyle.None, // Quita los bordes de ventana
-                Dock = DockStyle.Fill                   // Se ajusta al espacio restante del MDI
+                FormBorderStyle = FormBorderStyle.None, // Quita los bordes
+                Dock = DockStyle.Fill                   // Ocupa todo el espacio exacto
             };
 
             nuevoForm.Show();
@@ -41,32 +39,49 @@ namespace CapaPresentacion.Administrador
 
         private void btnMenuItemProducto_Click(object sender, EventArgs e)
         {
-            AbrirFormularioHijo<GestionProductosForm>();
+            AbrirFormularioHijoUnico<GestionProductosForm>();
         }
 
         private void btnMenuItemCliente_Click(object sender, EventArgs e)
         {
-            AbrirFormularioHijo<GestionClientesForm>();
+            AbrirFormularioHijoUnico<GestionClientesForm>();
         }
 
         private void btnMenuItemUsuario_Click(object sender, EventArgs e)
         {
-            AbrirFormularioHijo<GestionUsuariosForm>();
+            AbrirFormularioHijoUnico<GestionUsuariosForm>();
         }
 
         private void btnMenuItemVenta_Click(object sender, EventArgs e)
         {
-            AbrirFormularioHijo<GestionVentasForm>();
+            AbrirFormularioHijoUnico<GestionVentasForm>();
         }
 
         private void btnMenuItemProveedor_Click(object sender, EventArgs e)
         {
-            AbrirFormularioHijo<GestionProveedoresForm>();
+            AbrirFormularioHijoUnico<GestionProveedoresForm>();
         }
 
         private void btnMenuItemCompra_Click(object sender, EventArgs e)
         {
-            AbrirFormularioHijo<GestionComprasForm>();
+            AbrirFormularioHijoUnico<GestionComprasForm>();
+        }
+
+        private void btnMenuItemSalir_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show(
+         "¿Está seguro de que desea cerrar sesión?",
+         "Cerrar sesión",
+         MessageBoxButtons.YesNo,
+         MessageBoxIcon.Question
+     );
+
+            if (resultado == DialogResult.Yes)
+            {
+                // Al cerrar este formulario, el evento 'FormClosed' que pusiste 
+                // en el Login hará que este último vuelva a mostrarse (this.Show()) automáticamente.
+                this.Close();
+            }
         }
     }
 }

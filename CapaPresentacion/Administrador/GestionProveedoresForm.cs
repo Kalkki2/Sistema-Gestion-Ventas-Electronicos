@@ -17,23 +17,6 @@ namespace CapaPresentacion.Administrador
             InitializeComponent();
         }
 
-        private void LimpiarCampos()
-        {
-            txtNombreComercial.Clear();
-            txtRazonSocial.Clear();
-            txtCuit.Clear();
-            txtCorreo.Clear();
-            txtTelefono.Clear();
-            txtDireccion.Clear();
-
-            // Deseleccionar los ComboBoxes (vuelven a quedar en blanco)
-            cmbEstado.SelectedIndex = -1;
-
-            txtNombreComercial.Focus(); // Regresa el cursor al primer campo
-        }
-
-       
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtNombreComercial.Text) && string.IsNullOrWhiteSpace(txtRazonSocial.Text) && string.IsNullOrWhiteSpace(txtCuit.Text) &&
@@ -58,13 +41,6 @@ namespace CapaPresentacion.Administrador
                 return;
             }
 
-            // Valida que se haya seleccionado una opción en los ComboBox
-            if (cmbEstado.SelectedIndex == -1)
-            {
-                MessageBox.Show("Debe seleccionar una opción en todas las listas desplegables (Estado).", "Selección requerida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             // Confirmación del usuario antes de guardar
             DialogResult respuesta = MessageBox.Show(
                 "¿Está seguro de que desea registrar este nuevo proveedor?",
@@ -84,6 +60,30 @@ namespace CapaPresentacion.Administrador
 
             //  Limpia los campos para un nuevo ingreso
             LimpiarCampos();
+        }
+
+        private void LimpiarCampos()
+        {
+            txtNombreComercial.Clear();
+            txtRazonSocial.Clear();
+            txtCuit.Clear();
+            txtCorreo.Clear();
+            txtTelefono.Clear();
+            txtDireccion.Clear();
+
+            // Deseleccionar los ComboBoxes (vuelven a quedar en blanco)
+            cmbEstado.SelectedIndex = 0;
+
+            txtNombreComercial.Focus(); // Regresa el cursor al primer campo
+        }
+
+        private void btnBuscarProveedor_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtBuscarProveedor.Text))
+            {
+                MessageBox.Show("Debe completar el campo para buscar.", "Campo vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
         }
     }
 }

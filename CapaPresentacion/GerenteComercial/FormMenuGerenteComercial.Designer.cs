@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.pnlMenuAdministrador = new System.Windows.Forms.Panel();
+            this.btnMenuItemReporte = new System.Windows.Forms.Button();
+            this.btnMenuItemSalir = new System.Windows.Forms.Button();
             this.btnMenuItemInforme = new System.Windows.Forms.Button();
             this.pnlMenuAdministrador.SuspendLayout();
             this.SuspendLayout();
@@ -36,12 +38,50 @@
             // pnlMenuAdministrador
             // 
             this.pnlMenuAdministrador.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
+            this.pnlMenuAdministrador.Controls.Add(this.btnMenuItemReporte);
+            this.pnlMenuAdministrador.Controls.Add(this.btnMenuItemSalir);
             this.pnlMenuAdministrador.Controls.Add(this.btnMenuItemInforme);
             this.pnlMenuAdministrador.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMenuAdministrador.Location = new System.Drawing.Point(0, 0);
             this.pnlMenuAdministrador.Name = "pnlMenuAdministrador";
             this.pnlMenuAdministrador.Size = new System.Drawing.Size(185, 561);
             this.pnlMenuAdministrador.TabIndex = 2;
+            // 
+            // btnMenuItemReporte
+            // 
+            this.btnMenuItemReporte.BackColor = System.Drawing.Color.Transparent;
+            this.btnMenuItemReporte.FlatAppearance.BorderSize = 0;
+            this.btnMenuItemReporte.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
+            this.btnMenuItemReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMenuItemReporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMenuItemReporte.ForeColor = System.Drawing.Color.White;
+            this.btnMenuItemReporte.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMenuItemReporte.Location = new System.Drawing.Point(3, 162);
+            this.btnMenuItemReporte.Name = "btnMenuItemReporte";
+            this.btnMenuItemReporte.Size = new System.Drawing.Size(182, 45);
+            this.btnMenuItemReporte.TabIndex = 6;
+            this.btnMenuItemReporte.Text = "Reportes";
+            this.btnMenuItemReporte.UseVisualStyleBackColor = false;
+            this.btnMenuItemReporte.Click += new System.EventHandler(this.btnMenuItemReporte_Click);
+            // 
+            // btnMenuItemSalir
+            // 
+            this.btnMenuItemSalir.BackColor = System.Drawing.Color.Transparent;
+            this.btnMenuItemSalir.FlatAppearance.BorderSize = 0;
+            this.btnMenuItemSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
+            this.btnMenuItemSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMenuItemSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMenuItemSalir.ForeColor = System.Drawing.Color.White;
+            this.btnMenuItemSalir.Image = global::CapaPresentacion.Properties.Resources.icono_salir;
+            this.btnMenuItemSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMenuItemSalir.Location = new System.Drawing.Point(-3, 600);
+            this.btnMenuItemSalir.Name = "btnMenuItemSalir";
+            this.btnMenuItemSalir.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnMenuItemSalir.Size = new System.Drawing.Size(188, 45);
+            this.btnMenuItemSalir.TabIndex = 5;
+            this.btnMenuItemSalir.Text = "Salir";
+            this.btnMenuItemSalir.UseVisualStyleBackColor = false;
+            this.btnMenuItemSalir.Click += new System.EventHandler(this.btnMenuItemSalir_Click);
             // 
             // btnMenuItemInforme
             // 
@@ -80,5 +120,7 @@
 
         private System.Windows.Forms.Panel pnlMenuAdministrador;
         private System.Windows.Forms.Button btnMenuItemInforme;
+        private System.Windows.Forms.Button btnMenuItemSalir;
+        private System.Windows.Forms.Button btnMenuItemReporte;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using CapaPresentacion.Administrador;
 using CapaPresentacion.GerenteComercial;
+using CapaPresentacion.Vendedor;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,6 +41,17 @@ namespace CapaPresentacion
             formAdmin.Show();
             this.Hide();
 
+        }
+
+        private void btnIniciarRolVendedor_Click(object sender, EventArgs e)
+        {
+            FormMenuVendedor formVendedor = new FormMenuVendedor();
+
+            // Al cerrar el formulario hijo, volvemos a mostrar Form1
+            formVendedor.FormClosed += (s, args) => this.Show();
+
+            formVendedor.Show();
+            this.Hide();
         }
     }
 }

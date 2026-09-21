@@ -24,7 +24,7 @@ namespace CapaPresentacion.Administrador
             txtDni.Clear();
             txtTelefono.Clear();
             txtDireccion.Clear();
-            cmbEstado.SelectedIndex = -1;
+            cmbEstado.SelectedIndex = 0;
 
 
             txtNombre.Focus(); // Regresa el cursor al primer campo
@@ -72,6 +72,30 @@ namespace CapaPresentacion.Administrador
             else
             {
                 LimpiarCampos();
+            }
+        }
+
+        private void dgvListaCompras_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Validar que se hizo clic en una fila válida (evita errores si hacen clic en los encabezados)
+            // y comprobar que la columna clickeada es la de nuestro botón ("btnAccion")
+            if (e.RowIndex >= 0 && dgvListaCompras.Columns[e.ColumnIndex].Name == "colDetallesCompras")
+            {
+                // Instanciar y abrir el formulario modal
+                using (DetalleCompra modal = new DetalleCompra())
+                {
+                    // Mostrar el formulario como modal (bloquea la ventana principal hasta que se cierre)
+                    DialogResult resultado = modal.ShowDialog();
+                }
+            }
+        }
+
+        private void btnBuscarCliente_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtBuscarCliente.Text))
+            {
+                MessageBox.Show("Debe completar el campo para buscar.", "Campo vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
         }
     }

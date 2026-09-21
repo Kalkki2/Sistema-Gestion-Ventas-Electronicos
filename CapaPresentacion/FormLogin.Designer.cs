@@ -30,7 +30,6 @@
         {
             this.lblTituloLogin = new System.Windows.Forms.Label();
             this.btnIniciarRolGerenteComercial = new System.Windows.Forms.Button();
-            this.btnIniciarRolCajero = new System.Windows.Forms.Button();
             this.btnIniciarRolVendedor = new System.Windows.Forms.Button();
             this.btnIniciarRolAdministrador = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -39,7 +38,7 @@
             // 
             this.lblTituloLogin.AutoSize = true;
             this.lblTituloLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloLogin.Location = new System.Drawing.Point(156, 54);
+            this.lblTituloLogin.Location = new System.Drawing.Point(166, 51);
             this.lblTituloLogin.Name = "lblTituloLogin";
             this.lblTituloLogin.Size = new System.Drawing.Size(277, 29);
             this.lblTituloLogin.TabIndex = 5;
@@ -49,7 +48,7 @@
             // 
             this.btnIniciarRolGerenteComercial.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIniciarRolGerenteComercial.Image = global::CapaPresentacion.Properties.Resources.icono_gerente_comercial;
-            this.btnIniciarRolGerenteComercial.Location = new System.Drawing.Point(313, 110);
+            this.btnIniciarRolGerenteComercial.Location = new System.Drawing.Point(206, 109);
             this.btnIniciarRolGerenteComercial.Name = "btnIniciarRolGerenteComercial";
             this.btnIniciarRolGerenteComercial.Size = new System.Drawing.Size(177, 110);
             this.btnIniciarRolGerenteComercial.TabIndex = 3;
@@ -58,35 +57,24 @@
             this.btnIniciarRolGerenteComercial.UseVisualStyleBackColor = true;
             this.btnIniciarRolGerenteComercial.Click += new System.EventHandler(this.btnIniciarRolGerenteComercial_Click);
             // 
-            // btnIniciarRolCajero
-            // 
-            this.btnIniciarRolCajero.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIniciarRolCajero.Image = global::CapaPresentacion.Properties.Resources.icono_cajero;
-            this.btnIniciarRolCajero.Location = new System.Drawing.Point(84, 260);
-            this.btnIniciarRolCajero.Name = "btnIniciarRolCajero";
-            this.btnIniciarRolCajero.Size = new System.Drawing.Size(177, 110);
-            this.btnIniciarRolCajero.TabIndex = 2;
-            this.btnIniciarRolCajero.Text = "Cajero";
-            this.btnIniciarRolCajero.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnIniciarRolCajero.UseVisualStyleBackColor = true;
-            // 
             // btnIniciarRolVendedor
             // 
             this.btnIniciarRolVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIniciarRolVendedor.Image = global::CapaPresentacion.Properties.Resources.icono_vendedor;
-            this.btnIniciarRolVendedor.Location = new System.Drawing.Point(313, 260);
+            this.btnIniciarRolVendedor.Location = new System.Drawing.Point(404, 109);
             this.btnIniciarRolVendedor.Name = "btnIniciarRolVendedor";
             this.btnIniciarRolVendedor.Size = new System.Drawing.Size(177, 110);
             this.btnIniciarRolVendedor.TabIndex = 1;
             this.btnIniciarRolVendedor.Text = "Vendedor";
             this.btnIniciarRolVendedor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnIniciarRolVendedor.UseVisualStyleBackColor = true;
+            this.btnIniciarRolVendedor.Click += new System.EventHandler(this.btnIniciarRolVendedor_Click);
             // 
             // btnIniciarRolAdministrador
             // 
             this.btnIniciarRolAdministrador.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIniciarRolAdministrador.Image = global::CapaPresentacion.Properties.Resources.icono_administrador;
-            this.btnIniciarRolAdministrador.Location = new System.Drawing.Point(84, 110);
+            this.btnIniciarRolAdministrador.Location = new System.Drawing.Point(6, 109);
             this.btnIniciarRolAdministrador.Name = "btnIniciarRolAdministrador";
             this.btnIniciarRolAdministrador.Size = new System.Drawing.Size(177, 110);
             this.btnIniciarRolAdministrador.TabIndex = 0;
@@ -99,10 +87,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(605, 450);
+            this.ClientSize = new System.Drawing.Size(605, 295);
             this.Controls.Add(this.lblTituloLogin);
             this.Controls.Add(this.btnIniciarRolGerenteComercial);
-            this.Controls.Add(this.btnIniciarRolCajero);
             this.Controls.Add(this.btnIniciarRolVendedor);
             this.Controls.Add(this.btnIniciarRolAdministrador);
             this.Name = "FormLogin";
@@ -117,7 +104,6 @@
 
         private System.Windows.Forms.Button btnIniciarRolAdministrador;
         private System.Windows.Forms.Button btnIniciarRolVendedor;
-        private System.Windows.Forms.Button btnIniciarRolCajero;
         private System.Windows.Forms.Button btnIniciarRolGerenteComercial;
         private System.Windows.Forms.Label lblTituloLogin;
     }

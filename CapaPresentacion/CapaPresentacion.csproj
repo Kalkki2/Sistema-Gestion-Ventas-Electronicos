@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.5.2\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.2\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -12,6 +13,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,10 +36,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Guna.UI2, Version=2.0.4.8, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.8\lib\net48\Guna.UI2.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.Management" />
@@ -64,6 +74,18 @@
     </Compile>
     <Compile Include="Administrador\BuscarProveedorForm.Designer.cs">
       <DependentUpon>BuscarProveedorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\DetalleCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\DetalleCompra.Designer.cs">
+      <DependentUpon>DetalleCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\DetalleCompraProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\DetalleCompraProducto.Designer.cs">
+      <DependentUpon>DetalleCompraProducto.cs</DependentUpon>
     </Compile>
     <Compile Include="Administrador\FormMenuAdministrador.cs">
       <SubType>Form</SubType>
@@ -107,12 +129,6 @@
     <Compile Include="Administrador\GestionVentasForm.Designer.cs">
       <DependentUpon>GestionVentasForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cajero\FormMenuCajero.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cajero\FormMenuCajero.Designer.cs">
-      <DependentUpon>FormMenuCajero.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,19 +147,67 @@
     <Compile Include="GerenteComercial\FormMenuGerenteComercial.Designer.cs">
       <DependentUpon>FormMenuGerenteComercial.cs</DependentUpon>
     </Compile>
+    <Compile Include="GerenteComercial\ReportesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GerenteComercial\ReportesForm.Designer.cs">
+      <DependentUpon>ReportesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vendedor\BuscarClienteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vendedor\BuscarClienteForm.Designer.cs">
+      <DependentUpon>BuscarClienteForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vendedor\ClientesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vendedor\ClientesForm.Designer.cs">
+      <DependentUpon>ClientesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vendedor\DetalleCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vendedor\DetalleCompra.Designer.cs">
+      <DependentUpon>DetalleCompra.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vendedor\FormMenuVendedor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Vendedor\FormMenuVendedor.Designer.cs">
       <DependentUpon>FormMenuVendedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vendedor\MisVentasForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vendedor\MisVentasForm.Designer.cs">
+      <DependentUpon>MisVentasForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vendedor\NuevaVentaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vendedor\NuevaVentaForm.Designer.cs">
+      <DependentUpon>NuevaVentaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vendedor\ProductosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vendedor\ProductosForm.Designer.cs">
+      <DependentUpon>ProductosForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Administrador\BuscarProductoForm.resx">
       <DependentUpon>BuscarProductoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Administrador\BuscarProveedorForm.resx">
       <DependentUpon>BuscarProveedorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\DetalleCompra.resx">
+      <DependentUpon>DetalleCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\DetalleCompraProducto.resx">
+      <DependentUpon>DetalleCompraProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Administrador\FormMenuAdministrador.resx">
       <DependentUpon>FormMenuAdministrador.cs</DependentUpon>
@@ -166,9 +230,6 @@
     <EmbeddedResource Include="Administrador\GestionVentasForm.resx">
       <DependentUpon>GestionVentasForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Cajero\FormMenuCajero.resx">
-      <DependentUpon>FormMenuCajero.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -177,6 +238,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GerenteComercial\FormMenuGerenteComercial.resx">
       <DependentUpon>FormMenuGerenteComercial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GerenteComercial\ReportesForm.resx">
+      <DependentUpon>ReportesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -188,6 +252,27 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Vendedor\BuscarClienteForm.resx">
+      <DependentUpon>BuscarClienteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vendedor\ClientesForm.resx">
+      <DependentUpon>ClientesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vendedor\DetalleCompra.resx">
+      <DependentUpon>DetalleCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vendedor\FormMenuVendedor.resx">
+      <DependentUpon>FormMenuVendedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vendedor\MisVentasForm.resx">
+      <DependentUpon>MisVentasForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vendedor\NuevaVentaForm.resx">
+      <DependentUpon>NuevaVentaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vendedor\ProductosForm.resx">
+      <DependentUpon>ProductosForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -277,5 +362,26 @@
   <ItemGroup>
     <None Include="Resources\icono_filtro.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CapaEntidad\CapaEntidad.csproj">
+      <Project>{8d2b9238-5bc0-4bfe-8f48-d01ebd60d317}</Project>
+      <Name>CapaEntidad</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CapaNegocio\CapaNegocio.csproj">
+      <Project>{006f33f7-6acd-4380-8967-06d2eedc94fa}</Project>
+      <Name>CapaNegocio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_salir.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.2\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.2\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.2\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.2\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.5.2\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.2\build\EntityFramework.targets')" />
 </Project>

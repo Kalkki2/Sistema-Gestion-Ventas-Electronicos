@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaPresentacion.Vendedor;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,7 +17,6 @@ namespace CapaPresentacion.Administrador
         {
             InitializeComponent();
         }
-
 
         private void btnBuscarProducto_Click(object sender, EventArgs e)
         {
@@ -74,10 +74,7 @@ namespace CapaPresentacion.Administrador
             txtTelefonoProveedor.Clear();
             txtCorreoProveedor.Clear();
             txtProductoCompra.Clear();
-            txtCantidadCompra.Clear();
             txtPrecioCompra.Clear();
-
-
             // Deseleccionar los ComboBoxes (vuelven a quedar en blanco)
             cmbCategoriaCompra.SelectedIndex = -1;
             cmbMarcaCompra.SelectedIndex = -1;
@@ -95,6 +92,62 @@ namespace CapaPresentacion.Administrador
             else
             {
                 LimpiarCampos();
+            }
+        }
+
+        private void btnBuscarPoveedorPorCuit_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtBuscarProveedor.Text))
+            {
+                MessageBox.Show("Debe completar el campo para buscar.", "Campo vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+        }
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            if (dtpDesde.Value.Date > dtpHasta.Value.Date)
+            {
+                MessageBox.Show("La fecha 'Desde' no puede ser posterior a la fecha 'Hasta'", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+        }
+
+        private void btnGenerarCompra_Click(object sender, EventArgs e)
+        {
+            // Confirmación del usuario antes de guardar
+            DialogResult respuesta = MessageBox.Show(
+                "¿Está seguro de que desea generar esta nueva compra?",
+                "Confirmar registro",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            // Si el usuario responde 'No', cancelamos la operación
+            if (respuesta == DialogResult.No)
+            {
+                return;
+            }
+            // Mensaje de éxito
+            MessageBox.Show("La compra se genero con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //  Limpia los campos para un nuevo ingreso
+            LimpiarCampos();
+
+        }
+
+        private void dgvHistorialCompraProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Validar que se hizo clic en una fila válida (evita errores si hacen clic en los encabezados)
+            // y comprobar que la columna clickeada es la de nuestro botón ("btnAccion")
+            if (e.RowIndex >= 0 && dgvHistorialCompraProductos.Columns[e.ColumnIndex].Name == "colVerDetalle")
+            {
+                // Instanciar y abrir el formulario modal
+                using (DetalleCompraProducto modal = new DetalleCompraProducto())
+                {
+                    // Mostrar el formulario como modal (bloquea la ventana principal hasta que se cierre)
+                    DialogResult resultado = modal.ShowDialog();
+                }
             }
         }
     }

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblFiltrarPor = new System.Windows.Forms.Label();
             this.lblFiltraEstado = new System.Windows.Forms.Label();
             this.pnlEncabezado = new System.Windows.Forms.Panel();
@@ -60,6 +60,8 @@
             this.btnAgregarProveedor = new Guna.UI2.WinForms.Guna2Button();
             this.txtNombreComercial = new Guna.UI2.WinForms.Guna2TextBox();
             this.pnlContenedorFiltros = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.btnFiltrar = new Guna.UI2.WinForms.Guna2Button();
+            this.btnBuscarProveedor = new Guna.UI2.WinForms.Guna2Button();
             this.txtBuscarProveedor = new Guna.UI2.WinForms.Guna2TextBox();
             this.cmbFiltroEstado = new Guna.UI2.WinForms.Guna2ComboBox();
             this.pnlContenedorProveedores = new Guna.UI2.WinForms.Guna2Panel();
@@ -81,8 +83,6 @@
             this.pnlCardTotalProveedores = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.lblCantTotalProveedores = new System.Windows.Forms.Label();
             this.lblTituloTotalProveedores = new System.Windows.Forms.Label();
-            this.btnBuscarProducto = new Guna.UI2.WinForms.Guna2Button();
-            this.btnFiltrar = new Guna.UI2.WinForms.Guna2Button();
             this.pnlEncabezado.SuspendLayout();
             this.pnlnfoUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
@@ -98,7 +98,7 @@
             this.lblFiltrarPor.AutoSize = true;
             this.lblFiltrarPor.BackColor = System.Drawing.Color.Transparent;
             this.lblFiltrarPor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiltrarPor.Location = new System.Drawing.Point(17, 61);
+            this.lblFiltrarPor.Location = new System.Drawing.Point(19, 74);
             this.lblFiltrarPor.Name = "lblFiltrarPor";
             this.lblFiltrarPor.Size = new System.Drawing.Size(73, 17);
             this.lblFiltrarPor.TabIndex = 16;
@@ -109,7 +109,7 @@
             this.lblFiltraEstado.AutoSize = true;
             this.lblFiltraEstado.BackColor = System.Drawing.Color.Transparent;
             this.lblFiltraEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiltraEstado.Location = new System.Drawing.Point(18, 85);
+            this.lblFiltraEstado.Location = new System.Drawing.Point(20, 98);
             this.lblFiltraEstado.Name = "lblFiltraEstado";
             this.lblFiltraEstado.Size = new System.Drawing.Size(52, 17);
             this.lblFiltraEstado.TabIndex = 11;
@@ -250,11 +250,12 @@
             this.cmbEstado.ForeColor = System.Drawing.Color.Black;
             this.cmbEstado.ItemHeight = 21;
             this.cmbEstado.Items.AddRange(new object[] {
-            "categoria 1",
-            "categoria 2"});
+            "Activo",
+            "Inactivo"});
             this.cmbEstado.Location = new System.Drawing.Point(277, 189);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(121, 27);
+            this.cmbEstado.StartIndex = 0;
             this.cmbEstado.TabIndex = 93;
             // 
             // btnCancelar
@@ -506,21 +507,58 @@
             // 
             this.pnlContenedorFiltros.BackColor = System.Drawing.Color.Transparent;
             this.pnlContenedorFiltros.Controls.Add(this.btnFiltrar);
-            this.pnlContenedorFiltros.Controls.Add(this.btnBuscarProducto);
+            this.pnlContenedorFiltros.Controls.Add(this.btnBuscarProveedor);
             this.pnlContenedorFiltros.Controls.Add(this.txtBuscarProveedor);
             this.pnlContenedorFiltros.Controls.Add(this.cmbFiltroEstado);
             this.pnlContenedorFiltros.Controls.Add(this.lblFiltraEstado);
             this.pnlContenedorFiltros.Controls.Add(this.lblFiltrarPor);
             this.pnlContenedorFiltros.Controls.Add(this.lblBuscarPorCuitOCorreo);
             this.pnlContenedorFiltros.FillColor = System.Drawing.Color.White;
-            this.pnlContenedorFiltros.Location = new System.Drawing.Point(584, 193);
+            this.pnlContenedorFiltros.Location = new System.Drawing.Point(584, 180);
             this.pnlContenedorFiltros.Name = "pnlContenedorFiltros";
             this.pnlContenedorFiltros.Radius = 5;
             this.pnlContenedorFiltros.ShadowColor = System.Drawing.Color.Black;
             this.pnlContenedorFiltros.ShadowDepth = 25;
             this.pnlContenedorFiltros.ShadowShift = 3;
-            this.pnlContenedorFiltros.Size = new System.Drawing.Size(354, 152);
+            this.pnlContenedorFiltros.Size = new System.Drawing.Size(383, 165);
             this.pnlContenedorFiltros.TabIndex = 58;
+            // 
+            // btnFiltrar
+            // 
+            this.btnFiltrar.BackColor = System.Drawing.Color.Transparent;
+            this.btnFiltrar.BorderRadius = 5;
+            this.btnFiltrar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnFiltrar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnFiltrar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnFiltrar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnFiltrar.FillColor = System.Drawing.Color.Silver;
+            this.btnFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnFiltrar.ForeColor = System.Drawing.Color.Black;
+            this.btnFiltrar.Image = global::CapaPresentacion.Properties.Resources.icono_filtro;
+            this.btnFiltrar.Location = new System.Drawing.Point(150, 118);
+            this.btnFiltrar.Name = "btnFiltrar";
+            this.btnFiltrar.Size = new System.Drawing.Size(71, 27);
+            this.btnFiltrar.TabIndex = 46;
+            this.btnFiltrar.Text = "Filtrar";
+            // 
+            // btnBuscarProveedor
+            // 
+            this.btnBuscarProveedor.BackColor = System.Drawing.Color.Transparent;
+            this.btnBuscarProveedor.BorderRadius = 5;
+            this.btnBuscarProveedor.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnBuscarProveedor.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnBuscarProveedor.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnBuscarProveedor.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnBuscarProveedor.FillColor = System.Drawing.Color.Silver;
+            this.btnBuscarProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnBuscarProveedor.ForeColor = System.Drawing.Color.Black;
+            this.btnBuscarProveedor.Image = global::CapaPresentacion.Properties.Resources.icono_lupa;
+            this.btnBuscarProveedor.Location = new System.Drawing.Point(267, 37);
+            this.btnBuscarProveedor.Name = "btnBuscarProveedor";
+            this.btnBuscarProveedor.Size = new System.Drawing.Size(71, 27);
+            this.btnBuscarProveedor.TabIndex = 45;
+            this.btnBuscarProveedor.Text = "Buscar";
+            this.btnBuscarProveedor.Click += new System.EventHandler(this.btnBuscarProveedor_Click);
             // 
             // txtBuscarProveedor
             // 
@@ -540,7 +578,7 @@
             this.txtBuscarProveedor.Name = "txtBuscarProveedor";
             this.txtBuscarProveedor.PlaceholderText = "";
             this.txtBuscarProveedor.SelectedText = "";
-            this.txtBuscarProveedor.Size = new System.Drawing.Size(257, 27);
+            this.txtBuscarProveedor.Size = new System.Drawing.Size(240, 27);
             this.txtBuscarProveedor.TabIndex = 0;
             // 
             // cmbFiltroEstado
@@ -556,11 +594,13 @@
             this.cmbFiltroEstado.ForeColor = System.Drawing.Color.Black;
             this.cmbFiltroEstado.ItemHeight = 21;
             this.cmbFiltroEstado.Items.AddRange(new object[] {
-            "categoria 1",
-            "categoria 2"});
-            this.cmbFiltroEstado.Location = new System.Drawing.Point(21, 105);
+            "Todos",
+            "Activo",
+            "Inactivo"});
+            this.cmbFiltroEstado.Location = new System.Drawing.Point(23, 118);
             this.cmbFiltroEstado.Name = "cmbFiltroEstado";
             this.cmbFiltroEstado.Size = new System.Drawing.Size(121, 27);
+            this.cmbFiltroEstado.StartIndex = 0;
             this.cmbFiltroEstado.TabIndex = 1;
             // 
             // pnlContenedorProveedores
@@ -622,16 +662,17 @@
             // 
             // dgvListaProveedores
             // 
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
-            this.dgvListaProveedores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListaProveedores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
+            this.dgvListaProveedores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListaProveedores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvListaProveedores.ColumnHeadersHeight = 31;
             this.dgvListaProveedores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colCuit,
             this.colNombreComercial,
@@ -644,26 +685,26 @@
             this.colFechaAlta,
             this.colEditar,
             this.colEliminar});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvListaProveedores.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvListaProveedores.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvListaProveedores.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvListaProveedores.Location = new System.Drawing.Point(0, 49);
+            this.dgvListaProveedores.Location = new System.Drawing.Point(3, 49);
             this.dgvListaProveedores.Name = "dgvListaProveedores";
             this.dgvListaProveedores.RowHeadersVisible = false;
             this.dgvListaProveedores.RowTemplate.Height = 23;
-            this.dgvListaProveedores.Size = new System.Drawing.Size(1146, 231);
+            this.dgvListaProveedores.Size = new System.Drawing.Size(1140, 200);
             this.dgvListaProveedores.TabIndex = 7;
             this.dgvListaProveedores.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
             this.dgvListaProveedores.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
             this.dgvListaProveedores.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvListaProveedores.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvListaProveedores.ThemeStyle.HeaderStyle.Height = 23;
+            this.dgvListaProveedores.ThemeStyle.HeaderStyle.Height = 31;
             this.dgvListaProveedores.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvListaProveedores.ThemeStyle.RowsStyle.Height = 23;
             this.dgvListaProveedores.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
@@ -771,42 +812,6 @@
             this.lblTituloTotalProveedores.TabIndex = 5;
             this.lblTituloTotalProveedores.Text = "Total Proveedores:";
             // 
-            // btnBuscarProducto
-            // 
-            this.btnBuscarProducto.BackColor = System.Drawing.Color.Transparent;
-            this.btnBuscarProducto.BorderRadius = 5;
-            this.btnBuscarProducto.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnBuscarProducto.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnBuscarProducto.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnBuscarProducto.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnBuscarProducto.FillColor = System.Drawing.Color.Silver;
-            this.btnBuscarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnBuscarProducto.ForeColor = System.Drawing.Color.Black;
-            this.btnBuscarProducto.Image = global::CapaPresentacion.Properties.Resources.icono_lupa;
-            this.btnBuscarProducto.Location = new System.Drawing.Point(280, 37);
-            this.btnBuscarProducto.Name = "btnBuscarProducto";
-            this.btnBuscarProducto.Size = new System.Drawing.Size(71, 27);
-            this.btnBuscarProducto.TabIndex = 45;
-            this.btnBuscarProducto.Text = "Buscar";
-            // 
-            // btnFiltrar
-            // 
-            this.btnFiltrar.BackColor = System.Drawing.Color.Transparent;
-            this.btnFiltrar.BorderRadius = 5;
-            this.btnFiltrar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnFiltrar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnFiltrar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnFiltrar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnFiltrar.FillColor = System.Drawing.Color.Silver;
-            this.btnFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnFiltrar.ForeColor = System.Drawing.Color.Black;
-            this.btnFiltrar.Image = global::CapaPresentacion.Properties.Resources.icono_filtro;
-            this.btnFiltrar.Location = new System.Drawing.Point(148, 105);
-            this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(71, 27);
-            this.btnFiltrar.TabIndex = 46;
-            this.btnFiltrar.Text = "Filtrar";
-            // 
             // GestionProveedoresForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -888,7 +893,7 @@
         private Guna.UI2.WinForms.Guna2GradientPanel pnlCardTotalProveedores;
         private System.Windows.Forms.Label lblCantTotalProveedores;
         private System.Windows.Forms.Label lblTituloTotalProveedores;
-        private Guna.UI2.WinForms.Guna2Button btnBuscarProducto;
+        private Guna.UI2.WinForms.Guna2Button btnBuscarProveedor;
         private Guna.UI2.WinForms.Guna2Button btnFiltrar;
     }
 }

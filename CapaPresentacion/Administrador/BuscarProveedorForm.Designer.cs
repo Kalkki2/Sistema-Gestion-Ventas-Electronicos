@@ -34,21 +34,21 @@
             this.lblBuscarPorCodONombre = new System.Windows.Forms.Label();
             this.pnlContenedorFiltros = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.btnFiltrar = new Guna.UI2.WinForms.Guna2Button();
-            this.btnBuscarProducto = new Guna.UI2.WinForms.Guna2Button();
+            this.btnBuscarProveedor = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2ComboBox2 = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtBuscarProveedor = new Guna.UI2.WinForms.Guna2TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.pnlContenedorCluentes = new Guna.UI2.WinForms.Guna2Panel();
             this.dgvListaClientes = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.lblTituloListaClientes = new System.Windows.Forms.Label();
             this.colNroCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEstado = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.lblTituloListaClientes = new System.Windows.Forms.Label();
             this.pnlContenedorFiltros.SuspendLayout();
             this.pnlContenedorCluentes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaClientes)).BeginInit();
@@ -69,10 +69,10 @@
             this.pnlContenedorFiltros.BackColor = System.Drawing.Color.Transparent;
             this.pnlContenedorFiltros.Controls.Add(this.lblBuscarPorCodONombre);
             this.pnlContenedorFiltros.Controls.Add(this.btnFiltrar);
-            this.pnlContenedorFiltros.Controls.Add(this.btnBuscarProducto);
+            this.pnlContenedorFiltros.Controls.Add(this.btnBuscarProveedor);
             this.pnlContenedorFiltros.Controls.Add(this.guna2ComboBox1);
             this.pnlContenedorFiltros.Controls.Add(this.guna2ComboBox2);
-            this.pnlContenedorFiltros.Controls.Add(this.guna2TextBox1);
+            this.pnlContenedorFiltros.Controls.Add(this.txtBuscarProveedor);
             this.pnlContenedorFiltros.Controls.Add(this.label2);
             this.pnlContenedorFiltros.Controls.Add(this.label3);
             this.pnlContenedorFiltros.Controls.Add(this.label4);
@@ -104,23 +104,24 @@
             this.btnFiltrar.TabIndex = 45;
             this.btnFiltrar.Text = "Filtrar";
             // 
-            // btnBuscarProducto
+            // btnBuscarProveedor
             // 
-            this.btnBuscarProducto.BackColor = System.Drawing.Color.Transparent;
-            this.btnBuscarProducto.BorderRadius = 5;
-            this.btnBuscarProducto.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnBuscarProducto.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnBuscarProducto.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnBuscarProducto.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnBuscarProducto.FillColor = System.Drawing.Color.Silver;
-            this.btnBuscarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnBuscarProducto.ForeColor = System.Drawing.Color.Black;
-            this.btnBuscarProducto.Image = global::CapaPresentacion.Properties.Resources.icono_lupa;
-            this.btnBuscarProducto.Location = new System.Drawing.Point(252, 65);
-            this.btnBuscarProducto.Name = "btnBuscarProducto";
-            this.btnBuscarProducto.Size = new System.Drawing.Size(71, 27);
-            this.btnBuscarProducto.TabIndex = 44;
-            this.btnBuscarProducto.Text = "Buscar";
+            this.btnBuscarProveedor.BackColor = System.Drawing.Color.Transparent;
+            this.btnBuscarProveedor.BorderRadius = 5;
+            this.btnBuscarProveedor.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnBuscarProveedor.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnBuscarProveedor.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnBuscarProveedor.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnBuscarProveedor.FillColor = System.Drawing.Color.Silver;
+            this.btnBuscarProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnBuscarProveedor.ForeColor = System.Drawing.Color.Black;
+            this.btnBuscarProveedor.Image = global::CapaPresentacion.Properties.Resources.icono_lupa;
+            this.btnBuscarProveedor.Location = new System.Drawing.Point(252, 65);
+            this.btnBuscarProveedor.Name = "btnBuscarProveedor";
+            this.btnBuscarProveedor.Size = new System.Drawing.Size(71, 27);
+            this.btnBuscarProveedor.TabIndex = 44;
+            this.btnBuscarProveedor.Text = "Buscar";
+            this.btnBuscarProveedor.Click += new System.EventHandler(this.btnBuscarProveedor_Click);
             // 
             // guna2ComboBox1
             // 
@@ -135,11 +136,11 @@
             this.guna2ComboBox1.ForeColor = System.Drawing.Color.Black;
             this.guna2ComboBox1.ItemHeight = 21;
             this.guna2ComboBox1.Items.AddRange(new object[] {
-            "categoria 1",
-            "categoria 2"});
+            "Todos"});
             this.guna2ComboBox1.Location = new System.Drawing.Point(479, 65);
             this.guna2ComboBox1.Name = "guna2ComboBox1";
             this.guna2ComboBox1.Size = new System.Drawing.Size(118, 27);
+            this.guna2ComboBox1.StartIndex = 0;
             this.guna2ComboBox1.TabIndex = 24;
             // 
             // guna2ComboBox2
@@ -155,33 +156,33 @@
             this.guna2ComboBox2.ForeColor = System.Drawing.Color.Black;
             this.guna2ComboBox2.ItemHeight = 21;
             this.guna2ComboBox2.Items.AddRange(new object[] {
-            "categoria 1",
-            "categoria 2"});
+            "Todos"});
             this.guna2ComboBox2.Location = new System.Drawing.Point(355, 65);
             this.guna2ComboBox2.Name = "guna2ComboBox2";
             this.guna2ComboBox2.Size = new System.Drawing.Size(118, 27);
+            this.guna2ComboBox2.StartIndex = 0;
             this.guna2ComboBox2.TabIndex = 22;
             // 
-            // guna2TextBox1
+            // txtBuscarProveedor
             // 
-            this.guna2TextBox1.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2TextBox1.BorderRadius = 5;
-            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox1.DefaultText = "";
-            this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.guna2TextBox1.ForeColor = System.Drawing.Color.Black;
-            this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Location = new System.Drawing.Point(4, 65);
-            this.guna2TextBox1.Name = "guna2TextBox1";
-            this.guna2TextBox1.PlaceholderText = "";
-            this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.Size = new System.Drawing.Size(242, 27);
-            this.guna2TextBox1.TabIndex = 0;
+            this.txtBuscarProveedor.BorderColor = System.Drawing.Color.DarkGray;
+            this.txtBuscarProveedor.BorderRadius = 5;
+            this.txtBuscarProveedor.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtBuscarProveedor.DefaultText = "";
+            this.txtBuscarProveedor.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtBuscarProveedor.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtBuscarProveedor.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscarProveedor.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscarProveedor.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.txtBuscarProveedor.ForeColor = System.Drawing.Color.Black;
+            this.txtBuscarProveedor.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarProveedor.Location = new System.Drawing.Point(4, 65);
+            this.txtBuscarProveedor.Name = "txtBuscarProveedor";
+            this.txtBuscarProveedor.PlaceholderText = "";
+            this.txtBuscarProveedor.SelectedText = "";
+            this.txtBuscarProveedor.Size = new System.Drawing.Size(242, 27);
+            this.txtBuscarProveedor.TabIndex = 0;
             // 
             // label2
             // 
@@ -271,18 +272,6 @@
             this.dgvListaClientes.ThemeStyle.RowsStyle.Height = 23;
             this.dgvListaClientes.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
             // 
-            // lblTituloListaClientes
-            // 
-            this.lblTituloListaClientes.AutoSize = true;
-            this.lblTituloListaClientes.BackColor = System.Drawing.Color.Transparent;
-            this.lblTituloListaClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloListaClientes.ForeColor = System.Drawing.Color.Black;
-            this.lblTituloListaClientes.Location = new System.Drawing.Point(3, 15);
-            this.lblTituloListaClientes.Name = "lblTituloListaClientes";
-            this.lblTituloListaClientes.Size = new System.Drawing.Size(139, 16);
-            this.lblTituloListaClientes.TabIndex = 6;
-            this.lblTituloListaClientes.Text = "Lista de productos:";
-            // 
             // colNroCliente
             // 
             this.colNroCliente.HeaderText = "CUIT";
@@ -310,6 +299,18 @@
             this.colEstado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.colEstado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // lblTituloListaClientes
+            // 
+            this.lblTituloListaClientes.AutoSize = true;
+            this.lblTituloListaClientes.BackColor = System.Drawing.Color.Transparent;
+            this.lblTituloListaClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloListaClientes.ForeColor = System.Drawing.Color.Black;
+            this.lblTituloListaClientes.Location = new System.Drawing.Point(3, 15);
+            this.lblTituloListaClientes.Name = "lblTituloListaClientes";
+            this.lblTituloListaClientes.Size = new System.Drawing.Size(139, 16);
+            this.lblTituloListaClientes.TabIndex = 6;
+            this.lblTituloListaClientes.Text = "Lista de productos:";
+            // 
             // BuscarProveedorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -333,10 +334,10 @@
         private System.Windows.Forms.Label lblBuscarPorCodONombre;
         private Guna.UI2.WinForms.Guna2ShadowPanel pnlContenedorFiltros;
         private Guna.UI2.WinForms.Guna2Button btnFiltrar;
-        private Guna.UI2.WinForms.Guna2Button btnBuscarProducto;
+        private Guna.UI2.WinForms.Guna2Button btnBuscarProveedor;
         private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
         private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox2;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private Guna.UI2.WinForms.Guna2TextBox txtBuscarProveedor;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;

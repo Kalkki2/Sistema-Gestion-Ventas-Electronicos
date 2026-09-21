@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CapaEntidad;
+using CapaNegocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,67 +14,100 @@ namespace CapaPresentacion.Administrador
 {
     public partial class GestionUsuariosForm : Form
     {
+        private CNUsuario objCNUsuario = new CNUsuario();
+        private CNPerfil objCNPerfil = new CNPerfil();
+        private int idUsuarioSeleccionado = 0;
         public GestionUsuariosForm()
         {
             InitializeComponent();
         }
 
-       
+
 
         private void LimpiarCampos()
         {
+            idUsuarioSeleccionado = 0; // Reinicia la selección
             txtNombre.Clear();
             txtApellido.Clear();
             txtDni.Clear();
             txtCorreo.Clear();
             txtTelefono.Clear();
-            txtCorreo.Clear();
             txtDireccion.Clear();
             txtContrasenia.Clear();
 
-            // Deseleccionar los ComboBoxes (vuelven a quedar en blanco)
             cmbPerfil.SelectedIndex = -1;
             cmbEstado.SelectedIndex = -1;
 
-            txtNombre.Focus(); // Regresa el cursor al primer campo
+            btnAgregarUsuario.Text = "Agregar"; // Vuelve a su estado inicial
+            txtNombre.Focus();
         }
 
         private void btnAgregarUsuario_Click(object sender, EventArgs e)
-        {
-            // Valida que los TextBox no estén vacíos
-            if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtApellido.Text) || string.IsNullOrWhiteSpace(txtDni.Text) || string.IsNullOrWhiteSpace(txtCorreo.Text) ||
-                string.IsNullOrWhiteSpace(txtTelefono.Text) || string.IsNullOrWhiteSpace(txtDireccion.Text) || string.IsNullOrWhiteSpace(txtContrasenia.Text))
+        {// 1. Validaciones de campos
+            if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtApellido.Text) ||
+                string.IsNullOrWhiteSpace(txtDni.Text) || string.IsNullOrWhiteSpace(txtCorreo.Text) ||
+                string.IsNullOrWhiteSpace(txtTelefono.Text) || string.IsNullOrWhiteSpace(txtDireccion.Text))
             {
-                MessageBox.Show("Debe completar todos los campos de texto obligatorios.", "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe completar todos los campos obligatorios.", "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Valida que se haya seleccionado una opción en los ComboBox
             if (cmbEstado.SelectedIndex == -1 || cmbPerfil.SelectedIndex == -1)
             {
-                MessageBox.Show("Debe seleccionar una opción en todas las listas desplegables (Estado, Perfil).", "Selección requerida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe seleccionar Estado y Perfil.", "Selección requerida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Confirmación del usuario antes de guardar
-            DialogResult respuesta = MessageBox.Show(
-                "¿Está seguro de que desea registrar este nuevo usuario?",
-                "Confirmar registro",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
+            // 2. Mapeo del objeto
+            OpcionCombo estadoSeleccionado = (OpcionCombo)cmbEstado.SelectedItem;
 
-            // Si el usuario responde 'No', cancelamos la operación
-            if (respuesta == DialogResult.No)
+            EUsuario oUsuario = new EUsuario()
             {
-                return;
+                usuario_id = idUsuarioSeleccionado,
+                nombre = txtNombre.Text.Trim(),
+                apellido = txtApellido.Text.Trim(),
+                dni = txtDni.Text.Trim(),
+                correo = txtCorreo.Text.Trim(),
+                telefono = txtTelefono.Text.Trim(),
+                direccion = txtDireccion.Text.Trim(),
+                contrasenia = txtContrasenia.Text.Trim(),
+                estado = (bool)estadoSeleccionado.Valor,
+                perfil_id = Convert.ToInt32(cmbPerfil.SelectedValue)
+            };
+
+            string mensaje = string.Empty;
+            bool resultado = false;
+
+            // 3. Evaluar si es Registro Nuevo o Actualización
+            if (idUsuarioSeleccionado == 0)
+            {
+                // NUEVO
+                DialogResult confirmacion = MessageBox.Show("¿Desea registrar este usuario?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (confirmacion == DialogResult.No) return;
+
+                resultado = objCNUsuario.Registrar(oUsuario, out mensaje);
+            }
+            else
+            {
+                // EDITAR / ACTUALIZAR
+                DialogResult confirmacion = MessageBox.Show("¿Desea actualizar los datos de este usuario?", "Confirmar actualización", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (confirmacion == DialogResult.No) return;
+
+                resultado = objCNUsuario.Editar(oUsuario, out mensaje);
             }
 
-            // Mensaje de éxito
-            MessageBox.Show("El usuario se registró con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // 4. Respuesta
+            if (resultado)
+            {
+                MessageBox.Show(idUsuarioSeleccionado == 0 ? "Usuario registrado con éxito." : "Usuario actualizado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LimpiarCampos();
+                CargarUsuarios();
+            }
+            else
+            {
+                MessageBox.Show(mensaje, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 
-            //  Limpia los campos para un nuevo ingreso
-            LimpiarCampos();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -89,5 +124,273 @@ namespace CapaPresentacion.Administrador
             }
 
         }
+
+        private void GestionUsuariosForm_Load(object sender, EventArgs e)
+        {
+            CargarUsuarios();
+            CargarCmbPerfil();
+            CargarCmbEstado();
+            CargarFiltros();
+        }
+        private void CargarUsuarios()
+        {
+            // 1. Desactivar la generación automática de columnas
+            dgvListaUsuarios.AutoGenerateColumns = false;
+
+            // 2. Mapear las columnas creadas en el Diseñador con las propiedades de EUsuario
+            dgvListaUsuarios.Columns["colDNI"].DataPropertyName = "dni";
+            dgvListaUsuarios.Columns["colNombre"].DataPropertyName = "nombre";
+            dgvListaUsuarios.Columns["colApellido"].DataPropertyName = "apellido";
+            dgvListaUsuarios.Columns["colCorreo"].DataPropertyName = "correo";
+            dgvListaUsuarios.Columns["colTelefono"].DataPropertyName = "telefono";
+            dgvListaUsuarios.Columns["colDireccion"].DataPropertyName = "direccion";
+            dgvListaUsuarios.Columns["colPerfil"].DataPropertyName = "NombrePerfil"; // Trae el nombre del objeto EPerfil
+            dgvListaUsuarios.Columns["colEstado"].DataPropertyName = "EstadoTexto";   // Trae "Activo" o "Inactivo"
+            dgvListaUsuarios.Columns["colFechaAlta"].DataPropertyName = "fecha_registro";
+
+            // 3. Obtener la lista mapeada desde la Capa de Negocio
+            var lista = objCNUsuario.Listar();
+
+            // 4. Llenar el DataGridView y actualizar la tarjeta de total
+            dgvListaUsuarios.DataSource = lista;
+            lblCantTotalUsuarios.Text = lista.Count.ToString();
+        }
+
+        private void dgvListaUsuarios_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Verificar que e.RowIndex sea válido y no la fila de encabezado/nueva
+            if (e.RowIndex < 0 || e.RowIndex == dgvListaUsuarios.NewRowIndex) return;
+
+            // Obtener la columna actual
+            string nombreColumna = dgvListaUsuarios.Columns[e.ColumnIndex].Name;
+
+            // 1. Asignar ícono a la columna Editar
+            if (nombreColumna == "colEditar") // Reemplaza por el Name de tu columna Editar
+            {
+                e.Value = Properties.Resources.icono_editar;
+            }
+
+            // 2. Asignar ícono dinámico a la columna Eliminar/Estado
+            if (nombreColumna == "colEliminar") // Reemplaza por el Name de tu columna Eliminar
+            {
+                // Obtenemos el objeto mapeado de la fila actual
+                var usuarioRow = dgvListaUsuarios.Rows[e.RowIndex].DataBoundItem as EUsuario;
+
+                if (usuarioRow != null)
+                {
+                    // Si el usuario está activo -> Tacho de basura
+                    // Si está inactivo -> Ícono de reactivar
+                    if (usuarioRow.estado)
+                    {
+                        e.Value = Properties.Resources.icono_eliminar;
+                    }
+                    else
+                    {
+                        e.Value = Properties.Resources.icono_reactivar;
+                    }
+                }
+            }
+        }
+
+        private void dgvListaUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Verificar que no se haya cliqueado la cabecera
+            if (e.RowIndex < 0) return;
+
+            string nombreColumna = dgvListaUsuarios.Columns[e.ColumnIndex].Name;
+
+            if (nombreColumna == "colEditar")
+            {
+                var usuario = dgvListaUsuarios.Rows[e.RowIndex].DataBoundItem as EUsuario;
+
+                if (usuario != null)
+                {
+                    idUsuarioSeleccionado = usuario.usuario_id;
+
+                    // Cargar datos en las cajas de texto
+                    txtNombre.Text = usuario.nombre;
+                    txtApellido.Text = usuario.apellido;
+                    txtDni.Text = usuario.dni;
+                    txtCorreo.Text = usuario.correo;
+                    txtTelefono.Text = usuario.telefono;
+                    txtDireccion.Text = usuario.direccion;
+                    txtContrasenia.Text = usuario.contrasenia;
+
+                    // Seleccionar valor en ComboBox Perfil
+                    cmbPerfil.SelectedValue = usuario.perfil_id;
+
+                    // Seleccionar valor en ComboBox Estado
+                    foreach (OpcionCombo item in cmbEstado.Items)
+                    {
+                        if ((bool)item.Valor == usuario.estado)
+                        {
+                            cmbEstado.SelectedItem = item;
+                            break;
+                        }
+                    }
+
+                    // Cambiar el texto del botón
+                    btnAgregarUsuario.Text = "Actualizar";
+                }
+            }
+            // Detectar si se hizo clic en la columna de Eliminar / Reactivar
+            if (nombreColumna == "colEliminar") // Reemplaza "colEliminar" por el Name de tu columna
+            {
+                var usuarioSeleccionado = dgvListaUsuarios.Rows[e.RowIndex].DataBoundItem as EUsuario;
+
+                if (usuarioSeleccionado != null)
+                {
+                    bool estadoActual = usuarioSeleccionado.estado;
+                    bool nuevoEstado = !estadoActual; // Invierte el estado actual
+
+                    string accion = estadoActual ? "desactivar" : "reactivar";
+                    string titulo = estadoActual ? "Desactivar Usuario" : "Reactivar Usuario";
+
+                    DialogResult result = MessageBox.Show(
+                        $"¿Está seguro de que desea {accion} al usuario {usuarioSeleccionado.nombre} {usuarioSeleccionado.apellido}?",
+                        titulo,
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question
+                    );
+
+                    if (result == DialogResult.Yes)
+                    {
+                        bool respuesta = objCNUsuario.CambiarEstado(usuarioSeleccionado.usuario_id, nuevoEstado);
+
+                        if (respuesta)
+                        {
+                            MessageBox.Show($"Usuario {accion}do con éxito.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            // Recargar la tabla para actualizar la grilla y el ícono
+                            CargarUsuarios();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo cambiar el estado del usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void CargarCmbPerfil()
+        {
+            List<EPerfil> listaPerfiles = objCNPerfil.Listar();
+
+            // Asignar ValueMember y DisplayMember ANTES del DataSource
+            cmbPerfil.ValueMember = "perfil_id";
+            cmbPerfil.DisplayMember = "nombre";
+            cmbPerfil.DataSource = listaPerfiles;
+            cmbPerfil.SelectedIndex = -1; // Inicia desmarcado
+        }
+
+        private void CargarCmbEstado()
+        {
+            cmbEstado.Items.Clear();
+            cmbEstado.Items.Add(new OpcionCombo { Texto = "Activo", Valor = true });
+            cmbEstado.Items.Add(new OpcionCombo { Texto = "Inactivo", Valor = false });
+            cmbEstado.DisplayMember = "Texto";
+            cmbEstado.ValueMember = "Valor";
+            cmbEstado.SelectedIndex = -1; // Inicia desmarcado
+        }
+
+        // Clase auxiliar para llenar el ComboBox de Estado
+        public class OpcionCombo
+        {
+            public string Texto { get; set; }
+            public object Valor { get; set; }
+        }
+
+        private void btnBuscarUsuario_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtBuscarUsuario.Text))
+            {
+                MessageBox.Show("Debe completar el campo para buscar.", "Campo vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            string busqueda = txtBuscarUsuario.Text.Trim();
+            // Consultamos a la base de datos mediante la Capa de Negocio
+            var resultados = objCNUsuario.Buscar(busqueda);
+
+            // Asignamos el resultado al DataGridView y actualizamos el contador
+            dgvListaUsuarios.DataSource = resultados;
+            lblCantTotalUsuarios.Text = resultados.Count.ToString();
+
+            // Si no se encontraron coincidencias, avisamos al usuario
+            if (resultados.Count == 0)
+            {
+                MessageBox.Show("No se encontraron usuarios que coincidan con la búsqueda.", "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CargarUsuarios();
+            }
+        }
+
+        private void btnFiltrarUsuario_Click(object sender, EventArgs e)
+        {
+            if (cmbFiltroEstado.SelectedIndex == -1 || cmbFiltroPerfil.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar Estado o Perfil  para filtrar", "Selección requerida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int? idPerfilSeleccionado = null;
+            bool? estadoSeleccionado = null;
+
+            // 1. Obtener valor de Perfil (si es > 0, es un perfil específico)
+            if (cmbFiltroPerfil.SelectedValue != null)
+            {
+                int idPerfil = Convert.ToInt32(cmbFiltroPerfil.SelectedValue);
+                if (idPerfil > 0)
+                {
+                    idPerfilSeleccionado = idPerfil;
+                }
+            }
+
+            // 2. Obtener valor de Estado
+            if (cmbFiltroEstado.SelectedItem != null)
+            {
+                OpcionCombo opcionEstado = (OpcionCombo)cmbFiltroEstado.SelectedItem;
+                if (opcionEstado.Valor != null)
+                {
+                    estadoSeleccionado = (bool)opcionEstado.Valor;
+                }
+            }
+
+            // 3. Consultar la base de datos con los criterios seleccionados
+            var usuariosFiltrados = objCNUsuario.Filtrar(idPerfilSeleccionado, estadoSeleccionado);
+
+            // 4. Actualizar el DataGridView y el contador
+            dgvListaUsuarios.DataSource = usuariosFiltrados;
+            lblCantTotalUsuarios.Text = usuariosFiltrados.Count.ToString();
+
+            if (usuariosFiltrados.Count == 0)
+            {
+                MessageBox.Show("No se encontraron usuarios con los criterios de búsqueda seleccionados.", "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        }
+
+        private void CargarFiltros()
+        {
+            // 1. Cargar ComboBox Filtro Perfil
+            List<EPerfil> listaPerfiles = objCNPerfil.Listar();
+            // Insertamos la opción por defecto en el índice 0
+            listaPerfiles.Insert(0, new EPerfil { perfil_id = 0, nombre = "Todos" });
+
+            cmbFiltroPerfil.DataSource = listaPerfiles;
+            cmbFiltroPerfil.DisplayMember = "nombre";
+            cmbFiltroPerfil.ValueMember = "perfil_id";
+            cmbFiltroPerfil.SelectedIndex = 0; // Selecciona "Todos" por defecto
+
+            // 2. Cargar ComboBox Filtro Estado
+            cmbFiltroEstado.Items.Clear();
+            cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Todos", Valor = null });
+            cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Activo", Valor = true });
+            cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Inactivo", Valor = false });
+
+            cmbFiltroEstado.DisplayMember = "Texto";
+            cmbFiltroEstado.ValueMember = "Valor";
+            cmbFiltroEstado.SelectedIndex = 0; // Selecciona "Todos" por defecto
+        }
     }
-}
+    }
+

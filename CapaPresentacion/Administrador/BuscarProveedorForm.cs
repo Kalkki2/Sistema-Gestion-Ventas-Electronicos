@@ -16,5 +16,14 @@ namespace CapaPresentacion.Administrador
         {
             InitializeComponent();
         }
+
+        private void btnBuscarProveedor_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtBuscarProveedor.Text))
+            {
+                MessageBox.Show("Debe completar el campo para buscar.", "Campo vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+        }
     }
 }

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlEncabezado = new System.Windows.Forms.Panel();
             this.pnlnfoUsuario = new System.Windows.Forms.Panel();
             this.lblNombreUsuario = new System.Windows.Forms.Label();
@@ -68,9 +68,9 @@
             this.lblCantTotalUsuarios = new System.Windows.Forms.Label();
             this.lblTituloTotalUsuarios = new System.Windows.Forms.Label();
             this.pnlContenedorFiltros = new Guna.UI2.WinForms.Guna2ShadowPanel();
-            this.btnFiltrar = new Guna.UI2.WinForms.Guna2Button();
-            this.btnBuscarProducto = new Guna.UI2.WinForms.Guna2Button();
-            this.cmbFiltroProveedor = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.btnFiltrarUsuario = new Guna.UI2.WinForms.Guna2Button();
+            this.btnBuscarUsuario = new Guna.UI2.WinForms.Guna2Button();
+            this.cmbFiltroPerfil = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txtBuscarUsuario = new Guna.UI2.WinForms.Guna2TextBox();
             this.cmbFiltroEstado = new Guna.UI2.WinForms.Guna2ComboBox();
             this.pnlContenedorUsuarios = new Guna.UI2.WinForms.Guna2Panel();
@@ -86,8 +86,8 @@
             this.colPerfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colFechaAlta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEditar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.colEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colEditar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colEliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.lblTituloListaUsuarios = new System.Windows.Forms.Label();
             this.pnlEncabezado.SuspendLayout();
             this.pnlnfoUsuario.SuspendLayout();
@@ -621,9 +621,9 @@
             // pnlContenedorFiltros
             // 
             this.pnlContenedorFiltros.BackColor = System.Drawing.Color.Transparent;
-            this.pnlContenedorFiltros.Controls.Add(this.btnFiltrar);
-            this.pnlContenedorFiltros.Controls.Add(this.btnBuscarProducto);
-            this.pnlContenedorFiltros.Controls.Add(this.cmbFiltroProveedor);
+            this.pnlContenedorFiltros.Controls.Add(this.btnFiltrarUsuario);
+            this.pnlContenedorFiltros.Controls.Add(this.btnBuscarUsuario);
+            this.pnlContenedorFiltros.Controls.Add(this.cmbFiltroPerfil);
             this.pnlContenedorFiltros.Controls.Add(this.txtBuscarUsuario);
             this.pnlContenedorFiltros.Controls.Add(this.lblFiltraEstado);
             this.pnlContenedorFiltros.Controls.Add(this.cmbFiltroEstado);
@@ -640,61 +640,63 @@
             this.pnlContenedorFiltros.Size = new System.Drawing.Size(369, 170);
             this.pnlContenedorFiltros.TabIndex = 54;
             // 
-            // btnFiltrar
+            // btnFiltrarUsuario
             // 
-            this.btnFiltrar.BackColor = System.Drawing.Color.Transparent;
-            this.btnFiltrar.BorderRadius = 5;
-            this.btnFiltrar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnFiltrar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnFiltrar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnFiltrar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnFiltrar.FillColor = System.Drawing.Color.Silver;
-            this.btnFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnFiltrar.ForeColor = System.Drawing.Color.Black;
-            this.btnFiltrar.Image = global::CapaPresentacion.Properties.Resources.icono_filtro;
-            this.btnFiltrar.Location = new System.Drawing.Point(265, 130);
-            this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(71, 27);
-            this.btnFiltrar.TabIndex = 46;
-            this.btnFiltrar.Text = "Filtrar";
+            this.btnFiltrarUsuario.BackColor = System.Drawing.Color.Transparent;
+            this.btnFiltrarUsuario.BorderRadius = 5;
+            this.btnFiltrarUsuario.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnFiltrarUsuario.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnFiltrarUsuario.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnFiltrarUsuario.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnFiltrarUsuario.FillColor = System.Drawing.Color.Silver;
+            this.btnFiltrarUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnFiltrarUsuario.ForeColor = System.Drawing.Color.Black;
+            this.btnFiltrarUsuario.Image = global::CapaPresentacion.Properties.Resources.icono_filtro;
+            this.btnFiltrarUsuario.Location = new System.Drawing.Point(265, 130);
+            this.btnFiltrarUsuario.Name = "btnFiltrarUsuario";
+            this.btnFiltrarUsuario.Size = new System.Drawing.Size(71, 27);
+            this.btnFiltrarUsuario.TabIndex = 46;
+            this.btnFiltrarUsuario.Text = "Filtrar";
+            this.btnFiltrarUsuario.Click += new System.EventHandler(this.btnFiltrarUsuario_Click);
             // 
-            // btnBuscarProducto
+            // btnBuscarUsuario
             // 
-            this.btnBuscarProducto.BackColor = System.Drawing.Color.Transparent;
-            this.btnBuscarProducto.BorderRadius = 5;
-            this.btnBuscarProducto.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnBuscarProducto.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnBuscarProducto.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnBuscarProducto.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnBuscarProducto.FillColor = System.Drawing.Color.Silver;
-            this.btnBuscarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnBuscarProducto.ForeColor = System.Drawing.Color.Black;
-            this.btnBuscarProducto.Image = global::CapaPresentacion.Properties.Resources.icono_lupa;
-            this.btnBuscarProducto.Location = new System.Drawing.Point(258, 56);
-            this.btnBuscarProducto.Name = "btnBuscarProducto";
-            this.btnBuscarProducto.Size = new System.Drawing.Size(71, 27);
-            this.btnBuscarProducto.TabIndex = 45;
-            this.btnBuscarProducto.Text = "Buscar";
+            this.btnBuscarUsuario.BackColor = System.Drawing.Color.Transparent;
+            this.btnBuscarUsuario.BorderRadius = 5;
+            this.btnBuscarUsuario.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnBuscarUsuario.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnBuscarUsuario.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnBuscarUsuario.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnBuscarUsuario.FillColor = System.Drawing.Color.Silver;
+            this.btnBuscarUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnBuscarUsuario.ForeColor = System.Drawing.Color.Black;
+            this.btnBuscarUsuario.Image = global::CapaPresentacion.Properties.Resources.icono_lupa;
+            this.btnBuscarUsuario.Location = new System.Drawing.Point(258, 56);
+            this.btnBuscarUsuario.Name = "btnBuscarUsuario";
+            this.btnBuscarUsuario.Size = new System.Drawing.Size(71, 27);
+            this.btnBuscarUsuario.TabIndex = 45;
+            this.btnBuscarUsuario.Text = "Buscar";
+            this.btnBuscarUsuario.Click += new System.EventHandler(this.btnBuscarUsuario_Click);
             // 
-            // cmbFiltroProveedor
+            // cmbFiltroPerfil
             // 
-            this.cmbFiltroProveedor.BackColor = System.Drawing.Color.Transparent;
-            this.cmbFiltroProveedor.BorderColor = System.Drawing.Color.DarkGray;
-            this.cmbFiltroProveedor.BorderRadius = 5;
-            this.cmbFiltroProveedor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbFiltroProveedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbFiltroProveedor.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmbFiltroProveedor.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmbFiltroProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.cmbFiltroProveedor.ForeColor = System.Drawing.Color.Black;
-            this.cmbFiltroProveedor.ItemHeight = 21;
-            this.cmbFiltroProveedor.Items.AddRange(new object[] {
+            this.cmbFiltroPerfil.BackColor = System.Drawing.Color.Transparent;
+            this.cmbFiltroPerfil.BorderColor = System.Drawing.Color.DarkGray;
+            this.cmbFiltroPerfil.BorderRadius = 5;
+            this.cmbFiltroPerfil.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbFiltroPerfil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFiltroPerfil.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbFiltroPerfil.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbFiltroPerfil.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.cmbFiltroPerfil.ForeColor = System.Drawing.Color.Black;
+            this.cmbFiltroPerfil.ItemHeight = 21;
+            this.cmbFiltroPerfil.Items.AddRange(new object[] {
             "categoria 1",
             "categoria 2"});
-            this.cmbFiltroProveedor.Location = new System.Drawing.Point(14, 130);
-            this.cmbFiltroProveedor.Name = "cmbFiltroProveedor";
-            this.cmbFiltroProveedor.Size = new System.Drawing.Size(118, 27);
-            this.cmbFiltroProveedor.TabIndex = 23;
+            this.cmbFiltroPerfil.Location = new System.Drawing.Point(14, 130);
+            this.cmbFiltroPerfil.Name = "cmbFiltroPerfil";
+            this.cmbFiltroPerfil.Size = new System.Drawing.Size(118, 27);
+            this.cmbFiltroPerfil.TabIndex = 23;
             // 
             // txtBuscarUsuario
             // 
@@ -796,16 +798,17 @@
             // 
             // dgvListaUsuarios
             // 
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
-            this.dgvListaUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListaUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
+            this.dgvListaUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListaUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvListaUsuarios.ColumnHeadersHeight = 30;
             this.dgvListaUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colDni,
             this.colNombre,
@@ -818,29 +821,31 @@
             this.colFechaAlta,
             this.colEditar,
             this.colEliminar});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvListaUsuarios.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvListaUsuarios.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvListaUsuarios.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvListaUsuarios.Location = new System.Drawing.Point(0, 49);
             this.dgvListaUsuarios.Name = "dgvListaUsuarios";
             this.dgvListaUsuarios.RowHeadersVisible = false;
-            this.dgvListaUsuarios.RowTemplate.Height = 23;
+            this.dgvListaUsuarios.RowTemplate.Height = 25;
             this.dgvListaUsuarios.Size = new System.Drawing.Size(1146, 231);
             this.dgvListaUsuarios.TabIndex = 7;
             this.dgvListaUsuarios.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
             this.dgvListaUsuarios.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
             this.dgvListaUsuarios.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvListaUsuarios.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvListaUsuarios.ThemeStyle.HeaderStyle.Height = 23;
-            this.dgvListaUsuarios.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvListaUsuarios.ThemeStyle.RowsStyle.Height = 23;
+            this.dgvListaUsuarios.ThemeStyle.HeaderStyle.Height = 30;
+            this.dgvListaUsuarios.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvListaUsuarios.ThemeStyle.RowsStyle.Height = 25;
             this.dgvListaUsuarios.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
+            this.dgvListaUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaUsuarios_CellContentClick);
+            this.dgvListaUsuarios.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvListaUsuarios_CellFormatting);
             // 
             // colDni
             // 
@@ -890,12 +895,16 @@
             // colEditar
             // 
             this.colEditar.HeaderText = "Editar";
+            this.colEditar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.colEditar.Name = "colEditar";
+            this.colEditar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // colEliminar
             // 
             this.colEliminar.HeaderText = "Eliminar";
+            this.colEliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.colEliminar.Name = "colEliminar";
+            this.colEliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // lblTituloListaUsuarios
             // 
@@ -921,6 +930,7 @@
             this.Controls.Add(this.pnlEncabezado);
             this.Name = "GestionUsuariosForm";
             this.Text = "GestionUsuariosForm";
+            this.Load += new System.EventHandler(this.GestionUsuariosForm_Load);
             this.pnlEncabezado.ResumeLayout(false);
             this.pnlEncabezado.PerformLayout();
             this.pnlnfoUsuario.ResumeLayout(false);
@@ -978,13 +988,16 @@
         private System.Windows.Forms.Label lblCantTotalUsuarios;
         private System.Windows.Forms.Label lblTituloTotalUsuarios;
         private Guna.UI2.WinForms.Guna2ShadowPanel pnlContenedorFiltros;
-        private Guna.UI2.WinForms.Guna2ComboBox cmbFiltroProveedor;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbFiltroPerfil;
         private Guna.UI2.WinForms.Guna2TextBox txtBuscarUsuario;
         private Guna.UI2.WinForms.Guna2ComboBox cmbFiltroEstado;
         private Guna.UI2.WinForms.Guna2Panel pnlContenedorUsuarios;
         private Guna.UI2.WinForms.Guna2Button btnExportarPDF;
         private Guna.UI2.WinForms.Guna2Button btnExportarEXCEL;
         private Guna.UI2.WinForms.Guna2DataGridView dgvListaUsuarios;
+        private System.Windows.Forms.Label lblTituloListaUsuarios;
+        private Guna.UI2.WinForms.Guna2Button btnBuscarUsuario;
+        private Guna.UI2.WinForms.Guna2Button btnFiltrarUsuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDni;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn colApellido;
@@ -994,10 +1007,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colPerfil;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEstado;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFechaAlta;
-        private System.Windows.Forms.DataGridViewButtonColumn colEditar;
-        private System.Windows.Forms.DataGridViewButtonColumn colEliminar;
-        private System.Windows.Forms.Label lblTituloListaUsuarios;
-        private Guna.UI2.WinForms.Guna2Button btnBuscarProducto;
-        private Guna.UI2.WinForms.Guna2Button btnFiltrar;
+        private System.Windows.Forms.DataGridViewImageColumn colEditar;
+        private System.Windows.Forms.DataGridViewImageColumn colEliminar;
     }
 }
