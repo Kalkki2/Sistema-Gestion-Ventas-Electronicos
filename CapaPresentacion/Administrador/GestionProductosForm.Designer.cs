@@ -87,8 +87,6 @@
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.dgvListaProductos = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.lblTituloCatlogoProductos = new System.Windows.Forms.Label();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.colCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -102,6 +100,8 @@
             this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEditar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.colEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.lblTituloCatlogoProductos = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.pnlEncabezado.SuspendLayout();
             this.pnlnfoUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
@@ -576,6 +576,7 @@
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.PlaceholderText = "";
+            this.txtDescripcion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtDescripcion.SelectedText = "";
             this.txtDescripcion.Size = new System.Drawing.Size(225, 74);
             this.txtDescripcion.TabIndex = 44;
@@ -1008,22 +1009,6 @@
             this.dgvListaProductos.ThemeStyle.RowsStyle.Height = 23;
             this.dgvListaProductos.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
             // 
-            // lblTituloCatlogoProductos
-            // 
-            this.lblTituloCatlogoProductos.AutoSize = true;
-            this.lblTituloCatlogoProductos.BackColor = System.Drawing.Color.Transparent;
-            this.lblTituloCatlogoProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloCatlogoProductos.ForeColor = System.Drawing.Color.Black;
-            this.lblTituloCatlogoProductos.Location = new System.Drawing.Point(5, 15);
-            this.lblTituloCatlogoProductos.Name = "lblTituloCatlogoProductos";
-            this.lblTituloCatlogoProductos.Size = new System.Drawing.Size(170, 16);
-            this.lblTituloCatlogoProductos.TabIndex = 6;
-            this.lblTituloCatlogoProductos.Text = "Catalogo de Productos:";
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            // 
             // colCodigo
             // 
             this.colCodigo.HeaderText = "Codigo";
@@ -1088,6 +1073,22 @@
             // 
             this.colEliminar.HeaderText = "Eliminar";
             this.colEliminar.Name = "colEliminar";
+            // 
+            // lblTituloCatlogoProductos
+            // 
+            this.lblTituloCatlogoProductos.AutoSize = true;
+            this.lblTituloCatlogoProductos.BackColor = System.Drawing.Color.Transparent;
+            this.lblTituloCatlogoProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloCatlogoProductos.ForeColor = System.Drawing.Color.Black;
+            this.lblTituloCatlogoProductos.Location = new System.Drawing.Point(5, 15);
+            this.lblTituloCatlogoProductos.Name = "lblTituloCatlogoProductos";
+            this.lblTituloCatlogoProductos.Size = new System.Drawing.Size(170, 16);
+            this.lblTituloCatlogoProductos.TabIndex = 6;
+            this.lblTituloCatlogoProductos.Text = "Catalogo de Productos:";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // GestionProductosForm
             // 

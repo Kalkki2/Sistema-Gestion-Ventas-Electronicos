@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -44,6 +45,8 @@
             this.btnCancelar = new Guna.UI2.WinForms.Guna2Button();
             this.btnActualizarClientes = new Guna.UI2.WinForms.Guna2Button();
             this.pnlFormularioCliente = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.txtCorreo = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.lblEstado = new System.Windows.Forms.Label();
             this.cmbEstado = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txtDireccion = new Guna.UI2.WinForms.Guna2TextBox();
@@ -92,8 +95,7 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDetallesCompras = new System.Windows.Forms.DataGridViewButtonColumn();
             this.lblTituloListaCompras = new System.Windows.Forms.Label();
-            this.txtCorreo = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.pnlEncabezado.SuspendLayout();
             this.pnlnfoUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
@@ -104,6 +106,7 @@
             this.pnlCardTotalClientes.SuspendLayout();
             this.pnlContenedorLista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaCompras)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlEncabezado
@@ -180,6 +183,7 @@
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.Transparent;
             this.btnCancelar.BorderRadius = 5;
+            this.btnCancelar.CausesValidation = false;
             this.btnCancelar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnCancelar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnCancelar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -242,6 +246,40 @@
             this.pnlFormularioCliente.Size = new System.Drawing.Size(550, 277);
             this.pnlFormularioCliente.TabIndex = 56;
             // 
+            // txtCorreo
+            // 
+            this.txtCorreo.BackColor = System.Drawing.Color.Transparent;
+            this.txtCorreo.BorderColor = System.Drawing.Color.DarkGray;
+            this.txtCorreo.BorderRadius = 5;
+            this.txtCorreo.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCorreo.DefaultText = "";
+            this.txtCorreo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtCorreo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtCorreo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCorreo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCorreo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtCorreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCorreo.ForeColor = System.Drawing.Color.Black;
+            this.txtCorreo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtCorreo.Location = new System.Drawing.Point(16, 229);
+            this.txtCorreo.Name = "txtCorreo";
+            this.txtCorreo.PlaceholderText = "";
+            this.txtCorreo.SelectedText = "";
+            this.txtCorreo.Size = new System.Drawing.Size(225, 27);
+            this.txtCorreo.TabIndex = 76;
+            this.txtCorreo.Validating += new System.ComponentModel.CancelEventHandler(this.txtCorreo_Validating);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(13, 209);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 17);
+            this.label2.TabIndex = 75;
+            this.label2.Text = "Correo: ";
+            // 
             // lblEstado
             // 
             this.lblEstado.AutoSize = true;
@@ -266,8 +304,8 @@
             this.cmbEstado.ForeColor = System.Drawing.Color.Black;
             this.cmbEstado.ItemHeight = 21;
             this.cmbEstado.Items.AddRange(new object[] {
-            "categoria 1",
-            "categoria 2"});
+            "Activo",
+            "Inactivo"});
             this.cmbEstado.Location = new System.Drawing.Point(274, 167);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(121, 27);
@@ -294,6 +332,7 @@
             this.txtDireccion.SelectedText = "";
             this.txtDireccion.Size = new System.Drawing.Size(225, 27);
             this.txtDireccion.TabIndex = 72;
+            this.txtDireccion.Validating += new System.ComponentModel.CancelEventHandler(this.txtDireccion_Validating);
             // 
             // lblDireccion
             // 
@@ -327,6 +366,7 @@
             this.txtTelefono.SelectedText = "";
             this.txtTelefono.Size = new System.Drawing.Size(225, 27);
             this.txtTelefono.TabIndex = 70;
+            this.txtTelefono.Validating += new System.ComponentModel.CancelEventHandler(this.txtTelefono_Validating);
             // 
             // lblTelefono
             // 
@@ -360,6 +400,7 @@
             this.txtDni.SelectedText = "";
             this.txtDni.Size = new System.Drawing.Size(225, 27);
             this.txtDni.TabIndex = 68;
+            this.txtDni.Validating += new System.ComponentModel.CancelEventHandler(this.txtDni_Validating);
             // 
             // lblDni
             // 
@@ -404,6 +445,7 @@
             this.txtApellido.SelectedText = "";
             this.txtApellido.Size = new System.Drawing.Size(225, 27);
             this.txtApellido.TabIndex = 65;
+            this.txtApellido.Validating += new System.ComponentModel.CancelEventHandler(this.txtApellido_Validating);
             // 
             // lblApellido
             // 
@@ -448,6 +490,7 @@
             this.txtNombre.SelectedText = "";
             this.txtNombre.Size = new System.Drawing.Size(225, 27);
             this.txtNombre.TabIndex = 62;
+            this.txtNombre.Validating += new System.ComponentModel.CancelEventHandler(this.txtNombre_Validating);
             // 
             // pnlContenedorFiltros
             // 
@@ -880,38 +923,9 @@
             this.lblTituloListaCompras.TabIndex = 6;
             this.lblTituloListaCompras.Text = "Lista de compras:";
             // 
-            // txtCorreo
+            // errorProvider1
             // 
-            this.txtCorreo.BackColor = System.Drawing.Color.Transparent;
-            this.txtCorreo.BorderColor = System.Drawing.Color.DarkGray;
-            this.txtCorreo.BorderRadius = 5;
-            this.txtCorreo.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtCorreo.DefaultText = "";
-            this.txtCorreo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtCorreo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtCorreo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtCorreo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtCorreo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCorreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCorreo.ForeColor = System.Drawing.Color.Black;
-            this.txtCorreo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCorreo.Location = new System.Drawing.Point(16, 229);
-            this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.PlaceholderText = "";
-            this.txtCorreo.SelectedText = "";
-            this.txtCorreo.Size = new System.Drawing.Size(225, 27);
-            this.txtCorreo.TabIndex = 76;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(13, 209);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 17);
-            this.label2.TabIndex = 75;
-            this.label2.Text = "Correo: ";
+            this.errorProvider1.ContainerControl = this;
             // 
             // GestionClientesForm
             // 
@@ -944,6 +958,7 @@
             this.pnlContenedorLista.ResumeLayout(false);
             this.pnlContenedorLista.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaCompras)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1009,5 +1024,6 @@
         private System.Windows.Forms.Label lblTituloListaCompras;
         private Guna.UI2.WinForms.Guna2TextBox txtCorreo;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

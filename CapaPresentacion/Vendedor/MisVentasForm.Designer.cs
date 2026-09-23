@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -59,7 +60,7 @@
             this.btnFiltrar = new Guna.UI2.WinForms.Guna2Button();
             this.btnBuscarCliente = new Guna.UI2.WinForms.Guna2Button();
             this.cmbFiltroMetodoPago = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.txtBuscarCliente = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtBuscarClienteDni = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblBuscarPorDNI = new System.Windows.Forms.Label();
             this.lblFiltrarPor = new System.Windows.Forms.Label();
             this.lblFiltrarMetodoPago = new System.Windows.Forms.Label();
@@ -90,6 +91,7 @@
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.pnlEncabezado.SuspendLayout();
             this.pnlnfoUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
@@ -98,6 +100,7 @@
             this.pnlContenedorFiltros.SuspendLayout();
             this.guna2ShadowPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlEncabezado
@@ -289,7 +292,7 @@
             this.pnlContenedorFiltros.Controls.Add(this.btnFiltrar);
             this.pnlContenedorFiltros.Controls.Add(this.btnBuscarCliente);
             this.pnlContenedorFiltros.Controls.Add(this.cmbFiltroMetodoPago);
-            this.pnlContenedorFiltros.Controls.Add(this.txtBuscarCliente);
+            this.pnlContenedorFiltros.Controls.Add(this.txtBuscarClienteDni);
             this.pnlContenedorFiltros.Controls.Add(this.lblBuscarPorDNI);
             this.pnlContenedorFiltros.Controls.Add(this.lblFiltrarPor);
             this.pnlContenedorFiltros.Controls.Add(this.lblFiltrarMetodoPago);
@@ -384,7 +387,7 @@
             this.btnBuscarCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.btnBuscarCliente.ForeColor = System.Drawing.Color.Black;
             this.btnBuscarCliente.Image = global::CapaPresentacion.Properties.Resources.icono_lupa;
-            this.btnBuscarCliente.Location = new System.Drawing.Point(264, 40);
+            this.btnBuscarCliente.Location = new System.Drawing.Point(286, 40);
             this.btnBuscarCliente.Name = "btnBuscarCliente";
             this.btnBuscarCliente.Size = new System.Drawing.Size(89, 27);
             this.btnBuscarCliente.TabIndex = 44;
@@ -414,26 +417,27 @@
             this.cmbFiltroMetodoPago.StartIndex = 0;
             this.cmbFiltroMetodoPago.TabIndex = 22;
             // 
-            // txtBuscarCliente
+            // txtBuscarClienteDni
             // 
-            this.txtBuscarCliente.BorderColor = System.Drawing.Color.DarkGray;
-            this.txtBuscarCliente.BorderRadius = 5;
-            this.txtBuscarCliente.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtBuscarCliente.DefaultText = "";
-            this.txtBuscarCliente.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtBuscarCliente.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtBuscarCliente.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtBuscarCliente.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtBuscarCliente.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscarCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.txtBuscarCliente.ForeColor = System.Drawing.Color.Black;
-            this.txtBuscarCliente.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscarCliente.Location = new System.Drawing.Point(16, 40);
-            this.txtBuscarCliente.Name = "txtBuscarCliente";
-            this.txtBuscarCliente.PlaceholderText = "";
-            this.txtBuscarCliente.SelectedText = "";
-            this.txtBuscarCliente.Size = new System.Drawing.Size(242, 27);
-            this.txtBuscarCliente.TabIndex = 0;
+            this.txtBuscarClienteDni.BorderColor = System.Drawing.Color.DarkGray;
+            this.txtBuscarClienteDni.BorderRadius = 5;
+            this.txtBuscarClienteDni.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtBuscarClienteDni.DefaultText = "";
+            this.txtBuscarClienteDni.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtBuscarClienteDni.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtBuscarClienteDni.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscarClienteDni.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscarClienteDni.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarClienteDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.txtBuscarClienteDni.ForeColor = System.Drawing.Color.Black;
+            this.txtBuscarClienteDni.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarClienteDni.Location = new System.Drawing.Point(16, 40);
+            this.txtBuscarClienteDni.Name = "txtBuscarClienteDni";
+            this.txtBuscarClienteDni.PlaceholderText = "";
+            this.txtBuscarClienteDni.SelectedText = "";
+            this.txtBuscarClienteDni.Size = new System.Drawing.Size(242, 27);
+            this.txtBuscarClienteDni.TabIndex = 0;
+            this.txtBuscarClienteDni.Validating += new System.ComponentModel.CancelEventHandler(this.txtBuscarCliente_Validating);
             // 
             // lblBuscarPorDNI
             // 
@@ -784,6 +788,10 @@
             this.dataGridViewTextBoxColumn5.HeaderText = "Subtotal";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // MisVentasForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -809,6 +817,7 @@
             this.guna2ShadowPanel1.ResumeLayout(false);
             this.guna2ShadowPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -829,7 +838,7 @@
         private Guna.UI2.WinForms.Guna2Button btnFiltrar;
         private Guna.UI2.WinForms.Guna2Button btnBuscarCliente;
         private Guna.UI2.WinForms.Guna2ComboBox cmbFiltroMetodoPago;
-        private Guna.UI2.WinForms.Guna2TextBox txtBuscarCliente;
+        private Guna.UI2.WinForms.Guna2TextBox txtBuscarClienteDni;
         private System.Windows.Forms.Label lblBuscarPorDNI;
         private System.Windows.Forms.Label lblFiltrarPor;
         private System.Windows.Forms.Label lblFiltrarMetodoPago;
@@ -871,5 +880,6 @@
         private Guna.UI2.WinForms.Guna2Button btnGenerarComprobante;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

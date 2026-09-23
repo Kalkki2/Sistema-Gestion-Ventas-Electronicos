@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblNroVentaDetalle = new System.Windows.Forms.Label();
             this.lblTituloDetalleVenta = new System.Windows.Forms.Label();
             this.pnlEncabezado = new System.Windows.Forms.Panel();
@@ -88,10 +89,11 @@
             this.btnFiltrar = new Guna.UI2.WinForms.Guna2Button();
             this.btnBuscarVendedor = new Guna.UI2.WinForms.Guna2Button();
             this.cmbFiltroMetodoPago = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.txtBuscarVendedor = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtBuscarVendedorDni = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblBuscarPorDNI = new System.Windows.Forms.Label();
             this.lblFiltrarPor = new System.Windows.Forms.Label();
             this.lblFiltrarMetodoPago = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.pnlEncabezado.SuspendLayout();
             this.pnlnfoUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
@@ -101,6 +103,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleVenta)).BeginInit();
             this.pnlCardTotalVentas.SuspendLayout();
             this.pnlContenedorFiltros.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblNroVentaDetalle
@@ -252,16 +255,16 @@
             // 
             // dgvHistorialVentas
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
-            this.dgvHistorialVentas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHistorialVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
+            this.dgvHistorialVentas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHistorialVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvHistorialVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colNroVenta,
             this.colFechaVenta,
@@ -270,14 +273,14 @@
             this.colVendedor,
             this.colEstado,
             this.colVerDetalle});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvHistorialVentas.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvHistorialVentas.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgvHistorialVentas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvHistorialVentas.Location = new System.Drawing.Point(4, 49);
             this.dgvHistorialVentas.Name = "dgvHistorialVentas";
@@ -545,29 +548,29 @@
             // 
             // dgvDetalleVenta
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
-            this.dgvDetalleVenta.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDetalleVenta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
+            this.dgvDetalleVenta.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDetalleVenta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dgvDetalleVenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colProducto,
             this.colCantidad,
             this.colPrecio,
             this.colSubtotal});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDetalleVenta.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDetalleVenta.DefaultCellStyle = dataGridViewCellStyle12;
             this.dgvDetalleVenta.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvDetalleVenta.Location = new System.Drawing.Point(3, 157);
             this.dgvDetalleVenta.Name = "dgvDetalleVenta";
@@ -650,7 +653,7 @@
             this.pnlContenedorFiltros.Controls.Add(this.btnFiltrar);
             this.pnlContenedorFiltros.Controls.Add(this.btnBuscarVendedor);
             this.pnlContenedorFiltros.Controls.Add(this.cmbFiltroMetodoPago);
-            this.pnlContenedorFiltros.Controls.Add(this.txtBuscarVendedor);
+            this.pnlContenedorFiltros.Controls.Add(this.txtBuscarVendedorDni);
             this.pnlContenedorFiltros.Controls.Add(this.lblBuscarPorDNI);
             this.pnlContenedorFiltros.Controls.Add(this.lblFiltrarPor);
             this.pnlContenedorFiltros.Controls.Add(this.lblFiltrarMetodoPago);
@@ -745,7 +748,7 @@
             this.btnBuscarVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.btnBuscarVendedor.ForeColor = System.Drawing.Color.Black;
             this.btnBuscarVendedor.Image = global::CapaPresentacion.Properties.Resources.icono_lupa;
-            this.btnBuscarVendedor.Location = new System.Drawing.Point(204, 40);
+            this.btnBuscarVendedor.Location = new System.Drawing.Point(218, 40);
             this.btnBuscarVendedor.Name = "btnBuscarVendedor";
             this.btnBuscarVendedor.Size = new System.Drawing.Size(89, 27);
             this.btnBuscarVendedor.TabIndex = 44;
@@ -775,26 +778,27 @@
             this.cmbFiltroMetodoPago.StartIndex = 0;
             this.cmbFiltroMetodoPago.TabIndex = 22;
             // 
-            // txtBuscarVendedor
+            // txtBuscarVendedorDni
             // 
-            this.txtBuscarVendedor.BorderColor = System.Drawing.Color.DarkGray;
-            this.txtBuscarVendedor.BorderRadius = 5;
-            this.txtBuscarVendedor.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtBuscarVendedor.DefaultText = "";
-            this.txtBuscarVendedor.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtBuscarVendedor.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtBuscarVendedor.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtBuscarVendedor.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtBuscarVendedor.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscarVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.txtBuscarVendedor.ForeColor = System.Drawing.Color.Black;
-            this.txtBuscarVendedor.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscarVendedor.Location = new System.Drawing.Point(16, 40);
-            this.txtBuscarVendedor.Name = "txtBuscarVendedor";
-            this.txtBuscarVendedor.PlaceholderText = "";
-            this.txtBuscarVendedor.SelectedText = "";
-            this.txtBuscarVendedor.Size = new System.Drawing.Size(182, 27);
-            this.txtBuscarVendedor.TabIndex = 0;
+            this.txtBuscarVendedorDni.BorderColor = System.Drawing.Color.DarkGray;
+            this.txtBuscarVendedorDni.BorderRadius = 5;
+            this.txtBuscarVendedorDni.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtBuscarVendedorDni.DefaultText = "";
+            this.txtBuscarVendedorDni.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtBuscarVendedorDni.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtBuscarVendedorDni.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscarVendedorDni.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscarVendedorDni.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarVendedorDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.txtBuscarVendedorDni.ForeColor = System.Drawing.Color.Black;
+            this.txtBuscarVendedorDni.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarVendedorDni.Location = new System.Drawing.Point(16, 40);
+            this.txtBuscarVendedorDni.Name = "txtBuscarVendedorDni";
+            this.txtBuscarVendedorDni.PlaceholderText = "";
+            this.txtBuscarVendedorDni.SelectedText = "";
+            this.txtBuscarVendedorDni.Size = new System.Drawing.Size(182, 27);
+            this.txtBuscarVendedorDni.TabIndex = 0;
+            this.txtBuscarVendedorDni.Validating += new System.ComponentModel.CancelEventHandler(this.txtBuscarVendedor_Validating);
             // 
             // lblBuscarPorDNI
             // 
@@ -829,6 +833,10 @@
             this.lblFiltrarMetodoPago.TabIndex = 11;
             this.lblFiltrarMetodoPago.Text = "Metodo Pago";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // GestionVentasForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -857,6 +865,7 @@
             this.pnlCardTotalVentas.PerformLayout();
             this.pnlContenedorFiltros.ResumeLayout(false);
             this.pnlContenedorFiltros.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -896,7 +905,7 @@
         private Guna.UI2.WinForms.Guna2Button btnFiltrar;
         private Guna.UI2.WinForms.Guna2Button btnBuscarVendedor;
         private Guna.UI2.WinForms.Guna2ComboBox cmbFiltroMetodoPago;
-        private Guna.UI2.WinForms.Guna2TextBox txtBuscarVendedor;
+        private Guna.UI2.WinForms.Guna2TextBox txtBuscarVendedorDni;
         private System.Windows.Forms.Label lblBuscarPorDNI;
         private System.Windows.Forms.Label lblFiltrarPor;
         private System.Windows.Forms.Label lblFiltrarMetodoPago;
@@ -920,5 +929,6 @@
         private Guna.UI2.WinForms.Guna2Button btnGenerarComprobante;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

@@ -45,6 +45,7 @@
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.pnlFormularioCliente = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.txtMarcaCompra = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtCategoriaCompra = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
@@ -105,7 +106,6 @@
             this.lblFiltrarPor = new System.Windows.Forms.Label();
             this.lblFiltrarMetodoPago = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.pnlEncabezado.SuspendLayout();
             this.pnlnfoUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
@@ -257,6 +257,23 @@
             this.pnlFormularioCliente.ShadowShift = 3;
             this.pnlFormularioCliente.Size = new System.Drawing.Size(551, 360);
             this.pnlFormularioCliente.TabIndex = 58;
+            // 
+            // guna2Button1
+            // 
+            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button1.BorderRadius = 5;
+            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.FillColor = System.Drawing.Color.Silver;
+            this.guna2Button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.guna2Button1.ForeColor = System.Drawing.Color.Black;
+            this.guna2Button1.Location = new System.Drawing.Point(150, 283);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.Size = new System.Drawing.Size(121, 27);
+            this.guna2Button1.TabIndex = 114;
+            this.guna2Button1.Text = "Calcular precio";
             // 
             // txtMarcaCompra
             // 
@@ -1045,6 +1062,7 @@
             this.txtBuscarProveedor.SelectedText = "";
             this.txtBuscarProveedor.Size = new System.Drawing.Size(226, 27);
             this.txtBuscarProveedor.TabIndex = 0;
+            this.txtBuscarProveedor.Validating += new System.ComponentModel.CancelEventHandler(this.txtBuscarProveedor_Validating);
             // 
             // lblBuscarPorCuit
             // 
@@ -1082,23 +1100,6 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // guna2Button1
-            // 
-            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.BorderRadius = 5;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.Silver;
-            this.guna2Button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.Black;
-            this.guna2Button1.Location = new System.Drawing.Point(150, 283);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(121, 27);
-            this.guna2Button1.TabIndex = 114;
-            this.guna2Button1.Text = "Calcular precio";
             // 
             // GestionComprasForm
             // 

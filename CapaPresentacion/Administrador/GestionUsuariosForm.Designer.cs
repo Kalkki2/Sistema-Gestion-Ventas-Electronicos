@@ -279,7 +279,7 @@
             this.cmbPerfil.Location = new System.Drawing.Point(407, 153);
             this.cmbPerfil.Name = "cmbPerfil";
             this.cmbPerfil.Size = new System.Drawing.Size(109, 27);
-            this.cmbPerfil.TabIndex = 56;
+            this.cmbPerfil.TabIndex = 17;
             // 
             // txtContrasenia
             // 
@@ -301,7 +301,7 @@
             this.txtContrasenia.PlaceholderText = "";
             this.txtContrasenia.SelectedText = "";
             this.txtContrasenia.Size = new System.Drawing.Size(222, 27);
-            this.txtContrasenia.TabIndex = 55;
+            this.txtContrasenia.TabIndex = 15;
             this.txtContrasenia.Validating += new System.ComponentModel.CancelEventHandler(this.txtContrasenia_Validating);
             // 
             // txtDireccion
@@ -324,7 +324,7 @@
             this.txtDireccion.PlaceholderText = "";
             this.txtDireccion.SelectedText = "";
             this.txtDireccion.Size = new System.Drawing.Size(225, 27);
-            this.txtDireccion.TabIndex = 54;
+            this.txtDireccion.TabIndex = 14;
             this.txtDireccion.Validating += new System.ComponentModel.CancelEventHandler(this.txtDireccion_Validating);
             // 
             // lblContrasenia
@@ -368,7 +368,7 @@
             this.txtTelefono.PlaceholderText = "";
             this.txtTelefono.SelectedText = "";
             this.txtTelefono.Size = new System.Drawing.Size(225, 27);
-            this.txtTelefono.TabIndex = 50;
+            this.txtTelefono.TabIndex = 13;
             this.txtTelefono.Validating += new System.ComponentModel.CancelEventHandler(this.txtTelefono_Validating);
             // 
             // lblTeleofono
@@ -401,7 +401,7 @@
             this.txtCorreo.PlaceholderText = "";
             this.txtCorreo.SelectedText = "";
             this.txtCorreo.Size = new System.Drawing.Size(225, 27);
-            this.txtCorreo.TabIndex = 48;
+            this.txtCorreo.TabIndex = 12;
             this.txtCorreo.Validating += new System.ComponentModel.CancelEventHandler(this.txtCorreo_Validating);
             // 
             // lblCorreo
@@ -434,7 +434,7 @@
             this.txtDni.PlaceholderText = "";
             this.txtDni.SelectedText = "";
             this.txtDni.Size = new System.Drawing.Size(225, 27);
-            this.txtDni.TabIndex = 46;
+            this.txtDni.TabIndex = 11;
             this.txtDni.Validating += new System.ComponentModel.CancelEventHandler(this.txtDni_Validating);
             // 
             // lblDni
@@ -467,7 +467,7 @@
             this.txtApellido.PlaceholderText = "";
             this.txtApellido.SelectedText = "";
             this.txtApellido.Size = new System.Drawing.Size(225, 27);
-            this.txtApellido.TabIndex = 44;
+            this.txtApellido.TabIndex = 10;
             this.txtApellido.Validating += new System.ComponentModel.CancelEventHandler(this.txtApellido_Validating);
             // 
             // lblApellido
@@ -511,7 +511,7 @@
             this.txtNombre.PlaceholderText = "";
             this.txtNombre.SelectedText = "";
             this.txtNombre.Size = new System.Drawing.Size(225, 27);
-            this.txtNombre.TabIndex = 0;
+            this.txtNombre.TabIndex = 9;
             this.txtNombre.Validating += new System.ComponentModel.CancelEventHandler(this.txtNombre_Validating);
             // 
             // lblEstado
@@ -539,7 +539,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(282, 189);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(100, 35);
-            this.btnCancelar.TabIndex = 27;
+            this.btnCancelar.TabIndex = 19;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
@@ -557,7 +557,7 @@
             this.btnAgregarUsuario.Location = new System.Drawing.Point(416, 189);
             this.btnAgregarUsuario.Name = "btnAgregarUsuario";
             this.btnAgregarUsuario.Size = new System.Drawing.Size(100, 35);
-            this.btnAgregarUsuario.TabIndex = 26;
+            this.btnAgregarUsuario.TabIndex = 18;
             this.btnAgregarUsuario.Text = "Agegar";
             this.btnAgregarUsuario.Click += new System.EventHandler(this.btnAgregarUsuario_Click);
             // 
@@ -576,8 +576,7 @@
             this.cmbEstado.Location = new System.Drawing.Point(282, 153);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(109, 27);
-            this.cmbEstado.StartIndex = 0;
-            this.cmbEstado.TabIndex = 1;
+            this.cmbEstado.TabIndex = 16;
             // 
             // lblNombre
             // 

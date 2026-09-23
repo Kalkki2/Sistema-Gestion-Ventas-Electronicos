@@ -36,6 +36,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlFormularioCliente = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.btnActualizar = new Guna.UI2.WinForms.Guna2Button();
+            this.txtCorreo = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.txtDireccion = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblDireccion = new System.Windows.Forms.Label();
             this.txtTelefono = new Guna.UI2.WinForms.Guna2TextBox();
@@ -58,6 +61,14 @@
             this.lblTitulo = new System.Windows.Forms.Label();
             this.pnlContenedorListaClientes = new Guna.UI2.WinForms.Guna2Panel();
             this.dgvListaClientes = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.colNroCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCorreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colBtnVerCompras = new System.Windows.Forms.DataGridViewButtonColumn();
             this.lblTituloListaClientes = new System.Windows.Forms.Label();
             this.pnlContenedorLista = new Guna.UI2.WinForms.Guna2Panel();
             this.dgvListaCompras = new Guna.UI2.WinForms.Guna2DataGridView();
@@ -73,17 +84,6 @@
             this.txtBuscarCliente = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblBuscarPorDNIONombreOCorreo = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.colNroCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDni = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCorreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colBtnVerCompras = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.txtCorreo = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnActualizar = new Guna.UI2.WinForms.Guna2Button();
             this.pnlFormularioCliente.SuspendLayout();
             this.pnlEncabezado.SuspendLayout();
             this.pnlnfoUsuario.SuspendLayout();
@@ -124,6 +124,58 @@
             this.pnlFormularioCliente.ShadowShift = 3;
             this.pnlFormularioCliente.Size = new System.Drawing.Size(550, 219);
             this.pnlFormularioCliente.TabIndex = 57;
+            // 
+            // btnActualizar
+            // 
+            this.btnActualizar.BackColor = System.Drawing.Color.Transparent;
+            this.btnActualizar.BorderRadius = 5;
+            this.btnActualizar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnActualizar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnActualizar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnActualizar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnActualizar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(110)))), ((int)(((byte)(253)))));
+            this.btnActualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizar.ForeColor = System.Drawing.Color.White;
+            this.btnActualizar.Location = new System.Drawing.Point(295, 178);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(105, 35);
+            this.btnActualizar.TabIndex = 75;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
+            // txtCorreo
+            // 
+            this.txtCorreo.BackColor = System.Drawing.Color.Transparent;
+            this.txtCorreo.BorderColor = System.Drawing.Color.DarkGray;
+            this.txtCorreo.BorderRadius = 5;
+            this.txtCorreo.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCorreo.DefaultText = "";
+            this.txtCorreo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtCorreo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtCorreo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCorreo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCorreo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtCorreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCorreo.ForeColor = System.Drawing.Color.Black;
+            this.txtCorreo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtCorreo.Location = new System.Drawing.Point(268, 137);
+            this.txtCorreo.Name = "txtCorreo";
+            this.txtCorreo.PlaceholderText = "";
+            this.txtCorreo.SelectedText = "";
+            this.txtCorreo.Size = new System.Drawing.Size(225, 27);
+            this.txtCorreo.TabIndex = 74;
+            this.txtCorreo.Validating += new System.ComponentModel.CancelEventHandler(this.txtCorreo_Validating);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(265, 117);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 17);
+            this.label1.TabIndex = 73;
+            this.label1.Text = "Correo: ";
             // 
             // txtDireccion
             // 
@@ -310,6 +362,7 @@
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.Transparent;
             this.btnCancelar.BorderRadius = 5;
+            this.btnCancelar.CausesValidation = false;
             this.btnCancelar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnCancelar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnCancelar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -469,6 +522,47 @@
             this.dgvListaClientes.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvListaClientes.ThemeStyle.RowsStyle.Height = 23;
             this.dgvListaClientes.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
+            // 
+            // colNroCliente
+            // 
+            this.colNroCliente.FillWeight = 75F;
+            this.colNroCliente.HeaderText = "NroCliente";
+            this.colNroCliente.Name = "colNroCliente";
+            // 
+            // colDni
+            // 
+            this.colDni.HeaderText = "DNI";
+            this.colDni.Name = "colDni";
+            // 
+            // colNombre
+            // 
+            this.colNombre.HeaderText = "Nombre";
+            this.colNombre.Name = "colNombre";
+            // 
+            // colApellido
+            // 
+            this.colApellido.HeaderText = "Apellido";
+            this.colApellido.Name = "colApellido";
+            // 
+            // colCorreo
+            // 
+            this.colCorreo.HeaderText = "Correo";
+            this.colCorreo.Name = "colCorreo";
+            // 
+            // colTelefono
+            // 
+            this.colTelefono.HeaderText = "Telefono";
+            this.colTelefono.Name = "colTelefono";
+            // 
+            // colDireccion
+            // 
+            this.colDireccion.HeaderText = "Direccion";
+            this.colDireccion.Name = "colDireccion";
+            // 
+            // colBtnVerCompras
+            // 
+            this.colBtnVerCompras.HeaderText = "Ver compras";
+            this.colBtnVerCompras.Name = "colBtnVerCompras";
             // 
             // lblTituloListaClientes
             // 
@@ -652,99 +746,6 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // colNroCliente
-            // 
-            this.colNroCliente.FillWeight = 75F;
-            this.colNroCliente.HeaderText = "NroCliente";
-            this.colNroCliente.Name = "colNroCliente";
-            // 
-            // colDni
-            // 
-            this.colDni.HeaderText = "DNI";
-            this.colDni.Name = "colDni";
-            // 
-            // colNombre
-            // 
-            this.colNombre.HeaderText = "Nombre";
-            this.colNombre.Name = "colNombre";
-            // 
-            // colApellido
-            // 
-            this.colApellido.HeaderText = "Apellido";
-            this.colApellido.Name = "colApellido";
-            // 
-            // colCorreo
-            // 
-            this.colCorreo.HeaderText = "Correo";
-            this.colCorreo.Name = "colCorreo";
-            // 
-            // colTelefono
-            // 
-            this.colTelefono.HeaderText = "Telefono";
-            this.colTelefono.Name = "colTelefono";
-            // 
-            // colDireccion
-            // 
-            this.colDireccion.HeaderText = "Direccion";
-            this.colDireccion.Name = "colDireccion";
-            // 
-            // colBtnVerCompras
-            // 
-            this.colBtnVerCompras.HeaderText = "Ver compras";
-            this.colBtnVerCompras.Name = "colBtnVerCompras";
-            // 
-            // txtCorreo
-            // 
-            this.txtCorreo.BackColor = System.Drawing.Color.Transparent;
-            this.txtCorreo.BorderColor = System.Drawing.Color.DarkGray;
-            this.txtCorreo.BorderRadius = 5;
-            this.txtCorreo.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtCorreo.DefaultText = "";
-            this.txtCorreo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtCorreo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtCorreo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtCorreo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtCorreo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCorreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCorreo.ForeColor = System.Drawing.Color.Black;
-            this.txtCorreo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCorreo.Location = new System.Drawing.Point(268, 137);
-            this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.PlaceholderText = "";
-            this.txtCorreo.SelectedText = "";
-            this.txtCorreo.Size = new System.Drawing.Size(225, 27);
-            this.txtCorreo.TabIndex = 74;
-            this.txtCorreo.Validating += new System.ComponentModel.CancelEventHandler(this.txtCorreo_Validating);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(265, 117);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 17);
-            this.label1.TabIndex = 73;
-            this.label1.Text = "Correo: ";
-            // 
-            // btnActualizar
-            // 
-            this.btnActualizar.BackColor = System.Drawing.Color.Transparent;
-            this.btnActualizar.BorderRadius = 5;
-            this.btnActualizar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnActualizar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnActualizar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnActualizar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnActualizar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(110)))), ((int)(((byte)(253)))));
-            this.btnActualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualizar.ForeColor = System.Drawing.Color.White;
-            this.btnActualizar.Location = new System.Drawing.Point(295, 178);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(105, 35);
-            this.btnActualizar.TabIndex = 75;
-            this.btnActualizar.Text = "Actualizar";
-            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // ClientesForm
             // 

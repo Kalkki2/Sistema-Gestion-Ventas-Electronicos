@@ -23,8 +23,7 @@ namespace CapaPresentacion.Administrador
         {
             txtCodigo.Clear();
             txtNombre.Clear();
-            txtStock.Clear();
-            txtPrecio.Clear();
+            txtDescripcion.Clear();
 
             // Deseleccionar los ComboBoxes (vuelven a quedar en blanco)
             cmbCategoria.SelectedIndex = -1;
@@ -38,9 +37,10 @@ namespace CapaPresentacion.Administrador
         private void btnAgregarProducto_Click(object sender, EventArgs e)
         {
             // Valida que los TextBox no estén vacíos
-            if (!string.IsNullOrEmpty(errorProvider1.GetError(txtDescripcion)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtNombre)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtCodigo)) || string.IsNullOrWhiteSpace(txtCodigo.Text) || string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtPrecio.Text) || string.IsNullOrWhiteSpace(txtStock.Text))
+            if ( !string.IsNullOrEmpty(errorProvider1.GetError(txtNombre)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtCodigo))  || 
+                 string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtPrecio.Text) || string.IsNullOrWhiteSpace(txtDescripcion.Text))
             {
-                MessageBox.Show("Debe completar todos los campos de texto obligatorios.", "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Hay campos con errores o vacíos. Corríjalos antes de agregar.", "Campos vacíos o con error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -74,7 +74,9 @@ namespace CapaPresentacion.Administrador
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtCodigo.Text) && string.IsNullOrWhiteSpace(txtNombre.Text) && string.IsNullOrWhiteSpace(txtPrecio.Text) && string.IsNullOrWhiteSpace(txtStock.Text) && cmbCategoria.SelectedIndex == -1 && cmbMarca.SelectedIndex == -1 && cmbProveedor.SelectedIndex == -1 && cmbEstado.SelectedIndex == -1)
+            errorProvider1.Clear();
+            if (string.IsNullOrWhiteSpace(txtCodigo.Text) && string.IsNullOrWhiteSpace(txtNombre.Text) && string.IsNullOrWhiteSpace(txtPrecio.Text) && string.IsNullOrWhiteSpace(txtDescripcion.Text)
+                && string.IsNullOrWhiteSpace(txtStock.Text) && cmbCategoria.SelectedIndex == -1 && cmbMarca.SelectedIndex == -1 && cmbProveedor.SelectedIndex == -1 && cmbEstado.SelectedIndex == -1)
             {
                 // Si no hay nada escrito en los campos
                 MessageBox.Show("No hay nada cargador para agregar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -100,31 +102,18 @@ namespace CapaPresentacion.Administrador
             lblFecha.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy", cultura);
         }
 
-        private void txtDescripcion_Validating(object sender, CancelEventArgs e)
-        {
-            if (!Regex.IsMatch(txtDescripcion.Text, "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$"))
-            {
-                errorProvider1.SetError(txtDescripcion, "La Descripcion solo debe contener letras.");
-            }
-            else if (txtDescripcion.Text.Length < 3 || txtDescripcion.Text.Length > 50)
-            {
-                errorProvider1.SetError(txtDescripcion, "La Descripcion debe tener entre 3 y 50 caracteres.");
-            }
-            else
-            {
-                errorProvider1.SetError(txtDescripcion, "");
-            }
-        }
+       
 
         private void txtCodigo_Validating(object sender, CancelEventArgs e)
         {
-            if (!int.TryParse(txtCodigo.Text, out int stock))
+            string codigo = txtCodigo.Text.Trim();
+
+            if (!ulong.TryParse(codigo, out _))
             {
-                errorProvider1.SetError(txtCodigo, "El Codigo solo debe contener Numeros.");
-            }
-            else if (txtCodigo.Text.Length <= 11)
+                errorProvider1.SetError(txtCodigo, "El código solo debe contener números.");
+            }else if (codigo.Length != 7)
             {
-                errorProvider1.SetError(txtCodigo, "El Codigo debe tener 11 caracteres");
+                errorProvider1.SetError(txtCodigo, "El código debe tener exactamente 7 dígitos.");
             }
             else
             {
@@ -136,16 +125,33 @@ namespace CapaPresentacion.Administrador
         {
             if (!Regex.IsMatch(txtNombre.Text, "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$"))
             {
-                errorProvider1.SetError(txtNombre, "El Nombre solo debe contener letras.");
+                errorProvider1.SetError(txtNombre, "El nombre solo debe contener letras.");
             }
-            else if (txtDescripcion.Text.Length < 3 || txtNombre.Text.Length > 50)
+            else if (txtNombre.Text.Length < 3 || txtNombre.Text.Length > 40)
             {
-                errorProvider1.SetError(txtNombre, "El nombre debe tener entre 3 y 50 caracteres.");
+                errorProvider1.SetError(txtNombre, "El nombre debe tener entre 3 y 40 caracteres.");
             }
             else
             {
                 errorProvider1.SetError(txtNombre, "");
             }
         }
+
+        private void txtDescripcion_Validating(object sender, CancelEventArgs e)
+        {
+            if (!Regex.IsMatch(txtDescripcion.Text, "^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\\s]+$"))
+            {
+                errorProvider1.SetError(txtDescripcion, "La dirección solo debe contener letras y números.");
+            }
+            else if (txtDescripcion.Text.Length < 3 || txtDescripcion.Text.Length > 40)
+            {
+                errorProvider1.SetError(txtDescripcion, "La dirección debe tener entre 3 y 40 caracteres.");
+            }
+            else
+            {
+                errorProvider1.SetError(txtDescripcion, "");
+            }
+            
+        }
     }
-}
+ }

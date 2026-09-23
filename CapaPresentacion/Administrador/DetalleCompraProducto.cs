@@ -16,5 +16,10 @@ namespace CapaPresentacion.Administrador
         {
             InitializeComponent();
         }
+
+        private void btnGenerarComprobante_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

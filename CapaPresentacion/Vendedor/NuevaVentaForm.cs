@@ -46,6 +46,13 @@ namespace CapaPresentacion.Vendedor
                 return;
             }
 
+            if (txtCantidadCompra.Value <= 0)
+            {
+                MessageBox.Show("La cantidad debe ser mayor a 0.", "Valor inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCantidadCompra.Focus();
+                return;
+            }
+
             // Confirmación del usuario antes de guardar
             DialogResult respuesta = MessageBox.Show(
                 "¿Está seguro de que desea agregar este nuevo item?",

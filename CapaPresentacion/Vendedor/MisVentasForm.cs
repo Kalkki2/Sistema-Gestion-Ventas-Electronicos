@@ -19,7 +19,7 @@ namespace CapaPresentacion.Vendedor
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtBuscarCliente.Text))
+            if (string.IsNullOrWhiteSpace(txtBuscarClienteDni.Text))
             {
                 MessageBox.Show("Debe completar el campo para buscar.", "Campo vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -39,6 +39,24 @@ namespace CapaPresentacion.Vendedor
         {
             System.Globalization.CultureInfo cultura = new System.Globalization.CultureInfo("es-ES");
             lblFecha.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy", cultura);
+        }
+
+        private void txtBuscarCliente_Validating(object sender, CancelEventArgs e)
+        {
+            string codigo = txtBuscarClienteDni.Text.Trim();
+
+            if (!ulong.TryParse(codigo, out _))
+            {
+                errorProvider1.SetError(txtBuscarClienteDni, "El DNI solo debe contener números.");
+            }
+            else if (codigo.Length != 8)
+            {
+                errorProvider1.SetError(txtBuscarClienteDni, "El DNI debe tener exactamente 8 dígitos.");
+            }
+            else
+            {
+                errorProvider1.SetError(txtBuscarClienteDni, "");
+            }
         }
     }
 }

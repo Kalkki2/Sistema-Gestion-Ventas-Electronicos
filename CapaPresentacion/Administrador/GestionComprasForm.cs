@@ -40,7 +40,22 @@ namespace CapaPresentacion.Administrador
                 return;
             }
 
-    
+            if (txtCantidadCompra.Value <= 0)
+            {
+                MessageBox.Show("La cantidad debe ser mayor a 0.", "Valor inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCantidadCompra.Focus();
+                return;
+            }
+
+            if (txtMargenVenta.Value <= 0)
+            {
+                MessageBox.Show("El margen debe ser mayor a 0.", "Valor inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtMargenVenta.Focus();
+                return;
+            }
+
+
+
 
             // Confirmación del usuario antes de guardar
             DialogResult respuesta = MessageBox.Show(
@@ -149,7 +164,8 @@ namespace CapaPresentacion.Administrador
         {
             if (txtCantidadCompra.Value <= 0)
             {
-                errorProvider1.SetError(txtCantidadCompra, "El valor debe ser mayor a 0.");
+                errorProvider1.SetError(txtCantidadCompra, "La cantidad debe ser mayor a 0.");
+                txtCantidadCompra.Focus();
             }
             else
             {
@@ -159,25 +175,30 @@ namespace CapaPresentacion.Administrador
 
         private void txtPrecioCompra_Validating(object sender, CancelEventArgs e)
         {
-            if (!int.TryParse(txtPrecioCompra.Text, out int stock))
+            string precioTexto = txtPrecioCompra.Text.Trim();
+
+            if (!decimal.TryParse(precioTexto, out decimal precioCompra))
             {
-                errorProvider1.SetError(txtPrecioCompra, "El preceio solo debe contener Numeros.");
+                errorProvider1.SetError(txtPrecioCompra, "El precio solo debe contener números válidos.");
             }
-            else if (txtPrecioCompra.Text.Length <= 5)
+            else if (precioCompra <= 0)
             {
-                errorProvider1.SetError(txtPrecioCompra, "El precio debe tener 5 caracteres");
+                errorProvider1.SetError(txtPrecioCompra, "El precio debe ser mayor a 0.");
+                txtPrecioCompra.Focus();
             }
             else
             {
-                errorProvider1.SetError(txtPrecioCompra, "");
+                errorProvider1.SetError(txtPrecioCompra, string.Empty);
             }
+
         }
 
         private void txtMargenVenta_Validating(object sender, CancelEventArgs e)
         {
             if (txtMargenVenta.Value <= 0)
             {
-                errorProvider1.SetError(txtMargenVenta, "El valor debe ser mayor a 0.");
+                errorProvider1.SetError(txtMargenVenta, "El margen debe ser mayor a 0.");
+                txtMargenVenta.Focus();
             }
             else
             {
@@ -189,6 +210,24 @@ namespace CapaPresentacion.Administrador
         {
             System.Globalization.CultureInfo cultura = new System.Globalization.CultureInfo("es-ES");
             lblFecha.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy", cultura);
+        }
+
+        private void txtBuscarProveedor_Validating(object sender, CancelEventArgs e)
+        {
+            string cuit = txtBuscarProveedor.Text.Trim();
+
+            if (!ulong.TryParse(cuit, out _))
+            {
+                errorProvider1.SetError(txtBuscarProveedor, "El CUIT solo debe contener números.");
+            }
+            else if (cuit.Length != 11)
+            {
+                errorProvider1.SetError(txtBuscarProveedor, "El CUIT debe tener exactamente 11 dígitos.");
+            }
+            else
+            {
+                errorProvider1.SetError(txtBuscarProveedor, "");
+            }
         }
     }
 }
