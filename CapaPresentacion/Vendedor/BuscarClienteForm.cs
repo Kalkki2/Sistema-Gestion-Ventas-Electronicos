@@ -25,5 +25,16 @@ namespace CapaPresentacion.Vendedor
                 return;
             }
         }
+
+        private void dgvListaClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            string nombreColumna = dgvListaClientes.Columns[e.ColumnIndex].Name;
+            if (nombreColumna == "colSeleccionar") 
+            {
+                this.Close();
+            }
+        }
     }
 }

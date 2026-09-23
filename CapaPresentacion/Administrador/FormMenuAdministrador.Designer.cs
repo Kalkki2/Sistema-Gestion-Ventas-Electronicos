@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMenuAdministrador));
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnMenuItemSalir = new System.Windows.Forms.Button();
             this.btnMenuItemUsuario = new System.Windows.Forms.Button();
             this.btnMenuItemCompra = new System.Windows.Forms.Button();
@@ -37,8 +39,6 @@
             this.btnMenuItemVenta = new System.Windows.Forms.Button();
             this.btnMenuItemProducto = new System.Windows.Forms.Button();
             this.btnMenuItemProveedor = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.guna2GradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,6 +61,30 @@
             this.guna2GradientPanel1.Name = "guna2GradientPanel1";
             this.guna2GradientPanel1.Size = new System.Drawing.Size(181, 561);
             this.guna2GradientPanel1.TabIndex = 7;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(65, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 16);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "SGV";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(21, 37);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(141, 31);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "MUSNOC";
             // 
             // btnMenuItemSalir
             // 
@@ -197,30 +221,6 @@
             this.btnMenuItemProveedor.Text = "Proveedores";
             this.btnMenuItemProveedor.UseVisualStyleBackColor = false;
             this.btnMenuItemProveedor.Click += new System.EventHandler(this.btnMenuItemProveedor_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(21, 37);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(141, 31);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "MUSNOC";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(65, 21);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 16);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "SGV";
             // 
             // FormMenuAdministrador
             // 

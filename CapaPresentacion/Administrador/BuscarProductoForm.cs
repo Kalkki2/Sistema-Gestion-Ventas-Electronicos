@@ -30,5 +30,16 @@ namespace CapaPresentacion.Administrador
         {
             this.Close();
         }
+
+        private void dgvListaProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            string nombreColumna = dgvListaProductos.Columns[e.ColumnIndex].Name;
+            if (nombreColumna == "colSeleccionar")
+            {
+                this.Close();
+            }
+        }
     }
 }

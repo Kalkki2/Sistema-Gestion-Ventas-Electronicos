@@ -58,5 +58,29 @@ namespace CapaPresentacion.Administrador
                 errorProvider1.SetError(txtBuscarVendedorDni, "");
             }
         }
+
+        private void btnAplicarAjusteFormaPago_Click(object sender, EventArgs e)
+        {
+           
+            DialogResult respuesta = MessageBox.Show(
+                "¿Está seguro de que desea aplicar ajuste a la forma de pago?",
+                "Confirmar ajuste",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            // Si el usuario responde 'No', cancelamos la operación
+            if (respuesta == DialogResult.No)
+            {
+                return;
+            }
+            // Mensaje de éxito
+            MessageBox.Show("Se aplico ajuste  con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            txtPorcentajeAjuste.Value = 0;
+        }
     }
 }

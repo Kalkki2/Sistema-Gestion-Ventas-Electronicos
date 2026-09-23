@@ -37,8 +37,8 @@ namespace CapaPresentacion.Administrador
         private void btnAgregarProducto_Click(object sender, EventArgs e)
         {
             // Valida que los TextBox no estén vacíos
-            if ( !string.IsNullOrEmpty(errorProvider1.GetError(txtNombre)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtCodigo))  || 
-                 string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtPrecio.Text) || string.IsNullOrWhiteSpace(txtDescripcion.Text))
+            if ( !string.IsNullOrEmpty(errorProvider1.GetError(txtNombre)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtCodigo)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtDescripcion)) || 
+                 string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtCodigo.Text) || string.IsNullOrWhiteSpace(txtDescripcion.Text))
             {
                 MessageBox.Show("Hay campos con errores o vacíos. Corríjalos antes de agregar.", "Campos vacíos o con error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -141,11 +141,11 @@ namespace CapaPresentacion.Administrador
         {
             if (!Regex.IsMatch(txtDescripcion.Text, "^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\\s]+$"))
             {
-                errorProvider1.SetError(txtDescripcion, "La dirección solo debe contener letras y números.");
+                errorProvider1.SetError(txtDescripcion, "La descripcion solo debe contener letras y números.");
             }
             else if (txtDescripcion.Text.Length < 3 || txtDescripcion.Text.Length > 40)
             {
-                errorProvider1.SetError(txtDescripcion, "La dirección debe tener entre 3 y 40 caracteres.");
+                errorProvider1.SetError(txtDescripcion, "La descripcion debe tener entre 3 y 40 caracteres.");
             }
             else
             {

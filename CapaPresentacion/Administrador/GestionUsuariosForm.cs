@@ -198,7 +198,6 @@ namespace CapaPresentacion.Administrador
 
         private void dgvListaUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Verificar que no se haya cliqueado la cabecera
             if (e.RowIndex < 0) return;
 
             string nombreColumna = dgvListaUsuarios.Columns[e.ColumnIndex].Name;
@@ -211,7 +210,16 @@ namespace CapaPresentacion.Administrador
                 {
                     idUsuarioSeleccionado = usuario.usuario_id;
 
-                    // Cargar datos en las cajas de texto
+                    // 1. DESVINCULAR temporalmente los eventos Validating para que no salten errores
+                    txtNombre.Validating -= txtNombre_Validating;
+                    txtApellido.Validating -= txtApellido_Validating;
+                    txtDni.Validating -= txtDni_Validating;
+                    txtCorreo.Validating -= txtCorreo_Validating;
+                    txtTelefono.Validating -= txtTelefono_Validating;
+                    txtDireccion.Validating -= txtDireccion_Validating;
+                    txtContrasenia.Validating -= txtContrasenia_Validating;
+
+                    // 2. Cargar datos en las cajas de texto con total tranquilidad
                     txtNombre.Text = usuario.nombre;
                     txtApellido.Text = usuario.apellido;
                     txtDni.Text = usuario.dni;
@@ -232,6 +240,18 @@ namespace CapaPresentacion.Administrador
                             break;
                         }
                     }
+
+                    // 3. VINCULAR NUEVAMENTE los eventos Validating para que funcionen cuando el usuario edite manualmente
+                    txtNombre.Validating += txtNombre_Validating;
+                    txtApellido.Validating += txtApellido_Validating;
+                    txtDni.Validating += txtDni_Validating;
+                    txtCorreo.Validating += txtCorreo_Validating;
+                    txtTelefono.Validating += txtTelefono_Validating;
+                    txtDireccion.Validating += txtDireccion_Validating;
+                    txtContrasenia.Validating += txtContrasenia_Validating;
+
+                    // 4. Limpiar cualquier error previo por si acaso
+                    errorProvider1.Clear();
 
                     // Cambiar el texto del botón
                     btnAgregarUsuario.Text = "Actualizar";

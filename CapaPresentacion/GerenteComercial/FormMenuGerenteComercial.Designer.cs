@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.pnlMenuAdministrador = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnMenuItemReporte = new System.Windows.Forms.Button();
             this.btnMenuItemSalir = new System.Windows.Forms.Button();
             this.btnMenuItemInforme = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.pnlMenuAdministrador.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,6 +51,30 @@
             this.pnlMenuAdministrador.Size = new System.Drawing.Size(185, 561);
             this.pnlMenuAdministrador.TabIndex = 2;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(66, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 16);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "SGV";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(22, 31);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(141, 31);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "MUSNOC";
+            // 
             // btnMenuItemReporte
             // 
             this.btnMenuItemReporte.BackColor = System.Drawing.Color.Transparent;
@@ -59,6 +83,7 @@
             this.btnMenuItemReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMenuItemReporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMenuItemReporte.ForeColor = System.Drawing.Color.White;
+            this.btnMenuItemReporte.Image = global::CapaPresentacion.Properties.Resources.icono_blanco_ventas;
             this.btnMenuItemReporte.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuItemReporte.Location = new System.Drawing.Point(3, 162);
             this.btnMenuItemReporte.Name = "btnMenuItemReporte";
@@ -104,30 +129,6 @@
             this.btnMenuItemInforme.Text = "Informe";
             this.btnMenuItemInforme.UseVisualStyleBackColor = false;
             this.btnMenuItemInforme.Click += new System.EventHandler(this.btnMenuItemInforme_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(66, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 16);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "SGV";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(22, 31);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(141, 31);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "MUSNOC";
             // 
             // FormMenuGerenteComercial
             // 

@@ -265,6 +265,7 @@
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.Transparent;
             this.btnCancelar.BorderRadius = 5;
+            this.btnCancelar.CausesValidation = false;
             this.btnCancelar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnCancelar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnCancelar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -536,6 +537,7 @@
             // 
             this.btnFiltrar.BackColor = System.Drawing.Color.Transparent;
             this.btnFiltrar.BorderRadius = 5;
+            this.btnFiltrar.CausesValidation = false;
             this.btnFiltrar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnFiltrar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnFiltrar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -554,6 +556,7 @@
             // 
             this.btnBuscarProveedor.BackColor = System.Drawing.Color.Transparent;
             this.btnBuscarProveedor.BorderRadius = 5;
+            this.btnBuscarProveedor.CausesValidation = false;
             this.btnBuscarProveedor.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnBuscarProveedor.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnBuscarProveedor.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));

@@ -27,7 +27,6 @@ namespace CapaPresentacion.Administrador
             txtDireccion.Clear();
             cmbEstado.SelectedIndex = 0;
 
-
             txtNombre.Focus(); // Regresa el cursor al primer campo
         }
 
@@ -38,7 +37,7 @@ namespace CapaPresentacion.Administrador
                 || string.IsNullOrWhiteSpace(txtCorreo.Text) || string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtApellido.Text) || string.IsNullOrWhiteSpace(txtDni.Text) ||
                 string.IsNullOrWhiteSpace(txtTelefono.Text) || string.IsNullOrWhiteSpace(txtDireccion.Text))
             {
-                MessageBox.Show("Debe completar todos los campos de texto obligatorios.", "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Hay campos con errores o vacíos. Corríjalos antes de agregar.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 

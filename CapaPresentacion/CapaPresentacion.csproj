@@ -384,6 +384,12 @@
   <ItemGroup>
     <None Include="Resources\icono_salir.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_nueva_venta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_mis_ventas.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

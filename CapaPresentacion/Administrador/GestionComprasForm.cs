@@ -33,8 +33,8 @@ namespace CapaPresentacion.Administrador
         private void btnAgregarItemProducto_Click(object sender, EventArgs e)
         {
             // Valida que los TextBox no estén vacíos
-            if (!string.IsNullOrEmpty(errorProvider1.GetError(txtCantidadCompra)) ||  string.IsNullOrWhiteSpace(txtProveedorCompra.Text) || string.IsNullOrWhiteSpace(txtTelefonoProveedor.Text) || string.IsNullOrWhiteSpace(txtCorreoProveedor.Text) || string.IsNullOrWhiteSpace(txtProductoCompra.Text) ||
-                string.IsNullOrWhiteSpace(txtPrecioCompra.Text) || string.IsNullOrWhiteSpace(txtCantidadCompra.Text) || string.IsNullOrWhiteSpace(txtCategoriaCompra.Text) || string.IsNullOrWhiteSpace(txtMarcaCompra.Text))
+            if (!string.IsNullOrEmpty(errorProvider1.GetError(txtPrecioCompra)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtCantidadCompra)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtMargenVenta)) ||  string.IsNullOrWhiteSpace(txtProveedorCompra.Text) || string.IsNullOrWhiteSpace(txtTelefonoProveedor.Text) || string.IsNullOrWhiteSpace(txtCorreoProveedor.Text) || string.IsNullOrWhiteSpace(txtProductoCompra.Text) ||
+                string.IsNullOrWhiteSpace(txtPrecioCompra.Text) || string.IsNullOrWhiteSpace(txtCategoriaCompra.Text) || string.IsNullOrWhiteSpace(txtMarcaCompra.Text))
             {
                 MessageBox.Show("Hay campos con errores o vacíos. Corríjalos antes de agregar.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -42,20 +42,24 @@ namespace CapaPresentacion.Administrador
 
             if (txtCantidadCompra.Value <= 0)
             {
-                MessageBox.Show("La cantidad debe ser mayor a 0.", "Valor inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("La cantidad de compra debe ser mayor a 0.", "Valor inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCantidadCompra.Focus();
+                return;
+            }
+
+            if (!decimal.TryParse(txtPrecioCompra.Text, out decimal precioCompra) || precioCompra <= 0)
+            {
+                MessageBox.Show("El precio de compra debe ser un número válido mayor a 0.", "Valor inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtPrecioCompra.Focus();
                 return;
             }
 
             if (txtMargenVenta.Value <= 0)
             {
-                MessageBox.Show("El margen debe ser mayor a 0.", "Valor inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("El margen de venta debe ser mayor a 0.", "Valor inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtMargenVenta.Focus();
                 return;
             }
-
-
-
 
             // Confirmación del usuario antes de guardar
             DialogResult respuesta = MessageBox.Show(
