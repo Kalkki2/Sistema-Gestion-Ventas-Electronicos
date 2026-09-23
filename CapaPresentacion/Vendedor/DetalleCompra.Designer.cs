@@ -260,6 +260,7 @@
             this.btnGenerarComprobante.Size = new System.Drawing.Size(180, 33);
             this.btnGenerarComprobante.TabIndex = 42;
             this.btnGenerarComprobante.Text = "Generar Comprobante";
+            this.btnGenerarComprobante.Click += new System.EventHandler(this.btnGenerarComprobante_Click);
             // 
             // colSubtotal
             // 
@@ -348,6 +349,7 @@
             this.Controls.Add(this.lblNroCompra);
             this.Controls.Add(this.lblTiqueFactura);
             this.Controls.Add(this.dgvDetalleCompra);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DetalleCompra";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DetalleCompra";

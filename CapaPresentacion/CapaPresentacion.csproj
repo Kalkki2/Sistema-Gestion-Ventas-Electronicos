@@ -167,6 +167,12 @@
     <Compile Include="Vendedor\ClientesForm.Designer.cs">
       <DependentUpon>ClientesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vendedor\ConfirmacionVentaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vendedor\ConfirmacionVentaForm.Designer.cs">
+      <DependentUpon>ConfirmacionVentaForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vendedor\DetalleCompra.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -257,6 +263,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vendedor\ClientesForm.resx">
       <DependentUpon>ClientesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vendedor\ConfirmacionVentaForm.resx">
+      <DependentUpon>ConfirmacionVentaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vendedor\DetalleCompra.resx">
       <DependentUpon>DetalleCompra.cs</DependentUpon>

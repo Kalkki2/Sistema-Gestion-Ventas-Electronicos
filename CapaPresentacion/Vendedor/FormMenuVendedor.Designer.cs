@@ -34,11 +34,15 @@
             this.btnMenuVendedorItemVentas = new System.Windows.Forms.Button();
             this.btnMenuItemVendedorNuevaVenta = new System.Windows.Forms.Button();
             this.btnMenuItemSalir = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.guna2GradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2GradientPanel1
             // 
+            this.guna2GradientPanel1.Controls.Add(this.label2);
+            this.guna2GradientPanel1.Controls.Add(this.label1);
             this.guna2GradientPanel1.Controls.Add(this.btnMenuVendedorItemClientes);
             this.guna2GradientPanel1.Controls.Add(this.btnMenuVendedorItemProductos);
             this.guna2GradientPanel1.Controls.Add(this.btnMenuVendedorItemVentas);
@@ -140,6 +144,30 @@
             this.btnMenuItemSalir.UseVisualStyleBackColor = false;
             this.btnMenuItemSalir.Click += new System.EventHandler(this.btnMenuItemSalir_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(68, 19);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 16);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "SGV";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(24, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(141, 31);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "MUSNOC";
+            // 
             // FormMenuVendedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -151,6 +179,7 @@
             this.Text = "FormMenuVendedor";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.guna2GradientPanel1.ResumeLayout(false);
+            this.guna2GradientPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -163,5 +192,7 @@
         private System.Windows.Forms.Button btnMenuVendedorItemVentas;
         private System.Windows.Forms.Button btnMenuItemVendedorNuevaVenta;
         private System.Windows.Forms.Button btnMenuItemSalir;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

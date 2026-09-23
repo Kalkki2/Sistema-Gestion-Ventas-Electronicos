@@ -347,6 +347,7 @@
             this.Controls.Add(this.lblNroCompra);
             this.Controls.Add(this.lblTiqueFactura);
             this.Controls.Add(this.dgvDetalleCompra);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "DetalleCompra";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DetalleCompra";

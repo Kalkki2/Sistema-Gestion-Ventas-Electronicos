@@ -135,4 +135,19 @@
   <metadata name="colMarca.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="guna2TextBox8.DefaultText" xml:space="preserve">
+    <value>Smartphone Samsung Galaxy S26 Ultra de
+gama alta, color Violeta oscuro, con gran
+pantalla Dynamic AMOLED 2X, procesador de
+ultima generación, y 12GB de RAM para
+rendimiento excepcional. Cuenta con 512GB
+de almacenamiento masivo y una camara
+cuádruple avanzada de 200MP. Incluye S Pen
+integrado para productividad y controi
+precisos, un cargador rapido de 45W, y una funda protectora de silicona. Bateria de larga duración y conectividad 5G. Ideal para
+entusiastas de la tecnologia y profesionales</value>
+  </data>
 </root>

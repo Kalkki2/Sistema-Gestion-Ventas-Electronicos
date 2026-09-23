@@ -841,6 +841,7 @@
             this.Controls.Add(this.pnlEncabezado);
             this.Name = "GestionVentasForm";
             this.Text = "GestionVentasForm";
+            this.Load += new System.EventHandler(this.GestionVentasForm_Load);
             this.pnlEncabezado.ResumeLayout(false);
             this.pnlEncabezado.PerformLayout();
             this.pnlnfoUsuario.ResumeLayout(false);

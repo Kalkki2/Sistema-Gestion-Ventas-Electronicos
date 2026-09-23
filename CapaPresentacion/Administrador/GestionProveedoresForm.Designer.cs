@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -83,6 +84,7 @@
             this.pnlCardTotalProveedores = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.lblCantTotalProveedores = new System.Windows.Forms.Label();
             this.lblTituloTotalProveedores = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.pnlEncabezado.SuspendLayout();
             this.pnlnfoUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
@@ -91,6 +93,7 @@
             this.pnlContenedorProveedores.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaProveedores)).BeginInit();
             this.pnlCardTotalProveedores.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblFiltrarPor
@@ -297,6 +300,7 @@
             this.txtCorreo.SelectedText = "";
             this.txtCorreo.Size = new System.Drawing.Size(225, 27);
             this.txtCorreo.TabIndex = 91;
+            this.txtCorreo.Validating += new System.ComponentModel.CancelEventHandler(this.txtCorreo_Validating);
             // 
             // lblCorreo
             // 
@@ -330,6 +334,7 @@
             this.txtDireccion.SelectedText = "";
             this.txtDireccion.Size = new System.Drawing.Size(225, 27);
             this.txtDireccion.TabIndex = 89;
+            this.txtDireccion.Validating += new System.ComponentModel.CancelEventHandler(this.txtDireccion_Validating);
             // 
             // lblDireccion
             // 
@@ -363,6 +368,7 @@
             this.txtTelefono.SelectedText = "";
             this.txtTelefono.Size = new System.Drawing.Size(225, 27);
             this.txtTelefono.TabIndex = 87;
+            this.txtTelefono.Validating += new System.ComponentModel.CancelEventHandler(this.txtTelefono_Validating);
             // 
             // lblTelefono
             // 
@@ -396,6 +402,7 @@
             this.txtCuit.SelectedText = "";
             this.txtCuit.Size = new System.Drawing.Size(225, 27);
             this.txtCuit.TabIndex = 85;
+            this.txtCuit.Validating += new System.ComponentModel.CancelEventHandler(this.txtCuit_Validating);
             // 
             // lblCuit
             // 
@@ -440,6 +447,7 @@
             this.txtRazonSocial.SelectedText = "";
             this.txtRazonSocial.Size = new System.Drawing.Size(225, 27);
             this.txtRazonSocial.TabIndex = 81;
+            this.txtRazonSocial.Validating += new System.ComponentModel.CancelEventHandler(this.txtRazonSocial_Validating);
             // 
             // lblRazonSocial
             // 
@@ -502,6 +510,7 @@
             this.txtNombreComercial.SelectedText = "";
             this.txtNombreComercial.Size = new System.Drawing.Size(225, 27);
             this.txtNombreComercial.TabIndex = 76;
+            this.txtNombreComercial.Validating += new System.ComponentModel.CancelEventHandler(this.txtNombreComercial_Validating);
             // 
             // pnlContenedorFiltros
             // 
@@ -812,6 +821,10 @@
             this.lblTituloTotalProveedores.TabIndex = 5;
             this.lblTituloTotalProveedores.Text = "Total Proveedores:";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // GestionProveedoresForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -824,6 +837,7 @@
             this.Controls.Add(this.pnlEncabezado);
             this.Name = "GestionProveedoresForm";
             this.Text = "GestionProveedoresForm";
+            this.Load += new System.EventHandler(this.GestionProveedoresForm_Load);
             this.pnlEncabezado.ResumeLayout(false);
             this.pnlEncabezado.PerformLayout();
             this.pnlnfoUsuario.ResumeLayout(false);
@@ -838,6 +852,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaProveedores)).EndInit();
             this.pnlCardTotalProveedores.ResumeLayout(false);
             this.pnlCardTotalProveedores.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -895,5 +910,6 @@
         private System.Windows.Forms.Label lblTituloTotalProveedores;
         private Guna.UI2.WinForms.Guna2Button btnBuscarProveedor;
         private Guna.UI2.WinForms.Guna2Button btnFiltrar;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

@@ -92,6 +92,8 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDetallesCompras = new System.Windows.Forms.DataGridViewButtonColumn();
             this.lblTituloListaCompras = new System.Windows.Forms.Label();
+            this.txtCorreo = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.pnlEncabezado.SuspendLayout();
             this.pnlnfoUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
@@ -213,6 +215,8 @@
             // pnlFormularioCliente
             // 
             this.pnlFormularioCliente.BackColor = System.Drawing.Color.Transparent;
+            this.pnlFormularioCliente.Controls.Add(this.txtCorreo);
+            this.pnlFormularioCliente.Controls.Add(this.label2);
             this.pnlFormularioCliente.Controls.Add(this.lblEstado);
             this.pnlFormularioCliente.Controls.Add(this.cmbEstado);
             this.pnlFormularioCliente.Controls.Add(this.txtDireccion);
@@ -876,6 +880,39 @@
             this.lblTituloListaCompras.TabIndex = 6;
             this.lblTituloListaCompras.Text = "Lista de compras:";
             // 
+            // txtCorreo
+            // 
+            this.txtCorreo.BackColor = System.Drawing.Color.Transparent;
+            this.txtCorreo.BorderColor = System.Drawing.Color.DarkGray;
+            this.txtCorreo.BorderRadius = 5;
+            this.txtCorreo.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCorreo.DefaultText = "";
+            this.txtCorreo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtCorreo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtCorreo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCorreo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCorreo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtCorreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCorreo.ForeColor = System.Drawing.Color.Black;
+            this.txtCorreo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtCorreo.Location = new System.Drawing.Point(16, 229);
+            this.txtCorreo.Name = "txtCorreo";
+            this.txtCorreo.PlaceholderText = "";
+            this.txtCorreo.SelectedText = "";
+            this.txtCorreo.Size = new System.Drawing.Size(225, 27);
+            this.txtCorreo.TabIndex = 76;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(13, 209);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 17);
+            this.label2.TabIndex = 75;
+            this.label2.Text = "Correo: ";
+            // 
             // GestionClientesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -889,6 +926,7 @@
             this.Controls.Add(this.pnlEncabezado);
             this.Name = "GestionClientesForm";
             this.Text = "GestionClientesForm";
+            this.Load += new System.EventHandler(this.GestionClientesForm_Load);
             this.pnlEncabezado.ResumeLayout(false);
             this.pnlEncabezado.PerformLayout();
             this.pnlnfoUsuario.ResumeLayout(false);
@@ -969,5 +1007,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewButtonColumn colDetallesCompras;
         private System.Windows.Forms.Label lblTituloListaCompras;
+        private Guna.UI2.WinForms.Guna2TextBox txtCorreo;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -795,6 +795,7 @@
             this.Controls.Add(this.pnlEncabezado);
             this.Name = "MisVentasForm";
             this.Text = "MisVentasForm";
+            this.Load += new System.EventHandler(this.MisVentasForm_Load);
             this.pnlEncabezado.ResumeLayout(false);
             this.pnlEncabezado.PerformLayout();
             this.pnlnfoUsuario.ResumeLayout(false);

@@ -37,11 +37,15 @@
             this.btnMenuItemVenta = new System.Windows.Forms.Button();
             this.btnMenuItemProducto = new System.Windows.Forms.Button();
             this.btnMenuItemProveedor = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.guna2GradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2GradientPanel1
             // 
+            this.guna2GradientPanel1.Controls.Add(this.label2);
+            this.guna2GradientPanel1.Controls.Add(this.label1);
             this.guna2GradientPanel1.Controls.Add(this.btnMenuItemSalir);
             this.guna2GradientPanel1.Controls.Add(this.btnMenuItemUsuario);
             this.guna2GradientPanel1.Controls.Add(this.btnMenuItemCompra);
@@ -61,6 +65,7 @@
             // btnMenuItemSalir
             // 
             this.btnMenuItemSalir.BackColor = System.Drawing.Color.Transparent;
+            this.btnMenuItemSalir.CausesValidation = false;
             this.btnMenuItemSalir.FlatAppearance.BorderSize = 0;
             this.btnMenuItemSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.btnMenuItemSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -80,6 +85,7 @@
             // btnMenuItemUsuario
             // 
             this.btnMenuItemUsuario.BackColor = System.Drawing.Color.Transparent;
+            this.btnMenuItemUsuario.CausesValidation = false;
             this.btnMenuItemUsuario.FlatAppearance.BorderSize = 0;
             this.btnMenuItemUsuario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.btnMenuItemUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -98,6 +104,7 @@
             // btnMenuItemCompra
             // 
             this.btnMenuItemCompra.BackColor = System.Drawing.Color.Transparent;
+            this.btnMenuItemCompra.CausesValidation = false;
             this.btnMenuItemCompra.FlatAppearance.BorderSize = 0;
             this.btnMenuItemCompra.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.btnMenuItemCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -117,6 +124,7 @@
             // btnMenuItemCliente
             // 
             this.btnMenuItemCliente.BackColor = System.Drawing.Color.Transparent;
+            this.btnMenuItemCliente.CausesValidation = false;
             this.btnMenuItemCliente.FlatAppearance.BorderSize = 0;
             this.btnMenuItemCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.btnMenuItemCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -135,6 +143,7 @@
             // btnMenuItemVenta
             // 
             this.btnMenuItemVenta.BackColor = System.Drawing.Color.Transparent;
+            this.btnMenuItemVenta.CausesValidation = false;
             this.btnMenuItemVenta.FlatAppearance.BorderSize = 0;
             this.btnMenuItemVenta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.btnMenuItemVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -153,6 +162,7 @@
             // btnMenuItemProducto
             // 
             this.btnMenuItemProducto.BackColor = System.Drawing.Color.Transparent;
+            this.btnMenuItemProducto.CausesValidation = false;
             this.btnMenuItemProducto.FlatAppearance.BorderSize = 0;
             this.btnMenuItemProducto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.btnMenuItemProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -171,6 +181,7 @@
             // btnMenuItemProveedor
             // 
             this.btnMenuItemProveedor.BackColor = System.Drawing.Color.Transparent;
+            this.btnMenuItemProveedor.CausesValidation = false;
             this.btnMenuItemProveedor.FlatAppearance.BorderSize = 0;
             this.btnMenuItemProveedor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.btnMenuItemProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -187,6 +198,30 @@
             this.btnMenuItemProveedor.UseVisualStyleBackColor = false;
             this.btnMenuItemProveedor.Click += new System.EventHandler(this.btnMenuItemProveedor_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(21, 37);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(141, 31);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "MUSNOC";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(65, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 16);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "SGV";
+            // 
             // FormMenuAdministrador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -197,7 +232,9 @@
             this.Name = "FormMenuAdministrador";
             this.Text = "FormMenuAdministrador";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FormMenuAdministrador_Load);
             this.guna2GradientPanel1.ResumeLayout(false);
+            this.guna2GradientPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -211,5 +248,7 @@
         private System.Windows.Forms.Button btnMenuItemCompra;
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
         private System.Windows.Forms.Button btnMenuItemSalir;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

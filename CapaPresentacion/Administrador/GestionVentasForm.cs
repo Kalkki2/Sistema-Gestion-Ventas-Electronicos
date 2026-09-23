@@ -34,5 +34,11 @@ namespace CapaPresentacion.Administrador
                 return;
             }
         }
+
+        private void GestionVentasForm_Load(object sender, EventArgs e)
+        {
+            System.Globalization.CultureInfo cultura = new System.Globalization.CultureInfo("es-ES");
+            lblFecha.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy", cultura);
+        }
     }
 }

@@ -33,19 +33,14 @@ namespace CapaPresentacion.Administrador
         private void btnAgregarItemProducto_Click(object sender, EventArgs e)
         {
             // Valida que los TextBox no estén vacíos
-            if (string.IsNullOrWhiteSpace(txtProveedorCompra.Text) || string.IsNullOrWhiteSpace(txtTelefonoProveedor.Text) || string.IsNullOrWhiteSpace(txtCorreoProveedor.Text) || string.IsNullOrWhiteSpace(txtProductoCompra.Text) ||
-                string.IsNullOrWhiteSpace(txtPrecioCompra.Text) || string.IsNullOrWhiteSpace(txtCantidadCompra.Text))
+            if (!string.IsNullOrEmpty(errorProvider1.GetError(txtCantidadCompra)) ||  string.IsNullOrWhiteSpace(txtProveedorCompra.Text) || string.IsNullOrWhiteSpace(txtTelefonoProveedor.Text) || string.IsNullOrWhiteSpace(txtCorreoProveedor.Text) || string.IsNullOrWhiteSpace(txtProductoCompra.Text) ||
+                string.IsNullOrWhiteSpace(txtPrecioCompra.Text) || string.IsNullOrWhiteSpace(txtCantidadCompra.Text) || string.IsNullOrWhiteSpace(txtCategoriaCompra.Text) || string.IsNullOrWhiteSpace(txtMarcaCompra.Text))
             {
-                MessageBox.Show("Debe completar todos los campos de texto obligatorios.", "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Hay campos con errores o vacíos. Corríjalos antes de agregar.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Valida que se haya seleccionado una opción en los ComboBox
-            if (cmbCategoriaCompra.SelectedIndex == -1 || cmbMarcaCompra.SelectedIndex == -1)
-            {
-                MessageBox.Show("Debe seleccionar una opción en todas las listas desplegable.", "Selección requerida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+    
 
             // Confirmación del usuario antes de guardar
             DialogResult respuesta = MessageBox.Show(
@@ -75,16 +70,15 @@ namespace CapaPresentacion.Administrador
             txtCorreoProveedor.Clear();
             txtProductoCompra.Clear();
             txtPrecioCompra.Clear();
-            // Deseleccionar los ComboBoxes (vuelven a quedar en blanco)
-            cmbCategoriaCompra.SelectedIndex = -1;
-            cmbMarcaCompra.SelectedIndex = -1;
+            txtCategoriaCompra.Clear();
+            txtMarcaCompra.Clear();
             txtProveedorCompra.Focus(); // Regresa el cursor al primer campo
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtProveedorCompra.Text) && string.IsNullOrWhiteSpace(txtTelefonoProveedor.Text) && string.IsNullOrWhiteSpace(txtCorreoProveedor.Text) && string.IsNullOrWhiteSpace(txtProductoCompra.Text) &&
-                string.IsNullOrWhiteSpace(txtPrecioCompra.Text) && string.IsNullOrWhiteSpace(txtCantidadCompra.Text ) && cmbCategoriaCompra.SelectedIndex == -1 && cmbMarcaCompra.SelectedIndex == -1)
+                string.IsNullOrWhiteSpace(txtPrecioCompra.Text) && string.IsNullOrWhiteSpace(txtCantidadCompra.Text ) && string.IsNullOrWhiteSpace(txtCategoriaCompra.Text) && string.IsNullOrWhiteSpace(txtMarcaCompra.Text))
             {
                 // Si no hay nada escrito en los campos
                 MessageBox.Show("No hay nada cargado para cancear/limpiar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -149,6 +143,52 @@ namespace CapaPresentacion.Administrador
                     DialogResult resultado = modal.ShowDialog();
                 }
             }
+        }
+
+        private void txtCantidadCompra_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtCantidadCompra.Value <= 0)
+            {
+                errorProvider1.SetError(txtCantidadCompra, "El valor debe ser mayor a 0.");
+            }
+            else
+            {
+                errorProvider1.SetError(txtCantidadCompra, "");
+            }
+        }
+
+        private void txtPrecioCompra_Validating(object sender, CancelEventArgs e)
+        {
+            if (!int.TryParse(txtPrecioCompra.Text, out int stock))
+            {
+                errorProvider1.SetError(txtPrecioCompra, "El preceio solo debe contener Numeros.");
+            }
+            else if (txtPrecioCompra.Text.Length <= 5)
+            {
+                errorProvider1.SetError(txtPrecioCompra, "El precio debe tener 5 caracteres");
+            }
+            else
+            {
+                errorProvider1.SetError(txtPrecioCompra, "");
+            }
+        }
+
+        private void txtMargenVenta_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtMargenVenta.Value <= 0)
+            {
+                errorProvider1.SetError(txtMargenVenta, "El valor debe ser mayor a 0.");
+            }
+            else
+            {
+                errorProvider1.SetError(txtMargenVenta, "");
+            }
+        }
+
+        private void GestionComprasForm_Load(object sender, EventArgs e)
+        {
+            System.Globalization.CultureInfo cultura = new System.Globalization.CultureInfo("es-ES");
+            lblFecha.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy", cultura);
         }
     }
 }

@@ -83,5 +83,10 @@ namespace CapaPresentacion.Administrador
                 this.Close();
             }
         }
+
+        private void FormMenuAdministrador_Load(object sender, EventArgs e)
+        {
+            btnMenuItemSalir.CausesValidation = false;
+        }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -61,6 +62,8 @@
             this.lblCantTotalProductos = new System.Windows.Forms.Label();
             this.lblTituloTotalProductos = new System.Windows.Forms.Label();
             this.pnlFormularioProducto = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.txtDescripcion = new Guna.UI2.WinForms.Guna2TextBox();
+            this.lblDescripcion = new System.Windows.Forms.Label();
             this.lblTituloInformacionProducto = new System.Windows.Forms.Label();
             this.txtStock = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblStock = new System.Windows.Forms.Label();
@@ -84,9 +87,13 @@
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.dgvListaProductos = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.lblTituloCatlogoProductos = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.colCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -95,7 +102,6 @@
             this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEditar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.colEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.lblTituloCatlogoProductos = new System.Windows.Forms.Label();
             this.pnlEncabezado.SuspendLayout();
             this.pnlnfoUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
@@ -107,6 +113,7 @@
             this.pnlFormularioProducto.SuspendLayout();
             this.pnlContenedorCatalogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaProductos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlEncabezado
@@ -255,11 +262,15 @@
             this.cmbFiltroMarca.ForeColor = System.Drawing.Color.Black;
             this.cmbFiltroMarca.ItemHeight = 21;
             this.cmbFiltroMarca.Items.AddRange(new object[] {
-            "categoria 1",
-            "categoria 2"});
+            "Todos",
+            "Samsung",
+            "Iphon",
+            "Levono",
+            "Hp"});
             this.cmbFiltroMarca.Location = new System.Drawing.Point(128, 135);
             this.cmbFiltroMarca.Name = "cmbFiltroMarca";
             this.cmbFiltroMarca.Size = new System.Drawing.Size(118, 27);
+            this.cmbFiltroMarca.StartIndex = 0;
             this.cmbFiltroMarca.TabIndex = 24;
             // 
             // cmbFiltroProveedor
@@ -275,11 +286,14 @@
             this.cmbFiltroProveedor.ForeColor = System.Drawing.Color.Black;
             this.cmbFiltroProveedor.ItemHeight = 21;
             this.cmbFiltroProveedor.Items.AddRange(new object[] {
-            "categoria 1",
-            "categoria 2"});
+            "Todos",
+            "TecnoGlobal S.A.",
+            "Innovación Digital S.R.L.",
+            "Sistemas Austral S.A."});
             this.cmbFiltroProveedor.Location = new System.Drawing.Point(252, 135);
             this.cmbFiltroProveedor.Name = "cmbFiltroProveedor";
             this.cmbFiltroProveedor.Size = new System.Drawing.Size(118, 27);
+            this.cmbFiltroProveedor.StartIndex = 0;
             this.cmbFiltroProveedor.TabIndex = 23;
             // 
             // cmbFiltroCategoria
@@ -295,11 +309,14 @@
             this.cmbFiltroCategoria.ForeColor = System.Drawing.Color.Black;
             this.cmbFiltroCategoria.ItemHeight = 21;
             this.cmbFiltroCategoria.Items.AddRange(new object[] {
-            "categoria 1",
-            "categoria 2"});
+            "Todos",
+            "Celulares y telefonia",
+            "Computacion",
+            "Tablet"});
             this.cmbFiltroCategoria.Location = new System.Drawing.Point(4, 135);
             this.cmbFiltroCategoria.Name = "cmbFiltroCategoria";
             this.cmbFiltroCategoria.Size = new System.Drawing.Size(118, 27);
+            this.cmbFiltroCategoria.StartIndex = 0;
             this.cmbFiltroCategoria.TabIndex = 22;
             // 
             // txtBuscarProducto
@@ -347,11 +364,13 @@
             this.cmbFiltroEstado.ForeColor = System.Drawing.Color.Black;
             this.cmbFiltroEstado.ItemHeight = 21;
             this.cmbFiltroEstado.Items.AddRange(new object[] {
-            "categoria 1",
-            "categoria 2"});
+            "Todos",
+            "Activo",
+            "Inactivo"});
             this.cmbFiltroEstado.Location = new System.Drawing.Point(376, 135);
             this.cmbFiltroEstado.Name = "cmbFiltroEstado";
             this.cmbFiltroEstado.Size = new System.Drawing.Size(121, 27);
+            this.cmbFiltroEstado.StartIndex = 0;
             this.cmbFiltroEstado.TabIndex = 1;
             // 
             // lblBuscarPorCodONombre
@@ -508,6 +527,8 @@
             // pnlFormularioProducto
             // 
             this.pnlFormularioProducto.BackColor = System.Drawing.Color.Transparent;
+            this.pnlFormularioProducto.Controls.Add(this.txtDescripcion);
+            this.pnlFormularioProducto.Controls.Add(this.lblDescripcion);
             this.pnlFormularioProducto.Controls.Add(this.lblTituloInformacionProducto);
             this.pnlFormularioProducto.Controls.Add(this.txtStock);
             this.pnlFormularioProducto.Controls.Add(this.lblStock);
@@ -534,8 +555,42 @@
             this.pnlFormularioProducto.ShadowColor = System.Drawing.Color.Black;
             this.pnlFormularioProducto.ShadowDepth = 25;
             this.pnlFormularioProducto.ShadowShift = 3;
-            this.pnlFormularioProducto.Size = new System.Drawing.Size(550, 277);
+            this.pnlFormularioProducto.Size = new System.Drawing.Size(550, 316);
             this.pnlFormularioProducto.TabIndex = 45;
+            // 
+            // txtDescripcion
+            // 
+            this.txtDescripcion.BorderColor = System.Drawing.Color.DarkGray;
+            this.txtDescripcion.BorderRadius = 5;
+            this.txtDescripcion.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtDescripcion.DefaultText = "";
+            this.txtDescripcion.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtDescripcion.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtDescripcion.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtDescripcion.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtDescripcion.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescripcion.ForeColor = System.Drawing.Color.Black;
+            this.txtDescripcion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtDescripcion.Location = new System.Drawing.Point(21, 229);
+            this.txtDescripcion.Multiline = true;
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.PlaceholderText = "";
+            this.txtDescripcion.SelectedText = "";
+            this.txtDescripcion.Size = new System.Drawing.Size(225, 74);
+            this.txtDescripcion.TabIndex = 44;
+            this.txtDescripcion.Validating += new System.ComponentModel.CancelEventHandler(this.txtDescripcion_Validating);
+            // 
+            // lblDescripcion
+            // 
+            this.lblDescripcion.AutoSize = true;
+            this.lblDescripcion.BackColor = System.Drawing.Color.Transparent;
+            this.lblDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescripcion.Location = new System.Drawing.Point(21, 209);
+            this.lblDescripcion.Name = "lblDescripcion";
+            this.lblDescripcion.Size = new System.Drawing.Size(86, 17);
+            this.lblDescripcion.TabIndex = 45;
+            this.lblDescripcion.Text = "Descripcion:";
             // 
             // lblTituloInformacionProducto
             // 
@@ -558,6 +613,7 @@
             this.txtStock.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtStock.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtStock.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtStock.Enabled = false;
             this.txtStock.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtStock.ForeColor = System.Drawing.Color.Black;
@@ -590,6 +646,7 @@
             this.txtPrecio.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtPrecio.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtPrecio.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtPrecio.Enabled = false;
             this.txtPrecio.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrecio.ForeColor = System.Drawing.Color.Black;
@@ -632,6 +689,7 @@
             this.txtCodigo.SelectedText = "";
             this.txtCodigo.Size = new System.Drawing.Size(225, 27);
             this.txtCodigo.TabIndex = 25;
+            this.txtCodigo.Validating += new System.ComponentModel.CancelEventHandler(this.txtCodigo_Validating);
             // 
             // lblCodigo
             // 
@@ -657,9 +715,11 @@
             this.cmbMarca.ForeColor = System.Drawing.Color.Black;
             this.cmbMarca.ItemHeight = 21;
             this.cmbMarca.Items.AddRange(new object[] {
-            "categoria 1",
-            "categoria 2"});
-            this.cmbMarca.Location = new System.Drawing.Point(283, 114);
+            "Samsung",
+            "Iphon",
+            "Levono",
+            "Hp"});
+            this.cmbMarca.Location = new System.Drawing.Point(287, 161);
             this.cmbMarca.Name = "cmbMarca";
             this.cmbMarca.Size = new System.Drawing.Size(225, 27);
             this.cmbMarca.TabIndex = 24;
@@ -677,9 +737,10 @@
             this.cmbProveedor.ForeColor = System.Drawing.Color.Black;
             this.cmbProveedor.ItemHeight = 21;
             this.cmbProveedor.Items.AddRange(new object[] {
-            "categoria 1",
-            "categoria 2"});
-            this.cmbProveedor.Location = new System.Drawing.Point(283, 60);
+            "TecnoGlobal S.A.",
+            "Innovación Digital S.R.L.",
+            "Sistemas Austral S.A."});
+            this.cmbProveedor.Location = new System.Drawing.Point(287, 107);
             this.cmbProveedor.Name = "cmbProveedor";
             this.cmbProveedor.Size = new System.Drawing.Size(225, 27);
             this.cmbProveedor.TabIndex = 23;
@@ -697,9 +758,10 @@
             this.cmbCategoria.ForeColor = System.Drawing.Color.Black;
             this.cmbCategoria.ItemHeight = 21;
             this.cmbCategoria.Items.AddRange(new object[] {
-            "categoria 1",
-            "categoria 2"});
-            this.cmbCategoria.Location = new System.Drawing.Point(21, 229);
+            "Celulares y telefonia",
+            "Computacion",
+            "Tablet"});
+            this.cmbCategoria.Location = new System.Drawing.Point(287, 39);
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(225, 27);
             this.cmbCategoria.TabIndex = 22;
@@ -724,13 +786,14 @@
             this.txtNombre.SelectedText = "";
             this.txtNombre.Size = new System.Drawing.Size(225, 27);
             this.txtNombre.TabIndex = 0;
+            this.txtNombre.Validating += new System.ComponentModel.CancelEventHandler(this.txtNombre_Validating);
             // 
             // lblEstado
             // 
             this.lblEstado.AutoSize = true;
             this.lblEstado.BackColor = System.Drawing.Color.Transparent;
             this.lblEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstado.Location = new System.Drawing.Point(287, 156);
+            this.lblEstado.Location = new System.Drawing.Point(291, 203);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(52, 17);
             this.lblEstado.TabIndex = 19;
@@ -747,7 +810,7 @@
             this.btnCancelar.FillColor = System.Drawing.Color.Silver;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.btnCancelar.ForeColor = System.Drawing.Color.Black;
-            this.btnCancelar.Location = new System.Drawing.Point(283, 221);
+            this.btnCancelar.Location = new System.Drawing.Point(287, 268);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(100, 35);
             this.btnCancelar.TabIndex = 27;
@@ -765,7 +828,7 @@
             this.btnAgregarProducto.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(110)))), ((int)(((byte)(253)))));
             this.btnAgregarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregarProducto.ForeColor = System.Drawing.Color.White;
-            this.btnAgregarProducto.Location = new System.Drawing.Point(408, 221);
+            this.btnAgregarProducto.Location = new System.Drawing.Point(412, 268);
             this.btnAgregarProducto.Name = "btnAgregarProducto";
             this.btnAgregarProducto.Size = new System.Drawing.Size(100, 35);
             this.btnAgregarProducto.TabIndex = 26;
@@ -785,11 +848,12 @@
             this.cmbEstado.ForeColor = System.Drawing.Color.Black;
             this.cmbEstado.ItemHeight = 21;
             this.cmbEstado.Items.AddRange(new object[] {
-            "categoria 1",
-            "categoria 2"});
-            this.cmbEstado.Location = new System.Drawing.Point(283, 174);
+            "Activo",
+            "Inactivo"});
+            this.cmbEstado.Location = new System.Drawing.Point(287, 221);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(225, 27);
+            this.cmbEstado.StartIndex = 0;
             this.cmbEstado.TabIndex = 1;
             // 
             // lblNombre
@@ -808,7 +872,7 @@
             this.lblMarca.AutoSize = true;
             this.lblMarca.BackColor = System.Drawing.Color.Transparent;
             this.lblMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMarca.Location = new System.Drawing.Point(287, 94);
+            this.lblMarca.Location = new System.Drawing.Point(291, 141);
             this.lblMarca.Name = "lblMarca";
             this.lblMarca.Size = new System.Drawing.Size(47, 17);
             this.lblMarca.TabIndex = 12;
@@ -819,7 +883,7 @@
             this.lblProveedor.AutoSize = true;
             this.lblProveedor.BackColor = System.Drawing.Color.Transparent;
             this.lblProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProveedor.Location = new System.Drawing.Point(287, 40);
+            this.lblProveedor.Location = new System.Drawing.Point(291, 87);
             this.lblProveedor.Name = "lblProveedor";
             this.lblProveedor.Size = new System.Drawing.Size(74, 17);
             this.lblProveedor.TabIndex = 17;
@@ -830,7 +894,7 @@
             this.lblCategoria.AutoSize = true;
             this.lblCategoria.BackColor = System.Drawing.Color.Transparent;
             this.lblCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategoria.Location = new System.Drawing.Point(22, 206);
+            this.lblCategoria.Location = new System.Drawing.Point(288, 16);
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Size = new System.Drawing.Size(73, 17);
             this.lblCategoria.TabIndex = 11;
@@ -846,7 +910,7 @@
             this.pnlContenedorCatalogo.Controls.Add(this.dgvListaProductos);
             this.pnlContenedorCatalogo.Controls.Add(this.lblTituloCatlogoProductos);
             this.pnlContenedorCatalogo.FillColor = System.Drawing.Color.Transparent;
-            this.pnlContenedorCatalogo.Location = new System.Drawing.Point(12, 363);
+            this.pnlContenedorCatalogo.Location = new System.Drawing.Point(12, 394);
             this.pnlContenedorCatalogo.Name = "pnlContenedorCatalogo";
             this.pnlContenedorCatalogo.Size = new System.Drawing.Size(1149, 275);
             this.pnlContenedorCatalogo.TabIndex = 46;
@@ -905,10 +969,13 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvListaProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvListaProductos.ColumnHeadersHeight = 32;
             this.dgvListaProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colCodigo,
             this.colNombre,
+            this.Column1,
             this.colPrecio,
+            this.Column2,
             this.colStock,
             this.colProveedor,
             this.colCategoria,
@@ -936,10 +1003,26 @@
             this.dgvListaProductos.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
             this.dgvListaProductos.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvListaProductos.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvListaProductos.ThemeStyle.HeaderStyle.Height = 23;
+            this.dgvListaProductos.ThemeStyle.HeaderStyle.Height = 32;
             this.dgvListaProductos.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvListaProductos.ThemeStyle.RowsStyle.Height = 23;
             this.dgvListaProductos.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
+            // 
+            // lblTituloCatlogoProductos
+            // 
+            this.lblTituloCatlogoProductos.AutoSize = true;
+            this.lblTituloCatlogoProductos.BackColor = System.Drawing.Color.Transparent;
+            this.lblTituloCatlogoProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloCatlogoProductos.ForeColor = System.Drawing.Color.Black;
+            this.lblTituloCatlogoProductos.Location = new System.Drawing.Point(5, 15);
+            this.lblTituloCatlogoProductos.Name = "lblTituloCatlogoProductos";
+            this.lblTituloCatlogoProductos.Size = new System.Drawing.Size(170, 16);
+            this.lblTituloCatlogoProductos.TabIndex = 6;
+            this.lblTituloCatlogoProductos.Text = "Catalogo de Productos:";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // colCodigo
             // 
@@ -951,10 +1034,20 @@
             this.colNombre.HeaderText = "Nombre";
             this.colNombre.Name = "colNombre";
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Desc";
+            this.Column1.Name = "Column1";
+            // 
             // colPrecio
             // 
-            this.colPrecio.HeaderText = "Precio";
+            this.colPrecio.HeaderText = "Precio Compra";
             this.colPrecio.Name = "colPrecio";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Precio Venta";
+            this.Column2.Name = "Column2";
             // 
             // colStock
             // 
@@ -996,18 +1089,6 @@
             this.colEliminar.HeaderText = "Eliminar";
             this.colEliminar.Name = "colEliminar";
             // 
-            // lblTituloCatlogoProductos
-            // 
-            this.lblTituloCatlogoProductos.AutoSize = true;
-            this.lblTituloCatlogoProductos.BackColor = System.Drawing.Color.Transparent;
-            this.lblTituloCatlogoProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloCatlogoProductos.ForeColor = System.Drawing.Color.Black;
-            this.lblTituloCatlogoProductos.Location = new System.Drawing.Point(5, 15);
-            this.lblTituloCatlogoProductos.Name = "lblTituloCatlogoProductos";
-            this.lblTituloCatlogoProductos.Size = new System.Drawing.Size(170, 16);
-            this.lblTituloCatlogoProductos.TabIndex = 6;
-            this.lblTituloCatlogoProductos.Text = "Catalogo de Productos:";
-            // 
             // GestionProductosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1021,6 +1102,7 @@
             this.Controls.Add(this.pnlEncabezado);
             this.Name = "GestionProductosForm";
             this.Text = "GestionProductosForm";
+            this.Load += new System.EventHandler(this.GestionProductosForm_Load);
             this.pnlEncabezado.ResumeLayout(false);
             this.pnlEncabezado.PerformLayout();
             this.pnlnfoUsuario.ResumeLayout(false);
@@ -1039,6 +1121,7 @@
             this.pnlContenedorCatalogo.ResumeLayout(false);
             this.pnlContenedorCatalogo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaProductos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1093,9 +1176,19 @@
         private System.Windows.Forms.Label lblCategoria;
         private Guna.UI2.WinForms.Guna2Panel pnlContenedorCatalogo;
         private Guna.UI2.WinForms.Guna2DataGridView dgvListaProductos;
+        private System.Windows.Forms.Label lblTituloCatlogoProductos;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button guna2Button2;
+        private Guna.UI2.WinForms.Guna2Button btnBuscarProducto;
+        private Guna.UI2.WinForms.Guna2Button btnFiltrar;
+        private Guna.UI2.WinForms.Guna2TextBox txtDescripcion;
+        private System.Windows.Forms.Label lblDescripcion;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCodigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPrecio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStock;
         private System.Windows.Forms.DataGridViewTextBoxColumn colProveedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCategoria;
@@ -1104,10 +1197,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colEstado;
         private System.Windows.Forms.DataGridViewButtonColumn colEditar;
         private System.Windows.Forms.DataGridViewButtonColumn colEliminar;
-        private System.Windows.Forms.Label lblTituloCatlogoProductos;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
-        private Guna.UI2.WinForms.Guna2Button btnBuscarProducto;
-        private Guna.UI2.WinForms.Guna2Button btnFiltrar;
     }
 }

@@ -42,8 +42,10 @@
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.pnlContenedorCluentes = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.dgvListaClientes = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.lblTituloListaClientes = new System.Windows.Forms.Label();
             this.colNroCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +53,7 @@
             this.colTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colVerCompras = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblTituloListaClientes = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
@@ -65,17 +68,14 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.pnlContenedorFiltros = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.cmbFiltroMarca = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.lblFiltraMarca = new System.Windows.Forms.Label();
+            this.lblBuscarPorNombreOCorreo = new System.Windows.Forms.Label();
+            this.btnFiltrar = new Guna.UI2.WinForms.Guna2Button();
             this.lblFiltrarDesde = new System.Windows.Forms.Label();
             this.lblFiltrarHasta = new System.Windows.Forms.Label();
             this.dtpHasta = new System.Windows.Forms.DateTimePicker();
             this.dtpDesde = new System.Windows.Forms.DateTimePicker();
-            this.btnFiltrar = new Guna.UI2.WinForms.Guna2Button();
-            this.lblBuscarPorNombreOCorreo = new System.Windows.Forms.Label();
-            this.cmbFiltroMarca = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.lblFiltraMarca = new System.Windows.Forms.Label();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             this.pnlEncabezado.SuspendLayout();
             this.pnlnfoUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
@@ -175,6 +175,68 @@
             this.pnlContenedorCluentes.Size = new System.Drawing.Size(790, 290);
             this.pnlContenedorCluentes.TabIndex = 60;
             // 
+            // guna2Button3
+            // 
+            this.guna2Button3.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.guna2Button3.BorderRadius = 5;
+            this.guna2Button3.BorderThickness = 1;
+            this.guna2Button3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button3.FillColor = System.Drawing.SystemColors.Control;
+            this.guna2Button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button3.ForeColor = System.Drawing.Color.Black;
+            this.guna2Button3.ImageSize = new System.Drawing.Size(21, 25);
+            this.guna2Button3.Location = new System.Drawing.Point(665, 141);
+            this.guna2Button3.Name = "guna2Button3";
+            this.guna2Button3.Size = new System.Drawing.Size(125, 35);
+            this.guna2Button3.TabIndex = 13;
+            this.guna2Button3.Text = "Imprimir";
+            // 
+            // guna2Button2
+            // 
+            this.guna2Button2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button2.BorderColor = System.Drawing.Color.Red;
+            this.guna2Button2.BorderRadius = 5;
+            this.guna2Button2.BorderThickness = 1;
+            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button2.FillColor = System.Drawing.SystemColors.Control;
+            this.guna2Button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button2.ForeColor = System.Drawing.Color.Red;
+            this.guna2Button2.Image = global::CapaPresentacion.Properties.Resources.Gemini_Generated_Image_59msj059msj059ms;
+            this.guna2Button2.ImageSize = new System.Drawing.Size(21, 25);
+            this.guna2Button2.Location = new System.Drawing.Point(662, 36);
+            this.guna2Button2.Name = "guna2Button2";
+            this.guna2Button2.Size = new System.Drawing.Size(125, 35);
+            this.guna2Button2.TabIndex = 12;
+            this.guna2Button2.Text = "Exportar PDF";
+            // 
+            // guna2Button1
+            // 
+            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button1.BorderColor = System.Drawing.Color.Green;
+            this.guna2Button1.BorderRadius = 5;
+            this.guna2Button1.BorderThickness = 1;
+            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.FillColor = System.Drawing.SystemColors.Control;
+            this.guna2Button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button1.ForeColor = System.Drawing.Color.Green;
+            this.guna2Button1.Image = global::CapaPresentacion.Properties.Resources.icono_excel;
+            this.guna2Button1.ImageSize = new System.Drawing.Size(21, 25);
+            this.guna2Button1.Location = new System.Drawing.Point(662, 87);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.Size = new System.Drawing.Size(125, 35);
+            this.guna2Button1.TabIndex = 11;
+            this.guna2Button1.Text = "Exportar Excel";
+            // 
             // dgvListaClientes
             // 
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
@@ -219,18 +281,6 @@
             this.dgvListaClientes.ThemeStyle.RowsStyle.Height = 23;
             this.dgvListaClientes.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
             // 
-            // lblTituloListaClientes
-            // 
-            this.lblTituloListaClientes.AutoSize = true;
-            this.lblTituloListaClientes.BackColor = System.Drawing.Color.Transparent;
-            this.lblTituloListaClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloListaClientes.ForeColor = System.Drawing.Color.Black;
-            this.lblTituloListaClientes.Location = new System.Drawing.Point(5, 15);
-            this.lblTituloListaClientes.Name = "lblTituloListaClientes";
-            this.lblTituloListaClientes.Size = new System.Drawing.Size(170, 16);
-            this.lblTituloListaClientes.TabIndex = 6;
-            this.lblTituloListaClientes.Text = "Resultados del reporte:";
-            // 
             // colNroCliente
             // 
             this.colNroCliente.HeaderText = "NroVenta";
@@ -267,6 +317,18 @@
             this.colVerCompras.Name = "colVerCompras";
             this.colVerCompras.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.colVerCompras.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // lblTituloListaClientes
+            // 
+            this.lblTituloListaClientes.AutoSize = true;
+            this.lblTituloListaClientes.BackColor = System.Drawing.Color.Transparent;
+            this.lblTituloListaClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloListaClientes.ForeColor = System.Drawing.Color.Black;
+            this.lblTituloListaClientes.Location = new System.Drawing.Point(5, 15);
+            this.lblTituloListaClientes.Name = "lblTituloListaClientes";
+            this.lblTituloListaClientes.Size = new System.Drawing.Size(170, 16);
+            this.lblTituloListaClientes.TabIndex = 6;
+            this.lblTituloListaClientes.Text = "Resultados del reporte:";
             // 
             // chart1
             // 
@@ -433,6 +495,66 @@
             this.pnlContenedorFiltros.Size = new System.Drawing.Size(808, 121);
             this.pnlContenedorFiltros.TabIndex = 65;
             // 
+            // cmbFiltroMarca
+            // 
+            this.cmbFiltroMarca.BackColor = System.Drawing.Color.Transparent;
+            this.cmbFiltroMarca.BorderColor = System.Drawing.Color.DarkGray;
+            this.cmbFiltroMarca.BorderRadius = 5;
+            this.cmbFiltroMarca.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbFiltroMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFiltroMarca.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbFiltroMarca.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbFiltroMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.cmbFiltroMarca.ForeColor = System.Drawing.Color.Black;
+            this.cmbFiltroMarca.ItemHeight = 21;
+            this.cmbFiltroMarca.Items.AddRange(new object[] {
+            "categoria 1",
+            "categoria 2"});
+            this.cmbFiltroMarca.Location = new System.Drawing.Point(377, 58);
+            this.cmbFiltroMarca.Name = "cmbFiltroMarca";
+            this.cmbFiltroMarca.Size = new System.Drawing.Size(150, 27);
+            this.cmbFiltroMarca.TabIndex = 53;
+            // 
+            // lblFiltraMarca
+            // 
+            this.lblFiltraMarca.AutoSize = true;
+            this.lblFiltraMarca.BackColor = System.Drawing.Color.Transparent;
+            this.lblFiltraMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFiltraMarca.Location = new System.Drawing.Point(374, 38);
+            this.lblFiltraMarca.Name = "lblFiltraMarca";
+            this.lblFiltraMarca.Size = new System.Drawing.Size(106, 17);
+            this.lblFiltraMarca.TabIndex = 52;
+            this.lblFiltraMarca.Text = "Tipo de reporte";
+            // 
+            // lblBuscarPorNombreOCorreo
+            // 
+            this.lblBuscarPorNombreOCorreo.AutoSize = true;
+            this.lblBuscarPorNombreOCorreo.BackColor = System.Drawing.Color.Transparent;
+            this.lblBuscarPorNombreOCorreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBuscarPorNombreOCorreo.Location = new System.Drawing.Point(13, 36);
+            this.lblBuscarPorNombreOCorreo.Name = "lblBuscarPorNombreOCorreo";
+            this.lblBuscarPorNombreOCorreo.Size = new System.Drawing.Size(113, 17);
+            this.lblBuscarPorNombreOCorreo.TabIndex = 51;
+            this.lblBuscarPorNombreOCorreo.Text = "Filtro de reporte:";
+            // 
+            // btnFiltrar
+            // 
+            this.btnFiltrar.BackColor = System.Drawing.Color.Transparent;
+            this.btnFiltrar.BorderRadius = 5;
+            this.btnFiltrar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnFiltrar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnFiltrar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnFiltrar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnFiltrar.FillColor = System.Drawing.Color.Silver;
+            this.btnFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnFiltrar.ForeColor = System.Drawing.Color.Black;
+            this.btnFiltrar.Image = global::CapaPresentacion.Properties.Resources.icono_filtro;
+            this.btnFiltrar.Location = new System.Drawing.Point(533, 58);
+            this.btnFiltrar.Name = "btnFiltrar";
+            this.btnFiltrar.Size = new System.Drawing.Size(71, 27);
+            this.btnFiltrar.TabIndex = 50;
+            this.btnFiltrar.Text = "Filtrar";
+            // 
             // lblFiltrarDesde
             // 
             this.lblFiltrarDesde.AutoSize = true;
@@ -469,128 +591,6 @@
             this.dtpDesde.Size = new System.Drawing.Size(114, 20);
             this.dtpDesde.TabIndex = 48;
             // 
-            // btnFiltrar
-            // 
-            this.btnFiltrar.BackColor = System.Drawing.Color.Transparent;
-            this.btnFiltrar.BorderRadius = 5;
-            this.btnFiltrar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnFiltrar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnFiltrar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnFiltrar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnFiltrar.FillColor = System.Drawing.Color.Silver;
-            this.btnFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnFiltrar.ForeColor = System.Drawing.Color.Black;
-            this.btnFiltrar.Image = global::CapaPresentacion.Properties.Resources.icono_filtro;
-            this.btnFiltrar.Location = new System.Drawing.Point(533, 58);
-            this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(71, 27);
-            this.btnFiltrar.TabIndex = 50;
-            this.btnFiltrar.Text = "Filtrar";
-            // 
-            // lblBuscarPorNombreOCorreo
-            // 
-            this.lblBuscarPorNombreOCorreo.AutoSize = true;
-            this.lblBuscarPorNombreOCorreo.BackColor = System.Drawing.Color.Transparent;
-            this.lblBuscarPorNombreOCorreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuscarPorNombreOCorreo.Location = new System.Drawing.Point(13, 36);
-            this.lblBuscarPorNombreOCorreo.Name = "lblBuscarPorNombreOCorreo";
-            this.lblBuscarPorNombreOCorreo.Size = new System.Drawing.Size(113, 17);
-            this.lblBuscarPorNombreOCorreo.TabIndex = 51;
-            this.lblBuscarPorNombreOCorreo.Text = "Filtro de reporte:";
-            // 
-            // cmbFiltroMarca
-            // 
-            this.cmbFiltroMarca.BackColor = System.Drawing.Color.Transparent;
-            this.cmbFiltroMarca.BorderColor = System.Drawing.Color.DarkGray;
-            this.cmbFiltroMarca.BorderRadius = 5;
-            this.cmbFiltroMarca.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbFiltroMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbFiltroMarca.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmbFiltroMarca.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmbFiltroMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.cmbFiltroMarca.ForeColor = System.Drawing.Color.Black;
-            this.cmbFiltroMarca.ItemHeight = 21;
-            this.cmbFiltroMarca.Items.AddRange(new object[] {
-            "categoria 1",
-            "categoria 2"});
-            this.cmbFiltroMarca.Location = new System.Drawing.Point(377, 58);
-            this.cmbFiltroMarca.Name = "cmbFiltroMarca";
-            this.cmbFiltroMarca.Size = new System.Drawing.Size(150, 27);
-            this.cmbFiltroMarca.TabIndex = 53;
-            // 
-            // lblFiltraMarca
-            // 
-            this.lblFiltraMarca.AutoSize = true;
-            this.lblFiltraMarca.BackColor = System.Drawing.Color.Transparent;
-            this.lblFiltraMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiltraMarca.Location = new System.Drawing.Point(374, 38);
-            this.lblFiltraMarca.Name = "lblFiltraMarca";
-            this.lblFiltraMarca.Size = new System.Drawing.Size(106, 17);
-            this.lblFiltraMarca.TabIndex = 52;
-            this.lblFiltraMarca.Text = "Tipo de reporte";
-            // 
-            // guna2Button2
-            // 
-            this.guna2Button2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button2.BorderColor = System.Drawing.Color.Red;
-            this.guna2Button2.BorderRadius = 5;
-            this.guna2Button2.BorderThickness = 1;
-            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button2.FillColor = System.Drawing.SystemColors.Control;
-            this.guna2Button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button2.ForeColor = System.Drawing.Color.Red;
-            this.guna2Button2.Image = global::CapaPresentacion.Properties.Resources.Gemini_Generated_Image_59msj059msj059ms;
-            this.guna2Button2.ImageSize = new System.Drawing.Size(21, 25);
-            this.guna2Button2.Location = new System.Drawing.Point(662, 36);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(125, 35);
-            this.guna2Button2.TabIndex = 12;
-            this.guna2Button2.Text = "Exportar PDF";
-            // 
-            // guna2Button1
-            // 
-            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.BorderColor = System.Drawing.Color.Green;
-            this.guna2Button1.BorderRadius = 5;
-            this.guna2Button1.BorderThickness = 1;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.SystemColors.Control;
-            this.guna2Button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button1.ForeColor = System.Drawing.Color.Green;
-            this.guna2Button1.Image = global::CapaPresentacion.Properties.Resources.icono_excel;
-            this.guna2Button1.ImageSize = new System.Drawing.Size(21, 25);
-            this.guna2Button1.Location = new System.Drawing.Point(662, 87);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(125, 35);
-            this.guna2Button1.TabIndex = 11;
-            this.guna2Button1.Text = "Exportar Excel";
-            // 
-            // guna2Button3
-            // 
-            this.guna2Button3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2Button3.BorderRadius = 5;
-            this.guna2Button3.BorderThickness = 1;
-            this.guna2Button3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button3.FillColor = System.Drawing.SystemColors.Control;
-            this.guna2Button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button3.ForeColor = System.Drawing.Color.Black;
-            this.guna2Button3.ImageSize = new System.Drawing.Size(21, 25);
-            this.guna2Button3.Location = new System.Drawing.Point(665, 141);
-            this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.Size = new System.Drawing.Size(125, 35);
-            this.guna2Button3.TabIndex = 13;
-            this.guna2Button3.Text = "Imprimir";
-            // 
             // ReportesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -606,6 +606,7 @@
             this.Controls.Add(this.pnlEncabezado);
             this.Name = "ReportesForm";
             this.Text = "ReportesForm";
+            this.Load += new System.EventHandler(this.ReportesForm_Load);
             this.pnlEncabezado.ResumeLayout(false);
             this.pnlEncabezado.PerformLayout();
             this.pnlnfoUsuario.ResumeLayout(false);

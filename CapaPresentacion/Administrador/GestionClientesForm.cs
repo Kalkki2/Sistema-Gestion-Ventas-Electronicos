@@ -33,7 +33,7 @@ namespace CapaPresentacion.Administrador
         private void btnActualizarClientes_Click(object sender, EventArgs e)
         {
             // Valida que los TextBox no estén vacíos
-            if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtApellido.Text) || string.IsNullOrWhiteSpace(txtDni.Text) ||
+            if (string.IsNullOrWhiteSpace(txtCorreo.Text) || string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtApellido.Text) || string.IsNullOrWhiteSpace(txtDni.Text) ||
                 string.IsNullOrWhiteSpace(txtTelefono.Text) || string.IsNullOrWhiteSpace(txtDireccion.Text))
             {
                 MessageBox.Show("Debe completar todos los campos de texto obligatorios.", "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -97,6 +97,12 @@ namespace CapaPresentacion.Administrador
                 MessageBox.Show("Debe completar el campo para buscar.", "Campo vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+        }
+
+        private void GestionClientesForm_Load(object sender, EventArgs e)
+        {
+            System.Globalization.CultureInfo cultura = new System.Globalization.CultureInfo("es-ES");
+            lblFecha.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy", cultura);
         }
     }
 }

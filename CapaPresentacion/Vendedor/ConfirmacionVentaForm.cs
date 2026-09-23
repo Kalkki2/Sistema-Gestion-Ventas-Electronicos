@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace CapaPresentacion.Vendedor
 {
-    public partial class DetalleCompra : Form
+    public partial class ConfirmacionVentaForm : Form
     {
-        public DetalleCompra()
+        public ConfirmacionVentaForm()
         {
             InitializeComponent();
         }
 
-        private void btnGenerarComprobante_Click(object sender, EventArgs e)
+        private void btnImprimirTicket_Click(object sender, EventArgs e)
         {
             this.Close();
         }
