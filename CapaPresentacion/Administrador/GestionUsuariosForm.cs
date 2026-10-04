@@ -44,7 +44,8 @@ namespace CapaPresentacion.Administrador
         }
 
         private void btnAgregarUsuario_Click(object sender, EventArgs e)
-        {// 1. Validaciones de campos
+        {
+            // 1. Validaciones de campos
             if (!string.IsNullOrEmpty(errorProvider1.GetError(txtNombre)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtApellido)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtDni)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtCorreo)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtDireccion)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtTelefono)) ||
                 string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtApellido.Text) ||
                 string.IsNullOrWhiteSpace(txtDni.Text) || string.IsNullOrWhiteSpace(txtCorreo.Text) ||
@@ -69,11 +70,11 @@ namespace CapaPresentacion.Administrador
                 nombre = txtNombre.Text.Trim(),
                 apellido = txtApellido.Text.Trim(),
                 dni = txtDni.Text.Trim(),
-                correo = txtCorreo.Text.Trim(),
+                email = txtCorreo.Text.Trim(),
                 telefono = txtTelefono.Text.Trim(),
                 direccion = txtDireccion.Text.Trim(),
                 contrasenia = txtContrasenia.Text.Trim(),
-                estado = (bool)estadoSeleccionado.Valor,
+                estado = Convert.ToInt32(estadoSeleccionado.Valor), // Cambiado a int (1 o 0)
                 perfil_id = Convert.ToInt32(cmbPerfil.SelectedValue)
             };
 
@@ -109,7 +110,6 @@ namespace CapaPresentacion.Administrador
             {
                 MessageBox.Show(mensaje, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -145,12 +145,12 @@ namespace CapaPresentacion.Administrador
             dgvListaUsuarios.Columns["colDNI"].DataPropertyName = "dni";
             dgvListaUsuarios.Columns["colNombre"].DataPropertyName = "nombre";
             dgvListaUsuarios.Columns["colApellido"].DataPropertyName = "apellido";
-            dgvListaUsuarios.Columns["colCorreo"].DataPropertyName = "correo";
+            dgvListaUsuarios.Columns["colCorreo"].DataPropertyName = "email"; // Actualizado a email
             dgvListaUsuarios.Columns["colTelefono"].DataPropertyName = "telefono";
             dgvListaUsuarios.Columns["colDireccion"].DataPropertyName = "direccion";
-            dgvListaUsuarios.Columns["colPerfil"].DataPropertyName = "NombrePerfil"; // Trae el nombre del objeto EPerfil
-            dgvListaUsuarios.Columns["colEstado"].DataPropertyName = "EstadoTexto";   // Trae "Activo" o "Inactivo"
-            dgvListaUsuarios.Columns["colFechaAlta"].DataPropertyName = "fecha_registro";
+            dgvListaUsuarios.Columns["colPerfil"].DataPropertyName = "NombrePerfil";
+            dgvListaUsuarios.Columns["colEstado"].DataPropertyName = "EstadoTexto";
+            dgvListaUsuarios.Columns["colFechaAlta"].DataPropertyName = "fecha_alta"; // Actualizado a fecha_alta
 
             // 3. Obtener la lista mapeada desde la Capa de Negocio
             var lista = objCNUsuario.Listar();
@@ -162,29 +162,23 @@ namespace CapaPresentacion.Administrador
 
         private void dgvListaUsuarios_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            // Verificar que e.RowIndex sea válido y no la fila de encabezado/nueva
             if (e.RowIndex < 0 || e.RowIndex == dgvListaUsuarios.NewRowIndex) return;
 
-            // Obtener la columna actual
-            string nombreColumna = dgvListaUsuarios.Columns[e.ColumnIndex].Name;
+            string colName = dgvListaUsuarios.Columns[e.ColumnIndex].Name;
 
-            // 1. Asignar ícono a la columna Editar
-            if (nombreColumna == "colEditar") // Reemplaza por el Name de tu columna Editar
+            if (colName == "colEditar")
             {
                 e.Value = Properties.Resources.icono_editar;
             }
 
-            // 2. Asignar ícono dinámico a la columna Eliminar/Estado
-            if (nombreColumna == "colEliminar") // Reemplaza por el Name de tu columna Eliminar
+            if (colName == "colEliminar")
             {
-                // Obtenemos el objeto mapeado de la fila actual
                 var usuarioRow = dgvListaUsuarios.Rows[e.RowIndex].DataBoundItem as EUsuario;
 
                 if (usuarioRow != null)
                 {
-                    // Si el usuario está activo -> Tacho de basura
-                    // Si está inactivo -> Ícono de reactivar
-                    if (usuarioRow.estado)
+                    // Evaluamos si estado == 1 (Activo)
+                    if (usuarioRow.estado == 1)
                     {
                         e.Value = Properties.Resources.icono_eliminar;
                     }
@@ -210,7 +204,7 @@ namespace CapaPresentacion.Administrador
                 {
                     idUsuarioSeleccionado = usuario.usuario_id;
 
-                    // 1. DESVINCULAR temporalmente los eventos Validating para que no salten errores
+                    // 1. DESVINCULAR temporalmente los eventos Validating
                     txtNombre.Validating -= txtNombre_Validating;
                     txtApellido.Validating -= txtApellido_Validating;
                     txtDni.Validating -= txtDni_Validating;
@@ -219,11 +213,11 @@ namespace CapaPresentacion.Administrador
                     txtDireccion.Validating -= txtDireccion_Validating;
                     txtContrasenia.Validating -= txtContrasenia_Validating;
 
-                    // 2. Cargar datos en las cajas de texto con total tranquilidad
+                    // 2. Cargar datos en las cajas de texto
                     txtNombre.Text = usuario.nombre;
                     txtApellido.Text = usuario.apellido;
                     txtDni.Text = usuario.dni;
-                    txtCorreo.Text = usuario.correo;
+                    txtCorreo.Text = usuario.email; // Actualizado a email
                     txtTelefono.Text = usuario.telefono;
                     txtDireccion.Text = usuario.direccion;
                     txtContrasenia.Text = usuario.contrasenia;
@@ -231,17 +225,17 @@ namespace CapaPresentacion.Administrador
                     // Seleccionar valor en ComboBox Perfil
                     cmbPerfil.SelectedValue = usuario.perfil_id;
 
-                    // Seleccionar valor en ComboBox Estado
+                    // Seleccionar valor en ComboBox Estado (comparando con int)
                     foreach (OpcionCombo item in cmbEstado.Items)
                     {
-                        if ((bool)item.Valor == usuario.estado)
+                        if (Convert.ToInt32(item.Valor) == usuario.estado)
                         {
                             cmbEstado.SelectedItem = item;
                             break;
                         }
                     }
 
-                    // 3. VINCULAR NUEVAMENTE los eventos Validating para que funcionen cuando el usuario edite manualmente
+                    // 3. VINCULAR NUEVAMENTE los eventos Validating
                     txtNombre.Validating += txtNombre_Validating;
                     txtApellido.Validating += txtApellido_Validating;
                     txtDni.Validating += txtDni_Validating;
@@ -250,25 +244,22 @@ namespace CapaPresentacion.Administrador
                     txtDireccion.Validating += txtDireccion_Validating;
                     txtContrasenia.Validating += txtContrasenia_Validating;
 
-                    // 4. Limpiar cualquier error previo por si acaso
                     errorProvider1.Clear();
-
-                    // Cambiar el texto del botón
                     btnAgregarUsuario.Text = "Actualizar";
                 }
             }
-            // Detectar si se hizo clic en la columna de Eliminar / Reactivar
-            if (nombreColumna == "colEliminar") // Reemplaza "colEliminar" por el Name de tu columna
+
+            if (nombreColumna == "colEliminar")
             {
                 var usuarioSeleccionado = dgvListaUsuarios.Rows[e.RowIndex].DataBoundItem as EUsuario;
 
                 if (usuarioSeleccionado != null)
                 {
-                    bool estadoActual = usuarioSeleccionado.estado;
-                    bool nuevoEstado = !estadoActual; // Invierte el estado actual
+                    int estadoActual = usuarioSeleccionado.estado; // 1 o 0
+                    int nuevoEstado = (estadoActual == 1) ? 0 : 1;   // Invierte el estado
 
-                    string accion = estadoActual ? "desactivar" : "reactivar";
-                    string titulo = estadoActual ? "Desactivar Usuario" : "Reactivar Usuario";
+                    string accion = (estadoActual == 1) ? "desactivar" : "reactivar";
+                    string titulo = (estadoActual == 1) ? "Desactivar Usuario" : "Reactivar Usuario";
 
                     DialogResult result = MessageBox.Show(
                         $"¿Está seguro de que desea {accion} al usuario {usuarioSeleccionado.nombre} {usuarioSeleccionado.apellido}?",
@@ -284,8 +275,6 @@ namespace CapaPresentacion.Administrador
                         if (respuesta)
                         {
                             MessageBox.Show($"Usuario {accion}do con éxito.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                            // Recargar la tabla para actualizar la grilla y el ícono
                             CargarUsuarios();
                         }
                         else
@@ -300,25 +289,22 @@ namespace CapaPresentacion.Administrador
         private void CargarCmbPerfil()
         {
             List<EPerfil> listaPerfiles = objCNPerfil.Listar();
-
-            // Asignar ValueMember y DisplayMember ANTES del DataSource
             cmbPerfil.ValueMember = "perfil_id";
             cmbPerfil.DisplayMember = "nombre";
             cmbPerfil.DataSource = listaPerfiles;
-            cmbPerfil.SelectedIndex = -1; // Inicia desmarcado
+            cmbPerfil.SelectedIndex = -1;
         }
 
         private void CargarCmbEstado()
         {
             cmbEstado.Items.Clear();
-            cmbEstado.Items.Add(new OpcionCombo { Texto = "Activo", Valor = true });
-            cmbEstado.Items.Add(new OpcionCombo { Texto = "Inactivo", Valor = false });
+            cmbEstado.Items.Add(new OpcionCombo { Texto = "Activo", Valor = 1 });   // Valor int 1
+            cmbEstado.Items.Add(new OpcionCombo { Texto = "Inactivo", Valor = 0 }); // Valor int 0
             cmbEstado.DisplayMember = "Texto";
             cmbEstado.ValueMember = "Valor";
-            cmbEstado.SelectedIndex = -1; // Inicia desmarcado
+            cmbEstado.SelectedIndex = -1;
         }
 
-        // Clase auxiliar para llenar el ComboBox de Estado
         public class OpcionCombo
         {
             public string Texto { get; set; }
@@ -333,14 +319,11 @@ namespace CapaPresentacion.Administrador
                 return;
             }
             string busqueda = txtBuscarUsuario.Text.Trim();
-            // Consultamos a la base de datos mediante la Capa de Negocio
             var resultados = objCNUsuario.Buscar(busqueda);
 
-            // Asignamos el resultado al DataGridView y actualizamos el contador
             dgvListaUsuarios.DataSource = resultados;
             lblCantTotalUsuarios.Text = resultados.Count.ToString();
 
-            // Si no se encontraron coincidencias, avisamos al usuario
             if (resultados.Count == 0)
             {
                 MessageBox.Show("No se encontraron usuarios que coincidan con la búsqueda.", "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -352,14 +335,13 @@ namespace CapaPresentacion.Administrador
         {
             if (cmbFiltroEstado.SelectedIndex == -1 || cmbFiltroPerfil.SelectedIndex == -1)
             {
-                MessageBox.Show("Debe seleccionar Estado o Perfil  para filtrar", "Selección requerida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe seleccionar Estado o Perfil para filtrar", "Selección requerida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             int? idPerfilSeleccionado = null;
-            bool? estadoSeleccionado = null;
+            int? estadoSeleccionado = null; // Cambiado a int?
 
-            // 1. Obtener valor de Perfil (si es > 0, es un perfil específico)
             if (cmbFiltroPerfil.SelectedValue != null)
             {
                 int idPerfil = Convert.ToInt32(cmbFiltroPerfil.SelectedValue);
@@ -369,20 +351,17 @@ namespace CapaPresentacion.Administrador
                 }
             }
 
-            // 2. Obtener valor de Estado
             if (cmbFiltroEstado.SelectedItem != null)
             {
                 OpcionCombo opcionEstado = (OpcionCombo)cmbFiltroEstado.SelectedItem;
                 if (opcionEstado.Valor != null)
                 {
-                    estadoSeleccionado = (bool)opcionEstado.Valor;
+                    estadoSeleccionado = Convert.ToInt32(opcionEstado.Valor);
                 }
             }
 
-            // 3. Consultar la base de datos con los criterios seleccionados
             var usuariosFiltrados = objCNUsuario.Filtrar(idPerfilSeleccionado, estadoSeleccionado);
 
-            // 4. Actualizar el DataGridView y el contador
             dgvListaUsuarios.DataSource = usuariosFiltrados;
             lblCantTotalUsuarios.Text = usuariosFiltrados.Count.ToString();
 
@@ -395,25 +374,22 @@ namespace CapaPresentacion.Administrador
 
         private void CargarFiltros()
         {
-            // 1. Cargar ComboBox Filtro Perfil
             List<EPerfil> listaPerfiles = objCNPerfil.Listar();
-            // Insertamos la opción por defecto en el índice 0
             listaPerfiles.Insert(0, new EPerfil { perfil_id = 0, nombre = "Todos" });
 
             cmbFiltroPerfil.DataSource = listaPerfiles;
             cmbFiltroPerfil.DisplayMember = "nombre";
             cmbFiltroPerfil.ValueMember = "perfil_id";
-            cmbFiltroPerfil.SelectedIndex = 0; // Selecciona "Todos" por defecto
+            cmbFiltroPerfil.SelectedIndex = 0;
 
-            // 2. Cargar ComboBox Filtro Estado
             cmbFiltroEstado.Items.Clear();
             cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Todos", Valor = null });
-            cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Activo", Valor = true });
-            cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Inactivo", Valor = false });
+            cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Activo", Valor = 1 });   // int 1
+            cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Inactivo", Valor = 0 }); // int 0
 
             cmbFiltroEstado.DisplayMember = "Texto";
             cmbFiltroEstado.ValueMember = "Valor";
-            cmbFiltroEstado.SelectedIndex = 0; // Selecciona "Todos" por defecto
+            cmbFiltroEstado.SelectedIndex = 0;
         }
 
         private void txtNombre_Validating(object sender, CancelEventArgs e)

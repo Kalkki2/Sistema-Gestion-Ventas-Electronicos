@@ -61,7 +61,7 @@
             this.btnAgregarProveedor = new Guna.UI2.WinForms.Guna2Button();
             this.txtNombreComercial = new Guna.UI2.WinForms.Guna2TextBox();
             this.pnlContenedorFiltros = new Guna.UI2.WinForms.Guna2ShadowPanel();
-            this.btnFiltrar = new Guna.UI2.WinForms.Guna2Button();
+            this.btnFiltrarProveedor = new Guna.UI2.WinForms.Guna2Button();
             this.btnBuscarProveedor = new Guna.UI2.WinForms.Guna2Button();
             this.txtBuscarProveedor = new Guna.UI2.WinForms.Guna2TextBox();
             this.cmbFiltroEstado = new Guna.UI2.WinForms.Guna2ComboBox();
@@ -71,15 +71,15 @@
             this.dgvListaProveedores = new Guna.UI2.WinForms.Guna2DataGridView();
             this.colCuit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNombreComercial = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colRasonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRazonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCorreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colFechaAlta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEditar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.colEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colEditar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colEliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.lblTituloListaProveedores = new System.Windows.Forms.Label();
             this.pnlCardTotalProveedores = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.lblCantTotalProveedores = new System.Windows.Forms.Label();
@@ -516,7 +516,7 @@
             // pnlContenedorFiltros
             // 
             this.pnlContenedorFiltros.BackColor = System.Drawing.Color.Transparent;
-            this.pnlContenedorFiltros.Controls.Add(this.btnFiltrar);
+            this.pnlContenedorFiltros.Controls.Add(this.btnFiltrarProveedor);
             this.pnlContenedorFiltros.Controls.Add(this.btnBuscarProveedor);
             this.pnlContenedorFiltros.Controls.Add(this.txtBuscarProveedor);
             this.pnlContenedorFiltros.Controls.Add(this.cmbFiltroEstado);
@@ -533,24 +533,25 @@
             this.pnlContenedorFiltros.Size = new System.Drawing.Size(383, 165);
             this.pnlContenedorFiltros.TabIndex = 58;
             // 
-            // btnFiltrar
+            // btnFiltrarProveedor
             // 
-            this.btnFiltrar.BackColor = System.Drawing.Color.Transparent;
-            this.btnFiltrar.BorderRadius = 5;
-            this.btnFiltrar.CausesValidation = false;
-            this.btnFiltrar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnFiltrar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnFiltrar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnFiltrar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnFiltrar.FillColor = System.Drawing.Color.Silver;
-            this.btnFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnFiltrar.ForeColor = System.Drawing.Color.Black;
-            this.btnFiltrar.Image = global::CapaPresentacion.Properties.Resources.icono_filtro;
-            this.btnFiltrar.Location = new System.Drawing.Point(150, 118);
-            this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(71, 27);
-            this.btnFiltrar.TabIndex = 46;
-            this.btnFiltrar.Text = "Filtrar";
+            this.btnFiltrarProveedor.BackColor = System.Drawing.Color.Transparent;
+            this.btnFiltrarProveedor.BorderRadius = 5;
+            this.btnFiltrarProveedor.CausesValidation = false;
+            this.btnFiltrarProveedor.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnFiltrarProveedor.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnFiltrarProveedor.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnFiltrarProveedor.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnFiltrarProveedor.FillColor = System.Drawing.Color.Silver;
+            this.btnFiltrarProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnFiltrarProveedor.ForeColor = System.Drawing.Color.Black;
+            this.btnFiltrarProveedor.Image = global::CapaPresentacion.Properties.Resources.icono_filtro;
+            this.btnFiltrarProveedor.Location = new System.Drawing.Point(150, 118);
+            this.btnFiltrarProveedor.Name = "btnFiltrarProveedor";
+            this.btnFiltrarProveedor.Size = new System.Drawing.Size(71, 27);
+            this.btnFiltrarProveedor.TabIndex = 46;
+            this.btnFiltrarProveedor.Text = "Filtrar";
+            this.btnFiltrarProveedor.Click += new System.EventHandler(this.btnFiltrarProveedor_Click);
             // 
             // btnBuscarProveedor
             // 
@@ -688,7 +689,7 @@
             this.dgvListaProveedores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colCuit,
             this.colNombreComercial,
-            this.colRasonSocial,
+            this.colRazonSocial,
             this.colDireccion,
             this.colCorreo,
             this.colTelefono,
@@ -720,6 +721,8 @@
             this.dgvListaProveedores.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvListaProveedores.ThemeStyle.RowsStyle.Height = 23;
             this.dgvListaProveedores.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
+            this.dgvListaProveedores.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaProveedores_CellContentClick);
+            this.dgvListaProveedores.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvListaProveedores_CellFormatting);
             // 
             // colCuit
             // 
@@ -731,10 +734,10 @@
             this.colNombreComercial.HeaderText = "Nombre Comercial";
             this.colNombreComercial.Name = "colNombreComercial";
             // 
-            // colRasonSocial
+            // colRazonSocial
             // 
-            this.colRasonSocial.HeaderText = "Rason Social";
-            this.colRasonSocial.Name = "colRasonSocial";
+            this.colRazonSocial.HeaderText = "Razon Social";
+            this.colRazonSocial.Name = "colRazonSocial";
             // 
             // colDireccion
             // 
@@ -770,11 +773,13 @@
             // 
             this.colEditar.HeaderText = "Editar";
             this.colEditar.Name = "colEditar";
+            this.colEditar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // colEliminar
             // 
             this.colEliminar.HeaderText = "Eliminar";
             this.colEliminar.Name = "colEliminar";
+            this.colEliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // lblTituloListaProveedores
             // 
@@ -896,23 +901,23 @@
         private Guna.UI2.WinForms.Guna2Button btnExportarPDF;
         private Guna.UI2.WinForms.Guna2Button btnExportarEXCEL;
         private Guna.UI2.WinForms.Guna2DataGridView dgvListaProveedores;
+        private System.Windows.Forms.Label lblTituloListaProveedores;
+        private Guna.UI2.WinForms.Guna2GradientPanel pnlCardTotalProveedores;
+        private System.Windows.Forms.Label lblCantTotalProveedores;
+        private System.Windows.Forms.Label lblTituloTotalProveedores;
+        private Guna.UI2.WinForms.Guna2Button btnBuscarProveedor;
+        private Guna.UI2.WinForms.Guna2Button btnFiltrarProveedor;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCuit;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNombreComercial;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colRasonSocial;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colRazonSocial;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDireccion;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCorreo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTelefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCategoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEstado;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFechaAlta;
-        private System.Windows.Forms.DataGridViewButtonColumn colEditar;
-        private System.Windows.Forms.DataGridViewButtonColumn colEliminar;
-        private System.Windows.Forms.Label lblTituloListaProveedores;
-        private Guna.UI2.WinForms.Guna2GradientPanel pnlCardTotalProveedores;
-        private System.Windows.Forms.Label lblCantTotalProveedores;
-        private System.Windows.Forms.Label lblTituloTotalProveedores;
-        private Guna.UI2.WinForms.Guna2Button btnBuscarProveedor;
-        private Guna.UI2.WinForms.Guna2Button btnFiltrar;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.DataGridViewImageColumn colEditar;
+        private System.Windows.Forms.DataGridViewImageColumn colEliminar;
     }
 }

@@ -53,53 +53,45 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BD_Sistema_gestion_ventas_electronico.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BD_Sistema_gestion_ventas_electronico.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BD_Sistema_gestion_ventas_electronico.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BD_Sistema_gestion_ventas_electronico.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BD_Sistema_gestion_ventas_electronico.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BD_Sistema_gestion_ventas_electronico.edmx</DependentUpon>
-    </Compile>
     <Compile Include="CDPerfil.cs" />
+    <Compile Include="CDProveedor.cs" />
     <Compile Include="CDUsuario.cs" />
+    <Compile Include="db_sistema_gestion_ventas_electronicos.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>db_sistema_gestion_ventas_electronicos.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_sistema_gestion_ventas_electronicos.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>db_sistema_gestion_ventas_electronicos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_sistema_gestion_ventas_electronicos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>db_sistema_gestion_ventas_electronicos.edmx</DependentUpon>
+    </Compile>
     <Compile Include="perfil.cs">
-      <DependentUpon>BD_Sistema_gestion_ventas_electronico.tt</DependentUpon>
+      <DependentUpon>db_sistema_gestion_ventas_electronicos.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="proveedor.cs">
+      <DependentUpon>db_sistema_gestion_ventas_electronicos.tt</DependentUpon>
+    </Compile>
     <Compile Include="usuario.cs">
-      <DependentUpon>BD_Sistema_gestion_ventas_electronico.tt</DependentUpon>
+      <DependentUpon>db_sistema_gestion_ventas_electronicos.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="BD_Sistema_gestion_ventas_electronico.edmx">
+    <EntityDeploy Include="db_sistema_gestion_ventas_electronicos.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BD_Sistema_gestion_ventas_electronico.Designer.cs</LastGenOutput>
+      <LastGenOutput>db_sistema_gestion_ventas_electronicos.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="BD_Sistema_gestion_ventas_electronico.edmx.diagram">
-      <DependentUpon>BD_Sistema_gestion_ventas_electronico.edmx</DependentUpon>
+    <None Include="db_sistema_gestion_ventas_electronicos.edmx.diagram">
+      <DependentUpon>db_sistema_gestion_ventas_electronicos.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="BD_Sistema_gestion_ventas_electronico.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BD_Sistema_gestion_ventas_electronico.edmx</DependentUpon>
-      <LastGenOutput>BD_Sistema_gestion_ventas_electronico.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="BD_Sistema_gestion_ventas_electronico.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BD_Sistema_gestion_ventas_electronico.edmx</DependentUpon>
-      <LastGenOutput>BD_Sistema_gestion_ventas_electronico.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -109,6 +101,18 @@
       <Project>{8d2b9238-5bc0-4bfe-8f48-d01ebd60d317}</Project>
       <Name>CapaEntidad</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="db_sistema_gestion_ventas_electronicos.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>db_sistema_gestion_ventas_electronicos.edmx</DependentUpon>
+      <LastGenOutput>db_sistema_gestion_ventas_electronicos.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="db_sistema_gestion_ventas_electronicos.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>db_sistema_gestion_ventas_electronicos.edmx</DependentUpon>
+      <LastGenOutput>db_sistema_gestion_ventas_electronicos.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

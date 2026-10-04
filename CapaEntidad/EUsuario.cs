@@ -12,18 +12,19 @@ namespace CapaEntidad
         public string nombre { get; set; }
         public string apellido { get; set; }
         public string dni { get; set; }
-        public string correo { get; set; }
+        public string email { get; set; }
         public string telefono { get; set; }
-        public bool estado { get; set; }
-        public DateTime fecha_registro { get; set; }
         public string direccion { get; set; }
         public string contrasenia { get; set; }
+        public int estado { get; set; }
+        public DateTime fecha_alta { get; set; }
+        public DateTime fecha_ultima_modificacion { get; set; }
 
         public int perfil_id { get; set; }
         public EPerfil oPerfil { get; set; } // Objeto anidado de tipo EPerfil
 
         // Propiedades de lectura directa para la grilla
         public string NombrePerfil => oPerfil != null ? oPerfil.nombre : string.Empty;
-        public string EstadoTexto => estado ? "Activo" : "Inactivo";
+        public string EstadoTexto => estado == 1 ? "Activo" : "Inactivo";
     }
 }

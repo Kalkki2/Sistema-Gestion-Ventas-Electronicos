@@ -13,7 +13,7 @@ namespace CapaDatos
     {
         public List<EUsuario> ListarUsuarios()
         {
-            using (var db = new BD_SISTEMA_GESTION_VENTAS_ELECTRONICOSEntities()) // DbContext generado por el .edmx
+            using (var db = new db_sistema_gestion_ventas_electronicosEntities()) // DbContext generado por el .edmx
             {
                 return db.usuario.Select(u => new EUsuario()
                 {
@@ -21,10 +21,11 @@ namespace CapaDatos
                     nombre = u.nombre,
                     apellido = u.apellido,
                     dni = u.dni,
-                    correo = u.correo,
+                    email = u.email,
                     telefono = u.telefono,
                     estado = u.estado,
-                    fecha_registro = u.fecha_registro,
+                    fecha_alta = u.fecha_alta,
+                    fecha_ultima_modificacion = u.fecha_ultima_modificacion,
                     direccion = u.direccion,
                     contrasenia = u.contrasenia,
                     perfil_id = u.perfil_id,
@@ -39,18 +40,18 @@ namespace CapaDatos
             }
         }
 
-
-        // Método para cambiar el estado (Activo <-> Inactivo)
-        public bool CambiarEstado(int idUsuario, bool nuevoEstado)
+        // Método para cambiar el estado (1: Activo, 0: Inactivo)
+        public bool CambiarEstado(int idUsuario, int nuevoEstado)
         {
             try
             {
-                using (var db = new BD_SISTEMA_GESTION_VENTAS_ELECTRONICOSEntities())
+                using (var db = new db_sistema_gestion_ventas_electronicosEntities())
                 {
                     var oUsuario = db.usuario.FirstOrDefault(u => u.usuario_id == idUsuario);
                     if (oUsuario != null)
                     {
                         oUsuario.estado = nuevoEstado;
+                        oUsuario.fecha_ultima_modificacion = DateTime.Now;
                         db.SaveChanges(); // Guarda el cambio en la BD
                         return true;
                     }
@@ -68,20 +69,21 @@ namespace CapaDatos
             Mensaje = string.Empty;
             try
             {
-                using (var db = new BD_SISTEMA_GESTION_VENTAS_ELECTRONICOSEntities())
+                using (var db = new db_sistema_gestion_ventas_electronicosEntities())
                 {
                     usuario nuevoUsuario = new usuario
                     {
                         nombre = obj.nombre,
                         apellido = obj.apellido,
                         dni = obj.dni,
-                        correo = obj.correo,
+                        email = obj.email,
                         telefono = obj.telefono,
                         direccion = obj.direccion,
                         contrasenia = obj.contrasenia,
                         estado = obj.estado,
                         perfil_id = obj.perfil_id,
-                        fecha_registro = DateTime.Now
+                        fecha_alta = DateTime.Now,
+                        fecha_ultima_modificacion = DateTime.Now
                     };
 
                     db.usuario.Add(nuevoUsuario);
@@ -116,13 +118,12 @@ namespace CapaDatos
             }
         }
 
-
         public bool Editar(EUsuario obj, out string Mensaje)
         {
             Mensaje = string.Empty;
             try
             {
-                using (var db = new BD_SISTEMA_GESTION_VENTAS_ELECTRONICOSEntities())
+                using (var db = new db_sistema_gestion_ventas_electronicosEntities())
                 {
                     var oUsuario = db.usuario.FirstOrDefault(u => u.usuario_id == obj.usuario_id);
 
@@ -131,11 +132,12 @@ namespace CapaDatos
                         oUsuario.nombre = obj.nombre;
                         oUsuario.apellido = obj.apellido;
                         oUsuario.dni = obj.dni;
-                        oUsuario.correo = obj.correo;
+                        oUsuario.email = obj.email;
                         oUsuario.telefono = obj.telefono;
                         oUsuario.direccion = obj.direccion;
                         oUsuario.estado = obj.estado;
                         oUsuario.perfil_id = obj.perfil_id;
+                        oUsuario.fecha_ultima_modificacion = DateTime.Now;
 
                         // Actualiza la contraseña solo si se ingresó una nueva
                         if (!string.IsNullOrEmpty(obj.contrasenia))
@@ -158,27 +160,27 @@ namespace CapaDatos
             }
         }
 
-
         public List<EUsuario> BuscarUsuarios(string busqueda)
         {
-            using (var db = new BD_SISTEMA_GESTION_VENTAS_ELECTRONICOSEntities())
+            using (var db = new db_sistema_gestion_ventas_electronicosEntities())
             {
                 string filtro = busqueda.Trim().ToLower();
 
                 return db.usuario
                     .Where(u => u.dni.ToLower().Contains(filtro) ||
                                 u.nombre.ToLower().Contains(filtro) ||
-                                u.correo.ToLower().Contains(filtro))
+                                u.email.ToLower().Contains(filtro))
                     .Select(u => new EUsuario()
                     {
                         usuario_id = u.usuario_id,
                         nombre = u.nombre,
                         apellido = u.apellido,
                         dni = u.dni,
-                        correo = u.correo,
+                        email = u.email,
                         telefono = u.telefono,
                         estado = u.estado,
-                        fecha_registro = u.fecha_registro,
+                        fecha_alta = u.fecha_alta,
+                        fecha_ultima_modificacion = u.fecha_ultima_modificacion,
                         direccion = u.direccion,
                         contrasenia = u.contrasenia,
                         perfil_id = u.perfil_id,
@@ -192,9 +194,9 @@ namespace CapaDatos
             }
         }
 
-        public List<EUsuario> FiltrarUsuarios(int? idPerfil, bool? estado)
+        public List<EUsuario> FiltrarUsuarios(int? idPerfil, int? estado)
         {
-            using (var db = new BD_SISTEMA_GESTION_VENTAS_ELECTRONICOSEntities())
+            using (var db = new db_sistema_gestion_ventas_electronicosEntities())
             {
                 // Iniciamos la consulta base
                 var query = db.usuario.AsQueryable();
@@ -217,10 +219,11 @@ namespace CapaDatos
                     nombre = u.nombre,
                     apellido = u.apellido,
                     dni = u.dni,
-                    correo = u.correo,
+                    email = u.email,
                     telefono = u.telefono,
                     estado = u.estado,
-                    fecha_registro = u.fecha_registro,
+                    fecha_alta = u.fecha_alta,
+                    fecha_ultima_modificacion = u.fecha_ultima_modificacion,
                     direccion = u.direccion,
                     contrasenia = u.contrasenia,
                     perfil_id = u.perfil_id,

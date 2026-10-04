@@ -13,10 +13,10 @@ namespace CapaDatos
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BD_SISTEMA_GESTION_VENTAS_ELECTRONICOSEntities : DbContext
+    public partial class db_sistema_gestion_ventas_electronicosEntities : DbContext
     {
-        public BD_SISTEMA_GESTION_VENTAS_ELECTRONICOSEntities()
-            : base("name=BD_SISTEMA_GESTION_VENTAS_ELECTRONICOSEntities")
+        public db_sistema_gestion_ventas_electronicosEntities()
+            : base("name=db_sistema_gestion_ventas_electronicosEntities")
         {
         }
     
@@ -27,5 +27,6 @@ namespace CapaDatos
     
         public virtual DbSet<perfil> perfil { get; set; }
         public virtual DbSet<usuario> usuario { get; set; }
+        public virtual DbSet<proveedor> proveedor { get; set; }
     }
 }

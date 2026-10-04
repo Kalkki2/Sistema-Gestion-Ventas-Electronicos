@@ -12,21 +12,17 @@ namespace CapaDatos
     using System;
     using System.Collections.Generic;
     
-    public partial class usuario
+    public partial class proveedor
     {
-        public int usuario_id { get; set; }
-        public string nombre { get; set; }
-        public string apellido { get; set; }
-        public string dni { get; set; }
+        public int proveedor_id { get; set; }
+        public string cuit { get; set; }
+        public string nombre_comercial { get; set; }
+        public string razon_social { get; set; }
         public string email { get; set; }
         public string telefono { get; set; }
         public string direccion { get; set; }
-        public string contrasenia { get; set; }
-        public int estado { get; set; }
         public System.DateTime fecha_alta { get; set; }
         public System.DateTime fecha_ultima_modificacion { get; set; }
-        public int perfil_id { get; set; }
-    
-        public virtual perfil perfil { get; set; }
+        public int estado { get; set; }
     }
 }

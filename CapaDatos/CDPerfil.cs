@@ -11,7 +11,7 @@ namespace CapaDatos
     {
         public List<EPerfil> Listar()
         {
-            using (var db = new BD_SISTEMA_GESTION_VENTAS_ELECTRONICOSEntities())
+            using (var db = new db_sistema_gestion_ventas_electronicosEntities())
             {
                 return db.perfil.Select(p => new EPerfil
                 {

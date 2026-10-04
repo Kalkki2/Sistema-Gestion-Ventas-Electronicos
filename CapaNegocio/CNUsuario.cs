@@ -17,42 +17,40 @@ namespace CapaNegocio
             return objCDUsuario.ListarUsuarios();
         }
 
-        public bool CambiarEstado(int idUsuario, bool nuevoEstado)
+        public bool CambiarEstado(int idUsuario, int nuevoEstado)
         {
             return objCDUsuario.CambiarEstado(idUsuario, nuevoEstado);
         }
 
         public bool Registrar(EUsuario obj, out string Mensaje)
         {
-            //Obtener lista actual para validar Unicidad
+            // Obtener lista actual para validar Unicidad
             List<EUsuario> lista = objCDUsuario.ListarUsuarios();
 
-            if (lista.Any(u => u.dni.Equals(obj.dni.Trim(), System.StringComparison.OrdinalIgnoreCase)))
+            if (lista.Any(u => u.dni.Equals(obj.dni.Trim(), StringComparison.OrdinalIgnoreCase)))
             {
                 Mensaje = "El DNI ingresado ya se encuentra registrado.";
                 return false;
             }
 
-            if (lista.Any(u => u.correo.Equals(obj.correo.Trim(), System.StringComparison.OrdinalIgnoreCase)))
+            if (lista.Any(u => u.email.Equals(obj.email.Trim(), StringComparison.OrdinalIgnoreCase)))
             {
                 Mensaje = "El correo electrónico ingresado ya se encuentra registrado.";
                 return false;
             }
 
-            if (lista.Any(u => u.telefono.Equals(obj.telefono.Trim(), System.StringComparison.OrdinalIgnoreCase)))
+            if (lista.Any(u => u.telefono.Equals(obj.telefono.Trim(), StringComparison.OrdinalIgnoreCase)))
             {
                 Mensaje = "El número de teléfono ingresado ya se encuentra registrado.";
                 return false;
             }
 
-            // 3Si pasa las validaciones, enviamos a CapaDatos
+            // Si pasa las validaciones, enviamos a CapaDatos
             return objCDUsuario.Registrar(obj, out Mensaje);
         }
 
-
         public bool Editar(EUsuario obj, out string Mensaje)
         {
-            
             List<EUsuario> lista = objCDUsuario.ListarUsuarios();
 
             // Validar Unicidad ignorando el ID del usuario en edición
@@ -62,7 +60,7 @@ namespace CapaNegocio
                 return false;
             }
 
-            if (lista.Any(u => u.correo.Equals(obj.correo.Trim(), StringComparison.OrdinalIgnoreCase) && u.usuario_id != obj.usuario_id))
+            if (lista.Any(u => u.email.Equals(obj.email.Trim(), StringComparison.OrdinalIgnoreCase) && u.usuario_id != obj.usuario_id))
             {
                 Mensaje = "El correo ingresado ya pertenece a otro usuario.";
                 return false;
@@ -82,7 +80,7 @@ namespace CapaNegocio
             return objCDUsuario.BuscarUsuarios(busqueda);
         }
 
-        public List<EUsuario> Filtrar(int? idPerfil, bool? estado)
+        public List<EUsuario> Filtrar(int? idPerfil, int? estado)
         {
             return objCDUsuario.FiltrarUsuarios(idPerfil, estado);
         }
