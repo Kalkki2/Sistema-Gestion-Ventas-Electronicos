@@ -129,6 +129,18 @@
     <Compile Include="Administrador\GestionVentasForm.Designer.cs">
       <DependentUpon>GestionVentasForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Administrador\HistorialComprasForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\HistorialComprasForm.Designer.cs">
+      <DependentUpon>HistorialComprasForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\NuevaCompraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\NuevaCompraForm.Designer.cs">
+      <DependentUpon>NuevaCompraForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,6 +248,12 @@
     <EmbeddedResource Include="Administrador\GestionVentasForm.resx">
       <DependentUpon>GestionVentasForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\HistorialComprasForm.resx">
+      <DependentUpon>HistorialComprasForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\NuevaCompraForm.resx">
+      <DependentUpon>NuevaCompraForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -318,16 +336,7 @@
     <None Include="Resources\icono_advertencia.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\icono_blanco_ventas1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icono_blanco_ventas3.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\icono_blanco_productos1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icono_blanco_ventas4.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icono_blanco_proveedor.png" />
@@ -389,6 +398,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icono_mis_ventas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_menu_graficos_informes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_menu_reportes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_menu_productos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_menu_clientes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_ventas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_menu_proveedores.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_menu_compras.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_menu_salir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_menu_historial.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

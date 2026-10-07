@@ -763,7 +763,7 @@
             this.pnlContenedorUsuarios.FillColor = System.Drawing.Color.Transparent;
             this.pnlContenedorUsuarios.Location = new System.Drawing.Point(12, 368);
             this.pnlContenedorUsuarios.Name = "pnlContenedorUsuarios";
-            this.pnlContenedorUsuarios.Size = new System.Drawing.Size(1149, 275);
+            this.pnlContenedorUsuarios.Size = new System.Drawing.Size(1149, 315);
             this.pnlContenedorUsuarios.TabIndex = 55;
             // 
             // btnExportarPDF
@@ -842,11 +842,11 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvListaUsuarios.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvListaUsuarios.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvListaUsuarios.Location = new System.Drawing.Point(0, 49);
+            this.dgvListaUsuarios.Location = new System.Drawing.Point(3, 47);
             this.dgvListaUsuarios.Name = "dgvListaUsuarios";
             this.dgvListaUsuarios.RowHeadersVisible = false;
             this.dgvListaUsuarios.RowTemplate.Height = 25;
-            this.dgvListaUsuarios.Size = new System.Drawing.Size(1146, 231);
+            this.dgvListaUsuarios.Size = new System.Drawing.Size(1139, 265);
             this.dgvListaUsuarios.TabIndex = 7;
             this.dgvListaUsuarios.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
             this.dgvListaUsuarios.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));

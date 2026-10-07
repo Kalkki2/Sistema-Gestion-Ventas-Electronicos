@@ -83,7 +83,7 @@
             this.btnMenuItemReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMenuItemReporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMenuItemReporte.ForeColor = System.Drawing.Color.White;
-            this.btnMenuItemReporte.Image = global::CapaPresentacion.Properties.Resources.icono_blanco_ventas;
+            this.btnMenuItemReporte.Image = global::CapaPresentacion.Properties.Resources.icono_menu_reportes;
             this.btnMenuItemReporte.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuItemReporte.Location = new System.Drawing.Point(3, 162);
             this.btnMenuItemReporte.Name = "btnMenuItemReporte";
@@ -101,7 +101,7 @@
             this.btnMenuItemSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMenuItemSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMenuItemSalir.ForeColor = System.Drawing.Color.White;
-            this.btnMenuItemSalir.Image = global::CapaPresentacion.Properties.Resources.icono_salir;
+            this.btnMenuItemSalir.Image = global::CapaPresentacion.Properties.Resources.icono_menu_salir;
             this.btnMenuItemSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuItemSalir.Location = new System.Drawing.Point(-3, 600);
             this.btnMenuItemSalir.Name = "btnMenuItemSalir";
@@ -120,7 +120,7 @@
             this.btnMenuItemInforme.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMenuItemInforme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMenuItemInforme.ForeColor = System.Drawing.Color.White;
-            this.btnMenuItemInforme.Image = global::CapaPresentacion.Properties.Resources.icono_blanco_graficos_informe;
+            this.btnMenuItemInforme.Image = global::CapaPresentacion.Properties.Resources.icono_menu_graficos_informes;
             this.btnMenuItemInforme.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuItemInforme.Location = new System.Drawing.Point(3, 96);
             this.btnMenuItemInforme.Name = "btnMenuItemInforme";

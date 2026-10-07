@@ -107,7 +107,7 @@
             this.btnMenuVendedorItemProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMenuVendedorItemProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMenuVendedorItemProductos.ForeColor = System.Drawing.Color.White;
-            this.btnMenuVendedorItemProductos.Image = global::CapaPresentacion.Properties.Resources.icono_blanco_productos;
+            this.btnMenuVendedorItemProductos.Image = global::CapaPresentacion.Properties.Resources.icono_menu_productos;
             this.btnMenuVendedorItemProductos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuVendedorItemProductos.Location = new System.Drawing.Point(3, 221);
             this.btnMenuVendedorItemProductos.Name = "btnMenuVendedorItemProductos";
@@ -161,7 +161,7 @@
             this.btnMenuItemSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMenuItemSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMenuItemSalir.ForeColor = System.Drawing.Color.White;
-            this.btnMenuItemSalir.Image = global::CapaPresentacion.Properties.Resources.icono_salir;
+            this.btnMenuItemSalir.Image = global::CapaPresentacion.Properties.Resources.icono_menu_salir;
             this.btnMenuItemSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuItemSalir.Location = new System.Drawing.Point(-3, 600);
             this.btnMenuItemSalir.Name = "btnMenuItemSalir";

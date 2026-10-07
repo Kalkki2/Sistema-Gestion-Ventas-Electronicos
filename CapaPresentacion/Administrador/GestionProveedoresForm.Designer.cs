@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblFiltrarPor = new System.Windows.Forms.Label();
             this.lblFiltraEstado = new System.Windows.Forms.Label();
             this.pnlEncabezado = new System.Windows.Forms.Panel();
@@ -628,7 +629,7 @@
             this.pnlContenedorProveedores.FillColor = System.Drawing.Color.Transparent;
             this.pnlContenedorProveedores.Location = new System.Drawing.Point(15, 362);
             this.pnlContenedorProveedores.Name = "pnlContenedorProveedores";
-            this.pnlContenedorProveedores.Size = new System.Drawing.Size(1149, 275);
+            this.pnlContenedorProveedores.Size = new System.Drawing.Size(1149, 315);
             this.pnlContenedorProveedores.TabIndex = 59;
             // 
             // btnExportarPDF
@@ -710,8 +711,10 @@
             this.dgvListaProveedores.Location = new System.Drawing.Point(3, 49);
             this.dgvListaProveedores.Name = "dgvListaProveedores";
             this.dgvListaProveedores.RowHeadersVisible = false;
-            this.dgvListaProveedores.RowTemplate.Height = 23;
-            this.dgvListaProveedores.Size = new System.Drawing.Size(1140, 200);
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvListaProveedores.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvListaProveedores.RowTemplate.Height = 25;
+            this.dgvListaProveedores.Size = new System.Drawing.Size(1143, 265);
             this.dgvListaProveedores.TabIndex = 7;
             this.dgvListaProveedores.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
             this.dgvListaProveedores.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
@@ -719,7 +722,7 @@
             this.dgvListaProveedores.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvListaProveedores.ThemeStyle.HeaderStyle.Height = 31;
             this.dgvListaProveedores.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvListaProveedores.ThemeStyle.RowsStyle.Height = 23;
+            this.dgvListaProveedores.ThemeStyle.RowsStyle.Height = 25;
             this.dgvListaProveedores.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
             this.dgvListaProveedores.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaProveedores_CellContentClick);
             this.dgvListaProveedores.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvListaProveedores_CellFormatting);
@@ -772,12 +775,14 @@
             // colEditar
             // 
             this.colEditar.HeaderText = "Editar";
+            this.colEditar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.colEditar.Name = "colEditar";
             this.colEditar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // colEliminar
             // 
             this.colEliminar.HeaderText = "Eliminar";
+            this.colEliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.colEliminar.Name = "colEliminar";
             this.colEliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 

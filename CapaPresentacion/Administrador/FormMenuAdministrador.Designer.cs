@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMenuAdministrador));
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.pnlSubMenuCompra = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnSubHistorialCompra = new System.Windows.Forms.Button();
+            this.btnSubNuevaCompra = new System.Windows.Forms.Button();
             this.btnMenuItemSalir = new System.Windows.Forms.Button();
             this.btnMenuItemUsuario = new System.Windows.Forms.Button();
             this.btnMenuItemCompra = new System.Windows.Forms.Button();
@@ -40,10 +42,12 @@
             this.btnMenuItemProducto = new System.Windows.Forms.Button();
             this.btnMenuItemProveedor = new System.Windows.Forms.Button();
             this.guna2GradientPanel1.SuspendLayout();
+            this.pnlSubMenuCompra.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2GradientPanel1
             // 
+            this.guna2GradientPanel1.Controls.Add(this.pnlSubMenuCompra);
             this.guna2GradientPanel1.Controls.Add(this.label2);
             this.guna2GradientPanel1.Controls.Add(this.label1);
             this.guna2GradientPanel1.Controls.Add(this.btnMenuItemSalir);
@@ -86,6 +90,57 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "MUSNOC";
             // 
+            // pnlSubMenuCompra
+            // 
+            this.pnlSubMenuCompra.BackColor = System.Drawing.Color.Transparent;
+            this.pnlSubMenuCompra.Controls.Add(this.btnSubHistorialCompra);
+            this.pnlSubMenuCompra.Controls.Add(this.btnSubNuevaCompra);
+            this.pnlSubMenuCompra.Location = new System.Drawing.Point(9, 462);
+            this.pnlSubMenuCompra.Name = "pnlSubMenuCompra";
+            this.pnlSubMenuCompra.Size = new System.Drawing.Size(176, 111);
+            this.pnlSubMenuCompra.TabIndex = 9;
+            this.pnlSubMenuCompra.Visible = false;
+            // 
+            // btnSubHistorialCompra
+            // 
+            this.btnSubHistorialCompra.BackColor = System.Drawing.Color.Transparent;
+            this.btnSubHistorialCompra.CausesValidation = false;
+            this.btnSubHistorialCompra.FlatAppearance.BorderSize = 0;
+            this.btnSubHistorialCompra.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
+            this.btnSubHistorialCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubHistorialCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubHistorialCompra.ForeColor = System.Drawing.Color.White;
+            this.btnSubHistorialCompra.Image = global::CapaPresentacion.Properties.Resources.icono_menu_historial;
+            this.btnSubHistorialCompra.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSubHistorialCompra.Location = new System.Drawing.Point(3, 54);
+            this.btnSubHistorialCompra.Name = "btnSubHistorialCompra";
+            this.btnSubHistorialCompra.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnSubHistorialCompra.Size = new System.Drawing.Size(169, 45);
+            this.btnSubHistorialCompra.TabIndex = 12;
+            this.btnSubHistorialCompra.Text = "        Historial Compras";
+            this.btnSubHistorialCompra.UseVisualStyleBackColor = false;
+            this.btnSubHistorialCompra.Click += new System.EventHandler(this.btnSubHistorialCompra_Click);
+            // 
+            // btnSubNuevaCompra
+            // 
+            this.btnSubNuevaCompra.BackColor = System.Drawing.Color.Transparent;
+            this.btnSubNuevaCompra.CausesValidation = false;
+            this.btnSubNuevaCompra.FlatAppearance.BorderSize = 0;
+            this.btnSubNuevaCompra.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
+            this.btnSubNuevaCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubNuevaCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubNuevaCompra.ForeColor = System.Drawing.Color.White;
+            this.btnSubNuevaCompra.Image = global::CapaPresentacion.Properties.Resources.icono_nueva_venta;
+            this.btnSubNuevaCompra.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSubNuevaCompra.Location = new System.Drawing.Point(3, 3);
+            this.btnSubNuevaCompra.Name = "btnSubNuevaCompra";
+            this.btnSubNuevaCompra.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnSubNuevaCompra.Size = new System.Drawing.Size(169, 45);
+            this.btnSubNuevaCompra.TabIndex = 11;
+            this.btnSubNuevaCompra.Text = "    Nueva Compra";
+            this.btnSubNuevaCompra.UseVisualStyleBackColor = false;
+            this.btnSubNuevaCompra.Click += new System.EventHandler(this.btnSubNuevaCompra_Click);
+            // 
             // btnMenuItemSalir
             // 
             this.btnMenuItemSalir.BackColor = System.Drawing.Color.Transparent;
@@ -95,7 +150,7 @@
             this.btnMenuItemSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMenuItemSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMenuItemSalir.ForeColor = System.Drawing.Color.White;
-            this.btnMenuItemSalir.Image = global::CapaPresentacion.Properties.Resources.icono_salir;
+            this.btnMenuItemSalir.Image = global::CapaPresentacion.Properties.Resources.icono_menu_salir;
             this.btnMenuItemSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuItemSalir.Location = new System.Drawing.Point(-3, 600);
             this.btnMenuItemSalir.Name = "btnMenuItemSalir";
@@ -134,14 +189,14 @@
             this.btnMenuItemCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMenuItemCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMenuItemCompra.ForeColor = System.Drawing.Color.White;
-            this.btnMenuItemCompra.Image = global::CapaPresentacion.Properties.Resources.icono_blanco_compras;
+            this.btnMenuItemCompra.Image = global::CapaPresentacion.Properties.Resources.icono_menu_compras;
             this.btnMenuItemCompra.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuItemCompra.Location = new System.Drawing.Point(0, 411);
             this.btnMenuItemCompra.Name = "btnMenuItemCompra";
             this.btnMenuItemCompra.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.btnMenuItemCompra.Size = new System.Drawing.Size(188, 45);
             this.btnMenuItemCompra.TabIndex = 6;
-            this.btnMenuItemCompra.Text = "Compras";
+            this.btnMenuItemCompra.Text = "Compras  ▼";
             this.btnMenuItemCompra.UseVisualStyleBackColor = false;
             this.btnMenuItemCompra.Click += new System.EventHandler(this.btnMenuItemCompra_Click);
             // 
@@ -154,7 +209,7 @@
             this.btnMenuItemCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMenuItemCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMenuItemCliente.ForeColor = System.Drawing.Color.White;
-            this.btnMenuItemCliente.Image = ((System.Drawing.Image)(resources.GetObject("btnMenuItemCliente.Image")));
+            this.btnMenuItemCliente.Image = global::CapaPresentacion.Properties.Resources.icono_menu_clientes;
             this.btnMenuItemCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuItemCliente.Location = new System.Drawing.Point(3, 221);
             this.btnMenuItemCliente.Name = "btnMenuItemCliente";
@@ -173,7 +228,7 @@
             this.btnMenuItemVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMenuItemVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMenuItemVenta.ForeColor = System.Drawing.Color.White;
-            this.btnMenuItemVenta.Image = ((System.Drawing.Image)(resources.GetObject("btnMenuItemVenta.Image")));
+            this.btnMenuItemVenta.Image = global::CapaPresentacion.Properties.Resources.icono_ventas;
             this.btnMenuItemVenta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuItemVenta.Location = new System.Drawing.Point(3, 288);
             this.btnMenuItemVenta.Name = "btnMenuItemVenta";
@@ -192,7 +247,7 @@
             this.btnMenuItemProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMenuItemProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMenuItemProducto.ForeColor = System.Drawing.Color.White;
-            this.btnMenuItemProducto.Image = ((System.Drawing.Image)(resources.GetObject("btnMenuItemProducto.Image")));
+            this.btnMenuItemProducto.Image = global::CapaPresentacion.Properties.Resources.icono_menu_productos;
             this.btnMenuItemProducto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuItemProducto.Location = new System.Drawing.Point(6, 92);
             this.btnMenuItemProducto.Name = "btnMenuItemProducto";
@@ -211,7 +266,7 @@
             this.btnMenuItemProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMenuItemProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMenuItemProveedor.ForeColor = System.Drawing.Color.White;
-            this.btnMenuItemProveedor.Image = global::CapaPresentacion.Properties.Resources.icono_blanco_proveedor;
+            this.btnMenuItemProveedor.Image = global::CapaPresentacion.Properties.Resources.icono_menu_proveedores;
             this.btnMenuItemProveedor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuItemProveedor.Location = new System.Drawing.Point(0, 350);
             this.btnMenuItemProveedor.Name = "btnMenuItemProveedor";
@@ -235,6 +290,7 @@
             this.Load += new System.EventHandler(this.FormMenuAdministrador_Load);
             this.guna2GradientPanel1.ResumeLayout(false);
             this.guna2GradientPanel1.PerformLayout();
+            this.pnlSubMenuCompra.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -250,5 +306,8 @@
         private System.Windows.Forms.Button btnMenuItemSalir;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private Guna.UI2.WinForms.Guna2Panel pnlSubMenuCompra;
+        private System.Windows.Forms.Button btnSubHistorialCompra;
+        private System.Windows.Forms.Button btnSubNuevaCompra;
     }
 }

@@ -64,7 +64,7 @@ namespace CapaPresentacion.Administrador
 
         private void btnMenuItemCompra_Click(object sender, EventArgs e)
         {
-            AbrirFormularioHijoUnico<GestionComprasForm>();
+            pnlSubMenuCompra.Visible = !pnlSubMenuCompra.Visible;
         }
 
         private void btnMenuItemSalir_Click(object sender, EventArgs e)
@@ -87,6 +87,22 @@ namespace CapaPresentacion.Administrador
         private void FormMenuAdministrador_Load(object sender, EventArgs e)
         {
             btnMenuItemSalir.CausesValidation = false;
+        }
+
+        private void btnSubNuevaCompra_Click(object sender, EventArgs e)
+        {
+            btnMenuItemCompra.Text = "   Nueva compra ▼";
+            btnMenuItemCompra.Image = Properties.Resources.icono_nueva_venta;
+            pnlSubMenuCompra.Visible = false;
+            AbrirFormularioHijoUnico<NuevaCompraForm>();
+        }
+
+        private void btnSubHistorialCompra_Click(object sender, EventArgs e)
+        {
+            btnMenuItemCompra.Text = "   Historial compras ▼";
+            btnMenuItemCompra.Image = Properties.Resources.icono_menu_historial;
+            pnlSubMenuCompra.Visible = false;
+            AbrirFormularioHijoUnico<HistorialComprasForm>();
         }
     }
 }
