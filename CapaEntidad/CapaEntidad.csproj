@@ -41,7 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ECategoria.cs" />
+    <Compile Include="EMarca.cs" />
     <Compile Include="EPerfil.cs" />
+    <Compile Include="EProducto.cs" />
     <Compile Include="EProveedor.cs" />
     <Compile Include="EUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -9,6 +9,15 @@
         <EntityTypeShape EntityType="db_sistema_gestion_ventas_electronicosModel.usuario" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="db_sistema_gestion_ventas_electronicosModel.FK_usuario_perfil" ManuallyRouted="false" />
         <EntityTypeShape EntityType="db_sistema_gestion_ventas_electronicosModel.proveedor" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="db_sistema_gestion_ventas_electronicosModel.categoria" Width="1.5" PointX="0.75" PointY="7.125" />
+        <EntityTypeShape EntityType="db_sistema_gestion_ventas_electronicosModel.categoria_marca" Width="1.5" PointX="3.875" PointY="7.5" />
+        <EntityTypeShape EntityType="db_sistema_gestion_ventas_electronicosModel.marca" Width="1.5" PointX="0.625" PointY="9.25" />
+        <EntityTypeShape EntityType="db_sistema_gestion_ventas_electronicosModel.producto" Width="1.5" PointX="8" PointY="2.875" />
+        <AssociationConnector Association="db_sistema_gestion_ventas_electronicosModel.FK_categoria_marca_categoria" />
+        <AssociationConnector Association="db_sistema_gestion_ventas_electronicosModel.FK_categoria_marca_marca" />
+        <AssociationConnector Association="db_sistema_gestion_ventas_electronicosModel.FK_producto_categoria_marca" />
+        <AssociationConnector Association="db_sistema_gestion_ventas_electronicosModel.FK_producto_proveedor" />
+        <EntityTypeShape EntityType="db_sistema_gestion_ventas_electronicosModel.sysdiagrams" Width="1.5" PointX="6.375" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
