@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlEncabezado = new System.Windows.Forms.Panel();
             this.pnlnfoUsuario = new System.Windows.Forms.Panel();
             this.lblNombreUsuario = new System.Windows.Forms.Label();
@@ -86,22 +86,23 @@
             this.pnlContenedorCatalogo = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.lblTituloCatlogoProductos = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.dgvListaProductos = new Guna.UI2.WinForms.Guna2DataGridView();
             this.colCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPrecioCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPrecioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colMarca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colFechaAlta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFechaModificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEditar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.colEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.lblTituloCatlogoProductos = new System.Windows.Forms.Label();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.colEditar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colEliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.pnlEncabezado.SuspendLayout();
             this.pnlnfoUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
@@ -112,8 +113,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.picProductoIcon)).BeginInit();
             this.pnlFormularioProducto.SuspendLayout();
             this.pnlContenedorCatalogo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvListaProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListaProductos)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlEncabezado
@@ -229,6 +230,7 @@
             this.btnFiltrar.Size = new System.Drawing.Size(71, 27);
             this.btnFiltrar.TabIndex = 45;
             this.btnFiltrar.Text = "Filtrar";
+            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
             // 
             // btnBuscarProducto
             // 
@@ -318,6 +320,7 @@
             this.cmbFiltroCategoria.Size = new System.Drawing.Size(118, 27);
             this.cmbFiltroCategoria.StartIndex = 0;
             this.cmbFiltroCategoria.TabIndex = 22;
+            this.cmbFiltroCategoria.SelectedIndexChanged += new System.EventHandler(this.cmbFiltroCategoria_SelectedIndexChanged);
             // 
             // txtBuscarProducto
             // 
@@ -766,6 +769,7 @@
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(225, 27);
             this.cmbCategoria.TabIndex = 22;
+            this.cmbCategoria.SelectedIndexChanged += new System.EventHandler(this.cmbCategoria_SelectedIndexChanged);
             // 
             // txtNombre
             // 
@@ -906,9 +910,9 @@
             this.pnlContenedorCatalogo.BorderColor = System.Drawing.Color.DarkGray;
             this.pnlContenedorCatalogo.BorderRadius = 8;
             this.pnlContenedorCatalogo.BorderThickness = 1;
+            this.pnlContenedorCatalogo.Controls.Add(this.dgvListaProductos);
             this.pnlContenedorCatalogo.Controls.Add(this.guna2Button2);
             this.pnlContenedorCatalogo.Controls.Add(this.guna2Button1);
-            this.pnlContenedorCatalogo.Controls.Add(this.dgvListaProductos);
             this.pnlContenedorCatalogo.Controls.Add(this.lblTituloCatlogoProductos);
             this.pnlContenedorCatalogo.FillColor = System.Drawing.Color.Transparent;
             this.pnlContenedorCatalogo.Location = new System.Drawing.Point(12, 394);
@@ -958,122 +962,6 @@
             this.guna2Button1.TabIndex = 9;
             this.guna2Button1.Text = "Exportar Excel";
             // 
-            // dgvListaProductos
-            // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
-            this.dgvListaProductos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListaProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvListaProductos.ColumnHeadersHeight = 32;
-            this.dgvListaProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colCodigo,
-            this.colNombre,
-            this.Column1,
-            this.colPrecio,
-            this.Column2,
-            this.colStock,
-            this.colProveedor,
-            this.colCategoria,
-            this.colMarca,
-            this.colFechaAlta,
-            this.colEstado,
-            this.colEditar,
-            this.colEliminar});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvListaProductos.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvListaProductos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvListaProductos.Location = new System.Drawing.Point(0, 49);
-            this.dgvListaProductos.Name = "dgvListaProductos";
-            this.dgvListaProductos.RowHeadersVisible = false;
-            this.dgvListaProductos.RowTemplate.Height = 23;
-            this.dgvListaProductos.Size = new System.Drawing.Size(1146, 231);
-            this.dgvListaProductos.TabIndex = 7;
-            this.dgvListaProductos.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
-            this.dgvListaProductos.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            this.dgvListaProductos.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvListaProductos.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvListaProductos.ThemeStyle.HeaderStyle.Height = 32;
-            this.dgvListaProductos.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvListaProductos.ThemeStyle.RowsStyle.Height = 23;
-            this.dgvListaProductos.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
-            // 
-            // colCodigo
-            // 
-            this.colCodigo.HeaderText = "Codigo";
-            this.colCodigo.Name = "colCodigo";
-            // 
-            // colNombre
-            // 
-            this.colNombre.HeaderText = "Nombre";
-            this.colNombre.Name = "colNombre";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Desc";
-            this.Column1.Name = "Column1";
-            // 
-            // colPrecio
-            // 
-            this.colPrecio.HeaderText = "Precio Compra";
-            this.colPrecio.Name = "colPrecio";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Precio Venta";
-            this.Column2.Name = "Column2";
-            // 
-            // colStock
-            // 
-            this.colStock.HeaderText = "Stock";
-            this.colStock.Name = "colStock";
-            // 
-            // colProveedor
-            // 
-            this.colProveedor.HeaderText = "Proveedor";
-            this.colProveedor.Name = "colProveedor";
-            // 
-            // colCategoria
-            // 
-            this.colCategoria.HeaderText = "Categoria";
-            this.colCategoria.Name = "colCategoria";
-            // 
-            // colMarca
-            // 
-            this.colMarca.HeaderText = "Marca";
-            this.colMarca.Name = "colMarca";
-            // 
-            // colFechaAlta
-            // 
-            this.colFechaAlta.HeaderText = "Fecha Alta";
-            this.colFechaAlta.Name = "colFechaAlta";
-            // 
-            // colEstado
-            // 
-            this.colEstado.HeaderText = "Estado";
-            this.colEstado.Name = "colEstado";
-            // 
-            // colEditar
-            // 
-            this.colEditar.HeaderText = "Editar";
-            this.colEditar.Name = "colEditar";
-            // 
-            // colEliminar
-            // 
-            this.colEliminar.HeaderText = "Eliminar";
-            this.colEliminar.Name = "colEliminar";
-            // 
             // lblTituloCatlogoProductos
             // 
             this.lblTituloCatlogoProductos.AutoSize = true;
@@ -1089,6 +977,135 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // dgvListaProductos
+            // 
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
+            this.dgvListaProductos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListaProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvListaProductos.ColumnHeadersHeight = 30;
+            this.dgvListaProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colCodigo,
+            this.colNombre,
+            this.colDescripcion,
+            this.colPrecioCompra,
+            this.colPrecioVenta,
+            this.colStock,
+            this.colProveedor,
+            this.colCategoria,
+            this.colMarca,
+            this.colFechaAlta,
+            this.colFechaModificacion,
+            this.colEstado,
+            this.colEditar,
+            this.colEliminar});
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvListaProductos.DefaultCellStyle = dataGridViewCellStyle9;
+            this.dgvListaProductos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvListaProductos.Location = new System.Drawing.Point(3, 49);
+            this.dgvListaProductos.Name = "dgvListaProductos";
+            this.dgvListaProductos.RowHeadersVisible = false;
+            this.dgvListaProductos.RowTemplate.Height = 25;
+            this.dgvListaProductos.Size = new System.Drawing.Size(1139, 265);
+            this.dgvListaProductos.TabIndex = 11;
+            this.dgvListaProductos.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
+            this.dgvListaProductos.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            this.dgvListaProductos.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvListaProductos.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvListaProductos.ThemeStyle.HeaderStyle.Height = 30;
+            this.dgvListaProductos.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvListaProductos.ThemeStyle.RowsStyle.Height = 25;
+            this.dgvListaProductos.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
+            this.dgvListaProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaProductos_CellContentClick);
+            // 
+            // colCodigo
+            // 
+            this.colCodigo.HeaderText = "DNI";
+            this.colCodigo.Name = "colCodigo";
+            // 
+            // colNombre
+            // 
+            this.colNombre.HeaderText = "Nombre";
+            this.colNombre.Name = "colNombre";
+            // 
+            // colDescripcion
+            // 
+            this.colDescripcion.HeaderText = "Descripcion";
+            this.colDescripcion.Name = "colDescripcion";
+            // 
+            // colPrecioCompra
+            // 
+            this.colPrecioCompra.HeaderText = "Precio Compra";
+            this.colPrecioCompra.Name = "colPrecioCompra";
+            // 
+            // colPrecioVenta
+            // 
+            this.colPrecioVenta.HeaderText = "Precio Venta";
+            this.colPrecioVenta.Name = "colPrecioVenta";
+            // 
+            // colStock
+            // 
+            this.colStock.HeaderText = "Stock";
+            this.colStock.Name = "colStock";
+            // 
+            // colProveedor
+            // 
+            this.colProveedor.HeaderText = "Proveedor";
+            this.colProveedor.Name = "colProveedor";
+            // 
+            // colCategoria
+            // 
+            this.colCategoria.DataPropertyName = "oCategoria.nombre";
+            this.colCategoria.HeaderText = "Categoria";
+            this.colCategoria.Name = "colCategoria";
+            // 
+            // colMarca
+            // 
+            this.colMarca.DataPropertyName = "oMarca.nombre";
+            this.colMarca.HeaderText = "Marca";
+            this.colMarca.Name = "colMarca";
+            // 
+            // colFechaAlta
+            // 
+            this.colFechaAlta.HeaderText = "Fecha Alta";
+            this.colFechaAlta.Name = "colFechaAlta";
+            // 
+            // colFechaModificacion
+            // 
+            this.colFechaModificacion.HeaderText = "Fecha Modificacion";
+            this.colFechaModificacion.Name = "colFechaModificacion";
+            // 
+            // colEstado
+            // 
+            this.colEstado.HeaderText = "Estado";
+            this.colEstado.Name = "colEstado";
+            // 
+            // colEditar
+            // 
+            this.colEditar.HeaderText = "Editar";
+            this.colEditar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.colEditar.Name = "colEditar";
+            this.colEditar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // colEliminar
+            // 
+            this.colEliminar.HeaderText = "Eliminar";
+            this.colEliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.colEliminar.Name = "colEliminar";
+            this.colEliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // GestionProductosForm
             // 
@@ -1121,8 +1138,8 @@
             this.pnlFormularioProducto.PerformLayout();
             this.pnlContenedorCatalogo.ResumeLayout(false);
             this.pnlContenedorCatalogo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvListaProductos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListaProductos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1176,7 +1193,6 @@
         private System.Windows.Forms.Label lblProveedor;
         private System.Windows.Forms.Label lblCategoria;
         private Guna.UI2.WinForms.Guna2Panel pnlContenedorCatalogo;
-        private Guna.UI2.WinForms.Guna2DataGridView dgvListaProductos;
         private System.Windows.Forms.Label lblTituloCatlogoProductos;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
@@ -1185,18 +1201,20 @@
         private Guna.UI2.WinForms.Guna2TextBox txtDescripcion;
         private System.Windows.Forms.Label lblDescripcion;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private Guna.UI2.WinForms.Guna2DataGridView dgvListaProductos;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCodigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colPrecio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDescripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPrecioCompra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPrecioVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStock;
         private System.Windows.Forms.DataGridViewTextBoxColumn colProveedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCategoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMarca;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFechaAlta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFechaModificacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEstado;
-        private System.Windows.Forms.DataGridViewButtonColumn colEditar;
-        private System.Windows.Forms.DataGridViewButtonColumn colEliminar;
+        private System.Windows.Forms.DataGridViewImageColumn colEditar;
+        private System.Windows.Forms.DataGridViewImageColumn colEliminar;
     }
 }

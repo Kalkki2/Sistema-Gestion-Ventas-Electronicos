@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.pnlSubMenuCompra = new Guna.UI2.WinForms.Guna2Panel();
             this.btnSubHistorialCompra = new System.Windows.Forms.Button();
             this.btnSubNuevaCompra = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnMenuItemSalir = new System.Windows.Forms.Button();
             this.btnMenuItemUsuario = new System.Windows.Forms.Button();
             this.btnMenuItemCompra = new System.Windows.Forms.Button();
@@ -66,36 +66,12 @@
             this.guna2GradientPanel1.Size = new System.Drawing.Size(181, 561);
             this.guna2GradientPanel1.TabIndex = 7;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(65, 21);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 16);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "SGV";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(21, 37);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(141, 31);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "MUSNOC";
-            // 
             // pnlSubMenuCompra
             // 
             this.pnlSubMenuCompra.BackColor = System.Drawing.Color.Transparent;
             this.pnlSubMenuCompra.Controls.Add(this.btnSubHistorialCompra);
             this.pnlSubMenuCompra.Controls.Add(this.btnSubNuevaCompra);
-            this.pnlSubMenuCompra.Location = new System.Drawing.Point(9, 462);
+            this.pnlSubMenuCompra.Location = new System.Drawing.Point(6, 398);
             this.pnlSubMenuCompra.Name = "pnlSubMenuCompra";
             this.pnlSubMenuCompra.Size = new System.Drawing.Size(176, 111);
             this.pnlSubMenuCompra.TabIndex = 9;
@@ -141,6 +117,30 @@
             this.btnSubNuevaCompra.UseVisualStyleBackColor = false;
             this.btnSubNuevaCompra.Click += new System.EventHandler(this.btnSubNuevaCompra_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(65, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 16);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "SGV";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(21, 37);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(141, 31);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "MUSNOC";
+            // 
             // btnMenuItemSalir
             // 
             this.btnMenuItemSalir.BackColor = System.Drawing.Color.Transparent;
@@ -172,7 +172,7 @@
             this.btnMenuItemUsuario.ForeColor = System.Drawing.Color.White;
             this.btnMenuItemUsuario.Image = global::CapaPresentacion.Properties.Resources.icono_blanco_usuarios;
             this.btnMenuItemUsuario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMenuItemUsuario.Location = new System.Drawing.Point(3, 159);
+            this.btnMenuItemUsuario.Location = new System.Drawing.Point(3, 143);
             this.btnMenuItemUsuario.Name = "btnMenuItemUsuario";
             this.btnMenuItemUsuario.Size = new System.Drawing.Size(182, 45);
             this.btnMenuItemUsuario.TabIndex = 3;
@@ -191,7 +191,7 @@
             this.btnMenuItemCompra.ForeColor = System.Drawing.Color.White;
             this.btnMenuItemCompra.Image = global::CapaPresentacion.Properties.Resources.icono_menu_compras;
             this.btnMenuItemCompra.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMenuItemCompra.Location = new System.Drawing.Point(0, 411);
+            this.btnMenuItemCompra.Location = new System.Drawing.Point(0, 347);
             this.btnMenuItemCompra.Name = "btnMenuItemCompra";
             this.btnMenuItemCompra.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.btnMenuItemCompra.Size = new System.Drawing.Size(188, 45);
@@ -211,7 +211,7 @@
             this.btnMenuItemCliente.ForeColor = System.Drawing.Color.White;
             this.btnMenuItemCliente.Image = global::CapaPresentacion.Properties.Resources.icono_menu_clientes;
             this.btnMenuItemCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMenuItemCliente.Location = new System.Drawing.Point(3, 221);
+            this.btnMenuItemCliente.Location = new System.Drawing.Point(3, 194);
             this.btnMenuItemCliente.Name = "btnMenuItemCliente";
             this.btnMenuItemCliente.Size = new System.Drawing.Size(182, 45);
             this.btnMenuItemCliente.TabIndex = 2;
@@ -230,7 +230,7 @@
             this.btnMenuItemVenta.ForeColor = System.Drawing.Color.White;
             this.btnMenuItemVenta.Image = global::CapaPresentacion.Properties.Resources.icono_ventas;
             this.btnMenuItemVenta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMenuItemVenta.Location = new System.Drawing.Point(3, 288);
+            this.btnMenuItemVenta.Location = new System.Drawing.Point(3, 245);
             this.btnMenuItemVenta.Name = "btnMenuItemVenta";
             this.btnMenuItemVenta.Size = new System.Drawing.Size(182, 45);
             this.btnMenuItemVenta.TabIndex = 5;
@@ -268,7 +268,7 @@
             this.btnMenuItemProveedor.ForeColor = System.Drawing.Color.White;
             this.btnMenuItemProveedor.Image = global::CapaPresentacion.Properties.Resources.icono_menu_proveedores;
             this.btnMenuItemProveedor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMenuItemProveedor.Location = new System.Drawing.Point(0, 350);
+            this.btnMenuItemProveedor.Location = new System.Drawing.Point(0, 296);
             this.btnMenuItemProveedor.Name = "btnMenuItemProveedor";
             this.btnMenuItemProveedor.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.btnMenuItemProveedor.Size = new System.Drawing.Size(188, 45);

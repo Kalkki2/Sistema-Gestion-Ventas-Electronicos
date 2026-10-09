@@ -5,27 +5,30 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="db_sistema_gestion_ventas_electronicosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="cliente">
-          <Key>
-            <PropertyRef Name="cliente_id" />
-          </Key>
-          <Property Name="cliente_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="dni" Type="int" Nullable="false" />
-          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="apellido" Type="varchar" MaxLength="150" Nullable="false" />
-          <Property Name="telefono" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="email" Type="varchar" MaxLength="130" Nullable="false" />
-          <Property Name="direccion" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="fecha_alta" Type="date" Nullable="false" />
-          <Property Name="fecha_ultima_modificacion" Type="date" Nullable="false" />
-          <Property Name="estado" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="perfil">
           <Key>
             <PropertyRef Name="perfil_id" />
           </Key>
           <Property Name="perfil_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="producto">
+          <Key>
+            <PropertyRef Name="producto_id" />
+          </Key>
+          <Property Name="producto_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="precio_venta" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="stock" Type="int" Nullable="false" />
+          <Property Name="stock_minimo" Type="int" Nullable="false" />
+          <Property Name="fecha_alta" Type="date" Nullable="false" />
+          <Property Name="fecha_ultima_modificacion" Type="date" Nullable="false" />
+          <Property Name="estado" Type="int" Nullable="false" />
+          <Property Name="marca_id" Type="int" Nullable="false" />
+          <Property Name="categoria_id" Type="int" Nullable="false" />
+          <Property Name="proveedor_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="proveedor">
           <Key>
@@ -41,6 +44,16 @@
           <Property Name="fecha_alta" Type="date" Nullable="false" />
           <Property Name="fecha_ultima_modificacion" Type="date" Nullable="false" />
           <Property Name="estado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="usuario">
           <Key>
@@ -59,6 +72,56 @@
           <Property Name="fecha_ultima_modificacion" Type="date" Nullable="false" />
           <Property Name="perfil_id" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_categoria_marca_categoria">
+          <End Role="categoria" Type="Self.categoria" Multiplicity="1" />
+          <End Role="categoria_marca" Type="Self.categoria_marca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria">
+              <PropertyRef Name="categoria_id" />
+            </Principal>
+            <Dependent Role="categoria_marca">
+              <PropertyRef Name="categoria_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_categoria_marca_marca">
+          <End Role="marca" Type="Self.marca" Multiplicity="1" />
+          <End Role="categoria_marca" Type="Self.categoria_marca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="marca">
+              <PropertyRef Name="marca_id" />
+            </Principal>
+            <Dependent Role="categoria_marca">
+              <PropertyRef Name="marca_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_producto_categoria_marca">
+          <End Role="categoria_marca" Type="Self.categoria_marca" Multiplicity="1" />
+          <End Role="producto" Type="Self.producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria_marca">
+              <PropertyRef Name="marca_id" />
+              <PropertyRef Name="categoria_id" />
+            </Principal>
+            <Dependent Role="producto">
+              <PropertyRef Name="marca_id" />
+              <PropertyRef Name="categoria_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_producto_proveedor">
+          <End Role="proveedor" Type="Self.proveedor" Multiplicity="1" />
+          <End Role="producto" Type="Self.producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proveedor">
+              <PropertyRef Name="proveedor_id" />
+            </Principal>
+            <Dependent Role="producto">
+              <PropertyRef Name="proveedor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_usuario_perfil">
           <End Role="perfil" Type="Self.perfil" Multiplicity="1" />
           <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
@@ -72,10 +135,27 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="db_sistema_gestion_ventas_electronicosModelStoreContainer">
-          <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="perfil" EntityType="Self.perfil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="producto" EntityType="Self.producto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="proveedor" EntityType="Self.proveedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_categoria_marca_categoria" Association="Self.FK_categoria_marca_categoria">
+            <End Role="categoria" EntitySet="categoria" />
+            <End Role="categoria_marca" EntitySet="categoria_marca" />
+          </AssociationSet>
+          <AssociationSet Name="FK_categoria_marca_marca" Association="Self.FK_categoria_marca_marca">
+            <End Role="marca" EntitySet="marca" />
+            <End Role="categoria_marca" EntitySet="categoria_marca" />
+          </AssociationSet>
+          <AssociationSet Name="FK_producto_categoria_marca" Association="Self.FK_producto_categoria_marca">
+            <End Role="categoria_marca" EntitySet="categoria_marca" />
+            <End Role="producto" EntitySet="producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_producto_proveedor" Association="Self.FK_producto_proveedor">
+            <End Role="proveedor" EntitySet="proveedor" />
+            <End Role="producto" EntitySet="producto" />
+          </AssociationSet>
           <AssociationSet Name="FK_usuario_perfil" Association="Self.FK_usuario_perfil">
             <End Role="perfil" EntitySet="perfil" />
             <End Role="usuario" EntitySet="usuario" />
@@ -131,7 +211,6 @@
             <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
           <EntitySet Name="proveedor" EntityType="db_sistema_gestion_ventas_electronicosModel.proveedor" />
-          <EntitySet Name="cliente" EntityType="db_sistema_gestion_ventas_electronicosModel.cliente" />
         </EntityContainer>
         <EntityType Name="proveedor">
           <Key>
@@ -147,6 +226,114 @@
           <Property Name="fecha_alta" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="fecha_ultima_modificacion" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="estado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="producto" Relationship="db_sistema_gestion_ventas_electronicosModel.FK_producto_proveedor" FromRole="proveedor" ToRole="producto" />
+        </EntityType>
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="categoria_id" />
+          </Key>
+          <Property Name="categoria_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="categoria_marca" Relationship="db_sistema_gestion_ventas_electronicosModel.FK_categoria_marca_categoria" FromRole="categoria" ToRole="categoria_marca" />
+        </EntityType>
+        <EntityType Name="categoria_marca">
+          <Key>
+            <PropertyRef Name="marca_id" />
+            <PropertyRef Name="categoria_id" />
+          </Key>
+          <Property Name="marca_id" Type="Int32" Nullable="false" />
+          <Property Name="categoria_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="categoria" Relationship="db_sistema_gestion_ventas_electronicosModel.FK_categoria_marca_categoria" FromRole="categoria_marca" ToRole="categoria" />
+          <NavigationProperty Name="marca" Relationship="db_sistema_gestion_ventas_electronicosModel.FK_categoria_marca_marca" FromRole="categoria_marca" ToRole="marca" />
+          <NavigationProperty Name="producto" Relationship="db_sistema_gestion_ventas_electronicosModel.FK_producto_categoria_marca" FromRole="categoria_marca" ToRole="producto" />
+        </EntityType>
+        <EntityType Name="marca">
+          <Key>
+            <PropertyRef Name="marca_id" />
+          </Key>
+          <Property Name="marca_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="categoria_marca" Relationship="db_sistema_gestion_ventas_electronicosModel.FK_categoria_marca_marca" FromRole="marca" ToRole="categoria_marca" />
+        </EntityType>
+        <EntityType Name="producto">
+          <Key>
+            <PropertyRef Name="producto_id" />
+          </Key>
+          <Property Name="producto_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="precio_venta" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="stock" Type="Int32" Nullable="false" />
+          <Property Name="stock_minimo" Type="Int32" Nullable="false" />
+          <Property Name="fecha_alta" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fecha_ultima_modificacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
+          <Property Name="marca_id" Type="Int32" Nullable="false" />
+          <Property Name="categoria_id" Type="Int32" Nullable="false" />
+          <Property Name="proveedor_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="categoria_marca" Relationship="db_sistema_gestion_ventas_electronicosModel.FK_producto_categoria_marca" FromRole="producto" ToRole="categoria_marca" />
+          <NavigationProperty Name="proveedor" Relationship="db_sistema_gestion_ventas_electronicosModel.FK_producto_proveedor" FromRole="producto" ToRole="proveedor" />
+        </EntityType>
+        <Association Name="FK_categoria_marca_categoria">
+          <End Type="db_sistema_gestion_ventas_electronicosModel.categoria" Role="categoria" Multiplicity="1" />
+          <End Type="db_sistema_gestion_ventas_electronicosModel.categoria_marca" Role="categoria_marca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria">
+              <PropertyRef Name="categoria_id" />
+            </Principal>
+            <Dependent Role="categoria_marca">
+              <PropertyRef Name="categoria_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_categoria_marca_marca">
+          <End Type="db_sistema_gestion_ventas_electronicosModel.marca" Role="marca" Multiplicity="1" />
+          <End Type="db_sistema_gestion_ventas_electronicosModel.categoria_marca" Role="categoria_marca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="marca">
+              <PropertyRef Name="marca_id" />
+            </Principal>
+            <Dependent Role="categoria_marca">
+              <PropertyRef Name="marca_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_producto_categoria_marca">
+          <End Type="db_sistema_gestion_ventas_electronicosModel.categoria_marca" Role="categoria_marca" Multiplicity="1" />
+          <End Type="db_sistema_gestion_ventas_electronicosModel.producto" Role="producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria_marca">
+              <PropertyRef Name="marca_id" />
+              <PropertyRef Name="categoria_id" />
+            </Principal>
+            <Dependent Role="producto">
+              <PropertyRef Name="marca_id" />
+              <PropertyRef Name="categoria_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_producto_proveedor">
+          <End Type="db_sistema_gestion_ventas_electronicosModel.proveedor" Role="proveedor" Multiplicity="1" />
+          <End Type="db_sistema_gestion_ventas_electronicosModel.producto" Role="producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proveedor">
+              <PropertyRef Name="proveedor_id" />
+            </Principal>
+            <Dependent Role="producto">
+              <PropertyRef Name="proveedor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="cliente">
           <Key>
@@ -208,6 +395,60 @@
                 <ScalarProperty Name="nombre_comercial" ColumnName="nombre_comercial" />
                 <ScalarProperty Name="cuit" ColumnName="cuit" />
                 <ScalarProperty Name="proveedor_id" ColumnName="proveedor_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categoria">
+            <EntityTypeMapping TypeName="db_sistema_gestion_ventas_electronicosModel.categoria">
+              <MappingFragment StoreEntitySet="categoria">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="categoria_id" ColumnName="categoria_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categoria_marca">
+            <EntityTypeMapping TypeName="db_sistema_gestion_ventas_electronicosModel.categoria_marca">
+              <MappingFragment StoreEntitySet="categoria_marca">
+                <ScalarProperty Name="categoria_id" ColumnName="categoria_id" />
+                <ScalarProperty Name="marca_id" ColumnName="marca_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="marca">
+            <EntityTypeMapping TypeName="db_sistema_gestion_ventas_electronicosModel.marca">
+              <MappingFragment StoreEntitySet="marca">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="marca_id" ColumnName="marca_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="producto">
+            <EntityTypeMapping TypeName="db_sistema_gestion_ventas_electronicosModel.producto">
+              <MappingFragment StoreEntitySet="producto">
+                <ScalarProperty Name="proveedor_id" ColumnName="proveedor_id" />
+                <ScalarProperty Name="categoria_id" ColumnName="categoria_id" />
+                <ScalarProperty Name="marca_id" ColumnName="marca_id" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="fecha_ultima_modificacion" ColumnName="fecha_ultima_modificacion" />
+                <ScalarProperty Name="fecha_alta" ColumnName="fecha_alta" />
+                <ScalarProperty Name="stock_minimo" ColumnName="stock_minimo" />
+                <ScalarProperty Name="stock" ColumnName="stock" />
+                <ScalarProperty Name="precio_venta" ColumnName="precio_venta" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="producto_id" ColumnName="producto_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="db_sistema_gestion_ventas_electronicosModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

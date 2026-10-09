@@ -9,7 +9,6 @@
         <EntityTypeShape EntityType="db_sistema_gestion_ventas_electronicosModel.usuario" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="db_sistema_gestion_ventas_electronicosModel.FK_usuario_perfil" ManuallyRouted="false" />
         <EntityTypeShape EntityType="db_sistema_gestion_ventas_electronicosModel.proveedor" Width="1.5" PointX="5.375" PointY="0.75" />
-        <EntityTypeShape EntityType="db_sistema_gestion_ventas_electronicosModel.cliente" Width="1.5" PointX="0.75" PointY="5.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
