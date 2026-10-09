@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CapaEntidad;
+using CapaNegocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,9 +15,12 @@ namespace CapaPresentacion.Vendedor
 {
     public partial class ClientesForm : Form
     {
+        private readonly CNUsuario objCNUsuario = new CNUsuario();
+
         public ClientesForm()
         {
             InitializeComponent();
+            
         }
 
         private void dgvListaCompras_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -37,23 +42,31 @@ namespace CapaPresentacion.Vendedor
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtBuscarCliente.Text))
-            {
-                MessageBox.Show("Debe completar el campo para buscar.", "Campo vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+           
         }
+
+
 
         private void btnRegistrarCliente_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(errorProvider1.GetError(txtCorreo)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtNombre)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtApellido)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtDni)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtTelefono)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtDireccion)) ||  string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtApellido.Text) || string.IsNullOrWhiteSpace(txtDni.Text) ||
-               string.IsNullOrWhiteSpace(txtTelefono.Text) || string.IsNullOrWhiteSpace(txtDireccion.Text) || string.IsNullOrWhiteSpace(txtCorreo.Text))
+            if (!string.IsNullOrEmpty(errorProvider1.GetError(txtCorreo)) ||
+        !string.IsNullOrEmpty(errorProvider1.GetError(txtNombre)) ||
+        !string.IsNullOrEmpty(errorProvider1.GetError(txtApellido)) ||
+        !string.IsNullOrEmpty(errorProvider1.GetError(txtDni)) ||
+        !string.IsNullOrEmpty(errorProvider1.GetError(txtTelefono)) ||
+        !string.IsNullOrEmpty(errorProvider1.GetError(txtDireccion)) ||
+        string.IsNullOrWhiteSpace(txtNombre.Text) ||
+        string.IsNullOrWhiteSpace(txtApellido.Text) ||
+        string.IsNullOrWhiteSpace(txtDni.Text) ||
+        string.IsNullOrWhiteSpace(txtTelefono.Text) ||
+        string.IsNullOrWhiteSpace(txtDireccion.Text) ||
+        string.IsNullOrWhiteSpace(txtCorreo.Text))
             {
                 MessageBox.Show("Hay campos con errores o vacíos. Corríjalos antes de agregar.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Confirmación del usuario antes de guardar
+            // 2. Confirmación
             DialogResult respuesta = MessageBox.Show(
                 "¿Está seguro de que desea registrar este nuevo cliente?",
                 "Confirmar registro",
@@ -61,19 +74,72 @@ namespace CapaPresentacion.Vendedor
                 MessageBoxIcon.Question
             );
 
-            // Si el usuario responde 'No', cancelamos la operación
             if (respuesta == DialogResult.No)
             {
                 return;
             }
 
-            // Mensaje de éxito
-            MessageBox.Show("El cliente se registro con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                // 3. Crear el objeto usuario/cliente con los datos de los TextBox
+                EUsuario objCliente = new EUsuario();
+                objCliente.nombre = txtNombre.Text.Trim();
+                objCliente.apellido = txtApellido.Text.Trim();
+                objCliente.dni = txtDni.Text.Trim();
+                objCliente.telefono = txtTelefono.Text.Trim();
+                objCliente.direccion = txtDireccion.Text.Trim();
+                objCliente.email = txtCorreo.Text.Trim();
 
-            //  Limpia los campos para un nuevo ingreso
-            LimpiarCampos();
+                // NUEVO: Asignar los campos obligatorios que CNUsuario exige por validación
+                objCliente.contrasenia = "123456"; // Contraseña temporal por defecto
+                objCliente.perfil_id = 2;          // ID de perfil correspondiente a clientes (ajústalo si tu BD usa otro número)
+
+                // 4. Guardar usando la clase de negocio de usuarios
+                string mensaje;
+                bool operacionExitosa = objCNUsuario.Registrar(objCliente, out mensaje);
+
+                if (operacionExitosa)
+                {
+                    MessageBox.Show("El cliente se registró con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarGrillaClientes(); // Refresca la grilla de la izquierda
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo registrar: " + mensaje, "Error de registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error inesperado: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                LimpiarCampos();
+            }
         }
+        
+        
+        
+        
 
+        //  Limpia los campos para un nuevo ingreso
+       
+
+        private void CargarGrillaClientes()
+        {
+            dgvListaClientes.AutoGenerateColumns = false;
+
+            colNroCliente.DataPropertyName = "usuario_id";
+            colDni.DataPropertyName = "dni";
+            colNombre.DataPropertyName = "nombre";
+            colApellido.DataPropertyName = "apellido";
+            colCorreo.DataPropertyName = "email";
+            colTelefono.DataPropertyName = "telefono";
+            colDireccion.DataPropertyName = "direccion";
+
+            dgvListaClientes.DataSource = objCNUsuario.Listar();
+        }
+        
         private void LimpiarCampos()
         {
             txtNombre.Clear();
@@ -103,7 +169,7 @@ namespace CapaPresentacion.Vendedor
             }
         }
 
-        private void txtApellido_Validating(object sender, CancelEventArgs e)
+       /* private void txtApellido_Validating(object sender, CancelEventArgs e)
         {
             if (!Regex.IsMatch(txtApellido.Text, "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$"))
             {
@@ -169,7 +235,7 @@ namespace CapaPresentacion.Vendedor
             {
                 errorProvider1.SetError(txtDireccion, "");
             }
-        }
+        }*/
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -228,6 +294,62 @@ namespace CapaPresentacion.Vendedor
 
             //  Limpia los campos para un nuevo ingreso
             LimpiarCampos();
+        }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            /* Permite letras, espacios y la tecla de borrar(BackSpace)*/
+             if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true; 
+            }
+        }
+
+        private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            /* Permite letras, espacios y la tecla de borrar(BackSpace)*/
+             if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtDireccion_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDireccion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+            if (!char.IsLetter(e.KeyChar) && !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        
+        }
+
+        private void txtDni_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permite números y la tecla de borrar (BackSpace)
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Cancela la tecla si no es un número
+            }
+        }
+
+        private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permite números y la tecla de borrar (BackSpace)
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Cancela la tecla si no es un número
+            }
         }
     }
 }

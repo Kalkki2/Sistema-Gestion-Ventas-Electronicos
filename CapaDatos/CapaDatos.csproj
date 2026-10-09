@@ -56,6 +56,9 @@
     <Compile Include="CDPerfil.cs" />
     <Compile Include="CDProveedor.cs" />
     <Compile Include="CDUsuario.cs" />
+    <Compile Include="cliente.cs">
+      <DependentUpon>db_sistema_gestion_ventas_electronicos.tt</DependentUpon>
+    </Compile>
     <Compile Include="db_sistema_gestion_ventas_electronicos.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -5,6 +5,21 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="db_sistema_gestion_ventas_electronicosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="cliente_id" />
+          </Key>
+          <Property Name="cliente_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dni" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="apellido" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="telefono" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="130" Nullable="false" />
+          <Property Name="direccion" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="fecha_alta" Type="date" Nullable="false" />
+          <Property Name="fecha_ultima_modificacion" Type="date" Nullable="false" />
+          <Property Name="estado" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="perfil">
           <Key>
             <PropertyRef Name="perfil_id" />
@@ -57,6 +72,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="db_sistema_gestion_ventas_electronicosModelStoreContainer">
+          <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="perfil" EntityType="Self.perfil" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="proveedor" EntityType="Self.proveedor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
@@ -115,6 +131,7 @@
             <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
           <EntitySet Name="proveedor" EntityType="db_sistema_gestion_ventas_electronicosModel.proveedor" />
+          <EntitySet Name="cliente" EntityType="db_sistema_gestion_ventas_electronicosModel.cliente" />
         </EntityContainer>
         <EntityType Name="proveedor">
           <Key>
@@ -127,6 +144,21 @@
           <Property Name="email" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="telefono" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="direccion" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_alta" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fecha_ultima_modificacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="cliente_id" />
+          </Key>
+          <Property Name="cliente_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dni" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="apellido" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="130" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="fecha_alta" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="fecha_ultima_modificacion" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="estado" Type="Int32" Nullable="false" />
@@ -176,6 +208,22 @@
                 <ScalarProperty Name="nombre_comercial" ColumnName="nombre_comercial" />
                 <ScalarProperty Name="cuit" ColumnName="cuit" />
                 <ScalarProperty Name="proveedor_id" ColumnName="proveedor_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cliente">
+            <EntityTypeMapping TypeName="db_sistema_gestion_ventas_electronicosModel.cliente">
+              <MappingFragment StoreEntitySet="cliente">
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="fecha_ultima_modificacion" ColumnName="fecha_ultima_modificacion" />
+                <ScalarProperty Name="fecha_alta" ColumnName="fecha_alta" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="dni" ColumnName="dni" />
+                <ScalarProperty Name="cliente_id" ColumnName="cliente_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

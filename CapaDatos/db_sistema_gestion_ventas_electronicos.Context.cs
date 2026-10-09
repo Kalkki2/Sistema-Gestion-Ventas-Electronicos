@@ -28,5 +28,6 @@ namespace CapaDatos
         public virtual DbSet<perfil> perfil { get; set; }
         public virtual DbSet<usuario> usuario { get; set; }
         public virtual DbSet<proveedor> proveedor { get; set; }
+        public virtual DbSet<cliente> cliente { get; set; }
     }
 }
