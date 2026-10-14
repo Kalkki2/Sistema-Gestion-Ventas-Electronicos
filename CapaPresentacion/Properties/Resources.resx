@@ -136,6 +136,9 @@
   <data name="icono_ventas" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icono_ventas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icono_constranesia_login" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icono_constranesia_login.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icono_blanco_advertencia_stock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icono_blanco_advertencia_stock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -154,14 +157,14 @@
   <data name="icono_gerente_comercial" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icono_gerente_comercial.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icono_menu_historial" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icono_menu_historial.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icono_menu_reportes" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icono_menu_reportes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icono_mis_ventas" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icono_mis_ventas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icono_reactivar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icono_reactivar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icono_menu_compras" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icono_menu_compras.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -181,25 +184,37 @@
   <data name="icono_filtro" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icono_filtro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icono_menu_proveedores" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icono_menu_proveedores.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icono_cajero" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icono_cajero.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icono_nueva_venta" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icono_nueva_venta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icono_usuarios" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icono_usuarios.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icono_excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icono_excel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icono_blanco_usuarios" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icono_blanco_usuarios.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icono_reactivar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icono_reactivar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icono_administrador" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icono_administrador.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icono_menu_proveedores" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icono_menu_proveedores.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icono_usuario_login" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icono_usuario_login.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icono_menu_historial" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icono_menu_historial.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icono_blanco_usuarios" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icono_blanco_usuarios.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icono_ojo_cerrado" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icono_ojo_cerrado.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icono_ojo_abierto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icono_ojo_abierto.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

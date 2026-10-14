@@ -130,5 +130,18 @@ namespace CapaNegocio
 
             return objCD_Producto.CambiarEstado(idProducto, nuevoEstado, out Mensaje);
         }
+
+        // Puente de Negocio para listar productos del proveedor seleccionado
+        public List<EProducto> ListarProductosPorProveedor(int proveedorId)
+        {
+            if (proveedorId == 0)
+            {
+                return new List<EProducto>(); // Retorna lista vacía si no hay proveedor válido
+            }
+
+            return objCD_Producto.ListarProductosPorProveedor(proveedorId);
+        }
     }
+
+
 }

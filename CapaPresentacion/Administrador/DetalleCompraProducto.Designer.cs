@@ -31,36 +31,35 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.guna2DataGridView2 = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.colCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
+            this.dgvDetalleItems = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.lblNroFactura = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblTotalComprados = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblResponsable = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblCuitProveedor = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.lblValorClienteComprador = new System.Windows.Forms.Label();
-            this.lblValorDniComprador = new System.Windows.Forms.Label();
+            this.lblProveedor = new System.Windows.Forms.Label();
+            this.lblDniResponsable = new System.Windows.Forms.Label();
             this.lblDniComprador = new System.Windows.Forms.Label();
-            this.lblValorHoraCompra = new System.Windows.Forms.Label();
-            this.lblValorFechaCompra = new System.Windows.Forms.Label();
+            this.lblFechaHora = new System.Windows.Forms.Label();
             this.lblFechaCompra = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lblTotalGeneral = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.btnGenerarComprobante = new Guna.UI2.WinForms.Guna2Button();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView2)).BeginInit();
+            this.colCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCostoUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSubtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleItems)).BeginInit();
             this.SuspendLayout();
             // 
-            // guna2DataGridView2
+            // dgvDetalleItems
             // 
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
-            this.guna2DataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvDetalleItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -68,13 +67,13 @@
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.guna2DataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.guna2DataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvDetalleItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvDetalleItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colCodigo,
-            this.dataGridViewTextBoxColumn2,
+            this.colProducto,
             this.colCantidad,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn6});
+            this.colCostoUnitario,
+            this.colSubtotal});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -82,57 +81,32 @@
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.guna2DataGridView2.DefaultCellStyle = dataGridViewCellStyle6;
-            this.guna2DataGridView2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.guna2DataGridView2.Location = new System.Drawing.Point(6, 183);
-            this.guna2DataGridView2.Name = "guna2DataGridView2";
-            this.guna2DataGridView2.RowHeadersVisible = false;
-            this.guna2DataGridView2.RowTemplate.Height = 23;
-            this.guna2DataGridView2.Size = new System.Drawing.Size(460, 309);
-            this.guna2DataGridView2.TabIndex = 9;
-            this.guna2DataGridView2.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
-            this.guna2DataGridView2.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            this.guna2DataGridView2.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2DataGridView2.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.guna2DataGridView2.ThemeStyle.HeaderStyle.Height = 23;
-            this.guna2DataGridView2.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2DataGridView2.ThemeStyle.RowsStyle.Height = 23;
-            this.guna2DataGridView2.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
+            this.dgvDetalleItems.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvDetalleItems.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvDetalleItems.Location = new System.Drawing.Point(6, 183);
+            this.dgvDetalleItems.Name = "dgvDetalleItems";
+            this.dgvDetalleItems.RowHeadersVisible = false;
+            this.dgvDetalleItems.RowTemplate.Height = 23;
+            this.dgvDetalleItems.Size = new System.Drawing.Size(503, 309);
+            this.dgvDetalleItems.TabIndex = 9;
+            this.dgvDetalleItems.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
+            this.dgvDetalleItems.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            this.dgvDetalleItems.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvDetalleItems.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvDetalleItems.ThemeStyle.HeaderStyle.Height = 23;
+            this.dgvDetalleItems.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvDetalleItems.ThemeStyle.RowsStyle.Height = 23;
+            this.dgvDetalleItems.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
             // 
-            // colCodigo
+            // lblNroFactura
             // 
-            this.colCodigo.HeaderText = "Codigo";
-            this.colCodigo.Name = "colCodigo";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Producto";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // colCantidad
-            // 
-            this.colCantidad.HeaderText = "Cantidad ";
-            this.colCantidad.Name = "colCantidad";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Precio";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "Subtotal";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(7, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(208, 17);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "Detalle de la compra: XXXX";
+            this.lblNroFactura.AutoSize = true;
+            this.lblNroFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNroFactura.Location = new System.Drawing.Point(7, 32);
+            this.lblNroFactura.Name = "lblNroFactura";
+            this.lblNroFactura.Size = new System.Drawing.Size(208, 17);
+            this.lblNroFactura.TabIndex = 19;
+            this.lblNroFactura.Text = "Detalle de la compra: XXXX";
             // 
             // label11
             // 
@@ -145,15 +119,15 @@
             this.label11.TabIndex = 56;
             this.label11.Text = "Proveedor: ";
             // 
-            // label5
+            // lblTotalComprados
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(302, 145);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(21, 16);
-            this.label5.TabIndex = 55;
-            this.label5.Text = "34";
+            this.lblTotalComprados.AutoSize = true;
+            this.lblTotalComprados.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalComprados.Location = new System.Drawing.Point(302, 145);
+            this.lblTotalComprados.Name = "lblTotalComprados";
+            this.lblTotalComprados.Size = new System.Drawing.Size(21, 16);
+            this.lblTotalComprados.TabIndex = 55;
+            this.lblTotalComprados.Text = "34";
             // 
             // label6
             // 
@@ -165,15 +139,15 @@
             this.label6.TabIndex = 54;
             this.label6.Text = "Total Comprados: ";
             // 
-            // label2
+            // lblResponsable
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(302, 69);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(132, 16);
-            this.label2.TabIndex = 53;
-            this.label2.Text = "Lombardo, Guillermo";
+            this.lblResponsable.AutoSize = true;
+            this.lblResponsable.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResponsable.Location = new System.Drawing.Point(302, 69);
+            this.lblResponsable.Name = "lblResponsable";
+            this.lblResponsable.Size = new System.Drawing.Size(132, 16);
+            this.lblResponsable.TabIndex = 53;
+            this.lblResponsable.Text = "Lombardo, Guillermo";
             // 
             // label3
             // 
@@ -185,15 +159,15 @@
             this.label3.TabIndex = 52;
             this.label3.Text = "Responsable: ";
             // 
-            // label4
+            // lblCuitProveedor
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(302, 130);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 16);
-            this.label4.TabIndex = 51;
-            this.label4.Text = "22222222";
+            this.lblCuitProveedor.AutoSize = true;
+            this.lblCuitProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCuitProveedor.Location = new System.Drawing.Point(302, 130);
+            this.lblCuitProveedor.Name = "lblCuitProveedor";
+            this.lblCuitProveedor.Size = new System.Drawing.Size(63, 16);
+            this.lblCuitProveedor.TabIndex = 51;
+            this.lblCuitProveedor.Text = "22222222";
             // 
             // label7
             // 
@@ -205,25 +179,25 @@
             this.label7.TabIndex = 50;
             this.label7.Text = "CUIT: ";
             // 
-            // lblValorClienteComprador
+            // lblProveedor
             // 
-            this.lblValorClienteComprador.AutoSize = true;
-            this.lblValorClienteComprador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorClienteComprador.Location = new System.Drawing.Point(302, 113);
-            this.lblValorClienteComprador.Name = "lblValorClienteComprador";
-            this.lblValorClienteComprador.Size = new System.Drawing.Size(77, 16);
-            this.lblValorClienteComprador.TabIndex = 49;
-            this.lblValorClienteComprador.Text = "Perez, Juan";
+            this.lblProveedor.AutoSize = true;
+            this.lblProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProveedor.Location = new System.Drawing.Point(302, 113);
+            this.lblProveedor.Name = "lblProveedor";
+            this.lblProveedor.Size = new System.Drawing.Size(77, 16);
+            this.lblProveedor.TabIndex = 49;
+            this.lblProveedor.Text = "Perez, Juan";
             // 
-            // lblValorDniComprador
+            // lblDniResponsable
             // 
-            this.lblValorDniComprador.AutoSize = true;
-            this.lblValorDniComprador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorDniComprador.Location = new System.Drawing.Point(302, 88);
-            this.lblValorDniComprador.Name = "lblValorDniComprador";
-            this.lblValorDniComprador.Size = new System.Drawing.Size(63, 16);
-            this.lblValorDniComprador.TabIndex = 48;
-            this.lblValorDniComprador.Text = "11111111";
+            this.lblDniResponsable.AutoSize = true;
+            this.lblDniResponsable.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDniResponsable.Location = new System.Drawing.Point(302, 88);
+            this.lblDniResponsable.Name = "lblDniResponsable";
+            this.lblDniResponsable.Size = new System.Drawing.Size(63, 16);
+            this.lblDniResponsable.TabIndex = 48;
+            this.lblDniResponsable.Text = "11111111";
             // 
             // lblDniComprador
             // 
@@ -235,25 +209,15 @@
             this.lblDniComprador.TabIndex = 47;
             this.lblDniComprador.Text = "DNI: ";
             // 
-            // lblValorHoraCompra
+            // lblFechaHora
             // 
-            this.lblValorHoraCompra.AutoSize = true;
-            this.lblValorHoraCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorHoraCompra.Location = new System.Drawing.Point(379, 53);
-            this.lblValorHoraCompra.Name = "lblValorHoraCompra";
-            this.lblValorHoraCompra.Size = new System.Drawing.Size(55, 16);
-            this.lblValorHoraCompra.TabIndex = 46;
-            this.lblValorHoraCompra.Text = "09:04:47";
-            // 
-            // lblValorFechaCompra
-            // 
-            this.lblValorFechaCompra.AutoSize = true;
-            this.lblValorFechaCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorFechaCompra.Location = new System.Drawing.Point(302, 53);
-            this.lblValorFechaCompra.Name = "lblValorFechaCompra";
-            this.lblValorFechaCompra.Size = new System.Drawing.Size(71, 16);
-            this.lblValorFechaCompra.TabIndex = 45;
-            this.lblValorFechaCompra.Text = "21/04/2026";
+            this.lblFechaHora.AutoSize = true;
+            this.lblFechaHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaHora.Location = new System.Drawing.Point(302, 53);
+            this.lblFechaHora.Name = "lblFechaHora";
+            this.lblFechaHora.Size = new System.Drawing.Size(71, 16);
+            this.lblFechaHora.TabIndex = 45;
+            this.lblFechaHora.Text = "21/04/2026";
             // 
             // lblFechaCompra
             // 
@@ -265,16 +229,16 @@
             this.lblFechaCompra.TabIndex = 44;
             this.lblFechaCompra.Text = "Fecha y Hora: ";
             // 
-            // label8
+            // lblTotalGeneral
             // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(377, 495);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(91, 20);
-            this.label8.TabIndex = 58;
-            this.label8.Text = "$XXXXXX";
+            this.lblTotalGeneral.AutoSize = true;
+            this.lblTotalGeneral.BackColor = System.Drawing.Color.Transparent;
+            this.lblTotalGeneral.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalGeneral.Location = new System.Drawing.Point(418, 495);
+            this.lblTotalGeneral.Name = "lblTotalGeneral";
+            this.lblTotalGeneral.Size = new System.Drawing.Size(91, 20);
+            this.lblTotalGeneral.TabIndex = 58;
+            this.lblTotalGeneral.Text = "$XXXXXX";
             // 
             // label9
             // 
@@ -300,40 +264,65 @@
             this.btnGenerarComprobante.FillColor = System.Drawing.Color.Transparent;
             this.btnGenerarComprobante.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGenerarComprobante.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnGenerarComprobante.Location = new System.Drawing.Point(286, 541);
+            this.btnGenerarComprobante.Location = new System.Drawing.Point(329, 541);
             this.btnGenerarComprobante.Name = "btnGenerarComprobante";
             this.btnGenerarComprobante.Size = new System.Drawing.Size(180, 33);
             this.btnGenerarComprobante.TabIndex = 59;
             this.btnGenerarComprobante.Text = "Generar Comprobante";
             this.btnGenerarComprobante.Click += new System.EventHandler(this.btnGenerarComprobante_Click);
             // 
+            // colCodigo
+            // 
+            this.colCodigo.HeaderText = "Codigo";
+            this.colCodigo.Name = "colCodigo";
+            // 
+            // colProducto
+            // 
+            this.colProducto.HeaderText = "Producto";
+            this.colProducto.Name = "colProducto";
+            // 
+            // colCantidad
+            // 
+            this.colCantidad.HeaderText = "Cantidad ";
+            this.colCantidad.Name = "colCantidad";
+            // 
+            // colCostoUnitario
+            // 
+            this.colCostoUnitario.HeaderText = "Costo Unitario";
+            this.colCostoUnitario.Name = "colCostoUnitario";
+            // 
+            // colSubtotal
+            // 
+            this.colSubtotal.HeaderText = "Subtotal";
+            this.colSubtotal.Name = "colSubtotal";
+            // 
             // DetalleCompraProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(466, 575);
+            this.ClientSize = new System.Drawing.Size(511, 575);
             this.Controls.Add(this.btnGenerarComprobante);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.lblTotalGeneral);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lblTotalComprados);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblResponsable);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lblCuitProveedor);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.lblValorClienteComprador);
-            this.Controls.Add(this.lblValorDniComprador);
+            this.Controls.Add(this.lblProveedor);
+            this.Controls.Add(this.lblDniResponsable);
             this.Controls.Add(this.lblDniComprador);
-            this.Controls.Add(this.lblValorHoraCompra);
-            this.Controls.Add(this.lblValorFechaCompra);
+            this.Controls.Add(this.lblFechaHora);
             this.Controls.Add(this.lblFechaCompra);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.guna2DataGridView2);
+            this.Controls.Add(this.lblNroFactura);
+            this.Controls.Add(this.dgvDetalleItems);
             this.Name = "DetalleCompraProducto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DetalleCompraProducto";
-            ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView2)).EndInit();
+            this.Load += new System.EventHandler(this.DetalleCompraProducto_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleItems)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -341,28 +330,27 @@
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCodigo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.Label label1;
+        private Guna.UI2.WinForms.Guna2DataGridView dgvDetalleItems;
+        private System.Windows.Forms.Label lblNroFactura;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblTotalComprados;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblResponsable;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblCuitProveedor;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label lblValorClienteComprador;
-        private System.Windows.Forms.Label lblValorDniComprador;
+        private System.Windows.Forms.Label lblProveedor;
+        private System.Windows.Forms.Label lblDniResponsable;
         private System.Windows.Forms.Label lblDniComprador;
-        private System.Windows.Forms.Label lblValorHoraCompra;
-        private System.Windows.Forms.Label lblValorFechaCompra;
+        private System.Windows.Forms.Label lblFechaHora;
         private System.Windows.Forms.Label lblFechaCompra;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblTotalGeneral;
         private System.Windows.Forms.Label label9;
         private Guna.UI2.WinForms.Guna2Button btnGenerarComprobante;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCodigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCostoUnitario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSubtotal;
     }
 }

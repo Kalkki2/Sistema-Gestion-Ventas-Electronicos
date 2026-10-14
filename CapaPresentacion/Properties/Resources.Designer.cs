@@ -143,6 +143,16 @@ namespace CapaPresentacion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icono_constranesia_login {
+            get {
+                object obj = ResourceManager.GetObject("icono_constranesia_login", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icono_editar {
             get {
                 object obj = ResourceManager.GetObject("icono_editar", resourceCulture);
@@ -303,6 +313,26 @@ namespace CapaPresentacion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icono_ojo_abierto {
+            get {
+                object obj = ResourceManager.GetObject("icono_ojo_abierto", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icono_ojo_cerrado {
+            get {
+                object obj = ResourceManager.GetObject("icono_ojo_cerrado", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icono_reactivar {
             get {
                 object obj = ResourceManager.GetObject("icono_reactivar", resourceCulture);
@@ -316,6 +346,26 @@ namespace CapaPresentacion.Properties {
         internal static System.Drawing.Bitmap icono_salir {
             get {
                 object obj = ResourceManager.GetObject("icono_salir", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icono_usuario_login {
+            get {
+                object obj = ResourceManager.GetObject("icono_usuario_login", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icono_usuarios {
+            get {
+                object obj = ResourceManager.GetObject("icono_usuarios", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

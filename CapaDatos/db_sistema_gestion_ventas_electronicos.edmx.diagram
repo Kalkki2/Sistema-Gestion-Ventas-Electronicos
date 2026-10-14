@@ -4,11 +4,25 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="028176d5dba54a9fa23027d10d792d07" Name="Diagram1" ZoomLevel="65">
-        <EntityTypeShape EntityType="db_sistema_gestion_ventas_electronicosModel.perfil" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="db_sistema_gestion_ventas_electronicosModel.usuario" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+      <Diagram DiagramId="2491962311db428e94b96fee622b507e" Name="Diagram1" ZoomLevel="88">
+        <EntityTypeShape EntityType="db_sistema_gestion_ventas_electronicosModel.categoria" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_sistema_gestion_ventas_electronicosModel.categoria_marca" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_sistema_gestion_ventas_electronicosModel.marca" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_sistema_gestion_ventas_electronicosModel.perfil" Width="1.5" PointX="14.5" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_sistema_gestion_ventas_electronicosModel.producto" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_sistema_gestion_ventas_electronicosModel.proveedor" Width="1.5" PointX="8.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_sistema_gestion_ventas_electronicosModel.usuario" Width="1.5" PointX="14.5" PointY="2.5" IsExpanded="true" />
+        <AssociationConnector Association="db_sistema_gestion_ventas_electronicosModel.FK_categoria_marca_categoria" ManuallyRouted="false" />
+        <AssociationConnector Association="db_sistema_gestion_ventas_electronicosModel.FK_categoria_marca_marca" ManuallyRouted="false" />
+        <AssociationConnector Association="db_sistema_gestion_ventas_electronicosModel.FK_producto_categoria_marca" ManuallyRouted="false" />
         <AssociationConnector Association="db_sistema_gestion_ventas_electronicosModel.FK_usuario_perfil" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="db_sistema_gestion_ventas_electronicosModel.proveedor" Width="1.5" PointX="5.375" PointY="0.75" />
+        <AssociationConnector Association="db_sistema_gestion_ventas_electronicosModel.FK_producto_proveedor" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="db_sistema_gestion_ventas_electronicosModel.compra" Width="1.5" PointX="10.875" PointY="2.125" />
+        <EntityTypeShape EntityType="db_sistema_gestion_ventas_electronicosModel.detalle_compra" Width="1.5" PointX="7.5" PointY="2" />
+        <AssociationConnector Association="db_sistema_gestion_ventas_electronicosModel.FK_compra_proveedor" />
+        <AssociationConnector Association="db_sistema_gestion_ventas_electronicosModel.FK_compra_usuario" />
+        <AssociationConnector Association="db_sistema_gestion_ventas_electronicosModel.FK_detalle_compra_compra" />
+        <AssociationConnector Association="db_sistema_gestion_ventas_electronicosModel.FK_detalle_compra_producto" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

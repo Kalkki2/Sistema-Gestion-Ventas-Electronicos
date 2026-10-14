@@ -165,6 +165,11 @@ namespace CapaPresentacion.Administrador
 
         private void GestionProductosForm_Load(object sender, EventArgs e)
         {
+            if (SesionActual.UsuarioLogueado != null)
+            {
+                lblNombreUsuario.Text = $"{SesionActual.UsuarioLogueado.apellido}, {SesionActual.UsuarioLogueado.nombre}";
+                lblRolUsuario.Text = SesionActual.UsuarioLogueado.oPerfil.nombre;
+            }
             System.Globalization.CultureInfo cultura = new System.Globalization.CultureInfo("es-ES");
             lblFecha.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy", cultura);
 

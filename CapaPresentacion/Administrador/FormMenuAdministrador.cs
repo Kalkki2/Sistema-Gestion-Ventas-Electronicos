@@ -69,17 +69,17 @@ namespace CapaPresentacion.Administrador
 
         private void btnMenuItemSalir_Click(object sender, EventArgs e)
         {
-            DialogResult resultado = MessageBox.Show(
-         "¿Está seguro de que desea cerrar sesión?",
-         "Cerrar sesión",
-         MessageBoxButtons.YesNo,
-         MessageBoxIcon.Question
-     );
+            DialogResult resultado = MessageBox.Show("¿Está seguro de que desea cerrar sesión?",
+                                                     "Cerrar Sesión",
+                                                     MessageBoxButtons.YesNo,
+                                                     MessageBoxIcon.Question);
 
             if (resultado == DialogResult.Yes)
             {
-                // Al cerrar este formulario, el evento 'FormClosed' que pusiste 
-                // en el Login hará que este último vuelva a mostrarse (this.Show()) automáticamente.
+                SesionActual.UsuarioLogueado = null;
+                FormLogin login = new FormLogin();
+                login.Show();
+
                 this.Close();
             }
         }
@@ -102,7 +102,7 @@ namespace CapaPresentacion.Administrador
             btnMenuItemCompra.Text = "   Historial compras ▼";
             btnMenuItemCompra.Image = Properties.Resources.icono_menu_historial;
             pnlSubMenuCompra.Visible = false;
-            AbrirFormularioHijoUnico<HistorialComprasForm>();
+            AbrirFormularioHijoUnico<HistorialCompras>();
         }
     }
 }

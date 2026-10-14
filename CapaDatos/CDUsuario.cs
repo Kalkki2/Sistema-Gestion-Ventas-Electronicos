@@ -236,6 +236,37 @@ namespace CapaDatos
                 }).ToList();
             }
         }
+        public EUsuario Login(string dni, string contrasenia)
+        {
+            using (var db = new db_sistema_gestion_ventas_electronicosEntities())
+            {
+                // Buscamos el usuario activo que coincida con el DNI y la contraseña
+                var u = db.usuario
+                          .Include("perfil") // Trae la relación del perfil
+                          .FirstOrDefault(x => x.dni == dni && x.contrasenia == contrasenia && x.estado == 1);
+
+                if (u != null)
+                {
+                    return new EUsuario()
+                    {
+                        usuario_id = u.usuario_id,
+                        nombre = u.nombre,
+                        apellido = u.apellido,
+                        dni = u.dni,
+                        email = u.email,
+                        telefono = u.telefono,
+                        estado = u.estado,
+                        perfil_id = u.perfil_id,
+                        oPerfil = new EPerfil()
+                        {
+                            perfil_id = u.perfil.perfil_id,
+                            nombre = u.perfil.nombre
+                        }
+                    };
+                }
+                return null;
+            }
+        }
 
     }
 }

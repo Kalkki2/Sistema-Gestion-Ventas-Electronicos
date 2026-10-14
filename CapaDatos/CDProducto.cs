@@ -203,5 +203,41 @@ namespace CapaDatos
                 return false;
             }
         }
+
+        // Método para listar productos filtrados por el Proveedor seleccionado en la compra
+        public List<EProducto> ListarProductosPorProveedor(int proveedorId)
+        {
+            using (var db = new db_sistema_gestion_ventas_electronicosEntities())
+            {
+                var query = from p in db.producto
+                            join m in db.marca on p.marca_id equals m.marca_id
+                            join c in db.categoria on p.categoria_id equals c.categoria_id
+                            join pr in db.proveedor on p.proveedor_id equals pr.proveedor_id
+                            where p.proveedor_id == proveedorId && p.estado == 1 // Filtramos estrictamente por el proveedor de la compra y que estén activos
+                            select new EProducto()
+                            {
+                                producto_id = p.producto_id,
+                                codigo = p.codigo,
+                                nombre = p.nombre,
+                                descripcion = p.descripcion,
+                                precio_venta = p.precio_venta,
+                                stock = p.stock,
+                                stock_minimo = p.stock_minimo,
+                                estado = p.estado,
+                                fecha_alta = p.fecha_alta,
+                                fecha_ultima_modificacion = p.fecha_ultima_modificacion,
+
+                                marca_id = p.marca_id,
+                                categoria_id = p.categoria_id,
+                                proveedor_id = p.proveedor_id,
+
+                                oMarca = new EMarca { marca_id = m.marca_id, nombre = m.nombre },
+                                oCategoria = new ECategoria { categoria_id = c.categoria_id, nombre = c.nombre },
+                                oProveedor = new EProveedor { proveedor_id = pr.proveedor_id, razon_social = pr.razon_social }
+                            };
+
+                return query.ToList();
+            }
+        }
     }
 }

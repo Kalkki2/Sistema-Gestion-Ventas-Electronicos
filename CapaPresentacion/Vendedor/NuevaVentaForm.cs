@@ -20,7 +20,7 @@ namespace CapaPresentacion.Vendedor
 
         private void btnBuscarProducto_Click(object sender, EventArgs e)
         {
-            BuscarProductoForm frm = new BuscarProductoForm();
+            BuscarProductoVentaForm frm = new BuscarProductoVentaForm();
             frm.ShowDialog();
         }
 

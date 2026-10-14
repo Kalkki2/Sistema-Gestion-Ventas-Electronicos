@@ -84,5 +84,19 @@ namespace CapaNegocio
         {
             return objCDUsuario.FiltrarUsuarios(idPerfil, estado);
         }
+
+        public EUsuario Login(string dni, string contrasenia, out string mensaje)
+        {
+            mensaje = string.Empty;
+
+            if (string.IsNullOrEmpty(dni.Trim()) || string.IsNullOrEmpty(contrasenia.Trim()))
+            {
+                mensaje = "Debe completar el DNI y la contraseña.";
+                return null;
+            }
+
+            CDUsuario cdUsuario = new CDUsuario();
+            return cdUsuario.Login(dni.Trim(), contrasenia.Trim());
+        }
     }
 }

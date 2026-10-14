@@ -14,6 +14,12 @@ namespace CapaDatos
     
     public partial class producto
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public producto()
+        {
+            this.detalle_compra = new HashSet<detalle_compra>();
+        }
+    
         public int producto_id { get; set; }
         public string codigo { get; set; }
         public string nombre { get; set; }
@@ -30,5 +36,7 @@ namespace CapaDatos
     
         public virtual categoria_marca categoria_marca { get; set; }
         public virtual proveedor proveedor { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<detalle_compra> detalle_compra { get; set; }
     }
 }

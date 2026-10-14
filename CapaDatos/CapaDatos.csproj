@@ -59,11 +59,12 @@
     <Compile Include="categoria_marca.cs">
       <DependentUpon>db_sistema_gestion_ventas_electronicos.tt</DependentUpon>
     </Compile>
+    <Compile Include="CDCompra.cs" />
     <Compile Include="CDPerfil.cs" />
     <Compile Include="CDProducto.cs" />
     <Compile Include="CDProveedor.cs" />
     <Compile Include="CDUsuario.cs" />
-    <Compile Include="cliente.cs">
+    <Compile Include="compra.cs">
       <DependentUpon>db_sistema_gestion_ventas_electronicos.tt</DependentUpon>
     </Compile>
     <Compile Include="db_sistema_gestion_ventas_electronicos.Context.cs">
@@ -81,6 +82,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>db_sistema_gestion_ventas_electronicos.edmx</DependentUpon>
     </Compile>
+    <Compile Include="detalle_compra.cs">
+      <DependentUpon>db_sistema_gestion_ventas_electronicos.tt</DependentUpon>
+    </Compile>
     <Compile Include="marca.cs">
       <DependentUpon>db_sistema_gestion_ventas_electronicos.tt</DependentUpon>
     </Compile>
@@ -92,9 +96,6 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="proveedor.cs">
-      <DependentUpon>db_sistema_gestion_ventas_electronicos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagrams.cs">
       <DependentUpon>db_sistema_gestion_ventas_electronicos.tt</DependentUpon>
     </Compile>
     <Compile Include="usuario.cs">

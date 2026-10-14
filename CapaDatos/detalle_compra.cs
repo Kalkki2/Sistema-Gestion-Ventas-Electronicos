@@ -12,12 +12,15 @@ namespace CapaDatos
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagrams
+    public partial class detalle_compra
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int producto_id { get; set; }
+        public int compra_id { get; set; }
+        public int cantidad { get; set; }
+        public decimal costo_unitario { get; set; }
+        public decimal porcentaje_margen { get; set; }
+    
+        public virtual compra compra { get; set; }
+        public virtual producto producto { get; set; }
     }
 }

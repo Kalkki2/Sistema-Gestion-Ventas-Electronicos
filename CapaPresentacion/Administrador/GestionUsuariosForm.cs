@@ -28,116 +28,16 @@ namespace CapaPresentacion.Administrador
         }
 
 
-
-        private void LimpiarCampos()
-        {
-            idUsuarioSeleccionado = 0; // Reinicia la selección
-            txtNombre.Clear();
-            txtApellido.Clear();
-            txtDni.Clear();
-            txtCorreo.Clear();
-            txtTelefono.Clear();
-            txtDireccion.Clear();
-            txtContrasenia.Clear();
-
-            cmbPerfil.SelectedIndex = -1;
-            cmbEstado.SelectedIndex = -1;
-
-            btnAgregarUsuario.Text = "Agregar"; // Vuelve a su estado inicial
-            txtNombre.Focus();
-        }
-
-        private void btnAgregarUsuario_Click(object sender, EventArgs e)
-        {
-            // 1. Validaciones de campos
-            if (!string.IsNullOrEmpty(errorProvider1.GetError(txtNombre)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtApellido)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtDni)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtCorreo)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtDireccion)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtTelefono)) ||
-                string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtApellido.Text) ||
-                string.IsNullOrWhiteSpace(txtDni.Text) || string.IsNullOrWhiteSpace(txtCorreo.Text) ||
-                string.IsNullOrWhiteSpace(txtTelefono.Text) || string.IsNullOrWhiteSpace(txtDireccion.Text))
-            {
-                MessageBox.Show("Hay campos con errores o vacíos. Corríjalos antes de agregar.", "Campos vacíos o con error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (cmbEstado.SelectedIndex == -1 || cmbPerfil.SelectedIndex == -1)
-            {
-                MessageBox.Show("Debe seleccionar Estado y Perfil.", "Selección requerida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // 2. Mapeo del objeto
-            OpcionCombo estadoSeleccionado = (OpcionCombo)cmbEstado.SelectedItem;
-
-            EUsuario oUsuario = new EUsuario()
-            {
-                usuario_id = idUsuarioSeleccionado,
-                nombre = txtNombre.Text.Trim(),
-                apellido = txtApellido.Text.Trim(),
-                dni = txtDni.Text.Trim(),
-                email = txtCorreo.Text.Trim(),
-                telefono = txtTelefono.Text.Trim(),
-                direccion = txtDireccion.Text.Trim(),
-                contrasenia = txtContrasenia.Text.Trim(),
-                estado = Convert.ToInt32(estadoSeleccionado.Valor), // Cambiado a int (1 o 0)
-                perfil_id = Convert.ToInt32(cmbPerfil.SelectedValue)
-            };
-
-            string mensaje = string.Empty;
-            bool resultado = false;
-
-            // 3. Evaluar si es Registro Nuevo o Actualización
-            if (idUsuarioSeleccionado == 0)
-            {
-                // NUEVO
-                DialogResult confirmacion = MessageBox.Show("¿Desea registrar este usuario?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (confirmacion == DialogResult.No) return;
-
-                resultado = objCNUsuario.Registrar(oUsuario, out mensaje);
-            }
-            else
-            {
-                // EDITAR / ACTUALIZAR
-                DialogResult confirmacion = MessageBox.Show("¿Desea actualizar los datos de este usuario?", "Confirmar actualización", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (confirmacion == DialogResult.No) return;
-
-                resultado = objCNUsuario.Editar(oUsuario, out mensaje);
-            }
-
-            // 4. Respuesta
-            if (resultado)
-            {
-                MessageBox.Show(idUsuarioSeleccionado == 0 ? "Usuario registrado con éxito." : "Usuario actualizado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LimpiarCampos();
-                CargarUsuarios();
-            }
-            else
-            {
-                MessageBox.Show(mensaje, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtNombre.Text) && string.IsNullOrWhiteSpace(txtApellido.Text) && string.IsNullOrWhiteSpace(txtDni.Text) && string.IsNullOrWhiteSpace(txtCorreo.Text) &&
-                string.IsNullOrWhiteSpace(txtTelefono.Text) && string.IsNullOrWhiteSpace(txtDireccion.Text) && string.IsNullOrWhiteSpace(txtContrasenia.Text) && cmbEstado.SelectedIndex == -1 && cmbPerfil.SelectedIndex == -1)
-            {
-                // Si no hay nada escrito en los campos
-                MessageBox.Show("No hay nada cargado para cancear/limpiar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                LimpiarCampos();
-            }
-
-        }
-
         private void GestionUsuariosForm_Load(object sender, EventArgs e)
         {
+            if (SesionActual.UsuarioLogueado != null){
+                lblNombreUsuario.Text = $"{SesionActual.UsuarioLogueado.apellido}, {SesionActual.UsuarioLogueado.nombre}";
+                lblRolUsuario.Text = SesionActual.UsuarioLogueado.oPerfil.nombre; 
+            }
             System.Globalization.CultureInfo cultura = new System.Globalization.CultureInfo("es-ES");
             lblFecha.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy", cultura);
+
             CargarUsuarios();
-            CargarCmbPerfil();
-            CargarCmbEstado();
             CargarFiltros();
         }
         private void CargarUsuarios()
@@ -202,54 +102,19 @@ namespace CapaPresentacion.Administrador
 
             if (nombreColumna == "colEditar")
             {
-                var usuario = dgvListaUsuarios.Rows[e.RowIndex].DataBoundItem as EUsuario;
+                var usuarioSeleccionado = dgvListaUsuarios.Rows[e.RowIndex].DataBoundItem as EUsuario;
 
-                if (usuario != null)
+                if (usuarioSeleccionado != null)
                 {
-                    idUsuarioSeleccionado = usuario.usuario_id;
-
-                    // 1. DESVINCULAR temporalmente los eventos Validating
-                    txtNombre.Validating -= txtNombre_Validating;
-                    txtApellido.Validating -= txtApellido_Validating;
-                    txtDni.Validating -= txtDni_Validating;
-                    txtCorreo.Validating -= txtCorreo_Validating;
-                    txtTelefono.Validating -= txtTelefono_Validating;
-                    txtDireccion.Validating -= txtDireccion_Validating;
-                    txtContrasenia.Validating -= txtContrasenia_Validating;
-
-                    // 2. Cargar datos en las cajas de texto
-                    txtNombre.Text = usuario.nombre;
-                    txtApellido.Text = usuario.apellido;
-                    txtDni.Text = usuario.dni;
-                    txtCorreo.Text = usuario.email; // Actualizado a email
-                    txtTelefono.Text = usuario.telefono;
-                    txtDireccion.Text = usuario.direccion;
-                    txtContrasenia.Text = usuario.contrasenia;
-
-                    // Seleccionar valor en ComboBox Perfil
-                    cmbPerfil.SelectedValue = usuario.perfil_id;
-
-                    // Seleccionar valor en ComboBox Estado (comparando con int)
-                    foreach (OpcionCombo item in cmbEstado.Items)
+                    // Abrimos el modal pasándole el usuario seleccionado
+                    using (RegistrarEditarUsuarioForm frmModal = new RegistrarEditarUsuarioForm(usuarioSeleccionado))
                     {
-                        if (Convert.ToInt32(item.Valor) == usuario.estado)
+                        DialogResult resultado = frmModal.ShowDialog(this);
+                        if (resultado == DialogResult.OK)
                         {
-                            cmbEstado.SelectedItem = item;
-                            break;
+                            CargarUsuarios(); // Recarga la grilla con los cambios actualizados
                         }
                     }
-
-                    // 3. VINCULAR NUEVAMENTE los eventos Validating
-                    txtNombre.Validating += txtNombre_Validating;
-                    txtApellido.Validating += txtApellido_Validating;
-                    txtDni.Validating += txtDni_Validating;
-                    txtCorreo.Validating += txtCorreo_Validating;
-                    txtTelefono.Validating += txtTelefono_Validating;
-                    txtDireccion.Validating += txtDireccion_Validating;
-                    txtContrasenia.Validating += txtContrasenia_Validating;
-
-                    errorProvider1.Clear();
-                    btnAgregarUsuario.Text = "Actualizar";
                 }
             }
 
@@ -290,24 +155,9 @@ namespace CapaPresentacion.Administrador
             }
         }
 
-        private void CargarCmbPerfil()
-        {
-            List<EPerfil> listaPerfiles = objCNPerfil.Listar();
-            cmbPerfil.ValueMember = "perfil_id";
-            cmbPerfil.DisplayMember = "nombre";
-            cmbPerfil.DataSource = listaPerfiles;
-            cmbPerfil.SelectedIndex = -1;
-        }
+       
 
-        private void CargarCmbEstado()
-        {
-            cmbEstado.Items.Clear();
-            cmbEstado.Items.Add(new OpcionCombo { Texto = "Activo", Valor = 1 });   // Valor int 1
-            cmbEstado.Items.Add(new OpcionCombo { Texto = "Inactivo", Valor = 0 }); // Valor int 0
-            cmbEstado.DisplayMember = "Texto";
-            cmbEstado.ValueMember = "Valor";
-            cmbEstado.SelectedIndex = -1;
-        }
+       
 
         public class OpcionCombo
         {
@@ -396,120 +246,7 @@ namespace CapaPresentacion.Administrador
             cmbFiltroEstado.SelectedIndex = 0;
         }
 
-        private void txtNombre_Validating(object sender, CancelEventArgs e)
-        {
-            if (!Regex.IsMatch(txtNombre.Text, "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$"))
-            {
-                errorProvider1.SetError(txtNombre, "El nombre  solo debe contener letras.");
-            }
-            else if (txtNombre.Text.Length < 3 || txtNombre.Text.Length > 40)
-            {
-                errorProvider1.SetError(txtNombre, "El nombre  debe tener entre 3 y 40 caracteres.");
-            }
-            else
-            {
-                errorProvider1.SetError(txtNombre, "");
-            }
-            
-        }
-
-        private void txtApellido_Validating(object sender, CancelEventArgs e)
-        {
-            if (!Regex.IsMatch(txtApellido.Text, "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$"))
-            {
-                errorProvider1.SetError(txtApellido, "El apellido solo debe contener letras.");
-            }
-            else if (txtApellido.Text.Length < 3 || txtApellido.Text.Length > 40)
-            {
-                errorProvider1.SetError(txtApellido, "El apellido  debe tener entre 3 y 40 caracteres.");
-            }
-            else
-            {
-                errorProvider1.SetError(txtApellido, "");
-            }
-        }
-
-        private void txtDni_Validating(object sender, CancelEventArgs e)
-        {
-            string cuit = txtDni.Text.Trim();
-
-            if (!ulong.TryParse(cuit, out _))
-            {
-                errorProvider1.SetError(txtDni, "El DNI solo debe contener números.");
-            }
-            else if (cuit.Length != 8)
-            {
-                errorProvider1.SetError(txtDni, "El DNI debe tener exactamente 8 dígitos.");
-            }
-            else
-            {
-                errorProvider1.SetError(txtDni, "");
-            }
-        }
-
-        private void txtCorreo_Validating(object sender, CancelEventArgs e)
-        {
-            string patronCorreo = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
-
-            if (!Regex.IsMatch(txtCorreo.Text, patronCorreo))
-            {
-                errorProvider1.SetError(txtCorreo, "Ingrese un correo electrónico válido (ej: usuario@dominio.com).");
-            }
-            else
-            {
-                errorProvider1.SetError(txtCorreo, "");
-            }
-        }
-
-        private void txtTelefono_Validating(object sender, CancelEventArgs e)
-        {
-            string telefono = txtTelefono.Text.Trim();
-
-            if (!ulong.TryParse(telefono, out _))
-            {
-                errorProvider1.SetError(txtTelefono, "El TELEFONO solo debe contener números.");
-            }
-            else if (telefono.Length != 10)
-            {
-                errorProvider1.SetError(txtTelefono, "El TELEFONO debe tener exactamente 10 dígitos.");
-            }
-            else
-            {
-                errorProvider1.SetError(txtTelefono, "");
-            }
-        }
-
-        private void txtDireccion_Validating(object sender, CancelEventArgs e)
-        {
-            if (!Regex.IsMatch(txtDireccion.Text, "^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\\s]+$"))
-            {
-                errorProvider1.SetError(txtDireccion, "La dirección solo debe contener letras y números.");
-            }
-            else if (txtDireccion.Text.Length < 3 || txtDireccion.Text.Length > 40)
-            {
-                errorProvider1.SetError(txtDireccion, "La dirección debe tener entre 3 y 40 caracteres.");
-            }
-            else
-            {
-                errorProvider1.SetError(txtDireccion, "");
-            }
-        }
-
-        private void txtContrasenia_Validating(object sender, CancelEventArgs e)
-        {
-            if (!Regex.IsMatch(txtContrasenia.Text, "^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\\s]+$"))
-            {
-                errorProvider1.SetError(txtContrasenia, "La contraseña solo debe contener letras y números.");
-            }
-            else if (txtContrasenia.Text.Length < 3 || txtContrasenia.Text.Length > 40)
-            {
-                errorProvider1.SetError(txtContrasenia, "La contraseña debe tener entre 3 y 40 caracteres.");
-            }
-            else
-            {
-                errorProvider1.SetError(txtContrasenia, "");
-            }
-        }
+        
 
         private void btnExportarPDF_Click(object sender, EventArgs e)
         {
@@ -586,6 +323,18 @@ namespace CapaPresentacion.Administrador
                     {
                         MessageBox.Show("Error al exportar a PDF: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                }
+            }
+        }
+
+        private void btnNuevoUsuario_Click(object sender, EventArgs e)
+        {
+            using (RegistrarEditarUsuarioForm frmModal = new RegistrarEditarUsuarioForm())
+            {
+                DialogResult resultado = frmModal.ShowDialog(this);
+                if (resultado == DialogResult.OK)
+                {
+                    CargarUsuarios(); // Recarga la grilla y el contador
                 }
             }
         }

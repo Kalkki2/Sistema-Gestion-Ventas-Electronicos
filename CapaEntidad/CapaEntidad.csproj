@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ECategoria.cs" />
+    <Compile Include="ECompra.cs" />
+    <Compile Include="EDetalleCompra.cs" />
     <Compile Include="EMarca.cs" />
     <Compile Include="EPerfil.cs" />
     <Compile Include="EProducto.cs" />

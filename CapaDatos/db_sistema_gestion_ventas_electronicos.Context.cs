@@ -25,8 +25,14 @@ namespace CapaDatos
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<categoria> categoria { get; set; }
+        public virtual DbSet<categoria_marca> categoria_marca { get; set; }
+        public virtual DbSet<marca> marca { get; set; }
         public virtual DbSet<perfil> perfil { get; set; }
-        public virtual DbSet<usuario> usuario { get; set; }
+        public virtual DbSet<producto> producto { get; set; }
         public virtual DbSet<proveedor> proveedor { get; set; }
+        public virtual DbSet<usuario> usuario { get; set; }
+        public virtual DbSet<compra> compra { get; set; }
+        public virtual DbSet<detalle_compra> detalle_compra { get; set; }
     }
 }
