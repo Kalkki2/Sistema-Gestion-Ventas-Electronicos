@@ -34,5 +34,10 @@ namespace CapaDatos
         public virtual DbSet<usuario> usuario { get; set; }
         public virtual DbSet<compra> compra { get; set; }
         public virtual DbSet<detalle_compra> detalle_compra { get; set; }
+        public virtual DbSet<cliente> cliente { get; set; }
+        public virtual DbSet<detalle_venta> detalle_venta { get; set; }
+        public virtual DbSet<metodo_pago> metodo_pago { get; set; }
+        public virtual DbSet<tipo_ajuste> tipo_ajuste { get; set; }
+        public virtual DbSet<venta> venta { get; set; }
     }
 }

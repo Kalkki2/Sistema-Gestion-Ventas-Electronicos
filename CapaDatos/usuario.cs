@@ -18,6 +18,7 @@ namespace CapaDatos
         public usuario()
         {
             this.compra = new HashSet<compra>();
+            this.venta = new HashSet<venta>();
         }
     
         public int usuario_id { get; set; }
@@ -36,5 +37,7 @@ namespace CapaDatos
         public virtual perfil perfil { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<compra> compra { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<venta> venta { get; set; }
     }
 }

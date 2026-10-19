@@ -28,29 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HistorialCompras));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.pnlContenedorFiltros = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.dtpHasta = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.dtpDesde = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.lblFiltrarHasta = new System.Windows.Forms.Label();
             this.lblFiltrarDesde = new System.Windows.Forms.Label();
             this.btnFiltrar = new Guna.UI2.WinForms.Guna2Button();
             this.btnBuscarPoveedorPorCuit = new Guna.UI2.WinForms.Guna2Button();
-            this.txtBuscarProveedor = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtBuscarProveedorPorCuit = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblBuscarPorCuit = new System.Windows.Forms.Label();
             this.lblFiltrarPor = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.dgvHistorialCompras = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.lblCatalogo = new System.Windows.Forms.Label();
-            this.pnlEncabezado = new System.Windows.Forms.Panel();
-            this.pnlnfoUsuario = new System.Windows.Forms.Panel();
-            this.lblNombreUsuario = new System.Windows.Forms.Label();
-            this.picUsuario = new System.Windows.Forms.PictureBox();
-            this.lblRolUsuario = new System.Windows.Forms.Label();
-            this.lblFecha = new System.Windows.Forms.Label();
-            this.lblTitulo = new System.Windows.Forms.Label();
             this.colNroFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCuitProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,35 +53,25 @@
             this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCambiaEstado = new System.Windows.Forms.DataGridViewImageColumn();
             this.colVerDetalle = new System.Windows.Forms.DataGridViewImageColumn();
-            this.pnlContenedorFiltros.SuspendLayout();
+            this.lblCatalogo = new System.Windows.Forms.Label();
+            this.pnlEncabezado = new System.Windows.Forms.Panel();
+            this.pnlnfoUsuario = new System.Windows.Forms.Panel();
+            this.lblNombreUsuario = new System.Windows.Forms.Label();
+            this.picUsuario = new System.Windows.Forms.PictureBox();
+            this.lblRolUsuario = new System.Windows.Forms.Label();
+            this.lblFecha = new System.Windows.Forms.Label();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.pnlContenedorFiltros = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.btnBuscarUsuarioPorDNI = new Guna.UI2.WinForms.Guna2Button();
+            this.txtBuscarPorUsuarioPorDni = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistorialCompras)).BeginInit();
             this.pnlEncabezado.SuspendLayout();
             this.pnlnfoUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
+            this.pnlContenedorFiltros.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // pnlContenedorFiltros
-            // 
-            this.pnlContenedorFiltros.BackColor = System.Drawing.Color.Transparent;
-            this.pnlContenedorFiltros.Controls.Add(this.dtpHasta);
-            this.pnlContenedorFiltros.Controls.Add(this.dtpDesde);
-            this.pnlContenedorFiltros.Controls.Add(this.lblFiltrarHasta);
-            this.pnlContenedorFiltros.Controls.Add(this.lblFiltrarDesde);
-            this.pnlContenedorFiltros.Controls.Add(this.btnFiltrar);
-            this.pnlContenedorFiltros.Controls.Add(this.btnBuscarPoveedorPorCuit);
-            this.pnlContenedorFiltros.Controls.Add(this.txtBuscarProveedor);
-            this.pnlContenedorFiltros.Controls.Add(this.lblBuscarPorCuit);
-            this.pnlContenedorFiltros.Controls.Add(this.lblFiltrarPor);
-            this.pnlContenedorFiltros.FillColor = System.Drawing.Color.White;
-            this.pnlContenedorFiltros.Location = new System.Drawing.Point(25, 122);
-            this.pnlContenedorFiltros.Name = "pnlContenedorFiltros";
-            this.pnlContenedorFiltros.Radius = 5;
-            this.pnlContenedorFiltros.ShadowColor = System.Drawing.Color.Black;
-            this.pnlContenedorFiltros.ShadowDepth = 25;
-            this.pnlContenedorFiltros.ShadowShift = 3;
-            this.pnlContenedorFiltros.Size = new System.Drawing.Size(449, 197);
-            this.pnlContenedorFiltros.TabIndex = 66;
             // 
             // dtpHasta
             // 
@@ -98,7 +80,7 @@
             this.dtpHasta.FillColor = System.Drawing.Color.White;
             this.dtpHasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpHasta.Location = new System.Drawing.Point(222, 131);
+            this.dtpHasta.Location = new System.Drawing.Point(232, 172);
             this.dtpHasta.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpHasta.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpHasta.Name = "dtpHasta";
@@ -113,7 +95,7 @@
             this.dtpDesde.FillColor = System.Drawing.Color.White;
             this.dtpDesde.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDesde.Location = new System.Drawing.Point(49, 131);
+            this.dtpDesde.Location = new System.Drawing.Point(59, 172);
             this.dtpDesde.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpDesde.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpDesde.Name = "dtpDesde";
@@ -125,7 +107,7 @@
             // 
             this.lblFiltrarHasta.AutoSize = true;
             this.lblFiltrarHasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiltrarHasta.Location = new System.Drawing.Point(181, 135);
+            this.lblFiltrarHasta.Location = new System.Drawing.Point(191, 176);
             this.lblFiltrarHasta.Name = "lblFiltrarHasta";
             this.lblFiltrarHasta.Size = new System.Drawing.Size(45, 17);
             this.lblFiltrarHasta.TabIndex = 47;
@@ -135,7 +117,7 @@
             // 
             this.lblFiltrarDesde.AutoSize = true;
             this.lblFiltrarDesde.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiltrarDesde.Location = new System.Drawing.Point(6, 135);
+            this.lblFiltrarDesde.Location = new System.Drawing.Point(16, 176);
             this.lblFiltrarDesde.Name = "lblFiltrarDesde";
             this.lblFiltrarDesde.Size = new System.Drawing.Size(49, 17);
             this.lblFiltrarDesde.TabIndex = 46;
@@ -152,8 +134,8 @@
             this.btnFiltrar.FillColor = System.Drawing.Color.Silver;
             this.btnFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.btnFiltrar.ForeColor = System.Drawing.Color.Black;
-            this.btnFiltrar.Image = global::CapaPresentacion.Properties.Resources.icono_filtro;
-            this.btnFiltrar.Location = new System.Drawing.Point(357, 131);
+            this.btnFiltrar.Image = ((System.Drawing.Image)(resources.GetObject("btnFiltrar.Image")));
+            this.btnFiltrar.Location = new System.Drawing.Point(367, 172);
             this.btnFiltrar.Name = "btnFiltrar";
             this.btnFiltrar.Size = new System.Drawing.Size(89, 27);
             this.btnFiltrar.TabIndex = 45;
@@ -170,40 +152,40 @@
             this.btnBuscarPoveedorPorCuit.FillColor = System.Drawing.Color.Silver;
             this.btnBuscarPoveedorPorCuit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.btnBuscarPoveedorPorCuit.ForeColor = System.Drawing.Color.Black;
-            this.btnBuscarPoveedorPorCuit.Image = global::CapaPresentacion.Properties.Resources.icono_lupa;
-            this.btnBuscarPoveedorPorCuit.Location = new System.Drawing.Point(248, 25);
+            this.btnBuscarPoveedorPorCuit.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarPoveedorPorCuit.Image")));
+            this.btnBuscarPoveedorPorCuit.Location = new System.Drawing.Point(257, 35);
             this.btnBuscarPoveedorPorCuit.Name = "btnBuscarPoveedorPorCuit";
             this.btnBuscarPoveedorPorCuit.Size = new System.Drawing.Size(89, 27);
             this.btnBuscarPoveedorPorCuit.TabIndex = 44;
             this.btnBuscarPoveedorPorCuit.Text = "Buscar";
             // 
-            // txtBuscarProveedor
+            // txtBuscarProveedorPorCuit
             // 
-            this.txtBuscarProveedor.BorderColor = System.Drawing.Color.DarkGray;
-            this.txtBuscarProveedor.BorderRadius = 5;
-            this.txtBuscarProveedor.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtBuscarProveedor.DefaultText = "";
-            this.txtBuscarProveedor.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtBuscarProveedor.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtBuscarProveedor.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtBuscarProveedor.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtBuscarProveedor.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscarProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.txtBuscarProveedor.ForeColor = System.Drawing.Color.Black;
-            this.txtBuscarProveedor.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscarProveedor.Location = new System.Drawing.Point(16, 25);
-            this.txtBuscarProveedor.Name = "txtBuscarProveedor";
-            this.txtBuscarProveedor.PlaceholderText = "";
-            this.txtBuscarProveedor.SelectedText = "";
-            this.txtBuscarProveedor.Size = new System.Drawing.Size(226, 27);
-            this.txtBuscarProveedor.TabIndex = 0;
+            this.txtBuscarProveedorPorCuit.BorderColor = System.Drawing.Color.DarkGray;
+            this.txtBuscarProveedorPorCuit.BorderRadius = 5;
+            this.txtBuscarProveedorPorCuit.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtBuscarProveedorPorCuit.DefaultText = "";
+            this.txtBuscarProveedorPorCuit.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtBuscarProveedorPorCuit.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtBuscarProveedorPorCuit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscarProveedorPorCuit.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscarProveedorPorCuit.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarProveedorPorCuit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.txtBuscarProveedorPorCuit.ForeColor = System.Drawing.Color.Black;
+            this.txtBuscarProveedorPorCuit.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarProveedorPorCuit.Location = new System.Drawing.Point(25, 35);
+            this.txtBuscarProveedorPorCuit.Name = "txtBuscarProveedorPorCuit";
+            this.txtBuscarProveedorPorCuit.PlaceholderText = "";
+            this.txtBuscarProveedorPorCuit.SelectedText = "";
+            this.txtBuscarProveedorPorCuit.Size = new System.Drawing.Size(226, 27);
+            this.txtBuscarProveedorPorCuit.TabIndex = 0;
             // 
             // lblBuscarPorCuit
             // 
             this.lblBuscarPorCuit.AutoSize = true;
             this.lblBuscarPorCuit.BackColor = System.Drawing.Color.Transparent;
             this.lblBuscarPorCuit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuscarPorCuit.Location = new System.Drawing.Point(18, 5);
+            this.lblBuscarPorCuit.Location = new System.Drawing.Point(27, 15);
             this.lblBuscarPorCuit.Name = "lblBuscarPorCuit";
             this.lblBuscarPorCuit.Size = new System.Drawing.Size(208, 17);
             this.lblBuscarPorCuit.TabIndex = 21;
@@ -214,7 +196,7 @@
             this.lblFiltrarPor.AutoSize = true;
             this.lblFiltrarPor.BackColor = System.Drawing.Color.Transparent;
             this.lblFiltrarPor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiltrarPor.Location = new System.Drawing.Point(13, 98);
+            this.lblFiltrarPor.Location = new System.Drawing.Point(23, 139);
             this.lblFiltrarPor.Name = "lblFiltrarPor";
             this.lblFiltrarPor.Size = new System.Drawing.Size(73, 17);
             this.lblFiltrarPor.TabIndex = 16;
@@ -230,7 +212,7 @@
             this.guna2Panel1.FillColor = System.Drawing.Color.Transparent;
             this.guna2Panel1.Location = new System.Drawing.Point(21, 325);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(1130, 357);
+            this.guna2Panel1.Size = new System.Drawing.Size(1146, 357);
             this.guna2Panel1.TabIndex = 65;
             // 
             // dgvHistorialCompras
@@ -245,6 +227,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvHistorialCompras.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvHistorialCompras.ColumnHeadersHeight = 35;
             this.dgvHistorialCompras.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colNroFactura,
             this.colCuitProveedor,
@@ -268,18 +251,73 @@
             this.dgvHistorialCompras.Location = new System.Drawing.Point(4, 40);
             this.dgvHistorialCompras.Name = "dgvHistorialCompras";
             this.dgvHistorialCompras.RowHeadersVisible = false;
-            this.dgvHistorialCompras.RowTemplate.Height = 23;
-            this.dgvHistorialCompras.Size = new System.Drawing.Size(1123, 290);
+            this.dgvHistorialCompras.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvHistorialCompras.RowTemplate.Height = 25;
+            this.dgvHistorialCompras.Size = new System.Drawing.Size(1139, 290);
             this.dgvHistorialCompras.TabIndex = 7;
             this.dgvHistorialCompras.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
             this.dgvHistorialCompras.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
             this.dgvHistorialCompras.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvHistorialCompras.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvHistorialCompras.ThemeStyle.HeaderStyle.Height = 23;
+            this.dgvHistorialCompras.ThemeStyle.HeaderStyle.Height = 35;
             this.dgvHistorialCompras.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvHistorialCompras.ThemeStyle.RowsStyle.Height = 23;
+            this.dgvHistorialCompras.ThemeStyle.RowsStyle.Height = 25;
             this.dgvHistorialCompras.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
             this.dgvHistorialCompras.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHistorialCompras_CellContentClick);
+            // 
+            // colNroFactura
+            // 
+            this.colNroFactura.HeaderText = "Nro Factura";
+            this.colNroFactura.Name = "colNroFactura";
+            // 
+            // colCuitProveedor
+            // 
+            this.colCuitProveedor.HeaderText = "CUIT Proveedor";
+            this.colCuitProveedor.Name = "colCuitProveedor";
+            // 
+            // colProveedor
+            // 
+            this.colProveedor.HeaderText = "Proveedor";
+            this.colProveedor.Name = "colProveedor";
+            // 
+            // ColDniUsuario
+            // 
+            this.ColDniUsuario.HeaderText = "DNI Usuario";
+            this.ColDniUsuario.Name = "ColDniUsuario";
+            // 
+            // colComprador
+            // 
+            this.colComprador.HeaderText = "Usuario Responsable";
+            this.colComprador.Name = "colComprador";
+            // 
+            // colFechaCompra
+            // 
+            this.colFechaCompra.HeaderText = "Fecha Compra";
+            this.colFechaCompra.Name = "colFechaCompra";
+            // 
+            // colTotal
+            // 
+            this.colTotal.HeaderText = "Total";
+            this.colTotal.Name = "colTotal";
+            // 
+            // colEstado
+            // 
+            this.colEstado.HeaderText = "Estado";
+            this.colEstado.Name = "colEstado";
+            // 
+            // colCambiaEstado
+            // 
+            this.colCambiaEstado.HeaderText = "Cambiar Estado";
+            this.colCambiaEstado.Name = "colCambiaEstado";
+            this.colCambiaEstado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colCambiaEstado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // colVerDetalle
+            // 
+            this.colVerDetalle.HeaderText = "Ver Detalle";
+            this.colVerDetalle.Name = "colVerDetalle";
+            this.colVerDetalle.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colVerDetalle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // lblCatalogo
             // 
@@ -361,73 +399,90 @@
             this.lblTitulo.TabIndex = 11;
             this.lblTitulo.Text = "Historial de Compras";
             // 
-            // colNroFactura
+            // pnlContenedorFiltros
             // 
-            this.colNroFactura.HeaderText = "Nro Factura";
-            this.colNroFactura.Name = "colNroFactura";
+            this.pnlContenedorFiltros.BackColor = System.Drawing.Color.Transparent;
+            this.pnlContenedorFiltros.Controls.Add(this.btnBuscarUsuarioPorDNI);
+            this.pnlContenedorFiltros.Controls.Add(this.txtBuscarPorUsuarioPorDni);
+            this.pnlContenedorFiltros.Controls.Add(this.label1);
+            this.pnlContenedorFiltros.Controls.Add(this.btnBuscarPoveedorPorCuit);
+            this.pnlContenedorFiltros.Controls.Add(this.dtpHasta);
+            this.pnlContenedorFiltros.Controls.Add(this.txtBuscarProveedorPorCuit);
+            this.pnlContenedorFiltros.Controls.Add(this.lblBuscarPorCuit);
+            this.pnlContenedorFiltros.Controls.Add(this.dtpDesde);
+            this.pnlContenedorFiltros.Controls.Add(this.lblFiltrarPor);
+            this.pnlContenedorFiltros.Controls.Add(this.lblFiltrarHasta);
+            this.pnlContenedorFiltros.Controls.Add(this.btnFiltrar);
+            this.pnlContenedorFiltros.Controls.Add(this.lblFiltrarDesde);
+            this.pnlContenedorFiltros.FillColor = System.Drawing.Color.White;
+            this.pnlContenedorFiltros.Location = new System.Drawing.Point(25, 78);
+            this.pnlContenedorFiltros.Name = "pnlContenedorFiltros";
+            this.pnlContenedorFiltros.ShadowColor = System.Drawing.Color.Black;
+            this.pnlContenedorFiltros.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
+            this.pnlContenedorFiltros.Size = new System.Drawing.Size(503, 228);
+            this.pnlContenedorFiltros.TabIndex = 68;
             // 
-            // colCuitProveedor
+            // btnBuscarUsuarioPorDNI
             // 
-            this.colCuitProveedor.HeaderText = "CUIT";
-            this.colCuitProveedor.Name = "colCuitProveedor";
+            this.btnBuscarUsuarioPorDNI.BackColor = System.Drawing.Color.Transparent;
+            this.btnBuscarUsuarioPorDNI.BorderRadius = 5;
+            this.btnBuscarUsuarioPorDNI.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnBuscarUsuarioPorDNI.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnBuscarUsuarioPorDNI.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnBuscarUsuarioPorDNI.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnBuscarUsuarioPorDNI.FillColor = System.Drawing.Color.Silver;
+            this.btnBuscarUsuarioPorDNI.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnBuscarUsuarioPorDNI.ForeColor = System.Drawing.Color.Black;
+            this.btnBuscarUsuarioPorDNI.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarUsuarioPorDNI.Image")));
+            this.btnBuscarUsuarioPorDNI.Location = new System.Drawing.Point(257, 98);
+            this.btnBuscarUsuarioPorDNI.Name = "btnBuscarUsuarioPorDNI";
+            this.btnBuscarUsuarioPorDNI.Size = new System.Drawing.Size(89, 27);
+            this.btnBuscarUsuarioPorDNI.TabIndex = 54;
+            this.btnBuscarUsuarioPorDNI.Text = "Buscar";
             // 
-            // colProveedor
+            // txtBuscarPorUsuarioPorDni
             // 
-            this.colProveedor.HeaderText = "Proveedor";
-            this.colProveedor.Name = "colProveedor";
+            this.txtBuscarPorUsuarioPorDni.BorderColor = System.Drawing.Color.DarkGray;
+            this.txtBuscarPorUsuarioPorDni.BorderRadius = 5;
+            this.txtBuscarPorUsuarioPorDni.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtBuscarPorUsuarioPorDni.DefaultText = "";
+            this.txtBuscarPorUsuarioPorDni.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtBuscarPorUsuarioPorDni.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtBuscarPorUsuarioPorDni.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscarPorUsuarioPorDni.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscarPorUsuarioPorDni.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarPorUsuarioPorDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.txtBuscarPorUsuarioPorDni.ForeColor = System.Drawing.Color.Black;
+            this.txtBuscarPorUsuarioPorDni.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarPorUsuarioPorDni.Location = new System.Drawing.Point(25, 98);
+            this.txtBuscarPorUsuarioPorDni.Name = "txtBuscarPorUsuarioPorDni";
+            this.txtBuscarPorUsuarioPorDni.PlaceholderText = "";
+            this.txtBuscarPorUsuarioPorDni.SelectedText = "";
+            this.txtBuscarPorUsuarioPorDni.Size = new System.Drawing.Size(226, 27);
+            this.txtBuscarPorUsuarioPorDni.TabIndex = 52;
             // 
-            // ColDniUsuario
+            // label1
             // 
-            this.ColDniUsuario.HeaderText = "DNI";
-            this.ColDniUsuario.Name = "ColDniUsuario";
-            // 
-            // colComprador
-            // 
-            this.colComprador.HeaderText = "Comprador";
-            this.colComprador.Name = "colComprador";
-            // 
-            // colFechaCompra
-            // 
-            this.colFechaCompra.HeaderText = "Fecha Compra";
-            this.colFechaCompra.Name = "colFechaCompra";
-            // 
-            // colTotal
-            // 
-            this.colTotal.HeaderText = "Total";
-            this.colTotal.Name = "colTotal";
-            // 
-            // colEstado
-            // 
-            this.colEstado.HeaderText = "Estado";
-            this.colEstado.Name = "colEstado";
-            // 
-            // colCambiaEstado
-            // 
-            this.colCambiaEstado.HeaderText = "Cambiar Estado";
-            this.colCambiaEstado.Name = "colCambiaEstado";
-            this.colCambiaEstado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colCambiaEstado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // colVerDetalle
-            // 
-            this.colVerDetalle.HeaderText = "Ver Detalle";
-            this.colVerDetalle.Name = "colVerDetalle";
-            this.colVerDetalle.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colVerDetalle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(27, 78);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(182, 17);
+            this.label1.TabIndex = 53;
+            this.label1.Text = "Buscar por DNI del usuario:";
             // 
             // HistorialCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1170, 749);
-            this.Controls.Add(this.pnlEncabezado);
             this.Controls.Add(this.pnlContenedorFiltros);
+            this.Controls.Add(this.pnlEncabezado);
             this.Controls.Add(this.guna2Panel1);
             this.Name = "HistorialCompras";
             this.Text = "HistorialComprasForm";
             this.Load += new System.EventHandler(this.HistorialComprasForm_Load);
-            this.pnlContenedorFiltros.ResumeLayout(false);
-            this.pnlContenedorFiltros.PerformLayout();
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistorialCompras)).EndInit();
@@ -436,20 +491,20 @@
             this.pnlnfoUsuario.ResumeLayout(false);
             this.pnlnfoUsuario.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).EndInit();
+            this.pnlContenedorFiltros.ResumeLayout(false);
+            this.pnlContenedorFiltros.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private Guna.UI2.WinForms.Guna2ShadowPanel pnlContenedorFiltros;
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpHasta;
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpDesde;
         private System.Windows.Forms.Label lblFiltrarHasta;
         private System.Windows.Forms.Label lblFiltrarDesde;
         private Guna.UI2.WinForms.Guna2Button btnFiltrar;
         private Guna.UI2.WinForms.Guna2Button btnBuscarPoveedorPorCuit;
-        private Guna.UI2.WinForms.Guna2TextBox txtBuscarProveedor;
+        private Guna.UI2.WinForms.Guna2TextBox txtBuscarProveedorPorCuit;
         private System.Windows.Forms.Label lblBuscarPorCuit;
         private System.Windows.Forms.Label lblFiltrarPor;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
@@ -472,5 +527,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colEstado;
         private System.Windows.Forms.DataGridViewImageColumn colCambiaEstado;
         private System.Windows.Forms.DataGridViewImageColumn colVerDetalle;
+        private Guna.UI2.WinForms.Guna2ShadowPanel pnlContenedorFiltros;
+        private Guna.UI2.WinForms.Guna2Button btnBuscarUsuarioPorDNI;
+        private Guna.UI2.WinForms.Guna2TextBox txtBuscarPorUsuarioPorDni;
+        private System.Windows.Forms.Label label1;
     }
 }

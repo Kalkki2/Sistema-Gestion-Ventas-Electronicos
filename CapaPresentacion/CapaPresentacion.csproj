@@ -119,11 +119,11 @@
     <Compile Include="Administrador\BuscarProveedorForm.Designer.cs">
       <DependentUpon>BuscarProveedorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Administrador\DetalleCompra.cs">
+    <Compile Include="Administrador\DetalleVenta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Administrador\DetalleCompra.Designer.cs">
-      <DependentUpon>DetalleCompra.cs</DependentUpon>
+    <Compile Include="Administrador\DetalleVenta.Designer.cs">
+      <DependentUpon>DetalleVenta.cs</DependentUpon>
     </Compile>
     <Compile Include="Administrador\DetalleCompraProducto.cs">
       <SubType>Form</SubType>
@@ -278,8 +278,8 @@
     <EmbeddedResource Include="Administrador\BuscarProveedorForm.resx">
       <DependentUpon>BuscarProveedorForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Administrador\DetalleCompra.resx">
-      <DependentUpon>DetalleCompra.cs</DependentUpon>
+    <EmbeddedResource Include="Administrador\DetalleVenta.resx">
+      <DependentUpon>DetalleVenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Administrador\DetalleCompraProducto.resx">
       <DependentUpon>DetalleCompraProducto.cs</DependentUpon>

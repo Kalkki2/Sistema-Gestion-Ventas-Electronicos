@@ -23,6 +23,18 @@
         <AssociationConnector Association="db_sistema_gestion_ventas_electronicosModel.FK_compra_usuario" />
         <AssociationConnector Association="db_sistema_gestion_ventas_electronicosModel.FK_detalle_compra_compra" />
         <AssociationConnector Association="db_sistema_gestion_ventas_electronicosModel.FK_detalle_compra_producto" />
+        <EntityTypeShape EntityType="db_sistema_gestion_ventas_electronicosModel.cliente" Width="1.5" PointX="14.875" PointY="9.625" />
+        <EntityTypeShape EntityType="db_sistema_gestion_ventas_electronicosModel.detalle_venta" Width="1.5" PointX="19.375" PointY="4.5" />
+        <EntityTypeShape EntityType="db_sistema_gestion_ventas_electronicosModel.metodo_pago" Width="1.5" PointX="3" PointY="11.75" />
+        <EntityTypeShape EntityType="db_sistema_gestion_ventas_electronicosModel.tipo_ajuste" Width="1.5" PointX="0.75" PointY="12" />
+        <EntityTypeShape EntityType="db_sistema_gestion_ventas_electronicosModel.venta" Width="1.5" PointX="17.125" PointY="6.375" />
+        <AssociationConnector Association="db_sistema_gestion_ventas_electronicosModel.FK_venta_cliente" />
+        <AssociationConnector Association="db_sistema_gestion_ventas_electronicosModel.FK_detalle_venta_producto" />
+        <AssociationConnector Association="db_sistema_gestion_ventas_electronicosModel.FK_detalle_venta_venta" />
+        <AssociationConnector Association="db_sistema_gestion_ventas_electronicosModel.FK_metodo_pago_tipo_ajuste" />
+        <AssociationConnector Association="db_sistema_gestion_ventas_electronicosModel.FK_venta_metodo_pago" />
+        <AssociationConnector Association="db_sistema_gestion_ventas_electronicosModel.FK_venta_tipo_ajuste" />
+        <AssociationConnector Association="db_sistema_gestion_ventas_electronicosModel.FK_venta_usuario" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

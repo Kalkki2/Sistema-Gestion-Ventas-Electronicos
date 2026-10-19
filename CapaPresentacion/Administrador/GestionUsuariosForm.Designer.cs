@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlEncabezado = new System.Windows.Forms.Panel();
             this.pnlnfoUsuario = new System.Windows.Forms.Panel();
             this.lblNombreUsuario = new System.Windows.Forms.Label();
+            this.picUsuario = new System.Windows.Forms.PictureBox();
             this.lblRolUsuario = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
@@ -45,10 +46,14 @@
             this.lblCantTotalUsuarios = new System.Windows.Forms.Label();
             this.lblTituloTotalUsuarios = new System.Windows.Forms.Label();
             this.pnlContenedorFiltros = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.btnFiltrarUsuario = new Guna.UI2.WinForms.Guna2Button();
+            this.btnBuscarUsuario = new Guna.UI2.WinForms.Guna2Button();
             this.cmbFiltroPerfil = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txtBuscarUsuario = new Guna.UI2.WinForms.Guna2TextBox();
             this.cmbFiltroEstado = new Guna.UI2.WinForms.Guna2ComboBox();
             this.pnlContenedorUsuarios = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnExportarPDF = new Guna.UI2.WinForms.Guna2Button();
+            this.btnExportarEXCEL = new Guna.UI2.WinForms.Guna2Button();
             this.dgvListaUsuarios = new Guna.UI2.WinForms.Guna2DataGridView();
             this.colDni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,20 +71,15 @@
             this.btnNuevoUsuario = new Guna.UI2.WinForms.Guna2Button();
             this.pnlCardTotalUsuarios = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnExportarPDF = new Guna.UI2.WinForms.Guna2Button();
-            this.btnExportarEXCEL = new Guna.UI2.WinForms.Guna2Button();
-            this.btnFiltrarUsuario = new Guna.UI2.WinForms.Guna2Button();
-            this.btnBuscarUsuario = new Guna.UI2.WinForms.Guna2Button();
-            this.picUsuario = new System.Windows.Forms.PictureBox();
             this.pnlEncabezado.SuspendLayout();
             this.pnlnfoUsuario.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
             this.pnlContenedorFiltros.SuspendLayout();
             this.pnlContenedorUsuarios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaUsuarios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.pnlCardTotalUsuarios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlEncabezado
@@ -113,6 +113,14 @@
             this.lblNombreUsuario.Size = new System.Drawing.Size(95, 17);
             this.lblNombreUsuario.TabIndex = 11;
             this.lblNombreUsuario.Text = "Perez, Juan";
+            // 
+            // picUsuario
+            // 
+            this.picUsuario.Location = new System.Drawing.Point(3, 5);
+            this.picUsuario.Name = "picUsuario";
+            this.picUsuario.Size = new System.Drawing.Size(43, 42);
+            this.picUsuario.TabIndex = 3;
+            this.picUsuario.TabStop = false;
             // 
             // lblRolUsuario
             // 
@@ -228,10 +236,47 @@
             this.pnlContenedorFiltros.Location = new System.Drawing.Point(17, 85);
             this.pnlContenedorFiltros.Name = "pnlContenedorFiltros";
             this.pnlContenedorFiltros.ShadowColor = System.Drawing.Color.Black;
-            this.pnlContenedorFiltros.ShadowShift = 4;
             this.pnlContenedorFiltros.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
             this.pnlContenedorFiltros.Size = new System.Drawing.Size(558, 170);
             this.pnlContenedorFiltros.TabIndex = 54;
+            // 
+            // btnFiltrarUsuario
+            // 
+            this.btnFiltrarUsuario.BackColor = System.Drawing.Color.Transparent;
+            this.btnFiltrarUsuario.BorderRadius = 5;
+            this.btnFiltrarUsuario.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnFiltrarUsuario.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnFiltrarUsuario.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnFiltrarUsuario.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnFiltrarUsuario.FillColor = System.Drawing.Color.Silver;
+            this.btnFiltrarUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnFiltrarUsuario.ForeColor = System.Drawing.Color.Black;
+            this.btnFiltrarUsuario.Image = global::CapaPresentacion.Properties.Resources.icono_filtro;
+            this.btnFiltrarUsuario.Location = new System.Drawing.Point(265, 130);
+            this.btnFiltrarUsuario.Name = "btnFiltrarUsuario";
+            this.btnFiltrarUsuario.Size = new System.Drawing.Size(71, 27);
+            this.btnFiltrarUsuario.TabIndex = 46;
+            this.btnFiltrarUsuario.Text = "Filtrar";
+            this.btnFiltrarUsuario.Click += new System.EventHandler(this.btnFiltrarUsuario_Click);
+            // 
+            // btnBuscarUsuario
+            // 
+            this.btnBuscarUsuario.BackColor = System.Drawing.Color.Transparent;
+            this.btnBuscarUsuario.BorderRadius = 5;
+            this.btnBuscarUsuario.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnBuscarUsuario.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnBuscarUsuario.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnBuscarUsuario.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnBuscarUsuario.FillColor = System.Drawing.Color.Silver;
+            this.btnBuscarUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnBuscarUsuario.ForeColor = System.Drawing.Color.Black;
+            this.btnBuscarUsuario.Image = global::CapaPresentacion.Properties.Resources.icono_lupa;
+            this.btnBuscarUsuario.Location = new System.Drawing.Point(258, 56);
+            this.btnBuscarUsuario.Name = "btnBuscarUsuario";
+            this.btnBuscarUsuario.Size = new System.Drawing.Size(71, 27);
+            this.btnBuscarUsuario.TabIndex = 45;
+            this.btnBuscarUsuario.Text = "Buscar";
+            this.btnBuscarUsuario.Click += new System.EventHandler(this.btnBuscarUsuario_Click);
             // 
             // cmbFiltroPerfil
             // 
@@ -314,18 +359,61 @@
             this.pnlContenedorUsuarios.Size = new System.Drawing.Size(1149, 350);
             this.pnlContenedorUsuarios.TabIndex = 55;
             // 
+            // btnExportarPDF
+            // 
+            this.btnExportarPDF.BackColor = System.Drawing.Color.Transparent;
+            this.btnExportarPDF.BorderColor = System.Drawing.Color.Red;
+            this.btnExportarPDF.BorderRadius = 5;
+            this.btnExportarPDF.BorderThickness = 1;
+            this.btnExportarPDF.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnExportarPDF.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnExportarPDF.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnExportarPDF.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnExportarPDF.FillColor = System.Drawing.SystemColors.Control;
+            this.btnExportarPDF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportarPDF.ForeColor = System.Drawing.Color.Red;
+            this.btnExportarPDF.Image = global::CapaPresentacion.Properties.Resources.Gemini_Generated_Image_59msj059msj059ms;
+            this.btnExportarPDF.ImageSize = new System.Drawing.Size(21, 25);
+            this.btnExportarPDF.Location = new System.Drawing.Point(873, 8);
+            this.btnExportarPDF.Name = "btnExportarPDF";
+            this.btnExportarPDF.Size = new System.Drawing.Size(125, 35);
+            this.btnExportarPDF.TabIndex = 10;
+            this.btnExportarPDF.Text = "Exportar PDF";
+            this.btnExportarPDF.Click += new System.EventHandler(this.btnExportarPDF_Click);
+            // 
+            // btnExportarEXCEL
+            // 
+            this.btnExportarEXCEL.BackColor = System.Drawing.Color.Transparent;
+            this.btnExportarEXCEL.BorderColor = System.Drawing.Color.Green;
+            this.btnExportarEXCEL.BorderRadius = 5;
+            this.btnExportarEXCEL.BorderThickness = 1;
+            this.btnExportarEXCEL.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnExportarEXCEL.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnExportarEXCEL.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnExportarEXCEL.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnExportarEXCEL.FillColor = System.Drawing.SystemColors.Control;
+            this.btnExportarEXCEL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportarEXCEL.ForeColor = System.Drawing.Color.Green;
+            this.btnExportarEXCEL.Image = global::CapaPresentacion.Properties.Resources.icono_excel;
+            this.btnExportarEXCEL.ImageSize = new System.Drawing.Size(21, 25);
+            this.btnExportarEXCEL.Location = new System.Drawing.Point(1013, 8);
+            this.btnExportarEXCEL.Name = "btnExportarEXCEL";
+            this.btnExportarEXCEL.Size = new System.Drawing.Size(125, 35);
+            this.btnExportarEXCEL.TabIndex = 9;
+            this.btnExportarEXCEL.Text = "Exportar Excel";
+            // 
             // dgvListaUsuarios
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
-            this.dgvListaUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListaUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
+            this.dgvListaUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListaUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvListaUsuarios.ColumnHeadersHeight = 30;
             this.dgvListaUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colDni,
@@ -339,14 +427,14 @@
             this.colFechaAlta,
             this.colEditar,
             this.colEliminar});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvListaUsuarios.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvListaUsuarios.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvListaUsuarios.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvListaUsuarios.Location = new System.Drawing.Point(3, 47);
             this.dgvListaUsuarios.Name = "dgvListaUsuarios";
@@ -483,95 +571,6 @@
             this.pictureBox1.TabIndex = 71;
             this.pictureBox1.TabStop = false;
             // 
-            // btnExportarPDF
-            // 
-            this.btnExportarPDF.BackColor = System.Drawing.Color.Transparent;
-            this.btnExportarPDF.BorderColor = System.Drawing.Color.Red;
-            this.btnExportarPDF.BorderRadius = 5;
-            this.btnExportarPDF.BorderThickness = 1;
-            this.btnExportarPDF.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnExportarPDF.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnExportarPDF.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnExportarPDF.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnExportarPDF.FillColor = System.Drawing.SystemColors.Control;
-            this.btnExportarPDF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExportarPDF.ForeColor = System.Drawing.Color.Red;
-            this.btnExportarPDF.Image = global::CapaPresentacion.Properties.Resources.Gemini_Generated_Image_59msj059msj059ms;
-            this.btnExportarPDF.ImageSize = new System.Drawing.Size(21, 25);
-            this.btnExportarPDF.Location = new System.Drawing.Point(873, 8);
-            this.btnExportarPDF.Name = "btnExportarPDF";
-            this.btnExportarPDF.Size = new System.Drawing.Size(125, 35);
-            this.btnExportarPDF.TabIndex = 10;
-            this.btnExportarPDF.Text = "Exportar PDF";
-            this.btnExportarPDF.Click += new System.EventHandler(this.btnExportarPDF_Click);
-            // 
-            // btnExportarEXCEL
-            // 
-            this.btnExportarEXCEL.BackColor = System.Drawing.Color.Transparent;
-            this.btnExportarEXCEL.BorderColor = System.Drawing.Color.Green;
-            this.btnExportarEXCEL.BorderRadius = 5;
-            this.btnExportarEXCEL.BorderThickness = 1;
-            this.btnExportarEXCEL.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnExportarEXCEL.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnExportarEXCEL.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnExportarEXCEL.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnExportarEXCEL.FillColor = System.Drawing.SystemColors.Control;
-            this.btnExportarEXCEL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExportarEXCEL.ForeColor = System.Drawing.Color.Green;
-            this.btnExportarEXCEL.Image = global::CapaPresentacion.Properties.Resources.icono_excel;
-            this.btnExportarEXCEL.ImageSize = new System.Drawing.Size(21, 25);
-            this.btnExportarEXCEL.Location = new System.Drawing.Point(1013, 8);
-            this.btnExportarEXCEL.Name = "btnExportarEXCEL";
-            this.btnExportarEXCEL.Size = new System.Drawing.Size(125, 35);
-            this.btnExportarEXCEL.TabIndex = 9;
-            this.btnExportarEXCEL.Text = "Exportar Excel";
-            // 
-            // btnFiltrarUsuario
-            // 
-            this.btnFiltrarUsuario.BackColor = System.Drawing.Color.Transparent;
-            this.btnFiltrarUsuario.BorderRadius = 5;
-            this.btnFiltrarUsuario.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnFiltrarUsuario.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnFiltrarUsuario.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnFiltrarUsuario.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnFiltrarUsuario.FillColor = System.Drawing.Color.Silver;
-            this.btnFiltrarUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnFiltrarUsuario.ForeColor = System.Drawing.Color.Black;
-            this.btnFiltrarUsuario.Image = global::CapaPresentacion.Properties.Resources.icono_filtro;
-            this.btnFiltrarUsuario.Location = new System.Drawing.Point(265, 130);
-            this.btnFiltrarUsuario.Name = "btnFiltrarUsuario";
-            this.btnFiltrarUsuario.Size = new System.Drawing.Size(71, 27);
-            this.btnFiltrarUsuario.TabIndex = 46;
-            this.btnFiltrarUsuario.Text = "Filtrar";
-            this.btnFiltrarUsuario.Click += new System.EventHandler(this.btnFiltrarUsuario_Click);
-            // 
-            // btnBuscarUsuario
-            // 
-            this.btnBuscarUsuario.BackColor = System.Drawing.Color.Transparent;
-            this.btnBuscarUsuario.BorderRadius = 5;
-            this.btnBuscarUsuario.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnBuscarUsuario.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnBuscarUsuario.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnBuscarUsuario.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnBuscarUsuario.FillColor = System.Drawing.Color.Silver;
-            this.btnBuscarUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnBuscarUsuario.ForeColor = System.Drawing.Color.Black;
-            this.btnBuscarUsuario.Image = global::CapaPresentacion.Properties.Resources.icono_lupa;
-            this.btnBuscarUsuario.Location = new System.Drawing.Point(258, 56);
-            this.btnBuscarUsuario.Name = "btnBuscarUsuario";
-            this.btnBuscarUsuario.Size = new System.Drawing.Size(71, 27);
-            this.btnBuscarUsuario.TabIndex = 45;
-            this.btnBuscarUsuario.Text = "Buscar";
-            this.btnBuscarUsuario.Click += new System.EventHandler(this.btnBuscarUsuario_Click);
-            // 
-            // picUsuario
-            // 
-            this.picUsuario.Location = new System.Drawing.Point(3, 5);
-            this.picUsuario.Name = "picUsuario";
-            this.picUsuario.Size = new System.Drawing.Size(43, 42);
-            this.picUsuario.TabIndex = 3;
-            this.picUsuario.TabStop = false;
-            // 
             // GestionUsuariosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -589,6 +588,7 @@
             this.pnlEncabezado.PerformLayout();
             this.pnlnfoUsuario.ResumeLayout(false);
             this.pnlnfoUsuario.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).EndInit();
             this.pnlContenedorFiltros.ResumeLayout(false);
             this.pnlContenedorFiltros.PerformLayout();
             this.pnlContenedorUsuarios.ResumeLayout(false);
@@ -598,7 +598,6 @@
             this.pnlCardTotalUsuarios.ResumeLayout(false);
             this.pnlCardTotalUsuarios.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).EndInit();
             this.ResumeLayout(false);
 
         }

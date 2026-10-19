@@ -32,11 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.lblNroVentaDetalle = new System.Windows.Forms.Label();
-            this.lblTituloDetalleVenta = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionVentasForm));
             this.pnlEncabezado = new System.Windows.Forms.Panel();
             this.pnlnfoUsuario = new System.Windows.Forms.Panel();
             this.lblNombreUsuario = new System.Windows.Forms.Label();
@@ -48,36 +44,7 @@
             this.btnExportarPDF = new Guna.UI2.WinForms.Guna2Button();
             this.btnExportarEXCEL = new Guna.UI2.WinForms.Guna2Button();
             this.dgvHistorialVentas = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.colNroVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colFechaVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMetodoPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colVendedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colVerDetalle = new System.Windows.Forms.DataGridViewButtonColumn();
             this.lblTituloHistorialVentas = new System.Windows.Forms.Label();
-            this.pnlContenedorDetalleVenta = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnGenerarComprobante = new Guna.UI2.WinForms.Guna2Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.lblValorClienteComprador = new System.Windows.Forms.Label();
-            this.lblValorDniComprador = new System.Windows.Forms.Label();
-            this.lblDniComprador = new System.Windows.Forms.Label();
-            this.lblValorHoraCompra = new System.Windows.Forms.Label();
-            this.lblValorFechaCompra = new System.Windows.Forms.Label();
-            this.lblFechaCompra = new System.Windows.Forms.Label();
-            this.dgvDetalleVenta = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.colProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSubtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlCardTotalVentas = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.lblCantTotalVentas = new System.Windows.Forms.Label();
             this.lblTituloTotalVentas = new System.Windows.Forms.Label();
@@ -95,49 +62,38 @@
             this.lblFiltrarMetodoPago = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.btnCancelar = new Guna.UI2.WinForms.Guna2Button();
+            this.btnAplicarAjusteFormaPago = new Guna.UI2.WinForms.Guna2Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtPorcentajeAjuste = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.guna2ComboBox2 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtPorcentajeAjuste = new System.Windows.Forms.NumericUpDown();
-            this.btnAplicarAjusteFormaPago = new Guna.UI2.WinForms.Guna2Button();
-            this.btnCancelar = new Guna.UI2.WinForms.Guna2Button();
+            this.colNroVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDniCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDniVendedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colVendedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMetodoPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTipoAjuste = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFechaVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colVerDetalle = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pnlEncabezado.SuspendLayout();
             this.pnlnfoUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
             this.pnlContenedorHistorialVentas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistorialVentas)).BeginInit();
-            this.pnlContenedorDetalleVenta.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleVenta)).BeginInit();
             this.pnlCardTotalVentas.SuspendLayout();
             this.pnlContenedorFiltros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.guna2ShadowPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPorcentajeAjuste)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblNroVentaDetalle
-            // 
-            this.lblNroVentaDetalle.AutoSize = true;
-            this.lblNroVentaDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNroVentaDetalle.Location = new System.Drawing.Point(206, 5);
-            this.lblNroVentaDetalle.Name = "lblNroVentaDetalle";
-            this.lblNroVentaDetalle.Size = new System.Drawing.Size(85, 29);
-            this.lblNroVentaDetalle.TabIndex = 18;
-            this.lblNroVentaDetalle.Text = "XXXX";
-            // 
-            // lblTituloDetalleVenta
-            // 
-            this.lblTituloDetalleVenta.AutoSize = true;
-            this.lblTituloDetalleVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloDetalleVenta.Location = new System.Drawing.Point(14, 11);
-            this.lblTituloDetalleVenta.Name = "lblTituloDetalleVenta";
-            this.lblTituloDetalleVenta.Size = new System.Drawing.Size(186, 17);
-            this.lblTituloDetalleVenta.TabIndex = 10;
-            this.lblTituloDetalleVenta.Text = "Detalle de la venta Nro: ";
             // 
             // pnlEncabezado
             // 
@@ -221,7 +177,7 @@
             this.pnlContenedorHistorialVentas.FillColor = System.Drawing.Color.Transparent;
             this.pnlContenedorHistorialVentas.Location = new System.Drawing.Point(12, 276);
             this.pnlContenedorHistorialVentas.Name = "pnlContenedorHistorialVentas";
-            this.pnlContenedorHistorialVentas.Size = new System.Drawing.Size(694, 312);
+            this.pnlContenedorHistorialVentas.Size = new System.Drawing.Size(1132, 312);
             this.pnlContenedorHistorialVentas.TabIndex = 60;
             // 
             // btnExportarPDF
@@ -280,10 +236,14 @@
             this.dgvHistorialVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvHistorialVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colNroVenta,
-            this.colFechaVenta,
-            this.colMetodoPago,
+            this.colDniCliente,
             this.colCliente,
+            this.colDniVendedor,
             this.colVendedor,
+            this.colMetodoPago,
+            this.colTipoAjuste,
+            this.colTotal,
+            this.colFechaVenta,
             this.colEstado,
             this.colVerDetalle});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -299,7 +259,7 @@
             this.dgvHistorialVentas.Name = "dgvHistorialVentas";
             this.dgvHistorialVentas.RowHeadersVisible = false;
             this.dgvHistorialVentas.RowTemplate.Height = 23;
-            this.dgvHistorialVentas.Size = new System.Drawing.Size(687, 246);
+            this.dgvHistorialVentas.Size = new System.Drawing.Size(1113, 246);
             this.dgvHistorialVentas.TabIndex = 7;
             this.dgvHistorialVentas.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
             this.dgvHistorialVentas.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
@@ -309,41 +269,7 @@
             this.dgvHistorialVentas.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvHistorialVentas.ThemeStyle.RowsStyle.Height = 23;
             this.dgvHistorialVentas.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
-            // 
-            // colNroVenta
-            // 
-            this.colNroVenta.HeaderText = "Nro Venta";
-            this.colNroVenta.Name = "colNroVenta";
-            // 
-            // colFechaVenta
-            // 
-            this.colFechaVenta.HeaderText = "Fecha Venta";
-            this.colFechaVenta.Name = "colFechaVenta";
-            // 
-            // colMetodoPago
-            // 
-            this.colMetodoPago.HeaderText = "Metodo Pago";
-            this.colMetodoPago.Name = "colMetodoPago";
-            // 
-            // colCliente
-            // 
-            this.colCliente.HeaderText = "Cliente";
-            this.colCliente.Name = "colCliente";
-            // 
-            // colVendedor
-            // 
-            this.colVendedor.HeaderText = "Vendedor";
-            this.colVendedor.Name = "colVendedor";
-            // 
-            // colEstado
-            // 
-            this.colEstado.HeaderText = "Estado";
-            this.colEstado.Name = "colEstado";
-            // 
-            // colVerDetalle
-            // 
-            this.colVerDetalle.HeaderText = "VerDetalles";
-            this.colVerDetalle.Name = "colVerDetalle";
+            this.dgvHistorialVentas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHistorialVentas_CellContentClick);
             // 
             // lblTituloHistorialVentas
             // 
@@ -356,269 +282,6 @@
             this.lblTituloHistorialVentas.Size = new System.Drawing.Size(137, 16);
             this.lblTituloHistorialVentas.TabIndex = 6;
             this.lblTituloHistorialVentas.Text = "Historial de ventas";
-            // 
-            // pnlContenedorDetalleVenta
-            // 
-            this.pnlContenedorDetalleVenta.BorderColor = System.Drawing.Color.DarkGray;
-            this.pnlContenedorDetalleVenta.BorderRadius = 8;
-            this.pnlContenedorDetalleVenta.BorderThickness = 1;
-            this.pnlContenedorDetalleVenta.Controls.Add(this.btnGenerarComprobante);
-            this.pnlContenedorDetalleVenta.Controls.Add(this.label1);
-            this.pnlContenedorDetalleVenta.Controls.Add(this.label2);
-            this.pnlContenedorDetalleVenta.Controls.Add(this.label11);
-            this.pnlContenedorDetalleVenta.Controls.Add(this.label5);
-            this.pnlContenedorDetalleVenta.Controls.Add(this.label6);
-            this.pnlContenedorDetalleVenta.Controls.Add(this.label4);
-            this.pnlContenedorDetalleVenta.Controls.Add(this.label7);
-            this.pnlContenedorDetalleVenta.Controls.Add(this.label8);
-            this.pnlContenedorDetalleVenta.Controls.Add(this.label9);
-            this.pnlContenedorDetalleVenta.Controls.Add(this.lblValorClienteComprador);
-            this.pnlContenedorDetalleVenta.Controls.Add(this.lblValorDniComprador);
-            this.pnlContenedorDetalleVenta.Controls.Add(this.lblDniComprador);
-            this.pnlContenedorDetalleVenta.Controls.Add(this.lblValorHoraCompra);
-            this.pnlContenedorDetalleVenta.Controls.Add(this.lblValorFechaCompra);
-            this.pnlContenedorDetalleVenta.Controls.Add(this.lblFechaCompra);
-            this.pnlContenedorDetalleVenta.Controls.Add(this.dgvDetalleVenta);
-            this.pnlContenedorDetalleVenta.Controls.Add(this.lblTituloDetalleVenta);
-            this.pnlContenedorDetalleVenta.Controls.Add(this.lblNroVentaDetalle);
-            this.pnlContenedorDetalleVenta.FillColor = System.Drawing.Color.Transparent;
-            this.pnlContenedorDetalleVenta.Location = new System.Drawing.Point(709, 271);
-            this.pnlContenedorDetalleVenta.Name = "pnlContenedorDetalleVenta";
-            this.pnlContenedorDetalleVenta.Size = new System.Drawing.Size(449, 407);
-            this.pnlContenedorDetalleVenta.TabIndex = 61;
-            // 
-            // btnGenerarComprobante
-            // 
-            this.btnGenerarComprobante.BackColor = System.Drawing.Color.Transparent;
-            this.btnGenerarComprobante.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnGenerarComprobante.BorderRadius = 5;
-            this.btnGenerarComprobante.BorderThickness = 1;
-            this.btnGenerarComprobante.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnGenerarComprobante.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnGenerarComprobante.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnGenerarComprobante.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnGenerarComprobante.FillColor = System.Drawing.Color.Transparent;
-            this.btnGenerarComprobante.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerarComprobante.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnGenerarComprobante.Location = new System.Drawing.Point(266, 371);
-            this.btnGenerarComprobante.Name = "btnGenerarComprobante";
-            this.btnGenerarComprobante.Size = new System.Drawing.Size(180, 33);
-            this.btnGenerarComprobante.TabIndex = 77;
-            this.btnGenerarComprobante.Text = "Generar Comprobante";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(357, 336);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 20);
-            this.label1.TabIndex = 76;
-            this.label1.Text = "$XXXXXX";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(2, 336);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 16);
-            this.label2.TabIndex = 75;
-            this.label2.Text = "TOTAL:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(14, 106);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(59, 17);
-            this.label11.TabIndex = 74;
-            this.label11.Text = "Cliente: ";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(264, 138);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 16);
-            this.label5.TabIndex = 73;
-            this.label5.Text = "Efectivo";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(14, 138);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(87, 16);
-            this.label6.TabIndex = 72;
-            this.label6.Text = "Forma pago: ";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(264, 62);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(104, 16);
-            this.label4.TabIndex = 71;
-            this.label4.Text = "Pereira, Luciana";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(11, 65);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(73, 16);
-            this.label7.TabIndex = 70;
-            this.label7.Text = "Vendedor: ";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(264, 123);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(63, 16);
-            this.label8.TabIndex = 69;
-            this.label8.Text = "22222222";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(14, 123);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(36, 16);
-            this.label9.TabIndex = 68;
-            this.label9.Text = "DNI: ";
-            // 
-            // lblValorClienteComprador
-            // 
-            this.lblValorClienteComprador.AutoSize = true;
-            this.lblValorClienteComprador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorClienteComprador.Location = new System.Drawing.Point(264, 106);
-            this.lblValorClienteComprador.Name = "lblValorClienteComprador";
-            this.lblValorClienteComprador.Size = new System.Drawing.Size(77, 16);
-            this.lblValorClienteComprador.TabIndex = 67;
-            this.lblValorClienteComprador.Text = "Perez, Juan";
-            // 
-            // lblValorDniComprador
-            // 
-            this.lblValorDniComprador.AutoSize = true;
-            this.lblValorDniComprador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorDniComprador.Location = new System.Drawing.Point(264, 81);
-            this.lblValorDniComprador.Name = "lblValorDniComprador";
-            this.lblValorDniComprador.Size = new System.Drawing.Size(63, 16);
-            this.lblValorDniComprador.TabIndex = 66;
-            this.lblValorDniComprador.Text = "11111111";
-            // 
-            // lblDniComprador
-            // 
-            this.lblDniComprador.AutoSize = true;
-            this.lblDniComprador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDniComprador.Location = new System.Drawing.Point(12, 81);
-            this.lblDniComprador.Name = "lblDniComprador";
-            this.lblDniComprador.Size = new System.Drawing.Size(36, 16);
-            this.lblDniComprador.TabIndex = 65;
-            this.lblDniComprador.Text = "DNI: ";
-            // 
-            // lblValorHoraCompra
-            // 
-            this.lblValorHoraCompra.AutoSize = true;
-            this.lblValorHoraCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorHoraCompra.Location = new System.Drawing.Point(341, 46);
-            this.lblValorHoraCompra.Name = "lblValorHoraCompra";
-            this.lblValorHoraCompra.Size = new System.Drawing.Size(55, 16);
-            this.lblValorHoraCompra.TabIndex = 64;
-            this.lblValorHoraCompra.Text = "09:04:47";
-            // 
-            // lblValorFechaCompra
-            // 
-            this.lblValorFechaCompra.AutoSize = true;
-            this.lblValorFechaCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorFechaCompra.Location = new System.Drawing.Point(264, 46);
-            this.lblValorFechaCompra.Name = "lblValorFechaCompra";
-            this.lblValorFechaCompra.Size = new System.Drawing.Size(71, 16);
-            this.lblValorFechaCompra.TabIndex = 63;
-            this.lblValorFechaCompra.Text = "11/08/2026";
-            // 
-            // lblFechaCompra
-            // 
-            this.lblFechaCompra.AutoSize = true;
-            this.lblFechaCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFechaCompra.Location = new System.Drawing.Point(11, 46);
-            this.lblFechaCompra.Name = "lblFechaCompra";
-            this.lblFechaCompra.Size = new System.Drawing.Size(94, 16);
-            this.lblFechaCompra.TabIndex = 62;
-            this.lblFechaCompra.Text = "Fecha y Hora: ";
-            // 
-            // dgvDetalleVenta
-            // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
-            this.dgvDetalleVenta.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDetalleVenta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvDetalleVenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colProducto,
-            this.colCantidad,
-            this.colPrecio,
-            this.colSubtotal});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDetalleVenta.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvDetalleVenta.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvDetalleVenta.Location = new System.Drawing.Point(3, 157);
-            this.dgvDetalleVenta.Name = "dgvDetalleVenta";
-            this.dgvDetalleVenta.RowHeadersVisible = false;
-            this.dgvDetalleVenta.RowTemplate.Height = 23;
-            this.dgvDetalleVenta.Size = new System.Drawing.Size(442, 171);
-            this.dgvDetalleVenta.TabIndex = 7;
-            this.dgvDetalleVenta.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
-            this.dgvDetalleVenta.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            this.dgvDetalleVenta.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvDetalleVenta.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvDetalleVenta.ThemeStyle.HeaderStyle.Height = 23;
-            this.dgvDetalleVenta.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvDetalleVenta.ThemeStyle.RowsStyle.Height = 23;
-            this.dgvDetalleVenta.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
-            // 
-            // colProducto
-            // 
-            this.colProducto.HeaderText = "Producto";
-            this.colProducto.Name = "colProducto";
-            // 
-            // colCantidad
-            // 
-            this.colCantidad.HeaderText = "Cantidad";
-            this.colCantidad.Name = "colCantidad";
-            // 
-            // colPrecio
-            // 
-            this.colPrecio.HeaderText = "Precio";
-            this.colPrecio.Name = "colPrecio";
-            // 
-            // colSubtotal
-            // 
-            this.colSubtotal.HeaderText = "Subtotal";
-            this.colSubtotal.Name = "colSubtotal";
             // 
             // pnlCardTotalVentas
             // 
@@ -741,7 +404,7 @@
             this.btnFiltrar.FillColor = System.Drawing.Color.Silver;
             this.btnFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.btnFiltrar.ForeColor = System.Drawing.Color.Black;
-            this.btnFiltrar.Image = global::CapaPresentacion.Properties.Resources.icono_filtro;
+            this.btnFiltrar.Image = ((System.Drawing.Image)(resources.GetObject("btnFiltrar.Image")));
             this.btnFiltrar.Location = new System.Drawing.Point(448, 135);
             this.btnFiltrar.Name = "btnFiltrar";
             this.btnFiltrar.Size = new System.Drawing.Size(89, 27);
@@ -760,7 +423,7 @@
             this.btnBuscarVendedor.FillColor = System.Drawing.Color.Silver;
             this.btnBuscarVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.btnBuscarVendedor.ForeColor = System.Drawing.Color.Black;
-            this.btnBuscarVendedor.Image = global::CapaPresentacion.Properties.Resources.icono_lupa;
+            this.btnBuscarVendedor.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarVendedor.Image")));
             this.btnBuscarVendedor.Location = new System.Drawing.Point(218, 40);
             this.btnBuscarVendedor.Name = "btnBuscarVendedor";
             this.btnBuscarVendedor.Size = new System.Drawing.Size(89, 27);
@@ -873,6 +536,62 @@
             this.guna2ShadowPanel1.Size = new System.Drawing.Size(431, 181);
             this.guna2ShadowPanel1.TabIndex = 64;
             // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancelar.BorderRadius = 5;
+            this.btnCancelar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnCancelar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnCancelar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnCancelar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnCancelar.FillColor = System.Drawing.Color.Silver;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnCancelar.ForeColor = System.Drawing.Color.Black;
+            this.btnCancelar.Location = new System.Drawing.Point(185, 135);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(89, 27);
+            this.btnCancelar.TabIndex = 52;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnAplicarAjusteFormaPago
+            // 
+            this.btnAplicarAjusteFormaPago.BackColor = System.Drawing.Color.Transparent;
+            this.btnAplicarAjusteFormaPago.BorderRadius = 5;
+            this.btnAplicarAjusteFormaPago.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnAplicarAjusteFormaPago.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnAplicarAjusteFormaPago.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAplicarAjusteFormaPago.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnAplicarAjusteFormaPago.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(96)))));
+            this.btnAplicarAjusteFormaPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnAplicarAjusteFormaPago.ForeColor = System.Drawing.Color.White;
+            this.btnAplicarAjusteFormaPago.Location = new System.Drawing.Point(297, 135);
+            this.btnAplicarAjusteFormaPago.Name = "btnAplicarAjusteFormaPago";
+            this.btnAplicarAjusteFormaPago.Size = new System.Drawing.Size(117, 27);
+            this.btnAplicarAjusteFormaPago.TabIndex = 52;
+            this.btnAplicarAjusteFormaPago.Text = "Aplicar Ajuste";
+            this.btnAplicarAjusteFormaPago.Click += new System.EventHandler(this.btnAplicarAjusteFormaPago_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(398, 71);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(23, 20);
+            this.label13.TabIndex = 111;
+            this.label13.Text = "%";
+            // 
+            // txtPorcentajeAjuste
+            // 
+            this.txtPorcentajeAjuste.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPorcentajeAjuste.Location = new System.Drawing.Point(279, 84);
+            this.txtPorcentajeAjuste.Name = "txtPorcentajeAjuste";
+            this.txtPorcentajeAjuste.ReadOnly = true;
+            this.txtPorcentajeAjuste.Size = new System.Drawing.Size(113, 26);
+            this.txtPorcentajeAjuste.TabIndex = 110;
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -961,61 +680,60 @@
             this.label14.TabIndex = 11;
             this.label14.Text = "Metodo Pago";
             // 
-            // label13
+            // colNroVenta
             // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(398, 71);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(23, 20);
-            this.label13.TabIndex = 111;
-            this.label13.Text = "%";
+            this.colNroVenta.HeaderText = "Nro Venta";
+            this.colNroVenta.Name = "colNroVenta";
             // 
-            // txtPorcentajeAjuste
+            // colDniCliente
             // 
-            this.txtPorcentajeAjuste.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPorcentajeAjuste.Location = new System.Drawing.Point(279, 84);
-            this.txtPorcentajeAjuste.Name = "txtPorcentajeAjuste";
-            this.txtPorcentajeAjuste.ReadOnly = true;
-            this.txtPorcentajeAjuste.Size = new System.Drawing.Size(113, 26);
-            this.txtPorcentajeAjuste.TabIndex = 110;
+            this.colDniCliente.HeaderText = "DNI Cliente";
+            this.colDniCliente.Name = "colDniCliente";
             // 
-            // btnAplicarAjusteFormaPago
+            // colCliente
             // 
-            this.btnAplicarAjusteFormaPago.BackColor = System.Drawing.Color.Transparent;
-            this.btnAplicarAjusteFormaPago.BorderRadius = 5;
-            this.btnAplicarAjusteFormaPago.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnAplicarAjusteFormaPago.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnAplicarAjusteFormaPago.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnAplicarAjusteFormaPago.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnAplicarAjusteFormaPago.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(96)))));
-            this.btnAplicarAjusteFormaPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnAplicarAjusteFormaPago.ForeColor = System.Drawing.Color.White;
-            this.btnAplicarAjusteFormaPago.Location = new System.Drawing.Point(297, 135);
-            this.btnAplicarAjusteFormaPago.Name = "btnAplicarAjusteFormaPago";
-            this.btnAplicarAjusteFormaPago.Size = new System.Drawing.Size(117, 27);
-            this.btnAplicarAjusteFormaPago.TabIndex = 52;
-            this.btnAplicarAjusteFormaPago.Text = "Aplicar Ajuste";
-            this.btnAplicarAjusteFormaPago.Click += new System.EventHandler(this.btnAplicarAjusteFormaPago_Click);
+            this.colCliente.HeaderText = "Cliente";
+            this.colCliente.Name = "colCliente";
             // 
-            // btnCancelar
+            // colDniVendedor
             // 
-            this.btnCancelar.BackColor = System.Drawing.Color.Transparent;
-            this.btnCancelar.BorderRadius = 5;
-            this.btnCancelar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnCancelar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnCancelar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnCancelar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnCancelar.FillColor = System.Drawing.Color.Silver;
-            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnCancelar.ForeColor = System.Drawing.Color.Black;
-            this.btnCancelar.Location = new System.Drawing.Point(185, 135);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(89, 27);
-            this.btnCancelar.TabIndex = 52;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            this.colDniVendedor.HeaderText = "DNI Vendedor";
+            this.colDniVendedor.Name = "colDniVendedor";
+            // 
+            // colVendedor
+            // 
+            this.colVendedor.HeaderText = "Vendedor";
+            this.colVendedor.Name = "colVendedor";
+            // 
+            // colMetodoPago
+            // 
+            this.colMetodoPago.HeaderText = "Metodo Pago";
+            this.colMetodoPago.Name = "colMetodoPago";
+            // 
+            // colTipoAjuste
+            // 
+            this.colTipoAjuste.HeaderText = "Tipo Ajuste";
+            this.colTipoAjuste.Name = "colTipoAjuste";
+            // 
+            // colTotal
+            // 
+            this.colTotal.HeaderText = "Total";
+            this.colTotal.Name = "colTotal";
+            // 
+            // colFechaVenta
+            // 
+            this.colFechaVenta.HeaderText = "Fecha Venta";
+            this.colFechaVenta.Name = "colFechaVenta";
+            // 
+            // colEstado
+            // 
+            this.colEstado.HeaderText = "Estado";
+            this.colEstado.Name = "colEstado";
+            // 
+            // colVerDetalle
+            // 
+            this.colVerDetalle.HeaderText = "VerDetalles";
+            this.colVerDetalle.Name = "colVerDetalle";
             // 
             // GestionVentasForm
             // 
@@ -1025,7 +743,6 @@
             this.Controls.Add(this.guna2ShadowPanel1);
             this.Controls.Add(this.pnlCardTotalVentas);
             this.Controls.Add(this.pnlContenedorFiltros);
-            this.Controls.Add(this.pnlContenedorDetalleVenta);
             this.Controls.Add(this.pnlContenedorHistorialVentas);
             this.Controls.Add(this.pnlEncabezado);
             this.Name = "GestionVentasForm";
@@ -1039,9 +756,6 @@
             this.pnlContenedorHistorialVentas.ResumeLayout(false);
             this.pnlContenedorHistorialVentas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistorialVentas)).EndInit();
-            this.pnlContenedorDetalleVenta.ResumeLayout(false);
-            this.pnlContenedorDetalleVenta.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleVenta)).EndInit();
             this.pnlCardTotalVentas.ResumeLayout(false);
             this.pnlCardTotalVentas.PerformLayout();
             this.pnlContenedorFiltros.ResumeLayout(false);
@@ -1055,8 +769,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label lblNroVentaDetalle;
-        private System.Windows.Forms.Label lblTituloDetalleVenta;
         private System.Windows.Forms.Panel pnlEncabezado;
         private System.Windows.Forms.Panel pnlnfoUsuario;
         private System.Windows.Forms.Label lblNombreUsuario;
@@ -1068,16 +780,7 @@
         private Guna.UI2.WinForms.Guna2Button btnExportarPDF;
         private Guna.UI2.WinForms.Guna2Button btnExportarEXCEL;
         private Guna.UI2.WinForms.Guna2DataGridView dgvHistorialVentas;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNroVenta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colFechaVenta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colMetodoPago;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colVendedor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colEstado;
-        private System.Windows.Forms.DataGridViewButtonColumn colVerDetalle;
         private System.Windows.Forms.Label lblTituloHistorialVentas;
-        private Guna.UI2.WinForms.Guna2Panel pnlContenedorDetalleVenta;
-        private Guna.UI2.WinForms.Guna2DataGridView dgvDetalleVenta;
         private Guna.UI2.WinForms.Guna2GradientPanel pnlCardTotalVentas;
         private System.Windows.Forms.Label lblCantTotalVentas;
         private System.Windows.Forms.Label lblTituloTotalVentas;
@@ -1093,26 +796,6 @@
         private System.Windows.Forms.Label lblBuscarPorDNI;
         private System.Windows.Forms.Label lblFiltrarPor;
         private System.Windows.Forms.Label lblFiltrarMetodoPago;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label lblValorClienteComprador;
-        private System.Windows.Forms.Label lblValorDniComprador;
-        private System.Windows.Forms.Label lblDniComprador;
-        private System.Windows.Forms.Label lblValorHoraCompra;
-        private System.Windows.Forms.Label lblValorFechaCompra;
-        private System.Windows.Forms.Label lblFechaCompra;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colPrecio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSubtotal;
-        private Guna.UI2.WinForms.Guna2Button btnGenerarComprobante;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel1;
         private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
@@ -1125,5 +808,16 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.NumericUpDown txtPorcentajeAjuste;
         private Guna.UI2.WinForms.Guna2Button btnCancelar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNroVenta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDniCliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDniVendedor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colVendedor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMetodoPago;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTipoAjuste;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFechaVenta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEstado;
+        private System.Windows.Forms.DataGridViewButtonColumn colVerDetalle;
     }
 }

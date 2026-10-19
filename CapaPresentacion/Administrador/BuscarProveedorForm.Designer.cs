@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BuscarProveedorForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -38,17 +39,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.pnlContenedorCluentes = new Guna.UI2.WinForms.Guna2Panel();
             this.dgvListaProveedores = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.colCuit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCorreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.lblTituloListaProveedores = new System.Windows.Forms.Label();
             this.colNroCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colCuit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCorreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pnlContenedorFiltros.SuspendLayout();
             this.pnlContenedorCluentes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaProveedores)).BeginInit();
@@ -92,7 +93,7 @@
             this.btnBuscarProveedor.FillColor = System.Drawing.Color.Silver;
             this.btnBuscarProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.btnBuscarProveedor.ForeColor = System.Drawing.Color.Black;
-            this.btnBuscarProveedor.Image = global::CapaPresentacion.Properties.Resources.icono_lupa;
+            this.btnBuscarProveedor.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarProveedor.Image")));
             this.btnBuscarProveedor.Location = new System.Drawing.Point(252, 65);
             this.btnBuscarProveedor.Name = "btnBuscarProveedor";
             this.btnBuscarProveedor.Size = new System.Drawing.Size(71, 27);
@@ -175,8 +176,9 @@
             this.dgvListaProveedores.Location = new System.Drawing.Point(9, 40);
             this.dgvListaProveedores.Name = "dgvListaProveedores";
             this.dgvListaProveedores.RowHeadersVisible = false;
+            this.dgvListaProveedores.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvListaProveedores.RowTemplate.Height = 23;
-            this.dgvListaProveedores.Size = new System.Drawing.Size(680, 214);
+            this.dgvListaProveedores.Size = new System.Drawing.Size(695, 214);
             this.dgvListaProveedores.TabIndex = 8;
             this.dgvListaProveedores.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
             this.dgvListaProveedores.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
@@ -187,33 +189,6 @@
             this.dgvListaProveedores.ThemeStyle.RowsStyle.Height = 23;
             this.dgvListaProveedores.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
             this.dgvListaProveedores.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaProveedores_CellContentClick);
-            // 
-            // colCuit
-            // 
-            this.colCuit.HeaderText = "CUIT";
-            this.colCuit.Name = "colCuit";
-            // 
-            // colNombre
-            // 
-            this.colNombre.HeaderText = "Nombre";
-            this.colNombre.Name = "colNombre";
-            // 
-            // colCorreo
-            // 
-            this.colCorreo.HeaderText = "Correo";
-            this.colCorreo.Name = "colCorreo";
-            // 
-            // colTelefono
-            // 
-            this.colTelefono.HeaderText = "Telefono";
-            this.colTelefono.Name = "colTelefono";
-            // 
-            // dataGridViewButtonColumn1
-            // 
-            this.dataGridViewButtonColumn1.HeaderText = "Seleccionar";
-            this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
-            this.dataGridViewButtonColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewButtonColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // lblTituloListaProveedores
             // 
@@ -258,6 +233,36 @@
             this.colSeleccionar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.colSeleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.colSeleccionar.Width = 140;
+            // 
+            // colCuit
+            // 
+            this.colCuit.FillWeight = 60F;
+            this.colCuit.HeaderText = "CUIT";
+            this.colCuit.Name = "colCuit";
+            // 
+            // colNombre
+            // 
+            this.colNombre.FillWeight = 160F;
+            this.colNombre.HeaderText = "Nombre";
+            this.colNombre.Name = "colNombre";
+            // 
+            // colCorreo
+            // 
+            this.colCorreo.HeaderText = "Correo";
+            this.colCorreo.Name = "colCorreo";
+            // 
+            // colTelefono
+            // 
+            this.colTelefono.HeaderText = "Telefono";
+            this.colTelefono.Name = "colTelefono";
+            // 
+            // dataGridViewButtonColumn1
+            // 
+            this.dataGridViewButtonColumn1.FillWeight = 65F;
+            this.dataGridViewButtonColumn1.HeaderText = "Seleccionar";
+            this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
+            this.dataGridViewButtonColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewButtonColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // BuscarProveedorForm
             // 

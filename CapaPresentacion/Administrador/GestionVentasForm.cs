@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CapaEntidad;
+using CapaNegocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -44,6 +46,8 @@ namespace CapaPresentacion.Administrador
             }
             System.Globalization.CultureInfo cultura = new System.Globalization.CultureInfo("es-ES");
             lblFecha.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy", cultura);
+
+            CargarHistorialVentas();
         }
 
         private void txtBuscarVendedor_Validating(object sender, CancelEventArgs e)
@@ -86,6 +90,51 @@ namespace CapaPresentacion.Administrador
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             txtPorcentajeAjuste.Value = 0;
+        }
+
+        private void CargarHistorialVentas()
+        {
+            dgvHistorialVentas.AutoGenerateColumns = false;
+
+            // Mapeamos las columnas del DataGridView con las propiedades planas de EVenta
+            dgvHistorialVentas.Columns["colNroVenta"].DataPropertyName = "nro_venta";
+            dgvHistorialVentas.Columns["colDniCliente"].DataPropertyName = "DniCliente";
+            dgvHistorialVentas.Columns["colCliente"].DataPropertyName = "NombreCliente";
+            dgvHistorialVentas.Columns["colDniVendedor"].DataPropertyName = "DniUsuario";
+            dgvHistorialVentas.Columns["colVendedor"].DataPropertyName = "NombreComprador";
+            dgvHistorialVentas.Columns["colMetodoPago"].DataPropertyName = "NombreMetodoPago";
+            dgvHistorialVentas.Columns["colTipoAjuste"].DataPropertyName = "NombreTipoAjuste";
+            dgvHistorialVentas.Columns["colFechaVenta"].DataPropertyName = "fecha_venta";
+            dgvHistorialVentas.Columns["colTotal"].DataPropertyName = "SubtotalVenta";
+            dgvHistorialVentas.Columns["colEstado"].DataPropertyName = "EstadoTexto";
+
+            // Instanciamos la capa de negocio y cargamos la grilla
+            CNVenta objCNVenta = new CNVenta();
+            dgvHistorialVentas.DataSource = objCNVenta.ListarHistorialVentas();
+        }
+
+        private void dgvHistorialVentas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Validar que no se haga clic en los encabezados (fila -1)
+            if (e.RowIndex < 0) return;
+
+            string nombreColumna = dgvHistorialVentas.Columns[e.ColumnIndex].Name;
+
+            // Si hace clic en la columna configurada como botón "Ver Detalle"
+            if (nombreColumna == "colVerDetalle")
+            {
+                // 1. Extraemos el objeto EVenta de la fila seleccionada en la grilla
+                EVenta ventaSeleccionada = (EVenta)dgvHistorialVentas.Rows[e.RowIndex].DataBoundItem;
+
+                if (ventaSeleccionada != null)
+                {
+                    // 2. Abrimos el formulario modal pasándole el objeto por el constructor
+                    using (DetalleVenta modal = new DetalleVenta(ventaSeleccionada))
+                    {
+                        modal.ShowDialog(); // Esto abre la ventana que diseñaste con los datos de la venta y productos
+                    }
+                }
+            }
         }
     }
 }

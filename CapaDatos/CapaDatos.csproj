@@ -64,6 +64,10 @@
     <Compile Include="CDProducto.cs" />
     <Compile Include="CDProveedor.cs" />
     <Compile Include="CDUsuario.cs" />
+    <Compile Include="CDVenta.cs" />
+    <Compile Include="cliente.cs">
+      <DependentUpon>db_sistema_gestion_ventas_electronicos.tt</DependentUpon>
+    </Compile>
     <Compile Include="compra.cs">
       <DependentUpon>db_sistema_gestion_ventas_electronicos.tt</DependentUpon>
     </Compile>
@@ -85,7 +89,13 @@
     <Compile Include="detalle_compra.cs">
       <DependentUpon>db_sistema_gestion_ventas_electronicos.tt</DependentUpon>
     </Compile>
+    <Compile Include="detalle_venta.cs">
+      <DependentUpon>db_sistema_gestion_ventas_electronicos.tt</DependentUpon>
+    </Compile>
     <Compile Include="marca.cs">
+      <DependentUpon>db_sistema_gestion_ventas_electronicos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="metodo_pago.cs">
       <DependentUpon>db_sistema_gestion_ventas_electronicos.tt</DependentUpon>
     </Compile>
     <Compile Include="perfil.cs">
@@ -98,7 +108,13 @@
     <Compile Include="proveedor.cs">
       <DependentUpon>db_sistema_gestion_ventas_electronicos.tt</DependentUpon>
     </Compile>
+    <Compile Include="tipo_ajuste.cs">
+      <DependentUpon>db_sistema_gestion_ventas_electronicos.tt</DependentUpon>
+    </Compile>
     <Compile Include="usuario.cs">
+      <DependentUpon>db_sistema_gestion_ventas_electronicos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="venta.cs">
       <DependentUpon>db_sistema_gestion_ventas_electronicos.tt</DependentUpon>
     </Compile>
   </ItemGroup>

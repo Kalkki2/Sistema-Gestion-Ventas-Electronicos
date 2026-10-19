@@ -32,6 +32,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDetalleItems = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.colCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCostoUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSubtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblNroFactura = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.lblTotalComprados = new System.Windows.Forms.Label();
@@ -48,11 +53,6 @@
             this.lblTotalGeneral = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.btnGenerarComprobante = new Guna.UI2.WinForms.Guna2Button();
-            this.colCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCostoUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSubtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleItems)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,7 +76,7 @@
             this.colSubtotal});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -86,7 +86,7 @@
             this.dgvDetalleItems.Location = new System.Drawing.Point(6, 183);
             this.dgvDetalleItems.Name = "dgvDetalleItems";
             this.dgvDetalleItems.RowHeadersVisible = false;
-            this.dgvDetalleItems.RowTemplate.Height = 23;
+            this.dgvDetalleItems.RowTemplate.Height = 25;
             this.dgvDetalleItems.Size = new System.Drawing.Size(503, 309);
             this.dgvDetalleItems.TabIndex = 9;
             this.dgvDetalleItems.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
@@ -94,15 +94,40 @@
             this.dgvDetalleItems.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvDetalleItems.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvDetalleItems.ThemeStyle.HeaderStyle.Height = 23;
-            this.dgvDetalleItems.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvDetalleItems.ThemeStyle.RowsStyle.Height = 23;
+            this.dgvDetalleItems.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvDetalleItems.ThemeStyle.RowsStyle.Height = 25;
             this.dgvDetalleItems.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
+            // 
+            // colCodigo
+            // 
+            this.colCodigo.HeaderText = "Codigo";
+            this.colCodigo.Name = "colCodigo";
+            // 
+            // colProducto
+            // 
+            this.colProducto.HeaderText = "Producto";
+            this.colProducto.Name = "colProducto";
+            // 
+            // colCantidad
+            // 
+            this.colCantidad.HeaderText = "Cantidad ";
+            this.colCantidad.Name = "colCantidad";
+            // 
+            // colCostoUnitario
+            // 
+            this.colCostoUnitario.HeaderText = "Costo Unitario";
+            this.colCostoUnitario.Name = "colCostoUnitario";
+            // 
+            // colSubtotal
+            // 
+            this.colSubtotal.HeaderText = "Subtotal";
+            this.colSubtotal.Name = "colSubtotal";
             // 
             // lblNroFactura
             // 
             this.lblNroFactura.AutoSize = true;
             this.lblNroFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNroFactura.Location = new System.Drawing.Point(7, 32);
+            this.lblNroFactura.Location = new System.Drawing.Point(12, 36);
             this.lblNroFactura.Name = "lblNroFactura";
             this.lblNroFactura.Size = new System.Drawing.Size(208, 17);
             this.lblNroFactura.TabIndex = 19;
@@ -125,9 +150,9 @@
             this.lblTotalComprados.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalComprados.Location = new System.Drawing.Point(302, 145);
             this.lblTotalComprados.Name = "lblTotalComprados";
-            this.lblTotalComprados.Size = new System.Drawing.Size(21, 16);
+            this.lblTotalComprados.Size = new System.Drawing.Size(14, 16);
             this.lblTotalComprados.TabIndex = 55;
-            this.lblTotalComprados.Text = "34";
+            this.lblTotalComprados.Text = "0";
             // 
             // label6
             // 
@@ -155,9 +180,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(13, 72);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(95, 16);
+            this.label3.Size = new System.Drawing.Size(145, 16);
             this.label3.TabIndex = 52;
-            this.label3.Text = "Responsable: ";
+            this.label3.Text = "Usuario Responsable: ";
             // 
             // lblCuitProveedor
             // 
@@ -234,7 +259,7 @@
             this.lblTotalGeneral.AutoSize = true;
             this.lblTotalGeneral.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalGeneral.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalGeneral.Location = new System.Drawing.Point(418, 495);
+            this.lblTotalGeneral.Location = new System.Drawing.Point(389, 505);
             this.lblTotalGeneral.Name = "lblTotalGeneral";
             this.lblTotalGeneral.Size = new System.Drawing.Size(91, 20);
             this.lblTotalGeneral.TabIndex = 58;
@@ -245,7 +270,7 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(3, 495);
+            this.label9.Location = new System.Drawing.Point(3, 505);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(60, 16);
             this.label9.TabIndex = 57;
@@ -270,31 +295,6 @@
             this.btnGenerarComprobante.TabIndex = 59;
             this.btnGenerarComprobante.Text = "Generar Comprobante";
             this.btnGenerarComprobante.Click += new System.EventHandler(this.btnGenerarComprobante_Click);
-            // 
-            // colCodigo
-            // 
-            this.colCodigo.HeaderText = "Codigo";
-            this.colCodigo.Name = "colCodigo";
-            // 
-            // colProducto
-            // 
-            this.colProducto.HeaderText = "Producto";
-            this.colProducto.Name = "colProducto";
-            // 
-            // colCantidad
-            // 
-            this.colCantidad.HeaderText = "Cantidad ";
-            this.colCantidad.Name = "colCantidad";
-            // 
-            // colCostoUnitario
-            // 
-            this.colCostoUnitario.HeaderText = "Costo Unitario";
-            this.colCostoUnitario.Name = "colCostoUnitario";
-            // 
-            // colSubtotal
-            // 
-            this.colSubtotal.HeaderText = "Subtotal";
-            this.colSubtotal.Name = "colSubtotal";
             // 
             // DetalleCompraProducto
             // 

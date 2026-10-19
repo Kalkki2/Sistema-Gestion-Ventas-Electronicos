@@ -18,6 +18,7 @@ namespace CapaDatos
         public producto()
         {
             this.detalle_compra = new HashSet<detalle_compra>();
+            this.detalle_venta = new HashSet<detalle_venta>();
         }
     
         public int producto_id { get; set; }
@@ -38,5 +39,7 @@ namespace CapaDatos
         public virtual proveedor proveedor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<detalle_compra> detalle_compra { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<detalle_venta> detalle_venta { get; set; }
     }
 }

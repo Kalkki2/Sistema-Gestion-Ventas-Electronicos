@@ -42,13 +42,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ECategoria.cs" />
+    <Compile Include="ECliente.cs" />
     <Compile Include="ECompra.cs" />
     <Compile Include="EDetalleCompra.cs" />
+    <Compile Include="EDetalleVenta.cs" />
     <Compile Include="EMarca.cs" />
+    <Compile Include="EMetodoPago.cs" />
     <Compile Include="EPerfil.cs" />
     <Compile Include="EProducto.cs" />
     <Compile Include="EProveedor.cs" />
+    <Compile Include="ETipoAjuste.cs" />
     <Compile Include="EUsuario.cs" />
+    <Compile Include="EVenta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

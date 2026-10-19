@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BuscarProductoCompraForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -89,7 +90,7 @@
             this.btnFiltrar.FillColor = System.Drawing.Color.Silver;
             this.btnFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.btnFiltrar.ForeColor = System.Drawing.Color.Black;
-            this.btnFiltrar.Image = global::CapaPresentacion.Properties.Resources.icono_filtro;
+            this.btnFiltrar.Image = ((System.Drawing.Image)(resources.GetObject("btnFiltrar.Image")));
             this.btnFiltrar.Location = new System.Drawing.Point(618, 65);
             this.btnFiltrar.Name = "btnFiltrar";
             this.btnFiltrar.Size = new System.Drawing.Size(71, 27);
@@ -107,7 +108,7 @@
             this.btnBuscarProducto.FillColor = System.Drawing.Color.Silver;
             this.btnBuscarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.btnBuscarProducto.ForeColor = System.Drawing.Color.Black;
-            this.btnBuscarProducto.Image = global::CapaPresentacion.Properties.Resources.icono_lupa;
+            this.btnBuscarProducto.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarProducto.Image")));
             this.btnBuscarProducto.Location = new System.Drawing.Point(252, 65);
             this.btnBuscarProducto.Name = "btnBuscarProducto";
             this.btnBuscarProducto.Size = new System.Drawing.Size(71, 27);
@@ -265,6 +266,7 @@
             this.dgvListaProductos.Location = new System.Drawing.Point(4, 34);
             this.dgvListaProductos.Name = "dgvListaProductos";
             this.dgvListaProductos.RowHeadersVisible = false;
+            this.dgvListaProductos.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvListaProductos.RowTemplate.Height = 23;
             this.dgvListaProductos.Size = new System.Drawing.Size(700, 214);
             this.dgvListaProductos.TabIndex = 7;
@@ -292,36 +294,43 @@
             // 
             // colCodigo
             // 
+            this.colCodigo.FillWeight = 60F;
             this.colCodigo.HeaderText = "Codigo";
             this.colCodigo.Name = "colCodigo";
             // 
             // colNombre
             // 
+            this.colNombre.FillWeight = 150F;
             this.colNombre.HeaderText = "Nombre";
             this.colNombre.Name = "colNombre";
             // 
             // colPrecio
             // 
+            this.colPrecio.FillWeight = 90F;
             this.colPrecio.HeaderText = "Precio";
             this.colPrecio.Name = "colPrecio";
             // 
             // colStock
             // 
+            this.colStock.FillWeight = 50F;
             this.colStock.HeaderText = "Stock";
             this.colStock.Name = "colStock";
             // 
             // colCategoria
             // 
+            this.colCategoria.FillWeight = 90F;
             this.colCategoria.HeaderText = "Categoria";
             this.colCategoria.Name = "colCategoria";
             // 
             // colMarca
             // 
+            this.colMarca.FillWeight = 90F;
             this.colMarca.HeaderText = "Marca";
             this.colMarca.Name = "colMarca";
             // 
             // colSeleccionar
             // 
+            this.colSeleccionar.FillWeight = 65F;
             this.colSeleccionar.HeaderText = "Seleccionar";
             this.colSeleccionar.Name = "colSeleccionar";
             this.colSeleccionar.Resizable = System.Windows.Forms.DataGridViewTriState.True;

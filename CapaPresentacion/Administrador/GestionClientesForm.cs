@@ -83,11 +83,11 @@ namespace CapaPresentacion.Administrador
             if (e.RowIndex >= 0 && dgvListaCompras.Columns[e.ColumnIndex].Name == "colDetallesCompras")
             {
                 // Instanciar y abrir el formulario modal
-                using (DetalleCompra modal = new DetalleCompra())
-                {
-                    // Mostrar el formulario como modal (bloquea la ventana principal hasta que se cierre)
-                    DialogResult resultado = modal.ShowDialog();
-                }
+                //using (DetalleVenta modal = new DetalleVenta())
+                //{
+                //    // Mostrar el formulario como modal (bloquea la ventana principal hasta que se cierre)
+                //    DialogResult resultado = modal.ShowDialog();
+                //}
             }
         }
 
