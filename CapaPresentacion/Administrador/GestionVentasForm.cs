@@ -14,6 +14,7 @@ namespace CapaPresentacion.Administrador
 {
     public partial class GestionVentasForm : Form
     {
+        private CNMetodoPago objCNMetodoPago = new CNMetodoPago();
         public GestionVentasForm()
         {
             InitializeComponent();
@@ -47,6 +48,7 @@ namespace CapaPresentacion.Administrador
             System.Globalization.CultureInfo cultura = new System.Globalization.CultureInfo("es-ES");
             lblFecha.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy", cultura);
 
+            CargarConfiguracionPagos();
             CargarHistorialVentas();
         }
 
@@ -70,26 +72,45 @@ namespace CapaPresentacion.Administrador
 
         private void btnAplicarAjusteFormaPago_Click(object sender, EventArgs e)
         {
-           
+            if (cmbMetodoPago.SelectedValue == null || cmbTipoAjuste.SelectedValue == null)
+            {
+                MessageBox.Show("Debe seleccionar un método de pago y un tipo de ajuste.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             DialogResult respuesta = MessageBox.Show(
-                "¿Está seguro de que desea aplicar ajuste a la forma de pago?",
+                "¿Está seguro de que desea aplicar este ajuste a la forma de pago?",
                 "Confirmar ajuste",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question
             );
 
-            // Si el usuario responde 'No', cancelamos la operación
             if (respuesta == DialogResult.No)
             {
                 return;
             }
-            // Mensaje de éxito
-            MessageBox.Show("Se aplico ajuste  con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            int metodoPagoId = Convert.ToInt32(cmbMetodoPago.SelectedValue);
+            int tipoAjusteId = Convert.ToInt32(cmbTipoAjuste.SelectedValue);
+            decimal porcentaje = Convert.ToDecimal(txtPorcentajeAjuste.Value);
+
+            string mensaje = string.Empty;
+            bool resultado = objCNMetodoPago.Actualizar(metodoPagoId, porcentaje, tipoAjusteId, out mensaje);
+
+            if (resultado)
+            {
+                MessageBox.Show("Se aplicó el ajuste con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CargarConfiguracionPagos(); // Recargamos para refrescar
+            }
+            else
+            {
+                MessageBox.Show("Error al actualizar: " + mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            txtPorcentajeAjuste.Value = 0;
+            SincronizarDatosMetodoPago();
         }
 
         private void CargarHistorialVentas()
@@ -135,6 +156,49 @@ namespace CapaPresentacion.Administrador
                     }
                 }
             }
+        }
+
+        private void CargarConfiguracionPagos()
+        {
+            // Cargar Tipos de Ajuste
+            cmbTipoAjuste.DataSource = objCNMetodoPago.ListarTiposAjuste();
+            cmbTipoAjuste.DisplayMember = "nombre";
+            cmbTipoAjuste.ValueMember = "tipo_ajuste_id";
+
+            // Cargar Métodos de Pago
+            cmbMetodoPago.DataSource = objCNMetodoPago.Listar();
+            cmbMetodoPago.DisplayMember = "nombre";
+            cmbMetodoPago.ValueMember = "metodo_pago_id";
+
+            // Si hay elementos, seleccionamos el primero y cargamos sus datos en los controles
+            if (cmbMetodoPago.Items.Count > 0)
+            {
+                cmbMetodoPago.SelectedIndex = 0;
+                SincronizarDatosMetodoPago();
+            }
+        }
+
+        private void SincronizarDatosMetodoPago()
+        {
+            if (cmbMetodoPago.SelectedItem != null)
+            {
+                EMetodoPago metodoSeleccionado = (EMetodoPago)cmbMetodoPago.SelectedItem;
+
+                // 1. Rellenamos el porcentaje actual para que pueda modificarlo
+                txtPorcentajeAjuste.Value = metodoSeleccionado.porcentaje;
+
+                // 2. Seleccionamos el tipo de ajuste fijo que le pertenece
+                cmbTipoAjuste.SelectedValue = metodoSeleccionado.tipo_ajuste_id;
+
+                // 3. OPCIONAL: Lo ponemos en modo sólo lectura (deshabilitado) para que el admin 
+                // solo edite el porcentaje, cumpliendo la regla estricta del profesor.
+                cmbTipoAjuste.Enabled = false;
+            }
+        }
+
+        private void cmbMetodoPago_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SincronizarDatosMetodoPago();
         }
     }
 }

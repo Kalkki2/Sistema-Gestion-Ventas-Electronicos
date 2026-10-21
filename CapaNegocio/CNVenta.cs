@@ -37,12 +37,6 @@ namespace CapaNegocio
                 return false;
             }
 
-            // Validar que se haya asignado un tipo de ajuste
-            if (objVenta.tipo_ajuste_id == 0)
-            {
-                Mensaje = "Debe especificar el tipo de ajuste del método de pago.";
-                return false;
-            }
 
             // Validar que la lista de productos no esté vacía
             if (listaDetalles == null || listaDetalles.Count == 0)
@@ -79,6 +73,11 @@ namespace CapaNegocio
         public List<EDetalleVenta> ObtenerDetalleVenta(int ventaId)
         {
             return objCD_Venta.ObtenerDetalleVenta(ventaId);
+        }
+
+        public List<EVenta> ListarHistorialVentasPorUsuario(int usuarioId)
+        {
+            return objCD_Venta.ListarHistorialVentasPorUsuario(usuarioId);
         }
     }
 }

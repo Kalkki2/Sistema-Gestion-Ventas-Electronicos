@@ -28,13 +28,11 @@ namespace CapaDatos
         public int usuario_id { get; set; }
         public int metodo_pago_id { get; set; }
         public int cliente_id { get; set; }
-        public int tipo_ajuste_id { get; set; }
     
         public virtual cliente cliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<detalle_venta> detalle_venta { get; set; }
         public virtual metodo_pago metodo_pago { get; set; }
-        public virtual tipo_ajuste tipo_ajuste { get; set; }
         public virtual usuario usuario { get; set; }
     }
 }

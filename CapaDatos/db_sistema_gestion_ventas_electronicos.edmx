@@ -123,6 +123,16 @@
           <Property Name="fecha_ultima_modificacion" Type="date" Nullable="false" />
           <Property Name="estado" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="tipo_ajuste">
           <Key>
             <PropertyRef Name="tipo_ajuste_id" />
@@ -159,7 +169,6 @@
           <Property Name="usuario_id" Type="int" Nullable="false" />
           <Property Name="metodo_pago_id" Type="int" Nullable="false" />
           <Property Name="cliente_id" Type="int" Nullable="false" />
-          <Property Name="tipo_ajuste_id" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_categoria_marca_categoria">
           <End Role="categoria" Type="Self.categoria" Multiplicity="1" />
@@ -331,18 +340,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_venta_tipo_ajuste">
-          <End Role="tipo_ajuste" Type="Self.tipo_ajuste" Multiplicity="1" />
-          <End Role="venta" Type="Self.venta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tipo_ajuste">
-              <PropertyRef Name="tipo_ajuste_id" />
-            </Principal>
-            <Dependent Role="venta">
-              <PropertyRef Name="tipo_ajuste_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_venta_usuario">
           <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
           <End Role="venta" Type="Self.venta" Multiplicity="*" />
@@ -367,6 +364,7 @@
           <EntitySet Name="perfil" EntityType="Self.perfil" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="producto" EntityType="Self.producto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="proveedor" EntityType="Self.proveedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tipo_ajuste" EntityType="Self.tipo_ajuste" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="venta" EntityType="Self.venta" Schema="dbo" store:Type="Tables" />
@@ -424,10 +422,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_venta_metodo_pago" Association="Self.FK_venta_metodo_pago">
             <End Role="metodo_pago" EntitySet="metodo_pago" />
-            <End Role="venta" EntitySet="venta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_venta_tipo_ajuste" Association="Self.FK_venta_tipo_ajuste">
-            <End Role="tipo_ajuste" EntitySet="tipo_ajuste" />
             <End Role="venta" EntitySet="venta" />
           </AssociationSet>
           <AssociationSet Name="FK_venta_usuario" Association="Self.FK_venta_usuario">
@@ -666,14 +660,11 @@
             <End Role="metodo_pago" EntitySet="metodo_pago" />
             <End Role="venta" EntitySet="venta" />
           </AssociationSet>
-          <AssociationSet Name="FK_venta_tipo_ajuste" Association="db_sistema_gestion_ventas_electronicosModel.FK_venta_tipo_ajuste">
-            <End Role="tipo_ajuste" EntitySet="tipo_ajuste" />
-            <End Role="venta" EntitySet="venta" />
-          </AssociationSet>
           <AssociationSet Name="FK_venta_usuario" Association="db_sistema_gestion_ventas_electronicosModel.FK_venta_usuario">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="venta" EntitySet="venta" />
           </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="db_sistema_gestion_ventas_electronicosModel.sysdiagrams" />
         </EntityContainer>
         <EntityType Name="compra">
           <Key>
@@ -796,7 +787,6 @@
           <Property Name="tipo_ajuste_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="metodo_pago" Relationship="db_sistema_gestion_ventas_electronicosModel.FK_metodo_pago_tipo_ajuste" FromRole="tipo_ajuste" ToRole="metodo_pago" />
-          <NavigationProperty Name="venta" Relationship="db_sistema_gestion_ventas_electronicosModel.FK_venta_tipo_ajuste" FromRole="tipo_ajuste" ToRole="venta" />
         </EntityType>
         <EntityType Name="venta">
           <Key>
@@ -810,11 +800,9 @@
           <Property Name="usuario_id" Type="Int32" Nullable="false" />
           <Property Name="metodo_pago_id" Type="Int32" Nullable="false" />
           <Property Name="cliente_id" Type="Int32" Nullable="false" />
-          <Property Name="tipo_ajuste_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="cliente" Relationship="db_sistema_gestion_ventas_electronicosModel.FK_venta_cliente" FromRole="venta" ToRole="cliente" />
           <NavigationProperty Name="detalle_venta" Relationship="db_sistema_gestion_ventas_electronicosModel.FK_detalle_venta_venta" FromRole="venta" ToRole="detalle_venta" />
           <NavigationProperty Name="metodo_pago" Relationship="db_sistema_gestion_ventas_electronicosModel.FK_venta_metodo_pago" FromRole="venta" ToRole="metodo_pago" />
-          <NavigationProperty Name="tipo_ajuste" Relationship="db_sistema_gestion_ventas_electronicosModel.FK_venta_tipo_ajuste" FromRole="venta" ToRole="tipo_ajuste" />
           <NavigationProperty Name="usuario" Relationship="db_sistema_gestion_ventas_electronicosModel.FK_venta_usuario" FromRole="venta" ToRole="usuario" />
         </EntityType>
         <Association Name="FK_venta_cliente">
@@ -877,18 +865,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_venta_tipo_ajuste">
-          <End Type="db_sistema_gestion_ventas_electronicosModel.tipo_ajuste" Role="tipo_ajuste" Multiplicity="1" />
-          <End Type="db_sistema_gestion_ventas_electronicosModel.venta" Role="venta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tipo_ajuste">
-              <PropertyRef Name="tipo_ajuste_id" />
-            </Principal>
-            <Dependent Role="venta">
-              <PropertyRef Name="tipo_ajuste_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_venta_usuario">
           <End Type="db_sistema_gestion_ventas_electronicosModel.usuario" Role="usuario" Multiplicity="1" />
           <End Type="db_sistema_gestion_ventas_electronicosModel.venta" Role="venta" Multiplicity="*" />
@@ -901,6 +877,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1062,7 +1048,6 @@
           <EntitySetMapping Name="venta">
             <EntityTypeMapping TypeName="db_sistema_gestion_ventas_electronicosModel.venta">
               <MappingFragment StoreEntitySet="venta">
-                <ScalarProperty Name="tipo_ajuste_id" ColumnName="tipo_ajuste_id" />
                 <ScalarProperty Name="cliente_id" ColumnName="cliente_id" />
                 <ScalarProperty Name="metodo_pago_id" ColumnName="metodo_pago_id" />
                 <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
@@ -1071,6 +1056,17 @@
                 <ScalarProperty Name="fecha_venta" ColumnName="fecha_venta" />
                 <ScalarProperty Name="nro_venta" ColumnName="nro_venta" />
                 <ScalarProperty Name="venta_id" ColumnName="venta_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="db_sistema_gestion_ventas_electronicosModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

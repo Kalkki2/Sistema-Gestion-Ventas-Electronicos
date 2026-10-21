@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaNegocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -39,6 +40,7 @@ namespace CapaPresentacion.Vendedor
         {
             System.Globalization.CultureInfo cultura = new System.Globalization.CultureInfo("es-ES");
             lblFecha.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy", cultura);
+            CargarMisVentas();
         }
 
         private void txtBuscarCliente_Validating(object sender, CancelEventArgs e)
@@ -56,6 +58,33 @@ namespace CapaPresentacion.Vendedor
             else
             {
                 errorProvider1.SetError(txtBuscarClienteDni, "");
+            }
+        }
+
+        private void CargarMisVentas()
+        {
+            dgvMisVentas.AutoGenerateColumns = false;
+
+            // Mapeamos las columnas del DataGridView con las propiedades de EVenta
+            // (Nota: Como este formulario es solo para el vendedor, no hace falta mostrar su propio DNI/nombre en cada fila, 
+            // pero sí el cliente, método de pago, fecha y total)
+            dgvMisVentas.Columns["colNroVenta"].DataPropertyName = "nro_venta";
+            dgvMisVentas.Columns["colDniCliente"].DataPropertyName = "DniCliente";
+            dgvMisVentas.Columns["colCliente"].DataPropertyName = "NombreCliente";
+            dgvMisVentas.Columns["colMetodoPago"].DataPropertyName = "NombreMetodoPago";
+            dgvMisVentas.Columns["colTipoAjuste"].DataPropertyName = "NombreTipoAjuste";
+            dgvMisVentas.Columns["colFechaVenta"].DataPropertyName = "fecha_venta";
+            dgvMisVentas.Columns["colTotal"].DataPropertyName = "SubtotalVenta";
+
+            CNVenta objCNVenta = new CNVenta();
+
+            // Validamos que haya un usuario logueado y filtramos por su ID
+            if (SesionActual.UsuarioLogueado != null)
+            {
+                int idVendedorActual = SesionActual.UsuarioLogueado.usuario_id;
+
+                // Llamamos al método filtrado por el ID del vendedor
+                dgvMisVentas.DataSource = objCNVenta.ListarHistorialVentasPorUsuario(idVendedorActual);
             }
         }
     }

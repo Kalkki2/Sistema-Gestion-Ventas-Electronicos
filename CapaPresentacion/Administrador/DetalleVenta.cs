@@ -23,7 +23,6 @@ namespace CapaPresentacion.Administrador
 
         private void DetalleVenta_Load(object sender, EventArgs e)
         {
-            // 1. Cargar los datos de la cabecera en los Labels correspondientes
             lblValorNroVenta.Text = _venta.nro_venta;
             lblValorFechaHora.Text = _venta.fecha_venta.ToString("dd/MM/yyyy HH:mm:ss");
 
@@ -73,17 +72,23 @@ namespace CapaPresentacion.Administrador
 
             // Obtenemos los valores congelados que se guardaron en la venta
             decimal porcentaje = _venta.porcentaje_aplicado; // Ej: 10.00
+
+            // CORREGIDO: Se agregó el operador de multiplicación (*)
             decimal montoAjuste = (totalBruto * porcentaje) / 100;
             decimal totalFinal = totalBruto;
 
-            // Evaluamos el tipo de ajuste (1: Recargo, 2: Descuento, 3: Sin ajuste)
-            if (_venta.tipo_ajuste_id == 2) // Descuento
+            // Evaluamos el tipo de ajuste a través del objeto método de pago relacionado
+            string tipoAjusteNombre = _venta.NombreTipoAjuste; // O puedes evaluar _venta.oMetodoPago.tipo_ajuste_id
+
+            if (tipoAjusteNombre == "Descuento" || (_venta.oMetodoPago != null && _venta.oMetodoPago.tipo_ajuste_id == 2))
             {
                 lblTextoAjuste.Text = $"Ajuste Descuento %{porcentaje:0.##}";
                 lblMontoAjuste.Text = $"- $ {montoAjuste:N2}";
+
+                // CORREGIDO: Se agregó el operador de resta (-)
                 totalFinal = totalBruto - montoAjuste;
             }
-            else if (_venta.tipo_ajuste_id == 1) // Recargo
+            else if (tipoAjusteNombre == "Recargo" || (_venta.oMetodoPago != null && _venta.oMetodoPago.tipo_ajuste_id == 1))
             {
                 lblTextoAjuste.Text = $"Ajuste Recargo %{porcentaje:0.##}";
                 lblMontoAjuste.Text = $"+ $ {montoAjuste:N2}";

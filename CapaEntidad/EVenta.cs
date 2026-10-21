@@ -17,9 +17,9 @@ namespace CapaEntidad
         public int usuario_id { get; set; }
         public int metodo_pago_id { get; set; }
         public int cliente_id { get; set; }
-        public int tipo_ajuste_id { get; set; }
+        // (Ya no va tipo_ajuste_id aquí)
 
-        // --- PROPIEDADES PLANAS PARA MOSTRAR EN EL DATAGRIDVIEW ---
+        // Propiedades planas
         public string DniUsuario => oUsuario != null ? oUsuario.dni : string.Empty;
         public string NombreComprador => oUsuario != null ? $"{oUsuario.apellido}, {oUsuario.nombre}" : string.Empty;
 
@@ -27,21 +27,17 @@ namespace CapaEntidad
         public string DniCliente => oCliente != null ? oCliente.dni : string.Empty;
 
         public string NombreMetodoPago => oMetodoPago != null ? oMetodoPago.nombre : string.Empty;
-        public string NombreTipoAjuste => oTipoAjuste != null ? oTipoAjuste.nombre : string.Empty;
+
+        // AHORA EL TIPO DE AJUSTE SE OBTIENE A TRAVÉS DEL MÉTODO DE PAGO:
+        public string NombreTipoAjuste => (oMetodoPago != null && oMetodoPago.oTipoAjuste != null) ? oMetodoPago.oTipoAjuste.nombre : string.Empty;
 
         public string EstadoTexto => estado == 1 ? "Completada" : "Anulada";
 
-        // Cálculo automático del Total de la venta basado en sus detalles
         public decimal SubtotalVenta => oDetalleVenta != null ? oDetalleVenta.Sum(d => d.SubtotalFila) : 0;
 
-        // Si quisieras calcular el total aplicando el recargo o descuento del método de pago de forma automática:
-        // (O puedes calcularlo en la lógica de negocio/interfaz)
-
-        // Objetos de relación
         public EUsuario oUsuario { get; set; }
         public ECliente oCliente { get; set; }
         public EMetodoPago oMetodoPago { get; set; }
-        public ETipoAjuste oTipoAjuste { get; set; }
         public List<EDetalleVenta> oDetalleVenta { get; set; }
     }
 }

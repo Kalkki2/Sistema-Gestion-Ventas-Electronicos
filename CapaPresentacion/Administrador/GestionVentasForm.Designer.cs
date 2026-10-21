@@ -67,9 +67,9 @@
             this.label13 = new System.Windows.Forms.Label();
             this.txtPorcentajeAjuste = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
-            this.guna2ComboBox2 = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.cmbTipoAjuste = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.cmbMetodoPago = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.colNroVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -521,9 +521,9 @@
             this.guna2ShadowPanel1.Controls.Add(this.label13);
             this.guna2ShadowPanel1.Controls.Add(this.txtPorcentajeAjuste);
             this.guna2ShadowPanel1.Controls.Add(this.label10);
-            this.guna2ShadowPanel1.Controls.Add(this.guna2ComboBox2);
+            this.guna2ShadowPanel1.Controls.Add(this.cmbTipoAjuste);
             this.guna2ShadowPanel1.Controls.Add(this.label3);
-            this.guna2ShadowPanel1.Controls.Add(this.guna2ComboBox1);
+            this.guna2ShadowPanel1.Controls.Add(this.cmbMetodoPago);
             this.guna2ShadowPanel1.Controls.Add(this.label12);
             this.guna2ShadowPanel1.Controls.Add(this.label14);
             this.guna2ShadowPanel1.FillColor = System.Drawing.Color.White;
@@ -603,27 +603,27 @@
             this.label10.TabIndex = 25;
             this.label10.Text = "Porcentaje(%)";
             // 
-            // guna2ComboBox2
+            // cmbTipoAjuste
             // 
-            this.guna2ComboBox2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ComboBox2.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2ComboBox2.BorderRadius = 5;
-            this.guna2ComboBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.guna2ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.guna2ComboBox2.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox2.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.guna2ComboBox2.ForeColor = System.Drawing.Color.Black;
-            this.guna2ComboBox2.ItemHeight = 21;
-            this.guna2ComboBox2.Items.AddRange(new object[] {
+            this.cmbTipoAjuste.BackColor = System.Drawing.Color.Transparent;
+            this.cmbTipoAjuste.BorderColor = System.Drawing.Color.DarkGray;
+            this.cmbTipoAjuste.BorderRadius = 5;
+            this.cmbTipoAjuste.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbTipoAjuste.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTipoAjuste.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbTipoAjuste.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbTipoAjuste.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.cmbTipoAjuste.ForeColor = System.Drawing.Color.Black;
+            this.cmbTipoAjuste.ItemHeight = 21;
+            this.cmbTipoAjuste.Items.AddRange(new object[] {
             "Descuento",
             "Recargo",
             "Sin Ajuste"});
-            this.guna2ComboBox2.Location = new System.Drawing.Point(142, 84);
-            this.guna2ComboBox2.Name = "guna2ComboBox2";
-            this.guna2ComboBox2.Size = new System.Drawing.Size(118, 27);
-            this.guna2ComboBox2.StartIndex = 0;
-            this.guna2ComboBox2.TabIndex = 24;
+            this.cmbTipoAjuste.Location = new System.Drawing.Point(142, 84);
+            this.cmbTipoAjuste.Name = "cmbTipoAjuste";
+            this.cmbTipoAjuste.Size = new System.Drawing.Size(118, 27);
+            this.cmbTipoAjuste.StartIndex = 0;
+            this.cmbTipoAjuste.TabIndex = 24;
             // 
             // label3
             // 
@@ -636,27 +636,28 @@
             this.label3.TabIndex = 23;
             this.label3.Text = "Tipo Ajuste";
             // 
-            // guna2ComboBox1
+            // cmbMetodoPago
             // 
-            this.guna2ComboBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ComboBox1.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2ComboBox1.BorderRadius = 5;
-            this.guna2ComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.guna2ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.guna2ComboBox1.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.guna2ComboBox1.ForeColor = System.Drawing.Color.Black;
-            this.guna2ComboBox1.ItemHeight = 21;
-            this.guna2ComboBox1.Items.AddRange(new object[] {
+            this.cmbMetodoPago.BackColor = System.Drawing.Color.Transparent;
+            this.cmbMetodoPago.BorderColor = System.Drawing.Color.DarkGray;
+            this.cmbMetodoPago.BorderRadius = 5;
+            this.cmbMetodoPago.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbMetodoPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMetodoPago.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbMetodoPago.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbMetodoPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.cmbMetodoPago.ForeColor = System.Drawing.Color.Black;
+            this.cmbMetodoPago.ItemHeight = 21;
+            this.cmbMetodoPago.Items.AddRange(new object[] {
             "Efectivo",
             "Transferencia",
             "Tarjeta"});
-            this.guna2ComboBox1.Location = new System.Drawing.Point(17, 84);
-            this.guna2ComboBox1.Name = "guna2ComboBox1";
-            this.guna2ComboBox1.Size = new System.Drawing.Size(118, 27);
-            this.guna2ComboBox1.StartIndex = 0;
-            this.guna2ComboBox1.TabIndex = 22;
+            this.cmbMetodoPago.Location = new System.Drawing.Point(17, 84);
+            this.cmbMetodoPago.Name = "cmbMetodoPago";
+            this.cmbMetodoPago.Size = new System.Drawing.Size(118, 27);
+            this.cmbMetodoPago.StartIndex = 0;
+            this.cmbMetodoPago.TabIndex = 22;
+            this.cmbMetodoPago.SelectedIndexChanged += new System.EventHandler(this.cmbMetodoPago_SelectedIndexChanged);
             // 
             // label12
             // 
@@ -684,6 +685,7 @@
             // 
             this.colNroVenta.HeaderText = "Nro Venta";
             this.colNroVenta.Name = "colNroVenta";
+            this.colNroVenta.Visible = false;
             // 
             // colDniCliente
             // 
@@ -798,10 +800,10 @@
         private System.Windows.Forms.Label lblFiltrarMetodoPago;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel1;
-        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbMetodoPago;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label14;
-        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox2;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbTipoAjuste;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label10;
         private Guna.UI2.WinForms.Guna2Button btnAplicarAjusteFormaPago;

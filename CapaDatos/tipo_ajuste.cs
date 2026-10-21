@@ -18,7 +18,6 @@ namespace CapaDatos
         public tipo_ajuste()
         {
             this.metodo_pago = new HashSet<metodo_pago>();
-            this.venta = new HashSet<venta>();
         }
     
         public int tipo_ajuste_id { get; set; }
@@ -26,7 +25,5 @@ namespace CapaDatos
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<metodo_pago> metodo_pago { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<venta> venta { get; set; }
     }
 }

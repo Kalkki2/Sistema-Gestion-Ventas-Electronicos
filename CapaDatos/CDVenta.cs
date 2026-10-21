@@ -29,7 +29,8 @@ namespace CapaDatos
                                 return false;
                             }
 
-                            // 2. Registrar la Cabecera de la Venta (con los datos congelados del pago y ajuste)
+                            // 2. Registrar la Cabecera de la Venta 
+                            // (Ya no incluimos tipo_ajuste_id porque ahora se hereda del método de pago)
                             venta nuevaVenta = new venta
                             {
                                 nro_venta = objVenta.nro_venta,
@@ -38,8 +39,7 @@ namespace CapaDatos
                                 estado = objVenta.estado,
                                 usuario_id = objVenta.usuario_id,
                                 metodo_pago_id = objVenta.metodo_pago_id,
-                                cliente_id = objVenta.cliente_id,
-                                tipo_ajuste_id = objVenta.tipo_ajuste_id
+                                cliente_id = objVenta.cliente_id
                             };
 
                             db.venta.Add(nuevaVenta);
@@ -111,7 +111,6 @@ namespace CapaDatos
                             join u in db.usuario on v.usuario_id equals u.usuario_id
                             join c in db.cliente on v.cliente_id equals c.cliente_id
                             join mp in db.metodo_pago on v.metodo_pago_id equals mp.metodo_pago_id
-                            join ta in db.tipo_ajuste on v.tipo_ajuste_id equals ta.tipo_ajuste_id
                             orderby v.fecha_venta descending // Las ventas más recientes primero
                             select new EVenta()
                             {
@@ -123,7 +122,6 @@ namespace CapaDatos
                                 usuario_id = v.usuario_id,
                                 metodo_pago_id = v.metodo_pago_id,
                                 cliente_id = v.cliente_id,
-                                tipo_ajuste_id = v.tipo_ajuste_id,
 
                                 // Mapeo de objetos relacionados
                                 oUsuario = new EUsuario()
@@ -143,13 +141,17 @@ namespace CapaDatos
                                 oMetodoPago = new EMetodoPago()
                                 {
                                     metodo_pago_id = mp.metodo_pago_id,
-                                    nombre = mp.nombre
+                                    nombre = mp.nombre,
+                                    porcentaje = mp.porcentaje,
+                                    tipo_ajuste_id = mp.tipo_ajuste_id,
+                                    // Mapeamos el tipo de ajuste a través del método de pago
+                                    oTipoAjuste = new ETipoAjuste()
+                                    {
+                                        tipo_ajuste_id = mp.tipo_ajuste.tipo_ajuste_id,
+                                        nombre = mp.tipo_ajuste.nombre
+                                    }
                                 },
-                                oTipoAjuste = new ETipoAjuste()
-                                {
-                                    tipo_ajuste_id = ta.tipo_ajuste_id,
-                                    nombre = ta.nombre
-                                },
+
                                 // Mapeo de los detalles para poder calcular el subtotal/total en la grilla
                                 oDetalleVenta = db.detalle_venta
                                     .Where(d => d.venta_id == v.venta_id)
@@ -185,6 +187,69 @@ namespace CapaDatos
                                     codigo = p.codigo,
                                     nombre = p.nombre
                                 }
+                            };
+
+                return query.ToList();
+            }
+        }
+
+        public List<EVenta> ListarHistorialVentasPorUsuario(int usuarioId)
+        {
+            using (var db = new db_sistema_gestion_ventas_electronicosEntities())
+            {
+                var query = from v in db.venta
+                            join u in db.usuario on v.usuario_id equals u.usuario_id
+                            join c in db.cliente on v.cliente_id equals c.cliente_id
+                            join mp in db.metodo_pago on v.metodo_pago_id equals mp.metodo_pago_id
+                            where v.usuario_id == usuarioId // <--- FILTEAMOS SOLO LAS VENTAS DE ESTE USUARIO
+                            orderby v.fecha_venta descending
+                            select new EVenta()
+                            {
+                                venta_id = v.venta_id,
+                                nro_venta = v.nro_venta,
+                                fecha_venta = v.fecha_venta,
+                                porcentaje_aplicado = v.porcentaje_aplicado,
+                                estado = v.estado,
+                                usuario_id = v.usuario_id,
+                                metodo_pago_id = v.metodo_pago_id,
+                                cliente_id = v.cliente_id,
+
+                                oUsuario = new EUsuario()
+                                {
+                                    usuario_id = u.usuario_id,
+                                    nombre = u.nombre,
+                                    apellido = u.apellido,
+                                    dni = u.dni
+                                },
+                                oCliente = new ECliente()
+                                {
+                                    cliente_id = c.cliente_id,
+                                    nombre = c.nombre,
+                                    apellido = c.apellido,
+                                    dni = c.dni
+                                },
+                                oMetodoPago = new EMetodoPago()
+                                {
+                                    metodo_pago_id = mp.metodo_pago_id,
+                                    nombre = mp.nombre,
+                                    porcentaje = mp.porcentaje,
+                                    tipo_ajuste_id = mp.tipo_ajuste_id,
+                                    // Mapeamos el tipo de ajuste a través del método de pago
+                                    oTipoAjuste = new ETipoAjuste()
+                                    {
+                                        tipo_ajuste_id = mp.tipo_ajuste.tipo_ajuste_id,
+                                        nombre = mp.tipo_ajuste.nombre
+                                    }
+                                },
+
+                                oDetalleVenta = db.detalle_venta
+                                    .Where(d => d.venta_id == v.venta_id)
+                                    .Select(d => new EDetalleVenta()
+                                    {
+                                        producto_id = d.producto_id,
+                                        cantidad = d.cantidad,
+                                        precio_unitario = d.precio_unitario
+                                    }).ToList()
                             };
 
                 return query.ToList();

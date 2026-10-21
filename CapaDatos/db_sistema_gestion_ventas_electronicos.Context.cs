@@ -39,5 +39,6 @@ namespace CapaDatos
         public virtual DbSet<metodo_pago> metodo_pago { get; set; }
         public virtual DbSet<tipo_ajuste> tipo_ajuste { get; set; }
         public virtual DbSet<venta> venta { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }
