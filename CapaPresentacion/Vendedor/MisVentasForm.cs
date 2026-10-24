@@ -83,7 +83,12 @@ namespace CapaPresentacion.Vendedor
             {
                 int idVendedorActual = SesionActual.UsuarioLogueado.usuario_id;
 
-                // Llamamos al método filtrado por el ID del vendedor
+                // Llamamos al método
+                var lista = objCNVenta.ListarHistorialVentasPorUsuario(idVendedorActual);
+
+
+
+                // Asignamos los datos a la grilla
                 dgvMisVentas.DataSource = objCNVenta.ListarHistorialVentasPorUsuario(idVendedorActual);
             }
         }

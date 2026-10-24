@@ -15,12 +15,15 @@ namespace CapaPresentacion.Vendedor
 {
     public partial class ClientesForm : Form
     {
-        private readonly CNUsuario objCNUsuario = new CNUsuario();
+        private readonly CNCliente objCNCliente = new CNCliente();
+
+        // Id del cliente que se está editando (0 = no se está editando ninguno)
+        private int clienteSeleccionadoId = 0;
 
         public ClientesForm()
         {
             InitializeComponent();
-            
+            dgvListaClientes.CellContentClick += dgvListaClientes_CellContentClick;
         }
 
         private void dgvListaCompras_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -36,19 +39,57 @@ namespace CapaPresentacion.Vendedor
                     DialogResult resultado = modal.ShowDialog();
                 }
             }
-    }
+        }
 
-        
+        // Botón Editar de la grilla de clientes: pasa los datos del cliente al formulario
+        private void dgvListaClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            if (dgvListaClientes.Columns[e.ColumnIndex].Name != "colEditar") return;
+
+            ECliente cliente = dgvListaClientes.Rows[e.RowIndex].DataBoundItem as ECliente;
+            if (cliente == null) return;
+
+            clienteSeleccionadoId = cliente.cliente_id;
+            txtNombre.Text = cliente.nombre;
+            txtApellido.Text = cliente.apellido;
+            txtDni.Text = cliente.dni;
+            txtTelefono.Text = cliente.telefono;
+            txtDireccion.Text = cliente.direccion;
+            txtCorreo.Text = cliente.email;
+
+            // Se limpian los avisos de error que pudieran haber quedado de antes
+            errorProvider1.SetError(txtNombre, "");
+            errorProvider1.SetError(txtApellido, "");
+            errorProvider1.SetError(txtDni, "");
+            errorProvider1.SetError(txtTelefono, "");
+            errorProvider1.SetError(txtDireccion, "");
+            errorProvider1.SetError(txtCorreo, "");
+
+            txtNombre.Focus();
+        }
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
-           
+            CargarGrillaClientes(txtBuscarCliente.Text.Trim());
+        }
+
+        // Busca mientras se escribe
+        private void txtBuscarCliente_TextChanged(object sender, EventArgs e)
+        {
+            CargarGrillaClientes(txtBuscarCliente.Text.Trim());
         }
 
 
 
         private void btnRegistrarCliente_Click(object sender, EventArgs e)
         {
+            if (clienteSeleccionadoId != 0)
+            {
+                MessageBox.Show("Está editando un cliente. Use el botón Actualizar para guardar los cambios o Cancelar para salir de la edición.", "Edición en curso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             if (!string.IsNullOrEmpty(errorProvider1.GetError(txtCorreo)) ||
         !string.IsNullOrEmpty(errorProvider1.GetError(txtNombre)) ||
         !string.IsNullOrEmpty(errorProvider1.GetError(txtApellido)) ||
@@ -81,8 +122,8 @@ namespace CapaPresentacion.Vendedor
 
             try
             {
-                // 3. Crear el objeto usuario/cliente con los datos de los TextBox
-                EUsuario objCliente = new EUsuario();
+                // 3. Crear el objeto cliente con los datos de los TextBox
+                ECliente objCliente = new ECliente();
                 objCliente.nombre = txtNombre.Text.Trim();
                 objCliente.apellido = txtApellido.Text.Trim();
                 objCliente.dni = txtDni.Text.Trim();
@@ -90,18 +131,15 @@ namespace CapaPresentacion.Vendedor
                 objCliente.direccion = txtDireccion.Text.Trim();
                 objCliente.email = txtCorreo.Text.Trim();
 
-                // NUEVO: Asignar los campos obligatorios que CNUsuario exige por validación
-                objCliente.contrasenia = "123456"; // Contraseña temporal por defecto
-                objCliente.perfil_id = 2;          // ID de perfil correspondiente a clientes (ajústalo si tu BD usa otro número)
-
-                // 4. Guardar usando la clase de negocio de usuarios
+                // 4. Guardar usando la clase de negocio de clientes (tabla cliente)
                 string mensaje;
-                bool operacionExitosa = objCNUsuario.Registrar(objCliente, out mensaje);
+                bool operacionExitosa = objCNCliente.Registrar(objCliente, out mensaje);
 
                 if (operacionExitosa)
                 {
                     MessageBox.Show("El cliente se registró con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    CargarGrillaClientes(); // Refresca la grilla de la izquierda
+                    CargarGrillaClientes(txtBuscarCliente.Text.Trim()); // Refresca la grilla de la izquierda
+                    LimpiarCampos();                                    // Solo se limpia si se guardó bien
                 }
                 else
                 {
@@ -112,24 +150,20 @@ namespace CapaPresentacion.Vendedor
             {
                 MessageBox.Show("Ocurrió un error inesperado: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally
-            {
-                LimpiarCampos();
-            }
         }
-        
-        
-        
-        
+
+
+
+
 
         //  Limpia los campos para un nuevo ingreso
-       
 
-        private void CargarGrillaClientes()
+
+        private void CargarGrillaClientes(string filtro = "")
         {
             dgvListaClientes.AutoGenerateColumns = false;
 
-            colNroCliente.DataPropertyName = "usuario_id";
+            colNroCliente.DataPropertyName = "cliente_id";
             colDni.DataPropertyName = "dni";
             colNombre.DataPropertyName = "nombre";
             colApellido.DataPropertyName = "apellido";
@@ -137,9 +171,10 @@ namespace CapaPresentacion.Vendedor
             colTelefono.DataPropertyName = "telefono";
             colDireccion.DataPropertyName = "direccion";
 
-            dgvListaClientes.DataSource = objCNUsuario.Listar();
+            dgvListaClientes.DataSource = null;
+            dgvListaClientes.DataSource = objCNCliente.Listar(filtro);
         }
-        
+
         private void LimpiarCampos()
         {
             txtNombre.Clear();
@@ -149,6 +184,7 @@ namespace CapaPresentacion.Vendedor
             txtDireccion.Clear();
             txtCorreo.Clear();
 
+            clienteSeleccionadoId = 0; // Sale del modo edición
 
             txtNombre.Focus(); // Regresa el cursor al primer campo
         }
@@ -169,85 +205,86 @@ namespace CapaPresentacion.Vendedor
             }
         }
 
-       /* private void txtApellido_Validating(object sender, CancelEventArgs e)
-        {
-            if (!Regex.IsMatch(txtApellido.Text, "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$"))
-            {
-                errorProvider1.SetError(txtApellido, "El apellido solo debe contener letras.");
-            }
-            else if (txtApellido.Text.Length < 3 || txtApellido.Text.Length > 40)
-            {
-                errorProvider1.SetError(txtApellido, "El apellido  debe tener entre 3 y 40 caracteres.");
-            }
-            else
-            {
-                errorProvider1.SetError(txtApellido, "");
-            }
-        }
+        /* private void txtApellido_Validating(object sender, CancelEventArgs e)
+         {
+             if (!Regex.IsMatch(txtApellido.Text, "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$"))
+             {
+                 errorProvider1.SetError(txtApellido, "El apellido solo debe contener letras.");
+             }
+             else if (txtApellido.Text.Length < 3 || txtApellido.Text.Length > 40)
+             {
+                 errorProvider1.SetError(txtApellido, "El apellido  debe tener entre 3 y 40 caracteres.");
+             }
+             else
+             {
+                 errorProvider1.SetError(txtApellido, "");
+             }
+         }
 
-        private void txtDni_Validating(object sender, CancelEventArgs e)
-        {
-            string cuit = txtDni.Text.Trim();
+         private void txtDni_Validating(object sender, CancelEventArgs e)
+         {
+             string cuit = txtDni.Text.Trim();
 
-            if (!ulong.TryParse(cuit, out _))
-            {
-                errorProvider1.SetError(txtDni, "El DNI solo debe contener números.");
-            }
-            else if (cuit.Length != 8)
-            {
-                errorProvider1.SetError(txtDni, "El DNI debe tener exactamente 8 dígitos.");
-            }
-            else
-            {
-                errorProvider1.SetError(txtDni, "");
-            }
-        }
+             if (!ulong.TryParse(cuit, out _))
+             {
+                 errorProvider1.SetError(txtDni, "El DNI solo debe contener números.");
+             }
+             else if (cuit.Length != 8)
+             {
+                 errorProvider1.SetError(txtDni, "El DNI debe tener exactamente 8 dígitos.");
+             }
+             else
+             {
+                 errorProvider1.SetError(txtDni, "");
+             }
+         }
 
-        private void txtTelefono_Validating(object sender, CancelEventArgs e)
-        {
-            string telefono = txtTelefono.Text.Trim();
+         private void txtTelefono_Validating(object sender, CancelEventArgs e)
+         {
+             string telefono = txtTelefono.Text.Trim();
 
-            if (!ulong.TryParse(telefono, out _))
-            {
-                errorProvider1.SetError(txtTelefono, "El TELEFONO solo debe contener números.");
-            }
-            else if (telefono.Length != 10)
-            {
-                errorProvider1.SetError(txtTelefono, "El TELEFONO debe tener exactamente 10 dígitos.");
-            }
-            else
-            {
-                errorProvider1.SetError(txtTelefono, "");
-            }
-        }
+             if (!ulong.TryParse(telefono, out _))
+             {
+                 errorProvider1.SetError(txtTelefono, "El TELEFONO solo debe contener números.");
+             }
+             else if (telefono.Length != 10)
+             {
+                 errorProvider1.SetError(txtTelefono, "El TELEFONO debe tener exactamente 10 dígitos.");
+             }
+             else
+             {
+                 errorProvider1.SetError(txtTelefono, "");
+             }
+         }
 
-        private void txtDireccion_Validating(object sender, CancelEventArgs e)
-        {
-            if (!Regex.IsMatch(txtDireccion.Text, "^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\\s]+$"))
-            {
-                errorProvider1.SetError(txtDireccion, "La dirección solo debe contener letras y números.");
-            }
-            else if (txtDireccion.Text.Length < 3 || txtDireccion.Text.Length > 40)
-            {
-                errorProvider1.SetError(txtDireccion, "La dirección debe tener entre 3 y 40 caracteres.");
-            }
-            else
-            {
-                errorProvider1.SetError(txtDireccion, "");
-            }
-        }*/
+         private void txtDireccion_Validating(object sender, CancelEventArgs e)
+         {
+             if (!Regex.IsMatch(txtDireccion.Text, "^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\\s]+$"))
+             {
+                 errorProvider1.SetError(txtDireccion, "La dirección solo debe contener letras y números.");
+             }
+             else if (txtDireccion.Text.Length < 3 || txtDireccion.Text.Length > 40)
+             {
+                 errorProvider1.SetError(txtDireccion, "La dirección debe tener entre 3 y 40 caracteres.");
+             }
+             else
+             {
+                 errorProvider1.SetError(txtDireccion, "");
+             }
+         }*/
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
 
-            txtNombre.Focus(); 
+            txtNombre.Focus();
         }
 
         private void ClientesForm_Load(object sender, EventArgs e)
         {
             System.Globalization.CultureInfo cultura = new System.Globalization.CultureInfo("es-ES");
             lblFecha.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy", cultura);
+            CargarGrillaClientes();
         }
 
         private void txtCorreo_Validating(object sender, CancelEventArgs e)
@@ -264,20 +301,27 @@ namespace CapaPresentacion.Vendedor
             }
         }
 
+        // Guarda los cambios del cliente elegido con el botón Editar
         private void btnActualizar_Click(object sender, EventArgs e)
         {
+            if (clienteSeleccionadoId == 0)
+            {
+                MessageBox.Show("Primero elija un cliente con el botón Editar de la lista.", "Sin cliente elegido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             // Valida que los TextBox no estén vacíos
             if (!string.IsNullOrEmpty(errorProvider1.GetError(txtNombre)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtApellido)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtDni)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtCorreo)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtDireccion)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtTelefono))
                 || string.IsNullOrWhiteSpace(txtCorreo.Text) || string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtApellido.Text) || string.IsNullOrWhiteSpace(txtDni.Text) ||
                 string.IsNullOrWhiteSpace(txtTelefono.Text) || string.IsNullOrWhiteSpace(txtDireccion.Text))
             {
-                MessageBox.Show("Hay campos con errores o vacíos. Corríjalos antes de agregar.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Hay campos con errores o vacíos. Corríjalos antes de actualizar.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             // Confirmación del usuario antes de guardar
             DialogResult respuesta = MessageBox.Show(
-                "¿Está seguro de que desea actualizar este nuevo cliente?",
+                "¿Está seguro de que desea actualizar los datos de este cliente?",
                 "Confirmar actualizacion",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question
@@ -289,11 +333,37 @@ namespace CapaPresentacion.Vendedor
                 return;
             }
 
-            // Mensaje de éxito
-            MessageBox.Show("El cliente se actualizo con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                ECliente objCliente = new ECliente
+                {
+                    cliente_id = clienteSeleccionadoId,
+                    nombre = txtNombre.Text.Trim(),
+                    apellido = txtApellido.Text.Trim(),
+                    dni = txtDni.Text.Trim(),
+                    telefono = txtTelefono.Text.Trim(),
+                    direccion = txtDireccion.Text.Trim(),
+                    email = txtCorreo.Text.Trim()
+                };
 
-            //  Limpia los campos para un nuevo ingreso
-            LimpiarCampos();
+                string mensaje;
+                bool operacionExitosa = objCNCliente.Editar(objCliente, out mensaje);
+
+                if (operacionExitosa)
+                {
+                    MessageBox.Show("El cliente se actualizó con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarGrillaClientes(txtBuscarCliente.Text.Trim());
+                    LimpiarCampos(); // Limpia los campos y sale del modo edición
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo actualizar: " + mensaje, "Error de actualización", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error inesperado: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void txtNombre_TextChanged(object sender, EventArgs e)
@@ -304,16 +374,16 @@ namespace CapaPresentacion.Vendedor
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
         {
             /* Permite letras, espacios y la tecla de borrar(BackSpace)*/
-             if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
             {
-                e.Handled = true; 
+                e.Handled = true;
             }
         }
 
         private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
         {
             /* Permite letras, espacios y la tecla de borrar(BackSpace)*/
-             if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -326,12 +396,12 @@ namespace CapaPresentacion.Vendedor
 
         private void txtDireccion_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
+
             if (!char.IsLetter(e.KeyChar) && !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
             {
                 e.Handled = true;
             }
-        
+
         }
 
         private void txtDni_KeyPress(object sender, KeyPressEventArgs e)
