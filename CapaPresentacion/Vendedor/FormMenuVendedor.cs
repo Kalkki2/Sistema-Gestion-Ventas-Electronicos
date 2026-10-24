@@ -77,5 +77,10 @@ namespace CapaPresentacion.Vendedor
                 this.Close();
             }
         }
+
+        private void FormMenuVendedor_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

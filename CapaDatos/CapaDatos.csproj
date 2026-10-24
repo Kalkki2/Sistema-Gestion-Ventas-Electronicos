@@ -59,6 +59,7 @@
     <Compile Include="categoria_marca.cs">
       <DependentUpon>db_sistema_gestion_ventas_electronicos.tt</DependentUpon>
     </Compile>
+    <Compile Include="CDCliente.cs" />
     <Compile Include="CDCompra.cs" />
     <Compile Include="CDMetodoPago.cs" />
     <Compile Include="CDPerfil.cs" />
