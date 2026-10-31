@@ -15,11 +15,28 @@ namespace CapaPresentacion.Administrador
 {
     public partial class GestionProveedoresForm : Form
     {
+        private CNProducto objCNProducto = new CNProducto();
         private CNProveedor objCNProveedor = new CNProveedor();
         private int idProveedorSeleccionado = 0;
+
         public GestionProveedoresForm()
         {
             InitializeComponent();
+        }
+
+        private void GestionProveedoresForm_Load(object sender, EventArgs e)
+        {
+            if (SesionActual.UsuarioLogueado != null)
+            {
+               lblNombreUsuario.Text = $"{SesionActual.UsuarioLogueado.apellido}, {SesionActual.UsuarioLogueado.nombre}";
+               lblRolUsuario.Text = SesionActual.UsuarioLogueado.oPerfil.nombre;
+            }
+            System.Globalization.CultureInfo cultura = new System.Globalization.CultureInfo("es-ES");
+            lblFecha.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy", cultura);
+
+             CargarProveedores();
+             CargarCmbEstado();
+             CargarFiltros();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -93,7 +110,7 @@ namespace CapaPresentacion.Administrador
                 DialogResult respuesta = MessageBox.Show("¿Desea actualizar los datos de este proveedor?", "Confirmar actualización", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (respuesta == DialogResult.No) return;
 
-                resultado = objCNProveedor.Editar(oProveedor, out mensaje);
+                resultado = objCNProveedor.EditarProveedor(oProveedor, out mensaje);
             }
 
             if (resultado)
@@ -119,38 +136,14 @@ namespace CapaPresentacion.Administrador
 
             cmbEstado.SelectedIndex = 0;
 
-            // 1. IMPORTANTE: Reiniciar el ID seleccionado para que el sistema sepa que el próximo guardado será un NUEVO registro
+            //  Reiniciar el ID seleccionado para que el sistema sepa que el próximo guardado será un NUEVO registro
             idProveedorSeleccionado = 0;
 
-            // 2. Opcional pero recomendado: restaurar el texto del botón si cambia al editar
-            btnAgregarProveedor.Text = "Agregar Proveedor"; // (Ajusta el texto según tu botón original)
+            // Restaurar el texto del botón si cambia al editar
+            btnAgregarProveedor.Text = "Agregar Proveedor"; 
 
             txtNombreComercial.Focus();
         }
-
-        private void btnBuscarProveedor_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtBuscarProveedor.Text))
-            {
-                MessageBox.Show("Debe completar el campo para buscar.", "Campo vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                CargarProveedores();
-                return;
-            }
-
-            string busqueda = txtBuscarProveedor.Text.Trim();
-            var resultados = objCNProveedor.Buscar(busqueda);
-
-            dgvListaProveedores.DataSource = resultados;
-            lblCantTotalProveedores.Text = resultados.Count.ToString();
-
-            if (resultados.Count == 0)
-            {
-                MessageBox.Show("No se encontraron proveedores que coincidan con la búsqueda.", "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                CargarProveedores();
-            }
-        }
-
-
 
         private void txtNombreComercial_Validating(object sender, CancelEventArgs e)
         {
@@ -251,40 +244,26 @@ namespace CapaPresentacion.Administrador
         }
         
 
-        private void GestionProveedoresForm_Load(object sender, EventArgs e)
-        {
-            if (SesionActual.UsuarioLogueado != null)
-            {
-                lblNombreUsuario.Text = $"{SesionActual.UsuarioLogueado.apellido}, {SesionActual.UsuarioLogueado.nombre}";
-                lblRolUsuario.Text = SesionActual.UsuarioLogueado.oPerfil.nombre;
-            }
-            System.Globalization.CultureInfo cultura = new System.Globalization.CultureInfo("es-ES");
-            lblFecha.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy", cultura);
-            CargarProveedores();
-            CargarCmbEstado();
-            CargarFiltros();
-            CargarProveedores();
-        }
-
         private void CargarProveedores()
         {
-            // 1. Desactivar la generación automática de columnas si ya están diseñadas en el grid
             dgvListaProveedores.AutoGenerateColumns = false;
 
-            // 2. Mapear las columnas con las propiedades de EProveedor
+            //  Mapear las columnas con las propiedades de EProveedor
             dgvListaProveedores.Columns["colCuit"].DataPropertyName = "cuit";
             dgvListaProveedores.Columns["colNombreComercial"].DataPropertyName = "nombre_comercial";
             dgvListaProveedores.Columns["colRazonSocial"].DataPropertyName = "razon_social";
             dgvListaProveedores.Columns["colDireccion"].DataPropertyName = "direccion";
             dgvListaProveedores.Columns["colCorreo"].DataPropertyName = "email";
             dgvListaProveedores.Columns["colTelefono"].DataPropertyName = "telefono";
+            dgvListaProveedores.Columns["colCategoria"].DataPropertyName = "CategoriasTexto";
             dgvListaProveedores.Columns["colEstado"].DataPropertyName = "EstadoTexto";
             dgvListaProveedores.Columns["colFechaAlta"].DataPropertyName = "fecha_alta";
+            dgvListaProveedores.Columns["colFechaModificacion"].DataPropertyName = "fecha_ultima_modificacion";
 
-            // 3. Obtener la lista desde la Capa de Negocio
+            // Obtener la lista desde la Capa de Negocio
             var lista = objCNProveedor.Listar();
 
-            // 4. Asignar origen de datos y actualizar tarjeta de total
+            // Asignar origen de datos y actualizar tarjeta de total
             dgvListaProveedores.DataSource = lista;
             lblCantTotalProveedores.Text = lista.Count.ToString(); // Ajusta el nombre del label si tu etiqueta de total se llama distinto
         }
@@ -301,6 +280,7 @@ namespace CapaPresentacion.Administrador
 
         private void CargarFiltros()
         {
+            //Carga los comboBox de las estados
             cmbFiltroEstado.Items.Clear();
             cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Todos", Valor = null });
             cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Activo", Valor = 1 });
@@ -308,33 +288,14 @@ namespace CapaPresentacion.Administrador
             cmbFiltroEstado.DisplayMember = "Texto";
             cmbFiltroEstado.ValueMember = "Valor";
             cmbFiltroEstado.SelectedIndex = 0;
-        }
 
-        public class OpcionCombo
-        {
-            public string Texto { get; set; }
-            public object Valor { get; set; }
-        }
-
-        private void btnFiltrarProveedor_Click(object sender, EventArgs e)
-        {
-            if (cmbFiltroEstado.SelectedItem == null) return;
-
-            int? estadoSeleccionado = null;
-            OpcionCombo opcion = (OpcionCombo)cmbFiltroEstado.SelectedItem;
-            if (opcion.Valor != null)
-            {
-                estadoSeleccionado = Convert.ToInt32(opcion.Valor);
-            }
-
-            var listaFiltrada = objCNProveedor.Filtrar(estadoSeleccionado);
-            dgvListaProveedores.DataSource = listaFiltrada;
-            lblCantTotalProveedores.Text = listaFiltrada.Count.ToString();
-
-            if (listaFiltrada.Count == 0)
-            {
-                MessageBox.Show("No se encontraron proveedores con el filtro seleccionado.", "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //Carga los comboBox de las Categorias
+            var listaCat = objCNProducto.ListarCategorias();
+            listaCat.Insert(0, new ECategoria { categoria_id = 0, nombre = "Todos" });
+            cmbFiltroCategoria.DataSource = listaCat;
+            cmbFiltroCategoria.DisplayMember = "nombre";
+            cmbFiltroCategoria.ValueMember = "categoria_id";
+            cmbFiltroCategoria.SelectedIndex = 0;
         }
 
         private void dgvListaProveedores_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -416,7 +377,9 @@ namespace CapaPresentacion.Administrador
 
                     if (result == DialogResult.Yes)
                     {
-                        bool respuesta = objCNProveedor.CambiarEstado(proveedorRow.proveedor_id, nuevoEstado);
+                        string mensajeError = string.Empty;
+                        bool respuesta = objCNProveedor.CambiarEstado(proveedorRow.proveedor_id, nuevoEstado, out mensajeError);
+
                         if (respuesta)
                         {
                             MessageBox.Show($"Proveedor {accion}do con éxito.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -424,11 +387,66 @@ namespace CapaPresentacion.Administrador
                         }
                         else
                         {
-                            MessageBox.Show("No se pudo cambiar el estado del proveedor.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            // Mostramos el mensaje detallado que vino desde la base de datos o negocio
+                            MessageBox.Show(mensajeError, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
             }
+        }
+
+        private void txtBuscarProveedor_TextChanged(object sender, EventArgs e)
+        {
+            // Obtenemos lo que el usuario va escribiendo
+            string busqueda = txtBuscarProveedor.Text.Trim();
+
+            // Si el cuadro de texto está vacío, cargamos todos los proveedores normales
+            if (string.IsNullOrWhiteSpace(busqueda))
+            {
+                CargarProveedores();
+                return;
+            }
+
+            // Llamamos directamente a tu método de la capa de negocio que ya tienes creado
+            var resultados = objCNProveedor.Buscar(busqueda);
+
+            // Actualizamos el DataGridView y el contador
+            dgvListaProveedores.DataSource = resultados;
+            lblCantTotalProveedores.Text = resultados.Count.ToString();
+        }
+
+        private void cmbFiltroEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbFiltroEstado.SelectedItem == null) return;
+
+            int? estadoSeleccionado = null;
+            OpcionCombo opcion = (OpcionCombo)cmbFiltroEstado.SelectedItem;
+
+            if (opcion.Valor != null)
+            {
+                estadoSeleccionado = Convert.ToInt32(opcion.Valor);
+            }
+
+            var listaFiltrada = objCNProveedor.FiltrarPorEstado(estadoSeleccionado);
+            dgvListaProveedores.DataSource = listaFiltrada;
+            lblCantTotalProveedores.Text = listaFiltrada.Count.ToString();
+        }
+
+        private void cmbFiltroCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbFiltroCategoria.SelectedIndex == -1) return;
+
+            int categoriaId = 0;
+            if (cmbFiltroCategoria.SelectedValue != null)
+            {
+                int.TryParse(cmbFiltroCategoria.SelectedValue.ToString(), out categoriaId);
+            }
+
+            // Llamas a un método de tu capa de negocio específico para categoría
+            var listaFiltrada = objCNProveedor.ListarProveedorPorCategoria(categoriaId);
+
+            dgvListaProveedores.DataSource = listaFiltrada;
+            lblCantTotalProveedores.Text = listaFiltrada.Count.ToString();
         }
     }
 }

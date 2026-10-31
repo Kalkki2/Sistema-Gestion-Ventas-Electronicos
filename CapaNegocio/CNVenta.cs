@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static CapaDatos.CDVenta;
 
 namespace CapaNegocio
 {
@@ -15,13 +16,6 @@ namespace CapaNegocio
         public bool Registrar(EVenta objVenta, List<EDetalleVenta> listaDetalles, out string Mensaje)
         {
             Mensaje = string.Empty;
-
-            // Validar que se haya ingresado o generado el número de venta
-            if (string.IsNullOrWhiteSpace(objVenta.nro_venta))
-            {
-                Mensaje = "Es necesario ingresar o generar el número de venta.";
-                return false;
-            }
 
             // Validar que se haya seleccionado un cliente
             if (objVenta.cliente_id == 0)
@@ -36,7 +30,6 @@ namespace CapaNegocio
                 Mensaje = "Debe seleccionar un método de pago.";
                 return false;
             }
-
 
             // Validar que la lista de productos no esté vacía
             if (listaDetalles == null || listaDetalles.Count == 0)
@@ -61,7 +54,7 @@ namespace CapaNegocio
                 }
             }
 
-            // Si todas las validaciones pasan, envía los datos a la Capa de Datos
+            // Enviar a la Capa de Datos (donde se generará automáticamente el nro_venta)
             return objCD_Venta.Registrar(objVenta, listaDetalles, out Mensaje);
         }
 
@@ -78,6 +71,58 @@ namespace CapaNegocio
         public List<EVenta> ListarHistorialVentasPorUsuario(int usuarioId)
         {
             return objCD_Venta.ListarHistorialVentasPorUsuario(usuarioId);
+        }
+
+        public List<EMarcaVenta> ObtenerVentasPorMarca(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            return objCD_Venta.ObtenerVentasPorMarca(fechaDesde, fechaHasta);
+        }
+
+        public List<ETendenciaVenta> ObtenerTendenciaVentasDiarias()
+        {
+            return objCD_Venta.ObtenerTendenciaVentasDiarias();
+        }
+
+        public decimal CalcularTotalVentasPorFecha(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            return objCD_Venta.CalcularTotalVentasPorFecha(fechaDesde, fechaHasta);
+        }
+
+        public int CalcularTotalArticulosVendidosPorFecha(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            return objCD_Venta.CalcularTotalArticulosVendidosPorFecha(fechaDesde, fechaHasta);
+        }
+
+        public int CalcularTotalClientesUnicosPorFecha(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            return objCD_Venta.CalcularTotalClientesUnicosPorFecha(fechaDesde, fechaHasta);
+        }
+
+        public List<EReporteTopProducto> ListarTop10ProductosMasVendidos(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            CDVenta objCDVenta = new CDVenta();
+            return objCDVenta.ObtenerTop10ProductosMasVendidos(fechaDesde, fechaHasta);
+        }
+
+        public List<EVenta> Buscar(string dniVendedor, string dniCliente, int? metodoPagoId, DateTime? fechaDesde, DateTime? fechaHasta)
+        {
+            return objCD_Venta.Buscar(dniVendedor, dniCliente, metodoPagoId, fechaDesde, fechaHasta);
+        }
+
+        public List<ECategoriaVenta> ObtenerVentasMonetariasPorCategoria(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            return objCD_Venta.ObtenerVentasMonetariasPorCategoria(fechaDesde, fechaHasta);
+        }
+
+        public List<ETopVendedor> ObtenerTop5PersonalVentas(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            return objCD_Venta.ObtenerTop5PersonalVentas(fechaDesde, fechaHasta);
+        }
+
+        //
+        public List<EMetodoPagoVenta> ObtenerVentasPorMetodoPago(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            return objCD_Venta.ObtenerVentasPorMetodoPago(fechaDesde, fechaHasta);
         }
     }
 }

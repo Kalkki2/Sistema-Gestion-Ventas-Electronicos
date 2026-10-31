@@ -35,7 +35,7 @@ namespace CapaNegocio
             if (!Validar(obj, out Mensaje))
                 return false;
 
-            return objCDCliente.Editar(obj, out Mensaje);
+            return objCDCliente.EditarCliente(obj, out Mensaje);
         }
 
         // Reglas de negocio: se validan antes de tocar la base de datos
@@ -63,6 +63,16 @@ namespace CapaNegocio
                 Mensaje = "Ingrese un correo electrónico válido.";
 
             return Mensaje == string.Empty;
+        }
+
+        public bool CambiarEstado(int clienteId, int nuevoEstado, out string mensaje)
+        {
+            return objCDCliente.CambiarEstado(clienteId, nuevoEstado, out mensaje);
+        }
+
+        public List<EVenta> ListarVentasPorCliente(int clienteId)
+        {
+            return objCDCliente.ListarVentasPorCliente(clienteId);
         }
     }
 }

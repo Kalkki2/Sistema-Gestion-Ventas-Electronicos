@@ -10,7 +10,7 @@ namespace CapaDatos
 {
     public class CDCompra
     {
-            public bool Registrar(ECompra objCompra, List<EDetalleCompra> listaDetalles, out string Mensaje)
+            public bool RegistrarCompra(ECompra objCompra, List<EDetalleCompra> listaDetalles, out string Mensaje)
             {
             Mensaje = string.Empty;
             try
@@ -22,7 +22,7 @@ namespace CapaDatos
                     {
                         try
                         {
-                            // 1. Validar si la factura ya existe
+                            // Validar si la factura ya existe
                             bool facturaExiste = db.compra.Any(c => c.nro_factura == objCompra.nro_factura);
                             if (facturaExiste)
                             {
@@ -30,7 +30,7 @@ namespace CapaDatos
                                 return false;
                             }
 
-                            // 2. Registrar la Cabecera de la Compra
+                            // Registrar la Cabecera de la Compra
                             compra nuevaCompra = new compra
                             {
                                 nro_factura = objCompra.nro_factura,
@@ -43,7 +43,7 @@ namespace CapaDatos
                             db.compra.Add(nuevaCompra);
                             db.SaveChanges(); // Guarda para generar el ID de la compra
 
-                            // 3. Registrar los Detalles, Actualizar Stock y el Nuevo Precio de Venta
+                            //  Registrar los Detalles, Actualizar Stock y el Nuevo Precio de Venta
                             foreach (var item in listaDetalles)
                             {
                                 // Insertar detalle con su margen
@@ -53,7 +53,6 @@ namespace CapaDatos
                                     producto_id = item.producto_id,
                                     cantidad = item.cantidad,
                                     costo_unitario = item.costo_unitario,
-                                    porcentaje_margen = item.porcentaje_margen //  Guardamos el margen histórico
                                 };
                                 db.detalle_compra.Add(nuevoDetalle);
 
@@ -117,7 +116,7 @@ namespace CapaDatos
                                     usuario_id = u.usuario_id,
                                     nombre = u.nombre,
                                     apellido = u.apellido,
-                                    dni = u.dni // Asegúrate de que tu entidad EUsuario tenga esta propiedad
+                                    dni = u.dni 
                                 },
                                 oProveedor = new EProveedor()
                                 {
@@ -164,6 +163,111 @@ namespace CapaDatos
 
                 return query.ToList();
             }
+        }
+
+
+        public List<ECompra> Buscar(string nroFactura, string cuitProveedor, string dniUsuario, DateTime? fechaDesde, DateTime? fechaHasta, int? estadoFiltro)
+        {
+            using (var db = new db_sistema_gestion_ventas_electronicosEntities())
+            {
+                var query = db.compra.AsQueryable();
+
+                // Aplicamos filtros condicionales si el usuario escribe algo
+                if (!string.IsNullOrWhiteSpace(nroFactura))
+                {
+                    nroFactura = nroFactura.ToLower();
+                    query = query.Where(c => c.nro_factura.ToLower().Contains(nroFactura));
+                }
+
+                if (!string.IsNullOrWhiteSpace(cuitProveedor))
+                {
+                    cuitProveedor = cuitProveedor.ToLower();
+                    query = query.Where(c => c.proveedor.cuit.ToLower().Contains(cuitProveedor));
+                }
+
+                if (!string.IsNullOrWhiteSpace(dniUsuario))
+                {
+                    dniUsuario = dniUsuario.ToLower();
+                    query = query.Where(c => c.usuario.dni.ToLower().Contains(dniUsuario));
+                }
+
+                if (fechaDesde.HasValue && fechaHasta.HasValue)
+                {
+                    DateTime desde = fechaDesde.Value.Date;
+                    DateTime hasta = fechaHasta.Value.Date.AddDays(1).AddTicks(-1);
+                    query = query.Where(c => c.fecha_compra >= desde && c.fecha_compra <= hasta);
+                }
+
+                // Filtro por estado
+                if (estadoFiltro.HasValue && estadoFiltro.Value != 2) // Si no es "Todos" (valor 2)
+                {
+                    query = query.Where(c => c.estado == estadoFiltro.Value);
+                }
+
+                // Proyección final hacia ECompra
+                var lista = query.OrderByDescending(c => c.fecha_compra).Select(c => new ECompra()
+                {
+                    compra_id = c.compra_id,
+                    nro_factura = c.nro_factura,
+                    fecha_compra = c.fecha_compra,
+                    estado = c.estado,
+                    usuario_id = c.usuario_id,
+                    proveedor_id = c.proveedor_id,
+                    oUsuario = new EUsuario()
+                    {
+                        usuario_id = c.usuario.usuario_id,
+                        nombre = c.usuario.nombre,
+                        apellido = c.usuario.apellido,
+                        dni = c.usuario.dni
+                    },
+                    oProveedor = new EProveedor()
+                    {
+                        proveedor_id = c.proveedor.proveedor_id,
+                        cuit = c.proveedor.cuit,
+                        razon_social = c.proveedor.razon_social
+                    },
+                    oDetalleCompra = c.detalle_compra.Select(d => new EDetalleCompra()
+                    {
+                        producto_id = d.producto_id,
+                        cantidad = d.cantidad,
+                        costo_unitario = d.costo_unitario
+                    }).ToList()
+                }).ToList();
+
+                return lista;
+            }
+        }
+
+        //Metodo para CAMBIAR ESTADO de la compra
+        public bool CambiarEstado(int idCompra, int nuevoEstado, out string mensaje)
+        {
+            mensaje = string.Empty;
+            bool respuesta = false;
+
+            try
+            {
+                using (var db = new db_sistema_gestion_ventas_electronicosEntities())
+                {
+                    var compraTemp = db.compra.FirstOrDefault(c => c.compra_id == idCompra);
+                    if (compraTemp != null)
+                    {
+                        compraTemp.estado = nuevoEstado;
+                        db.SaveChanges();
+                        respuesta = true;
+                    }
+                    else
+                    {
+                        mensaje = "No se encontró la compra especificada.";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                mensaje = ex.Message;
+                respuesta = false;
+            }
+
+            return respuesta;
         }
     }
 }

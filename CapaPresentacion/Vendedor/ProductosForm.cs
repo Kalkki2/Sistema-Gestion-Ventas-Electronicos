@@ -35,7 +35,7 @@ namespace CapaPresentacion.Vendedor
             colCategoria.DataPropertyName = "NombreCategoria";
             colMarca.DataPropertyName = "NombreMarca";
 
-            colPrecio.DefaultCellStyle.Format = "C2";
+            colPrecio.DefaultCellStyle.Format = "N2";
             colPrecio.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             // El botón "Ver Detalles" (Column1) sale con texto
@@ -53,6 +53,12 @@ namespace CapaPresentacion.Vendedor
 
         private void ProductosForm_Load(object sender, EventArgs e)
         {
+            if (SesionActual.UsuarioLogueado != null)
+            {
+                lblNombreUsuario.Text = $"{SesionActual.UsuarioLogueado.apellido}, {SesionActual.UsuarioLogueado.nombre}";
+                lblRolUsuario.Text = SesionActual.UsuarioLogueado.oPerfil.nombre;
+            }
+
             System.Globalization.CultureInfo cultura = new System.Globalization.CultureInfo("es-ES");
             lblFecha.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy", cultura);
 
@@ -143,7 +149,7 @@ namespace CapaPresentacion.Vendedor
 
             guna2TextBox2.Text = p.codigo;                       // Código
             guna2TextBox3.Text = p.nombre;                       // Nombre
-            guna2TextBox4.Text = p.precio_venta.ToString("C2");  // Precio actual
+            guna2TextBox4.Text = p.precio_venta.ToString("N2");  // Precio actual
             guna2TextBox5.Text = p.stock + " Unidades";          // Stock disponible
             guna2TextBox6.Text = p.NombreMarca;                  // Marca
             guna2TextBox7.Text = p.NombreCategoria;              // Categoría

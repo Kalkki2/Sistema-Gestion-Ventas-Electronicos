@@ -15,48 +15,42 @@ namespace CapaPresentacion.Administrador
 
     public partial class BuscarProveedorForm : Form
     {
+        private CNProducto objCNProducto = new CNProducto();
         public EProveedor _Proveedor { get; set; }
         private CNProveedor objCNProveedor = new CNProveedor();
         public BuscarProveedorForm()
         {
             InitializeComponent();
         }
-
-        private void btnBuscarProveedor_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtBuscarProveedor.Text))
-            {
-                MessageBox.Show("Debe completar el campo para buscar.", "Campo vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
        
 
         private void BuscarProveedorForm_Load(object sender, EventArgs e)
         {
             CargarProveedores();
+            CargarFiltrosCombos();
+        }
+
+        private void CargarFiltrosCombos()
+        {
+            var listaCat = objCNProducto.ListarCategorias();
+            listaCat.Insert(0, new ECategoria { categoria_id = 0, nombre = "Todos" });
+            cmbFiltroCategoria.DataSource = listaCat;
+            cmbFiltroCategoria.DisplayMember = "nombre";
+            cmbFiltroCategoria.ValueMember = "categoria_id";
+            cmbFiltroCategoria.SelectedIndex = 0;
         }
 
         private void CargarProveedores()
         {
-            // 1. Desactivar la generación automática de columnas
             dgvListaProveedores.AutoGenerateColumns = false;
 
-            // 2. Mapear las columnas con las propiedades de EProveedor
             dgvListaProveedores.Columns["colCuit"].DataPropertyName = "cuit";
             dgvListaProveedores.Columns["colNombre"].DataPropertyName = "razon_social";
             dgvListaProveedores.Columns["colCorreo"].DataPropertyName = "email";
             dgvListaProveedores.Columns["colTelefono"].DataPropertyName = "telefono";
 
-            // 3. Obtener la lista y asignarla
-            var lista = objCNProveedor.Listar().Where(p => p.estado == 1).ToList();
-            dgvListaProveedores.DataSource = lista;
+            var listaActivos = objCNProveedor.ListarProveedoreActivos();
+            dgvListaProveedores.DataSource = listaActivos;
         }
 
         private void dgvListaProveedores_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -74,6 +68,54 @@ namespace CapaPresentacion.Administrador
             }
         }
 
+        private void txtBuscarProveedor_TextChanged(object sender, EventArgs e)
+        {
+            FiltrarProveedores();
+        }
 
+        private void cmbFiltroCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbFiltroCategoria.SelectedIndex != -1)
+            {
+                FiltrarProveedores();
+            }
+        }
+
+        private void FiltrarProveedores()
+        {
+            string textoBusqueda = txtBuscarProveedor.Text.Trim().ToLower();
+
+            int categoriaIdSeleccionada = 0;
+            if (cmbFiltroCategoria.SelectedValue != null)
+            {
+                int.TryParse(cmbFiltroCategoria.SelectedValue.ToString(), out categoriaIdSeleccionada);
+            }
+
+            // 1. Traemos los proveedores activos base
+            var listaProveedores = objCNProveedor.ListarProveedoreActivos();
+
+            // 2. Si se seleccionó una categoría específica (diferente de "Todos" que es 0)
+            if (categoriaIdSeleccionada > 0)
+            {
+                // Llamamos al método que busca los proveedores de esa categoría
+                var proveedoresDeCategoria = objCNProveedor.ListarProveedorPorCategoria(categoriaIdSeleccionada);
+                var idsValidos = proveedoresDeCategoria.Select(p => p.proveedor_id).ToList();
+
+                // Filtramos la lista para quedarnos solo con los de esa categoría
+                listaProveedores = listaProveedores.Where(p => idsValidos.Contains(p.proveedor_id)).ToList();
+            }
+
+            // 3. Si además hay texto escrito en el buscador, filtramos por CUIT o Razón Social
+            if (!string.IsNullOrEmpty(textoBusqueda))
+            {
+                listaProveedores = listaProveedores.Where(p =>
+                    p.cuit.ToLower().Contains(textoBusqueda) ||
+                    p.razon_social.ToLower().Contains(textoBusqueda)
+                ).ToList();
+            }
+
+            // Actualizamos el DataGridView
+            dgvListaProveedores.DataSource = listaProveedores;
+        }
     }
 }

@@ -35,5 +35,6 @@ namespace CapaEntidad
         public EMarca oMarca { get; set; }
         public ECategoria oCategoria { get; set; }
         public EProveedor oProveedor { get; set; }
+
     }
 }

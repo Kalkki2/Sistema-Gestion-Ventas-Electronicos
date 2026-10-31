@@ -21,7 +21,6 @@ namespace CapaPresentacion.Administrador
     {
         private CNUsuario objCNUsuario = new CNUsuario();
         private CNPerfil objCNPerfil = new CNPerfil();
-        private int idUsuarioSeleccionado = 0;
         public GestionUsuariosForm()
         {
             InitializeComponent();

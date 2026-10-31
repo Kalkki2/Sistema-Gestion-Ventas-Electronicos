@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CapaEntidad;
+using CapaNegocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +15,8 @@ namespace CapaPresentacion.Administrador
 {
     public partial class GestionClientesForm : Form
     {
+        CNCliente objCNCliente = new CNCliente();
+        int idClienteSeleccionado = 0; // Para saber qué cliente estamos editando
         public GestionClientesForm()
         {
             InitializeComponent();
@@ -32,34 +36,69 @@ namespace CapaPresentacion.Administrador
 
         private void btnActualizarClientes_Click(object sender, EventArgs e)
         {
-            // Valida que los TextBox no estén vacíos
-            if (!string.IsNullOrEmpty(errorProvider1.GetError(txtNombre)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtApellido)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtDni)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtCorreo)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtDireccion)) || !string.IsNullOrEmpty(errorProvider1.GetError(txtTelefono))
-                || string.IsNullOrWhiteSpace(txtCorreo.Text) || string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtApellido.Text) || string.IsNullOrWhiteSpace(txtDni.Text) ||
-                string.IsNullOrWhiteSpace(txtTelefono.Text) || string.IsNullOrWhiteSpace(txtDireccion.Text))
+            // 1. Validar que se haya seleccionado un cliente de la grilla (idClienteSeleccionado debe ser mayor a 0)
+            if (idClienteSeleccionado == 0)
             {
-                MessageBox.Show("Hay campos con errores o vacíos. Corríjalos antes de agregar.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Por favor, seleccione un cliente de la lista haciendo clic en el icono de editar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Confirmación del usuario antes de guardar
+            // 2. Validar que los TextBox no tengan errores de formato del ErrorProvider o estén vacíos
+            if (!string.IsNullOrEmpty(errorProvider1.GetError(txtNombre)) ||
+                !string.IsNullOrEmpty(errorProvider1.GetError(txtApellido)) ||
+                !string.IsNullOrEmpty(errorProvider1.GetError(txtDni)) ||
+                !string.IsNullOrEmpty(errorProvider1.GetError(txtCorreo)) ||
+                !string.IsNullOrEmpty(errorProvider1.GetError(txtDireccion)) ||
+                !string.IsNullOrEmpty(errorProvider1.GetError(txtTelefono)) ||
+                string.IsNullOrWhiteSpace(txtCorreo.Text) ||
+                string.IsNullOrWhiteSpace(txtNombre.Text) ||
+                string.IsNullOrWhiteSpace(txtApellido.Text) ||
+                string.IsNullOrWhiteSpace(txtDni.Text) ||
+                string.IsNullOrWhiteSpace(txtTelefono.Text) ||
+                string.IsNullOrWhiteSpace(txtDireccion.Text))
+            {
+                MessageBox.Show("Hay campos con errores o vacíos. Corríjalos antes de actualizar.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 3. Confirmación previa del usuario
             DialogResult respuesta = MessageBox.Show(
-                "¿Está seguro de que desea actualizar este nuevo cliente?",
-                "Confirmar actualizacion",
+                "¿Está seguro de que desea guardar los cambios de este cliente?",
+                "Confirmar actualización",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question
             );
 
-            // Si el usuario responde 'No', cancelamos la operación
-            if (respuesta == DialogResult.No)
+            if (respuesta == DialogResult.No) return;
+
+            // 4. Creamos el objeto ECliente con los datos actualizados de los textbox
+            ECliente objCliente = new ECliente()
             {
-                return;
+                cliente_id = idClienteSeleccionado,
+                nombre = txtNombre.Text.Trim(),
+                apellido = txtApellido.Text.Trim(),
+                dni = txtDni.Text.Trim(),
+                telefono = txtTelefono.Text.Trim(),
+                email = txtCorreo.Text.Trim(),
+                direccion = txtDireccion.Text.Trim(),
+                estado = cmbEstado.SelectedIndex == 0 ? 1 : 0
+            };
+
+            // 5. Ejecutamos el método Editar de la capa de negocio
+            string mensaje = string.Empty;
+            bool resultado = objCNCliente.Editar(objCliente, out mensaje);
+
+            if (resultado)
+            {
+                MessageBox.Show("El cliente se actualizó con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CargarClientes();     // Recargamos la grilla para reflejar los cambios
+                LimpiarCampos();      // Limpiamos las cajas de texto y reseteamos el idClienteSeleccionado
             }
-
-            // Mensaje de éxito
-            MessageBox.Show("El cliente se actualizo con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            //  Limpia los campos para un nuevo ingreso
-            LimpiarCampos();
+            else
+            {
+                // Aquí capturamos el mensaje de la base de datos si el DNI, Correo o Teléfono ya están repetidos
+                MessageBox.Show(mensaje, "No se pudo actualizar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -76,20 +115,7 @@ namespace CapaPresentacion.Administrador
             }
         }
 
-        private void dgvListaCompras_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // Validar que se hizo clic en una fila válida (evita errores si hacen clic en los encabezados)
-            // y comprobar que la columna clickeada es la de nuestro botón ("btnAccion")
-            if (e.RowIndex >= 0 && dgvListaCompras.Columns[e.ColumnIndex].Name == "colDetallesCompras")
-            {
-                // Instanciar y abrir el formulario modal
-                //using (DetalleVenta modal = new DetalleVenta())
-                //{
-                //    // Mostrar el formulario como modal (bloquea la ventana principal hasta que se cierre)
-                //    DialogResult resultado = modal.ShowDialog();
-                //}
-            }
-        }
+       
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
@@ -109,6 +135,8 @@ namespace CapaPresentacion.Administrador
             }
             System.Globalization.CultureInfo cultura = new System.Globalization.CultureInfo("es-ES");
             lblFecha.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy", cultura);
+
+            CargarClientes();
         }
 
         private void txtNombre_Validating(object sender, CancelEventArgs e)
@@ -206,6 +234,117 @@ namespace CapaPresentacion.Administrador
             else
             {
                 errorProvider1.SetError(txtDireccion, "");
+            }
+        }
+
+        private void CargarClientes(string filtro = "")
+        {
+            dgvListaClientes.AutoGenerateColumns = false;
+
+            // Mapeo de columnas del primer DataGridView (Lista de clientes)
+            dgvListaClientes.Columns["colDni"].DataPropertyName = "dni";
+            dgvListaClientes.Columns["colNombre"].DataPropertyName = "nombre";
+            dgvListaClientes.Columns["colApellido"].DataPropertyName = "apellido";
+            dgvListaClientes.Columns["colTelefono"].DataPropertyName = "telefono";
+            dgvListaClientes.Columns["colCorreo"].DataPropertyName = "email";
+            dgvListaClientes.Columns["colDireccion"].DataPropertyName = "direccion";
+            dgvListaClientes.Columns["colEstado"].DataPropertyName = "EstadoTexto";
+            dgvListaClientes.Columns["colFechaAlta"].DataPropertyName = "fecha_alta";
+            dgvListaClientes.Columns["colFechaModificacion"].DataPropertyName = "fecha_ultima_modificacion";
+
+            dgvListaClientes.DataSource = objCNCliente.Listar(filtro);
+        }
+
+        private void dgvListaClientes_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.RowIndex == dgvListaClientes.NewRowIndex) return;
+
+            string colName = dg_GetColumnName(e.ColumnIndex); // Método seguro o lectura directa
+
+            if (dgvListaClientes.Columns[e.ColumnIndex].Name == "colEditar")
+            {
+                e.Value = Properties.Resources.icono_editar;
+            }
+            else if (dgvListaClientes.Columns[e.ColumnIndex].Name == "colEliminar" || dgvListaClientes.Columns[e.ColumnIndex].Name == "colCambiarEstado")
+            {
+                var clienteRow = dgvListaClientes.Rows[e.RowIndex].DataBoundItem as ECliente;
+                if (clienteRow != null)
+                {
+                    e.Value = clienteRow.estado == 1 ? Properties.Resources.icono_eliminar : Properties.Resources.icono_reactivar;
+                }
+            }
+            else if (dgvListaClientes.Columns[e.ColumnIndex].Name == "colVer")
+            {
+                e.Value = Properties.Resources.icono_lupa; // O tu recurso para ver compras
+            }
+        }
+
+        private string dg_GetColumnName(int colIndex)
+        {
+            return dgvListaClientes.Columns[colIndex].Name;
+        }
+
+        private void dgvListaClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            string colName = dgvListaClientes.Columns[e.ColumnIndex].Name;
+            ECliente clienteSeleccionado = dgvListaClientes.Rows[e.RowIndex].DataBoundItem as ECliente;
+
+            if (clienteSeleccionado == null) return;
+
+            // EDITAR: Carga los datos arriba en los TextBox
+            if (colName == "colEditar")
+            {
+                idClienteSeleccionado = clienteSeleccionado.cliente_id;
+                txtNombre.Text = clienteSeleccionado.nombre;
+                txtApellido.Text = clienteSeleccionado.apellido;
+                txtDni.Text = clienteSeleccionado.dni;
+                txtTelefono.Text = clienteSeleccionado.telefono;
+                txtCorreo.Text = clienteSeleccionado.email;
+                txtDireccion.Text = clienteSeleccionado.direccion;
+                cmbEstado.SelectedIndex = clienteSeleccionado.estado == 1 ? 0 : 1;
+
+                btnActualizarClientes.Text = "Guardar Cambios";
+            }
+
+            // CAMBIAR ESTADO (Activar / Desactivar)
+            if (colName == "colEliminar")
+            {
+                int nuevoEstado = clienteSeleccionado.estado == 1 ? 0 : 1;
+                string accion = clienteSeleccionado.estado == 1 ? "desactivar" : "reactivar";
+
+                DialogResult result = MessageBox.Show(
+                    $"¿Está seguro de que desea {accion} al cliente {clienteSeleccionado.apellido}, {clienteSeleccionado.nombre}?",
+                    $"Confirmar {accion}",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (result == DialogResult.Yes)
+                {
+                    string mensaje = string.Empty;
+                    bool respuesta = objCNCliente.CambiarEstado(clienteSeleccionado.cliente_id, nuevoEstado, out mensaje);
+
+                    if (respuesta)
+                    {
+                        MessageBox.Show($"Cliente {accion}do con éxito.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        CargarClientes();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo cambiar el estado: " + mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+
+            // VER COMPRAS: Abre el Modal con las compras de este cliente
+            if (colName == "colVerCompras")
+            {
+                using (ListaCompraClientesForm modal = new ListaCompraClientesForm(clienteSeleccionado))
+                {
+                    modal.ShowDialog();
+                }
             }
         }
     }

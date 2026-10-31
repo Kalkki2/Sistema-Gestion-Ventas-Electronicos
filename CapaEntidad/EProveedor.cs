@@ -16,14 +16,12 @@ namespace CapaEntidad
         public string telefono { get; set; }
         public string direccion { get; set; }
 
+        public string CategoriasTexto { get; set; }
+
         public int estado { get; set; } // 1 para Activo, 0 para Inactivo
 
         // Propiedad de apoyo para mostrar "Activo" o "Inactivo" en el DataGridView
-        public string EstadoTexto
-        {
-            get { return estado == 1 ? "Activo" : "Inactivo"; }
-        }
-
+        public string EstadoTexto => estado == 1 ? "Activo" : "Inactivo";
         public DateTime fecha_alta{ get; set; }
         public DateTime fecha_ultima_modificacion { get; set; }
     }

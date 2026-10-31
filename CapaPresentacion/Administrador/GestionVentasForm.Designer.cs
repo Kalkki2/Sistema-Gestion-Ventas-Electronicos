@@ -49,12 +49,13 @@
             this.lblCantTotalVentas = new System.Windows.Forms.Label();
             this.lblTituloTotalVentas = new System.Windows.Forms.Label();
             this.pnlContenedorFiltros = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.txtBuscarClienteDni = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.dtpHasta = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.dtpDesde = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.lblFiltrarHasta = new System.Windows.Forms.Label();
             this.lblFiltrarDesde = new System.Windows.Forms.Label();
             this.btnFiltrar = new Guna.UI2.WinForms.Guna2Button();
-            this.btnBuscarVendedor = new Guna.UI2.WinForms.Guna2Button();
             this.cmbFiltroMetodoPago = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txtBuscarVendedorDni = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblBuscarPorDNI = new System.Windows.Forms.Label();
@@ -167,8 +168,7 @@
             // 
             // pnlContenedorHistorialVentas
             // 
-            this.pnlContenedorHistorialVentas.BorderColor = System.Drawing.Color.DarkGray;
-            this.pnlContenedorHistorialVentas.BorderRadius = 8;
+            this.pnlContenedorHistorialVentas.BorderColor = System.Drawing.Color.DimGray;
             this.pnlContenedorHistorialVentas.BorderThickness = 1;
             this.pnlContenedorHistorialVentas.Controls.Add(this.btnExportarPDF);
             this.pnlContenedorHistorialVentas.Controls.Add(this.btnExportarEXCEL);
@@ -177,7 +177,7 @@
             this.pnlContenedorHistorialVentas.FillColor = System.Drawing.Color.Transparent;
             this.pnlContenedorHistorialVentas.Location = new System.Drawing.Point(12, 276);
             this.pnlContenedorHistorialVentas.Name = "pnlContenedorHistorialVentas";
-            this.pnlContenedorHistorialVentas.Size = new System.Drawing.Size(1132, 312);
+            this.pnlContenedorHistorialVentas.Size = new System.Drawing.Size(1146, 312);
             this.pnlContenedorHistorialVentas.TabIndex = 60;
             // 
             // btnExportarPDF
@@ -195,7 +195,7 @@
             this.btnExportarPDF.ForeColor = System.Drawing.Color.Red;
             this.btnExportarPDF.Image = global::CapaPresentacion.Properties.Resources.Gemini_Generated_Image_59msj059msj059ms;
             this.btnExportarPDF.ImageSize = new System.Drawing.Size(21, 25);
-            this.btnExportarPDF.Location = new System.Drawing.Point(417, 8);
+            this.btnExportarPDF.Location = new System.Drawing.Point(867, 8);
             this.btnExportarPDF.Name = "btnExportarPDF";
             this.btnExportarPDF.Size = new System.Drawing.Size(125, 35);
             this.btnExportarPDF.TabIndex = 10;
@@ -216,7 +216,7 @@
             this.btnExportarEXCEL.ForeColor = System.Drawing.Color.Green;
             this.btnExportarEXCEL.Image = global::CapaPresentacion.Properties.Resources.icono_excel;
             this.btnExportarEXCEL.ImageSize = new System.Drawing.Size(21, 25);
-            this.btnExportarEXCEL.Location = new System.Drawing.Point(557, 8);
+            this.btnExportarEXCEL.Location = new System.Drawing.Point(1007, 8);
             this.btnExportarEXCEL.Name = "btnExportarEXCEL";
             this.btnExportarEXCEL.Size = new System.Drawing.Size(125, 35);
             this.btnExportarEXCEL.TabIndex = 9;
@@ -226,7 +226,8 @@
             // 
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
             this.dgvHistorialVentas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dgvHistorialVentas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
@@ -259,10 +260,11 @@
             this.dgvHistorialVentas.Name = "dgvHistorialVentas";
             this.dgvHistorialVentas.RowHeadersVisible = false;
             this.dgvHistorialVentas.RowTemplate.Height = 23;
-            this.dgvHistorialVentas.Size = new System.Drawing.Size(1113, 246);
+            this.dgvHistorialVentas.Size = new System.Drawing.Size(1135, 246);
             this.dgvHistorialVentas.TabIndex = 7;
             this.dgvHistorialVentas.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
             this.dgvHistorialVentas.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            this.dgvHistorialVentas.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvHistorialVentas.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvHistorialVentas.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvHistorialVentas.ThemeStyle.HeaderStyle.Height = 23;
@@ -322,12 +324,13 @@
             // pnlContenedorFiltros
             // 
             this.pnlContenedorFiltros.BackColor = System.Drawing.Color.Transparent;
+            this.pnlContenedorFiltros.Controls.Add(this.txtBuscarClienteDni);
+            this.pnlContenedorFiltros.Controls.Add(this.label1);
             this.pnlContenedorFiltros.Controls.Add(this.dtpHasta);
             this.pnlContenedorFiltros.Controls.Add(this.dtpDesde);
             this.pnlContenedorFiltros.Controls.Add(this.lblFiltrarHasta);
             this.pnlContenedorFiltros.Controls.Add(this.lblFiltrarDesde);
             this.pnlContenedorFiltros.Controls.Add(this.btnFiltrar);
-            this.pnlContenedorFiltros.Controls.Add(this.btnBuscarVendedor);
             this.pnlContenedorFiltros.Controls.Add(this.cmbFiltroMetodoPago);
             this.pnlContenedorFiltros.Controls.Add(this.txtBuscarVendedorDni);
             this.pnlContenedorFiltros.Controls.Add(this.lblBuscarPorDNI);
@@ -342,6 +345,40 @@
             this.pnlContenedorFiltros.ShadowShift = 3;
             this.pnlContenedorFiltros.Size = new System.Drawing.Size(542, 178);
             this.pnlContenedorFiltros.TabIndex = 63;
+            // 
+            // txtBuscarClienteDni
+            // 
+            this.txtBuscarClienteDni.BorderColor = System.Drawing.Color.DimGray;
+            this.txtBuscarClienteDni.BorderRadius = 5;
+            this.txtBuscarClienteDni.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtBuscarClienteDni.DefaultText = "";
+            this.txtBuscarClienteDni.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtBuscarClienteDni.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtBuscarClienteDni.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscarClienteDni.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscarClienteDni.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarClienteDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.txtBuscarClienteDni.ForeColor = System.Drawing.Color.Black;
+            this.txtBuscarClienteDni.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarClienteDni.Location = new System.Drawing.Point(299, 36);
+            this.txtBuscarClienteDni.MaxLength = 8;
+            this.txtBuscarClienteDni.Name = "txtBuscarClienteDni";
+            this.txtBuscarClienteDni.PlaceholderText = "";
+            this.txtBuscarClienteDni.SelectedText = "";
+            this.txtBuscarClienteDni.Size = new System.Drawing.Size(182, 27);
+            this.txtBuscarClienteDni.TabIndex = 52;
+            this.txtBuscarClienteDni.TextChanged += new System.EventHandler(this.txtBuscarClienteDni_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(295, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(174, 17);
+            this.label1.TabIndex = 53;
+            this.label1.Text = "Buscar por DNI del Cliente";
             // 
             // dtpHasta
             // 
@@ -412,29 +449,10 @@
             this.btnFiltrar.Text = "Filtrar";
             this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
             // 
-            // btnBuscarVendedor
-            // 
-            this.btnBuscarVendedor.BackColor = System.Drawing.Color.Transparent;
-            this.btnBuscarVendedor.BorderRadius = 5;
-            this.btnBuscarVendedor.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnBuscarVendedor.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnBuscarVendedor.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnBuscarVendedor.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnBuscarVendedor.FillColor = System.Drawing.Color.Silver;
-            this.btnBuscarVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnBuscarVendedor.ForeColor = System.Drawing.Color.Black;
-            this.btnBuscarVendedor.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarVendedor.Image")));
-            this.btnBuscarVendedor.Location = new System.Drawing.Point(218, 40);
-            this.btnBuscarVendedor.Name = "btnBuscarVendedor";
-            this.btnBuscarVendedor.Size = new System.Drawing.Size(89, 27);
-            this.btnBuscarVendedor.TabIndex = 44;
-            this.btnBuscarVendedor.Text = "Buscar";
-            this.btnBuscarVendedor.Click += new System.EventHandler(this.btnBuscarVendedor_Click);
-            // 
             // cmbFiltroMetodoPago
             // 
             this.cmbFiltroMetodoPago.BackColor = System.Drawing.Color.Transparent;
-            this.cmbFiltroMetodoPago.BorderColor = System.Drawing.Color.DarkGray;
+            this.cmbFiltroMetodoPago.BorderColor = System.Drawing.Color.DimGray;
             this.cmbFiltroMetodoPago.BorderRadius = 5;
             this.cmbFiltroMetodoPago.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbFiltroMetodoPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -453,10 +471,11 @@
             this.cmbFiltroMetodoPago.Size = new System.Drawing.Size(150, 27);
             this.cmbFiltroMetodoPago.StartIndex = 0;
             this.cmbFiltroMetodoPago.TabIndex = 22;
+            this.cmbFiltroMetodoPago.SelectedIndexChanged += new System.EventHandler(this.cmbFiltroMetodoPago_SelectedIndexChanged);
             // 
             // txtBuscarVendedorDni
             // 
-            this.txtBuscarVendedorDni.BorderColor = System.Drawing.Color.DarkGray;
+            this.txtBuscarVendedorDni.BorderColor = System.Drawing.Color.DimGray;
             this.txtBuscarVendedorDni.BorderRadius = 5;
             this.txtBuscarVendedorDni.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBuscarVendedorDni.DefaultText = "";
@@ -468,20 +487,21 @@
             this.txtBuscarVendedorDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.txtBuscarVendedorDni.ForeColor = System.Drawing.Color.Black;
             this.txtBuscarVendedorDni.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscarVendedorDni.Location = new System.Drawing.Point(16, 40);
+            this.txtBuscarVendedorDni.Location = new System.Drawing.Point(15, 36);
+            this.txtBuscarVendedorDni.MaxLength = 8;
             this.txtBuscarVendedorDni.Name = "txtBuscarVendedorDni";
             this.txtBuscarVendedorDni.PlaceholderText = "";
             this.txtBuscarVendedorDni.SelectedText = "";
             this.txtBuscarVendedorDni.Size = new System.Drawing.Size(182, 27);
             this.txtBuscarVendedorDni.TabIndex = 0;
-            this.txtBuscarVendedorDni.Validating += new System.ComponentModel.CancelEventHandler(this.txtBuscarVendedor_Validating);
+            this.txtBuscarVendedorDni.TextChanged += new System.EventHandler(this.txtBuscarVendedorDni_TextChanged);
             // 
             // lblBuscarPorDNI
             // 
             this.lblBuscarPorDNI.AutoSize = true;
             this.lblBuscarPorDNI.BackColor = System.Drawing.Color.Transparent;
             this.lblBuscarPorDNI.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuscarPorDNI.Location = new System.Drawing.Point(12, 20);
+            this.lblBuscarPorDNI.Location = new System.Drawing.Point(11, 16);
             this.lblBuscarPorDNI.Name = "lblBuscarPorDNI";
             this.lblBuscarPorDNI.Size = new System.Drawing.Size(197, 17);
             this.lblBuscarPorDNI.TabIndex = 21;
@@ -610,6 +630,7 @@
             this.cmbTipoAjuste.BorderRadius = 5;
             this.cmbTipoAjuste.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbTipoAjuste.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTipoAjuste.Enabled = false;
             this.cmbTipoAjuste.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbTipoAjuste.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbTipoAjuste.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
@@ -685,7 +706,6 @@
             // 
             this.colNroVenta.HeaderText = "Nro Venta";
             this.colNroVenta.Name = "colNroVenta";
-            this.colNroVenta.Visible = false;
             // 
             // colDniCliente
             // 
@@ -719,7 +739,7 @@
             // 
             // colTotal
             // 
-            this.colTotal.HeaderText = "Total";
+            this.colTotal.HeaderText = "Total ($)";
             this.colTotal.Name = "colTotal";
             // 
             // colFechaVenta
@@ -792,7 +812,6 @@
         private System.Windows.Forms.Label lblFiltrarHasta;
         private System.Windows.Forms.Label lblFiltrarDesde;
         private Guna.UI2.WinForms.Guna2Button btnFiltrar;
-        private Guna.UI2.WinForms.Guna2Button btnBuscarVendedor;
         private Guna.UI2.WinForms.Guna2ComboBox cmbFiltroMetodoPago;
         private Guna.UI2.WinForms.Guna2TextBox txtBuscarVendedorDni;
         private System.Windows.Forms.Label lblBuscarPorDNI;
@@ -810,6 +829,8 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.NumericUpDown txtPorcentajeAjuste;
         private Guna.UI2.WinForms.Guna2Button btnCancelar;
+        private Guna.UI2.WinForms.Guna2TextBox txtBuscarClienteDni;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNroVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDniCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCliente;

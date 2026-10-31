@@ -86,6 +86,23 @@ namespace CapaPresentacion
             }
         }
 
-       
+        private void FormularioLogin_VisibleChanged(object sender, EventArgs e)
+        {
+           
+            // Cada vez que el formulario de login vuelve a hacerse visible:
+            if (this.Visible)
+            {
+                txtDniLogin.Clear();
+                txtContraseniaLogin.Clear();
+                txtContraseniaLogin.UseSystemPasswordChar = true; // Volver a ocultar contraseña si quedó visible
+
+                if (Properties.Resources.icono_ojo_cerrado != null)
+                {
+                    picVerContrasenia.Image = Properties.Resources.icono_ojo_cerrado;
+                }
+
+                txtDniLogin.Focus();
+            }
+        }
     }
 }

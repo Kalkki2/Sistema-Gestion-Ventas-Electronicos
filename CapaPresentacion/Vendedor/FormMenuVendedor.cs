@@ -71,9 +71,6 @@ namespace CapaPresentacion.Vendedor
             if (resultado == DialogResult.Yes)
             {
                 SesionActual.UsuarioLogueado = null;
-                FormLogin login = new FormLogin();
-                login.Show();
-
                 this.Close();
             }
         }

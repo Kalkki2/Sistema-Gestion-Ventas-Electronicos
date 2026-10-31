@@ -173,6 +173,12 @@
     <Compile Include="Administrador\HistorialComprasForm.Designer.cs">
       <DependentUpon>HistorialComprasForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Administrador\ListaCompraClientesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\ListaCompraClientesForm.Designer.cs">
+      <DependentUpon>ListaCompraClientesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Administrador\NuevaCompraForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,12 +190,6 @@
     </Compile>
     <Compile Include="Administrador\RegistrarEditarUsuarioForm.Designer.cs">
       <DependentUpon>RegistrarEditarUsuarioForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormLogin.Designer.cs">
-      <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="FormularioLogin.cs">
       <SubType>Form</SubType>
@@ -305,14 +305,14 @@
     <EmbeddedResource Include="Administrador\HistorialComprasForm.resx">
       <DependentUpon>HistorialComprasForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\ListaCompraClientesForm.resx">
+      <DependentUpon>ListaCompraClientesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Administrador\NuevaCompraForm.resx">
       <DependentUpon>NuevaCompraForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Administrador\RegistrarEditarUsuarioForm.resx">
       <DependentUpon>RegistrarEditarUsuarioForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormLogin.resx">
-      <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormularioLogin.resx">
       <DependentUpon>FormularioLogin.cs</DependentUpon>

@@ -31,7 +31,7 @@ namespace CapaPresentacion.Vendedor
                 dgvListaProductos.Columns[0].DataPropertyName = "codigo";
                 dgvListaProductos.Columns[1].DataPropertyName = "nombre";
                 dgvListaProductos.Columns[2].DataPropertyName = "precio_venta";
-                dgvListaProductos.Columns[2].DefaultCellStyle.Format = "C2";
+                dgvListaProductos.Columns[2].DefaultCellStyle.Format = "N2";
                 dgvListaProductos.Columns[3].DataPropertyName = "stock";
                 dgvListaProductos.Columns[4].DataPropertyName = "NombreCategoria";
                 dgvListaProductos.Columns[5].DataPropertyName = "NombreMarca";
@@ -161,6 +161,11 @@ namespace CapaPresentacion.Vendedor
             ProductoSeleccionado = producto;
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void BuscarProductoVentaForm_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

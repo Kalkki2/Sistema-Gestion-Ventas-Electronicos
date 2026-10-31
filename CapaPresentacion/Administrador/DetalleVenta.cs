@@ -23,7 +23,10 @@ namespace CapaPresentacion.Administrador
 
         private void DetalleVenta_Load(object sender, EventArgs e)
         {
-            lblValorNroVenta.Text = _venta.nro_venta;
+            if (_venta == null) return;
+
+            // Cargar cabecera del comprobante
+            lblDireccion.Text = _venta.nro_venta;
             lblValorFechaHora.Text = _venta.fecha_venta.ToString("dd/MM/yyyy HH:mm:ss");
 
             if (_venta.oUsuario != null)
@@ -43,7 +46,7 @@ namespace CapaPresentacion.Administrador
                 lblFormaPago.Text = _venta.oMetodoPago.nombre;
             }
 
-            // 2. Cargar el detalle de los productos en el DataGridView
+            // Cargar el detalle de los productos en el DataGridView
             CargarDetalleProductos();
         }
 
@@ -53,6 +56,8 @@ namespace CapaPresentacion.Administrador
             List<EDetalleVenta> listaDetalle = objCNVenta.ObtenerDetalleVenta(_venta.venta_id);
 
             dgvDetalleVenta.AutoGenerateColumns = false;
+
+            // Mapeo de columnas con las propiedades de EDetalleVenta
             dgvDetalleVenta.Columns["colProducto"].DataPropertyName = "NombreProducto";
             dgvDetalleVenta.Columns["colCantidad"].DataPropertyName = "cantidad";
             dgvDetalleVenta.Columns["colPrecio"].DataPropertyName = "precio_unitario";
@@ -60,33 +65,32 @@ namespace CapaPresentacion.Administrador
 
             dgvDetalleVenta.DataSource = listaDetalle;
 
-            // 3. Calcular los totales, subtotales y el ajuste (descuento/recargo)
+            //  Calcular los totales, subtotales y el ajuste (descuento/recargo)
             decimal totalBruto = 0;
-            foreach (var item in listaDetalle)
+            if (listaDetalle != null)
             {
-                totalBruto += item.SubtotalFila;
+                foreach (var item in listaDetalle)
+                {
+                    totalBruto += item.SubtotalFila;
+                }
             }
 
             // Mostramos el total bruto de los productos
             lblTotalBruto.Text = $"$ {totalBruto:N2}";
 
-            // Obtenemos los valores congelados que se guardaron en la venta
+            // Obtenemos los valores guardados en la venta
             decimal porcentaje = _venta.porcentaje_aplicado; // Ej: 10.00
-
-            // CORREGIDO: Se agregó el operador de multiplicación (*)
-            decimal montoAjuste = (totalBruto * porcentaje) / 100;
+            decimal montoAjuste = (totalBruto * porcentaje) / 100; // Multiplicación corregida
             decimal totalFinal = totalBruto;
 
-            // Evaluamos el tipo de ajuste a través del objeto método de pago relacionado
-            string tipoAjusteNombre = _venta.NombreTipoAjuste; // O puedes evaluar _venta.oMetodoPago.tipo_ajuste_id
+            // Evaluamos el tipo de ajuste
+            string tipoAjusteNombre = _venta.NombreTipoAjuste;
 
             if (tipoAjusteNombre == "Descuento" || (_venta.oMetodoPago != null && _venta.oMetodoPago.tipo_ajuste_id == 2))
             {
                 lblTextoAjuste.Text = $"Ajuste Descuento %{porcentaje:0.##}";
                 lblMontoAjuste.Text = $"- $ {montoAjuste:N2}";
-
-                // CORREGIDO: Se agregó el operador de resta (-)
-                totalFinal = totalBruto - montoAjuste;
+                totalFinal = totalBruto - montoAjuste; // Resta corregida
             }
             else if (tipoAjusteNombre == "Recargo" || (_venta.oMetodoPago != null && _venta.oMetodoPago.tipo_ajuste_id == 1))
             {
@@ -104,5 +108,9 @@ namespace CapaPresentacion.Administrador
             // Mostramos el total final a pagar
             lblTotalAPagar.Text = $"$ {totalFinal:N2}";
         }
+
+        
     }
 }
+    
+

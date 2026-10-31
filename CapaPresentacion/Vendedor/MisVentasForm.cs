@@ -1,4 +1,6 @@
-﻿using CapaNegocio;
+﻿using CapaEntidad;
+using CapaNegocio;
+using CapaPresentacion.Administrador;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,6 +40,12 @@ namespace CapaPresentacion.Vendedor
 
         private void MisVentasForm_Load(object sender, EventArgs e)
         {
+            if (SesionActual.UsuarioLogueado != null)
+            {
+                lblNombreUsuario.Text = $"{SesionActual.UsuarioLogueado.apellido}, {SesionActual.UsuarioLogueado.nombre}";
+                lblRolUsuario.Text = SesionActual.UsuarioLogueado.oPerfil.nombre;
+            }
+
             System.Globalization.CultureInfo cultura = new System.Globalization.CultureInfo("es-ES");
             lblFecha.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy", cultura);
             CargarMisVentas();
@@ -74,7 +82,7 @@ namespace CapaPresentacion.Vendedor
             dgvMisVentas.Columns["colMetodoPago"].DataPropertyName = "NombreMetodoPago";
             dgvMisVentas.Columns["colTipoAjuste"].DataPropertyName = "NombreTipoAjuste";
             dgvMisVentas.Columns["colFechaVenta"].DataPropertyName = "fecha_venta";
-            dgvMisVentas.Columns["colTotal"].DataPropertyName = "SubtotalVenta";
+            dgvMisVentas.Columns["colTotal"].DataPropertyName = "TotalVenta";
 
             CNVenta objCNVenta = new CNVenta();
 
@@ -90,6 +98,31 @@ namespace CapaPresentacion.Vendedor
 
                 // Asignamos los datos a la grilla
                 dgvMisVentas.DataSource = objCNVenta.ListarHistorialVentasPorUsuario(idVendedorActual);
+            }
+        }
+
+        private void dgvMisVentas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Validar que no se haga clic en los encabezados (fila -1)
+            if (e.RowIndex < 0) return;
+
+            string nombreColumna = dgvMisVentas.Columns[e.ColumnIndex].Name;
+
+            // Si hace clic en la columna configurada como botón "Ver Detalle" 
+            // (Asegúrate de que el nombre de la columna botón en tu grilla se llame "colVerDetalle")
+            if (nombreColumna == "colVerDetalle")
+            {
+                // Extraemos el objeto EVenta de la fila seleccionada en la grilla
+                EVenta ventaSeleccionada = (EVenta)dgvMisVentas.Rows[e.RowIndex].DataBoundItem;
+
+                if (ventaSeleccionada != null)
+                {
+                    // Abrimos el formulario modal DetalleVenta pasándole el objeto por el constructor
+                    using (DetalleVenta modal = new DetalleVenta(ventaSeleccionada))
+                    {
+                        modal.ShowDialog(); // Muestra el detalle con los productos, cantidades y precios
+                    }
+                }
             }
         }
     }

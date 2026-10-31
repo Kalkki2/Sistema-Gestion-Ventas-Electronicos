@@ -70,7 +70,7 @@ namespace CapaPresentacion.Administrador
 
                     // Rellenamos los campos de la interfaz con la información del producto seleccionado
                     txtProductoCompra.Text = frm._Producto.nombre;
-                    txtPrecioCompra.Text = frm._Producto.precio_venta.ToString("0.00");
+                    txtPrecioVentaActual.Text = frm._Producto.precio_venta.ToString("0.00");
                     txtCategoriaCompra.Text = frm._Producto.oCategoria.nombre;
                     txtMarcaCompra.Text = frm._Producto.oMarca.nombre;
                 }
@@ -159,20 +159,7 @@ namespace CapaPresentacion.Administrador
         }
 
         
-        private void LimpiarFormularioCompleto()
-        {
-            txtNroFactura.Clear();
-            txtProveedorCompra.Clear();
-            txtCorreoProveedor.Clear();
-            txtTelefonoProveedor.Clear();
-            idProveedorSeleccionado = 0;
-
-            dgvItemsCompra.Rows.Clear();
-            lblTotalCompra.Text = "$0.00";
-
-            LimpiarCamposProducto();
-            txtNroFactura.Focus();
-        }
+        
 
         private void CalcularPrecioVenta()
         {
@@ -197,11 +184,11 @@ namespace CapaPresentacion.Administrador
                 decimal precioVenta = precioCosto + (precioCosto * (margenPorcentaje / 100));
 
                 // 4. Mostramos el resultado formateado con 2 decimales en el campo o etiqueta de Precio Venta
-                txtPrecioVenta.Text = precioVenta.ToString("0.00");
+                txtNuevoPrecioVenta.Text = precioVenta.ToString("0.00");
             }
             catch (Exception)
             {
-                txtPrecioVenta.Text = "0.00";
+                txtNuevoPrecioVenta.Text = "0.00";
             }
         }
 
@@ -217,15 +204,15 @@ namespace CapaPresentacion.Administrador
 
         private void btnAgregarItemProducto_Click(object sender, EventArgs e)
         {
-            // 1. Validaciones previas
+            // Validaciones previas
             if (idProductoSeleccionado == 0 || string.IsNullOrWhiteSpace(txtProductoCompra.Text))
             {
                 MessageBox.Show("Debe seleccionar un producto primero.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            int cantidad = 0;
-            if (!int.TryParse(txtCantidadCompra.Text, out cantidad) || cantidad <= 0)
+            int cantidad = Convert.ToInt32(txtCantidadCompra.Value);
+            if (cantidad <= 0)
             {
                 MessageBox.Show("Ingrese una cantidad válida mayor a 0.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -242,7 +229,7 @@ namespace CapaPresentacion.Administrador
             decimal.TryParse(txtMargenVenta.Value.ToString(), out margen);
 
             decimal precioVenta = 0;
-            decimal.TryParse(txtPrecioVenta.Text.Replace(".", ","), out precioVenta);
+            decimal.TryParse(txtNuevoPrecioVenta.Text.Replace(".", ","), out precioVenta);
 
             // 2. Calcular el Subtotal de la línea
             decimal subtotal = cantidad * costoUnitario;
@@ -260,15 +247,15 @@ namespace CapaPresentacion.Administrador
             // 4. Agregar la fila a la grilla (La primera posición es el ID oculto, la segunda el NroItem visual)
             int nroItem = dgvItemsCompra.Rows.Count + 1;
             dgvItemsCompra.Rows.Add(new object[] {
-        idProductoSeleccionado,            // colProductoId (Oculta)
-        nroItem,                           // NroItem visual (1, 2, 3...)
-        txtProductoCompra.Text,            // Producto (Nombre)
-        cantidad,                          // Cantidad
-        costoUnitario.ToString("0.00"),    // Costo Unit.
-        margen.ToString("0.00"),           // % Margen
-        precioVenta.ToString("0.00"),      // Precio Venta
-        subtotal.ToString("0.00")          // Subtotal
-    });
+                idProductoSeleccionado,            // colProductoId (Oculta)
+                nroItem,                           // NroItem visual (1, 2, 3...)
+                txtProductoCompra.Text,            // Producto (Nombre)
+                cantidad,                          // Cantidad
+                costoUnitario.ToString("0.00"),    // Costo Unit.
+                margen.ToString("0.00"),           // % Margen
+                precioVenta.ToString("0.00"),      // Precio Venta
+                subtotal.ToString("0.00")          // Subtotal
+             });
 
             // 5. Calcular y actualizar el TOTAL GENERAL de la compra
             CalcularTotalCompra();
@@ -296,18 +283,7 @@ namespace CapaPresentacion.Administrador
             lblTotalCompra.Text = "$" + totalGeneral.ToString("0.00");
         }
 
-        // Método para limpiar solo la sección del producto tras agregarlo
-        private void LimpiarCamposProducto()
-        {
-            idProductoSeleccionado = 0;
-            txtProductoCompra.Clear();
-            txtCategoriaCompra.Clear();
-            txtMarcaCompra.Clear();
-            txtPrecioCompra.Clear();
-            txtMargenVenta.Value = 0;
-            txtPrecioVenta.Clear();
-            // numCantidad.Value = 0; // o 1 según prefieras
-        }
+       
 
         private void dgvItemsCompra_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {// Verificamos que no sea el encabezado de la tabla
@@ -372,7 +348,7 @@ namespace CapaPresentacion.Administrador
                     txtMargenVenta.Value = margenActual; // % Margen
                 }
 
-                txtPrecioVenta.Text = fila.Cells[6].Value?.ToString(); // Precio Venta
+                txtNuevoPrecioVenta.Text = fila.Cells[6].Value?.ToString(); // Precio Venta
 
                 // Quitamos temporalmente la fila de la grilla para que se vuelva a agregar actualizada al presionar el botón
                 dgvItemsCompra.Rows.RemoveAt(e.RowIndex);
@@ -402,7 +378,49 @@ namespace CapaPresentacion.Administrador
             {
                 lblNombreUsuario.Text = $"{SesionActual.UsuarioLogueado.apellido}, {SesionActual.UsuarioLogueado.nombre}";
                 lblRolUsuario.Text = SesionActual.UsuarioLogueado.oPerfil.nombre;
+
             }
+
+            System.Globalization.CultureInfo cultura = new System.Globalization.CultureInfo("es-ES");
+            lblFecha.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy", cultura);
         }
+
+        // Cancela la compra y limpa formulario
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            LimpiarFormularioCompleto();
+        }
+
+        // Limpia todo el formulario
+        private void LimpiarFormularioCompleto()
+        {
+            txtNroFactura.Clear();
+            txtProveedorCompra.Clear();
+            txtCorreoProveedor.Clear();
+            txtTelefonoProveedor.Clear();
+            idProveedorSeleccionado = 0;
+
+            dgvItemsCompra.Rows.Clear();
+            lblTotalCompra.Text = "$0.00";
+
+            LimpiarCamposProducto();
+            txtNroFactura.Focus();
+        }
+
+        // Limpiar solo la sección del producto despues  agregarlo
+        private void LimpiarCamposProducto()
+        {
+            idProductoSeleccionado = 0;
+            txtProductoCompra.Clear();
+            txtCategoriaCompra.Clear();
+            txtMarcaCompra.Clear();
+            txtPrecioVentaActual.Clear();
+            txtPrecioCompra.Clear();
+            txtMargenVenta.Value = 0;
+            txtNuevoPrecioVenta.Clear();
+            txtCantidadCompra.Value = 0;
+        }
+
+
     }
 }

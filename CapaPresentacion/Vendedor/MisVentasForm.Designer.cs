@@ -63,7 +63,7 @@
             this.colTipoAjuste = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colFechaVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colBtnVerDetalle = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colVerDetalle = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pnlEncabezado.SuspendLayout();
             this.pnlnfoUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
@@ -176,7 +176,7 @@
             this.colTipoAjuste,
             this.colFechaVenta,
             this.colTotal,
-            this.colBtnVerDetalle});
+            this.colVerDetalle});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -200,6 +200,7 @@
             this.dgvMisVentas.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvMisVentas.ThemeStyle.RowsStyle.Height = 23;
             this.dgvMisVentas.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
+            this.dgvMisVentas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMisVentas_CellContentClick);
             // 
             // lblTituloHistorialVentas
             // 
@@ -445,11 +446,11 @@
             this.colTotal.HeaderText = "Total";
             this.colTotal.Name = "colTotal";
             // 
-            // colBtnVerDetalle
+            // colVerDetalle
             // 
-            this.colBtnVerDetalle.FillWeight = 90F;
-            this.colBtnVerDetalle.HeaderText = "Ver Detalle";
-            this.colBtnVerDetalle.Name = "colBtnVerDetalle";
+            this.colVerDetalle.FillWeight = 90F;
+            this.colVerDetalle.HeaderText = "Ver Detalle";
+            this.colVerDetalle.Name = "colVerDetalle";
             // 
             // MisVentasForm
             // 
@@ -509,6 +510,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colTipoAjuste;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFechaVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTotal;
-        private System.Windows.Forms.DataGridViewButtonColumn colBtnVerDetalle;
+        private System.Windows.Forms.DataGridViewButtonColumn colVerDetalle;
     }
 }

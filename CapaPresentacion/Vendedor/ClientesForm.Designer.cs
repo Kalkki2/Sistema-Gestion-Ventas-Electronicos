@@ -64,27 +64,27 @@
             this.lblTituloListaClientes = new System.Windows.Forms.Label();
             this.pnlContenedorLista = new Guna.UI2.WinForms.Guna2Panel();
             this.dgvListaCompras = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDetallesCompras = new System.Windows.Forms.DataGridViewButtonColumn();
             this.lblTituloListaCompras = new System.Windows.Forms.Label();
             this.pnlContenedorFiltros = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.btnBuscarCliente = new Guna.UI2.WinForms.Guna2Button();
             this.txtBuscarCliente = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblBuscarPorDNIONombreOCorreo = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.colNroCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDni = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCorreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEditar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colDetallesCompras = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colBtnVerCompras = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colEditar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCorreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNroCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlFormularioCliente.SuspendLayout();
             this.pnlEncabezado.SuspendLayout();
             this.pnlnfoUsuario.SuspendLayout();
@@ -117,14 +117,13 @@
             this.pnlFormularioCliente.Controls.Add(this.btnCancelar);
             this.pnlFormularioCliente.Controls.Add(this.btnRegistrarCliente);
             this.pnlFormularioCliente.FillColor = System.Drawing.Color.White;
-            this.pnlFormularioCliente.Location = new System.Drawing.Point(7, 82);
-            this.pnlFormularioCliente.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlFormularioCliente.Location = new System.Drawing.Point(5, 67);
             this.pnlFormularioCliente.Name = "pnlFormularioCliente";
             this.pnlFormularioCliente.Radius = 5;
             this.pnlFormularioCliente.ShadowColor = System.Drawing.Color.Black;
             this.pnlFormularioCliente.ShadowDepth = 25;
             this.pnlFormularioCliente.ShadowShift = 3;
-            this.pnlFormularioCliente.Size = new System.Drawing.Size(733, 270);
+            this.pnlFormularioCliente.Size = new System.Drawing.Size(550, 219);
             this.pnlFormularioCliente.TabIndex = 57;
             // 
             // btnActualizar
@@ -138,10 +137,9 @@
             this.btnActualizar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(110)))), ((int)(((byte)(253)))));
             this.btnActualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActualizar.ForeColor = System.Drawing.Color.White;
-            this.btnActualizar.Location = new System.Drawing.Point(393, 219);
-            this.btnActualizar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnActualizar.Location = new System.Drawing.Point(295, 178);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(140, 43);
+            this.btnActualizar.Size = new System.Drawing.Size(105, 35);
             this.btnActualizar.TabIndex = 75;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
@@ -161,13 +159,13 @@
             this.txtCorreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCorreo.ForeColor = System.Drawing.Color.Black;
             this.txtCorreo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCorreo.Location = new System.Drawing.Point(357, 169);
-            this.txtCorreo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtCorreo.Location = new System.Drawing.Point(268, 137);
+            this.txtCorreo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCorreo.MaxLength = 25;
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.PlaceholderText = "";
             this.txtCorreo.SelectedText = "";
-            this.txtCorreo.Size = new System.Drawing.Size(300, 33);
+            this.txtCorreo.Size = new System.Drawing.Size(225, 27);
             this.txtCorreo.TabIndex = 74;
             this.txtCorreo.Validating += new System.ComponentModel.CancelEventHandler(this.txtCorreo_Validating);
             // 
@@ -176,10 +174,9 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(353, 144);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(265, 117);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 20);
+            this.label1.Size = new System.Drawing.Size(59, 17);
             this.label1.TabIndex = 73;
             this.label1.Text = "Correo: ";
             // 
@@ -198,13 +195,13 @@
             this.txtDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDireccion.ForeColor = System.Drawing.Color.Black;
             this.txtDireccion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDireccion.Location = new System.Drawing.Point(357, 101);
-            this.txtDireccion.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtDireccion.Location = new System.Drawing.Point(268, 82);
+            this.txtDireccion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtDireccion.MaxLength = 20;
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.PlaceholderText = "";
             this.txtDireccion.SelectedText = "";
-            this.txtDireccion.Size = new System.Drawing.Size(300, 33);
+            this.txtDireccion.Size = new System.Drawing.Size(225, 27);
             this.txtDireccion.TabIndex = 72;
             this.txtDireccion.TextChanged += new System.EventHandler(this.txtDireccion_TextChanged);
             this.txtDireccion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDireccion_KeyPress);
@@ -214,10 +211,9 @@
             this.lblDireccion.AutoSize = true;
             this.lblDireccion.BackColor = System.Drawing.Color.Transparent;
             this.lblDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDireccion.Location = new System.Drawing.Point(353, 76);
-            this.lblDireccion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDireccion.Location = new System.Drawing.Point(265, 62);
             this.lblDireccion.Name = "lblDireccion";
-            this.lblDireccion.Size = new System.Drawing.Size(91, 20);
+            this.lblDireccion.Size = new System.Drawing.Size(75, 17);
             this.lblDireccion.TabIndex = 71;
             this.lblDireccion.Text = "Direccion: ";
             // 
@@ -236,13 +232,13 @@
             this.txtTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefono.ForeColor = System.Drawing.Color.Black;
             this.txtTelefono.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTelefono.Location = new System.Drawing.Point(357, 23);
-            this.txtTelefono.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtTelefono.Location = new System.Drawing.Point(268, 19);
+            this.txtTelefono.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtTelefono.MaxLength = 10;
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.PlaceholderText = "";
             this.txtTelefono.SelectedText = "";
-            this.txtTelefono.Size = new System.Drawing.Size(300, 33);
+            this.txtTelefono.Size = new System.Drawing.Size(225, 27);
             this.txtTelefono.TabIndex = 70;
             this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefono_KeyPress);
             // 
@@ -251,10 +247,9 @@
             this.lblTelefono.AutoSize = true;
             this.lblTelefono.BackColor = System.Drawing.Color.Transparent;
             this.lblTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelefono.Location = new System.Drawing.Point(353, -1);
-            this.lblTelefono.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTelefono.Location = new System.Drawing.Point(265, -1);
             this.lblTelefono.Name = "lblTelefono";
-            this.lblTelefono.Size = new System.Drawing.Size(83, 20);
+            this.lblTelefono.Size = new System.Drawing.Size(72, 17);
             this.lblTelefono.TabIndex = 69;
             this.lblTelefono.Text = "Telefono: ";
             // 
@@ -273,13 +268,13 @@
             this.txtDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDni.ForeColor = System.Drawing.Color.Black;
             this.txtDni.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDni.Location = new System.Drawing.Point(21, 206);
-            this.txtDni.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtDni.Location = new System.Drawing.Point(16, 167);
+            this.txtDni.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtDni.MaxLength = 8;
             this.txtDni.Name = "txtDni";
             this.txtDni.PlaceholderText = "";
             this.txtDni.SelectedText = "";
-            this.txtDni.Size = new System.Drawing.Size(197, 33);
+            this.txtDni.Size = new System.Drawing.Size(148, 27);
             this.txtDni.TabIndex = 68;
             this.txtDni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDni_KeyPress);
             // 
@@ -288,10 +283,9 @@
             this.lblDni.AutoSize = true;
             this.lblDni.BackColor = System.Drawing.Color.Transparent;
             this.lblDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDni.Location = new System.Drawing.Point(17, 181);
-            this.lblDni.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDni.Location = new System.Drawing.Point(13, 147);
             this.lblDni.Name = "lblDni";
-            this.lblDni.Size = new System.Drawing.Size(48, 20);
+            this.lblDni.Size = new System.Drawing.Size(39, 17);
             this.lblDni.TabIndex = 67;
             this.lblDni.Text = "DNI: ";
             // 
@@ -300,10 +294,9 @@
             this.lblTituloInformacionCliente.AutoSize = true;
             this.lblTituloInformacionCliente.BackColor = System.Drawing.Color.Transparent;
             this.lblTituloInformacionCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloInformacionCliente.Location = new System.Drawing.Point(17, 16);
-            this.lblTituloInformacionCliente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTituloInformacionCliente.Location = new System.Drawing.Point(13, 13);
             this.lblTituloInformacionCliente.Name = "lblTituloInformacionCliente";
-            this.lblTituloInformacionCliente.Size = new System.Drawing.Size(200, 20);
+            this.lblTituloInformacionCliente.Size = new System.Drawing.Size(163, 16);
             this.lblTituloInformacionCliente.TabIndex = 66;
             this.lblTituloInformacionCliente.Text = "Informacion del cliente";
             // 
@@ -322,13 +315,13 @@
             this.txtApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtApellido.ForeColor = System.Drawing.Color.Black;
             this.txtApellido.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtApellido.Location = new System.Drawing.Point(21, 138);
-            this.txtApellido.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtApellido.Location = new System.Drawing.Point(16, 112);
+            this.txtApellido.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtApellido.MaxLength = 15;
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.PlaceholderText = "";
             this.txtApellido.SelectedText = "";
-            this.txtApellido.Size = new System.Drawing.Size(300, 33);
+            this.txtApellido.Size = new System.Drawing.Size(225, 27);
             this.txtApellido.TabIndex = 65;
             this.txtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellido_KeyPress);
             // 
@@ -337,10 +330,9 @@
             this.lblApellido.AutoSize = true;
             this.lblApellido.BackColor = System.Drawing.Color.Transparent;
             this.lblApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApellido.Location = new System.Drawing.Point(17, 113);
-            this.lblApellido.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblApellido.Location = new System.Drawing.Point(13, 92);
             this.lblApellido.Name = "lblApellido";
-            this.lblApellido.Size = new System.Drawing.Size(78, 20);
+            this.lblApellido.Size = new System.Drawing.Size(66, 17);
             this.lblApellido.TabIndex = 64;
             this.lblApellido.Text = "Apellido: ";
             // 
@@ -349,10 +341,9 @@
             this.lblNombre.AutoSize = true;
             this.lblNombre.BackColor = System.Drawing.Color.Transparent;
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(17, 36);
-            this.lblNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNombre.Location = new System.Drawing.Point(13, 29);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(78, 20);
+            this.lblNombre.Size = new System.Drawing.Size(66, 17);
             this.lblNombre.TabIndex = 63;
             this.lblNombre.Text = "Nombre: ";
             // 
@@ -371,13 +362,13 @@
             this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.ForeColor = System.Drawing.Color.Black;
             this.txtNombre.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtNombre.Location = new System.Drawing.Point(21, 60);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtNombre.Location = new System.Drawing.Point(16, 49);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtNombre.MaxLength = 15;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.PlaceholderText = "";
             this.txtNombre.SelectedText = "";
-            this.txtNombre.Size = new System.Drawing.Size(300, 33);
+            this.txtNombre.Size = new System.Drawing.Size(225, 27);
             this.txtNombre.TabIndex = 62;
             this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
@@ -394,10 +385,9 @@
             this.btnCancelar.FillColor = System.Drawing.Color.Silver;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.Black;
-            this.btnCancelar.Location = new System.Drawing.Point(240, 219);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancelar.Location = new System.Drawing.Point(180, 178);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(133, 43);
+            this.btnCancelar.Size = new System.Drawing.Size(100, 35);
             this.btnCancelar.TabIndex = 51;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -413,10 +403,9 @@
             this.btnRegistrarCliente.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(110)))), ((int)(((byte)(253)))));
             this.btnRegistrarCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrarCliente.ForeColor = System.Drawing.Color.White;
-            this.btnRegistrarCliente.Location = new System.Drawing.Point(565, 219);
-            this.btnRegistrarCliente.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRegistrarCliente.Location = new System.Drawing.Point(424, 178);
             this.btnRegistrarCliente.Name = "btnRegistrarCliente";
-            this.btnRegistrarCliente.Size = new System.Drawing.Size(164, 43);
+            this.btnRegistrarCliente.Size = new System.Drawing.Size(123, 35);
             this.btnRegistrarCliente.TabIndex = 26;
             this.btnRegistrarCliente.Text = "Agregar Cliente";
             this.btnRegistrarCliente.Click += new System.EventHandler(this.btnRegistrarCliente_Click);
@@ -427,10 +416,9 @@
             this.pnlEncabezado.Controls.Add(this.pnlnfoUsuario);
             this.pnlEncabezado.Controls.Add(this.lblFecha);
             this.pnlEncabezado.Controls.Add(this.lblTitulo);
-            this.pnlEncabezado.Location = new System.Drawing.Point(-4, -2);
-            this.pnlEncabezado.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlEncabezado.Location = new System.Drawing.Point(-3, -2);
             this.pnlEncabezado.Name = "pnlEncabezado";
-            this.pnlEncabezado.Size = new System.Drawing.Size(1571, 78);
+            this.pnlEncabezado.Size = new System.Drawing.Size(1179, 64);
             this.pnlEncabezado.TabIndex = 58;
             // 
             // pnlnfoUsuario
@@ -439,29 +427,26 @@
             this.pnlnfoUsuario.Controls.Add(this.lblNombreUsuario);
             this.pnlnfoUsuario.Controls.Add(this.picUsuario);
             this.pnlnfoUsuario.Controls.Add(this.lblRolUsuario);
-            this.pnlnfoUsuario.Location = new System.Drawing.Point(1287, 6);
-            this.pnlnfoUsuario.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlnfoUsuario.Location = new System.Drawing.Point(965, 5);
             this.pnlnfoUsuario.Name = "pnlnfoUsuario";
-            this.pnlnfoUsuario.Size = new System.Drawing.Size(249, 67);
+            this.pnlnfoUsuario.Size = new System.Drawing.Size(187, 55);
             this.pnlnfoUsuario.TabIndex = 3;
             // 
             // lblNombreUsuario
             // 
             this.lblNombreUsuario.AutoSize = true;
             this.lblNombreUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreUsuario.Location = new System.Drawing.Point(69, 14);
-            this.lblNombreUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNombreUsuario.Location = new System.Drawing.Point(52, 11);
             this.lblNombreUsuario.Name = "lblNombreUsuario";
-            this.lblNombreUsuario.Size = new System.Drawing.Size(147, 20);
+            this.lblNombreUsuario.Size = new System.Drawing.Size(128, 17);
             this.lblNombreUsuario.TabIndex = 11;
             this.lblNombreUsuario.Text = "Pereira, Luciana";
             // 
             // picUsuario
             // 
-            this.picUsuario.Location = new System.Drawing.Point(4, 6);
-            this.picUsuario.Margin = new System.Windows.Forms.Padding(4);
+            this.picUsuario.Location = new System.Drawing.Point(3, 5);
             this.picUsuario.Name = "picUsuario";
-            this.picUsuario.Size = new System.Drawing.Size(57, 52);
+            this.picUsuario.Size = new System.Drawing.Size(43, 42);
             this.picUsuario.TabIndex = 3;
             this.picUsuario.TabStop = false;
             // 
@@ -469,10 +454,9 @@
             // 
             this.lblRolUsuario.AutoSize = true;
             this.lblRolUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRolUsuario.Location = new System.Drawing.Point(101, 37);
-            this.lblRolUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblRolUsuario.Location = new System.Drawing.Point(76, 30);
             this.lblRolUsuario.Name = "lblRolUsuario";
-            this.lblRolUsuario.Size = new System.Drawing.Size(71, 18);
+            this.lblRolUsuario.Size = new System.Drawing.Size(60, 15);
             this.lblRolUsuario.TabIndex = 11;
             this.lblRolUsuario.Text = "Vendedor";
             // 
@@ -480,10 +464,9 @@
             // 
             this.lblFecha.AutoSize = true;
             this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFecha.Location = new System.Drawing.Point(19, 9);
-            this.lblFecha.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFecha.Location = new System.Drawing.Point(14, 7);
             this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(55, 20);
+            this.lblFecha.Size = new System.Drawing.Size(47, 17);
             this.lblFecha.TabIndex = 11;
             this.lblFecha.Text = "Fecha";
             // 
@@ -491,10 +474,9 @@
             // 
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(16, 36);
-            this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTitulo.Location = new System.Drawing.Point(12, 29);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(121, 31);
+            this.lblTitulo.Size = new System.Drawing.Size(99, 26);
             this.lblTitulo.TabIndex = 11;
             this.lblTitulo.Text = "Clientes";
             // 
@@ -506,10 +488,9 @@
             this.pnlContenedorListaClientes.Controls.Add(this.dgvListaClientes);
             this.pnlContenedorListaClientes.Controls.Add(this.lblTituloListaClientes);
             this.pnlContenedorListaClientes.FillColor = System.Drawing.Color.Transparent;
-            this.pnlContenedorListaClientes.Location = new System.Drawing.Point(9, 367);
-            this.pnlContenedorListaClientes.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlContenedorListaClientes.Location = new System.Drawing.Point(7, 298);
             this.pnlContenedorListaClientes.Name = "pnlContenedorListaClientes";
-            this.pnlContenedorListaClientes.Size = new System.Drawing.Size(865, 455);
+            this.pnlContenedorListaClientes.Size = new System.Drawing.Size(649, 370);
             this.pnlContenedorListaClientes.TabIndex = 59;
             // 
             // dgvListaClientes
@@ -543,13 +524,12 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvListaClientes.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvListaClientes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvListaClientes.Location = new System.Drawing.Point(4, 60);
-            this.dgvListaClientes.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvListaClientes.Location = new System.Drawing.Point(3, 49);
             this.dgvListaClientes.Name = "dgvListaClientes";
             this.dgvListaClientes.RowHeadersVisible = false;
             this.dgvListaClientes.RowHeadersWidth = 51;
             this.dgvListaClientes.RowTemplate.Height = 23;
-            this.dgvListaClientes.Size = new System.Drawing.Size(857, 369);
+            this.dgvListaClientes.Size = new System.Drawing.Size(643, 300);
             this.dgvListaClientes.TabIndex = 7;
             this.dgvListaClientes.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
             this.dgvListaClientes.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
@@ -566,10 +546,9 @@
             this.lblTituloListaClientes.BackColor = System.Drawing.Color.Transparent;
             this.lblTituloListaClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTituloListaClientes.ForeColor = System.Drawing.Color.Black;
-            this.lblTituloListaClientes.Location = new System.Drawing.Point(7, 18);
-            this.lblTituloListaClientes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTituloListaClientes.Location = new System.Drawing.Point(5, 15);
             this.lblTituloListaClientes.Name = "lblTituloListaClientes";
-            this.lblTituloListaClientes.Size = new System.Drawing.Size(149, 20);
+            this.lblTituloListaClientes.Size = new System.Drawing.Size(120, 16);
             this.lblTituloListaClientes.TabIndex = 6;
             this.lblTituloListaClientes.Text = "Lista de clientes";
             // 
@@ -581,10 +560,9 @@
             this.pnlContenedorLista.Controls.Add(this.dgvListaCompras);
             this.pnlContenedorLista.Controls.Add(this.lblTituloListaCompras);
             this.pnlContenedorLista.FillColor = System.Drawing.Color.Transparent;
-            this.pnlContenedorLista.Location = new System.Drawing.Point(883, 367);
-            this.pnlContenedorLista.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlContenedorLista.Location = new System.Drawing.Point(662, 298);
             this.pnlContenedorLista.Name = "pnlContenedorLista";
-            this.pnlContenedorLista.Size = new System.Drawing.Size(667, 322);
+            this.pnlContenedorLista.Size = new System.Drawing.Size(500, 262);
             this.pnlContenedorLista.TabIndex = 60;
             // 
             // dgvListaCompras
@@ -616,13 +594,12 @@
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvListaCompras.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvListaCompras.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvListaCompras.Location = new System.Drawing.Point(4, 60);
-            this.dgvListaCompras.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvListaCompras.Location = new System.Drawing.Point(3, 49);
             this.dgvListaCompras.Name = "dgvListaCompras";
             this.dgvListaCompras.RowHeadersVisible = false;
             this.dgvListaCompras.RowHeadersWidth = 51;
             this.dgvListaCompras.RowTemplate.Height = 23;
-            this.dgvListaCompras.Size = new System.Drawing.Size(657, 249);
+            this.dgvListaCompras.Size = new System.Drawing.Size(493, 202);
             this.dgvListaCompras.TabIndex = 7;
             this.dgvListaCompras.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
             this.dgvListaCompras.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
@@ -634,52 +611,15 @@
             this.dgvListaCompras.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
             this.dgvListaCompras.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaCompras_CellContentClick);
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "NroVenta";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Fecha Venta";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Vendedor";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Metodo Pago";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Total";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // colDetallesCompras
-            // 
-            this.colDetallesCompras.HeaderText = "Ver Detalle";
-            this.colDetallesCompras.MinimumWidth = 6;
-            this.colDetallesCompras.Name = "colDetallesCompras";
-            // 
             // lblTituloListaCompras
             // 
             this.lblTituloListaCompras.AutoSize = true;
             this.lblTituloListaCompras.BackColor = System.Drawing.Color.Transparent;
             this.lblTituloListaCompras.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTituloListaCompras.ForeColor = System.Drawing.Color.Black;
-            this.lblTituloListaCompras.Location = new System.Drawing.Point(4, 18);
-            this.lblTituloListaCompras.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTituloListaCompras.Location = new System.Drawing.Point(3, 15);
             this.lblTituloListaCompras.Name = "lblTituloListaCompras";
-            this.lblTituloListaCompras.Size = new System.Drawing.Size(161, 20);
+            this.lblTituloListaCompras.Size = new System.Drawing.Size(130, 16);
             this.lblTituloListaCompras.TabIndex = 6;
             this.lblTituloListaCompras.Text = "Lista de compras:";
             // 
@@ -690,14 +630,13 @@
             this.pnlContenedorFiltros.Controls.Add(this.txtBuscarCliente);
             this.pnlContenedorFiltros.Controls.Add(this.lblBuscarPorDNIONombreOCorreo);
             this.pnlContenedorFiltros.FillColor = System.Drawing.Color.White;
-            this.pnlContenedorFiltros.Location = new System.Drawing.Point(779, 188);
-            this.pnlContenedorFiltros.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlContenedorFiltros.Location = new System.Drawing.Point(584, 153);
             this.pnlContenedorFiltros.Name = "pnlContenedorFiltros";
             this.pnlContenedorFiltros.Radius = 5;
             this.pnlContenedorFiltros.ShadowColor = System.Drawing.Color.Black;
             this.pnlContenedorFiltros.ShadowDepth = 25;
             this.pnlContenedorFiltros.ShadowShift = 3;
-            this.pnlContenedorFiltros.Size = new System.Drawing.Size(476, 156);
+            this.pnlContenedorFiltros.Size = new System.Drawing.Size(357, 127);
             this.pnlContenedorFiltros.TabIndex = 61;
             // 
             // btnBuscarCliente
@@ -712,10 +651,9 @@
             this.btnBuscarCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.btnBuscarCliente.ForeColor = System.Drawing.Color.Black;
             this.btnBuscarCliente.Image = global::CapaPresentacion.Properties.Resources.icono_lupa;
-            this.btnBuscarCliente.Location = new System.Drawing.Point(367, 75);
-            this.btnBuscarCliente.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBuscarCliente.Location = new System.Drawing.Point(275, 61);
             this.btnBuscarCliente.Name = "btnBuscarCliente";
-            this.btnBuscarCliente.Size = new System.Drawing.Size(95, 33);
+            this.btnBuscarCliente.Size = new System.Drawing.Size(71, 27);
             this.btnBuscarCliente.TabIndex = 45;
             this.btnBuscarCliente.Text = "Buscar";
             this.btnBuscarCliente.Click += new System.EventHandler(this.btnBuscarCliente_Click);
@@ -734,12 +672,12 @@
             this.txtBuscarCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuscarCliente.ForeColor = System.Drawing.Color.Black;
             this.txtBuscarCliente.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscarCliente.Location = new System.Drawing.Point(16, 75);
-            this.txtBuscarCliente.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtBuscarCliente.Location = new System.Drawing.Point(12, 61);
+            this.txtBuscarCliente.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtBuscarCliente.Name = "txtBuscarCliente";
             this.txtBuscarCliente.PlaceholderText = "";
             this.txtBuscarCliente.SelectedText = "";
-            this.txtBuscarCliente.Size = new System.Drawing.Size(343, 33);
+            this.txtBuscarCliente.Size = new System.Drawing.Size(257, 27);
             this.txtBuscarCliente.TabIndex = 0;
             this.txtBuscarCliente.TextChanged += new System.EventHandler(this.txtBuscarCliente_TextChanged);
             // 
@@ -748,10 +686,9 @@
             this.lblBuscarPorDNIONombreOCorreo.AutoSize = true;
             this.lblBuscarPorDNIONombreOCorreo.BackColor = System.Drawing.Color.Transparent;
             this.lblBuscarPorDNIONombreOCorreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuscarPorDNIONombreOCorreo.Location = new System.Drawing.Point(12, 31);
-            this.lblBuscarPorDNIONombreOCorreo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBuscarPorDNIONombreOCorreo.Location = new System.Drawing.Point(9, 25);
             this.lblBuscarPorDNIONombreOCorreo.Name = "lblBuscarPorDNIONombreOCorreo";
-            this.lblBuscarPorDNIONombreOCorreo.Size = new System.Drawing.Size(287, 20);
+            this.lblBuscarPorDNIONombreOCorreo.Size = new System.Drawing.Size(242, 17);
             this.lblBuscarPorDNIONombreOCorreo.TabIndex = 22;
             this.lblBuscarPorDNIONombreOCorreo.Text = "Buscar por DNI , Nombre o Telefono:";
             // 
@@ -759,48 +696,47 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // colNroCliente
+            // colDetallesCompras
             // 
-            this.colNroCliente.FillWeight = 75F;
-            this.colNroCliente.HeaderText = "NroCliente";
-            this.colNroCliente.MinimumWidth = 6;
-            this.colNroCliente.Name = "colNroCliente";
+            this.colDetallesCompras.HeaderText = "Ver Detalle";
+            this.colDetallesCompras.MinimumWidth = 6;
+            this.colDetallesCompras.Name = "colDetallesCompras";
             // 
-            // colDni
+            // dataGridViewTextBoxColumn4
             // 
-            this.colDni.HeaderText = "DNI";
-            this.colDni.MinimumWidth = 6;
-            this.colDni.Name = "colDni";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Total";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
-            // colNombre
+            // dataGridViewTextBoxColumn5
             // 
-            this.colNombre.HeaderText = "Nombre";
-            this.colNombre.MinimumWidth = 6;
-            this.colNombre.Name = "colNombre";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Metodo Pago";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             // 
-            // colApellido
+            // dataGridViewTextBoxColumn3
             // 
-            this.colApellido.HeaderText = "Apellido";
-            this.colApellido.MinimumWidth = 6;
-            this.colApellido.Name = "colApellido";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Vendedor";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             // 
-            // colCorreo
+            // dataGridViewTextBoxColumn2
             // 
-            this.colCorreo.HeaderText = "Correo";
-            this.colCorreo.MinimumWidth = 6;
-            this.colCorreo.Name = "colCorreo";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Fecha Venta";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
-            // colTelefono
+            // dataGridViewTextBoxColumn1
             // 
-            this.colTelefono.HeaderText = "Telefono";
-            this.colTelefono.MinimumWidth = 6;
-            this.colTelefono.Name = "colTelefono";
+            this.dataGridViewTextBoxColumn1.HeaderText = "NroVenta";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
-            // colDireccion
+            // colBtnVerCompras
             // 
-            this.colDireccion.HeaderText = "Direccion";
-            this.colDireccion.MinimumWidth = 6;
-            this.colDireccion.Name = "colDireccion";
+            this.colBtnVerCompras.HeaderText = "Ver compras";
+            this.colBtnVerCompras.MinimumWidth = 6;
+            this.colBtnVerCompras.Name = "colBtnVerCompras";
             // 
             // colEditar
             // 
@@ -810,23 +746,59 @@
             this.colEditar.Text = "Editar";
             this.colEditar.UseColumnTextForButtonValue = true;
             // 
-            // colBtnVerCompras
+            // colDireccion
             // 
-            this.colBtnVerCompras.HeaderText = "Ver compras";
-            this.colBtnVerCompras.MinimumWidth = 6;
-            this.colBtnVerCompras.Name = "colBtnVerCompras";
+            this.colDireccion.HeaderText = "Direccion";
+            this.colDireccion.MinimumWidth = 6;
+            this.colDireccion.Name = "colDireccion";
+            // 
+            // colTelefono
+            // 
+            this.colTelefono.HeaderText = "Telefono";
+            this.colTelefono.MinimumWidth = 6;
+            this.colTelefono.Name = "colTelefono";
+            // 
+            // colCorreo
+            // 
+            this.colCorreo.HeaderText = "Correo";
+            this.colCorreo.MinimumWidth = 6;
+            this.colCorreo.Name = "colCorreo";
+            // 
+            // colApellido
+            // 
+            this.colApellido.HeaderText = "Apellido";
+            this.colApellido.MinimumWidth = 6;
+            this.colApellido.Name = "colApellido";
+            // 
+            // colNombre
+            // 
+            this.colNombre.HeaderText = "Nombre";
+            this.colNombre.MinimumWidth = 6;
+            this.colNombre.Name = "colNombre";
+            // 
+            // colDni
+            // 
+            this.colDni.HeaderText = "DNI";
+            this.colDni.MinimumWidth = 6;
+            this.colDni.Name = "colDni";
+            // 
+            // colNroCliente
+            // 
+            this.colNroCliente.FillWeight = 75F;
+            this.colNroCliente.HeaderText = "NroCliente";
+            this.colNroCliente.MinimumWidth = 6;
+            this.colNroCliente.Name = "colNroCliente";
             // 
             // ClientesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1557, 690);
+            this.ClientSize = new System.Drawing.Size(1028, 561);
             this.Controls.Add(this.pnlContenedorFiltros);
             this.Controls.Add(this.pnlContenedorLista);
             this.Controls.Add(this.pnlContenedorListaClientes);
             this.Controls.Add(this.pnlEncabezado);
             this.Controls.Add(this.pnlFormularioCliente);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ClientesForm";
             this.Text = "ClientesForm";
             this.Load += new System.EventHandler(this.ClientesForm_Load);
@@ -883,12 +855,6 @@
         private Guna.UI2.WinForms.Guna2Button btnBuscarCliente;
         private Guna.UI2.WinForms.Guna2TextBox txtBuscarCliente;
         private System.Windows.Forms.Label lblBuscarPorDNIONombreOCorreo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewButtonColumn colDetallesCompras;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private Guna.UI2.WinForms.Guna2TextBox txtCorreo;
         private System.Windows.Forms.Label label1;
@@ -902,5 +868,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colDireccion;
         private System.Windows.Forms.DataGridViewButtonColumn colEditar;
         private System.Windows.Forms.DataGridViewButtonColumn colBtnVerCompras;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewButtonColumn colDetallesCompras;
     }
 }

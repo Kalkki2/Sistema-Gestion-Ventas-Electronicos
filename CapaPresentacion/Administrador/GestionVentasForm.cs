@@ -15,6 +15,7 @@ namespace CapaPresentacion.Administrador
     public partial class GestionVentasForm : Form
     {
         private CNMetodoPago objCNMetodoPago = new CNMetodoPago();
+        private bool cargandoFormulario = true;
         public GestionVentasForm()
         {
             InitializeComponent();
@@ -22,20 +23,7 @@ namespace CapaPresentacion.Administrador
 
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
-            if (dtpDesde.Value.Date > dtpHasta.Value.Date)
-            {
-                MessageBox.Show("La fecha 'Desde' no puede ser posterior a la fecha 'Hasta'", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-        }
-
-        private void btnBuscarVendedor_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtBuscarVendedorDni.Text))
-            {
-                MessageBox.Show("Debe completar el campo para buscar.", "Campo vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            FiltrarHistorial(aplicarFechas: true);
         }
 
         private void GestionVentasForm_Load(object sender, EventArgs e)
@@ -48,27 +36,15 @@ namespace CapaPresentacion.Administrador
             System.Globalization.CultureInfo cultura = new System.Globalization.CultureInfo("es-ES");
             lblFecha.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy", cultura);
 
-            CargarConfiguracionPagos();
             CargarHistorialVentas();
+            CargarConfiguracionPagos();
+            CargarFiltroMetodoPago();
+
+            cargandoFormulario = false; 
+            FiltrarHistorial(aplicarFechas: false);
         }
 
-        private void txtBuscarVendedor_Validating(object sender, CancelEventArgs e)
-        {
-            string codigo = txtBuscarVendedorDni.Text.Trim();
-
-            if (!ulong.TryParse(codigo, out _))
-            {
-                errorProvider1.SetError(txtBuscarVendedorDni, "El DNI solo debe contener números.");
-            }
-            else if (codigo.Length != 8)
-            {
-                errorProvider1.SetError(txtBuscarVendedorDni, "El DNI debe tener exactamente 8 dígitos.");
-            }
-            else
-            {
-                errorProvider1.SetError(txtBuscarVendedorDni, "");
-            }
-        }
+        
 
         private void btnAplicarAjusteFormaPago_Click(object sender, EventArgs e)
         {
@@ -117,7 +93,6 @@ namespace CapaPresentacion.Administrador
         {
             dgvHistorialVentas.AutoGenerateColumns = false;
 
-            // Mapeamos las columnas del DataGridView con las propiedades planas de EVenta
             dgvHistorialVentas.Columns["colNroVenta"].DataPropertyName = "nro_venta";
             dgvHistorialVentas.Columns["colDniCliente"].DataPropertyName = "DniCliente";
             dgvHistorialVentas.Columns["colCliente"].DataPropertyName = "NombreCliente";
@@ -126,10 +101,9 @@ namespace CapaPresentacion.Administrador
             dgvHistorialVentas.Columns["colMetodoPago"].DataPropertyName = "NombreMetodoPago";
             dgvHistorialVentas.Columns["colTipoAjuste"].DataPropertyName = "NombreTipoAjuste";
             dgvHistorialVentas.Columns["colFechaVenta"].DataPropertyName = "fecha_venta";
-            dgvHistorialVentas.Columns["colTotal"].DataPropertyName = "SubtotalVenta";
+            dgvHistorialVentas.Columns["colTotal"].DataPropertyName = "TotalVenta";
             dgvHistorialVentas.Columns["colEstado"].DataPropertyName = "EstadoTexto";
 
-            // Instanciamos la capa de negocio y cargamos la grilla
             CNVenta objCNVenta = new CNVenta();
             dgvHistorialVentas.DataSource = objCNVenta.ListarHistorialVentas();
         }
@@ -144,12 +118,12 @@ namespace CapaPresentacion.Administrador
             // Si hace clic en la columna configurada como botón "Ver Detalle"
             if (nombreColumna == "colVerDetalle")
             {
-                // 1. Extraemos el objeto EVenta de la fila seleccionada en la grilla
+                // Extraemos el objeto EVenta de la fila seleccionada en la grilla
                 EVenta ventaSeleccionada = (EVenta)dgvHistorialVentas.Rows[e.RowIndex].DataBoundItem;
 
                 if (ventaSeleccionada != null)
                 {
-                    // 2. Abrimos el formulario modal pasándole el objeto por el constructor
+                    // Abrimos el formulario modal pasándole el objeto por el constructor
                     using (DetalleVenta modal = new DetalleVenta(ventaSeleccionada))
                     {
                         modal.ShowDialog(); // Esto abre la ventana que diseñaste con los datos de la venta y productos
@@ -184,21 +158,105 @@ namespace CapaPresentacion.Administrador
             {
                 EMetodoPago metodoSeleccionado = (EMetodoPago)cmbMetodoPago.SelectedItem;
 
-                // 1. Rellenamos el porcentaje actual para que pueda modificarlo
+                // Rellenamos el porcentaje actual para que pueda modificarlo
                 txtPorcentajeAjuste.Value = metodoSeleccionado.porcentaje;
 
-                // 2. Seleccionamos el tipo de ajuste fijo que le pertenece
+                // Seleccionamos el tipo de ajuste fijo que le pertenece
                 cmbTipoAjuste.SelectedValue = metodoSeleccionado.tipo_ajuste_id;
-
-                // 3. OPCIONAL: Lo ponemos en modo sólo lectura (deshabilitado) para que el admin 
-                // solo edite el porcentaje, cumpliendo la regla estricta del profesor.
-                cmbTipoAjuste.Enabled = false;
             }
         }
 
         private void cmbMetodoPago_SelectedIndexChanged(object sender, EventArgs e)
         {
             SincronizarDatosMetodoPago();
+        }
+
+        private void FiltrarHistorial(bool aplicarFechas = true)
+        {
+            if (cargandoFormulario) return;
+
+            DateTime? fechaDesde = null;
+            DateTime? fechaHasta = null;
+
+            // Si se presiona el botón de filtrar por fecha, aplicamos las reglas estrictas
+            if (aplicarFechas)
+            {
+                if (dtpDesde.Value.Date > dtpHasta.Value.Date)
+                {
+                    MessageBox.Show("La fecha 'Desde' no puede ser posterior a la fecha 'Hasta'.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                fechaDesde = dtpDesde.Value.Date;
+                fechaHasta = dtpHasta.Value.Date;
+            }
+
+            try
+            {
+                string dniVendedor = txtBuscarVendedorDni.Text.Trim();
+                string dniCliente = txtBuscarClienteDni.Text.Trim();
+
+                int metodoPagoId = 0;
+                if (cmbFiltroMetodoPago.SelectedValue != null)
+                {
+                    int.TryParse(cmbFiltroMetodoPago.SelectedValue.ToString(), out metodoPagoId);
+                }
+
+                CNVenta objCNVenta = new CNVenta();
+
+                // Llamamos al método Buscar de la capa de negocio que consulta directamente la BD
+                var listaFiltrada = objCNVenta.Buscar(dniVendedor, dniCliente, metodoPagoId, fechaDesde, fechaHasta);
+
+                dgvHistorialVentas.AutoGenerateColumns = false;
+
+                // Mapeo completo de columnas de la grilla
+                dgvHistorialVentas.Columns["colNroVenta"].DataPropertyName = "nro_venta";
+                dgvHistorialVentas.Columns["colDniCliente"].DataPropertyName = "DniCliente";
+                dgvHistorialVentas.Columns["colCliente"].DataPropertyName = "NombreCliente";
+                dgvHistorialVentas.Columns["colDniVendedor"].DataPropertyName = "DniUsuario";
+                dgvHistorialVentas.Columns["colVendedor"].DataPropertyName = "NombreComprador";
+                dgvHistorialVentas.Columns["colMetodoPago"].DataPropertyName = "NombreMetodoPago";
+                dgvHistorialVentas.Columns["colTipoAjuste"].DataPropertyName = "NombreTipoAjuste";
+                dgvHistorialVentas.Columns["colFechaVenta"].DataPropertyName = "fecha_venta";
+                dgvHistorialVentas.Columns["colTotal"].DataPropertyName = "TotalVenta";
+                dgvHistorialVentas.Columns["colEstado"].DataPropertyName = "EstadoTexto";
+
+                dgvHistorialVentas.DataSource = listaFiltrada;
+
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al filtrar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtBuscarVendedorDni_TextChanged(object sender, EventArgs e)
+        {
+            FiltrarHistorial(aplicarFechas: false);
+        }
+
+        private void txtBuscarClienteDni_TextChanged(object sender, EventArgs e)
+        {
+            FiltrarHistorial(aplicarFechas: false);
+        }
+
+        private void cmbFiltroMetodoPago_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FiltrarHistorial(aplicarFechas: false);
+        }
+
+        private void CargarFiltroMetodoPago()
+        {
+            CNMetodoPago objCNMetodoPagoFiltro = new CNMetodoPago();
+            var listaMetodos = objCNMetodoPagoFiltro.Listar();
+
+            listaMetodos.Insert(0, new EMetodoPago { metodo_pago_id = 0, nombre = "Todos" });
+
+            cmbFiltroMetodoPago.DataSource = listaMetodos;
+            cmbFiltroMetodoPago.DisplayMember = "nombre";
+            cmbFiltroMetodoPago.ValueMember = "metodo_pago_id";
+            cmbFiltroMetodoPago.SelectedIndex = 0;
         }
     }
 }

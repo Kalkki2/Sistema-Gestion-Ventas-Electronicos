@@ -17,7 +17,6 @@ namespace CapaEntidad
         public int usuario_id { get; set; }
         public int metodo_pago_id { get; set; }
         public int cliente_id { get; set; }
-        // (Ya no va tipo_ajuste_id aquí)
 
         // Propiedades planas
         public string DniUsuario => oUsuario != null ? oUsuario.dni : string.Empty;
@@ -28,12 +27,33 @@ namespace CapaEntidad
 
         public string NombreMetodoPago => oMetodoPago != null ? oMetodoPago.nombre : string.Empty;
 
-        // AHORA EL TIPO DE AJUSTE SE OBTIENE A TRAVÉS DEL MÉTODO DE PAGO:
+        // El tipo de ajuste se obtiene a través del método de pago:
         public string NombreTipoAjuste => (oMetodoPago != null && oMetodoPago.oTipoAjuste != null) ? oMetodoPago.oTipoAjuste.nombre : string.Empty;
 
         public string EstadoTexto => estado == 1 ? "Completada" : "Anulada";
 
         public decimal SubtotalVenta => oDetalleVenta != null ? oDetalleVenta.Sum(d => d.SubtotalFila) : 0;
+
+        public decimal TotalVenta
+        {
+            get
+            {
+                decimal subtotal = SubtotalVenta;
+                decimal montoAjuste = (subtotal * porcentaje_aplicado) / 100; 
+                decimal totalReal = subtotal;
+
+                if (NombreTipoAjuste == "Descuento")
+                {
+                    totalReal = subtotal - montoAjuste; 
+                }
+                else if (NombreTipoAjuste == "Recargo")
+                {
+                    totalReal = subtotal + montoAjuste;
+                }
+
+                return totalReal;
+            }
+        }
 
         public EUsuario oUsuario { get; set; }
         public ECliente oCliente { get; set; }

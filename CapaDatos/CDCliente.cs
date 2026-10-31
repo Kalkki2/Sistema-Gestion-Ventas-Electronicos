@@ -83,25 +83,28 @@ namespace CapaDatos
             }
         }
 
-        public bool Editar(ECliente obj, out string Mensaje)
+        public bool EditarCliente(ECliente obj, out string Mensaje)
         {
             Mensaje = string.Empty;
             try
             {
                 using (var db = new db_sistema_gestion_ventas_electronicosEntities())
                 {
+                    // Validar si el DNI ya pertenece a otro cliente
                     if (db.cliente.Any(c => c.dni == obj.dni && c.cliente_id != obj.cliente_id))
                     {
                         Mensaje = "El DNI ingresado ya pertenece a otro cliente.";
                         return false;
                     }
 
+                    // Validar si el correo ya pertenece a otro cliente
                     if (db.cliente.Any(c => c.email == obj.email && c.cliente_id != obj.cliente_id))
                     {
                         Mensaje = "El correo ingresado ya pertenece a otro cliente.";
                         return false;
                     }
 
+                    // Validar si el teléfono ya pertenece a otro cliente
                     if (db.cliente.Any(c => c.telefono == obj.telefono && c.cliente_id != obj.cliente_id))
                     {
                         Mensaje = "El teléfono ingresado ya pertenece a otro cliente.";
@@ -121,6 +124,7 @@ namespace CapaDatos
                     existente.telefono = obj.telefono;
                     existente.email = obj.email;
                     existente.direccion = obj.direccion;
+                    existente.estado = obj.estado;
                     existente.fecha_ultima_modificacion = DateTime.Now;
 
                     db.SaveChanges();
@@ -151,5 +155,107 @@ namespace CapaDatos
                 estado = c.estado
             };
         }
+
+        // Método para cambiar el estado del cliente (1 a 0 y viceversa)
+        public bool CambiarEstado(int clienteId, int nuevoEstado, out string mensaje)
+        {
+            mensaje = string.Empty;
+            bool respuesta = false;
+
+            try
+            {
+                using (var db = new db_sistema_gestion_ventas_electronicosEntities())
+                {
+                    var clienteTemp = db.cliente.FirstOrDefault(c => c.cliente_id == clienteId);
+                    if (clienteTemp != null)
+                    {
+                        clienteTemp.estado = nuevoEstado;
+                        clienteTemp.fecha_ultima_modificacion = DateTime.Now;
+                        db.SaveChanges();
+                        respuesta = true;
+                    }
+                    else
+                    {
+                        mensaje = "No se encontró el cliente especificado.";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                mensaje = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
+                respuesta = false;
+            }
+
+            return respuesta;
+        }
+
+        // Método para listar las vecompras hechas por un cliente en específico 
+        public List<EVenta> ListarVentasPorCliente(int clienteId)
+        {
+            using (var db = new db_sistema_gestion_ventas_electronicosEntities())
+            {
+                var query = from v in db.venta
+                            join u in db.usuario on v.usuario_id equals u.usuario_id
+                            join c in db.cliente on v.cliente_id equals c.cliente_id
+                            join mp in db.metodo_pago on v.metodo_pago_id equals mp.metodo_pago_id
+                            where v.cliente_id == clienteId // Filtramos solo las compras de este cliente
+                            orderby v.fecha_venta descending
+                            select new EVenta()
+                            {
+                                venta_id = v.venta_id,
+                                nro_venta = v.nro_venta,
+                                fecha_venta = v.fecha_venta,
+                                porcentaje_aplicado = v.porcentaje_aplicado,
+                                estado = v.estado,
+                                usuario_id = v.usuario_id,
+                                metodo_pago_id = v.metodo_pago_id,
+                                cliente_id = v.cliente_id,
+
+                                oUsuario = new EUsuario()
+                                {
+                                    usuario_id = u.usuario_id,
+                                    nombre = u.nombre,
+                                    apellido = u.apellido,
+                                    dni = u.dni
+                                },
+                                oCliente = new ECliente()
+                                {
+                                    cliente_id = c.cliente_id,
+                                    nombre = c.nombre,
+                                    apellido = c.apellido,
+                                    dni = c.dni
+                                },
+                                oMetodoPago = new EMetodoPago()
+                                {
+                                    metodo_pago_id = mp.metodo_pago_id,
+                                    nombre = mp.nombre,
+                                    porcentaje = mp.porcentaje,
+                                    tipo_ajuste_id = mp.tipo_ajuste_id,
+                                    // Mapeamos el tipo de ajuste para que el cálculo del total reconozca Recargo o Descuento
+                                    oTipoAjuste = new ETipoAjuste()
+                                    {
+                                        tipo_ajuste_id = mp.tipo_ajuste.tipo_ajuste_id,
+                                        nombre = mp.tipo_ajuste.nombre
+                                    }
+                                },
+                                // Mapeamos los detalles de la venta para calcular correctamente SubtotalVenta y TotalVenta
+                                oDetalleVenta = db.detalle_venta
+                                    .Where(d => d.venta_id == v.venta_id)
+                                    .Select(d => new EDetalleVenta()
+                                    {
+                                        producto_id = d.producto_id,
+                                        venta_id = d.venta_id,
+                                        cantidad = d.cantidad,
+                                        precio_unitario = d.precio_unitario
+                                    }).ToList()
+                            };
+
+                return query.ToList();
+            }
+        }
+
+
+
+
     }
 }

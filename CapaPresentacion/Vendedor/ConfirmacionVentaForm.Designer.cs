@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblNroTransaccion = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnImprimirTicket = new Guna.UI2.WinForms.Guna2Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblMontoTotal = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,15 +50,15 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "¡Venta Confimada Exitosamente!";
             // 
-            // label2
+            // lblNroTransaccion
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(85, 131);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(179, 16);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Transaccion Nro: 000000123 ";
+            this.lblNroTransaccion.AutoSize = true;
+            this.lblNroTransaccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNroTransaccion.Location = new System.Drawing.Point(198, 140);
+            this.lblNroTransaccion.Name = "lblNroTransaccion";
+            this.lblNroTransaccion.Size = new System.Drawing.Size(73, 16);
+            this.lblNroTransaccion.TabIndex = 1;
+            this.lblNroTransaccion.Text = "000000123 ";
             // 
             // label3
             // 
@@ -64,9 +66,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(100, 156);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(139, 16);
+            this.label3.Size = new System.Drawing.Size(84, 16);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Monto Total: $2.250.00\r\n";
+            this.label3.Text = "Monto Total: ";
             // 
             // btnImprimirTicket
             // 
@@ -106,16 +108,38 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "Confirmacion de venta";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(84, 140);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(110, 16);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Nro Transaccion:";
+            // 
+            // lblMontoTotal
+            // 
+            this.lblMontoTotal.AutoSize = true;
+            this.lblMontoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMontoTotal.Location = new System.Drawing.Point(180, 156);
+            this.lblMontoTotal.Name = "lblMontoTotal";
+            this.lblMontoTotal.Size = new System.Drawing.Size(38, 16);
+            this.lblMontoTotal.TabIndex = 6;
+            this.lblMontoTotal.Text = "$0.00";
+            // 
             // ConfirmacionVentaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(341, 246);
+            this.Controls.Add(this.lblMontoTotal);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnImprimirTicket);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblNroTransaccion);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ConfirmacionVentaForm";
@@ -131,10 +155,12 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblNroTransaccion;
         private System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2Button btnImprimirTicket;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblMontoTotal;
     }
 }

@@ -78,5 +78,10 @@ namespace CapaPresentacion.Vendedor
             dgvListaClientes.DataSource = null;
             dgvListaClientes.DataSource = clientes;
         }
+
+        private void BuscarClienteForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

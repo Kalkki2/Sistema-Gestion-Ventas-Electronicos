@@ -16,47 +16,35 @@ namespace CapaPresentacion.Vendedor
     public partial class NuevaVentaForm : Form
     {
         private readonly CNMetodoPago objCNMetodoPago = new CNMetodoPago();
+        private readonly CNVenta objCNVenta = new CNVenta();
 
-        private EProducto productoSeleccionado;
-        private ECliente clienteSeleccionado;
-        private ItemVenta itemEnEdicion;
-        private readonly List<ItemVenta> itemsVenta = new List<ItemVenta>();
+        // IDs y variables de control directas
+        private int idClienteSeleccionado = 0;
+        private int idProductoSeleccionado = 0;
+        private int stockProductoSeleccionado = 0;
+        private string codigoProductoSeleccionado = string.Empty;
 
-        // Configuración de descuentos y recargos que carga el administrador (tabla metodo_pago)
         private List<EMetodoPago> metodosPago = new List<EMetodoPago>();
         private List<ETipoAjuste> tiposAjuste = new List<ETipoAjuste>();
-
-        // Texto "Descuento Efectivo(10%):" del diseño; se busca por su texto para poder cambiarlo
-        private Label lblTituloAjuste;
 
         public NuevaVentaForm()
         {
             InitializeComponent();
-
-            dgvListaProductos.AutoGenerateColumns = false;
-            colCodigo.DataPropertyName = "Codigo";
-            colCategoria.DataPropertyName = "Producto";
-            colNombre.DataPropertyName = "Cantidad";
-            colPrecio.DataPropertyName = "PrecioUnitario";
-            colStock.DataPropertyName = "Subtotal";
-            colPrecio.DefaultCellStyle.Format = "C2";
-            colPrecio.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            colStock.DefaultCellStyle.Format = "C2";
-            colStock.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-            // Botones de la grilla: Column1 = Eliminar, Column2 = Editar
-            dgvListaProductos.CellContentClick += dgvListaProductos_CellContentClick;
-            cmbFiltroMetodoPago.SelectedIndexChanged += (s, e) => ActualizarGrillaYTotales();
         }
 
         private void NuevaVentaForm_Load(object sender, EventArgs e)
         {
+            if (SesionActual.UsuarioLogueado != null)
+            {
+                lblNombreUsuario.Text = $"{SesionActual.UsuarioLogueado.apellido}, {SesionActual.UsuarioLogueado.nombre}";
+                lblRolUsuario.Text = SesionActual.UsuarioLogueado.oPerfil.nombre;
+            }
+
             System.Globalization.CultureInfo cultura = new System.Globalization.CultureInfo("es-ES");
             lblFecha.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy", cultura);
 
-            lblTituloAjuste = BuscarLabel(this, "Descuento");
             CargarMetodosPago();
-            ActualizarGrillaYTotales();
+            ActualizarTotalesVenta();
         }
 
         // Trae de la base los métodos de pago con su porcentaje y tipo de ajuste
@@ -73,30 +61,22 @@ namespace CapaPresentacion.Vendedor
                 return;
             }
 
-            cmbFiltroMetodoPago.Items.Clear();
-            foreach (EMetodoPago m in metodosPago)
-            {
-                cmbFiltroMetodoPago.Items.Add(m.nombre);
-            }
+            cmbFiltroMetodoPago.DataSource = null;
+            cmbFiltroMetodoPago.DataSource = metodosPago;
+            cmbFiltroMetodoPago.DisplayMember = "nombre";         // Lo que ve el usuario (ej: Efectivo, Tarjeta)
+            cmbFiltroMetodoPago.ValueMember = "metodo_pago_id";   // El ID interno
+
             if (cmbFiltroMetodoPago.Items.Count > 0)
             {
                 cmbFiltroMetodoPago.SelectedIndex = 0;
             }
+
+            // Aseguramos el evento de cambio de selección
+            cmbFiltroMetodoPago.SelectedIndexChanged -= cmbFiltroMetodoPago_SelectedIndexChanged;
+            cmbFiltroMetodoPago.SelectedIndexChanged += cmbFiltroMetodoPago_SelectedIndexChanged;
         }
 
-        private static Label BuscarLabel(Control padre, string inicio)
-        {
-            foreach (Control c in padre.Controls)
-            {
-                Label l = c as Label;
-                if (l != null && l.Text != null && l.Text.StartsWith(inicio, StringComparison.OrdinalIgnoreCase))
-                    return l;
 
-                Label hijo = BuscarLabel(c, inicio);
-                if (hijo != null) return hijo;
-            }
-            return null;
-        }
 
         // Calcula el descuento (resta) o recargo (suma) según el método de pago elegido
         private void CalcularAjuste(decimal subtotal, out decimal montoAjuste, out string titulo)
@@ -104,73 +84,86 @@ namespace CapaPresentacion.Vendedor
             montoAjuste = 0m;
             titulo = "Sin ajuste:";
 
-            EMetodoPago m = metodosPago.FirstOrDefault(x => x.nombre == cmbFiltroMetodoPago.Text);
+            if (cmbFiltroMetodoPago.SelectedItem == null) return;
+
+            EMetodoPago m = cmbFiltroMetodoPago.SelectedItem as EMetodoPago;
             if (m == null) return;
 
             ETipoAjuste t = tiposAjuste.FirstOrDefault(x => x.tipo_ajuste_id == m.tipo_ajuste_id);
             string tipo = (t != null && t.nombre != null) ? t.nombre.ToLower() : "";
+
             decimal monto = Math.Round(subtotal * m.porcentaje / 100m, 2);
 
             if (tipo.Contains("desc"))
             {
-                montoAjuste = -monto;
-                titulo = "Descuento " + m.nombre + " (" + m.porcentaje.ToString("0.##") + "%):";
+                montoAjuste = -monto; // Resta al total
+                titulo = $"Descuento {m.nombre} ({m.porcentaje.ToString("0.##")}%):";
             }
             else if (tipo.Contains("recar"))
             {
-                montoAjuste = monto;
-                titulo = "Recargo " + m.nombre + " (" + m.porcentaje.ToString("0.##") + "%):";
+                montoAjuste = monto;  // Suma al total
+                titulo = $"Recargo {m.nombre} ({m.porcentaje.ToString("0.##")}%):";
             }
             else
             {
-                titulo = "Sin ajuste (" + m.nombre + "):";
+                titulo = $"Sin ajuste ({m.nombre}):";
             }
         }
 
-        private void ActualizarGrillaYTotales()
-        {
-            dgvListaProductos.DataSource = null;
-            dgvListaProductos.DataSource = itemsVenta.ToList();
 
-            decimal subtotal = itemsVenta.Sum(i => i.Subtotal);
-            decimal ajuste;
-            string titulo;
-            CalcularAjuste(subtotal, out ajuste, out titulo);
-            decimal total = subtotal + ajuste;
-
-            if (lblTituloAjuste != null) lblTituloAjuste.Text = titulo;
-
-            label9.Text = subtotal.ToString("C2");
-            label11.Text = ajuste < 0 ? "- " + Math.Abs(ajuste).ToString("C2")
-                         : ajuste > 0 ? "+ " + ajuste.ToString("C2")
-                         : 0m.ToString("C2");
-            label7.Text = total.ToString("C2");
-        }
 
         // ===== Buscadores =====
 
         private void btnBuscarProducto_Click(object sender, EventArgs e)
         {
+            if (idClienteSeleccionado == 0)
+            {
+                MessageBox.Show("Debe seleccionar un cliente primero antes de buscar productos.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             using (BuscarProductoVentaForm frm = new BuscarProductoVentaForm())
             {
-                if (frm.ShowDialog(this) == DialogResult.OK && frm.ProductoSeleccionado != null)
+                var resultado = frm.ShowDialog();
+                if (resultado == DialogResult.OK && frm.ProductoSeleccionado != null)
                 {
-                    productoSeleccionado = frm.ProductoSeleccionado;
-                    txtNombreProducto.Text = productoSeleccionado.nombre;
-                    txtPrecioProducto.Text = productoSeleccionado.precio_venta.ToString("N2");
+                    idProductoSeleccionado = frm.ProductoSeleccionado.producto_id;
+                    codigoProductoSeleccionado = frm.ProductoSeleccionado.codigo;
+                    txtNombreProducto.Text = frm.ProductoSeleccionado.nombre;
+                    txtPrecioProducto.Text = frm.ProductoSeleccionado.precio_venta.ToString("0.00");
+                    stockProductoSeleccionado = frm.ProductoSeleccionado.stock;
                 }
             }
         }
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
+            bool hayProductos = false;
+            foreach (DataGridViewRow row in dgvListaProductos.Rows)
+            {
+                // Si la fila no es la de "nuevo registro" y tiene un ID de producto válido
+                if (!row.IsNewRow && row.Cells["colProductoId"].Value != null && Convert.ToInt32(row.Cells["colProductoId"].Value) > 0)
+                {
+                    hayProductos = true;
+                    break;
+                }
+            }
+
+            if (hayProductos)
+            {
+                MessageBox.Show("No puede cambiar de cliente porque ya hay productos agregados a la venta. Si desea cambiar, elimine los ítems de la lista o limpie el formulario.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             using (BuscarClienteForm frm = new BuscarClienteForm())
             {
-                if (frm.ShowDialog(this) == DialogResult.OK && frm.ClienteSeleccionado != null)
+                var resultado = frm.ShowDialog();
+
+                if (resultado == DialogResult.OK && frm.ClienteSeleccionado != null)
                 {
-                    clienteSeleccionado = frm.ClienteSeleccionado;
-                    txtNomYApeCliente.Text = clienteSeleccionado.nombre + " " + clienteSeleccionado.apellido;
-                    txtDniCliente.Text = clienteSeleccionado.dni;
+                    idClienteSeleccionado = frm.ClienteSeleccionado.cliente_id;
+                    txtNomYApeCliente.Text = frm.ClienteSeleccionado.nombre + " " + frm.ClienteSeleccionado.apellido;
+                    txtDniCliente.Text = frm.ClienteSeleccionado.dni;
                 }
             }
         }
@@ -179,123 +172,105 @@ namespace CapaPresentacion.Vendedor
 
         private void btnAgregarItemVenta_Click(object sender, EventArgs e)
         {
-            if (clienteSeleccionado == null || productoSeleccionado == null)
+            if (idClienteSeleccionado == 0)
             {
-                MessageBox.Show("Debe seleccionar un cliente y un producto antes de agregar el ítem.", "Datos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe seleccionar un cliente antes de agregar productos.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (txtCantidadCompra.Value <= 0)
+            if (idProductoSeleccionado == 0 || string.IsNullOrWhiteSpace(txtNombreProducto.Text))
             {
-                MessageBox.Show("La cantidad debe ser mayor a 0.", "Valor inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe seleccionar un producto primero.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int cantidad = Convert.ToInt32(txtCantidadCompra.Value);
+            if (cantidad <= 0)
+            {
+                MessageBox.Show("Ingrese una cantidad válida mayor a 0.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCantidadCompra.Focus();
                 return;
             }
 
-            int cantidad = (int)txtCantidadCompra.Value;
-
-            // Se está editando un ítem existente: solo cambia la cantidad
-            if (itemEnEdicion != null)
+            if (cantidad > stockProductoSeleccionado)
             {
-                if (cantidad > productoSeleccionado.stock)
+                MessageBox.Show(
+                    $"No hay suficiente stock disponible para este producto.\n\nStock actual: {stockProductoSeleccionado}\nCantidad solicitada: {cantidad}",
+                    "Stock insuficiente",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                txtCantidadCompra.Focus();
+                return;
+            }
+
+            decimal precioUnitario = 0;
+            if (!decimal.TryParse(txtPrecioProducto.Text.Replace(".", ","), out precioUnitario) || precioUnitario <= 0)
+            {
+                MessageBox.Show("El precio unitario no es válido.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            foreach (DataGridViewRow row in dgvListaProductos.Rows)
+            {
+                if (row.Cells["colProductoId"].Value != null && Convert.ToInt32(row.Cells["colProductoId"].Value) == idProductoSeleccionado)
                 {
-                    MessageBox.Show("La cantidad supera el stock disponible.", "Stock insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Este producto ya fue agregado a la lista de la venta.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                itemEnEdicion.Cantidad = cantidad;
-                itemEnEdicion = null;
-                ActualizarGrillaYTotales();
-                LimpiarProducto();
-                return;
             }
 
-            ItemVenta itemExistente = itemsVenta.FirstOrDefault(i => i.ProductoId == productoSeleccionado.producto_id);
-            int cantidadTotal = cantidad + (itemExistente != null ? itemExistente.Cantidad : 0);
+            decimal subtotal = cantidad * precioUnitario;
+            int nroItem = dgvListaProductos.Rows.Count + 1;
 
-            if (cantidadTotal > productoSeleccionado.stock)
-            {
-                MessageBox.Show("La cantidad supera el stock disponible.", "Stock insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            dgvListaProductos.Rows.Add(new object[] {
+                idProductoSeleccionado,             // colProductoId (Oculta)
+                nroItem,                            // NroItem visual
+                codigoProductoSeleccionado,         // Código
+                txtNombreProducto.Text,             // Producto (Nombre)
+                cantidad,                           // Cantidad
+                precioUnitario.ToString("0.00"),    // Precio Unitario
+                subtotal.ToString("0.00")           // Subtotal
+            });
 
-            if (itemExistente == null)
-            {
-                itemsVenta.Add(new ItemVenta
-                {
-                    ProductoId = productoSeleccionado.producto_id,
-                    Codigo = productoSeleccionado.codigo,
-                    Producto = productoSeleccionado.nombre,
-                    Cantidad = cantidad,
-                    PrecioUnitario = productoSeleccionado.precio_venta,
-                    Stock = productoSeleccionado.stock
-                });
-            }
-            else
-            {
-                itemExistente.Cantidad = cantidadTotal;
-            }
-
-            ActualizarGrillaYTotales();
-            LimpiarProducto();
+            ActualizarTotalesVenta();
+            LimpiarCamposProducto();
         }
 
-        private void dgvListaProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void LimpiarCamposProducto()
         {
-            if (e.RowIndex < 0 || e.RowIndex >= itemsVenta.Count)
-                return;
-
-            string columna = dgvListaProductos.Columns[e.ColumnIndex].Name;
-
-            if (columna == "Column1") // Eliminar
-            {
-                if (itemEnEdicion == itemsVenta[e.RowIndex]) itemEnEdicion = null;
-                itemsVenta.RemoveAt(e.RowIndex);
-                ActualizarGrillaYTotales();
-            }
-            else if (columna == "Column2") // Editar: sube el ítem a los campos y deja cambiar la cantidad
-            {
-                ItemVenta item = itemsVenta[e.RowIndex];
-                itemEnEdicion = item;
-                productoSeleccionado = new EProducto
-                {
-                    producto_id = item.ProductoId,
-                    codigo = item.Codigo,
-                    nombre = item.Producto,
-                    precio_venta = item.PrecioUnitario,
-                    stock = item.Stock
-                };
-                txtNombreProducto.Text = item.Producto;
-                txtPrecioProducto.Text = item.PrecioUnitario.ToString("N2");
-                txtCantidadCompra.Value = item.Cantidad;
-                txtCantidadCompra.Focus();
-            }
+            idProductoSeleccionado = 0;
+            codigoProductoSeleccionado = string.Empty;
+            txtNombreProducto.Clear();
+            txtPrecioProducto.Clear();
+            txtCantidadCompra.Value = 0;
         }
 
-        // ===== Confirmar y cancelar =====
-
+        // ===== CÁLCULO DE TOTALES, DESCUENTOS Y RECARGOS =====
         private void btnConfirmarVenta_Click(object sender, EventArgs e)
         {
-            if (clienteSeleccionado == null)
+            if (idClienteSeleccionado == 0)
             {
-                MessageBox.Show("Debe seleccionar un cliente.", "Cliente requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe seleccionar un cliente antes de confirmar la venta.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (itemsVenta.Count == 0)
+            if (dgvListaProductos.Rows.Count == 0)
             {
-                MessageBox.Show("Debe agregar al menos un producto a la venta.", "Venta vacía", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe agregar al menos un producto a la lista de venta.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            ConfirmacionVentaForm frm = new ConfirmacionVentaForm();
-            frm.ShowDialog();
-        }
+            if (cmbFiltroMetodoPago.SelectedItem == null)
+            {
+                MessageBox.Show("Debe seleccionar un método de pago.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-        private void btnCancelarVenta_Click(object sender, EventArgs e)
-        {
+            // Confirmación del usuario antes de guardar
             DialogResult respuesta = MessageBox.Show(
-                "¿Está seguro de que desea Cancelar la venta?",
-                "Confirmar cancelaciion",
+                "¿Está seguro de que desea confirmar esta nueva venta?",
+                "Confirmar registro",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question
             );
@@ -305,49 +280,105 @@ namespace CapaPresentacion.Vendedor
                 return;
             }
 
-            MessageBox.Show("La venta se cancelo con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                EMetodoPago metodoSeleccionado = cmbFiltroMetodoPago.SelectedItem as EMetodoPago;
+                EVenta objVenta = new EVenta()
+                {
+                    nro_venta = string.Empty, // Se asignará automáticamente en la BD basado en el ID
+                    estado = 1, // 1 = Activo / Registrado
+                    usuario_id = SesionActual.UsuarioLogueado.usuario_id,
+                    cliente_id = idClienteSeleccionado,
+                    metodo_pago_id = metodoSeleccionado.metodo_pago_id,
+                    porcentaje_aplicado = metodoSeleccionado.porcentaje
+                };
 
-            LimpiarCampos();
+                // Recorrer la grilla para armar la lista de detalles
+                List<EDetalleVenta> listaDetalles = new List<EDetalleVenta>();
+                decimal subtotalGeneral = 0;
+
+                foreach (DataGridViewRow row in dgvListaProductos.Rows)
+                {
+                    if (row.Cells["colProductoId"].Value != null)
+                    {
+                        decimal precioUnitarioFila = 0;
+                        decimal.TryParse(row.Cells["colPrecioUnitario"].Value?.ToString().Replace(".", ","), out precioUnitarioFila);
+
+                        int cantidadFila = 0;
+                        int.TryParse(row.Cells["colCantidad"].Value?.ToString(), out cantidadFila);
+
+                        decimal subtotalFila = cantidadFila * precioUnitarioFila;
+                        subtotalGeneral += subtotalFila;
+
+                        listaDetalles.Add(new EDetalleVenta()
+                        {
+                            producto_id = Convert.ToInt32(row.Cells["colProductoId"].Value),
+                            cantidad = cantidadFila,
+                            precio_unitario = precioUnitarioFila
+                        });
+                    }
+                }
+
+                // Calcular el total final aplicando descuento/recargo
+                decimal montoAjuste = Math.Round(subtotalGeneral * metodoSeleccionado.porcentaje / 100m, 2);
+                ETipoAjuste tipoAjuste = tiposAjuste.FirstOrDefault(x => x.tipo_ajuste_id == metodoSeleccionado.tipo_ajuste_id);
+                string tipoAjusteNombre = (tipoAjuste != null && tipoAjuste.nombre != null) ? tipoAjuste.nombre.ToLower() : "";
+
+                decimal totalFinal = subtotalGeneral;
+                if (tipoAjusteNombre.Contains("desc"))
+                {
+                    totalFinal = subtotalGeneral - montoAjuste;
+                }
+                else if (tipoAjusteNombre.Contains("recar"))
+                {
+                    totalFinal = subtotalGeneral + montoAjuste;
+                }
+
+                // Enviar a la Capa de Negocio
+                CNVenta objCNVentaLogica = new CNVenta();
+                string mensaje = string.Empty;
+                bool exito = objCNVentaLogica.Registrar(objVenta, listaDetalles, out mensaje);
+
+                if (exito)
+                {
+                    using (ConfirmacionVentaForm frmModal = new ConfirmacionVentaForm(objVenta.nro_venta, totalFinal))
+                    {
+                        frmModal.ShowDialog();
+                    }
+
+                    LimpiarFormularioCompleto();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo registrar la venta: " + mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error inesperado: " + ex.Message, "Error crítico", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCancelarVenta_Click(object sender, EventArgs e)
+        {
+            // 1. Preguntar si realmente desea cancelar
+            DialogResult respuesta = MessageBox.Show(
+                "¿Está seguro de que desea cancelar la venta?",
+                "Confirmar cancelación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (respuesta == DialogResult.No)
+            {
+                return;
+            }
+
+            LimpiarFormularioCompleto();
+            MessageBox.Show("La venta se canceló con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         // ===== Limpieza y validaciones =====
-
-        private void LimpiarCampos()
-        {
-            txtNomYApeCliente.Clear();
-            txtDniCliente.Clear();
-            clienteSeleccionado = null;
-            itemsVenta.Clear();
-            LimpiarProducto();
-            ActualizarGrillaYTotales();
-        }
-
-        private void LimpiarProducto()
-        {
-            txtNombreProducto.Clear();
-            txtPrecioProducto.Clear();
-            txtCantidadCompra.Value = 0;
-            productoSeleccionado = null;
-            itemEnEdicion = null;
-        }
-
-        private void txtCantidadCompra_Validating(object sender, CancelEventArgs e)
-        {
-            if (txtCantidadCompra.Value <= 0)
-            {
-                errorProvider1.SetError(txtCantidadCompra, "El valor debe ser mayor a 0.");
-            }
-            else
-            {
-                errorProvider1.SetError(txtCantidadCompra, "");
-            }
-        }
-
-        private void btnLimpiar_Click(object sender, EventArgs e)
-        {
-            LimpiarProducto();
-        }
-
         private class ItemVenta
         {
             public int ProductoId { get; set; }
@@ -358,5 +389,120 @@ namespace CapaPresentacion.Vendedor
             public int Stock { get; set; }
             public decimal Subtotal { get { return Cantidad * PrecioUnitario; } }
         }
+
+        private void cmbFiltroMetodoPago_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ActualizarTotalesVenta();
+        }
+
+       
+
+        // Método para sumar los subtotales de la grilla, calcular descuentos/recargos y actualizar los totales
+        private void ActualizarTotalesVenta()
+        {
+            decimal subtotalGeneral = 0;
+
+            foreach (DataGridViewRow row in dgvListaProductos.Rows)
+            {
+                if (row.Cells["colSubtotal"]?.Value != null)
+                {
+                    decimal subtotalFila = 0;
+                    decimal.TryParse(row.Cells["colSubtotal"].Value.ToString().Replace(".", ","), out subtotalFila);
+                    subtotalGeneral += subtotalFila;
+                }
+            }
+
+            decimal montoAjuste = 0m;
+            string tituloAjuste = "Sin ajuste:";
+            CalcularAjuste(subtotalGeneral, out montoAjuste, out tituloAjuste);
+
+            decimal totalFinal = subtotalGeneral + montoAjuste;
+            if (totalFinal < 0) totalFinal = 0;
+
+            if (lblSubtotalVenta != null) lblSubtotalVenta.Text = "$" + subtotalGeneral.ToString("0.00");
+            if (lblTituloAjuste != null) lblTituloAjuste.Text = tituloAjuste;
+            if (lblMontoAjuste != null) lblMontoAjuste.Text = (montoAjuste < 0 ? "- $" : "$") + Math.Abs(montoAjuste).ToString("0.00");
+            if (lblTotalVenta != null) lblTotalVenta.Text = "$ " + totalFinal.ToString("0.00");
+        }
+
+        private void dgvListaProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            string nombreColumna = dgvListaProductos.Columns[e.ColumnIndex].Name;
+
+            // 1. LÓGICA DE ELIMINAR ÍTEM
+            if (nombreColumna == "colEliminar")
+            {
+                DialogResult resultado = MessageBox.Show(
+                    "¿Desea eliminar este producto de la venta?",
+                    "Confirmar eliminación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (resultado == DialogResult.Yes)
+                {
+                    // Eliminamos la fila seleccionada de la grilla
+                    dgvListaProductos.Rows.RemoveAt(e.RowIndex);
+
+                    // Recalculamos los totales de la venta
+                    ActualizarTotalesVenta();
+
+                    // Reordenamos la numeración de los ítems (1, 2, 3...)
+                    ActualizarNumeracionItems();
+                }
+            }
+            // ACCIÓN DE EDITAR
+            else if (nombreColumna == "colEditar")
+            {
+                DataGridViewRow fila = dgvListaProductos.Rows[e.RowIndex];
+
+                // Recuperamos los datos de la fila seleccionada y los cargamos arriba
+                idProductoSeleccionado = Convert.ToInt32(fila.Cells["colProductoId"].Value);
+                codigoProductoSeleccionado = fila.Cells["colCodigo"]?.Value?.ToString() ?? string.Empty;
+                txtNombreProducto.Text = fila.Cells["colProducto"]?.Value?.ToString() ?? string.Empty;
+
+                if (int.TryParse(fila.Cells["colCantidad"]?.Value?.ToString(), out int cantidadActual))
+                {
+                    txtCantidadCompra.Value = cantidadActual; // (O el nombre de tu NumericUpDown de cantidad)
+                }
+
+                txtPrecioProducto.Text = fila.Cells["colPrecioUnitario"]?.Value?.ToString() ?? "0.00";
+
+                // Quitamos temporalmente la fila de la grilla para que se vuelva a agregar actualizada al presionar el botón de agregar
+                dgvListaProductos.Rows.RemoveAt(e.RowIndex);
+
+                // Recalculamos los totales y reordenamos la numeración
+                ActualizarTotalesVenta();
+                ActualizarNumeracionItems();
+
+                MessageBox.Show("Modifique los datos en la parte superior y presione 'Agregar Producto' para registrar los cambios.", "Editar Ítem", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void ActualizarNumeracionItems()
+            {
+                int contador = 1;
+                foreach (DataGridViewRow row in dgvListaProductos.Rows)
+                {
+                    if (row.Cells["colNroItem"] != null)
+                    {
+                        row.Cells["colNroItem"].Value = contador;
+                    }
+                    contador++;
+                }
+         }
+
+        private void LimpiarFormularioCompleto()
+        {
+            idClienteSeleccionado = 0;
+            txtNomYApeCliente.Clear();
+            txtDniCliente.Clear();
+            dgvListaProductos.Rows.Clear();
+            stockProductoSeleccionado = 0;
+            LimpiarCamposProducto();
+            ActualizarTotalesVenta();
+        }
     }
-}
+ }

@@ -34,7 +34,7 @@ namespace CapaNegocio
                 return false;
             }
 
-            return objCD_Compra.Registrar(objCompra, listaDetalles, out Mensaje);
+            return objCD_Compra.RegistrarCompra(objCompra, listaDetalles, out Mensaje);
         }
 
         public List<ECompra> ListarHistorialCompras()
@@ -45,6 +45,16 @@ namespace CapaNegocio
         public List<EDetalleCompra> ObtenerDetalleCompra(int compraId)
         {
             return objCD_Compra.ObtenerDetalleCompra(compraId);
+        }
+
+        public List<ECompra> Buscar(string nroFactura, string cuitProveedor, string dniUsuario, DateTime? fechaDesde, DateTime? fechaHasta, int? estadoFiltro)
+        {
+            return objCD_Compra.Buscar(nroFactura, cuitProveedor, dniUsuario, fechaDesde, fechaHasta, estadoFiltro);
+        }
+
+        public bool CambiarEstado(int idCompra, int nuevoEstado, out string mensaje)
+        {
+            return objCD_Compra.CambiarEstado(idCompra, nuevoEstado, out mensaje);
         }
     }
 }

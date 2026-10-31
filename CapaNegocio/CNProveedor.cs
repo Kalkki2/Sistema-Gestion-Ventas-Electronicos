@@ -12,13 +12,13 @@ namespace CapaNegocio
     {
         private CDProveedor objCDProveedor = new CDProveedor();
 
-        // 1. LISTAR
+        // LISTAR Proveedores
         public List<EProveedor> Listar()
         {
-            return objCDProveedor.Listar();
+            return objCDProveedor.ListarProveedores();
         }
 
-        // 2. REGISTRAR
+        // REGISTRAR proveedores
         public bool Registrar(EProveedor oProveedor, out string mensaje)
         {
             mensaje = string.Empty;
@@ -60,11 +60,11 @@ namespace CapaNegocio
                 return false;
             }
 
-            return objCDProveedor.Registrar(oProveedor, out mensaje);
+            return objCDProveedor.RegistrarProveedor(oProveedor, out mensaje);
         }
 
-        // 3. EDITAR
-        public bool Editar(EProveedor oProveedor, out string mensaje)
+        // EDITAR proveedor
+        public bool EditarProveedor(EProveedor oProveedor, out string mensaje)
         {
             mensaje = string.Empty;
 
@@ -110,29 +110,54 @@ namespace CapaNegocio
                 return false;
             }
 
-            return objCDProveedor.Editar(oProveedor, out mensaje);
+            return objCDProveedor.EditarProveedor(oProveedor, out mensaje);
         }
 
-        // 4. CAMBIAR ESTADO
-        public bool CambiarEstado(int idProveedor, int nuevoEstado)
+        // CAMBIAR ESTADO proveedor (Actualizado para recibir el out mensaje)
+        public bool CambiarEstado(int idProveedor, int nuevoEstado, out string mensaje)
         {
-            return objCDProveedor.CambiarEstado(idProveedor, nuevoEstado);
+            mensaje = string.Empty;
+
+            if (idProveedor <= 0)
+            {
+                mensaje = "ID de proveedor no válido.";
+                return false;
+            }
+
+            return objCDProveedor.CambiarEstado(idProveedor, nuevoEstado, out mensaje);
         }
 
-        // 5. BUSCAR
+        // BUSCAR proveedor (Llama al método unificado 'Buscar' de la Capa de Datos)
         public List<EProveedor> Buscar(string busqueda)
         {
             if (string.IsNullOrWhiteSpace(busqueda))
             {
                 return Listar();
             }
-            return objCDProveedor.Buscar(busqueda);
+            return objCDProveedor.BuscarProveedoresPorCuitOCorreo(busqueda);
         }
 
-        // 6. FILTRAR
-        public List<EProveedor> Filtrar(int? estado)
+        // FILTRAR proveedor por estado
+        public List<EProveedor> FiltrarPorEstado(int? estado)
         {
             return objCDProveedor.Filtrar(estado);
+        }
+
+        public List<EProveedor> ListarProveedoreActivos()
+        {
+            return objCDProveedor.ListarProveedoresActivos();
+        }
+
+        public List<EProveedor> ListarProveedorPorCategoria(int categoria_id)
+        {
+            if (categoria_id == 0)
+            {
+                return Listar(); 
+            }
+            else
+            {
+                return objCDProveedor.ListarProveedorPorCategoria(categoria_id);
+            }
         }
     }
 }

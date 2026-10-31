@@ -10,45 +10,47 @@ namespace CapaDatos
 {
     public class CDProveedor
     {
-        // 1. LISTAR PROVEEDORES
-        public List<EProveedor> Listar()
+        // Método para LISTAR PROVEEDORES
+        public List<EProveedor> ListarProveedores()
         {
             List<EProveedor> lista = new List<EProveedor>();
-
             try
             {
-                // Reemplaza 'db_sistema_gestion_ventas_electronicosEntities' por el nombre de tu contexto de BD
                 using (var contexto = new db_sistema_gestion_ventas_electronicosEntities())
                 {
-                    // Asumiendo que tu entidad de EF se llama 'proveedor' y la de negocio 'EProveedor'
-                    var query = from p in contexto.proveedor
-                                select new EProveedor
-                                {
-                                    proveedor_id = p.proveedor_id,
-                                    cuit = p.cuit,
-                                    nombre_comercial = p.nombre_comercial,
-                                    razon_social = p.razon_social,
-                                    email = p.email,
-                                    telefono = p.telefono,
-                                    direccion = p.direccion,
-                                    estado = p.estado,
-                                    fecha_alta = p.fecha_alta,
-                                    fecha_ultima_modificacion = p.fecha_ultima_modificacion
-                                };
-
-                    lista = query.ToList();
+                    lista = contexto.proveedor
+                        .AsEnumerable()
+                        .Select(p => new EProveedor()
+                        {
+                            proveedor_id = p.proveedor_id,
+                            cuit = p.cuit,
+                            nombre_comercial = p.nombre_comercial,
+                            razon_social = p.razon_social,
+                            email = p.email,
+                            telefono = p.telefono,
+                            direccion = p.direccion,
+                            estado = p.estado,
+                            fecha_alta = p.fecha_alta,
+                            fecha_ultima_modificacion = p.fecha_ultima_modificacion,
+                            CategoriasTexto = string.Join(", ", contexto.producto
+                                .Where(prod => prod.proveedor_id == p.proveedor_id)
+                                .Select(prod => prod.categoria_marca.categoria.nombre) 
+                                .Distinct()
+                                .ToList())
+                        })
+                        .ToList();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
 
             return lista;
         }
 
-        // 2. REGISTRAR PROVEEDOR
-        public bool Registrar(EProveedor oProveedor, out string mensaje)
+        // Método para REGISTRAR PROVEEDOR
+        public bool RegistrarProveedor(EProveedor oProveedor, out string mensaje)
         {
             bool respuesta = false;
             mensaje = string.Empty;
@@ -57,24 +59,25 @@ namespace CapaDatos
             {
                 using (var contexto = new db_sistema_gestion_ventas_electronicosEntities())
                 {
-                    // Validar si el CUIT ya existe
-                    int cuitExistente = contexto.proveedor.Where(p => p.cuit == oProveedor.cuit).Count();
-                    if (cuitExistente > 0)
+                    // Validar usando Any() en lugar de Count() por rendimiento
+                    if (contexto.proveedor.Any(p => p.cuit == oProveedor.cuit))
                     {
                         mensaje = "El CUIT ingresado ya se encuentra registrado.";
                         return false;
                     }
 
-                    // Validar si el correo ya existe
-                    int correoExistente = contexto.proveedor.Where(p => p.email == oProveedor.email).Count();
-                    if (correoExistente > 0)
+                    if (contexto.proveedor.Any(p => p.email == oProveedor.email))
                     {
                         mensaje = "El correo electrónico ya se encuentra registrado.";
                         return false;
                     }
 
-                    // Crear la entidad de base de datos a partir de EProveedor
-                    // (Asegúrate de que el nombre de la clase de la tabla en EF sea el correcto, ej: proveedor)
+                    if (contexto.proveedor.Any(p => p.telefono == oProveedor.telefono))
+                    {
+                        mensaje = "El teléfono ya se encuentra registrado.";
+                        return false;
+                    }
+
                     var nuevoProveedor = new proveedor()
                     {
                         cuit = oProveedor.cuit,
@@ -102,8 +105,8 @@ namespace CapaDatos
             return respuesta;
         }
 
-        // 3. EDITAR PROVEEDOR
-        public bool Editar(EProveedor oProveedor, out string mensaje)
+        // Método para EDITAR PROVEEDOR
+        public bool EditarProveedor(EProveedor oProveedor, out string mensaje)
         {
             bool respuesta = false;
             mensaje = string.Empty;
@@ -112,29 +115,26 @@ namespace CapaDatos
             {
                 using (var contexto = new db_sistema_gestion_ventas_electronicosEntities())
                 {
-                    // Validar CUIT duplicado en otro proveedor
-                    int cuitExistente = contexto.proveedor
-                        .Where(p => p.cuit == oProveedor.cuit && p.proveedor_id != oProveedor.proveedor_id)
-                        .Count();
-
-                    if (cuitExistente > 0)
+                    if (contexto.proveedor.Any(p => p.cuit == oProveedor.cuit && p.proveedor_id != oProveedor.proveedor_id))
                     {
                         mensaje = "El CUIT ya pertenece a otro proveedor.";
                         return false;
                     }
 
-                    // Validar Correo duplicado en otro proveedor
-                    int correoExistente = contexto.proveedor
-                        .Where(p => p.email == oProveedor.email && p.proveedor_id != oProveedor.proveedor_id)
-                        .Count();
-
-                    if (correoExistente > 0)
+                    if (contexto.proveedor.Any(p => p.email == oProveedor.email && p.proveedor_id != oProveedor.proveedor_id))
                     {
                         mensaje = "El correo electrónico ya pertenece a otro proveedor.";
                         return false;
                     }
 
-                    var proveedorModificar = contexto.proveedor.Where(p => p.proveedor_id == oProveedor.proveedor_id).FirstOrDefault();
+                    if (contexto.proveedor.Any(p => p.telefono == oProveedor.telefono && p.proveedor_id != oProveedor.proveedor_id))
+                    {
+                        mensaje = "El teléfono ya pertenece a otro proveedor.";
+                        return false;
+                    }
+
+                    var proveedorModificar = contexto.proveedor
+                        .FirstOrDefault(p => p.proveedor_id == oProveedor.proveedor_id);
 
                     if (proveedorModificar != null)
                     {
@@ -165,16 +165,18 @@ namespace CapaDatos
             return respuesta;
         }
 
-        // 4. CAMBIAR ESTADO (Activar / Desactivar)
-        public bool CambiarEstado(int idProveedor, int nuevoEstado)
+        // Método para CAMBIAR ESTADO
+        public bool CambiarEstado(int idProveedor, int nuevoEstado, out string mensaje)
         {
             bool respuesta = false;
+            mensaje = string.Empty;
 
             try
             {
                 using (var contexto = new db_sistema_gestion_ventas_electronicosEntities())
                 {
-                    var proveedorModificar = contexto.proveedor.Where(p => p.proveedor_id == idProveedor).FirstOrDefault();
+                    var proveedorModificar = contexto.proveedor
+                        .FirstOrDefault(p => p.proveedor_id == idProveedor);
 
                     if (proveedorModificar != null)
                     {
@@ -183,18 +185,23 @@ namespace CapaDatos
                         contexto.SaveChanges();
                         respuesta = true;
                     }
+                    else
+                    {
+                        mensaje = "No se encontró el proveedor.";
+                    }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                mensaje = ex.Message;
                 respuesta = false;
             }
 
             return respuesta;
         }
 
-        // 5. BUSCAR PROVEEDOR (Por CUIT o Correo, tal como indica la interfaz)
-        public List<EProveedor> Buscar(string busqueda)
+        // Método para BUSCAR PROVEEDOR
+        public List<EProveedor> BuscarProveedoresPorCuitOCorreo(string busqueda)
         {
             List<EProveedor> lista = new List<EProveedor>();
             busqueda = busqueda.ToLower();
@@ -203,38 +210,35 @@ namespace CapaDatos
             {
                 using (var contexto = new db_sistema_gestion_ventas_electronicosEntities())
                 {
-                    var query = from p in contexto.proveedor
-                                where p.cuit.ToLower().Contains(busqueda) || p.email.ToLower().Contains(busqueda)
-                                select new EProveedor
-                                {
-                                    proveedor_id = p.proveedor_id,
-                                    cuit = p.cuit,
-                                    nombre_comercial = p.nombre_comercial,
-                                    razon_social = p.razon_social,
-                                    email = p.email,
-                                    telefono = p.telefono,
-                                    direccion = p.direccion,
-                                    estado = p.estado,
-                                    fecha_alta = p.fecha_alta,
-                                    fecha_ultima_modificacion = p.fecha_ultima_modificacion
-                                };
-
-                    lista = query.ToList();
+                    lista = contexto.proveedor
+                        .Where(p => p.cuit.Contains(busqueda) || p.email.ToLower().Contains(busqueda))
+                        .Select(p => new EProveedor()
+                        {
+                            proveedor_id = p.proveedor_id,
+                            cuit = p.cuit,
+                            nombre_comercial = p.nombre_comercial,
+                            razon_social = p.razon_social,
+                            email = p.email,
+                            telefono = p.telefono,
+                            direccion = p.direccion,
+                            estado = p.estado,
+                            fecha_alta = p.fecha_alta,
+                            fecha_ultima_modificacion = p.fecha_ultima_modificacion
+                        })
+                        .ToList();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
 
             return lista;
         }
 
-        // 6. FILTRAR POR ESTADO (Tal como muestra el combo de filtrado de la interfaz)
         public List<EProveedor> Filtrar(int? estado)
         {
             List<EProveedor> lista = new List<EProveedor>();
-
             try
             {
                 using (var contexto = new db_sistema_gestion_ventas_electronicosEntities())
@@ -246,7 +250,7 @@ namespace CapaDatos
                         query = query.Where(p => p.estado == estado.Value);
                     }
 
-                    lista = query.Select(p => new EProveedor
+                    lista = query.Select(p => new EProveedor()
                     {
                         proveedor_id = p.proveedor_id,
                         cuit = p.cuit,
@@ -261,12 +265,73 @@ namespace CapaDatos
                     }).ToList();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
-
             return lista;
+        }
+
+        public List<EProveedor> ListarProveedoresActivos()
+        {
+            List<EProveedor> lista = new List<EProveedor>();
+            try
+            {
+                using (var contexto = new db_sistema_gestion_ventas_electronicosEntities())
+                {
+                    lista = contexto.proveedor
+                        .Where(p => p.estado == 1) // traer solo activos
+                        .Select(p => new EProveedor()
+                        {
+                            proveedor_id = p.proveedor_id,
+                            cuit = p.cuit,
+                            nombre_comercial = p.nombre_comercial,
+                            razon_social = p.razon_social,
+                            email = p.email,
+                            telefono = p.telefono,
+                            direccion = p.direccion,
+                            estado = p.estado,
+                            fecha_alta = p.fecha_alta,
+                            fecha_ultima_modificacion = p.fecha_ultima_modificacion
+                        })
+                        .ToList();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return lista;
+        }
+
+        public List<EProveedor> ListarProveedorPorCategoria(int categoriaId)
+        {
+            using (var contexto = new db_sistema_gestion_ventas_electronicosEntities())
+            {
+                // Unimos los productos con los proveedores filtrando por la categoría seleccionada
+                var query = from p in contexto.producto
+                            where p.categoria_id == categoriaId && p.estado == 1
+                            select p.proveedor;
+
+                return query.Distinct().AsEnumerable().Select(p => new EProveedor()
+                {
+                    proveedor_id = p.proveedor_id,
+                    cuit = p.cuit,
+                    nombre_comercial = p.nombre_comercial,
+                    razon_social = p.razon_social,
+                    email = p.email,
+                    telefono = p.telefono,
+                    direccion = p.direccion,
+                    estado = p.estado,
+                    fecha_alta = p.fecha_alta,
+                    fecha_ultima_modificacion = p.fecha_ultima_modificacion,
+
+                    CategoriasTexto = string.Join(", ", contexto.producto
+                        .Where(prod => prod.proveedor_id == p.proveedor_id)
+                        .Select(prod => prod.categoria_marca.categoria.nombre)
+                        .Distinct())
+                }).ToList();
+            }
         }
     }
 }
