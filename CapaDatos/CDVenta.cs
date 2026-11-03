@@ -274,52 +274,42 @@ namespace CapaDatos
             }
         }
 
-        public List<ETendenciaVenta> ObtenerTendenciaVentasDiarias()
+        public List<ETendenciaVenta> ObtenerTendenciaVentasDiariasPorMesAnio(int mes, int anio)
         {
+            // Calculamos el primer y último día del mes seleccionado
+            DateTime fechaDesde = new DateTime(anio, mes, 1);
+            DateTime fechaHasta = new DateTime(anio, mes, DateTime.DaysInMonth(anio, mes)).AddDays(1).AddTicks(-1);
+
             using (var db = new db_sistema_gestion_ventas_electronicosEntities())
             {
-                //  Traemos la información necesaria de las ventas y sus detalles desde la BD
-                var ventasCrudas = db.venta.Select(v => new {
-                    FechaVenta = v.fecha_venta,
-                    PorcentajeAplicado = v.porcentaje_aplicado,
-                    TipoAjusteNombre = v.metodo_pago.tipo_ajuste.nombre, // "Descuento", "Recargo" o "Sin ajuste"
-                    SubtotalBruto = v.detalle_venta.Sum(d => (decimal?)(d.cantidad * d.precio_unitario)) ?? 0
-                }).ToList();
+                var ventasCrudas = db.venta
+                    .Where(v => v.fecha_venta >= fechaDesde && v.fecha_venta <= fechaHasta && v.estado == 1)
+                    .Select(v => new {
+                        FechaVenta = v.fecha_venta,
+                        PorcentajeAplicado = v.porcentaje_aplicado,
+                        TipoAjusteNombre = v.metodo_pago.tipo_ajuste.nombre,
+                        SubtotalBruto = v.detalle_venta.Sum(d => (decimal?)(d.cantidad * d.precio_unitario)) ?? 0
+                    }).ToList();
 
-                //  Calculamos el total real de cada venta aplicando la regla de negocio (recargo/descuento)
                 var ventasCalculadas = ventasCrudas.Select(v => {
                     decimal montoAjuste = (v.SubtotalBruto * v.PorcentajeAplicado) / 100;
                     decimal totalReal = v.SubtotalBruto;
 
-                    if (v.TipoAjusteNombre == "Descuento")
-                    {
-                        totalReal = v.SubtotalBruto - montoAjuste;
-                    }
-                    else if (v.TipoAjusteNombre == "Recargo")
-                    {
-                        totalReal = v.SubtotalBruto + montoAjuste;
-                    }
-                    // Si es "Sin ajuste", el total real se queda igual al subtotal bruto
+                    if (v.TipoAjusteNombre == "Descuento") totalReal = v.SubtotalBruto - montoAjuste;
+                    else if (v.TipoAjusteNombre == "Recargo") totalReal = v.SubtotalBruto + montoAjuste;
 
-                    return new
-                    {
-                        FechaDia = v.FechaVenta.Date, // Nos quedamos solo con la fecha (sin horas/minutos)
-                        TotalReal = totalReal
-                    };
+                    return new { FechaDia = v.FechaVenta.Date, TotalReal = totalReal };
                 });
 
-                // Agrupamos por día y sumamos los totales reales de las ventas de esa jornada
-                var resultadoFinal = ventasCalculadas
+                return ventasCalculadas
                     .GroupBy(x => x.FechaDia)
                     .OrderBy(g => g.Key)
                     .Select(g => new ETendenciaVenta()
                     {
                         Fecha = g.Key.ToString("dd/MM/yy"),
-                        TotalVentas = g.Sum(x => x.TotalReal) // ¡Aquí ya incluye recargos y descuentos!
+                        TotalVentas = g.Sum(x => x.TotalReal)
                     })
                     .ToList();
-
-                return resultadoFinal;
             }
         }
 
@@ -413,42 +403,54 @@ namespace CapaDatos
             }
         }
 
-        public List<EVenta> Buscar(string dniVendedor, string dniCliente, int? metodoPagoId, DateTime? fechaDesde, DateTime? fechaHasta)
+        public List<EVenta> Buscar(int? usuarioId, string dniVendedor, string dniCliente, int? metodoPagoId, int? estadoId, DateTime? fechaDesde, DateTime? fechaHasta)
         {
             using (var db = new db_sistema_gestion_ventas_electronicosEntities())
             {
                 var query = db.venta.AsQueryable();
 
-                //  Filtro por DNI del Vendedor
+                // 1. Filtro por ID exacto de usuario (Ideal para el Vendedor)
+                if (usuarioId.HasValue && usuarioId.Value > 0)
+                {
+                    query = query.Where(v => v.usuario_id == usuarioId.Value);
+                }
+
+                // 2. Filtro por DNI del Vendedor en texto (Ideal para el Administrador)
                 if (!string.IsNullOrWhiteSpace(dniVendedor))
                 {
                     dniVendedor = dniVendedor.ToLower();
                     query = query.Where(v => v.usuario.dni.ToLower().Contains(dniVendedor));
                 }
 
-                //  Filtro por DNI del Cliente
+                // 3. Filtro por DNI del Cliente
                 if (!string.IsNullOrWhiteSpace(dniCliente))
                 {
                     dniCliente = dniCliente.ToLower();
                     query = query.Where(v => v.cliente.dni.ToLower().Contains(dniCliente));
                 }
 
-                //  Filtro por Método de Pago (si es distinto de null y de 0 que representa "Todos")
+                // 4. Filtro por Método de Pago
                 if (metodoPagoId.HasValue && metodoPagoId.Value > 0)
                 {
                     query = query.Where(v => v.metodo_pago_id == metodoPagoId.Value);
                 }
 
-                //  Filtro por Rango de Fechas
+                // 5. Filtro por Estado (-1 es Todos, 1 es Activa, 0 es Anulada)
+                if (estadoId.HasValue && estadoId.Value != -1)
+                {
+                    query = query.Where(v => v.estado == estadoId.Value);
+                }
+
+                // 6. Filtro por Rango de Fechas
                 if (fechaDesde.HasValue && fechaHasta.HasValue)
                 {
                     DateTime desde = fechaDesde.Value.Date;
-                    DateTime hasta = fechaHasta.Value.Date.AddDays(1).AddTicks(-1); // Cierra al final del día
+                    DateTime hasta = fechaHasta.Value.Date.AddDays(1).AddTicks(-1);
                     query = query.Where(v => v.fecha_venta >= desde && v.fecha_venta <= hasta);
                 }
 
-                // Proyección final hacia EVenta con todos sus objetos relacionados
-                var lista = query.OrderByDescending(v => v.fecha_venta).Select(v => new EVenta()
+                // Proyección directa hacia EVenta
+                return query.OrderByDescending(v => v.fecha_venta).Select(v => new EVenta()
                 {
                     venta_id = v.venta_id,
                     nro_venta = v.nro_venta,
@@ -492,10 +494,9 @@ namespace CapaDatos
                         precio_unitario = d.precio_unitario
                     }).ToList()
                 }).ToList();
-
-                return lista;
             }
         }
+
 
 
         public List<ECategoriaVenta> ObtenerVentasMonetariasPorCategoria(DateTime fechaDesde, DateTime fechaHasta)
@@ -609,6 +610,34 @@ namespace CapaDatos
                             };
 
                 return query.OrderByDescending(x => x.TotalRecaudado).ToList();
+            }
+        }
+
+        public bool CambiarEstado(int ventaId, int nuevoEstado, out string Mensaje)
+        {
+            Mensaje = string.Empty;
+            try
+            {
+                using (var db = new db_sistema_gestion_ventas_electronicosEntities())
+                {
+                    var ventaAModificar = db.venta.FirstOrDefault(v => v.venta_id == ventaId);
+                    if (ventaAModificar != null)
+                    {
+                        ventaAModificar.estado = (int)nuevoEstado;
+                        db.SaveChanges();
+                        return true;
+                    }
+                    else
+                    {
+                        Mensaje = "No se encontró la venta.";
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                return false;
             }
         }
     }

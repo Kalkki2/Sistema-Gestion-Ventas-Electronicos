@@ -74,5 +74,10 @@ namespace CapaNegocio
         {
             return objCDCliente.ListarVentasPorCliente(clienteId);
         }
+
+        public List<ECliente> Buscar(string valorBusqueda, int? estadoId)
+        {
+            return objCDCliente.Buscar(valorBusqueda, estadoId);
+        }
     }
 }

@@ -254,7 +254,37 @@ namespace CapaDatos
             }
         }
 
+        public List<ECliente> Buscar(string valorBusqueda, int? estadoId)
+        {
+            using (var db = new db_sistema_gestion_ventas_electronicosEntities())
+            {
+                var consulta = db.cliente.AsQueryable();
 
+                // 1. Filtro por texto (DNI, Correo, Nombre o Apellido)
+                if (!string.IsNullOrWhiteSpace(valorBusqueda))
+                {
+                    valorBusqueda = valorBusqueda.Trim().ToLower();
+                    consulta = consulta.Where(c =>
+                        c.dni.ToLower().Contains(valorBusqueda) ||
+                        c.email.ToLower().Contains(valorBusqueda) ||
+                        c.nombre.ToLower().Contains(valorBusqueda) ||
+                        c.apellido.ToLower().Contains(valorBusqueda));
+                }
+
+                // 2. Filtro por Estado (-1 = Todos, 1 = Activo, 0 = Inactivo)
+                if (estadoId.HasValue && estadoId.Value != -1)
+                {
+                    consulta = consulta.Where(c => c.estado == estadoId.Value);
+                }
+
+                return consulta
+                    .OrderBy(c => c.apellido)
+                    .ThenBy(c => c.nombre)
+                    .ToList()
+                    .Select(c => Mapear(c))
+                    .ToList();
+            }
+        }
 
 
     }

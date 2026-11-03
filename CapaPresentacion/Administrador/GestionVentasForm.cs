@@ -39,6 +39,7 @@ namespace CapaPresentacion.Administrador
             CargarHistorialVentas();
             CargarConfiguracionPagos();
             CargarFiltroMetodoPago();
+            CargarFiltroEstado();
 
             cargandoFormulario = false; 
             FiltrarHistorial(aplicarFechas: false);
@@ -173,12 +174,12 @@ namespace CapaPresentacion.Administrador
 
         private void FiltrarHistorial(bool aplicarFechas = true)
         {
+            CNVenta objCNVenta = new CNVenta();
             if (cargandoFormulario) return;
 
             DateTime? fechaDesde = null;
             DateTime? fechaHasta = null;
 
-            // Si se presiona el botón de filtrar por fecha, aplicamos las reglas estrictas
             if (aplicarFechas)
             {
                 if (dtpDesde.Value.Date > dtpHasta.Value.Date)
@@ -202,28 +203,17 @@ namespace CapaPresentacion.Administrador
                     int.TryParse(cmbFiltroMetodoPago.SelectedValue.ToString(), out metodoPagoId);
                 }
 
-                CNVenta objCNVenta = new CNVenta();
+                int estadoId = -1; // Por defecto "Todos"
+                if (cmbFiltroEstado.SelectedItem is OpcionCombo opcionSeleccionada)
+                {
+                    estadoId = Convert.ToInt32(opcionSeleccionada.Valor);
+                }
 
-                // Llamamos al método Buscar de la capa de negocio que consulta directamente la BD
-                var listaFiltrada = objCNVenta.Buscar(dniVendedor, dniCliente, metodoPagoId, fechaDesde, fechaHasta);
-
-                dgvHistorialVentas.AutoGenerateColumns = false;
-
-                // Mapeo completo de columnas de la grilla
-                dgvHistorialVentas.Columns["colNroVenta"].DataPropertyName = "nro_venta";
-                dgvHistorialVentas.Columns["colDniCliente"].DataPropertyName = "DniCliente";
-                dgvHistorialVentas.Columns["colCliente"].DataPropertyName = "NombreCliente";
-                dgvHistorialVentas.Columns["colDniVendedor"].DataPropertyName = "DniUsuario";
-                dgvHistorialVentas.Columns["colVendedor"].DataPropertyName = "NombreComprador";
-                dgvHistorialVentas.Columns["colMetodoPago"].DataPropertyName = "NombreMetodoPago";
-                dgvHistorialVentas.Columns["colTipoAjuste"].DataPropertyName = "NombreTipoAjuste";
-                dgvHistorialVentas.Columns["colFechaVenta"].DataPropertyName = "fecha_venta";
-                dgvHistorialVentas.Columns["colTotal"].DataPropertyName = "TotalVenta";
-                dgvHistorialVentas.Columns["colEstado"].DataPropertyName = "EstadoTexto";
+                // Llamada a la capa de negocio
+                var listaFiltrada = objCNVenta.Buscar(null, dniVendedor, dniCliente, metodoPagoId, estadoId, fechaDesde, fechaHasta);
 
                 dgvHistorialVentas.DataSource = listaFiltrada;
-
-                
+                lblCantTotalVentas.Text = listaFiltrada.Count.ToString();
             }
             catch (Exception ex)
             {
@@ -257,6 +247,23 @@ namespace CapaPresentacion.Administrador
             cmbFiltroMetodoPago.DisplayMember = "nombre";
             cmbFiltroMetodoPago.ValueMember = "metodo_pago_id";
             cmbFiltroMetodoPago.SelectedIndex = 0;
+        }
+
+        private void CargarFiltroEstado()
+        {
+            cmbFiltroEstado.Items.Clear();
+            cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Todos", Valor = -1 });
+            cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Completados", Valor = 1 });
+            cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Anulados", Valor = 0 });
+
+            cmbFiltroEstado.DisplayMember = "Texto";
+            cmbFiltroEstado.ValueMember = "Valor";
+            cmbFiltroEstado.SelectedIndex = 0; // Selecciona "Todos" por defecto
+        }
+
+        private void cmbFiltroEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FiltrarHistorial(aplicarFechas: false);
         }
     }
 }

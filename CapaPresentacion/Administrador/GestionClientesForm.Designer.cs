@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlEncabezado = new System.Windows.Forms.Panel();
             this.pnlnfoUsuario = new System.Windows.Forms.Panel();
             this.lblNombreUsuario = new System.Windows.Forms.Label();
@@ -58,8 +59,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtNombre = new Guna.UI2.WinForms.Guna2TextBox();
             this.pnlContenedorFiltros = new Guna.UI2.WinForms.Guna2ShadowPanel();
-            this.btnFiltrar = new Guna.UI2.WinForms.Guna2Button();
-            this.btnBuscarCliente = new Guna.UI2.WinForms.Guna2Button();
             this.txtBuscarCliente = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblFiltraEstado = new System.Windows.Forms.Label();
             this.cmbFiltroEstado = new Guna.UI2.WinForms.Guna2ComboBox();
@@ -482,8 +481,6 @@
             // pnlContenedorFiltros
             // 
             this.pnlContenedorFiltros.BackColor = System.Drawing.Color.Transparent;
-            this.pnlContenedorFiltros.Controls.Add(this.btnFiltrar);
-            this.pnlContenedorFiltros.Controls.Add(this.btnBuscarCliente);
             this.pnlContenedorFiltros.Controls.Add(this.txtBuscarCliente);
             this.pnlContenedorFiltros.Controls.Add(this.lblFiltraEstado);
             this.pnlContenedorFiltros.Controls.Add(this.cmbFiltroEstado);
@@ -498,46 +495,9 @@
             this.pnlContenedorFiltros.Size = new System.Drawing.Size(364, 152);
             this.pnlContenedorFiltros.TabIndex = 57;
             // 
-            // btnFiltrar
-            // 
-            this.btnFiltrar.BackColor = System.Drawing.Color.Transparent;
-            this.btnFiltrar.BorderRadius = 5;
-            this.btnFiltrar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnFiltrar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnFiltrar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnFiltrar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnFiltrar.FillColor = System.Drawing.Color.Silver;
-            this.btnFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnFiltrar.ForeColor = System.Drawing.Color.Black;
-            this.btnFiltrar.Image = global::CapaPresentacion.Properties.Resources.icono_filtro;
-            this.btnFiltrar.Location = new System.Drawing.Point(157, 105);
-            this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(71, 27);
-            this.btnFiltrar.TabIndex = 46;
-            this.btnFiltrar.Text = "Filtrar";
-            // 
-            // btnBuscarCliente
-            // 
-            this.btnBuscarCliente.BackColor = System.Drawing.Color.Transparent;
-            this.btnBuscarCliente.BorderRadius = 5;
-            this.btnBuscarCliente.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnBuscarCliente.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnBuscarCliente.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnBuscarCliente.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnBuscarCliente.FillColor = System.Drawing.Color.Silver;
-            this.btnBuscarCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnBuscarCliente.ForeColor = System.Drawing.Color.Black;
-            this.btnBuscarCliente.Image = global::CapaPresentacion.Properties.Resources.icono_lupa;
-            this.btnBuscarCliente.Location = new System.Drawing.Point(283, 37);
-            this.btnBuscarCliente.Name = "btnBuscarCliente";
-            this.btnBuscarCliente.Size = new System.Drawing.Size(71, 27);
-            this.btnBuscarCliente.TabIndex = 45;
-            this.btnBuscarCliente.Text = "Buscar";
-            this.btnBuscarCliente.Click += new System.EventHandler(this.btnBuscarCliente_Click);
-            // 
             // txtBuscarCliente
             // 
-            this.txtBuscarCliente.BorderColor = System.Drawing.Color.DarkGray;
+            this.txtBuscarCliente.BorderColor = System.Drawing.Color.DimGray;
             this.txtBuscarCliente.BorderRadius = 5;
             this.txtBuscarCliente.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBuscarCliente.DefaultText = "";
@@ -555,6 +515,7 @@
             this.txtBuscarCliente.SelectedText = "";
             this.txtBuscarCliente.Size = new System.Drawing.Size(257, 27);
             this.txtBuscarCliente.TabIndex = 0;
+            this.txtBuscarCliente.TextChanged += new System.EventHandler(this.txtBuscarCliente_TextChanged);
             // 
             // lblFiltraEstado
             // 
@@ -570,7 +531,7 @@
             // cmbFiltroEstado
             // 
             this.cmbFiltroEstado.BackColor = System.Drawing.Color.Transparent;
-            this.cmbFiltroEstado.BorderColor = System.Drawing.Color.DarkGray;
+            this.cmbFiltroEstado.BorderColor = System.Drawing.Color.DimGray;
             this.cmbFiltroEstado.BorderRadius = 5;
             this.cmbFiltroEstado.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbFiltroEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -585,9 +546,10 @@
             "Inactivo"});
             this.cmbFiltroEstado.Location = new System.Drawing.Point(21, 105);
             this.cmbFiltroEstado.Name = "cmbFiltroEstado";
-            this.cmbFiltroEstado.Size = new System.Drawing.Size(121, 27);
+            this.cmbFiltroEstado.Size = new System.Drawing.Size(164, 27);
             this.cmbFiltroEstado.StartIndex = 0;
             this.cmbFiltroEstado.TabIndex = 1;
+            this.cmbFiltroEstado.SelectedIndexChanged += new System.EventHandler(this.cmbFiltroEstado_SelectedIndexChanged);
             // 
             // lblBuscarPorNombreOCorreo
             // 
@@ -659,17 +621,17 @@
             // 
             // dgvListaClientes
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
-            this.dgvListaClientes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
+            this.dgvListaClientes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvListaClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListaClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListaClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.dgvListaClientes.ColumnHeadersHeight = 29;
             this.dgvListaClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colDni,
@@ -684,18 +646,20 @@
             this.colEditar,
             this.colEliminar,
             this.colVerCompras});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvListaClientes.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvListaClientes.DefaultCellStyle = dataGridViewCellStyle15;
             this.dgvListaClientes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvListaClientes.Location = new System.Drawing.Point(0, 49);
             this.dgvListaClientes.Name = "dgvListaClientes";
             this.dgvListaClientes.RowHeadersVisible = false;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvListaClientes.RowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dgvListaClientes.RowTemplate.Height = 23;
             this.dgvListaClientes.Size = new System.Drawing.Size(1135, 231);
             this.dgvListaClientes.TabIndex = 7;
@@ -896,8 +860,6 @@
         private Guna.UI2.WinForms.Guna2GradientPanel pnlCardTotalClientes;
         private System.Windows.Forms.Label lblCantTotalClientes;
         private System.Windows.Forms.Label lblTituloTotalClientes;
-        private Guna.UI2.WinForms.Guna2Button btnBuscarCliente;
-        private Guna.UI2.WinForms.Guna2Button btnFiltrar;
         private Guna.UI2.WinForms.Guna2TextBox txtCorreo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ErrorProvider errorProvider1;

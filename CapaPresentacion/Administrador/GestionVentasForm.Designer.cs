@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionVentasForm));
             this.pnlEncabezado = new System.Windows.Forms.Panel();
             this.pnlnfoUsuario = new System.Windows.Forms.Panel();
@@ -44,11 +45,24 @@
             this.btnExportarPDF = new Guna.UI2.WinForms.Guna2Button();
             this.btnExportarEXCEL = new Guna.UI2.WinForms.Guna2Button();
             this.dgvHistorialVentas = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.colNroVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDniCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDniVendedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colVendedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMetodoPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTipoAjuste = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFechaVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colVerDetalle = new System.Windows.Forms.DataGridViewButtonColumn();
             this.lblTituloHistorialVentas = new System.Windows.Forms.Label();
             this.pnlCardTotalVentas = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.lblCantTotalVentas = new System.Windows.Forms.Label();
             this.lblTituloTotalVentas = new System.Windows.Forms.Label();
             this.pnlContenedorFiltros = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.cmbFiltroEstado = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.txtBuscarClienteDni = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpHasta = new Guna.UI2.WinForms.Guna2DateTimePicker();
@@ -73,17 +87,6 @@
             this.cmbMetodoPago = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.colNroVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDniCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDniVendedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colVendedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMetodoPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTipoAjuste = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colFechaVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colVerDetalle = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pnlEncabezado.SuspendLayout();
             this.pnlnfoUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
@@ -235,6 +238,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvHistorialVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvHistorialVentas.ColumnHeadersHeight = 29;
             this.dgvHistorialVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colNroVenta,
             this.colDniCliente,
@@ -259,6 +263,8 @@
             this.dgvHistorialVentas.Location = new System.Drawing.Point(4, 49);
             this.dgvHistorialVentas.Name = "dgvHistorialVentas";
             this.dgvHistorialVentas.RowHeadersVisible = false;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvHistorialVentas.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvHistorialVentas.RowTemplate.Height = 23;
             this.dgvHistorialVentas.Size = new System.Drawing.Size(1135, 246);
             this.dgvHistorialVentas.TabIndex = 7;
@@ -267,11 +273,66 @@
             this.dgvHistorialVentas.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvHistorialVentas.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvHistorialVentas.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvHistorialVentas.ThemeStyle.HeaderStyle.Height = 23;
+            this.dgvHistorialVentas.ThemeStyle.HeaderStyle.Height = 29;
             this.dgvHistorialVentas.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvHistorialVentas.ThemeStyle.RowsStyle.Height = 23;
             this.dgvHistorialVentas.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
             this.dgvHistorialVentas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHistorialVentas_CellContentClick);
+            // 
+            // colNroVenta
+            // 
+            this.colNroVenta.HeaderText = "Nro Venta";
+            this.colNroVenta.Name = "colNroVenta";
+            // 
+            // colDniCliente
+            // 
+            this.colDniCliente.HeaderText = "DNI Cliente";
+            this.colDniCliente.Name = "colDniCliente";
+            // 
+            // colCliente
+            // 
+            this.colCliente.HeaderText = "Cliente";
+            this.colCliente.Name = "colCliente";
+            // 
+            // colDniVendedor
+            // 
+            this.colDniVendedor.HeaderText = "DNI Vendedor";
+            this.colDniVendedor.Name = "colDniVendedor";
+            // 
+            // colVendedor
+            // 
+            this.colVendedor.HeaderText = "Vendedor";
+            this.colVendedor.Name = "colVendedor";
+            // 
+            // colMetodoPago
+            // 
+            this.colMetodoPago.HeaderText = "Metodo Pago";
+            this.colMetodoPago.Name = "colMetodoPago";
+            // 
+            // colTipoAjuste
+            // 
+            this.colTipoAjuste.HeaderText = "Tipo Ajuste";
+            this.colTipoAjuste.Name = "colTipoAjuste";
+            // 
+            // colTotal
+            // 
+            this.colTotal.HeaderText = "Total ($)";
+            this.colTotal.Name = "colTotal";
+            // 
+            // colFechaVenta
+            // 
+            this.colFechaVenta.HeaderText = "Fecha Venta";
+            this.colFechaVenta.Name = "colFechaVenta";
+            // 
+            // colEstado
+            // 
+            this.colEstado.HeaderText = "Estado";
+            this.colEstado.Name = "colEstado";
+            // 
+            // colVerDetalle
+            // 
+            this.colVerDetalle.HeaderText = "VerDetalles";
+            this.colVerDetalle.Name = "colVerDetalle";
             // 
             // lblTituloHistorialVentas
             // 
@@ -324,6 +385,8 @@
             // pnlContenedorFiltros
             // 
             this.pnlContenedorFiltros.BackColor = System.Drawing.Color.Transparent;
+            this.pnlContenedorFiltros.Controls.Add(this.cmbFiltroEstado);
+            this.pnlContenedorFiltros.Controls.Add(this.label2);
             this.pnlContenedorFiltros.Controls.Add(this.txtBuscarClienteDni);
             this.pnlContenedorFiltros.Controls.Add(this.label1);
             this.pnlContenedorFiltros.Controls.Add(this.dtpHasta);
@@ -346,6 +409,41 @@
             this.pnlContenedorFiltros.Size = new System.Drawing.Size(542, 178);
             this.pnlContenedorFiltros.TabIndex = 63;
             // 
+            // cmbFiltroEstado
+            // 
+            this.cmbFiltroEstado.BackColor = System.Drawing.Color.Transparent;
+            this.cmbFiltroEstado.BorderColor = System.Drawing.Color.DimGray;
+            this.cmbFiltroEstado.BorderRadius = 5;
+            this.cmbFiltroEstado.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbFiltroEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFiltroEstado.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbFiltroEstado.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbFiltroEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.cmbFiltroEstado.ForeColor = System.Drawing.Color.Black;
+            this.cmbFiltroEstado.ItemHeight = 21;
+            this.cmbFiltroEstado.Items.AddRange(new object[] {
+            "Todos",
+            "Efectivo",
+            "Transferencia",
+            "Tarjeta"});
+            this.cmbFiltroEstado.Location = new System.Drawing.Point(407, 35);
+            this.cmbFiltroEstado.Name = "cmbFiltroEstado";
+            this.cmbFiltroEstado.Size = new System.Drawing.Size(150, 27);
+            this.cmbFiltroEstado.StartIndex = 0;
+            this.cmbFiltroEstado.TabIndex = 55;
+            this.cmbFiltroEstado.SelectedIndexChanged += new System.EventHandler(this.cmbFiltroEstado_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(404, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(52, 17);
+            this.label2.TabIndex = 54;
+            this.label2.Text = "Estado";
+            // 
             // txtBuscarClienteDni
             // 
             this.txtBuscarClienteDni.BorderColor = System.Drawing.Color.DimGray;
@@ -360,7 +458,8 @@
             this.txtBuscarClienteDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.txtBuscarClienteDni.ForeColor = System.Drawing.Color.Black;
             this.txtBuscarClienteDni.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscarClienteDni.Location = new System.Drawing.Point(299, 36);
+            this.txtBuscarClienteDni.IconLeft = global::CapaPresentacion.Properties.Resources.icono_lupa;
+            this.txtBuscarClienteDni.Location = new System.Drawing.Point(219, 36);
             this.txtBuscarClienteDni.MaxLength = 8;
             this.txtBuscarClienteDni.Name = "txtBuscarClienteDni";
             this.txtBuscarClienteDni.PlaceholderText = "";
@@ -374,7 +473,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(295, 16);
+            this.label1.Location = new System.Drawing.Point(215, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(174, 17);
             this.label1.TabIndex = 53;
@@ -487,6 +586,7 @@
             this.txtBuscarVendedorDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.txtBuscarVendedorDni.ForeColor = System.Drawing.Color.Black;
             this.txtBuscarVendedorDni.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarVendedorDni.IconLeft = global::CapaPresentacion.Properties.Resources.icono_lupa;
             this.txtBuscarVendedorDni.Location = new System.Drawing.Point(15, 36);
             this.txtBuscarVendedorDni.MaxLength = 8;
             this.txtBuscarVendedorDni.Name = "txtBuscarVendedorDni";
@@ -702,61 +802,6 @@
             this.label14.TabIndex = 11;
             this.label14.Text = "Metodo Pago";
             // 
-            // colNroVenta
-            // 
-            this.colNroVenta.HeaderText = "Nro Venta";
-            this.colNroVenta.Name = "colNroVenta";
-            // 
-            // colDniCliente
-            // 
-            this.colDniCliente.HeaderText = "DNI Cliente";
-            this.colDniCliente.Name = "colDniCliente";
-            // 
-            // colCliente
-            // 
-            this.colCliente.HeaderText = "Cliente";
-            this.colCliente.Name = "colCliente";
-            // 
-            // colDniVendedor
-            // 
-            this.colDniVendedor.HeaderText = "DNI Vendedor";
-            this.colDniVendedor.Name = "colDniVendedor";
-            // 
-            // colVendedor
-            // 
-            this.colVendedor.HeaderText = "Vendedor";
-            this.colVendedor.Name = "colVendedor";
-            // 
-            // colMetodoPago
-            // 
-            this.colMetodoPago.HeaderText = "Metodo Pago";
-            this.colMetodoPago.Name = "colMetodoPago";
-            // 
-            // colTipoAjuste
-            // 
-            this.colTipoAjuste.HeaderText = "Tipo Ajuste";
-            this.colTipoAjuste.Name = "colTipoAjuste";
-            // 
-            // colTotal
-            // 
-            this.colTotal.HeaderText = "Total ($)";
-            this.colTotal.Name = "colTotal";
-            // 
-            // colFechaVenta
-            // 
-            this.colFechaVenta.HeaderText = "Fecha Venta";
-            this.colFechaVenta.Name = "colFechaVenta";
-            // 
-            // colEstado
-            // 
-            this.colEstado.HeaderText = "Estado";
-            this.colEstado.Name = "colEstado";
-            // 
-            // colVerDetalle
-            // 
-            this.colVerDetalle.HeaderText = "VerDetalles";
-            this.colVerDetalle.Name = "colVerDetalle";
-            // 
             // GestionVentasForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -842,5 +887,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colFechaVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEstado;
         private System.Windows.Forms.DataGridViewButtonColumn colVerDetalle;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbFiltroEstado;
+        private System.Windows.Forms.Label label2;
     }
 }

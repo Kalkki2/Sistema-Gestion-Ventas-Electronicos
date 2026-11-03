@@ -1,5 +1,6 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
+using CapaPresentacion.Administrador;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,17 +29,7 @@ namespace CapaPresentacion.Vendedor
 
         private void dgvListaCompras_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Validar que se hizo clic en una fila válida (evita errores si hacen clic en los encabezados)
-            // y comprobar que la columna clickeada es la de nuestro botón ("btnAccion")
-            if (e.RowIndex >= 0 && dgvListaCompras.Columns[e.ColumnIndex].Name == "colDetallesCompras")
-            {
-                // Instanciar y abrir el formulario modal
-                using (DetalleCompra modal = new DetalleCompra())
-                {
-                    // Mostrar el formulario como modal (bloquea la ventana principal hasta que se cierre)
-                    DialogResult resultado = modal.ShowDialog();
-                }
-            }
+           
         }
 
         // Botón Editar de la grilla de clientes: pasa los datos del cliente al formulario
@@ -425,6 +416,47 @@ namespace CapaPresentacion.Vendedor
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true; // Cancela la tecla si no es un número
+            }
+        }
+
+        private void dgvListaClientes_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            string colName = dgvListaClientes.Columns[e.ColumnIndex].Name;
+            ECliente clienteSeleccionado = dgvListaClientes.Rows[e.RowIndex].DataBoundItem as ECliente;
+
+            if (clienteSeleccionado == null) return;
+
+            // 1. EDITAR: Pasa los datos del cliente al formulario superior
+            if (colName == "colEditar")
+            {
+                clienteSeleccionadoId = clienteSeleccionado.cliente_id;
+                txtNombre.Text = clienteSeleccionado.nombre;
+                txtApellido.Text = clienteSeleccionado.apellido;
+                txtDni.Text = clienteSeleccionado.dni;
+                txtTelefono.Text = clienteSeleccionado.telefono;
+                txtDireccion.Text = clienteSeleccionado.direccion;
+                txtCorreo.Text = clienteSeleccionado.email;
+
+                // Se limpian los avisos de error que pudieran haber quedado de antes
+                errorProvider1.SetError(txtNombre, "");
+                errorProvider1.SetError(txtApellido, "");
+                errorProvider1.SetError(txtDni, "");
+                errorProvider1.SetError(txtTelefono, "");
+                errorProvider1.SetError(txtDireccion, "");
+                errorProvider1.SetError(txtCorreo, "");
+
+                txtNombre.Focus();
+            }
+
+            // 2. VER COMPRAS: Abre el Modal con el historial de compras de este cliente
+            if (colName == "colVerCompras")
+            {
+                using (ListaCompraClientesForm modal = new ListaCompraClientesForm(clienteSeleccionado))
+                {
+                    modal.ShowDialog();
+                }
             }
         }
     }

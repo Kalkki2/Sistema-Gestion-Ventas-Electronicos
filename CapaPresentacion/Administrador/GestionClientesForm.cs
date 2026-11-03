@@ -17,6 +17,7 @@ namespace CapaPresentacion.Administrador
     {
         CNCliente objCNCliente = new CNCliente();
         int idClienteSeleccionado = 0; // Para saber qué cliente estamos editando
+        private bool cargandoFormulario = true;
         public GestionClientesForm()
         {
             InitializeComponent();
@@ -136,7 +137,10 @@ namespace CapaPresentacion.Administrador
             System.Globalization.CultureInfo cultura = new System.Globalization.CultureInfo("es-ES");
             lblFecha.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy", cultura);
 
-            CargarClientes();
+            CargarFiltroEstado(); 
+
+            cargandoFormulario = false; 
+            FiltrarClientes();
         }
 
         private void txtNombre_Validating(object sender, CancelEventArgs e)
@@ -239,9 +243,28 @@ namespace CapaPresentacion.Administrador
 
         private void CargarClientes(string filtro = "")
         {
+            if (!string.IsNullOrEmpty(filtro))
+            {
+                txtBuscarCliente.Text = filtro;
+            }
+            FiltrarClientes();
+        }
+
+        private void FiltrarClientes()
+        {
+            if (cargandoFormulario) return;
+
+            string valorBusqueda = txtBuscarCliente.Text.Trim();
+
+            int estadoId = -1;
+            if (cmbFiltroEstado.SelectedItem is OpcionCombo opcionSeleccionada)
+            {
+                estadoId = Convert.ToInt32(opcionSeleccionada.Valor);
+            }
+
             dgvListaClientes.AutoGenerateColumns = false;
 
-            // Mapeo de columnas del primer DataGridView (Lista de clientes)
+            // Mapeo de columnas
             dgvListaClientes.Columns["colDni"].DataPropertyName = "dni";
             dgvListaClientes.Columns["colNombre"].DataPropertyName = "nombre";
             dgvListaClientes.Columns["colApellido"].DataPropertyName = "apellido";
@@ -252,7 +275,22 @@ namespace CapaPresentacion.Administrador
             dgvListaClientes.Columns["colFechaAlta"].DataPropertyName = "fecha_alta";
             dgvListaClientes.Columns["colFechaModificacion"].DataPropertyName = "fecha_ultima_modificacion";
 
-            dgvListaClientes.DataSource = objCNCliente.Listar(filtro);
+            var listaFiltrada = objCNCliente.Buscar(valorBusqueda, estadoId);
+
+            dgvListaClientes.DataSource = listaFiltrada;
+            lblCantTotalClientes.Text = listaFiltrada.Count.ToString();
+
+        }
+
+        private void CargarFiltroEstado()
+        {
+            cmbFiltroEstado.Items.Clear();
+            cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Todos", Valor = -1 });
+            cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Activos", Valor = 1 });
+            cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Inactivos", Valor = 0 });
+            cmbFiltroEstado.DisplayMember = "Texto";
+            cmbFiltroEstado.ValueMember = "Valor";
+            cmbFiltroEstado.SelectedIndex = 0;
         }
 
         private void dgvListaClientes_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -346,6 +384,16 @@ namespace CapaPresentacion.Administrador
                     modal.ShowDialog();
                 }
             }
+        }
+
+        private void txtBuscarCliente_TextChanged(object sender, EventArgs e)
+        {
+            FiltrarClientes();
+        }
+
+        private void cmbFiltroEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FiltrarClientes();
         }
     }
 }

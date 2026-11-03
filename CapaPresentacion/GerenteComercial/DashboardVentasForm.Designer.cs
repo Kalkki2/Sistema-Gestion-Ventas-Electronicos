@@ -92,6 +92,9 @@
             this.lblFiltrarHasta = new System.Windows.Forms.Label();
             this.btnFiltrar = new Guna.UI2.WinForms.Guna2Button();
             this.lblFiltrarDesde = new System.Windows.Forms.Label();
+            this.cmbMesTendencia = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.cmbAnioTendencia = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.btnFiltrarTendencia = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.crtTendenciaVentas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.crtCantVentasXMarca)).BeginInit();
             this.panel4.SuspendLayout();
@@ -116,7 +119,7 @@
             this.crtTendenciaVentas.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.crtTendenciaVentas.Legends.Add(legend1);
-            this.crtTendenciaVentas.Location = new System.Drawing.Point(18, 693);
+            this.crtTendenciaVentas.Location = new System.Drawing.Point(18, 700);
             this.crtTendenciaVentas.Name = "crtTendenciaVentas";
             series1.BorderWidth = 4;
             series1.ChartArea = "ChartArea1";
@@ -641,12 +644,78 @@
             this.lblFiltrarDesde.TabIndex = 53;
             this.lblFiltrarDesde.Text = "Desde";
             // 
+            // cmbMesTendencia
+            // 
+            this.cmbMesTendencia.BackColor = System.Drawing.Color.Transparent;
+            this.cmbMesTendencia.BorderColor = System.Drawing.Color.DarkGray;
+            this.cmbMesTendencia.BorderRadius = 5;
+            this.cmbMesTendencia.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbMesTendencia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMesTendencia.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbMesTendencia.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbMesTendencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.cmbMesTendencia.ForeColor = System.Drawing.Color.Black;
+            this.cmbMesTendencia.ItemHeight = 21;
+            this.cmbMesTendencia.Items.AddRange(new object[] {
+            "Efectivo",
+            "Transferencia",
+            "Tarjeta"});
+            this.cmbMesTendencia.Location = new System.Drawing.Point(57, 679);
+            this.cmbMesTendencia.Name = "cmbMesTendencia";
+            this.cmbMesTendencia.Size = new System.Drawing.Size(150, 27);
+            this.cmbMesTendencia.StartIndex = 0;
+            this.cmbMesTendencia.TabIndex = 75;
+            // 
+            // cmbAnioTendencia
+            // 
+            this.cmbAnioTendencia.BackColor = System.Drawing.Color.Transparent;
+            this.cmbAnioTendencia.BorderColor = System.Drawing.Color.DarkGray;
+            this.cmbAnioTendencia.BorderRadius = 5;
+            this.cmbAnioTendencia.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbAnioTendencia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAnioTendencia.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbAnioTendencia.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbAnioTendencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.cmbAnioTendencia.ForeColor = System.Drawing.Color.Black;
+            this.cmbAnioTendencia.ItemHeight = 21;
+            this.cmbAnioTendencia.Items.AddRange(new object[] {
+            "Efectivo",
+            "Transferencia",
+            "Tarjeta"});
+            this.cmbAnioTendencia.Location = new System.Drawing.Point(218, 679);
+            this.cmbAnioTendencia.Name = "cmbAnioTendencia";
+            this.cmbAnioTendencia.Size = new System.Drawing.Size(150, 27);
+            this.cmbAnioTendencia.StartIndex = 0;
+            this.cmbAnioTendencia.TabIndex = 76;
+            // 
+            // btnFiltrarTendencia
+            // 
+            this.btnFiltrarTendencia.BackColor = System.Drawing.Color.Transparent;
+            this.btnFiltrarTendencia.BorderRadius = 5;
+            this.btnFiltrarTendencia.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnFiltrarTendencia.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnFiltrarTendencia.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnFiltrarTendencia.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnFiltrarTendencia.FillColor = System.Drawing.Color.Silver;
+            this.btnFiltrarTendencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnFiltrarTendencia.ForeColor = System.Drawing.Color.Black;
+            this.btnFiltrarTendencia.Image = ((System.Drawing.Image)(resources.GetObject("btnFiltrarTendencia.Image")));
+            this.btnFiltrarTendencia.Location = new System.Drawing.Point(374, 679);
+            this.btnFiltrarTendencia.Name = "btnFiltrarTendencia";
+            this.btnFiltrarTendencia.Size = new System.Drawing.Size(89, 27);
+            this.btnFiltrarTendencia.TabIndex = 77;
+            this.btnFiltrarTendencia.Text = "Filtrar";
+            this.btnFiltrarTendencia.Click += new System.EventHandler(this.btnFiltrarTendencia_Click);
+            // 
             // DashboardVentasForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1170, 749);
+            this.Controls.Add(this.btnFiltrarTendencia);
+            this.Controls.Add(this.cmbAnioTendencia);
+            this.Controls.Add(this.cmbMesTendencia);
             this.Controls.Add(this.guna2ShadowPanel1);
             this.Controls.Add(this.crtMetodoPago);
             this.Controls.Add(this.guna2Panel1);
@@ -730,5 +799,8 @@
         private System.Windows.Forms.Label lblFiltrarHasta;
         private Guna.UI2.WinForms.Guna2Button btnFiltrar;
         private System.Windows.Forms.Label lblFiltrarDesde;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbMesTendencia;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbAnioTendencia;
+        private Guna.UI2.WinForms.Guna2Button btnFiltrarTendencia;
     }
 }

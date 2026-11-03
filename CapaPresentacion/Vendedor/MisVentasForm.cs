@@ -15,27 +15,21 @@ namespace CapaPresentacion.Vendedor
 {
     public partial class MisVentasForm : Form
     {
+        private bool cargandoFormulario = true;
         public MisVentasForm()
         {
             InitializeComponent();
         }
 
-        private void btnBuscarCliente_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtBuscarClienteDni.Text))
-            {
-                MessageBox.Show("Debe completar el campo para buscar.", "Campo vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-        }
-
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
-            if(dtpDesde.Value.Date > dtpHasta.Value.Date)
+            if (dtpDesde.Value.Date > dtpHasta.Value.Date)
             {
                 MessageBox.Show("La fecha 'Desde' no puede ser posterior a la fecha 'Hasta'", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            FiltrarVentas();
         }
 
         private void MisVentasForm_Load(object sender, EventArgs e)
@@ -48,34 +42,21 @@ namespace CapaPresentacion.Vendedor
 
             System.Globalization.CultureInfo cultura = new System.Globalization.CultureInfo("es-ES");
             lblFecha.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy", cultura);
+
+            dtpDesde.Value = new DateTime(DateTime.Now.Year, 1, 1); 
+            dtpHasta.Value = DateTime.Now;
+
             CargarMisVentas();
-        }
+            CargarFiltroMetodoPago();
+            CargarFiltroEstado();
 
-        private void txtBuscarCliente_Validating(object sender, CancelEventArgs e)
-        {
-            string codigo = txtBuscarClienteDni.Text.Trim();
-
-            if (!ulong.TryParse(codigo, out _))
-            {
-                errorProvider1.SetError(txtBuscarClienteDni, "El DNI solo debe contener números.");
-            }
-            else if (codigo.Length != 8)
-            {
-                errorProvider1.SetError(txtBuscarClienteDni, "El DNI debe tener exactamente 8 dígitos.");
-            }
-            else
-            {
-                errorProvider1.SetError(txtBuscarClienteDni, "");
-            }
+            cargandoFormulario = false;
         }
 
         private void CargarMisVentas()
         {
             dgvMisVentas.AutoGenerateColumns = false;
 
-            // Mapeamos las columnas del DataGridView con las propiedades de EVenta
-            // (Nota: Como este formulario es solo para el vendedor, no hace falta mostrar su propio DNI/nombre en cada fila, 
-            // pero sí el cliente, método de pago, fecha y total)
             dgvMisVentas.Columns["colNroVenta"].DataPropertyName = "nro_venta";
             dgvMisVentas.Columns["colDniCliente"].DataPropertyName = "DniCliente";
             dgvMisVentas.Columns["colCliente"].DataPropertyName = "NombreCliente";
@@ -83,21 +64,15 @@ namespace CapaPresentacion.Vendedor
             dgvMisVentas.Columns["colTipoAjuste"].DataPropertyName = "NombreTipoAjuste";
             dgvMisVentas.Columns["colFechaVenta"].DataPropertyName = "fecha_venta";
             dgvMisVentas.Columns["colTotal"].DataPropertyName = "TotalVenta";
+            dgvMisVentas.Columns["colEstado"].DataPropertyName = "EstadoTexto";
 
-            CNVenta objCNVenta = new CNVenta();
-
-            // Validamos que haya un usuario logueado y filtramos por su ID
             if (SesionActual.UsuarioLogueado != null)
             {
                 int idVendedorActual = SesionActual.UsuarioLogueado.usuario_id;
+                CNVenta objCNVenta = new CNVenta();
 
-                // Llamamos al método
                 var lista = objCNVenta.ListarHistorialVentasPorUsuario(idVendedorActual);
-
-
-
-                // Asignamos los datos a la grilla
-                dgvMisVentas.DataSource = objCNVenta.ListarHistorialVentasPorUsuario(idVendedorActual);
+                dgvMisVentas.DataSource = lista;
             }
         }
 
@@ -124,6 +99,130 @@ namespace CapaPresentacion.Vendedor
                     }
                 }
             }
+
+            if (nombreColumna == "colCambiarEstado")
+            {
+                EVenta ventaSeleccionada = (EVenta)dgvMisVentas.Rows[e.RowIndex].DataBoundItem;
+
+                if (ventaSeleccionada != null)
+                {
+                    // Definimos el nuevo estado opuesto (si está en 1 pasa a 0, y viceversa)
+                    int nuevoEstado = ventaSeleccionada.estado == 1 ? 0 : 1;
+                    string mensajeAccion = nuevoEstado == 1 ? "activar" : "anular";
+
+                    DialogResult resultado = MessageBox.Show(
+                        $"¿Estás seguro de que deseas {mensajeAccion} la venta Nro: {ventaSeleccionada.nro_venta}?",
+                        "Confirmación",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question
+                    );
+
+                    if (resultado == DialogResult.Yes)
+                    {
+                        CNVenta objCNVenta = new CNVenta();
+
+                        // Llamamos a un método en tu capa de negocio para actualizar el estado en la BD
+                        bool actualizado = objCNVenta.CambiarEstado(ventaSeleccionada.venta_id, nuevoEstado, out string mensaje);
+
+                        if (actualizado)
+                        {
+                            MessageBox.Show("Estado actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            // Recargamos la grilla para reflejar el cambio inmediatamente
+                            FiltrarVentas();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo actualizar el estado: " + mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void txtBuscarClienteDni_TextChanged(object sender, EventArgs e)
+        {
+            FiltrarVentas();
+        }
+
+        private void FiltrarVentas()
+        {
+            if (cargandoFormulario || SesionActual.UsuarioLogueado == null) return;
+            if (dtpDesde.Value.Date > dtpHasta.Value.Date)
+            {
+                MessageBox.Show("La fecha 'Desde' no puede ser posterior a la fecha 'Hasta'.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            try
+            {
+                CNVenta objCNVenta = new CNVenta();
+
+                int idVendedorActual = SesionActual.UsuarioLogueado.usuario_id;
+                string dniCliente = txtBuscarClienteDni.Text.Trim();
+
+                int metodoPagoId = 0;
+                if (cmbFiltroMetodoPago.SelectedValue != null)
+                {
+                    int.TryParse(cmbFiltroMetodoPago.SelectedValue.ToString(), out metodoPagoId);
+                }
+
+                int estadoId = -1; // Por defecto "Todos"
+                if (cmbFiltroEstado.SelectedItem is OpcionCombo opcionSeleccionada && opcionSeleccionada.Valor != null)
+                {
+                    int.TryParse(opcionSeleccionada.Valor.ToString(), out estadoId);
+                }
+
+                DateTime fechaDesde = dtpDesde.Value;
+                DateTime fechaHasta = dtpHasta.Value;
+
+                var listaFiltrada = objCNVenta.Buscar(idVendedorActual, null, dniCliente, metodoPagoId, estadoId, fechaDesde, fechaHasta);
+
+                dgvMisVentas.AutoGenerateColumns = false;
+                dgvMisVentas.DataSource = listaFiltrada;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al filtrar las ventas: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cmbFiltroMetodoPago_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbFiltroMetodoPago.SelectedValue != null)
+            {
+                FiltrarVentas();
+            }
+        }
+
+        private void CargarFiltroMetodoPago()
+        {
+            CNMetodoPago objCNMetodoPagoFiltro = new CNMetodoPago();
+            var listaMetodos = objCNMetodoPagoFiltro.Listar();
+
+            listaMetodos.Insert(0, new EMetodoPago { metodo_pago_id = 0, nombre = "Todos" });
+
+            cmbFiltroMetodoPago.DisplayMember = "nombre";
+            cmbFiltroMetodoPago.ValueMember = "metodo_pago_id";
+            cmbFiltroMetodoPago.DataSource = listaMetodos;
+
+            cmbFiltroMetodoPago.SelectedIndex = 0;
+        }
+
+        private void CargarFiltroEstado()
+        {
+            cmbFiltroEstado.Items.Clear();
+            cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Todos", Valor = -1 }); 
+            cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Completados", Valor = 1 });
+            cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Anulados", Valor = 0 });
+            cmbFiltroEstado.DisplayMember = "Texto";
+            cmbFiltroEstado.ValueMember = "Valor";
+            cmbFiltroEstado.SelectedIndex = 0; 
+        }
+
+        private void cmbFiltroEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cargandoFormulario) return;
+            FiltrarVentas();
         }
     }
 }

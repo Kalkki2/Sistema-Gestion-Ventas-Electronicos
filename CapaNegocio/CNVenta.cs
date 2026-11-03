@@ -78,9 +78,9 @@ namespace CapaNegocio
             return objCD_Venta.ObtenerVentasPorMarca(fechaDesde, fechaHasta);
         }
 
-        public List<ETendenciaVenta> ObtenerTendenciaVentasDiarias()
+        public List<ETendenciaVenta> ObtenerTendenciaVentasDiariasPorMesAnio(int mes, int anio)
         {
-            return objCD_Venta.ObtenerTendenciaVentasDiarias();
+            return objCD_Venta.ObtenerTendenciaVentasDiariasPorMesAnio(mes, anio);
         }
 
         public decimal CalcularTotalVentasPorFecha(DateTime fechaDesde, DateTime fechaHasta)
@@ -104,9 +104,9 @@ namespace CapaNegocio
             return objCDVenta.ObtenerTop10ProductosMasVendidos(fechaDesde, fechaHasta);
         }
 
-        public List<EVenta> Buscar(string dniVendedor, string dniCliente, int? metodoPagoId, DateTime? fechaDesde, DateTime? fechaHasta)
+        public List<EVenta> Buscar(int? usuarioId, string dniVendedor, string dniCliente, int? metodoPagoId, int? estadoId, DateTime? fechaDesde, DateTime? fechaHasta)
         {
-            return objCD_Venta.Buscar(dniVendedor, dniCliente, metodoPagoId, fechaDesde, fechaHasta);
+            return objCD_Venta.Buscar(usuarioId, dniVendedor, dniCliente, metodoPagoId, estadoId, fechaDesde, fechaHasta);
         }
 
         public List<ECategoriaVenta> ObtenerVentasMonetariasPorCategoria(DateTime fechaDesde, DateTime fechaHasta)
@@ -123,6 +123,17 @@ namespace CapaNegocio
         public List<EMetodoPagoVenta> ObtenerVentasPorMetodoPago(DateTime fechaDesde, DateTime fechaHasta)
         {
             return objCD_Venta.ObtenerVentasPorMetodoPago(fechaDesde, fechaHasta);
+        }
+
+        public bool CambiarEstado(int ventaId, int nuevoEstado, out string mensaje)
+        {
+            mensaje = string.Empty;
+            if (ventaId <= 0)
+            {
+                mensaje = "El ID de la venta no es válido.";
+                return false;
+            }
+            return objCD_Venta.CambiarEstado(ventaId, nuevoEstado, out mensaje);
         }
     }
 }

@@ -30,7 +30,22 @@ namespace CapaPresentacion.GerenteComercial
             DateTime fechaDesde = new DateTime(2025, 1, 1); // O una fecha muy antigua
             DateTime fechaHasta = DateTime.Now.AddDays(1);
 
+            cmbMesTendencia.DataSource = new Dictionary<int, string>()
+            {
+                {1, "Enero"}, {2, "Febrero"}, {3, "Marzo"}, {4, "Abril"},
+                {5, "Mayo"}, {6, "Junio"}, {7, "Julio"}, {8, "Agosto"},
+                {9, "Septiembre"}, {10, "Octubre"}, {11, "Noviembre"}, {12, "Diciembre"}
+            }.ToList();
+            cmbMesTendencia.DisplayMember = "Value";
+            cmbMesTendencia.ValueMember = "Key";
+            cmbMesTendencia.SelectedValue = DateTime.Now.Month;
+
+            // Rellenar combo de años para la tendencia
+            cmbAnioTendencia.DataSource = new List<int> { 2024, 2025, 2026, 2027 };
+            cmbAnioTendencia.SelectedItem = DateTime.Now.Year;
+
             CargarDashboard(fechaDesde, fechaHasta);
+            CargarGraficoTendenciaPorMesAnio();
         }
 
         //Carga el Dashboard con los datos HISTORICOS
@@ -45,7 +60,6 @@ namespace CapaPresentacion.GerenteComercial
             CargarTop10ProductosDelDia(fechaDesde, fechaHasta);
             CargarTop5Personal(fechaDesde, fechaHasta);
 
-            CargarGraficoTendenciaVentas(fechaDesde, fechaHasta);
         }
 
         private void CargarGraficoVentasPorMarca(DateTime fechaDesde, DateTime fechaHasta)
@@ -112,13 +126,16 @@ namespace CapaPresentacion.GerenteComercial
             var leyenda = crtCantVentasXMarca.Legends.Add("LeyendaDerechaMarca");
             leyenda.Font = new Font("Segoe UI", 9.5F, FontStyle.Regular);
         }
-        private void CargarGraficoTendenciaVentas(DateTime fechaDesde, DateTime fechaHasta)
+        private void CargarGraficoTendenciaPorMesAnio()
         {
-            CNVenta objCNVenta = new CNVenta();
-            List<ETendenciaVenta> listaDatos = objCNVenta.ObtenerTendenciaVentasDiarias();
+            if (cmbMesTendencia.SelectedValue == null || cmbAnioTendencia.SelectedItem == null) return;
+
+            int mes = (int)cmbMesTendencia.SelectedValue;
+            int anio = (int)cmbAnioTendencia.SelectedItem;
+
+            List<ETendenciaVenta> listaDatos = objCNVenta.ObtenerTendenciaVentasDiariasPorMesAnio(mes, anio);
 
             string nombreSerie = "Series1";
-
             if (crtTendenciaVentas.Series.IndexOf(nombreSerie) == -1)
             {
                 crtTendenciaVentas.Series.Add(nombreSerie);
@@ -128,32 +145,16 @@ namespace CapaPresentacion.GerenteComercial
             crtTendenciaVentas.Series[nombreSerie].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             crtTendenciaVentas.Series[nombreSerie].IsValueShownAsLabel = true;
             crtTendenciaVentas.ChartAreas[0].AxisY.Minimum = 0;
+
             foreach (var item in listaDatos)
             {
-                // Convertimos el texto de la fecha (ej: "19/09/26") de vuelta a DateTime para poder compararlo
-                DateTime fechaPunto;
-                if (DateTime.TryParseExact(item.Fecha, "dd/MM/yy", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out fechaPunto))
-                {
-                    int pointIndex = crtTendenciaVentas.Series[nombreSerie].Points.AddXY(item.Fecha, item.TotalVentas);
-                    var punto = crtTendenciaVentas.Series[nombreSerie].Points[pointIndex];
+                int pointIndex = crtTendenciaVentas.Series[nombreSerie].Points.AddXY(item.Fecha, item.TotalVentas);
+                var punto = crtTendenciaVentas.Series[nombreSerie].Points[pointIndex];
 
-                    //Evaluamos si la fecha del punto cae dentro del rango del filtro activo
-                    // (Comparamos solo la parte de la fecha con .Date)
-                    if (fechaPunto.Date >= fechaDesde.Date && fechaPunto.Date <= fechaHasta.Date)
-                    {
-                        // Destacamos los puntos que están dentro del filtro (ej: Color llamativo y puntos marcados)
-                        punto.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-                        punto.MarkerSize = 10;
-                        punto.MarkerColor = Color.FromArgb(255, 0, 8); // Azul principal destacado
-                        punto.LabelForeColor = Color.FromArgb(255, 0, 8);
-                    }
-                    else
-                    {
-                        // Puntos fuera del filtro (histórico general atenuado)
-                        punto.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.None;
-                        punto.LabelForeColor = Color.Gray;
-                    }
-                }
+                punto.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+                punto.MarkerSize = 10;
+                punto.MarkerColor = Color.FromArgb(13, 110, 253);
+                punto.LabelForeColor = Color.FromArgb(13, 110, 253);
             }
         }
 
@@ -318,6 +319,11 @@ namespace CapaPresentacion.GerenteComercial
             }
 
             CargarDashboard(fechaDesde, fechaHasta);
+        }
+
+        private void btnFiltrarTendencia_Click(object sender, EventArgs e)
+        {
+            CargarGraficoTendenciaPorMesAnio();
         }
     }
 }

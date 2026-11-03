@@ -31,7 +31,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblNroTransaccion = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnImprimirTicket = new Guna.UI2.WinForms.Guna2Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,7 +43,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(37, 97);
+            this.label1.Location = new System.Drawing.Point(50, 61);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(272, 20);
             this.label1.TabIndex = 0;
@@ -54,7 +53,7 @@
             // 
             this.lblNroTransaccion.AutoSize = true;
             this.lblNroTransaccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNroTransaccion.Location = new System.Drawing.Point(198, 140);
+            this.lblNroTransaccion.Location = new System.Drawing.Point(211, 104);
             this.lblNroTransaccion.Name = "lblNroTransaccion";
             this.lblNroTransaccion.Size = new System.Drawing.Size(73, 16);
             this.lblNroTransaccion.TabIndex = 1;
@@ -64,28 +63,11 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(100, 156);
+            this.label3.Location = new System.Drawing.Point(113, 120);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(84, 16);
             this.label3.TabIndex = 2;
             this.label3.Text = "Monto Total: ";
-            // 
-            // btnImprimirTicket
-            // 
-            this.btnImprimirTicket.BorderRadius = 5;
-            this.btnImprimirTicket.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnImprimirTicket.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnImprimirTicket.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnImprimirTicket.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnImprimirTicket.FillColor = System.Drawing.Color.ForestGreen;
-            this.btnImprimirTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimirTicket.ForeColor = System.Drawing.Color.White;
-            this.btnImprimirTicket.Location = new System.Drawing.Point(112, 188);
-            this.btnImprimirTicket.Name = "btnImprimirTicket";
-            this.btnImprimirTicket.Size = new System.Drawing.Size(118, 35);
-            this.btnImprimirTicket.TabIndex = 3;
-            this.btnImprimirTicket.Text = "Imprimir Ticket";
-            this.btnImprimirTicket.Click += new System.EventHandler(this.btnImprimirTicket_Click);
             // 
             // panel1
             // 
@@ -93,7 +75,7 @@
             this.panel1.Controls.Add(this.label4);
             this.panel1.Location = new System.Drawing.Point(-1, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(342, 38);
+            this.panel1.Size = new System.Drawing.Size(412, 38);
             this.panel1.TabIndex = 4;
             // 
             // label4
@@ -112,7 +94,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(84, 140);
+            this.label2.Location = new System.Drawing.Point(97, 104);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(110, 16);
             this.label2.TabIndex = 5;
@@ -122,7 +104,7 @@
             // 
             this.lblMontoTotal.AutoSize = true;
             this.lblMontoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMontoTotal.Location = new System.Drawing.Point(180, 156);
+            this.lblMontoTotal.Location = new System.Drawing.Point(193, 120);
             this.lblMontoTotal.Name = "lblMontoTotal";
             this.lblMontoTotal.Size = new System.Drawing.Size(38, 16);
             this.lblMontoTotal.TabIndex = 6;
@@ -133,11 +115,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(341, 246);
+            this.ClientSize = new System.Drawing.Size(410, 246);
             this.Controls.Add(this.lblMontoTotal);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.btnImprimirTicket);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblNroTransaccion);
             this.Controls.Add(this.label1);
@@ -157,7 +138,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblNroTransaccion;
         private System.Windows.Forms.Label label3;
-        private Guna.UI2.WinForms.Guna2Button btnImprimirTicket;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;

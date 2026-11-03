@@ -32,9 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlFormularioCliente = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.btnActualizar = new Guna.UI2.WinForms.Guna2Button();
             this.txtCorreo = new Guna.UI2.WinForms.Guna2TextBox();
@@ -62,37 +59,26 @@
             this.pnlContenedorListaClientes = new Guna.UI2.WinForms.Guna2Panel();
             this.dgvListaClientes = new Guna.UI2.WinForms.Guna2DataGridView();
             this.lblTituloListaClientes = new System.Windows.Forms.Label();
-            this.pnlContenedorLista = new Guna.UI2.WinForms.Guna2Panel();
-            this.dgvListaCompras = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.lblTituloListaCompras = new System.Windows.Forms.Label();
             this.pnlContenedorFiltros = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.btnBuscarCliente = new Guna.UI2.WinForms.Guna2Button();
             this.txtBuscarCliente = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblBuscarPorDNIONombreOCorreo = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.colDetallesCompras = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colBtnVerCompras = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.colEditar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.colDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCorreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNroCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCorreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEditar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colVerCompras = new System.Windows.Forms.DataGridViewImageColumn();
             this.pnlFormularioCliente.SuspendLayout();
             this.pnlEncabezado.SuspendLayout();
             this.pnlnfoUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
             this.pnlContenedorListaClientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaClientes)).BeginInit();
-            this.pnlContenedorLista.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvListaCompras)).BeginInit();
             this.pnlContenedorFiltros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -490,7 +476,7 @@
             this.pnlContenedorListaClientes.FillColor = System.Drawing.Color.Transparent;
             this.pnlContenedorListaClientes.Location = new System.Drawing.Point(7, 298);
             this.pnlContenedorListaClientes.Name = "pnlContenedorListaClientes";
-            this.pnlContenedorListaClientes.Size = new System.Drawing.Size(649, 370);
+            this.pnlContenedorListaClientes.Size = new System.Drawing.Size(1149, 370);
             this.pnlContenedorListaClientes.TabIndex = 59;
             // 
             // dgvListaClientes
@@ -514,7 +500,7 @@
             this.colTelefono,
             this.colDireccion,
             this.colEditar,
-            this.colBtnVerCompras});
+            this.colVerCompras});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -524,12 +510,12 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvListaClientes.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvListaClientes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvListaClientes.Location = new System.Drawing.Point(3, 49);
+            this.dgvListaClientes.Location = new System.Drawing.Point(5, 49);
             this.dgvListaClientes.Name = "dgvListaClientes";
             this.dgvListaClientes.RowHeadersVisible = false;
             this.dgvListaClientes.RowHeadersWidth = 51;
             this.dgvListaClientes.RowTemplate.Height = 23;
-            this.dgvListaClientes.Size = new System.Drawing.Size(643, 300);
+            this.dgvListaClientes.Size = new System.Drawing.Size(1132, 300);
             this.dgvListaClientes.TabIndex = 7;
             this.dgvListaClientes.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
             this.dgvListaClientes.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
@@ -539,6 +525,7 @@
             this.dgvListaClientes.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvListaClientes.ThemeStyle.RowsStyle.Height = 23;
             this.dgvListaClientes.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
+            this.dgvListaClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaClientes_CellContentClick_1);
             // 
             // lblTituloListaClientes
             // 
@@ -551,77 +538,6 @@
             this.lblTituloListaClientes.Size = new System.Drawing.Size(120, 16);
             this.lblTituloListaClientes.TabIndex = 6;
             this.lblTituloListaClientes.Text = "Lista de clientes";
-            // 
-            // pnlContenedorLista
-            // 
-            this.pnlContenedorLista.BorderColor = System.Drawing.Color.DarkGray;
-            this.pnlContenedorLista.BorderRadius = 8;
-            this.pnlContenedorLista.BorderThickness = 1;
-            this.pnlContenedorLista.Controls.Add(this.dgvListaCompras);
-            this.pnlContenedorLista.Controls.Add(this.lblTituloListaCompras);
-            this.pnlContenedorLista.FillColor = System.Drawing.Color.Transparent;
-            this.pnlContenedorLista.Location = new System.Drawing.Point(662, 298);
-            this.pnlContenedorLista.Name = "pnlContenedorLista";
-            this.pnlContenedorLista.Size = new System.Drawing.Size(500, 262);
-            this.pnlContenedorLista.TabIndex = 60;
-            // 
-            // dgvListaCompras
-            // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
-            this.dgvListaCompras.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListaCompras.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvListaCompras.ColumnHeadersHeight = 32;
-            this.dgvListaCompras.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn4,
-            this.colDetallesCompras});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvListaCompras.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvListaCompras.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvListaCompras.Location = new System.Drawing.Point(3, 49);
-            this.dgvListaCompras.Name = "dgvListaCompras";
-            this.dgvListaCompras.RowHeadersVisible = false;
-            this.dgvListaCompras.RowHeadersWidth = 51;
-            this.dgvListaCompras.RowTemplate.Height = 23;
-            this.dgvListaCompras.Size = new System.Drawing.Size(493, 202);
-            this.dgvListaCompras.TabIndex = 7;
-            this.dgvListaCompras.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
-            this.dgvListaCompras.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            this.dgvListaCompras.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvListaCompras.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvListaCompras.ThemeStyle.HeaderStyle.Height = 32;
-            this.dgvListaCompras.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvListaCompras.ThemeStyle.RowsStyle.Height = 23;
-            this.dgvListaCompras.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
-            this.dgvListaCompras.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaCompras_CellContentClick);
-            // 
-            // lblTituloListaCompras
-            // 
-            this.lblTituloListaCompras.AutoSize = true;
-            this.lblTituloListaCompras.BackColor = System.Drawing.Color.Transparent;
-            this.lblTituloListaCompras.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloListaCompras.ForeColor = System.Drawing.Color.Black;
-            this.lblTituloListaCompras.Location = new System.Drawing.Point(3, 15);
-            this.lblTituloListaCompras.Name = "lblTituloListaCompras";
-            this.lblTituloListaCompras.Size = new System.Drawing.Size(130, 16);
-            this.lblTituloListaCompras.TabIndex = 6;
-            this.lblTituloListaCompras.Text = "Lista de compras:";
             // 
             // pnlContenedorFiltros
             // 
@@ -696,92 +612,6 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // colDetallesCompras
-            // 
-            this.colDetallesCompras.HeaderText = "Ver Detalle";
-            this.colDetallesCompras.MinimumWidth = 6;
-            this.colDetallesCompras.Name = "colDetallesCompras";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Total";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Metodo Pago";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Vendedor";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Fecha Venta";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "NroVenta";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // colBtnVerCompras
-            // 
-            this.colBtnVerCompras.HeaderText = "Ver compras";
-            this.colBtnVerCompras.MinimumWidth = 6;
-            this.colBtnVerCompras.Name = "colBtnVerCompras";
-            // 
-            // colEditar
-            // 
-            this.colEditar.HeaderText = "Editar";
-            this.colEditar.MinimumWidth = 6;
-            this.colEditar.Name = "colEditar";
-            this.colEditar.Text = "Editar";
-            this.colEditar.UseColumnTextForButtonValue = true;
-            // 
-            // colDireccion
-            // 
-            this.colDireccion.HeaderText = "Direccion";
-            this.colDireccion.MinimumWidth = 6;
-            this.colDireccion.Name = "colDireccion";
-            // 
-            // colTelefono
-            // 
-            this.colTelefono.HeaderText = "Telefono";
-            this.colTelefono.MinimumWidth = 6;
-            this.colTelefono.Name = "colTelefono";
-            // 
-            // colCorreo
-            // 
-            this.colCorreo.HeaderText = "Correo";
-            this.colCorreo.MinimumWidth = 6;
-            this.colCorreo.Name = "colCorreo";
-            // 
-            // colApellido
-            // 
-            this.colApellido.HeaderText = "Apellido";
-            this.colApellido.MinimumWidth = 6;
-            this.colApellido.Name = "colApellido";
-            // 
-            // colNombre
-            // 
-            this.colNombre.HeaderText = "Nombre";
-            this.colNombre.MinimumWidth = 6;
-            this.colNombre.Name = "colNombre";
-            // 
-            // colDni
-            // 
-            this.colDni.HeaderText = "DNI";
-            this.colDni.MinimumWidth = 6;
-            this.colDni.Name = "colDni";
-            // 
             // colNroCliente
             // 
             this.colNroCliente.FillWeight = 75F;
@@ -789,13 +619,62 @@
             this.colNroCliente.MinimumWidth = 6;
             this.colNroCliente.Name = "colNroCliente";
             // 
+            // colDni
+            // 
+            this.colDni.HeaderText = "DNI";
+            this.colDni.MinimumWidth = 6;
+            this.colDni.Name = "colDni";
+            // 
+            // colNombre
+            // 
+            this.colNombre.HeaderText = "Nombre";
+            this.colNombre.MinimumWidth = 6;
+            this.colNombre.Name = "colNombre";
+            // 
+            // colApellido
+            // 
+            this.colApellido.HeaderText = "Apellido";
+            this.colApellido.MinimumWidth = 6;
+            this.colApellido.Name = "colApellido";
+            // 
+            // colCorreo
+            // 
+            this.colCorreo.HeaderText = "Correo";
+            this.colCorreo.MinimumWidth = 6;
+            this.colCorreo.Name = "colCorreo";
+            // 
+            // colTelefono
+            // 
+            this.colTelefono.HeaderText = "Telefono";
+            this.colTelefono.MinimumWidth = 6;
+            this.colTelefono.Name = "colTelefono";
+            // 
+            // colDireccion
+            // 
+            this.colDireccion.HeaderText = "Direccion";
+            this.colDireccion.MinimumWidth = 6;
+            this.colDireccion.Name = "colDireccion";
+            // 
+            // colEditar
+            // 
+            this.colEditar.HeaderText = "Editar";
+            this.colEditar.MinimumWidth = 6;
+            this.colEditar.Name = "colEditar";
+            this.colEditar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // colVerCompras
+            // 
+            this.colVerCompras.HeaderText = "Ver compras";
+            this.colVerCompras.MinimumWidth = 6;
+            this.colVerCompras.Name = "colVerCompras";
+            this.colVerCompras.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
             // ClientesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1028, 561);
+            this.ClientSize = new System.Drawing.Size(1168, 561);
             this.Controls.Add(this.pnlContenedorFiltros);
-            this.Controls.Add(this.pnlContenedorLista);
             this.Controls.Add(this.pnlContenedorListaClientes);
             this.Controls.Add(this.pnlEncabezado);
             this.Controls.Add(this.pnlFormularioCliente);
@@ -812,9 +691,6 @@
             this.pnlContenedorListaClientes.ResumeLayout(false);
             this.pnlContenedorListaClientes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaClientes)).EndInit();
-            this.pnlContenedorLista.ResumeLayout(false);
-            this.pnlContenedorLista.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvListaCompras)).EndInit();
             this.pnlContenedorFiltros.ResumeLayout(false);
             this.pnlContenedorFiltros.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
@@ -848,9 +724,6 @@
         private Guna.UI2.WinForms.Guna2Panel pnlContenedorListaClientes;
         private Guna.UI2.WinForms.Guna2DataGridView dgvListaClientes;
         private System.Windows.Forms.Label lblTituloListaClientes;
-        private Guna.UI2.WinForms.Guna2Panel pnlContenedorLista;
-        private Guna.UI2.WinForms.Guna2DataGridView dgvListaCompras;
-        private System.Windows.Forms.Label lblTituloListaCompras;
         private Guna.UI2.WinForms.Guna2ShadowPanel pnlContenedorFiltros;
         private Guna.UI2.WinForms.Guna2Button btnBuscarCliente;
         private Guna.UI2.WinForms.Guna2TextBox txtBuscarCliente;
@@ -866,13 +739,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colCorreo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTelefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDireccion;
-        private System.Windows.Forms.DataGridViewButtonColumn colEditar;
-        private System.Windows.Forms.DataGridViewButtonColumn colBtnVerCompras;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewButtonColumn colDetallesCompras;
+        private System.Windows.Forms.DataGridViewImageColumn colEditar;
+        private System.Windows.Forms.DataGridViewImageColumn colVerCompras;
     }
 }
