@@ -26,22 +26,6 @@ namespace CapaPresentacion.Vendedor
         {
             InitializeComponent();
 
-            // Columnas de la grilla -> propiedades de EProducto
-            dgvListaProductos.AutoGenerateColumns = false;
-            colCodigo.DataPropertyName = "codigo";
-            colNombre.DataPropertyName = "nombre";
-            colPrecio.DataPropertyName = "precio_venta";
-            colStock.DataPropertyName = "stock";
-            colCategoria.DataPropertyName = "NombreCategoria";
-            colMarca.DataPropertyName = "NombreMarca";
-
-            colPrecio.DefaultCellStyle.Format = "N2";
-            colPrecio.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-            // El botón "Ver Detalles" (Column1) sale con texto
-            Column1.Text = "Ver";
-            Column1.UseColumnTextForButtonValue = true;
-
             // Filtros dinámicos: se aplican mientras se escribe o se cambia un combo
             txtBuscarProducto.TextChanged += (s, e) => AplicarFiltros();
             cmbFiltroCategoria.SelectedIndexChanged += (s, e) => AplicarFiltros();
@@ -66,18 +50,26 @@ namespace CapaPresentacion.Vendedor
             CargarProductos();
         }
 
+
         private void CargarProductos()
         {
-            try
-            {
-                todosLosProductos = objCNProducto.ListarProductos();
-                CargarCombos();
-                AplicarFiltros();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("No se pudieron cargar los productos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            dgvListaProductos.AutoGenerateColumns = false;
+
+            // Mapear explícitamente las columnas con las propiedades de EProducto
+            dgvListaProductos.Columns["colCodigo"].DataPropertyName = "codigo";
+            dgvListaProductos.Columns["colNombre"].DataPropertyName = "nombre";
+            dgvListaProductos.Columns["colPrecio"].DataPropertyName = "precio_venta";
+            dgvListaProductos.Columns["colStock"].DataPropertyName = "stock";
+            dgvListaProductos.Columns["colCategoria"].DataPropertyName = "NombreCategoria";
+            dgvListaProductos.Columns["colMarca"].DataPropertyName = "NombreMarca";
+
+            todosLosProductos = objCNProducto.ListarProductos()
+                                     .Where(p => p.estado == 1)
+                                     .ToList();
+
+            CargarCombos();
+
+            AplicarFiltros();
         }
 
         // Llena los combos con las categorías y marcas que tienen los productos cargados

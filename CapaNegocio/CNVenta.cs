@@ -135,5 +135,10 @@ namespace CapaNegocio
             }
             return objCD_Venta.CambiarEstado(ventaId, nuevoEstado, out mensaje);
         }
+
+        public List<EReporteVentaDetallado> ObtenerReportedetalladoVentas(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            return objCD_Venta.ObtenerReportedetalladoVentas(fechaDesde, fechaHasta);
+        }
     }
 }

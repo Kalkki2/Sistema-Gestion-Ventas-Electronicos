@@ -35,6 +35,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblMontoTotal = new System.Windows.Forms.Label();
+            this.btnConfirmarVenta = new Guna.UI2.WinForms.Guna2Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,7 +44,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(50, 61);
+            this.label1.Location = new System.Drawing.Point(69, 60);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(272, 20);
             this.label1.TabIndex = 0;
@@ -53,7 +54,7 @@
             // 
             this.lblNroTransaccion.AutoSize = true;
             this.lblNroTransaccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNroTransaccion.Location = new System.Drawing.Point(211, 104);
+            this.lblNroTransaccion.Location = new System.Drawing.Point(230, 103);
             this.lblNroTransaccion.Name = "lblNroTransaccion";
             this.lblNroTransaccion.Size = new System.Drawing.Size(73, 16);
             this.lblNroTransaccion.TabIndex = 1;
@@ -63,7 +64,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(113, 120);
+            this.label3.Location = new System.Drawing.Point(132, 119);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(84, 16);
             this.label3.TabIndex = 2;
@@ -94,7 +95,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(97, 104);
+            this.label2.Location = new System.Drawing.Point(116, 103);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(110, 16);
             this.label2.TabIndex = 5;
@@ -104,11 +105,29 @@
             // 
             this.lblMontoTotal.AutoSize = true;
             this.lblMontoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMontoTotal.Location = new System.Drawing.Point(193, 120);
+            this.lblMontoTotal.Location = new System.Drawing.Point(212, 119);
             this.lblMontoTotal.Name = "lblMontoTotal";
             this.lblMontoTotal.Size = new System.Drawing.Size(38, 16);
             this.lblMontoTotal.TabIndex = 6;
             this.lblMontoTotal.Text = "$0.00";
+            // 
+            // btnConfirmarVenta
+            // 
+            this.btnConfirmarVenta.BackColor = System.Drawing.Color.Transparent;
+            this.btnConfirmarVenta.BorderRadius = 5;
+            this.btnConfirmarVenta.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnConfirmarVenta.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnConfirmarVenta.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnConfirmarVenta.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnConfirmarVenta.FillColor = System.Drawing.Color.ForestGreen;
+            this.btnConfirmarVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirmarVenta.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnConfirmarVenta.Location = new System.Drawing.Point(123, 185);
+            this.btnConfirmarVenta.Name = "btnConfirmarVenta";
+            this.btnConfirmarVenta.Size = new System.Drawing.Size(161, 35);
+            this.btnConfirmarVenta.TabIndex = 64;
+            this.btnConfirmarVenta.Text = "ACEPTAR";
+            this.btnConfirmarVenta.Click += new System.EventHandler(this.btnConfirmarVenta_Click);
             // 
             // ConfirmacionVentaForm
             // 
@@ -116,6 +135,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(410, 246);
+            this.Controls.Add(this.btnConfirmarVenta);
             this.Controls.Add(this.lblMontoTotal);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
@@ -142,5 +162,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblMontoTotal;
+        private Guna.UI2.WinForms.Guna2Button btnConfirmarVenta;
     }
 }

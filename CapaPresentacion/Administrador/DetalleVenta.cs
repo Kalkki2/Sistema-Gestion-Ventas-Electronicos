@@ -9,9 +9,12 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace CapaPresentacion.Administrador
 {
@@ -302,6 +305,231 @@ namespace CapaPresentacion.Administrador
             catch (Exception ex)
             {
                 MessageBox.Show("Error al generar el comprobante PDF: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnEnviarCorreo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // 1. Validar que el cliente tenga un correo registrado
+                if (_venta.oCliente == null || string.IsNullOrWhiteSpace(_venta.oCliente.email))
+                {
+                    MessageBox.Show("El cliente seleccionado no tiene un correo electrónico registrado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string correoCliente = _venta.oCliente.email.Trim();
+
+                // 2. Pedir confirmación al usuario
+                DialogResult respuesta = MessageBox.Show($"¿Desea enviar el comprobante de la venta {_venta.nro_venta} al correo: {correoCliente}?", "Confirmar envío", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (respuesta == DialogResult.No) return;
+
+                // 3. Generar el PDF en memoria
+                byte[] pdfBytes = GenerarPdfBytes();
+
+                // 4. Configurar el mensaje de correo
+                using (MailMessage mail = new MailMessage())
+                {
+                    mail.From = new MailAddress("sistemaventasmusnoc@gmail.com", "MUSNOC Sistema de Ventas");
+                    mail.To.Add(correoCliente);
+                    mail.Subject = $"Comprobante de Compra - Venta Nro {_venta.nro_venta}";
+                    mail.Body = $"Estimado/a {_venta.oCliente.nombre} {_venta.oCliente.apellido},\n\nAdjunto encontrará el comprobante PDF correspondiente a su compra (Venta Nro: {_venta.nro_venta}).\n\n¡Gracias por su preferencia!\nAtentamente,\nMUSNOC";
+                    mail.IsBodyHtml = false;
+
+                    // 5. Adjuntar el PDF usando un MemoryStream
+                    using (MemoryStream ms = new MemoryStream(pdfBytes))
+                    {
+                        mail.Attachments.Add(new Attachment(ms, $"Comprobante_{_venta.nro_venta}.pdf", "application/pdf"));
+
+                        // Forzar protocolo de seguridad moderno
+                        System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
+
+                        // 6. Configurar el servidor SMTP con el orden correcto
+                        using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+                        {
+                            smtp.UseDefaultCredentials = false; 
+                            smtp.Credentials = new NetworkCredential("sistemaventasmusnoc@gmail.com", "rwoh pkeg neew hgrs"); 
+                            smtp.EnableSsl = true;
+                            smtp.Timeout = 20000; // Evita cortes por demora
+
+                            // Enviar correo
+                            smtp.Send(mail);
+                        }
+                    }
+                }
+
+                MessageBox.Show("Comprobante enviado por correo electrónico con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                string errorDetallado = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
+                MessageBox.Show("Error al enviar el correo electrónico:\n" + errorDetallado, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private byte[] GenerarPdfBytes()
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                Document doc = new Document(PageSize.A4, 36, 36, 36, 36);
+                PdfWriter.GetInstance(doc, ms);
+                doc.Open();
+
+                BaseColor colorPrimario = new BaseColor(15, 23, 42);   // #0f172a
+                BaseColor colorTexto = new BaseColor(51, 65, 85);      // #334155
+
+                iTextSharp.text.Font fuenteTitulo = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 18, colorPrimario);
+                iTextSharp.text.Font fuenteTexto = FontFactory.GetFont(FontFactory.HELVETICA, 9, colorTexto);
+                iTextSharp.text.Font fuenteTextoBold = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 9, colorTexto);
+                iTextSharp.text.Font fuenteTh = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 9, BaseColor.WHITE);
+
+                // ENCABEZADO
+                PdfPTable tablaHeader = new PdfPTable(2);
+                tablaHeader.WidthPercentage = 100;
+                tablaHeader.SetWidths(new float[] { 50f, 50f });
+
+                PdfPCell celdaLogo = new PdfPCell(new Phrase("MUSNOC", fuenteTitulo));
+                celdaLogo.Border = PdfPCell.NO_BORDER;
+                celdaLogo.VerticalAlignment = Element.ALIGN_MIDDLE;
+                tablaHeader.AddCell(celdaLogo);
+
+                PdfPCell celdaEmpresa = new PdfPCell(new Phrase(
+                    "Dirección: Av. 3 Abril Corrientes - Corrientes - Argentina\nTel: +54 9 379 634-7610",
+                    FontFactory.GetFont(FontFactory.HELVETICA, 8, colorTexto)));
+                celdaEmpresa.Border = PdfPCell.NO_BORDER;
+                celdaEmpresa.HorizontalAlignment = Element.ALIGN_RIGHT;
+                celdaEmpresa.VerticalAlignment = Element.ALIGN_MIDDLE;
+                tablaHeader.AddCell(celdaEmpresa);
+
+                doc.Add(tablaHeader);
+                doc.Add(new Paragraph(" "));
+
+                // Línea divisoria
+                PdfPTable linea = new PdfPTable(1);
+                linea.WidthPercentage = 100;
+                PdfPCell celdaLinea = new PdfPCell();
+                celdaLinea.BackgroundColor = colorPrimario;
+                celdaLinea.FixedHeight = 2f;
+                celdaLinea.Border = PdfPCell.NO_BORDER;
+                linea.AddCell(celdaLinea);
+                doc.Add(linea);
+                doc.Add(new Paragraph(" "));
+
+                // INFORMACIÓN DE VENTA
+                PdfPTable tablaInfo = new PdfPTable(2);
+                tablaInfo.WidthPercentage = 100;
+                tablaInfo.SetWidths(new float[] { 50f, 50f });
+
+                string infoIzquierda =
+                    $"Nro Venta: {_venta.nro_venta}\n" +
+                    $"Fecha: {_venta.fecha_venta:dd/MM/yyyy HH:mm:ss}\n" +
+                    $"Forma de Pago: {(_venta.oMetodoPago != null ? _venta.oMetodoPago.nombre : "N/D")}";
+
+                string infoDerecha =
+                    $"Vendedor: {(_venta.oUsuario != null ? $"{_venta.oUsuario.apellido}, {_venta.oUsuario.nombre}" : "N/D")} (DNI: {(_venta.oUsuario != null ? _venta.oUsuario.dni : "")})\n" +
+                    $"Cliente: {(_venta.oCliente != null ? $"{_venta.oCliente.apellido}, {_venta.oCliente.nombre}" : "N/D")} (DNI: {(_venta.oCliente != null ? _venta.oCliente.dni : "")})";
+
+                PdfPCell cIzq = new PdfPCell(new Phrase(infoIzquierda, fuenteTexto));
+                cIzq.Border = PdfPCell.NO_BORDER;
+                tablaInfo.AddCell(cIzq);
+
+                PdfPCell cDer = new PdfPCell(new Phrase(infoDerecha, fuenteTexto));
+                cDer.Border = PdfPCell.NO_BORDER;
+                tablaInfo.AddCell(cDer);
+
+                doc.Add(tablaInfo);
+                doc.Add(new Paragraph(" "));
+
+                // GRILLA DE DETALLE
+                PdfPTable tablaDetalle = new PdfPTable(4);
+                tablaDetalle.WidthPercentage = 100;
+                tablaDetalle.SetWidths(new float[] { 50f, 15f, 17f, 18f });
+
+                string[] headers = { "Producto", "Cantidad", "Precio ($)", "Subtotal ($)" };
+                foreach (string h in headers)
+                {
+                    PdfPCell th = new PdfPCell(new Phrase(h, fuenteTh));
+                    th.BackgroundColor = colorPrimario;
+                    th.HorizontalAlignment = Element.ALIGN_CENTER;
+                    th.Padding = 6;
+                    tablaDetalle.AddCell(th);
+                }
+
+                CNVenta objCNVenta = new CNVenta();
+                List<EDetalleVenta> listaDetalle = objCNVenta.ObtenerDetalleVenta(_venta.venta_id);
+
+                decimal totalBruto = 0;
+                if (listaDetalle != null)
+                {
+                    foreach (var item in listaDetalle)
+                    {
+                        totalBruto += item.SubtotalFila;
+
+                        PdfPCell tdProd = new PdfPCell(new Phrase(item.oProducto != null ? item.oProducto.nombre : "Producto", fuenteTexto));
+                        tdProd.Padding = 5;
+                        tablaDetalle.AddCell(tdProd);
+
+                        PdfPCell tdCant = new PdfPCell(new Phrase(item.cantidad.ToString(), fuenteTexto));
+                        tdCant.HorizontalAlignment = Element.ALIGN_CENTER;
+                        tdCant.Padding = 5;
+                        tablaDetalle.AddCell(tdCant);
+
+                        PdfPCell tdPrecio = new PdfPCell(new Phrase($"$ {item.precio_unitario:N2}", fuenteTexto));
+                        tdPrecio.HorizontalAlignment = Element.ALIGN_RIGHT;
+                        tdPrecio.Padding = 5;
+                        tablaDetalle.AddCell(tdPrecio);
+
+                        PdfPCell tdSub = new PdfPCell(new Phrase($"$ {item.SubtotalFila:N2}", fuenteTexto));
+                        tdSub.HorizontalAlignment = Element.ALIGN_RIGHT;
+                        tdSub.Padding = 5;
+                        tablaDetalle.AddCell(tdSub);
+                    }
+                }
+
+                doc.Add(tablaDetalle);
+                doc.Add(new Paragraph(" "));
+
+                // TOTALES
+                decimal porcentaje = _venta.porcentaje_aplicado;
+                decimal montoAjuste = (totalBruto * porcentaje) / 100;
+                decimal totalFinal = totalBruto;
+                string textoAjusteDesc = "Sin ajuste";
+                string montoAjusteStr = "$ 0,00";
+
+                string tipoAjusteNombre = _venta.NombreTipoAjuste;
+                if (tipoAjusteNombre == "Descuento" || (_venta.oMetodoPago != null && _venta.oMetodoPago.tipo_ajuste_id == 2))
+                {
+                    textoAjusteDesc = $"Ajuste Descuento %{porcentaje:0.##}";
+                    montoAjusteStr = $"- $ {montoAjuste:N2}";
+                    totalFinal = totalBruto - montoAjuste;
+                }
+                else if (tipoAjusteNombre == "Recargo" || (_venta.oMetodoPago != null && _venta.oMetodoPago.tipo_ajuste_id == 1))
+                {
+                    textoAjusteDesc = $"Ajuste Recargo %{porcentaje:0.##}";
+                    montoAjusteStr = $"+ $ {montoAjuste:N2}";
+                    totalFinal = totalBruto + montoAjuste;
+                }
+
+                PdfPTable tablaTotales = new PdfPTable(2);
+                tablaTotales.WidthPercentage = 45;
+                tablaTotales.HorizontalAlignment = Element.ALIGN_RIGHT;
+                tablaTotales.SetWidths(new float[] { 60f, 40f });
+
+                tablaTotales.AddCell(new PdfPCell(new Phrase("TOTAL:", fuenteTextoBold)) { Border = PdfPCell.NO_BORDER, Padding = 3 });
+                tablaTotales.AddCell(new PdfPCell(new Phrase($"$ {totalBruto:N2}", fuenteTextoBold)) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_RIGHT, Padding = 3 });
+
+                tablaTotales.AddCell(new PdfPCell(new Phrase(textoAjusteDesc, fuenteTexto)) { Border = PdfPCell.NO_BORDER, Padding = 3 });
+                tablaTotales.AddCell(new PdfPCell(new Phrase(montoAjusteStr, fuenteTexto)) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_RIGHT, Padding = 3 });
+
+                iTextSharp.text.Font fuenteTotalFinal = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 11, colorPrimario);
+                tablaTotales.AddCell(new PdfPCell(new Phrase("TOTAL A PAGAR:", fuenteTotalFinal)) { Border = PdfPCell.TOP_BORDER, Padding = 5 });
+                tablaTotales.AddCell(new PdfPCell(new Phrase($"$ {totalFinal:N2}", fuenteTotalFinal)) { Border = PdfPCell.TOP_BORDER, HorizontalAlignment = Element.ALIGN_RIGHT, Padding = 5 });
+
+                doc.Add(tablaTotales);
+
+                doc.Close();
+                return ms.ToArray();
             }
         }
     }

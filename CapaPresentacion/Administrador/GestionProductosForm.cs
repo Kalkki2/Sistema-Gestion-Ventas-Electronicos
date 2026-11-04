@@ -147,7 +147,8 @@ namespace CapaPresentacion.Administrador
             dgvListaProductos.Columns["colProveedor"].DataPropertyName = "NombreProveedor";
             dgvListaProductos.Columns["colCategoria"].DataPropertyName = "NombreCategoria";
             dgvListaProductos.Columns["colMarca"].DataPropertyName = "NombreMarca";
-            dgvListaProductos.Columns["colFechaAlta"].DataPropertyName = "fecha_alta";
+            dgvListaProductos.Columns["colFechaAlta"].DataPropertyName = "fecha_alta"; 
+             dgvListaProductos.Columns["colFechaModificacion"].DataPropertyName = "fecha_ultima_modificacion";
             dgvListaProductos.Columns["colEstado"].DataPropertyName = "EstadoTexto";
 
             var lista = objCNProducto.ListarProductos();

@@ -161,6 +161,8 @@ namespace CapaPresentacion.Vendedor
             colCorreo.DataPropertyName = "email";
             colTelefono.DataPropertyName = "telefono";
             colDireccion.DataPropertyName = "direccion";
+            colEstado.DataPropertyName = "EstadoTexto";
+
 
             dgvListaClientes.DataSource = null;
             dgvListaClientes.DataSource = objCNCliente.Listar(filtro);

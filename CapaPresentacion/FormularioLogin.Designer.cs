@@ -200,6 +200,7 @@
             this.Controls.Add(this.txtContraseniaLogin);
             this.Controls.Add(this.txtDniLogin);
             this.Name = "FormularioLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormularioLogin";
             this.VisibleChanged += new System.EventHandler(this.FormularioLogin_VisibleChanged);
             this.guna2GradientPanel1.ResumeLayout(false);

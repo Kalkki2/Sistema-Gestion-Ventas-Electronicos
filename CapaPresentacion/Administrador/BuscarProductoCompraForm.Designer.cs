@@ -36,15 +36,12 @@
             this.btnFiltrar = new Guna.UI2.WinForms.Guna2Button();
             this.btnBuscarProducto = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.guna2ComboBox2 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txtBuscarProducto = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.pnlContenedorCluentes = new Guna.UI2.WinForms.Guna2Panel();
             this.dgvListaProductos = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.lblTituloListaClientes = new System.Windows.Forms.Label();
             this.colCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +49,7 @@
             this.colCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colMarca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.lblTituloListaClientes = new System.Windows.Forms.Label();
             this.pnlContenedorFiltros.SuspendLayout();
             this.pnlContenedorCluentes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaProductos)).BeginInit();
@@ -63,12 +61,10 @@
             this.pnlContenedorFiltros.Controls.Add(this.btnFiltrar);
             this.pnlContenedorFiltros.Controls.Add(this.btnBuscarProducto);
             this.pnlContenedorFiltros.Controls.Add(this.guna2ComboBox1);
-            this.pnlContenedorFiltros.Controls.Add(this.guna2ComboBox2);
             this.pnlContenedorFiltros.Controls.Add(this.txtBuscarProducto);
             this.pnlContenedorFiltros.Controls.Add(this.label1);
             this.pnlContenedorFiltros.Controls.Add(this.label2);
             this.pnlContenedorFiltros.Controls.Add(this.label3);
-            this.pnlContenedorFiltros.Controls.Add(this.label4);
             this.pnlContenedorFiltros.FillColor = System.Drawing.Color.White;
             this.pnlContenedorFiltros.Location = new System.Drawing.Point(12, 12);
             this.pnlContenedorFiltros.Name = "pnlContenedorFiltros";
@@ -136,26 +132,6 @@
             this.guna2ComboBox1.StartIndex = 0;
             this.guna2ComboBox1.TabIndex = 24;
             // 
-            // guna2ComboBox2
-            // 
-            this.guna2ComboBox2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ComboBox2.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2ComboBox2.BorderRadius = 5;
-            this.guna2ComboBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.guna2ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.guna2ComboBox2.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox2.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.guna2ComboBox2.ForeColor = System.Drawing.Color.Black;
-            this.guna2ComboBox2.ItemHeight = 21;
-            this.guna2ComboBox2.Items.AddRange(new object[] {
-            "Todos"});
-            this.guna2ComboBox2.Location = new System.Drawing.Point(372, 65);
-            this.guna2ComboBox2.Name = "guna2ComboBox2";
-            this.guna2ComboBox2.Size = new System.Drawing.Size(118, 27);
-            this.guna2ComboBox2.StartIndex = 0;
-            this.guna2ComboBox2.TabIndex = 22;
-            // 
             // txtBuscarProducto
             // 
             this.txtBuscarProducto.BorderColor = System.Drawing.Color.DarkGray;
@@ -209,17 +185,6 @@
             this.label3.Size = new System.Drawing.Size(73, 17);
             this.label3.TabIndex = 16;
             this.label3.Text = "Filtrar por:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(374, 45);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 17);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Categoria ";
             // 
             // pnlContenedorCluentes
             // 
@@ -280,18 +245,6 @@
             this.dgvListaProductos.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
             this.dgvListaProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaProductos_CellContentClick);
             // 
-            // lblTituloListaClientes
-            // 
-            this.lblTituloListaClientes.AutoSize = true;
-            this.lblTituloListaClientes.BackColor = System.Drawing.Color.Transparent;
-            this.lblTituloListaClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloListaClientes.ForeColor = System.Drawing.Color.Black;
-            this.lblTituloListaClientes.Location = new System.Drawing.Point(3, 15);
-            this.lblTituloListaClientes.Name = "lblTituloListaClientes";
-            this.lblTituloListaClientes.Size = new System.Drawing.Size(139, 16);
-            this.lblTituloListaClientes.TabIndex = 6;
-            this.lblTituloListaClientes.Text = "Lista de productos:";
-            // 
             // colCodigo
             // 
             this.colCodigo.FillWeight = 60F;
@@ -336,6 +289,18 @@
             this.colSeleccionar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.colSeleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // lblTituloListaClientes
+            // 
+            this.lblTituloListaClientes.AutoSize = true;
+            this.lblTituloListaClientes.BackColor = System.Drawing.Color.Transparent;
+            this.lblTituloListaClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloListaClientes.ForeColor = System.Drawing.Color.Black;
+            this.lblTituloListaClientes.Location = new System.Drawing.Point(3, 15);
+            this.lblTituloListaClientes.Name = "lblTituloListaClientes";
+            this.lblTituloListaClientes.Size = new System.Drawing.Size(139, 16);
+            this.lblTituloListaClientes.TabIndex = 6;
+            this.lblTituloListaClientes.Text = "Lista de productos:";
+            // 
             // BuscarProductoCompraForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -363,12 +328,10 @@
         private Guna.UI2.WinForms.Guna2Button btnFiltrar;
         private Guna.UI2.WinForms.Guna2Button btnBuscarProducto;
         private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
-        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox2;
         private Guna.UI2.WinForms.Guna2TextBox txtBuscarProducto;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private Guna.UI2.WinForms.Guna2Panel pnlContenedorCluentes;
         private Guna.UI2.WinForms.Guna2DataGridView dgvListaProductos;
         private System.Windows.Forms.Label lblTituloListaClientes;

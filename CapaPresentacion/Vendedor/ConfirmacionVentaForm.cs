@@ -30,5 +30,10 @@ namespace CapaPresentacion.Vendedor
         {
 
         }
+
+        private void btnConfirmarVenta_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

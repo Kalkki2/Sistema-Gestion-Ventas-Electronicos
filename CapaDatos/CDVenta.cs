@@ -223,7 +223,8 @@ namespace CapaDatos
                                     cliente_id = c.cliente_id,
                                     nombre = c.nombre,
                                     apellido = c.apellido,
-                                    dni = c.dni
+                                    dni = c.dni,
+                                    email = c.email
                                 },
                                 oMetodoPago = new EMetodoPago()
                                 {
@@ -319,8 +320,7 @@ namespace CapaDatos
             {
                 var query = (from dv in db.detalle_venta
                              join p in db.producto on dv.producto_id equals p.producto_id
-                             where dv.venta.estado == 1 // Solo ventas activas (no anuladas)
-                                   && dv.venta.fecha_venta >= fechaDesde
+                             where  dv.venta.fecha_venta >= fechaDesde
                                    && dv.venta.fecha_venta <= fechaHasta // Rango de fechas
                              group dv by new { p.codigo, p.nombre } into grupo
                              orderby grupo.Sum(x => x.cantidad) descending // Ordenado de mayor a menor cantidad
@@ -343,7 +343,7 @@ namespace CapaDatos
             {
                 // Traemos las ventas del rango con su porcentaje y tipo de ajuste
                 var ventasCrudas = db.venta
-                    .Where(v => v.fecha_venta >= fechaDesde && v.fecha_venta <= fechaHasta && v.estado == 1)
+                    .Where(v => v.fecha_venta >= fechaDesde && v.fecha_venta <= fechaHasta)
                     .Select(v => new {
                         PorcentajeAplicado = v.porcentaje_aplicado,
                         TipoAjusteNombre = v.metodo_pago.tipo_ajuste.nombre, // "Descuento", "Recargo" 
@@ -381,7 +381,7 @@ namespace CapaDatos
             {
                 var resultado = (from v in db.venta
                                  join dv in db.detalle_venta on v.venta_id equals dv.venta_id
-                                 where v.fecha_venta >= fechaDesde && v.fecha_venta <= fechaHasta && v.estado == 1
+                                 where v.fecha_venta >= fechaDesde && v.fecha_venta <= fechaHasta 
                                  select (int?)dv.cantidad).Sum() ?? 0;
 
                 return resultado;
@@ -394,7 +394,7 @@ namespace CapaDatos
             using (var db = new db_sistema_gestion_ventas_electronicosEntities())
             {
                 var resultado = db.venta
-                    .Where(v => v.fecha_venta >= fechaDesde && v.fecha_venta <= fechaHasta && v.estado == 1)
+                    .Where(v => v.fecha_venta >= fechaDesde && v.fecha_venta <= fechaHasta)
                     .Select(v => v.cliente_id)
                     .Distinct()
                     .Count();
@@ -526,7 +526,7 @@ namespace CapaDatos
             {
                 // Traemos las ventas del rango con su usuario, porcentaje y tipo de ajuste
                 var ventasCrudas = db.venta
-                    .Where(v => v.fecha_venta >= fechaDesde && v.fecha_venta <= fechaHasta && v.estado == 1)
+                    .Where(v => v.fecha_venta >= fechaDesde && v.fecha_venta <= fechaHasta)
                     .Select(v => new {
                         UsuarioId = v.usuario_id,
                         NombreVendedor = v.usuario.nombre + " " + v.usuario.apellido,
@@ -638,6 +638,31 @@ namespace CapaDatos
             {
                 Mensaje = ex.Message;
                 return false;
+            }
+        }
+
+        public List<EReporteVentaDetallado> ObtenerReportedetalladoVentas(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            using (var db = new db_sistema_gestion_ventas_electronicosEntities())
+            {
+                var query = from v in db.venta
+                            join dv in db.detalle_venta on v.venta_id equals dv.venta_id
+                            join p in db.producto on dv.producto_id equals p.producto_id
+                            where v.fecha_venta >= fechaDesde && v.fecha_venta <= fechaHasta
+                            orderby v.fecha_venta descending
+                            select new EReporteVentaDetallado
+                            {
+                                NroVenta = v.nro_venta,
+                                FechaVenta = v.fecha_venta,
+                                Vendedor = v.usuario.nombre + " " + v.usuario.apellido,
+                                Cliente = v.cliente.nombre + " " + v.cliente.apellido,
+                                Producto = p.nombre,
+                                Cantidad = dv.cantidad,
+                                PrecioUnitario = dv.precio_unitario,
+                                Subtotal = dv.cantidad * dv.precio_unitario
+                            };
+
+                return query.ToList();
             }
         }
     }
