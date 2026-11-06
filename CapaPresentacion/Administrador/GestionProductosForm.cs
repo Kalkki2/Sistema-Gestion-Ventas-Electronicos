@@ -223,9 +223,9 @@ namespace CapaPresentacion.Administrador
             if (!ulong.TryParse(codigo, out _))
             {
                 errorProvider1.SetError(txtCodigo, "El código solo debe contener números.");
-            }else if (codigo.Length != 7)
+            }else if (codigo.Length != 6)
             {
-                errorProvider1.SetError(txtCodigo, "El código debe tener exactamente 7 dígitos.");
+                errorProvider1.SetError(txtCodigo, "El código debe tener exactamente 6 dígitos.");
             }
             else
             {
@@ -388,12 +388,12 @@ namespace CapaPresentacion.Administrador
 
         private void ActualizarContadores(List<EProducto> lista)
         {
-            // Cambia 'lblTotalProductos' por el nombre real del Label de tu tarjeta azul
+            // Total de productos generales
             lblCantTotalProductos.Text = lista.Count.ToString();
 
-            // Calcula los que tienen stock menor o igual al stock mínimo (ej: stock <= 5)
-            // Cambia 'lblStockBajo' por el nombre real del Label de tu tarjeta naranja
+            // Cantidad de productos cuyo stock sea menor o igual al stock mínimo configurado
             int stockBajo = lista.Count(p => p.stock <= p.stock_minimo);
+
             lblCantProductosStockBajo.Text = stockBajo.ToString();
         }
 

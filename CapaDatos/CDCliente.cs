@@ -223,7 +223,9 @@ namespace CapaDatos
                                     cliente_id = c.cliente_id,
                                     nombre = c.nombre,
                                     apellido = c.apellido,
-                                    dni = c.dni
+                                    dni = c.dni,
+                                    email = c.email
+
                                 },
                                 oMetodoPago = new EMetodoPago()
                                 {

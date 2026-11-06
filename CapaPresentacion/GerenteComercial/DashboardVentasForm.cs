@@ -151,6 +151,8 @@ namespace CapaPresentacion.GerenteComercial
             crtTendenciaVentas.Series[nombreSerie].IsValueShownAsLabel = true;
             crtTendenciaVentas.ChartAreas[0].AxisY.Minimum = 0;
 
+            decimal totalGananciaMes = 0;
+
             foreach (var item in listaDatos)
             {
                 int pointIndex = crtTendenciaVentas.Series[nombreSerie].Points.AddXY(item.Fecha, item.TotalVentas);
@@ -160,7 +162,13 @@ namespace CapaPresentacion.GerenteComercial
                 punto.MarkerSize = 10;
                 punto.MarkerColor = Color.FromArgb(13, 110, 253);
                 punto.LabelForeColor = Color.FromArgb(13, 110, 253);
+
+                // Sumamos al acumulador (asumiendo que item.TotalVentas es decimal o numérico)
+                totalGananciaMes += Convert.ToDecimal(item.TotalVentas);
             }
+
+            // Mostrar el total acumulado en el Label (reemplaza 'lblGananciaMes' por el nombre real de tu label)
+            lblTotalVentaMensual.Text = "$ " + totalGananciaMes.ToString("N2");
         }
 
 

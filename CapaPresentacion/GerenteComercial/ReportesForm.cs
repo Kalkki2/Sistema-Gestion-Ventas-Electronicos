@@ -76,7 +76,7 @@ namespace CapaPresentacion.GerenteComercial
                 DateTime fechaDesde = dtpDesde.Value.Date;
                 DateTime fechaHasta = dtpHasta.Value.Date.AddDays(1).AddTicks(-1); 
 
-                var listaFiltrada = objCNVenta.Buscar(null, string.Empty, string.Empty, 0, -1, fechaDesde, fechaHasta);
+                var listaFiltrada = objCNVenta.Buscar(null, string.Empty, string.Empty, 0, 1, fechaDesde, fechaHasta);
 
                 dgvResultadosReporte.DataSource = listaFiltrada;
 

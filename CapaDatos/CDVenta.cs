@@ -133,7 +133,8 @@ namespace CapaDatos
                                     cliente_id = c.cliente_id,
                                     nombre = c.nombre,
                                     apellido = c.apellido,
-                                    dni = c.dni
+                                    dni = c.dni,
+                                    email = c.email
                                 },
                                 oMetodoPago = new EMetodoPago()
                                 {
@@ -318,21 +319,60 @@ namespace CapaDatos
         {
             using (var db = new db_sistema_gestion_ventas_electronicosEntities())
             {
-                var query = (from dv in db.detalle_venta
-                             join p in db.producto on dv.producto_id equals p.producto_id
-                             where  dv.venta.fecha_venta >= fechaDesde
-                                   && dv.venta.fecha_venta <= fechaHasta // Rango de fechas
-                             group dv by new { p.codigo, p.nombre } into grupo
-                             orderby grupo.Sum(x => x.cantidad) descending // Ordenado de mayor a menor cantidad
-                             select new EReporteTopProducto()
-                             {
-                                 codigo = grupo.Key.codigo,
-                                 nombre = grupo.Key.nombre,
-                                 cantidad_vendida = grupo.Sum(x => x.cantidad),
-                                 total_recaudado = grupo.Sum(x => x.cantidad * x.precio_unitario)
-                             }).Take(10).ToList(); // Toma hasta 10 seguro aunque haya menos en la base de datos
+                // Traemos los detalles de ventas activas con los datos del producto y el ajuste de la venta
+                var detallesCrudos = (from dv in db.detalle_venta
+                                      join p in db.producto on dv.producto_id equals p.producto_id
+                                      where dv.venta.estado == 1 // Solo ventas activas (no anuladas)
+                                            && dv.venta.fecha_venta >= fechaDesde
+                                            && dv.venta.fecha_venta <= fechaHasta
+                                      select new
+                                      {
+                                          p.codigo,
+                                          p.nombre,
+                                          Cantidad = dv.cantidad,
+                                          SubtotalBruto = dv.cantidad * dv.precio_unitario,
+                                          PorcentajeAplicado = dv.venta.porcentaje_aplicado,
+                                          TipoAjusteNombre = dv.venta.metodo_pago.tipo_ajuste.nombre
+                                      }).ToList();
 
-                return query;
+                // Calculamos el total real de cada línea aplicando el descuento o recargo corporativo
+                var detallesCalculados = detallesCrudos.Select(d => {
+                    decimal montoAjuste = (d.SubtotalBruto * d.PorcentajeAplicado) / 100;
+                    decimal totalRealLinea = d.SubtotalBruto;
+
+                    if (d.TipoAjusteNombre == "Descuento")
+                    {
+                        totalRealLinea = d.SubtotalBruto - montoAjuste;
+                    }
+                    else if (d.TipoAjusteNombre == "Recargo")
+                    {
+                        totalRealLinea = d.SubtotalBruto + montoAjuste;
+                    }
+
+                    return new
+                    {
+                        d.codigo,
+                        d.nombre,
+                        d.Cantidad,
+                        TotalRealLinea = totalRealLinea
+                    };
+                }).ToList();
+
+                //  Agrupamos por producto para sumar la cantidad de unidades y el recaudado ajustado
+                var topProductos = detallesCalculados
+                    .GroupBy(x => new { x.codigo, x.nombre })
+                    .Select(g => new EReporteTopProducto()
+                    {
+                        codigo = g.Key.codigo,
+                        nombre = g.Key.nombre,
+                        cantidad_vendida = g.Sum(x => x.Cantidad),
+                        total_recaudado = g.Sum(x => x.TotalRealLinea) // incluye descuentos/recargos
+                    })
+                    .OrderByDescending(x => x.cantidad_vendida) // Ordenado por mayor cantidad de unidades vendidas
+                    .Take(10)
+                    .ToList();
+
+                return topProductos;
             }
         }
 
@@ -343,7 +383,7 @@ namespace CapaDatos
             {
                 // Traemos las ventas del rango con su porcentaje y tipo de ajuste
                 var ventasCrudas = db.venta
-                    .Where(v => v.fecha_venta >= fechaDesde && v.fecha_venta <= fechaHasta)
+                    .Where(v => v.fecha_venta >= fechaDesde && v.fecha_venta <= fechaHasta && v.estado == 1)
                     .Select(v => new {
                         PorcentajeAplicado = v.porcentaje_aplicado,
                         TipoAjusteNombre = v.metodo_pago.tipo_ajuste.nombre, // "Descuento", "Recargo" 
@@ -381,7 +421,7 @@ namespace CapaDatos
             {
                 var resultado = (from v in db.venta
                                  join dv in db.detalle_venta on v.venta_id equals dv.venta_id
-                                 where v.fecha_venta >= fechaDesde && v.fecha_venta <= fechaHasta 
+                                 where v.fecha_venta >= fechaDesde && v.fecha_venta <= fechaHasta && v.estado == 1 // activo
                                  select (int?)dv.cantidad).Sum() ?? 0;
 
                 return resultado;
@@ -394,7 +434,7 @@ namespace CapaDatos
             using (var db = new db_sistema_gestion_ventas_electronicosEntities())
             {
                 var resultado = db.venta
-                    .Where(v => v.fecha_venta >= fechaDesde && v.fecha_venta <= fechaHasta)
+                    .Where(v => v.fecha_venta >= fechaDesde && v.fecha_venta <= fechaHasta && v.estado == 1) // activo
                     .Select(v => v.cliente_id)
                     .Distinct()
                     .Count();
@@ -460,6 +500,7 @@ namespace CapaDatos
                     usuario_id = v.usuario_id,
                     metodo_pago_id = v.metodo_pago_id,
                     cliente_id = v.cliente_id,
+                    
 
                     oUsuario = new EUsuario()
                     {
@@ -473,7 +514,8 @@ namespace CapaDatos
                         cliente_id = v.cliente.cliente_id,
                         nombre = v.cliente.nombre,
                         apellido = v.cliente.apellido,
-                        dni = v.cliente.dni
+                        dni = v.cliente.dni,
+                        email = v.cliente.email
                     },
                     oMetodoPago = new EMetodoPago()
                     {
@@ -503,20 +545,52 @@ namespace CapaDatos
         {
             using (var db = new db_sistema_gestion_ventas_electronicosEntities())
             {
-                var query = from v in db.venta
-                            join dv in db.detalle_venta on v.venta_id equals dv.venta_id
-                            join p in db.producto on dv.producto_id equals p.producto_id
-                            join cat in db.categoria on p.categoria_id equals cat.categoria_id
-                            where v.fecha_venta >= fechaDesde && v.fecha_venta <= fechaHasta && v.estado == 1
-                            group dv by cat.nombre into grupo
-                            orderby grupo.Sum(x => x.cantidad * x.precio_unitario) descending // Ordenado de mayor a menor recaudación
-                            select new ECategoriaVenta()
-                            {
-                                Categoria = grupo.Key,
-                                TotalVentas = (int)grupo.Sum(x => x.cantidad * x.precio_unitario) // Guardamos el monto total en dinero
-                            };
+                // Traemos los detalles de ventas activas con la categoría y los datos de ajuste de la venta
+                var detallesCrudos = (from v in db.venta
+                                      join dv in db.detalle_venta on v.venta_id equals dv.venta_id
+                                      join p in db.producto on dv.producto_id equals p.producto_id
+                                      join cat in db.categoria on p.categoria_id equals cat.categoria_id
+                                      where v.fecha_venta >= fechaDesde && v.fecha_venta <= fechaHasta && v.estado == 1
+                                      select new
+                                      {
+                                          CategoriaNombre = cat.nombre,
+                                          SubtotalBruto = dv.cantidad * dv.precio_unitario,
+                                          PorcentajeAplicado = v.porcentaje_aplicado,
+                                          TipoAjusteNombre = v.metodo_pago.tipo_ajuste.nombre
+                                      }).ToList();
 
-                return query.ToList();
+                // Calculamos el valor real de cada línea aplicando el descuento o recargo
+                var detallesCalculados = detallesCrudos.Select(d => {
+                    decimal montoAjuste = (d.SubtotalBruto * d.PorcentajeAplicado) / 100;
+                    decimal totalRealLinea = d.SubtotalBruto;
+
+                    if (d.TipoAjusteNombre == "Descuento")
+                    {
+                        totalRealLinea = d.SubtotalBruto - montoAjuste;
+                    }
+                    else if (d.TipoAjusteNombre == "Recargo")
+                    {
+                        totalRealLinea = d.SubtotalBruto + montoAjuste;
+                    }
+
+                    return new
+                    {
+                        d.CategoriaNombre,
+                        TotalRealLinea = totalRealLinea
+                    };
+                }).ToList();
+
+                // Agrupamos por categoría sumando los totales ya ajustados
+                var resultado = detallesCalculados
+                    .GroupBy(x => x.CategoriaNombre)
+                    .Select(grupo => new ECategoriaVenta()
+                    {
+                        Categoria = grupo.Key,
+                        TotalVentas = grupo.Sum(x => x.TotalRealLinea) 
+                    })
+                    .ToList();
+
+                return resultado;
             }
         }
 
@@ -524,19 +598,19 @@ namespace CapaDatos
         {
             using (var db = new db_sistema_gestion_ventas_electronicosEntities())
             {
-                // Traemos las ventas del rango con su usuario, porcentaje y tipo de ajuste
+                // Traemos solo ventas ACTIVAS (estado == 1) en el rango de fechas
                 var ventasCrudas = db.venta
-                    .Where(v => v.fecha_venta >= fechaDesde && v.fecha_venta <= fechaHasta)
+                    .Where(v => v.fecha_venta >= fechaDesde && v.fecha_venta <= fechaHasta && v.estado == 1)
                     .Select(v => new {
                         UsuarioId = v.usuario_id,
-                        NombreVendedor = v.usuario.nombre + " " + v.usuario.apellido,
+                        NombreVendedor = (v.usuario.nombre + " " + v.usuario.apellido).Trim(),
                         PorcentajeAplicado = v.porcentaje_aplicado,
                         TipoAjusteNombre = v.metodo_pago.tipo_ajuste.nombre, // "Descuento", "Recargo" o "Sin ajuste"
                         CantArticulosVenta = v.detalle_venta.Sum(d => (int?)d.cantidad) ?? 0,
                         SubtotalBruto = v.detalle_venta.Sum(d => (decimal?)(d.cantidad * d.precio_unitario)) ?? 0
                     }).ToList();
 
-                // Calculamos el total real de cada venta aplicando la regla de negocio (recargo/descuento)
+                // Calculamos el total real de cada venta aplicando el descuento o recargo
                 var ventasCalculadas = ventasCrudas.Select(v => {
                     decimal montoAjuste = (v.SubtotalBruto * v.PorcentajeAplicado) / 100;
                     decimal totalReal = v.SubtotalBruto;
@@ -559,11 +633,11 @@ namespace CapaDatos
                     };
                 }).ToList();
 
-                // Agrupamos por vendedor y tomamos el Top 5
+                // Agrupamos ÚNICAMENTE por UsuarioId para evitar que aparezca el mismo usuario repetido
                 var topVendedores = ventasCalculadas
-                    .GroupBy(x => new { x.UsuarioId, x.NombreVendedor })
+                    .GroupBy(x => x.UsuarioId)
                     .Select(g => new {
-                        Vendedor = g.Key.NombreVendedor,
+                        Vendedor = g.First().NombreVendedor,
                         TotalVentas = g.Sum(x => x.TotalReal),
                         CantArticulos = g.Sum(x => x.CantArticulosVenta)
                     })
@@ -571,11 +645,11 @@ namespace CapaDatos
                     .Take(5)
                     .ToList();
 
-                // Calculamos el total general de TODO el negocio en ese periodo para sacar el porcentaje real
+                // Calculamos el total general del negocio en ese periodo para sacar el porcentaje real
                 decimal totalGeneralNegocio = ventasCalculadas.Sum(x => x.TotalReal);
                 if (totalGeneralNegocio == 0) totalGeneralNegocio = 1; // Evitar división por cero
 
-                //Mapeamos a la entidad final calculando el porcentaje (%) real
+                // 5. Mapeamos a la entidad final
                 List<ETopVendedor> resultado = new List<ETopVendedor>();
                 foreach (var item in topVendedores)
                 {
@@ -586,7 +660,7 @@ namespace CapaDatos
                         NombreVendedor = item.Vendedor,
                         TotalVentas = item.TotalVentas,
                         CantidadArticulos = item.CantArticulos,
-                        Porcentaje = Math.Round(porcentaje, 1) // Redondeado a 1 decimal (ej. 35.5%)
+                        Porcentaje = Math.Round(porcentaje, 1)
                     });
                 }
 
@@ -645,24 +719,56 @@ namespace CapaDatos
         {
             using (var db = new db_sistema_gestion_ventas_electronicosEntities())
             {
+                // 1. Traemos los datos básicos desde la BD para ventas activas
                 var query = from v in db.venta
                             join dv in db.detalle_venta on v.venta_id equals dv.venta_id
                             join p in db.producto on dv.producto_id equals p.producto_id
-                            where v.fecha_venta >= fechaDesde && v.fecha_venta <= fechaHasta
+                            where v.fecha_venta >= fechaDesde && v.fecha_venta <= fechaHasta && v.estado == 1
                             orderby v.fecha_venta descending
-                            select new EReporteVentaDetallado
+                            select new
                             {
                                 NroVenta = v.nro_venta,
                                 FechaVenta = v.fecha_venta,
-                                Vendedor = v.usuario.nombre + " " + v.usuario.apellido,
-                                Cliente = v.cliente.nombre + " " + v.cliente.apellido,
-                                Producto = p.nombre,
+                                VendedorNombre = v.usuario.nombre + " " + v.usuario.apellido,
+                                ClienteNombre = v.cliente.nombre + " " + v.cliente.apellido,
+                                ProductoNombre = p.nombre,
                                 Cantidad = dv.cantidad,
                                 PrecioUnitario = dv.precio_unitario,
-                                Subtotal = dv.cantidad * dv.precio_unitario
+                                SubtotalBruto = dv.cantidad * dv.precio_unitario,
+                                PorcentajeAplicado = v.porcentaje_aplicado,
+                                TipoAjusteNombre = v.metodo_pago.tipo_ajuste.nombre
                             };
 
-                return query.ToList();
+                var listaBruta = query.ToList();
+
+                // 2. Calculamos en memoria el subtotal final aplicando el recargo o descuento proporcional
+                var listaFinal = listaBruta.Select(x => {
+                    decimal montoAjuste = (x.SubtotalBruto * x.PorcentajeAplicado) / 100;
+                    decimal subtotalReal = x.SubtotalBruto;
+
+                    if (x.TipoAjusteNombre == "Descuento")
+                    {
+                        subtotalReal = x.SubtotalBruto - montoAjuste;
+                    }
+                    else if (x.TipoAjusteNombre == "Recargo")
+                    {
+                        subtotalReal = x.SubtotalBruto + montoAjuste;
+                    }
+
+                    return new EReporteVentaDetallado
+                    {
+                        NroVenta = x.NroVenta,
+                        FechaVenta = x.FechaVenta,
+                        Vendedor = x.VendedorNombre,
+                        Cliente = x.ClienteNombre,
+                        Producto = x.ProductoNombre,
+                        Cantidad = x.Cantidad,
+                        PrecioUnitario = x.PrecioUnitario,
+                        Subtotal = subtotalReal // <-- ajustado con el recargo/descuento!
+                    };
+                }).ToList();
+
+                return listaFinal;
             }
         }
     }
