@@ -28,18 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlEncabezado = new System.Windows.Forms.Panel();
-            this.pnlnfoUsuario = new System.Windows.Forms.Panel();
-            this.lblNombreUsuario = new System.Windows.Forms.Label();
-            this.lblRolUsuario = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.pnlContenedorDetalleVenta = new Guna.UI2.WinForms.Guna2Panel();
             this.dgvItemsCompra = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.colProductoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNroItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCostoUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMargenVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPrecioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSubtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEditar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colEliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.lblItemsCompra = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.lblTotalCompra = new System.Windows.Forms.Label();
@@ -78,25 +85,19 @@
             this.label11 = new System.Windows.Forms.Label();
             this.btnBuscarProveedor = new Guna.UI2.WinForms.Guna2Button();
             this.btnBuscarProducto = new Guna.UI2.WinForms.Guna2Button();
-            this.picUsuario = new System.Windows.Forms.PictureBox();
-            this.colProductoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNroItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCostoUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMargenVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPrecioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSubtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEditar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.colEliminar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.pnlnfoUsuario = new System.Windows.Forms.Panel();
+            this.lblIniciales = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.lblNombreUsuario = new System.Windows.Forms.Label();
+            this.lblRolUsuario = new System.Windows.Forms.Label();
             this.pnlEncabezado.SuspendLayout();
-            this.pnlnfoUsuario.SuspendLayout();
             this.pnlContenedorDetalleVenta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemsCompra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMargenVenta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidadCompra)).BeginInit();
             this.pnlCardTotalUsuarios.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
+            this.pnlnfoUsuario.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlEncabezado
@@ -109,37 +110,6 @@
             this.pnlEncabezado.Name = "pnlEncabezado";
             this.pnlEncabezado.Size = new System.Drawing.Size(1222, 64);
             this.pnlEncabezado.TabIndex = 68;
-            // 
-            // pnlnfoUsuario
-            // 
-            this.pnlnfoUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlnfoUsuario.Controls.Add(this.lblNombreUsuario);
-            this.pnlnfoUsuario.Controls.Add(this.picUsuario);
-            this.pnlnfoUsuario.Controls.Add(this.lblRolUsuario);
-            this.pnlnfoUsuario.Location = new System.Drawing.Point(965, 5);
-            this.pnlnfoUsuario.Name = "pnlnfoUsuario";
-            this.pnlnfoUsuario.Size = new System.Drawing.Size(187, 55);
-            this.pnlnfoUsuario.TabIndex = 3;
-            // 
-            // lblNombreUsuario
-            // 
-            this.lblNombreUsuario.AutoSize = true;
-            this.lblNombreUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreUsuario.Location = new System.Drawing.Point(69, 11);
-            this.lblNombreUsuario.Name = "lblNombreUsuario";
-            this.lblNombreUsuario.Size = new System.Drawing.Size(95, 17);
-            this.lblNombreUsuario.TabIndex = 11;
-            this.lblNombreUsuario.Text = "Perez, Juan";
-            // 
-            // lblRolUsuario
-            // 
-            this.lblRolUsuario.AutoSize = true;
-            this.lblRolUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRolUsuario.Location = new System.Drawing.Point(69, 28);
-            this.lblRolUsuario.Name = "lblRolUsuario";
-            this.lblRolUsuario.Size = new System.Drawing.Size(83, 15);
-            this.lblRolUsuario.TabIndex = 11;
-            this.lblRolUsuario.Text = "Administrador";
             // 
             // lblFecha
             // 
@@ -176,17 +146,17 @@
             // dgvItemsCompra
             // 
             this.dgvItemsCompra.AllowUserToAddRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
-            this.dgvItemsCompra.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
+            this.dgvItemsCompra.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvItemsCompra.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvItemsCompra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvItemsCompra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.dgvItemsCompra.ColumnHeadersHeight = 25;
             this.dgvItemsCompra.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colProductoId,
@@ -199,14 +169,14 @@
             this.colSubtotal,
             this.colEditar,
             this.colEliminar});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvItemsCompra.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvItemsCompra.DefaultCellStyle = dataGridViewCellStyle16;
             this.dgvItemsCompra.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvItemsCompra.Location = new System.Drawing.Point(3, 30);
             this.dgvItemsCompra.Name = "dgvItemsCompra";
@@ -227,6 +197,70 @@
             this.dgvItemsCompra.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
             this.dgvItemsCompra.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItemsCompra_CellContentClick);
             this.dgvItemsCompra.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvItemsCompra_CellFormatting);
+            // 
+            // colProductoId
+            // 
+            this.colProductoId.HeaderText = "ID";
+            this.colProductoId.Name = "colProductoId";
+            this.colProductoId.Visible = false;
+            // 
+            // colNroItem
+            // 
+            this.colNroItem.FillWeight = 50F;
+            this.colNroItem.HeaderText = "NroItem";
+            this.colNroItem.Name = "colNroItem";
+            // 
+            // colProducto
+            // 
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.colProducto.DefaultCellStyle = dataGridViewCellStyle15;
+            this.colProducto.FillWeight = 150F;
+            this.colProducto.HeaderText = "Producto";
+            this.colProducto.Name = "colProducto";
+            // 
+            // colCantidad
+            // 
+            this.colCantidad.FillWeight = 60F;
+            this.colCantidad.HeaderText = "Cantidad";
+            this.colCantidad.Name = "colCantidad";
+            // 
+            // colCostoUnitario
+            // 
+            this.colCostoUnitario.HeaderText = "Precio Compra ($)";
+            this.colCostoUnitario.Name = "colCostoUnitario";
+            // 
+            // colMargenVenta
+            // 
+            this.colMargenVenta.HeaderText = "Margen (%)";
+            this.colMargenVenta.Name = "colMargenVenta";
+            // 
+            // colPrecioVenta
+            // 
+            this.colPrecioVenta.HeaderText = "Precio Venta ($)";
+            this.colPrecioVenta.Name = "colPrecioVenta";
+            // 
+            // colSubtotal
+            // 
+            this.colSubtotal.HeaderText = "Subtotal ($)";
+            this.colSubtotal.Name = "colSubtotal";
+            // 
+            // colEditar
+            // 
+            this.colEditar.FillWeight = 50F;
+            this.colEditar.HeaderText = "Editar";
+            this.colEditar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.colEditar.Name = "colEditar";
+            this.colEditar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colEditar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // colEliminar
+            // 
+            this.colEliminar.FillWeight = 50F;
+            this.colEliminar.HeaderText = "Eliminar";
+            this.colEliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.colEliminar.Name = "colEliminar";
+            this.colEliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colEliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // lblItemsCompra
             // 
@@ -833,77 +867,59 @@
             this.btnBuscarProducto.Text = "Buscar";
             this.btnBuscarProducto.Click += new System.EventHandler(this.btnBuscarProducto_Click);
             // 
-            // picUsuario
+            // pnlnfoUsuario
             // 
-            this.picUsuario.Location = new System.Drawing.Point(3, 5);
-            this.picUsuario.Name = "picUsuario";
-            this.picUsuario.Size = new System.Drawing.Size(43, 42);
-            this.picUsuario.TabIndex = 3;
-            this.picUsuario.TabStop = false;
+            this.pnlnfoUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlnfoUsuario.Controls.Add(this.lblIniciales);
+            this.pnlnfoUsuario.Controls.Add(this.guna2CirclePictureBox1);
+            this.pnlnfoUsuario.Controls.Add(this.lblNombreUsuario);
+            this.pnlnfoUsuario.Controls.Add(this.lblRolUsuario);
+            this.pnlnfoUsuario.Location = new System.Drawing.Point(943, 4);
+            this.pnlnfoUsuario.Name = "pnlnfoUsuario";
+            this.pnlnfoUsuario.Size = new System.Drawing.Size(215, 55);
+            this.pnlnfoUsuario.TabIndex = 12;
             // 
-            // colProductoId
+            // lblIniciales
             // 
-            this.colProductoId.HeaderText = "ID";
-            this.colProductoId.Name = "colProductoId";
-            this.colProductoId.Visible = false;
+            this.lblIniciales.BackColor = System.Drawing.Color.Black;
+            this.lblIniciales.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIniciales.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblIniciales.Location = new System.Drawing.Point(12, 10);
+            this.lblIniciales.Name = "lblIniciales";
+            this.lblIniciales.Size = new System.Drawing.Size(31, 26);
+            this.lblIniciales.TabIndex = 12;
+            this.lblIniciales.Text = "AA";
             // 
-            // colNroItem
+            // guna2CirclePictureBox1
             // 
-            this.colNroItem.FillWeight = 50F;
-            this.colNroItem.HeaderText = "NroItem";
-            this.colNroItem.Name = "colNroItem";
+            this.guna2CirclePictureBox1.Image = global::CapaPresentacion.Properties.Resources.Fondo_negro;
+            this.guna2CirclePictureBox1.ImageRotate = 0F;
+            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(3, 0);
+            this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
+            this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(49, 50);
+            this.guna2CirclePictureBox1.TabIndex = 12;
+            this.guna2CirclePictureBox1.TabStop = false;
             // 
-            // colProducto
+            // lblNombreUsuario
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.colProducto.DefaultCellStyle = dataGridViewCellStyle7;
-            this.colProducto.FillWeight = 150F;
-            this.colProducto.HeaderText = "Producto";
-            this.colProducto.Name = "colProducto";
+            this.lblNombreUsuario.AutoSize = true;
+            this.lblNombreUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreUsuario.Location = new System.Drawing.Point(58, 11);
+            this.lblNombreUsuario.Name = "lblNombreUsuario";
+            this.lblNombreUsuario.Size = new System.Drawing.Size(95, 17);
+            this.lblNombreUsuario.TabIndex = 11;
+            this.lblNombreUsuario.Text = "Perez, Juan";
             // 
-            // colCantidad
+            // lblRolUsuario
             // 
-            this.colCantidad.FillWeight = 60F;
-            this.colCantidad.HeaderText = "Cantidad";
-            this.colCantidad.Name = "colCantidad";
-            // 
-            // colCostoUnitario
-            // 
-            this.colCostoUnitario.HeaderText = "Precio Compra ($)";
-            this.colCostoUnitario.Name = "colCostoUnitario";
-            // 
-            // colMargenVenta
-            // 
-            this.colMargenVenta.HeaderText = "Margen (%)";
-            this.colMargenVenta.Name = "colMargenVenta";
-            // 
-            // colPrecioVenta
-            // 
-            this.colPrecioVenta.HeaderText = "Precio Venta ($)";
-            this.colPrecioVenta.Name = "colPrecioVenta";
-            // 
-            // colSubtotal
-            // 
-            this.colSubtotal.HeaderText = "Subtotal ($)";
-            this.colSubtotal.Name = "colSubtotal";
-            // 
-            // colEditar
-            // 
-            this.colEditar.FillWeight = 50F;
-            this.colEditar.HeaderText = "Editar";
-            this.colEditar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.colEditar.Name = "colEditar";
-            this.colEditar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colEditar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // colEliminar
-            // 
-            this.colEliminar.FillWeight = 50F;
-            this.colEliminar.HeaderText = "Eliminar";
-            this.colEliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.colEliminar.Name = "colEliminar";
-            this.colEliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colEliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.lblRolUsuario.AutoSize = true;
+            this.lblRolUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRolUsuario.Location = new System.Drawing.Point(58, 31);
+            this.lblRolUsuario.Name = "lblRolUsuario";
+            this.lblRolUsuario.Size = new System.Drawing.Size(83, 15);
+            this.lblRolUsuario.TabIndex = 11;
+            this.lblRolUsuario.Text = "Administrador";
             // 
             // NuevaCompraForm
             // 
@@ -922,8 +938,6 @@
             this.Load += new System.EventHandler(this.NuevaCompraForm_Load);
             this.pnlEncabezado.ResumeLayout(false);
             this.pnlEncabezado.PerformLayout();
-            this.pnlnfoUsuario.ResumeLayout(false);
-            this.pnlnfoUsuario.PerformLayout();
             this.pnlContenedorDetalleVenta.ResumeLayout(false);
             this.pnlContenedorDetalleVenta.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemsCompra)).EndInit();
@@ -931,7 +945,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidadCompra)).EndInit();
             this.pnlCardTotalUsuarios.ResumeLayout(false);
             this.pnlCardTotalUsuarios.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).EndInit();
+            this.pnlnfoUsuario.ResumeLayout(false);
+            this.pnlnfoUsuario.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -940,10 +956,6 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlEncabezado;
-        private System.Windows.Forms.Panel pnlnfoUsuario;
-        private System.Windows.Forms.Label lblNombreUsuario;
-        private System.Windows.Forms.PictureBox picUsuario;
-        private System.Windows.Forms.Label lblRolUsuario;
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.Label lblTitulo;
         private Guna.UI2.WinForms.Guna2Panel pnlContenedorDetalleVenta;
@@ -997,5 +1009,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colSubtotal;
         private System.Windows.Forms.DataGridViewImageColumn colEditar;
         private System.Windows.Forms.DataGridViewImageColumn colEliminar;
+        private System.Windows.Forms.Panel pnlnfoUsuario;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblIniciales;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
+        private System.Windows.Forms.Label lblNombreUsuario;
+        private System.Windows.Forms.Label lblRolUsuario;
     }
 }

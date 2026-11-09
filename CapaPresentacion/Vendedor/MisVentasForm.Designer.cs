@@ -35,14 +35,20 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MisVentasForm));
             this.pnlEncabezado = new System.Windows.Forms.Panel();
-            this.pnlnfoUsuario = new System.Windows.Forms.Panel();
-            this.lblNombreUsuario = new System.Windows.Forms.Label();
-            this.picUsuario = new System.Windows.Forms.PictureBox();
-            this.lblRolUsuario = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.pnlHistorialVentas = new Guna.UI2.WinForms.Guna2Panel();
             this.dgvMisVentas = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.colNroVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDniCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMetodoPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTipoAjuste = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFechaVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCambiarEstado = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colVerDetalle = new System.Windows.Forms.DataGridViewImageColumn();
             this.lblTituloHistorialVentas = new System.Windows.Forms.Label();
             this.pnlContenedorFiltros = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.cmbFiltroEstado = new Guna.UI2.WinForms.Guna2ComboBox();
@@ -58,23 +64,18 @@
             this.lblFiltrarPor = new System.Windows.Forms.Label();
             this.lblFiltrarMetodoPago = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.colNroVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDniCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMetodoPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTipoAjuste = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colFechaVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCambiarEstado = new System.Windows.Forms.DataGridViewImageColumn();
-            this.colVerDetalle = new System.Windows.Forms.DataGridViewImageColumn();
+            this.pnlnfoUsuario = new System.Windows.Forms.Panel();
+            this.lblIniciales = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.lblNombreUsuario = new System.Windows.Forms.Label();
+            this.lblRolUsuario = new System.Windows.Forms.Label();
             this.pnlEncabezado.SuspendLayout();
-            this.pnlnfoUsuario.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
             this.pnlHistorialVentas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMisVentas)).BeginInit();
             this.pnlContenedorFiltros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.pnlnfoUsuario.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlEncabezado
@@ -87,45 +88,6 @@
             this.pnlEncabezado.Name = "pnlEncabezado";
             this.pnlEncabezado.Size = new System.Drawing.Size(1179, 64);
             this.pnlEncabezado.TabIndex = 60;
-            // 
-            // pnlnfoUsuario
-            // 
-            this.pnlnfoUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlnfoUsuario.Controls.Add(this.lblNombreUsuario);
-            this.pnlnfoUsuario.Controls.Add(this.picUsuario);
-            this.pnlnfoUsuario.Controls.Add(this.lblRolUsuario);
-            this.pnlnfoUsuario.Location = new System.Drawing.Point(965, 5);
-            this.pnlnfoUsuario.Name = "pnlnfoUsuario";
-            this.pnlnfoUsuario.Size = new System.Drawing.Size(187, 55);
-            this.pnlnfoUsuario.TabIndex = 3;
-            // 
-            // lblNombreUsuario
-            // 
-            this.lblNombreUsuario.AutoSize = true;
-            this.lblNombreUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreUsuario.Location = new System.Drawing.Point(52, 11);
-            this.lblNombreUsuario.Name = "lblNombreUsuario";
-            this.lblNombreUsuario.Size = new System.Drawing.Size(128, 17);
-            this.lblNombreUsuario.TabIndex = 11;
-            this.lblNombreUsuario.Text = "Pereira, Luciana";
-            // 
-            // picUsuario
-            // 
-            this.picUsuario.Location = new System.Drawing.Point(3, 5);
-            this.picUsuario.Name = "picUsuario";
-            this.picUsuario.Size = new System.Drawing.Size(43, 42);
-            this.picUsuario.TabIndex = 3;
-            this.picUsuario.TabStop = false;
-            // 
-            // lblRolUsuario
-            // 
-            this.lblRolUsuario.AutoSize = true;
-            this.lblRolUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRolUsuario.Location = new System.Drawing.Point(76, 30);
-            this.lblRolUsuario.Name = "lblRolUsuario";
-            this.lblRolUsuario.Size = new System.Drawing.Size(60, 15);
-            this.lblRolUsuario.TabIndex = 11;
-            this.lblRolUsuario.Text = "Vendedor";
             // 
             // lblFecha
             // 
@@ -213,6 +175,67 @@
             this.dgvMisVentas.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
             this.dgvMisVentas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMisVentas_CellContentClick);
             this.dgvMisVentas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvMisVentas_CellFormatting);
+            // 
+            // colNroVenta
+            // 
+            this.colNroVenta.FillWeight = 60F;
+            this.colNroVenta.HeaderText = "Nro Venta";
+            this.colNroVenta.Name = "colNroVenta";
+            // 
+            // colDniCliente
+            // 
+            this.colDniCliente.FillWeight = 60F;
+            this.colDniCliente.HeaderText = "DNI Cliente";
+            this.colDniCliente.Name = "colDniCliente";
+            // 
+            // colCliente
+            // 
+            this.colCliente.FillWeight = 150F;
+            this.colCliente.HeaderText = "Cliente";
+            this.colCliente.Name = "colCliente";
+            // 
+            // colMetodoPago
+            // 
+            this.colMetodoPago.HeaderText = "Metodo Pago";
+            this.colMetodoPago.Name = "colMetodoPago";
+            // 
+            // colTipoAjuste
+            // 
+            this.colTipoAjuste.HeaderText = "Tipo Ajuste";
+            this.colTipoAjuste.Name = "colTipoAjuste";
+            // 
+            // colFechaVenta
+            // 
+            this.colFechaVenta.FillWeight = 70F;
+            this.colFechaVenta.HeaderText = "Fecha Venta";
+            this.colFechaVenta.Name = "colFechaVenta";
+            // 
+            // colTotal
+            // 
+            this.colTotal.FillWeight = 70F;
+            this.colTotal.HeaderText = "Total ($)";
+            this.colTotal.Name = "colTotal";
+            // 
+            // colEstado
+            // 
+            this.colEstado.HeaderText = "Estado";
+            this.colEstado.Name = "colEstado";
+            // 
+            // colCambiarEstado
+            // 
+            this.colCambiarEstado.FillWeight = 80F;
+            this.colCambiarEstado.HeaderText = "Anular/Activar";
+            this.colCambiarEstado.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.colCambiarEstado.Name = "colCambiarEstado";
+            // 
+            // colVerDetalle
+            // 
+            this.colVerDetalle.FillWeight = 60F;
+            this.colVerDetalle.HeaderText = "Ver Detalle";
+            this.colVerDetalle.Image = global::CapaPresentacion.Properties.Resources.icono_editar;
+            this.colVerDetalle.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.colVerDetalle.Name = "colVerDetalle";
+            this.colVerDetalle.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // lblTituloHistorialVentas
             // 
@@ -437,66 +460,59 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // colNroVenta
+            // pnlnfoUsuario
             // 
-            this.colNroVenta.FillWeight = 60F;
-            this.colNroVenta.HeaderText = "Nro Venta";
-            this.colNroVenta.Name = "colNroVenta";
+            this.pnlnfoUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlnfoUsuario.Controls.Add(this.lblIniciales);
+            this.pnlnfoUsuario.Controls.Add(this.guna2CirclePictureBox1);
+            this.pnlnfoUsuario.Controls.Add(this.lblNombreUsuario);
+            this.pnlnfoUsuario.Controls.Add(this.lblRolUsuario);
+            this.pnlnfoUsuario.Location = new System.Drawing.Point(943, 4);
+            this.pnlnfoUsuario.Name = "pnlnfoUsuario";
+            this.pnlnfoUsuario.Size = new System.Drawing.Size(215, 55);
+            this.pnlnfoUsuario.TabIndex = 14;
             // 
-            // colDniCliente
+            // lblIniciales
             // 
-            this.colDniCliente.FillWeight = 60F;
-            this.colDniCliente.HeaderText = "DNI Cliente";
-            this.colDniCliente.Name = "colDniCliente";
+            this.lblIniciales.BackColor = System.Drawing.Color.Black;
+            this.lblIniciales.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIniciales.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblIniciales.Location = new System.Drawing.Point(12, 10);
+            this.lblIniciales.Name = "lblIniciales";
+            this.lblIniciales.Size = new System.Drawing.Size(31, 26);
+            this.lblIniciales.TabIndex = 12;
+            this.lblIniciales.Text = "AA";
             // 
-            // colCliente
+            // guna2CirclePictureBox1
             // 
-            this.colCliente.FillWeight = 150F;
-            this.colCliente.HeaderText = "Cliente";
-            this.colCliente.Name = "colCliente";
+            this.guna2CirclePictureBox1.Image = global::CapaPresentacion.Properties.Resources.Fondo_negro;
+            this.guna2CirclePictureBox1.ImageRotate = 0F;
+            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(3, 0);
+            this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
+            this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(49, 50);
+            this.guna2CirclePictureBox1.TabIndex = 12;
+            this.guna2CirclePictureBox1.TabStop = false;
             // 
-            // colMetodoPago
+            // lblNombreUsuario
             // 
-            this.colMetodoPago.HeaderText = "Metodo Pago";
-            this.colMetodoPago.Name = "colMetodoPago";
+            this.lblNombreUsuario.AutoSize = true;
+            this.lblNombreUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreUsuario.Location = new System.Drawing.Point(58, 11);
+            this.lblNombreUsuario.Name = "lblNombreUsuario";
+            this.lblNombreUsuario.Size = new System.Drawing.Size(95, 17);
+            this.lblNombreUsuario.TabIndex = 11;
+            this.lblNombreUsuario.Text = "Perez, Juan";
             // 
-            // colTipoAjuste
+            // lblRolUsuario
             // 
-            this.colTipoAjuste.HeaderText = "Tipo Ajuste";
-            this.colTipoAjuste.Name = "colTipoAjuste";
-            // 
-            // colFechaVenta
-            // 
-            this.colFechaVenta.FillWeight = 70F;
-            this.colFechaVenta.HeaderText = "Fecha Venta";
-            this.colFechaVenta.Name = "colFechaVenta";
-            // 
-            // colTotal
-            // 
-            this.colTotal.FillWeight = 70F;
-            this.colTotal.HeaderText = "Total ($)";
-            this.colTotal.Name = "colTotal";
-            // 
-            // colEstado
-            // 
-            this.colEstado.HeaderText = "Estado";
-            this.colEstado.Name = "colEstado";
-            // 
-            // colCambiarEstado
-            // 
-            this.colCambiarEstado.FillWeight = 80F;
-            this.colCambiarEstado.HeaderText = "Anular/Activar";
-            this.colCambiarEstado.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.colCambiarEstado.Name = "colCambiarEstado";
-            // 
-            // colVerDetalle
-            // 
-            this.colVerDetalle.FillWeight = 60F;
-            this.colVerDetalle.HeaderText = "Ver Detalle";
-            this.colVerDetalle.Image = global::CapaPresentacion.Properties.Resources.icono_editar;
-            this.colVerDetalle.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.colVerDetalle.Name = "colVerDetalle";
-            this.colVerDetalle.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.lblRolUsuario.AutoSize = true;
+            this.lblRolUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRolUsuario.Location = new System.Drawing.Point(58, 31);
+            this.lblRolUsuario.Name = "lblRolUsuario";
+            this.lblRolUsuario.Size = new System.Drawing.Size(83, 15);
+            this.lblRolUsuario.TabIndex = 11;
+            this.lblRolUsuario.Text = "Administrador";
             // 
             // MisVentasForm
             // 
@@ -511,15 +527,15 @@
             this.Load += new System.EventHandler(this.MisVentasForm_Load);
             this.pnlEncabezado.ResumeLayout(false);
             this.pnlEncabezado.PerformLayout();
-            this.pnlnfoUsuario.ResumeLayout(false);
-            this.pnlnfoUsuario.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).EndInit();
             this.pnlHistorialVentas.ResumeLayout(false);
             this.pnlHistorialVentas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMisVentas)).EndInit();
             this.pnlContenedorFiltros.ResumeLayout(false);
             this.pnlContenedorFiltros.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.pnlnfoUsuario.ResumeLayout(false);
+            this.pnlnfoUsuario.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -527,10 +543,6 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlEncabezado;
-        private System.Windows.Forms.Panel pnlnfoUsuario;
-        private System.Windows.Forms.Label lblNombreUsuario;
-        private System.Windows.Forms.PictureBox picUsuario;
-        private System.Windows.Forms.Label lblRolUsuario;
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.Label lblTitulo;
         private Guna.UI2.WinForms.Guna2Panel pnlHistorialVentas;
@@ -560,5 +572,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colEstado;
         private System.Windows.Forms.DataGridViewImageColumn colCambiarEstado;
         private System.Windows.Forms.DataGridViewImageColumn colVerDetalle;
+        private System.Windows.Forms.Panel pnlnfoUsuario;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblIniciales;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
+        private System.Windows.Forms.Label lblNombreUsuario;
+        private System.Windows.Forms.Label lblRolUsuario;
     }
 }

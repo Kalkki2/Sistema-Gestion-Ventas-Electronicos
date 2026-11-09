@@ -46,21 +46,6 @@
             this.lblBuscarPorCuit = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.dgvHistorialCompras = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.lblCatalogo = new System.Windows.Forms.Label();
-            this.pnlEncabezado = new System.Windows.Forms.Panel();
-            this.pnlnfoUsuario = new System.Windows.Forms.Panel();
-            this.lblNombreUsuario = new System.Windows.Forms.Label();
-            this.picUsuario = new System.Windows.Forms.PictureBox();
-            this.lblRolUsuario = new System.Windows.Forms.Label();
-            this.lblFecha = new System.Windows.Forms.Label();
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.pnlContenedorFiltros = new Guna.UI2.WinForms.Guna2ShadowPanel();
-            this.cmbFiltroEstado = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.lblFiltraEstado = new System.Windows.Forms.Label();
-            this.txtBuscarCompraPorNroFactura = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtBuscarUsuarioPorDni = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.colNroFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCuitProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,12 +56,28 @@
             this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCambiarEstado = new System.Windows.Forms.DataGridViewImageColumn();
             this.colVerDetalle = new System.Windows.Forms.DataGridViewImageColumn();
+            this.lblCatalogo = new System.Windows.Forms.Label();
+            this.pnlEncabezado = new System.Windows.Forms.Panel();
+            this.lblFecha = new System.Windows.Forms.Label();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.pnlContenedorFiltros = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.cmbFiltroEstado = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.lblFiltraEstado = new System.Windows.Forms.Label();
+            this.txtBuscarCompraPorNroFactura = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtBuscarUsuarioPorDni = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pnlnfoUsuario = new System.Windows.Forms.Panel();
+            this.lblIniciales = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.lblNombreUsuario = new System.Windows.Forms.Label();
+            this.lblRolUsuario = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistorialCompras)).BeginInit();
             this.pnlEncabezado.SuspendLayout();
-            this.pnlnfoUsuario.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
             this.pnlContenedorFiltros.SuspendLayout();
+            this.pnlnfoUsuario.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // dtpHasta
@@ -248,6 +249,78 @@
             this.dgvHistorialCompras.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHistorialCompras_CellContentClick);
             this.dgvHistorialCompras.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHistorialCompras_CellFormatting);
             // 
+            // colNroFactura
+            // 
+            this.colNroFactura.FillWeight = 90F;
+            this.colNroFactura.HeaderText = "Nro Factura";
+            this.colNroFactura.Name = "colNroFactura";
+            // 
+            // colCuitProveedor
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colCuitProveedor.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colCuitProveedor.HeaderText = "CUIT Proveedor";
+            this.colCuitProveedor.Name = "colCuitProveedor";
+            // 
+            // colProveedor
+            // 
+            this.colProveedor.FillWeight = 150F;
+            this.colProveedor.HeaderText = "Proveedor";
+            this.colProveedor.Name = "colProveedor";
+            // 
+            // ColDniUsuario
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColDniUsuario.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ColDniUsuario.FillWeight = 80F;
+            this.ColDniUsuario.HeaderText = "DNI Usuario";
+            this.ColDniUsuario.Name = "ColDniUsuario";
+            // 
+            // colComprador
+            // 
+            this.colComprador.FillWeight = 110F;
+            this.colComprador.HeaderText = "Usuario Responsable";
+            this.colComprador.Name = "colComprador";
+            // 
+            // colFechaCompra
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colFechaCompra.DefaultCellStyle = dataGridViewCellStyle5;
+            this.colFechaCompra.FillWeight = 70F;
+            this.colFechaCompra.HeaderText = "Fecha Compra";
+            this.colFechaCompra.Name = "colFechaCompra";
+            // 
+            // colTotal
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colTotal.DefaultCellStyle = dataGridViewCellStyle6;
+            this.colTotal.HeaderText = "Total ($)";
+            this.colTotal.Name = "colTotal";
+            // 
+            // colEstado
+            // 
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colEstado.DefaultCellStyle = dataGridViewCellStyle7;
+            this.colEstado.FillWeight = 60F;
+            this.colEstado.HeaderText = "Estado";
+            this.colEstado.Name = "colEstado";
+            // 
+            // colCambiarEstado
+            // 
+            this.colCambiarEstado.HeaderText = "Cambiar Estado";
+            this.colCambiarEstado.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.colCambiarEstado.Name = "colCambiarEstado";
+            this.colCambiarEstado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colCambiarEstado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // colVerDetalle
+            // 
+            this.colVerDetalle.HeaderText = "Ver Detalle";
+            this.colVerDetalle.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.colVerDetalle.Name = "colVerDetalle";
+            this.colVerDetalle.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colVerDetalle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // lblCatalogo
             // 
             this.lblCatalogo.AutoSize = true;
@@ -268,45 +341,6 @@
             this.pnlEncabezado.Name = "pnlEncabezado";
             this.pnlEncabezado.Size = new System.Drawing.Size(1222, 64);
             this.pnlEncabezado.TabIndex = 67;
-            // 
-            // pnlnfoUsuario
-            // 
-            this.pnlnfoUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlnfoUsuario.Controls.Add(this.lblNombreUsuario);
-            this.pnlnfoUsuario.Controls.Add(this.picUsuario);
-            this.pnlnfoUsuario.Controls.Add(this.lblRolUsuario);
-            this.pnlnfoUsuario.Location = new System.Drawing.Point(965, 5);
-            this.pnlnfoUsuario.Name = "pnlnfoUsuario";
-            this.pnlnfoUsuario.Size = new System.Drawing.Size(187, 55);
-            this.pnlnfoUsuario.TabIndex = 3;
-            // 
-            // lblNombreUsuario
-            // 
-            this.lblNombreUsuario.AutoSize = true;
-            this.lblNombreUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreUsuario.Location = new System.Drawing.Point(69, 11);
-            this.lblNombreUsuario.Name = "lblNombreUsuario";
-            this.lblNombreUsuario.Size = new System.Drawing.Size(95, 17);
-            this.lblNombreUsuario.TabIndex = 11;
-            this.lblNombreUsuario.Text = "Perez, Juan";
-            // 
-            // picUsuario
-            // 
-            this.picUsuario.Location = new System.Drawing.Point(3, 5);
-            this.picUsuario.Name = "picUsuario";
-            this.picUsuario.Size = new System.Drawing.Size(43, 42);
-            this.picUsuario.TabIndex = 3;
-            this.picUsuario.TabStop = false;
-            // 
-            // lblRolUsuario
-            // 
-            this.lblRolUsuario.AutoSize = true;
-            this.lblRolUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRolUsuario.Location = new System.Drawing.Point(69, 28);
-            this.lblRolUsuario.Name = "lblRolUsuario";
-            this.lblRolUsuario.Size = new System.Drawing.Size(83, 15);
-            this.lblRolUsuario.TabIndex = 11;
-            this.lblRolUsuario.Text = "Administrador";
             // 
             // lblFecha
             // 
@@ -451,77 +485,59 @@
             this.label1.TabIndex = 53;
             this.label1.Text = "Buscar por DNI del usuario:";
             // 
-            // colNroFactura
+            // pnlnfoUsuario
             // 
-            this.colNroFactura.FillWeight = 90F;
-            this.colNroFactura.HeaderText = "Nro Factura";
-            this.colNroFactura.Name = "colNroFactura";
+            this.pnlnfoUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlnfoUsuario.Controls.Add(this.lblIniciales);
+            this.pnlnfoUsuario.Controls.Add(this.guna2CirclePictureBox1);
+            this.pnlnfoUsuario.Controls.Add(this.lblNombreUsuario);
+            this.pnlnfoUsuario.Controls.Add(this.lblRolUsuario);
+            this.pnlnfoUsuario.Location = new System.Drawing.Point(943, 4);
+            this.pnlnfoUsuario.Name = "pnlnfoUsuario";
+            this.pnlnfoUsuario.Size = new System.Drawing.Size(215, 55);
+            this.pnlnfoUsuario.TabIndex = 12;
             // 
-            // colCuitProveedor
+            // lblIniciales
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colCuitProveedor.DefaultCellStyle = dataGridViewCellStyle3;
-            this.colCuitProveedor.HeaderText = "CUIT Proveedor";
-            this.colCuitProveedor.Name = "colCuitProveedor";
+            this.lblIniciales.BackColor = System.Drawing.Color.Black;
+            this.lblIniciales.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIniciales.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblIniciales.Location = new System.Drawing.Point(12, 10);
+            this.lblIniciales.Name = "lblIniciales";
+            this.lblIniciales.Size = new System.Drawing.Size(31, 26);
+            this.lblIniciales.TabIndex = 12;
+            this.lblIniciales.Text = "AA";
             // 
-            // colProveedor
+            // guna2CirclePictureBox1
             // 
-            this.colProveedor.FillWeight = 150F;
-            this.colProveedor.HeaderText = "Proveedor";
-            this.colProveedor.Name = "colProveedor";
+            this.guna2CirclePictureBox1.Image = global::CapaPresentacion.Properties.Resources.Fondo_negro;
+            this.guna2CirclePictureBox1.ImageRotate = 0F;
+            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(3, 0);
+            this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
+            this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(49, 50);
+            this.guna2CirclePictureBox1.TabIndex = 12;
+            this.guna2CirclePictureBox1.TabStop = false;
             // 
-            // ColDniUsuario
+            // lblNombreUsuario
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColDniUsuario.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ColDniUsuario.FillWeight = 80F;
-            this.ColDniUsuario.HeaderText = "DNI Usuario";
-            this.ColDniUsuario.Name = "ColDniUsuario";
+            this.lblNombreUsuario.AutoSize = true;
+            this.lblNombreUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreUsuario.Location = new System.Drawing.Point(58, 11);
+            this.lblNombreUsuario.Name = "lblNombreUsuario";
+            this.lblNombreUsuario.Size = new System.Drawing.Size(95, 17);
+            this.lblNombreUsuario.TabIndex = 11;
+            this.lblNombreUsuario.Text = "Perez, Juan";
             // 
-            // colComprador
+            // lblRolUsuario
             // 
-            this.colComprador.FillWeight = 110F;
-            this.colComprador.HeaderText = "Usuario Responsable";
-            this.colComprador.Name = "colComprador";
-            // 
-            // colFechaCompra
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colFechaCompra.DefaultCellStyle = dataGridViewCellStyle5;
-            this.colFechaCompra.FillWeight = 70F;
-            this.colFechaCompra.HeaderText = "Fecha Compra";
-            this.colFechaCompra.Name = "colFechaCompra";
-            // 
-            // colTotal
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colTotal.DefaultCellStyle = dataGridViewCellStyle6;
-            this.colTotal.HeaderText = "Total ($)";
-            this.colTotal.Name = "colTotal";
-            // 
-            // colEstado
-            // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colEstado.DefaultCellStyle = dataGridViewCellStyle7;
-            this.colEstado.FillWeight = 60F;
-            this.colEstado.HeaderText = "Estado";
-            this.colEstado.Name = "colEstado";
-            // 
-            // colCambiarEstado
-            // 
-            this.colCambiarEstado.HeaderText = "Cambiar Estado";
-            this.colCambiarEstado.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.colCambiarEstado.Name = "colCambiarEstado";
-            this.colCambiarEstado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colCambiarEstado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // colVerDetalle
-            // 
-            this.colVerDetalle.HeaderText = "Ver Detalle";
-            this.colVerDetalle.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.colVerDetalle.Name = "colVerDetalle";
-            this.colVerDetalle.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colVerDetalle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.lblRolUsuario.AutoSize = true;
+            this.lblRolUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRolUsuario.Location = new System.Drawing.Point(58, 31);
+            this.lblRolUsuario.Name = "lblRolUsuario";
+            this.lblRolUsuario.Size = new System.Drawing.Size(83, 15);
+            this.lblRolUsuario.TabIndex = 11;
+            this.lblRolUsuario.Text = "Administrador";
             // 
             // HistorialCompras
             // 
@@ -539,11 +555,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistorialCompras)).EndInit();
             this.pnlEncabezado.ResumeLayout(false);
             this.pnlEncabezado.PerformLayout();
-            this.pnlnfoUsuario.ResumeLayout(false);
-            this.pnlnfoUsuario.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).EndInit();
             this.pnlContenedorFiltros.ResumeLayout(false);
             this.pnlContenedorFiltros.PerformLayout();
+            this.pnlnfoUsuario.ResumeLayout(false);
+            this.pnlnfoUsuario.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -560,10 +576,6 @@
         private Guna.UI2.WinForms.Guna2DataGridView dgvHistorialCompras;
         private System.Windows.Forms.Label lblCatalogo;
         private System.Windows.Forms.Panel pnlEncabezado;
-        private System.Windows.Forms.Panel pnlnfoUsuario;
-        private System.Windows.Forms.Label lblNombreUsuario;
-        private System.Windows.Forms.PictureBox picUsuario;
-        private System.Windows.Forms.Label lblRolUsuario;
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.Label lblTitulo;
         private Guna.UI2.WinForms.Guna2ShadowPanel pnlContenedorFiltros;
@@ -583,5 +595,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colEstado;
         private System.Windows.Forms.DataGridViewImageColumn colCambiarEstado;
         private System.Windows.Forms.DataGridViewImageColumn colVerDetalle;
+        private System.Windows.Forms.Panel pnlnfoUsuario;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblIniciales;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
+        private System.Windows.Forms.Label lblNombreUsuario;
+        private System.Windows.Forms.Label lblRolUsuario;
     }
 }

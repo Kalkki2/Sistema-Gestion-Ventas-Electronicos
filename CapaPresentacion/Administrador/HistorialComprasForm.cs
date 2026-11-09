@@ -26,6 +26,14 @@ namespace CapaPresentacion.Administrador
             {
                 lblNombreUsuario.Text = $"{SesionActual.UsuarioLogueado.apellido}, {SesionActual.UsuarioLogueado.nombre}";
                 lblRolUsuario.Text = SesionActual.UsuarioLogueado.oPerfil.nombre;
+
+                if (!string.IsNullOrEmpty(SesionActual.UsuarioLogueado.apellido) && !string.IsNullOrEmpty(SesionActual.UsuarioLogueado.nombre))
+                {
+                    char inicialApellido = char.ToUpper(SesionActual.UsuarioLogueado.apellido[0]);
+                    char inicialNombre = char.ToUpper(SesionActual.UsuarioLogueado.nombre[0]);
+
+                    lblIniciales.Text = $"{inicialApellido}{inicialNombre}";
+                }
             }
             CargarHistorialCompras();
             CargarOpcioneComboboxEstado();

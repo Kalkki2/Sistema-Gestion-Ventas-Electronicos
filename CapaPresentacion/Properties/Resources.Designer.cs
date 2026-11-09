@@ -123,6 +123,16 @@ namespace CapaPresentacion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Fondo_negro {
+            get {
+                object obj = ResourceManager.GetObject("Fondo_negro", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Gemini_Generated_Image_59msj059msj059ms {
             get {
                 object obj = ResourceManager.GetObject("Gemini_Generated_Image_59msj059msj059ms", resourceCulture);

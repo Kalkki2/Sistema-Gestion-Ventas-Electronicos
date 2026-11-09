@@ -64,10 +64,6 @@
             this.lblTotalVentas = new System.Windows.Forms.Label();
             this.lblTituloTotalProductos = new System.Windows.Forms.Label();
             this.pnlEncabezado = new System.Windows.Forms.Panel();
-            this.pnlnfoUsuario = new System.Windows.Forms.Panel();
-            this.lblNombreUsuario = new System.Windows.Forms.Label();
-            this.picUsuario = new System.Windows.Forms.PictureBox();
-            this.lblRolUsuario = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -96,18 +92,21 @@
             this.cmbAnioTendencia = new Guna.UI2.WinForms.Guna2ComboBox();
             this.btnFiltrarTendencia = new Guna.UI2.WinForms.Guna2Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblTotalVentaMensual = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lblTituloListaClientes = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.lblTotalVentaMensual = new System.Windows.Forms.Label();
+            this.pnlnfoUsuario = new System.Windows.Forms.Panel();
+            this.lblIniciales = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.lblNombreUsuario = new System.Windows.Forms.Label();
+            this.lblRolUsuario = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.crtTendenciaVentas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.crtCantVentasXMarca)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pnlCardTotalProductos.SuspendLayout();
             this.pnlEncabezado.SuspendLayout();
-            this.pnlnfoUsuario.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
             this.pnlContenedorDetalleVenta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTopProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.crtVentasMonetarias)).BeginInit();
@@ -116,6 +115,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.crtMetodoPago)).BeginInit();
             this.guna2ShadowPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.pnlnfoUsuario.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // crtTendenciaVentas
@@ -273,45 +274,6 @@
             this.pnlEncabezado.Name = "pnlEncabezado";
             this.pnlEncabezado.Size = new System.Drawing.Size(1178, 64);
             this.pnlEncabezado.TabIndex = 28;
-            // 
-            // pnlnfoUsuario
-            // 
-            this.pnlnfoUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlnfoUsuario.Controls.Add(this.lblNombreUsuario);
-            this.pnlnfoUsuario.Controls.Add(this.picUsuario);
-            this.pnlnfoUsuario.Controls.Add(this.lblRolUsuario);
-            this.pnlnfoUsuario.Location = new System.Drawing.Point(965, 5);
-            this.pnlnfoUsuario.Name = "pnlnfoUsuario";
-            this.pnlnfoUsuario.Size = new System.Drawing.Size(187, 55);
-            this.pnlnfoUsuario.TabIndex = 3;
-            // 
-            // lblNombreUsuario
-            // 
-            this.lblNombreUsuario.AutoSize = true;
-            this.lblNombreUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreUsuario.Location = new System.Drawing.Point(69, 11);
-            this.lblNombreUsuario.Name = "lblNombreUsuario";
-            this.lblNombreUsuario.Size = new System.Drawing.Size(95, 17);
-            this.lblNombreUsuario.TabIndex = 11;
-            this.lblNombreUsuario.Text = "Perez, Juan";
-            // 
-            // picUsuario
-            // 
-            this.picUsuario.Location = new System.Drawing.Point(3, 5);
-            this.picUsuario.Name = "picUsuario";
-            this.picUsuario.Size = new System.Drawing.Size(43, 42);
-            this.picUsuario.TabIndex = 3;
-            this.picUsuario.TabStop = false;
-            // 
-            // lblRolUsuario
-            // 
-            this.lblRolUsuario.AutoSize = true;
-            this.lblRolUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRolUsuario.Location = new System.Drawing.Point(69, 28);
-            this.lblRolUsuario.Name = "lblRolUsuario";
-            this.lblRolUsuario.Size = new System.Drawing.Size(110, 15);
-            this.lblRolUsuario.TabIndex = 11;
-            this.lblRolUsuario.Text = "Gerente Comercial";
             // 
             // lblFecha
             // 
@@ -720,6 +682,16 @@
             this.panel1.Size = new System.Drawing.Size(187, 75);
             this.panel1.TabIndex = 78;
             // 
+            // lblTotalVentaMensual
+            // 
+            this.lblTotalVentaMensual.AutoSize = true;
+            this.lblTotalVentaMensual.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalVentaMensual.Location = new System.Drawing.Point(8, 33);
+            this.lblTotalVentaMensual.Name = "lblTotalVentaMensual";
+            this.lblTotalVentaMensual.Size = new System.Drawing.Size(97, 29);
+            this.lblTotalVentaMensual.TabIndex = 18;
+            this.lblTotalVentaMensual.Text = "$ 00.00";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -755,15 +727,59 @@
             this.label7.TabIndex = 80;
             this.label7.Text = "Ventas  Historicas:";
             // 
-            // lblTotalVentaMensual
+            // pnlnfoUsuario
             // 
-            this.lblTotalVentaMensual.AutoSize = true;
-            this.lblTotalVentaMensual.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalVentaMensual.Location = new System.Drawing.Point(8, 33);
-            this.lblTotalVentaMensual.Name = "lblTotalVentaMensual";
-            this.lblTotalVentaMensual.Size = new System.Drawing.Size(97, 29);
-            this.lblTotalVentaMensual.TabIndex = 18;
-            this.lblTotalVentaMensual.Text = "$ 00.00";
+            this.pnlnfoUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlnfoUsuario.Controls.Add(this.lblIniciales);
+            this.pnlnfoUsuario.Controls.Add(this.guna2CirclePictureBox1);
+            this.pnlnfoUsuario.Controls.Add(this.lblNombreUsuario);
+            this.pnlnfoUsuario.Controls.Add(this.lblRolUsuario);
+            this.pnlnfoUsuario.Location = new System.Drawing.Point(943, 4);
+            this.pnlnfoUsuario.Name = "pnlnfoUsuario";
+            this.pnlnfoUsuario.Size = new System.Drawing.Size(215, 55);
+            this.pnlnfoUsuario.TabIndex = 13;
+            // 
+            // lblIniciales
+            // 
+            this.lblIniciales.BackColor = System.Drawing.Color.Black;
+            this.lblIniciales.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIniciales.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblIniciales.Location = new System.Drawing.Point(12, 10);
+            this.lblIniciales.Name = "lblIniciales";
+            this.lblIniciales.Size = new System.Drawing.Size(31, 26);
+            this.lblIniciales.TabIndex = 12;
+            this.lblIniciales.Text = "AA";
+            // 
+            // guna2CirclePictureBox1
+            // 
+            this.guna2CirclePictureBox1.Image = global::CapaPresentacion.Properties.Resources.Fondo_negro;
+            this.guna2CirclePictureBox1.ImageRotate = 0F;
+            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(3, 0);
+            this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
+            this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(49, 50);
+            this.guna2CirclePictureBox1.TabIndex = 12;
+            this.guna2CirclePictureBox1.TabStop = false;
+            // 
+            // lblNombreUsuario
+            // 
+            this.lblNombreUsuario.AutoSize = true;
+            this.lblNombreUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreUsuario.Location = new System.Drawing.Point(58, 11);
+            this.lblNombreUsuario.Name = "lblNombreUsuario";
+            this.lblNombreUsuario.Size = new System.Drawing.Size(95, 17);
+            this.lblNombreUsuario.TabIndex = 11;
+            this.lblNombreUsuario.Text = "Perez, Juan";
+            // 
+            // lblRolUsuario
+            // 
+            this.lblRolUsuario.AutoSize = true;
+            this.lblRolUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRolUsuario.Location = new System.Drawing.Point(58, 31);
+            this.lblRolUsuario.Name = "lblRolUsuario";
+            this.lblRolUsuario.Size = new System.Drawing.Size(83, 15);
+            this.lblRolUsuario.TabIndex = 11;
+            this.lblRolUsuario.Text = "Administrador";
             // 
             // DashboardVentasForm
             // 
@@ -801,9 +817,6 @@
             this.pnlCardTotalProductos.PerformLayout();
             this.pnlEncabezado.ResumeLayout(false);
             this.pnlEncabezado.PerformLayout();
-            this.pnlnfoUsuario.ResumeLayout(false);
-            this.pnlnfoUsuario.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).EndInit();
             this.pnlContenedorDetalleVenta.ResumeLayout(false);
             this.pnlContenedorDetalleVenta.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTopProductos)).EndInit();
@@ -816,6 +829,9 @@
             this.guna2ShadowPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.pnlnfoUsuario.ResumeLayout(false);
+            this.pnlnfoUsuario.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -835,10 +851,6 @@
         private System.Windows.Forms.Label lblTotalVentas;
         private System.Windows.Forms.Label lblTituloTotalProductos;
         private System.Windows.Forms.Panel pnlEncabezado;
-        private System.Windows.Forms.Panel pnlnfoUsuario;
-        private System.Windows.Forms.Label lblNombreUsuario;
-        private System.Windows.Forms.PictureBox picUsuario;
-        private System.Windows.Forms.Label lblRolUsuario;
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Label label1;
@@ -871,5 +883,10 @@
         private System.Windows.Forms.Label lblTituloListaClientes;
         private System.Windows.Forms.Label lblTotalVentaMensual;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel pnlnfoUsuario;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblIniciales;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
+        private System.Windows.Forms.Label lblNombreUsuario;
+        private System.Windows.Forms.Label lblRolUsuario;
     }
 }

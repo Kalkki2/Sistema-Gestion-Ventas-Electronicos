@@ -221,7 +221,7 @@ namespace CapaDatos
                 using (var contexto = new db_sistema_gestion_ventas_electronicosEntities())
                 {
                     var proveedores = contexto.proveedor
-                        .Where(p => p.cuit.Contains(busqueda) || p.email.Contains(busqueda))
+                        .Where(p => p.cuit.Contains(busqueda) || p.email.Contains(busqueda) || p.nombre_comercial.Contains(busqueda))
                         .ToList();
 
                     var proveedoresIds = proveedores.Select(p => p.proveedor_id).ToList();

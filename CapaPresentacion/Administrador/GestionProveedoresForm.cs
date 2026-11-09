@@ -1,10 +1,14 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -28,8 +32,16 @@ namespace CapaPresentacion.Administrador
         {
             if (SesionActual.UsuarioLogueado != null)
             {
-               lblNombreUsuario.Text = $"{SesionActual.UsuarioLogueado.apellido}, {SesionActual.UsuarioLogueado.nombre}";
-               lblRolUsuario.Text = SesionActual.UsuarioLogueado.oPerfil.nombre;
+                lblNombreUsuario.Text = $"{SesionActual.UsuarioLogueado.apellido}, {SesionActual.UsuarioLogueado.nombre}";
+                lblRolUsuario.Text = SesionActual.UsuarioLogueado.oPerfil.nombre;
+
+                if (!string.IsNullOrEmpty(SesionActual.UsuarioLogueado.apellido) && !string.IsNullOrEmpty(SesionActual.UsuarioLogueado.nombre))
+                {
+                    char inicialApellido = char.ToUpper(SesionActual.UsuarioLogueado.apellido[0]);
+                    char inicialNombre = char.ToUpper(SesionActual.UsuarioLogueado.nombre[0]);
+
+                    lblIniciales.Text = $"{inicialApellido}{inicialNombre}";
+                }
             }
             System.Globalization.CultureInfo cultura = new System.Globalization.CultureInfo("es-ES");
             lblFecha.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy", cultura);
@@ -452,6 +464,242 @@ namespace CapaPresentacion.Administrador
             }
 
             return esValido;
+        }
+
+        private void btnExportarPDF_Click(object sender, EventArgs e)
+        {
+            List<EProveedor> listaProveedores = dgvListaProveedores.DataSource as List<EProveedor>;
+
+            if (listaProveedores == null || listaProveedores.Count == 0)
+            {
+                MessageBox.Show("No hay registros de proveedores para exportar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Configurar el diálogo para guardar el archivo PDF
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.FileName = $"Reporte_Proveedores_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
+            sfd.Filter = "Archivos PDF (*.pdf)|*.pdf";
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    // Crear documento PDF en orientación horizontal (A4 Landscape) con márgenes reducidos
+                    Document doc = new Document(PageSize.A4.Rotate(), 25f, 25f, 30f, 30f);
+                    PdfWriter.GetInstance(doc, new FileStream(sfd.FileName, FileMode.Create));
+                    doc.Open();
+
+                    // Definición de fuentes corporativas
+                    iTextSharp.text.Font fontEmpresa = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 22, new BaseColor(27, 38, 59));
+                    iTextSharp.text.Font fontInfoEmpresa = FontFactory.GetFont(FontFactory.HELVETICA, 8.5f, new BaseColor(80, 90, 100));
+                    iTextSharp.text.Font fontSubTituloGen = FontFactory.GetFont(FontFactory.HELVETICA, 9, BaseColor.GRAY);
+                    iTextSharp.text.Font fontCabeceraTabla = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 8f, BaseColor.WHITE);
+                    iTextSharp.text.Font fontContenido = FontFactory.GetFont(FontFactory.HELVETICA, 7.5f, BaseColor.BLACK);
+                    iTextSharp.text.Font fontContenidoNegrita = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 7.5f, BaseColor.BLACK);
+
+                    // CABECERA  (MUSNOC)
+                   PdfPTable tablaHeader = new PdfPTable(2);
+                    tablaHeader.WidthPercentage = 100;
+                    tablaHeader.SetWidths(new float[] { 50f, 50f });
+
+                    PdfPCell cellLeft = new PdfPCell(new Phrase("MUSNOC", fontEmpresa));
+                    cellLeft.Border = PdfPCell.NO_BORDER;
+                    cellLeft.VerticalAlignment = Element.ALIGN_MIDDLE;
+                    tablaHeader.AddCell(cellLeft);
+
+                    Paragraph pInfo = new Paragraph();
+                    pInfo.Alignment = Element.ALIGN_RIGHT;
+                    pInfo.Add(new Chunk("Dirección: Av. 3 Abril Corrientes - Corrientes - Argentina\n", fontInfoEmpresa));
+                    pInfo.Add(new Chunk("Tel: +54 9 379 634-7610", fontInfoEmpresa));
+
+                    PdfPCell cellRight = new PdfPCell(pInfo);
+                    cellRight.Border = PdfPCell.NO_BORDER;
+                    cellRight.VerticalAlignment = Element.ALIGN_MIDDLE;
+                    cellRight.HorizontalAlignment = Element.ALIGN_RIGHT;
+                    tablaHeader.AddCell(cellRight);
+
+                    doc.Add(tablaHeader);
+
+                    // Línea divisoria inferior de la cabecera
+                    PdfPTable lineaDivisoria = new PdfPTable(1);
+                    lineaDivisoria.WidthPercentage = 100;
+                    PdfPCell cellLine = new PdfPCell(new Phrase(" "));
+                    cellLine.Border = PdfPCell.BOTTOM_BORDER;
+                    cellLine.BorderWidthBottom = 1.5f;
+                    cellLine.BorderColorBottom = new BaseColor(27, 38, 59);
+                    cellLine.FixedHeight = 6f;
+                    lineaDivisoria.AddCell(cellLine);
+
+                    doc.Add(lineaDivisoria);
+                    doc.Add(new Paragraph(" "));
+
+                    // Metadatos y fecha de generación
+                    string usuarioNombre = SesionActual.UsuarioLogueado != null ? $"{SesionActual.UsuarioLogueado.nombre} {SesionActual.UsuarioLogueado.apellido}" : "Sistema";
+                    Paragraph infoGen = new Paragraph($"Listado de Proveedores (Filtrado / General) — Generado el: {DateTime.Now:dd/MM/yyyy HH:mm} por {usuarioNombre}", fontSubTituloGen);
+                    doc.Add(infoGen);
+                    doc.Add(new Paragraph(" "));
+
+                    // TABLA PRINCIPAL DE PROVEEDORES (10 Columnas)
+                    PdfPTable tablaProveedores = new PdfPTable(10);
+                    tablaProveedores.WidthPercentage = 100;
+                    tablaProveedores.SetWidths(new float[] { 10f, 12f, 12f, 13f, 13f, 9f, 11f, 7f, 7f, 7f });
+
+                    // Cabeceras de la tabla
+                    string[] cabeceras = { "CUIT", "Nombre Comercial", "Razón Social", "Dirección", "Correo", "Teléfono", "Categoría", "Estado", "F. Alta", "F. Modif." };
+                    foreach (var cabecera in cabeceras)
+                    {
+                        PdfPCell celdaCabecera = new PdfPCell(new Phrase(cabecera, fontCabeceraTabla));
+                        celdaCabecera.BackgroundColor = new BaseColor(41, 128, 185); // Azul institucional
+                        celdaCabecera.HorizontalAlignment = Element.ALIGN_CENTER;
+                        celdaCabecera.VerticalAlignment = Element.ALIGN_MIDDLE;
+                        celdaCabecera.Padding = 4;
+                        tablaProveedores.AddCell(celdaCabecera);
+                    }
+
+                    // Rellenar filas con los datos de los proveedores
+                    foreach (var prov in listaProveedores)
+                    {
+                        AgregarCeldaContenido(tablaProveedores, prov.cuit, fontContenidoNegrita, Element.ALIGN_CENTER);
+                        AgregarCeldaContenido(tablaProveedores, prov.nombre_comercial, fontContenido, Element.ALIGN_LEFT);
+                        AgregarCeldaContenido(tablaProveedores, prov.razon_social, fontContenido, Element.ALIGN_LEFT);
+                        AgregarCeldaContenido(tablaProveedores, prov.direccion, fontContenido, Element.ALIGN_LEFT);
+                        AgregarCeldaContenido(tablaProveedores, prov.email, fontContenido, Element.ALIGN_LEFT);
+                        AgregarCeldaContenido(tablaProveedores, prov.telefono, fontContenido, Element.ALIGN_CENTER);
+                        AgregarCeldaContenido(tablaProveedores, prov.CategoriasTexto, fontContenido, Element.ALIGN_CENTER);
+                        AgregarCeldaContenido(tablaProveedores, prov.EstadoTexto, fontContenido, Element.ALIGN_CENTER);
+
+                        string fechaAltaStr = prov.fecha_alta != null && prov.fecha_alta != DateTime.MinValue ? Convert.ToDateTime(prov.fecha_alta).ToString("dd/MM/yyyy") : "-";
+                        string fechaModifStr = prov.fecha_ultima_modificacion != null && prov.fecha_ultima_modificacion != DateTime.MinValue ? Convert.ToDateTime(prov.fecha_ultima_modificacion).ToString("dd/MM/yyyy") : "-";
+
+                        AgregarCeldaContenido(tablaProveedores, fechaAltaStr, fontContenido, Element.ALIGN_CENTER);
+                        AgregarCeldaContenido(tablaProveedores, fechaModifStr, fontContenido, Element.ALIGN_CENTER);
+                    }
+
+                    doc.Add(tablaProveedores);
+                    doc.Close();
+
+                    MessageBox.Show("Archivo PDF de proveedores exportado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(sfd.FileName) { UseShellExecute = true });
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al exportar a PDF: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        // Método auxiliar privado para rellenar celdas ordenadamente
+        private void AgregarCeldaContenido(PdfPTable tabla, string texto, iTextSharp.text.Font fuente, int alineacion)
+        {
+            PdfPCell celda = new PdfPCell(new Phrase(texto ?? "", fuente));
+            celda.VerticalAlignment = Element.ALIGN_MIDDLE;
+            celda.HorizontalAlignment = alineacion;
+            celda.Padding = 3.5f;
+            tabla.AddCell(celda);
+        }
+
+        private void btnExportarEXCEL_Click(object sender, EventArgs e)
+        {
+            List<EProveedor> listaProveedores = dgvListaProveedores.DataSource as List<EProveedor>;
+
+            if (listaProveedores == null || listaProveedores.Count == 0)
+            {
+                MessageBox.Show("No hay registros de proveedores para exportar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 2. Configurar el diálogo para guardar el archivo Excel
+            SaveFileDialog savefile = new SaveFileDialog();
+            savefile.FileName = $"Reporte_Proveedores_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx";
+            savefile.Filter = "Archivos de Excel (*.xlsx)|*.xlsx";
+
+            if (savefile.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    // Configuración de licencia requerida por EPPlus 8+
+                    ExcelPackage.License.SetNonCommercialOrganization("MUSNOC");
+
+                    using (ExcelPackage package = new ExcelPackage())
+                    {
+                        ExcelWorksheet ws = package.Workbook.Worksheets.Add("Lista de Proveedores");
+                        ws.View.ShowGridLines = true;
+
+                        int filaActual = 1;
+
+                        // CABECERA  (MUSNOC)
+                        ws.Cells[filaActual, 1].Value = "MUSNOC";
+                        ws.Cells[filaActual, 1].Style.Font.Size = 16;
+                        ws.Cells[filaActual, 1].Style.Font.Bold = true;
+                        ws.Cells[filaActual, 1].Style.Font.Color.SetColor(Color.FromArgb(27, 38, 59));
+                        filaActual++;
+
+                        ws.Cells[filaActual, 1].Value = "Dirección: Av. 3 Abril Corrientes - Corrientes - Argentina";
+                        ws.Cells[filaActual, 1].Style.Font.Size = 9;
+                        ws.Cells[filaActual, 1].Style.Font.Color.SetColor(Color.Gray);
+                        filaActual++;
+
+                        ws.Cells[filaActual, 1].Value = "Tel: +54 9 379 634-7610";
+                        ws.Cells[filaActual, 1].Style.Font.Size = 9;
+                        ws.Cells[filaActual, 1].Style.Font.Color.SetColor(Color.Gray);
+                        filaActual++;
+
+                        string usuarioNombre = SesionActual.UsuarioLogueado != null ? $"{SesionActual.UsuarioLogueado.nombre} {SesionActual.UsuarioLogueado.apellido}" : "Sistema";
+                        ws.Cells[filaActual, 1].Value = $"Listado de Proveedores (Filtrado / General) — Generado el: {DateTime.Now:dd/MM/yyyy HH:mm} por {usuarioNombre}";
+                        ws.Cells[filaActual, 1].Style.Font.Size = 9;
+                        ws.Cells[filaActual, 1].Style.Font.Italic = true;
+                        filaActual += 2;
+
+                        // CABECERAS DE LA TABLA (10 Columnas)
+                        string[] cabeceras = { "CUIT", "Nombre Comercial", "Razón Social", "Dirección", "Correo", "Teléfono",  "Estado", "F. Alta", "F. Modif." };
+                        for (int i = 0; i < cabeceras.Length; i++)
+                        {
+                            var cell = ws.Cells[filaActual, i + 1];
+                            cell.Value = cabeceras[i];
+                            cell.Style.Font.Bold = true;
+                            cell.Style.Font.Size = 10;
+                            cell.Style.Font.Color.SetColor(Color.FromArgb(41, 128, 185)); // Azul institucional
+                        }
+                        filaActual++;
+
+                        // RELLENAR DATOS DE PROVEEDORES
+                        foreach (var prov in listaProveedores)
+                        {
+                            ws.Cells[filaActual, 1].Value = prov.cuit;
+                            ws.Cells[filaActual, 1].Style.Font.Bold = true;
+                            ws.Cells[filaActual, 2].Value = prov.nombre_comercial;
+                            ws.Cells[filaActual, 3].Value = prov.razon_social;
+                            ws.Cells[filaActual, 4].Value = prov.direccion;
+                            ws.Cells[filaActual, 5].Value = prov.email;
+                            ws.Cells[filaActual, 6].Value = prov.telefono;
+                            ws.Cells[filaActual, 7].Value = prov.EstadoTexto;
+
+                            string fechaAltaStr = prov.fecha_alta != null && prov.fecha_alta != DateTime.MinValue ? Convert.ToDateTime(prov.fecha_alta).ToString("dd/MM/yyyy") : "-";
+                            string fechaModifStr = prov.fecha_ultima_modificacion != null && prov.fecha_ultima_modificacion != DateTime.MinValue ? Convert.ToDateTime(prov.fecha_ultima_modificacion).ToString("dd/MM/yyyy") : "-";
+
+                            ws.Cells[filaActual, 9].Value = fechaAltaStr;
+                            ws.Cells[filaActual, 10].Value = fechaModifStr;
+
+                            ws.Cells[filaActual, 1, filaActual, 10].Style.Font.Size = 9.5f;
+                            filaActual++;
+                        }
+
+                        // Ajustar automáticamente el ancho de las celdas
+                        ws.Cells[ws.Dimension.Address].AutoFitColumns();
+
+                        // Guardar y exportar el archivo físico
+                        File.WriteAllBytes(savefile.FileName, package.GetAsByteArray());
+                    }
+
+                    MessageBox.Show("Reporte de Excel de proveedores generado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(savefile.FileName) { UseShellExecute = true });
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al generar el Excel: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

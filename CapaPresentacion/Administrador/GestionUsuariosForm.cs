@@ -3,6 +3,7 @@ using CapaNegocio;
 using Guna.UI2.WinForms;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,9 +32,18 @@ namespace CapaPresentacion.Administrador
 
         private void GestionUsuariosForm_Load(object sender, EventArgs e)
         {
-            if (SesionActual.UsuarioLogueado != null){
+            if (SesionActual.UsuarioLogueado != null)
+            {
                 lblNombreUsuario.Text = $"{SesionActual.UsuarioLogueado.apellido}, {SesionActual.UsuarioLogueado.nombre}";
-                lblRolUsuario.Text = SesionActual.UsuarioLogueado.oPerfil.nombre; 
+                lblRolUsuario.Text = SesionActual.UsuarioLogueado.oPerfil.nombre;
+
+                if (!string.IsNullOrEmpty(SesionActual.UsuarioLogueado.apellido) && !string.IsNullOrEmpty(SesionActual.UsuarioLogueado.nombre))
+                {
+                    char inicialApellido = char.ToUpper(SesionActual.UsuarioLogueado.apellido[0]);
+                    char inicialNombre = char.ToUpper(SesionActual.UsuarioLogueado.nombre[0]);
+
+                    lblIniciales.Text = $"{inicialApellido}{inicialNombre}";
+                }
             }
             System.Globalization.CultureInfo cultura = new System.Globalization.CultureInfo("es-ES");
             lblFecha.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy", cultura);
@@ -220,89 +230,7 @@ namespace CapaPresentacion.Administrador
             cmbFiltroEstado.DisplayMember = "Texto";
             cmbFiltroEstado.ValueMember = "Valor";
             cmbFiltroEstado.SelectedIndex = 0;
-        }
-
-        
-
-        private void btnExportarPDF_Click(object sender, EventArgs e)
-        {
-            if (dgvListaUsuarios.Rows.Count == 0)
-            {
-                MessageBox.Show("No hay datos para exportar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            using (SaveFileDialog sfd = new SaveFileDialog())
-            {
-                sfd.Filter = "Archivo PDF (*.pdf)|*.pdf";
-                sfd.FileName = "Reporte_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".pdf";
-
-                if (sfd.ShowDialog() == DialogResult.OK)
-                {
-                    try
-                    {
-                        // Crear documento PDF (en formato Horizontal o Vertical, aquí usaremos PageSize.A4 en orientación horizontal para que quepan más columnas)
-                        Document doc = new Document(PageSize.A4.Rotate(), 10f, 10f, 20f, 20f);
-                        PdfWriter.GetInstance(doc, new FileStream(sfd.FileName, FileMode.Create));
-                        doc.Open();
-
-                        // Título del reporte
-                        Paragraph titulo = new Paragraph("Lista de usuarios", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 18));
-                        titulo.Alignment = Element.ALIGN_CENTER;
-                        doc.Add(titulo);
-                        doc.Add(new Paragraph(" ")); // Espacio en blanco
-
-                        // Contar cuántas columnas de texto/datos hay (excluyendo imágenes)
-                        int totalColumnasValidas = 0;
-                        foreach (DataGridViewColumn col in dgvListaUsuarios.Columns)
-                        {
-                            if (!(col is DataGridViewImageColumn)) totalColumnasValidas++;
-                        }
-
-                        // Crear tabla PDF
-                        PdfPTable pdfTable = new PdfPTable(totalColumnasValidas);
-                        pdfTable.WidthPercentage = 100;
-
-                        // Agregar Encabezados
-                        foreach (DataGridViewColumn col in dgvListaUsuarios.Columns)
-                        {
-                            if (col is DataGridViewImageColumn) continue;
-
-                            PdfPCell cell = new PdfPCell(new Phrase(col.HeaderText, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 10)));
-                            cell.BackgroundColor = new iTextSharp.text.BaseColor(230, 230, 230);
-                            cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                            pdfTable.AddCell(cell);
-                        }
-
-                        // Agregar Filas de Datos
-                        foreach (DataGridViewRow row in dgvListaUsuarios.Rows)
-                        {
-                            if (row.IsNewRow) continue;
-
-                            foreach (DataGridViewCell cell in row.Cells)
-                            {
-                                if (cell.OwningColumn is DataGridViewImageColumn) continue;
-
-                                string valor = cell.Value != null ? cell.Value.ToString() : "";
-                                PdfPCell pdfCell = new PdfPCell(new Phrase(valor, FontFactory.GetFont(FontFactory.HELVETICA, 9)));
-                                pdfTable.AddCell(pdfCell);
-                            }
-                        }
-
-                        // Agregar la tabla al documento y cerrar
-                        doc.Add(pdfTable);
-                        doc.Close();
-
-                        MessageBox.Show("Archivo PDF exportado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error al exportar a PDF: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-        }
-
+        }  
 
         private void CargarCombosFormulario()
         {
@@ -557,6 +485,247 @@ namespace CapaPresentacion.Administrador
 
             return esValido;
         }
+
+        private void btnExportarPDF_Click(object sender, EventArgs e)
+        {
+            List<EUsuario> listaUsuarios = dgvListaUsuarios.DataSource as List<EUsuario>;
+
+            if (listaUsuarios == null || listaUsuarios.Count == 0)
+            {
+                MessageBox.Show("No hay registros de usuarios para exportar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Configurar el diálogo para guardar el archivo PDF
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.FileName = $"Reporte_Usuarios_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
+            sfd.Filter = "Archivos PDF (*.pdf)|*.pdf";
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    // Crear documento PDF en orientación horizontal (A4 Landscape) con márgenes reducidos
+                    Document doc = new Document(PageSize.A4.Rotate(), 25f, 25f, 30f, 30f);
+                    PdfWriter.GetInstance(doc, new FileStream(sfd.FileName, FileMode.Create));
+                    doc.Open();
+
+                    // Definición de fuentes corporativas
+                    iTextSharp.text.Font fontEmpresa = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 22, new BaseColor(27, 38, 59));
+                    iTextSharp.text.Font fontInfoEmpresa = FontFactory.GetFont(FontFactory.HELVETICA, 8.5f, new BaseColor(80, 90, 100));
+                    iTextSharp.text.Font fontSubTituloGen = FontFactory.GetFont(FontFactory.HELVETICA, 9, BaseColor.GRAY);
+                    iTextSharp.text.Font fontCabeceraTabla = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 8f, BaseColor.WHITE);
+                    iTextSharp.text.Font fontContenido = FontFactory.GetFont(FontFactory.HELVETICA, 7.5f, BaseColor.BLACK);
+                    iTextSharp.text.Font fontContenidoNegrita = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 7.5f, BaseColor.BLACK);
+
+                    // CABECERA (MUSNOC)
+                    PdfPTable tablaHeader = new PdfPTable(2);
+                    tablaHeader.WidthPercentage = 100;
+                    tablaHeader.SetWidths(new float[] { 50f, 50f });
+
+                    PdfPCell cellLeft = new PdfPCell(new Phrase("MUSNOC", fontEmpresa));
+                    cellLeft.Border = PdfPCell.NO_BORDER;
+                    cellLeft.VerticalAlignment = Element.ALIGN_MIDDLE;
+                    tablaHeader.AddCell(cellLeft);
+
+                    Paragraph pInfo = new Paragraph();
+                    pInfo.Alignment = Element.ALIGN_RIGHT;
+                    pInfo.Add(new Chunk("Dirección: Av. 3 Abril Corrientes - Corrientes - Argentina\n", fontInfoEmpresa));
+                    pInfo.Add(new Chunk("Tel: +54 9 379 634-7610", fontInfoEmpresa));
+
+                    PdfPCell cellRight = new PdfPCell(pInfo);
+                    cellRight.Border = PdfPCell.NO_BORDER;
+                    cellRight.VerticalAlignment = Element.ALIGN_MIDDLE;
+                    cellRight.HorizontalAlignment = Element.ALIGN_RIGHT;
+                    tablaHeader.AddCell(cellRight);
+
+                    doc.Add(tablaHeader);
+
+                    // Línea divisoria inferior de la cabecera
+                    PdfPTable lineaDivisoria = new PdfPTable(1);
+                    lineaDivisoria.WidthPercentage = 100;
+                    PdfPCell cellLine = new PdfPCell(new Phrase(" "));
+                    cellLine.Border = PdfPCell.BOTTOM_BORDER;
+                    cellLine.BorderWidthBottom = 1.5f;
+                    cellLine.BorderColorBottom = new BaseColor(27, 38, 59);
+                    cellLine.FixedHeight = 6f;
+                    lineaDivisoria.AddCell(cellLine);
+
+                    doc.Add(lineaDivisoria);
+                    doc.Add(new Paragraph(" "));
+
+                    // Metadatos y fecha de generación
+                    string usuarioNombre = SesionActual.UsuarioLogueado != null ? $"{SesionActual.UsuarioLogueado.nombre} {SesionActual.UsuarioLogueado.apellido}" : "Sistema";
+                    Paragraph infoGen = new Paragraph($"Listado de Usuarios (Filtrado / General) — Generado el: {DateTime.Now:dd/MM/yyyy HH:mm} por {usuarioNombre}", fontSubTituloGen);
+                    doc.Add(infoGen);
+                    doc.Add(new Paragraph(" "));
+
+                    // TABLA PRINCIPAL DE USUARIOS 
+                    PdfPTable tablaUsuarios = new PdfPTable(11);
+                    tablaUsuarios.WidthPercentage = 100;
+                    tablaUsuarios.SetWidths(new float[] { 8f, 10f, 10f, 14f, 9f, 14f, 9f, 7f, 8f, 8f, 8f });
+
+                    // Cabeceras de la tabla
+                    string[] cabeceras = { "DNI", "Nombre", "Apellido", "Correo", "Teléfono", "Dirección", "Perfil", "Estado", "Fecha Alta", "Últ. Modif.", "Últ. Ingreso" };
+                    foreach (var cabecera in cabeceras)
+                    {
+                        PdfPCell celdaCabecera = new PdfPCell(new Phrase(cabecera, fontCabeceraTabla));
+                        celdaCabecera.BackgroundColor = new BaseColor(41, 128, 185); // Azul institucional
+                        celdaCabecera.HorizontalAlignment = Element.ALIGN_CENTER;
+                        celdaCabecera.VerticalAlignment = Element.ALIGN_MIDDLE;
+                        celdaCabecera.Padding = 4;
+                        tablaUsuarios.AddCell(celdaCabecera);
+                    }
+
+                    // Rellenar filas con los datos de los usuarios
+                    foreach (var usuario in listaUsuarios)
+                    {
+                        AgregarCeldaContenido(tablaUsuarios, usuario.dni, fontContenidoNegrita, Element.ALIGN_CENTER);
+                        AgregarCeldaContenido(tablaUsuarios, usuario.nombre, fontContenido, Element.ALIGN_LEFT);
+                        AgregarCeldaContenido(tablaUsuarios, usuario.apellido, fontContenido, Element.ALIGN_LEFT);
+                        AgregarCeldaContenido(tablaUsuarios, usuario.email, fontContenido, Element.ALIGN_LEFT);
+                        AgregarCeldaContenido(tablaUsuarios, usuario.telefono, fontContenido, Element.ALIGN_CENTER);
+                        AgregarCeldaContenido(tablaUsuarios, usuario.direccion, fontContenido, Element.ALIGN_LEFT);
+                        AgregarCeldaContenido(tablaUsuarios, usuario.NombrePerfil, fontContenido, Element.ALIGN_CENTER);
+                        AgregarCeldaContenido(tablaUsuarios, usuario.EstadoTexto, fontContenido, Element.ALIGN_CENTER);
+
+                        string fechaAltaStr = usuario.fecha_alta != null && usuario.fecha_alta != DateTime.MinValue ? Convert.ToDateTime(usuario.fecha_alta).ToString("dd/MM/yyyy") : "-";
+                        string fechaModifStr = usuario.fecha_ultima_modificacion != null && usuario.fecha_ultima_modificacion != DateTime.MinValue ? Convert.ToDateTime(usuario.fecha_ultima_modificacion).ToString("dd/MM/yyyy") : "-";
+                        string fechaIngresoStr = usuario.fecha_ultimo_ingreso != null && usuario.fecha_ultimo_ingreso != DateTime.MinValue ? Convert.ToDateTime(usuario.fecha_ultimo_ingreso).ToString("dd/MM/yyyy HH:mm:ss") : "-";
+
+                        AgregarCeldaContenido(tablaUsuarios, fechaAltaStr, fontContenido, Element.ALIGN_CENTER);
+                        AgregarCeldaContenido(tablaUsuarios, fechaModifStr, fontContenido, Element.ALIGN_CENTER);
+                        AgregarCeldaContenido(tablaUsuarios, fechaIngresoStr, fontContenido, Element.ALIGN_CENTER);
+                    }
+
+                    doc.Add(tablaUsuarios);
+                    doc.Close();
+
+                    MessageBox.Show("Archivo PDF de usuarios exportado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(sfd.FileName) { UseShellExecute = true });
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al exportar a PDF: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        // Método auxiliar privado para formatear y agregar celdas de datos limpiamente
+        private void AgregarCeldaContenido(PdfPTable tabla, string texto, iTextSharp.text.Font fuente, int alineacion)
+        {
+            PdfPCell celda = new PdfPCell(new Phrase(texto ?? "", fuente));
+            celda.VerticalAlignment = Element.ALIGN_MIDDLE;
+            celda.HorizontalAlignment = alineacion;
+            celda.Padding = 3.5f;
+            tabla.AddCell(celda);
+        }
+
+        private void btnExportarEXCEL_Click(object sender, EventArgs e)
+        {
+            List<EUsuario> listaUsuarios = dgvListaUsuarios.DataSource as List<EUsuario>;
+
+            if (listaUsuarios == null || listaUsuarios.Count == 0)
+            {
+                MessageBox.Show("No hay registros de usuarios para exportar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            //Configurar el diálogo para guardar el archivo Excel
+            SaveFileDialog savefile = new SaveFileDialog();
+            savefile.FileName = $"Reporte_Usuarios_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx";
+            savefile.Filter = "Archivos de Excel (*.xlsx)|*.xlsx";
+
+            if (savefile.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    // Configuración de licencia requerida por EPPlus 8+
+                    ExcelPackage.License.SetNonCommercialOrganization("MUSNOC");
+
+                    using (ExcelPackage package = new ExcelPackage())
+                    {
+                        ExcelWorksheet ws = package.Workbook.Worksheets.Add("Lista de Usuarios");
+                        ws.View.ShowGridLines = true;
+
+                        int filaActual = 1;
+
+                        // CABECERA (MUSNOC)
+                        ws.Cells[filaActual, 1].Value = "MUSNOC";
+                        ws.Cells[filaActual, 1].Style.Font.Size = 16;
+                        ws.Cells[filaActual, 1].Style.Font.Bold = true;
+                        ws.Cells[filaActual, 1].Style.Font.Color.SetColor(Color.FromArgb(27, 38, 59));
+                        filaActual++;
+
+                        ws.Cells[filaActual, 1].Value = "Dirección: Av. 3 Abril Corrientes - Corrientes - Argentina";
+                        ws.Cells[filaActual, 1].Style.Font.Size = 9;
+                        ws.Cells[filaActual, 1].Style.Font.Color.SetColor(Color.Gray);
+                        filaActual++;
+
+                        ws.Cells[filaActual, 1].Value = "Tel: +54 9 379 634-7610";
+                        ws.Cells[filaActual, 1].Style.Font.Size = 9;
+                        ws.Cells[filaActual, 1].Style.Font.Color.SetColor(Color.Gray);
+                        filaActual++;
+
+                        string usuarioNombre = SesionActual.UsuarioLogueado != null ? $"{SesionActual.UsuarioLogueado.nombre} {SesionActual.UsuarioLogueado.apellido}" : "Sistema";
+                        ws.Cells[filaActual, 1].Value = $"Listado de Usuarios (Filtrado / General) — Generado el: {DateTime.Now:dd/MM/yyyy HH:mm} por {usuarioNombre}";
+                        ws.Cells[filaActual, 1].Style.Font.Size = 9;
+                        ws.Cells[filaActual, 1].Style.Font.Italic = true;
+                        filaActual += 2;
+
+                        // CABECERAS DE LA TABLA DE USUARIOS 
+                        string[] cabeceras = { "DNI", "Nombre", "Apellido", "Correo", "Teléfono", "Dirección", "Perfil", "Estado", "Fecha Alta", "Últ. Modif.", "Últ. Ingreso" };
+                        for (int i = 0; i < cabeceras.Length; i++)
+                        {
+                            var cell = ws.Cells[filaActual, i + 1];
+                            cell.Value = cabeceras[i];
+                            cell.Style.Font.Bold = true;
+                            cell.Style.Font.Size = 10;
+                            cell.Style.Font.Color.SetColor(Color.FromArgb(41, 128, 185)); // Azul institucional
+                        }
+                        filaActual++;
+
+                        // RELLENAR DATOS DE USUARIOS
+                        foreach (var usuario in listaUsuarios)
+                        {
+                            ws.Cells[filaActual, 1].Value = usuario.dni;
+                            ws.Cells[filaActual, 1].Style.Font.Bold = true;
+                            ws.Cells[filaActual, 2].Value = usuario.nombre;
+                            ws.Cells[filaActual, 3].Value = usuario.apellido;
+                            ws.Cells[filaActual, 4].Value = usuario.email;
+                            ws.Cells[filaActual, 5].Value = usuario.telefono;
+                            ws.Cells[filaActual, 6].Value = usuario.direccion;
+                            ws.Cells[filaActual, 7].Value = usuario.NombrePerfil;
+                            ws.Cells[filaActual, 8].Value = usuario.EstadoTexto;
+
+                            string fechaAltaStr = usuario.fecha_alta != null && usuario.fecha_alta != DateTime.MinValue ? Convert.ToDateTime(usuario.fecha_alta).ToString("dd/MM/yyyy") : "-";
+                            string fechaModifStr = usuario.fecha_ultima_modificacion != null && usuario.fecha_ultima_modificacion != DateTime.MinValue ? Convert.ToDateTime(usuario.fecha_ultima_modificacion).ToString("dd/MM/yyyy") : "-";
+                            string fechaIngresoStr = usuario.fecha_ultimo_ingreso != null && usuario.fecha_ultimo_ingreso != DateTime.MinValue ? Convert.ToDateTime(usuario.fecha_ultimo_ingreso).ToString("dd/MM/yyyy HH:mm:ss") : "-";
+
+                            ws.Cells[filaActual, 9].Value = fechaAltaStr;
+                            ws.Cells[filaActual, 10].Value = fechaModifStr;
+                            ws.Cells[filaActual, 11].Value = fechaIngresoStr;
+
+                            ws.Cells[filaActual, 1, filaActual, 11].Style.Font.Size = 9.5f;
+                            filaActual++;
+                        }
+
+                        // Ajustar automáticamente el ancho de las celdas
+                        ws.Cells[ws.Dimension.Address].AutoFitColumns();
+
+                        // Guardar y exportar el archivo físico
+                        File.WriteAllBytes(savefile.FileName, package.GetAsByteArray());
+                    }
+
+                    MessageBox.Show("Reporte de Excel de usuarios generado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(savefile.FileName) { UseShellExecute = true });
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al generar el Excel: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
-    }
+ }
 
