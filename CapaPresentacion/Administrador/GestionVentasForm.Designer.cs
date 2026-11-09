@@ -55,9 +55,10 @@
             this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colFechaVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colVerDetalle = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colVerDetalle = new System.Windows.Forms.DataGridViewImageColumn();
             this.lblTituloHistorialVentas = new System.Windows.Forms.Label();
             this.pnlCardTotalVentas = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblCantTotalVentas = new System.Windows.Forms.Label();
             this.lblTituloTotalVentas = new System.Windows.Forms.Label();
             this.pnlContenedorFiltros = new Guna.UI2.WinForms.Guna2ShadowPanel();
@@ -77,7 +78,6 @@
             this.lblFiltrarMetodoPago = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
-            this.btnCancelar = new Guna.UI2.WinForms.Guna2Button();
             this.btnAplicarAjusteFormaPago = new Guna.UI2.WinForms.Guna2Button();
             this.label13 = new System.Windows.Forms.Label();
             this.txtPorcentajeAjuste = new System.Windows.Forms.NumericUpDown();
@@ -93,6 +93,7 @@
             this.pnlContenedorHistorialVentas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistorialVentas)).BeginInit();
             this.pnlCardTotalVentas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlContenedorFiltros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.guna2ShadowPanel1.SuspendLayout();
@@ -180,7 +181,7 @@
             this.pnlContenedorHistorialVentas.FillColor = System.Drawing.Color.Transparent;
             this.pnlContenedorHistorialVentas.Location = new System.Drawing.Point(12, 276);
             this.pnlContenedorHistorialVentas.Name = "pnlContenedorHistorialVentas";
-            this.pnlContenedorHistorialVentas.Size = new System.Drawing.Size(1146, 312);
+            this.pnlContenedorHistorialVentas.Size = new System.Drawing.Size(1146, 390);
             this.pnlContenedorHistorialVentas.TabIndex = 60;
             // 
             // btnExportarPDF
@@ -266,7 +267,7 @@
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvHistorialVentas.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvHistorialVentas.RowTemplate.Height = 23;
-            this.dgvHistorialVentas.Size = new System.Drawing.Size(1135, 246);
+            this.dgvHistorialVentas.Size = new System.Drawing.Size(1135, 350);
             this.dgvHistorialVentas.TabIndex = 7;
             this.dgvHistorialVentas.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
             this.dgvHistorialVentas.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
@@ -278,6 +279,7 @@
             this.dgvHistorialVentas.ThemeStyle.RowsStyle.Height = 23;
             this.dgvHistorialVentas.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
             this.dgvHistorialVentas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHistorialVentas_CellContentClick);
+            this.dgvHistorialVentas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHistorialVentas_CellFormatting);
             // 
             // colNroVenta
             // 
@@ -332,7 +334,9 @@
             // colVerDetalle
             // 
             this.colVerDetalle.HeaderText = "VerDetalles";
+            this.colVerDetalle.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.colVerDetalle.Name = "colVerDetalle";
+            this.colVerDetalle.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // lblTituloHistorialVentas
             // 
@@ -348,22 +352,37 @@
             // 
             // pnlCardTotalVentas
             // 
-            this.pnlCardTotalVentas.BorderRadius = 10;
+            this.pnlCardTotalVentas.BorderColor = System.Drawing.Color.Gray;
+            this.pnlCardTotalVentas.BorderThickness = 2;
+            this.pnlCardTotalVentas.Controls.Add(this.pictureBox1);
             this.pnlCardTotalVentas.Controls.Add(this.lblCantTotalVentas);
             this.pnlCardTotalVentas.Controls.Add(this.lblTituloTotalVentas);
-            this.pnlCardTotalVentas.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(60)))), ((int)(((byte)(150)))));
-            this.pnlCardTotalVentas.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(116)))), ((int)(((byte)(240)))));
+            this.pnlCardTotalVentas.CustomBorderColor = System.Drawing.Color.Purple;
+            this.pnlCardTotalVentas.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.pnlCardTotalVentas.FillColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pnlCardTotalVentas.FillColor2 = System.Drawing.Color.White;
             this.pnlCardTotalVentas.Location = new System.Drawing.Point(557, 67);
             this.pnlCardTotalVentas.Name = "pnlCardTotalVentas";
             this.pnlCardTotalVentas.Size = new System.Drawing.Size(174, 80);
             this.pnlCardTotalVentas.TabIndex = 62;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::CapaPresentacion.Properties.Resources.carritocomprasnegro;
+            this.pictureBox1.Location = new System.Drawing.Point(108, 30);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(51, 36);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 20;
+            this.pictureBox1.TabStop = false;
             // 
             // lblCantTotalVentas
             // 
             this.lblCantTotalVentas.AutoSize = true;
             this.lblCantTotalVentas.BackColor = System.Drawing.Color.Transparent;
             this.lblCantTotalVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantTotalVentas.ForeColor = System.Drawing.Color.White;
+            this.lblCantTotalVentas.ForeColor = System.Drawing.Color.Black;
             this.lblCantTotalVentas.Location = new System.Drawing.Point(23, 36);
             this.lblCantTotalVentas.Name = "lblCantTotalVentas";
             this.lblCantTotalVentas.Size = new System.Drawing.Size(32, 33);
@@ -375,7 +394,7 @@
             this.lblTituloTotalVentas.AutoSize = true;
             this.lblTituloTotalVentas.BackColor = System.Drawing.Color.Transparent;
             this.lblTituloTotalVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloTotalVentas.ForeColor = System.Drawing.Color.White;
+            this.lblTituloTotalVentas.ForeColor = System.Drawing.Color.Black;
             this.lblTituloTotalVentas.Location = new System.Drawing.Point(3, 16);
             this.lblTituloTotalVentas.Name = "lblTituloTotalVentas";
             this.lblTituloTotalVentas.Size = new System.Drawing.Size(99, 16);
@@ -402,10 +421,10 @@
             this.pnlContenedorFiltros.FillColor = System.Drawing.Color.White;
             this.pnlContenedorFiltros.Location = new System.Drawing.Point(9, 67);
             this.pnlContenedorFiltros.Name = "pnlContenedorFiltros";
-            this.pnlContenedorFiltros.Radius = 5;
             this.pnlContenedorFiltros.ShadowColor = System.Drawing.Color.Black;
-            this.pnlContenedorFiltros.ShadowDepth = 25;
+            this.pnlContenedorFiltros.ShadowDepth = 150;
             this.pnlContenedorFiltros.ShadowShift = 3;
+            this.pnlContenedorFiltros.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
             this.pnlContenedorFiltros.Size = new System.Drawing.Size(542, 178);
             this.pnlContenedorFiltros.TabIndex = 63;
             // 
@@ -428,7 +447,7 @@
             "Tarjeta"});
             this.cmbFiltroEstado.Location = new System.Drawing.Point(407, 35);
             this.cmbFiltroEstado.Name = "cmbFiltroEstado";
-            this.cmbFiltroEstado.Size = new System.Drawing.Size(150, 27);
+            this.cmbFiltroEstado.Size = new System.Drawing.Size(132, 27);
             this.cmbFiltroEstado.StartIndex = 0;
             this.cmbFiltroEstado.TabIndex = 55;
             this.cmbFiltroEstado.SelectedIndexChanged += new System.EventHandler(this.cmbFiltroEstado_SelectedIndexChanged);
@@ -636,7 +655,6 @@
             // guna2ShadowPanel1
             // 
             this.guna2ShadowPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ShadowPanel1.Controls.Add(this.btnCancelar);
             this.guna2ShadowPanel1.Controls.Add(this.btnAplicarAjusteFormaPago);
             this.guna2ShadowPanel1.Controls.Add(this.label13);
             this.guna2ShadowPanel1.Controls.Add(this.txtPorcentajeAjuste);
@@ -649,35 +667,17 @@
             this.guna2ShadowPanel1.FillColor = System.Drawing.Color.White;
             this.guna2ShadowPanel1.Location = new System.Drawing.Point(737, 67);
             this.guna2ShadowPanel1.Name = "guna2ShadowPanel1";
-            this.guna2ShadowPanel1.Radius = 5;
             this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black;
-            this.guna2ShadowPanel1.ShadowDepth = 25;
+            this.guna2ShadowPanel1.ShadowDepth = 150;
             this.guna2ShadowPanel1.ShadowShift = 3;
+            this.guna2ShadowPanel1.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
             this.guna2ShadowPanel1.Size = new System.Drawing.Size(431, 181);
             this.guna2ShadowPanel1.TabIndex = 64;
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.BackColor = System.Drawing.Color.Transparent;
-            this.btnCancelar.BorderRadius = 5;
-            this.btnCancelar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnCancelar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnCancelar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnCancelar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnCancelar.FillColor = System.Drawing.Color.Silver;
-            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnCancelar.ForeColor = System.Drawing.Color.Black;
-            this.btnCancelar.Location = new System.Drawing.Point(185, 135);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(89, 27);
-            this.btnCancelar.TabIndex = 52;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnAplicarAjusteFormaPago
             // 
             this.btnAplicarAjusteFormaPago.BackColor = System.Drawing.Color.Transparent;
-            this.btnAplicarAjusteFormaPago.BorderRadius = 5;
+            this.btnAplicarAjusteFormaPago.BorderRadius = 3;
             this.btnAplicarAjusteFormaPago.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAplicarAjusteFormaPago.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnAplicarAjusteFormaPago.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -825,6 +825,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistorialVentas)).EndInit();
             this.pnlCardTotalVentas.ResumeLayout(false);
             this.pnlCardTotalVentas.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlContenedorFiltros.ResumeLayout(false);
             this.pnlContenedorFiltros.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
@@ -873,9 +874,10 @@
         private Guna.UI2.WinForms.Guna2Button btnAplicarAjusteFormaPago;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.NumericUpDown txtPorcentajeAjuste;
-        private Guna.UI2.WinForms.Guna2Button btnCancelar;
         private Guna.UI2.WinForms.Guna2TextBox txtBuscarClienteDni;
         private System.Windows.Forms.Label label1;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbFiltroEstado;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNroVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDniCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCliente;
@@ -886,8 +888,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFechaVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEstado;
-        private System.Windows.Forms.DataGridViewButtonColumn colVerDetalle;
-        private Guna.UI2.WinForms.Guna2ComboBox cmbFiltroEstado;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridViewImageColumn colVerDetalle;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

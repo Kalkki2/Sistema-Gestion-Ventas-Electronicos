@@ -265,5 +265,17 @@ namespace CapaPresentacion.Administrador
         {
             FiltrarHistorial(aplicarFechas: false);
         }
+
+        private void dgvHistorialVentas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.RowIndex == dgvHistorialVentas.NewRowIndex) return;
+
+            string colName = dgvHistorialVentas.Columns[e.ColumnIndex].Name;
+
+            if (colName == "colVerDetalle")
+            {
+                e.Value = Properties.Resources.icono_editar;
+            }
+        }
     }
 }

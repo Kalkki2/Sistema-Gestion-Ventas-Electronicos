@@ -21,6 +21,7 @@ namespace CapaPresentacion.Administrador
             InitializeComponent();
         }
 
+
         private void btnBuscarProveedor_Click(object sender, EventArgs e)
         {
             if (dgvItemsCompra.Rows.Count > 0)
@@ -38,7 +39,7 @@ namespace CapaPresentacion.Administrador
                 {
                     if (frm._Proveedor != null)
                     {
-                        // Guardamos el ID por si acaso para después
+                        // Guardamos el ID  para después
                         idProveedorSeleccionado = frm._Proveedor.proveedor_id;
 
                         // Cargamos los datos del proveedor seleccionado en los TextBox de la compra
@@ -79,7 +80,7 @@ namespace CapaPresentacion.Administrador
 
         private void btnGenerarCompra_Click(object sender, EventArgs e)
         {
-            // 1. Validaciones previas
+            // Validaciones previas
             if (string.IsNullOrWhiteSpace(txtNroFactura.Text))
             {
                 MessageBox.Show("Debe ingresar el número de factura o comprobante.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -99,7 +100,7 @@ namespace CapaPresentacion.Administrador
                 return;
             }
 
-            // 2. Confirmación del usuario antes de guardar
+            // Confirmación del usuario antes de guardar
             DialogResult respuesta = MessageBox.Show(
                 "¿Está seguro de que desea generar esta nueva compra?",
                 "Confirmar registro",
@@ -114,7 +115,7 @@ namespace CapaPresentacion.Administrador
 
             try
             {
-                // 3. Crear el objeto de Cabecera (Compra)
+                //  Crear el objeto de Cabecera (Compra)
                 ECompra objCompra = new ECompra()
                 {
                     nro_factura = txtNroFactura.Text.Trim(),
@@ -123,7 +124,7 @@ namespace CapaPresentacion.Administrador
                     proveedor_id = idProveedorSeleccionado
                 };
 
-                // 4. Recorrer la grilla para armar la lista de detalles
+                // Recorrer la grilla para armar la lista de detalles
                 List<EDetalleCompra> listaDetalles = new List<EDetalleCompra>();
 
                 foreach (DataGridViewRow row in dgvItemsCompra.Rows)
@@ -137,10 +138,10 @@ namespace CapaPresentacion.Administrador
                     });
                 }
 
-                // 5. Enviar a la Capa de Negocio
+                // Enviar a la Capa de Negocio
                 CNCompra objCNCompra = new CNCompra();
                 string mensaje = string.Empty;
-                bool exito = objCNCompra.Registrar(objCompra, listaDetalles, out mensaje);
+                bool exito = objCNCompra.RegistrarcCompra(objCompra, listaDetalles, out mensaje);
 
                 if (exito)
                 {
@@ -231,10 +232,10 @@ namespace CapaPresentacion.Administrador
             decimal precioVenta = 0;
             decimal.TryParse(txtNuevoPrecioVenta.Text.Replace(".", ","), out precioVenta);
 
-            // 2. Calcular el Subtotal de la línea
+            // Calcular el Subtotal de la línea
             decimal subtotal = cantidad * costoUnitario;
 
-            // 3. Validar si el producto ya fue agregado a la grilla usando la columna oculta
+            // Validar si el producto ya fue agregado a la grilla usando la columna oculta
             foreach (DataGridViewRow row in dgvItemsCompra.Rows)
             {
                 if (row.Cells["colProductoId"].Value != null && Convert.ToInt32(row.Cells["colProductoId"].Value) == idProductoSeleccionado)
@@ -244,7 +245,7 @@ namespace CapaPresentacion.Administrador
                 }
             }
 
-            // 4. Agregar la fila a la grilla (La primera posición es el ID oculto, la segunda el NroItem visual)
+            // Agregar la fila a la grilla (La primera posición es el ID oculto, la segunda el NroItem visual)
             int nroItem = dgvItemsCompra.Rows.Count + 1;
             dgvItemsCompra.Rows.Add(new object[] {
                 idProductoSeleccionado,            // colProductoId (Oculta)
@@ -421,6 +422,22 @@ namespace CapaPresentacion.Administrador
             txtCantidadCompra.Value = 0;
         }
 
+        private void dgvItemsCompra_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.RowIndex == dgvItemsCompra.NewRowIndex) return;
 
+            string colName = dgvItemsCompra.Columns[e.ColumnIndex].Name;
+
+            if (colName == "colEditar")
+            {
+                e.Value = Properties.Resources.icono_editar;
+            }
+
+            if (colName == "colEliminar")
+            {
+                e.Value = Properties.Resources.icono_eliminar;
+            }
+            
+        }
     }
 }

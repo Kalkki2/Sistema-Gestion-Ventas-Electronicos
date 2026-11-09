@@ -39,6 +39,58 @@ namespace CapaPresentacion.Administrador
              CargarFiltros();
         }
 
+        private void CargarProveedores()
+        {
+            dgvListaProveedores.AutoGenerateColumns = false;
+
+            dgvListaProveedores.Columns["colCuit"].DataPropertyName = "cuit";
+            dgvListaProveedores.Columns["colNombreComercial"].DataPropertyName = "nombre_comercial";
+            dgvListaProveedores.Columns["colRazonSocial"].DataPropertyName = "razon_social";
+            dgvListaProveedores.Columns["colDireccion"].DataPropertyName = "direccion";
+            dgvListaProveedores.Columns["colCorreo"].DataPropertyName = "email";
+            dgvListaProveedores.Columns["colTelefono"].DataPropertyName = "telefono";
+            dgvListaProveedores.Columns["colCategoria"].DataPropertyName = "CategoriasTexto";
+            dgvListaProveedores.Columns["colEstado"].DataPropertyName = "EstadoTexto";
+            dgvListaProveedores.Columns["colFechaAlta"].DataPropertyName = "fecha_alta";
+            dgvListaProveedores.Columns["colFechaModificacion"].DataPropertyName = "fecha_ultima_modificacion";
+
+            var listaProveedores = objCNProveedor.ListarProveedores();
+
+            dgvListaProveedores.DataSource = listaProveedores;
+            lblCantTotalProveedores.Text = listaProveedores.Count.ToString(); // Ajusta el nombre del label si tu etiqueta de total se llama distinto
+        }
+
+        private void CargarCmbEstado()
+        {
+            cmbEstado.Items.Clear();
+            cmbEstado.Items.Add(new OpcionCombo { Texto = "Activo", Valor = 1 });
+            cmbEstado.Items.Add(new OpcionCombo { Texto = "Inactivo", Valor = 0 });
+            cmbEstado.DisplayMember = "Texto";
+            cmbEstado.ValueMember = "Valor";
+            cmbEstado.SelectedIndex = 0; // Por defecto Activo
+        }
+
+        private void CargarFiltros()
+        {
+            //Carga los comboBox de las estados
+            cmbFiltroEstado.Items.Clear();
+            cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Todos", Valor = null });
+            cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Activo", Valor = 1 });
+            cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Inactivo", Valor = 0 });
+            cmbFiltroEstado.DisplayMember = "Texto";
+            cmbFiltroEstado.ValueMember = "Valor";
+            cmbFiltroEstado.SelectedIndex = 0;
+
+            //Carga los comboBox de las Categorias
+            var listaCat = objCNProducto.ListarCategorias();
+            listaCat.Insert(0, new ECategoria { categoria_id = 0, nombre = "Todos" });
+            cmbFiltroCategoria.DataSource = listaCat;
+            cmbFiltroCategoria.DisplayMember = "nombre";
+            cmbFiltroCategoria.ValueMember = "categoria_id";
+            cmbFiltroCategoria.SelectedIndex = 0;
+        }
+
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtNombreComercial.Text) && string.IsNullOrWhiteSpace(txtRazonSocial.Text) && string.IsNullOrWhiteSpace(txtCuit.Text) &&
@@ -55,27 +107,9 @@ namespace CapaPresentacion.Administrador
 
         private void btnAgregarProveedor_Click(object sender, EventArgs e)
         {
-            // Valida que los TextBox no tengan errores activos del ErrorProvider o estén vacíos
-            if (!string.IsNullOrEmpty(errorProvider1.GetError(txtDireccion)) ||
-                !string.IsNullOrEmpty(errorProvider1.GetError(txtTelefono)) ||
-                !string.IsNullOrEmpty(errorProvider1.GetError(txtCorreo)) ||
-                !string.IsNullOrEmpty(errorProvider1.GetError(txtRazonSocial)) ||
-                !string.IsNullOrEmpty(errorProvider1.GetError(txtCuit)) ||
-                !string.IsNullOrEmpty(errorProvider1.GetError(txtNombreComercial)) ||
-                string.IsNullOrWhiteSpace(txtNombreComercial.Text) ||
-                string.IsNullOrWhiteSpace(txtRazonSocial.Text) ||
-                string.IsNullOrWhiteSpace(txtCuit.Text) ||
-                string.IsNullOrWhiteSpace(txtCorreo.Text) ||
-                string.IsNullOrWhiteSpace(txtTelefono.Text) ||
-                string.IsNullOrWhiteSpace(txtDireccion.Text))
+            if (!ValidarCamposProveedor())
             {
-                MessageBox.Show("Hay campos con errores o vacíos. Corríjalos antes de agregar.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (cmbEstado.SelectedItem == null)
-            {
-                MessageBox.Show("Debe seleccionar un estado.", "Selección requerida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Existen campos vacíos o con datos incorrectos. Por favor, revíselos.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -102,7 +136,7 @@ namespace CapaPresentacion.Administrador
                 DialogResult respuesta = MessageBox.Show("¿Está seguro de que desea registrar este nuevo proveedor?", "Confirmar registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (respuesta == DialogResult.No) return;
 
-                resultado = objCNProveedor.Registrar(oProveedor, out mensaje);
+                resultado = objCNProveedor.RegistrarProveedor(oProveedor, out mensaje);
             }
             else
             {
@@ -145,158 +179,7 @@ namespace CapaPresentacion.Administrador
             txtNombreComercial.Focus();
         }
 
-        private void txtNombreComercial_Validating(object sender, CancelEventArgs e)
-        {
-            if (!Regex.IsMatch(txtNombreComercial.Text, "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$"))
-            {
-                errorProvider1.SetError(txtNombreComercial, "El nombre comercial solo debe contener letras.");
-            }
-            else if (txtNombreComercial.Text.Length < 3 || txtNombreComercial.Text.Length > 40)
-            {
-                errorProvider1.SetError(txtNombreComercial, "El nombre comercial  debe tener entre 3 y 40 caracteres.");
-            }
-            else
-            {
-                errorProvider1.SetError(txtNombreComercial, "");
-            }
-        }
 
-        private void txtRazonSocial_Validating(object sender, CancelEventArgs e)
-        {
-            if (!Regex.IsMatch(txtRazonSocial.Text, "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$"))
-            {
-                errorProvider1.SetError(txtRazonSocial, "LA razon social solo debe contener letras.");
-            }
-            else if (txtRazonSocial.Text.Length < 3 || txtRazonSocial.Text.Length > 40)
-            {
-                errorProvider1.SetError(txtRazonSocial, "LA razon social  debe tener entre 3 y 40 caracteres.");
-            }
-            else
-            {
-                errorProvider1.SetError(txtRazonSocial, "");
-            }
-        }
-
-        private void txtCuit_Validating(object sender, CancelEventArgs e)
-        {
-            string cuit = txtCuit.Text.Trim();
-
-            if (!ulong.TryParse(cuit, out _))
-            {
-                errorProvider1.SetError(txtCuit, "El CUIT solo debe contener números.");
-            }
-            else if (cuit.Length != 11)
-            {
-                errorProvider1.SetError(txtCuit, "El CUIT debe tener exactamente 11 dígitos.");
-            }
-            else
-            {
-                errorProvider1.SetError(txtCuit, "");
-            }
-        }
-
-        private void txtCorreo_Validating(object sender, CancelEventArgs e)
-        {
-            string patronCorreo = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
-
-            if (!Regex.IsMatch(txtCorreo.Text, patronCorreo))
-            {
-                errorProvider1.SetError(txtCorreo, "Ingrese un correo electrónico válido (ej: usuario@dominio.com).");
-            }
-            else
-            {
-                errorProvider1.SetError(txtCorreo, "");
-            }
-        }
-
-        private void txtTelefono_Validating(object sender, CancelEventArgs e)
-        {
-            string telefono = txtTelefono.Text.Trim();
-
-            if (!ulong.TryParse(telefono, out _))
-            {
-                errorProvider1.SetError(txtTelefono, "El TELEFONO solo debe contener números.");
-            }
-            else if (telefono.Length != 10)
-            {
-                errorProvider1.SetError(txtTelefono, "El TELEFONO debe tener exactamente 10 dígitos.");
-            }
-            else
-            {
-                errorProvider1.SetError(txtTelefono, "");
-            }
-        }
-
-        private void txtDireccion_Validating(object sender, CancelEventArgs e)
-        {
-            if (!Regex.IsMatch(txtDireccion.Text, "^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\\s]+$"))
-            {
-                errorProvider1.SetError(txtDireccion, "La dirección solo debe contener letras y números.");
-            }
-            else if (txtDireccion.Text.Length < 3 || txtDireccion.Text.Length > 40)
-            {
-                errorProvider1.SetError(txtDireccion, "La dirección debe tener entre 3 y 40 caracteres.");
-            }
-            else
-            {
-                errorProvider1.SetError(txtDireccion, "");
-            }
-        }
-        
-
-        private void CargarProveedores()
-        {
-            dgvListaProveedores.AutoGenerateColumns = false;
-
-            //  Mapear las columnas con las propiedades de EProveedor
-            dgvListaProveedores.Columns["colCuit"].DataPropertyName = "cuit";
-            dgvListaProveedores.Columns["colNombreComercial"].DataPropertyName = "nombre_comercial";
-            dgvListaProveedores.Columns["colRazonSocial"].DataPropertyName = "razon_social";
-            dgvListaProveedores.Columns["colDireccion"].DataPropertyName = "direccion";
-            dgvListaProveedores.Columns["colCorreo"].DataPropertyName = "email";
-            dgvListaProveedores.Columns["colTelefono"].DataPropertyName = "telefono";
-            dgvListaProveedores.Columns["colCategoria"].DataPropertyName = "CategoriasTexto";
-            dgvListaProveedores.Columns["colEstado"].DataPropertyName = "EstadoTexto";
-            dgvListaProveedores.Columns["colFechaAlta"].DataPropertyName = "fecha_alta";
-            dgvListaProveedores.Columns["colFechaModificacion"].DataPropertyName = "fecha_ultima_modificacion";
-
-            // Obtener la lista desde la Capa de Negocio
-            var lista = objCNProveedor.Listar();
-
-            // Asignar origen de datos y actualizar tarjeta de total
-            dgvListaProveedores.DataSource = lista;
-            lblCantTotalProveedores.Text = lista.Count.ToString(); // Ajusta el nombre del label si tu etiqueta de total se llama distinto
-        }
-
-        private void CargarCmbEstado()
-        {
-            cmbEstado.Items.Clear();
-            cmbEstado.Items.Add(new OpcionCombo { Texto = "Activo", Valor = 1 });
-            cmbEstado.Items.Add(new OpcionCombo { Texto = "Inactivo", Valor = 0 });
-            cmbEstado.DisplayMember = "Texto";
-            cmbEstado.ValueMember = "Valor";
-            cmbEstado.SelectedIndex = 0; // Por defecto Activo
-        }
-
-        private void CargarFiltros()
-        {
-            //Carga los comboBox de las estados
-            cmbFiltroEstado.Items.Clear();
-            cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Todos", Valor = null });
-            cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Activo", Valor = 1 });
-            cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Inactivo", Valor = 0 });
-            cmbFiltroEstado.DisplayMember = "Texto";
-            cmbFiltroEstado.ValueMember = "Valor";
-            cmbFiltroEstado.SelectedIndex = 0;
-
-            //Carga los comboBox de las Categorias
-            var listaCat = objCNProducto.ListarCategorias();
-            listaCat.Insert(0, new ECategoria { categoria_id = 0, nombre = "Todos" });
-            cmbFiltroCategoria.DataSource = listaCat;
-            cmbFiltroCategoria.DisplayMember = "nombre";
-            cmbFiltroCategoria.ValueMember = "categoria_id";
-            cmbFiltroCategoria.SelectedIndex = 0;
-        }
 
         private void dgvListaProveedores_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -378,7 +261,7 @@ namespace CapaPresentacion.Administrador
                     if (result == DialogResult.Yes)
                     {
                         string mensajeError = string.Empty;
-                        bool respuesta = objCNProveedor.CambiarEstado(proveedorRow.proveedor_id, nuevoEstado, out mensajeError);
+                        bool respuesta = objCNProveedor.CambiarEstadoProveedor(proveedorRow.proveedor_id, nuevoEstado, out mensajeError);
 
                         if (respuesta)
                         {
@@ -395,25 +278,22 @@ namespace CapaPresentacion.Administrador
             }
         }
 
-        private void txtBuscarProveedor_TextChanged(object sender, EventArgs e)
-        {
-            // Obtenemos lo que el usuario va escribiendo
-            string busqueda = txtBuscarProveedor.Text.Trim();
 
-            // Si el cuadro de texto está vacío, cargamos todos los proveedores normales
-            if (string.IsNullOrWhiteSpace(busqueda))
+        private bool ValidarCajaTexto(Control txt, string mensajeError, int min, int max, bool soloLetras)
+        {
+            string texto = txt.Text.Trim();
+
+            if (string.IsNullOrEmpty(texto) || texto.Length < min || texto.Length > max || (soloLetras && !Regex.IsMatch(texto, "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$")))
             {
-                CargarProveedores();
-                return;
+                errorProvider1.SetError(txt, mensajeError);
+                txt.Focus();
+                return false; // Falló la validación
             }
 
-            // Llamamos directamente a tu método de la capa de negocio que ya tienes creado
-            var resultados = objCNProveedor.Buscar(busqueda);
-
-            // Actualizamos el DataGridView y el contador
-            dgvListaProveedores.DataSource = resultados;
-            lblCantTotalProveedores.Text = resultados.Count.ToString();
+            errorProvider1.SetError(txt, ""); // Limpia el error si está bien
+            return true; // Pasó
         }
+
 
         private void cmbFiltroEstado_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -447,6 +327,131 @@ namespace CapaPresentacion.Administrador
 
             dgvListaProveedores.DataSource = listaFiltrada;
             lblCantTotalProveedores.Text = listaFiltrada.Count.ToString();
+        }
+
+        private void txtBuscarProveedor_TextChanged(object sender, EventArgs e)
+        {
+            string busqueda = txtBuscarProveedor.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(busqueda))
+            {
+                CargarProveedores();
+                return;
+            }
+
+            var resultados = objCNProveedor.BuscarProveedorPorCuitOCorreo(busqueda);
+
+            dgvListaProveedores.DataSource = resultados;
+            lblCantTotalProveedores.Text = resultados.Count.ToString();
+        }
+
+        private bool ValidarCamposProveedor()
+        {
+            bool esValido = true;
+            errorProvider1.Clear(); // Limpia errores anteriores
+
+            // Validar Nombre Comercial (Obligatorio, solo letras, entre 3 y 40 caracteres)
+            string nombreComercial = txtNombreComercial.Text.Trim();
+            if (string.IsNullOrWhiteSpace(nombreComercial))
+            {
+                errorProvider1.SetError(txtNombreComercial, "El nombre comercial es obligatorio.");
+                esValido = false;
+            }
+            else if (!Regex.IsMatch(nombreComercial, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"))
+            {
+                errorProvider1.SetError(txtNombreComercial, "El nombre comercial solo debe contener letras.");
+                esValido = false;
+            }
+            else if (nombreComercial.Length < 3 || nombreComercial.Length > 40)
+            {
+                errorProvider1.SetError(txtNombreComercial, "Debe tener entre 3 y 40 caracteres.");
+                esValido = false;
+            }
+
+            // Validar Razón Social (Obligatorio, solo letras, entre 3 y 40 caracteres)
+            string razonSocial = txtRazonSocial.Text.Trim();
+            if (string.IsNullOrWhiteSpace(razonSocial))
+            {
+                errorProvider1.SetError(txtRazonSocial, "La razón social es obligatoria.");
+                esValido = false;
+            }
+            else if (!Regex.IsMatch(razonSocial, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"))
+            {
+                errorProvider1.SetError(txtRazonSocial, "La razón social solo debe contener letras.");
+                esValido = false;
+            }
+            else if (razonSocial.Length < 3 || razonSocial.Length > 40)
+            {
+                errorProvider1.SetError(txtRazonSocial, "Debe tener entre 3 y 40 caracteres.");
+                esValido = false;
+            }
+
+            // 3. Validar CUIT (Obligatorio, estrictamente numérico y exactamente 11 caracteres)
+            string cuit = txtCuit.Text.Trim();
+            if (string.IsNullOrWhiteSpace(cuit))
+            {
+                errorProvider1.SetError(txtCuit, "El CUIT es obligatorio.");
+                esValido = false;
+            }
+            else if (!Regex.IsMatch(cuit, @"^\d{11}$"))
+            {
+                errorProvider1.SetError(txtCuit, "El CUIT debe ser numérico y tener exactamente 11 caracteres.");
+                esValido = false;
+            }
+
+            // 4. Validar Correo (Obligatorio, más de 10 caracteres y formato válido)
+            string correo = txtCorreo.Text.Trim();
+            string patronCorreo = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            if (string.IsNullOrWhiteSpace(correo))
+            {
+                errorProvider1.SetError(txtCorreo, "El correo electrónico es obligatorio.");
+                esValido = false;
+            }
+            else if (correo.Length <= 10)
+            {
+                errorProvider1.SetError(txtCorreo, "El correo debe tener más de 10 caracteres.");
+                esValido = false;
+            }
+            else if (!Regex.IsMatch(correo, patronCorreo))
+            {
+                errorProvider1.SetError(txtCorreo, "Correo inválido. Ejemplo: proveedor@dominio.com");
+                esValido = false;
+            }
+
+            // Validar Teléfono (Obligatorio, numérico, exactamente 10 dígitos)
+            string telefono = txtTelefono.Text.Trim();
+            if (string.IsNullOrWhiteSpace(telefono))
+            {
+                errorProvider1.SetError(txtTelefono, "El teléfono es obligatorio.");
+                esValido = false;
+            }
+            else if (!Regex.IsMatch(telefono, @"^\d{10}$"))
+            {
+                errorProvider1.SetError(txtTelefono, "El teléfono debe ser numérico y tener exactamente 10 dígitos.");
+                esValido = false;
+            }
+
+            // Validar Dirección (Obligatorio, más de 10 caracteres)
+            string direccion = txtDireccion.Text.Trim();
+            if (string.IsNullOrWhiteSpace(direccion))
+            {
+                errorProvider1.SetError(txtDireccion, "La dirección es obligatoria.");
+                esValido = false;
+            }
+            else if (direccion.Length <= 10)
+            {
+                errorProvider1.SetError(txtDireccion, "La dirección debe tener más de 10 caracteres.");
+                esValido = false;
+            }
+
+            // Validar ComboBox de Estado (Obligatorio)
+            if (cmbEstado.SelectedIndex == -1 || cmbEstado.SelectedItem == null)
+            {
+                errorProvider1.SetError(cmbEstado, "Debe seleccionar un estado.");
+                esValido = false;
+            }
+
+            return esValido;
         }
     }
 }

@@ -10,6 +10,7 @@ namespace CapaDatos
 {
     public class CDCompra
     {
+            // Metodo REGISTRAR COMPRA A Proveedor (Nueva compra)
             public bool RegistrarCompra(ECompra objCompra, List<EDetalleCompra> listaDetalles, out string Mensaje)
             {
             Mensaje = string.Empty;
@@ -93,6 +94,7 @@ namespace CapaDatos
             }
         }
 
+        // Metodo LISTAR TODAS LAS COMPRAS (Nueva compra)
         public List<ECompra> ListarHistorialCompras()
         {
             using (var db = new db_sistema_gestion_ventas_electronicosEntities())

@@ -40,37 +40,73 @@ namespace CapaPresentacion.Administrador
             CNProducto objCN = new CNProducto();
             dgvListaProductos.DataSource = objCN.ListarProductosPorProveedor(_idProveedorSeleccionado);
         }
-        
-
-        private void btnBuscarProducto_Click(object sender, EventArgs e)
-        {
-            string busqueda = txtBuscarProducto.Text.Trim();
-
-            var lista = objCNProducto.ListarProductosPorProveedor(_idProveedorSeleccionado);
-
-            if (!string.IsNullOrWhiteSpace(busqueda))
-            {
-                // Filtramos localmente por código o nombre de los productos de ese proveedor
-                var listaFiltrada = lista.Where(p => p.codigo.Contains(busqueda) || p.nombre.Contains(busqueda)).ToList();
-                dgvListaProductos.DataSource = listaFiltrada;
-            }
-            else
-            {
-                dgvListaProductos.DataSource = lista;
-            }
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+       
+
+        private void BuscarProductoCompraForm_Load(object sender, EventArgs e)
+        {
+            CargarProductosPorProveedor();
+            CargarComboMarcas();
+        }
+
+        private void dgvListaProductos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.RowIndex == dgvListaProductos.NewRowIndex) return;
+
+            string colName = dgvListaProductos.Columns[e.ColumnIndex].Name;
+
+            if (colName == "btnSeleccionar")
+            {
+                e.Value = Properties.Resources.dedo;
+            }
+        }
+
+        private void CargarComboMarcas()
+        {
+            var listaMarca = objCNProducto.ListarMarcas();
+            listaMarca.Insert(0, new EMarca { marca_id = 0, nombre = "Todos" });
+            cmbFiltroMarca.DataSource = listaMarca;
+            cmbFiltroMarca.DisplayMember = "nombre";
+            cmbFiltroMarca.ValueMember = "marca_id";
+            cmbFiltroMarca.SelectedIndex = 0;
+        }
+
+        private void EjecutarBusqueda()
+        {
+            string textoBusqueda = txtBuscarProducto.Text.Trim(); // Nombre de tu TextBox de búsqueda
+            int idMarcaSeleccionada = 0;
+
+            if (cmbFiltroMarca.SelectedValue != null)
+            {
+                int.TryParse(cmbFiltroMarca.SelectedValue.ToString(), out idMarcaSeleccionada);
+            }
+
+            var listaFiltrada = objCNProducto.BuscarProductosPorFiltro(_idProveedorSeleccionado, textoBusqueda, idMarcaSeleccionada);
+
+            dgvListaProductos.DataSource = listaFiltrada;
+        }
+
+        private void txtBuscarProducto_TextChanged(object sender, EventArgs e)
+        {
+            EjecutarBusqueda();
+        }
+
+        private void cmbFiltroMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbFiltroMarca.SelectedIndex == -1) return;
+            EjecutarBusqueda();
+        }
+
         private void dgvListaProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Al hacer clic en el botón de la fila, extraemos el objeto y cerramos el modal con OK
             if (e.RowIndex >= 0)
             {
-                if (dgvListaProductos.Columns[e.ColumnIndex].Name == "colSeleccionar" ||
+                if (dgvListaProductos.Columns[e.ColumnIndex].Name == "btnSeleccionar" ||
                     dgvListaProductos.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
                 {
                     _Producto = (EProducto)dgvListaProductos.Rows[e.RowIndex].DataBoundItem;
@@ -79,11 +115,6 @@ namespace CapaPresentacion.Administrador
                     this.Close();
                 }
             }
-        }
-
-        private void BuscarProductoCompraForm_Load(object sender, EventArgs e)
-        {
-            CargarProductosPorProveedor();
         }
     }
 }

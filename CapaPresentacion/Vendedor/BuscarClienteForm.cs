@@ -15,33 +15,11 @@ namespace CapaPresentacion.Vendedor
     public partial class BuscarClienteForm : Form
     {
         private readonly CNCliente objCNCliente = new CNCliente();
-        private List<ECliente> clientes = new List<ECliente>();
-
         public ECliente ClienteSeleccionado { get; private set; }
 
         public BuscarClienteForm()
         {
             InitializeComponent();
-            ConfigurarGrilla();
-            CargarClientes();
-
-            // Filtra mientras se escribe
-            txtBuscarCliente.TextChanged += (s, e) => CargarClientes(txtBuscarCliente.Text.Trim());
-
-            dgvListaClientes.CellContentClick -= dgvListaClientes_CellContentClick;
-            dgvListaClientes.CellContentClick += dgvListaClientes_CellContentClick;
-
-            DataGridViewButtonColumn colSel = dgvListaClientes.Columns["colSeleccionar"] as DataGridViewButtonColumn;
-            if (colSel != null)
-            {
-                colSel.Text = "Seleccionar";
-                colSel.UseColumnTextForButtonValue = true;
-            }
-        }
-
-        private void btnBuscarCliente_Click(object sender, EventArgs e)
-        {
-            CargarClientes(txtBuscarCliente.Text.Trim());
         }
 
         private void dgvListaClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -59,29 +37,40 @@ namespace CapaPresentacion.Vendedor
             }
         }
 
-        private void ConfigurarGrilla()
-        {
-            dgvListaClientes.AutoGenerateColumns = false;
-            colNroCliente.DataPropertyName = "cliente_id";
-            colDni.DataPropertyName = "dni";
-            colNombre.DataPropertyName = "nombre";
-            colApellido.DataPropertyName = "apellido";
-            colTelefono.DataPropertyName = "telefono";
-            colDireccion.DataPropertyName = "direccion";
-        }
-
-        private void CargarClientes(string filtro = "")
-        {
-            // Lista los clientes de la tabla cliente; el filtro (DNI, nombre, apellido o teléfono) lo resuelve la capa de datos
-            clientes = objCNCliente.Listar(filtro);
-
-            dgvListaClientes.DataSource = null;
-            dgvListaClientes.DataSource = clientes;
-        }
-
         private void BuscarClienteForm_Load(object sender, EventArgs e)
         {
+            CargarCLiente();
+        }
 
+        private void CargarCLiente()
+        {
+            dgvListaClientes.AutoGenerateColumns = false;
+
+            dgvListaClientes.Columns["colNroCliente"].DataPropertyName = "cliente_id";
+            dgvListaClientes.Columns["colDni"].DataPropertyName = "dni";
+            dgvListaClientes.Columns["colApellido"].DataPropertyName = "apellido";
+            dgvListaClientes.Columns["colNombre"].DataPropertyName = "nombre";
+            dgvListaClientes.Columns["colTelefono"].DataPropertyName = "telefono";
+            dgvListaClientes.Columns["colDireccion"].DataPropertyName = "direccion";
+
+            var listaClientes = objCNCliente.Listar("")
+                                    .Where(c => c.estado == 1)
+                                    .ToList();
+            dgvListaClientes.DataSource = listaClientes;
+        }
+
+        private void BuscarClientePorDatos()
+        {
+            string textoBusqueda = txtBuscarCliente.Text.Trim();
+            CNCliente objCNCliente = new CNCliente();
+            var listaFiltrada = objCNCliente.Buscar(textoBusqueda, 1);
+
+            dgvListaClientes.DataSource = listaFiltrada;
+        }
+
+        private void txtBuscarCliente_TextChanged(object sender, EventArgs e)
+        {
+            BuscarClientePorDatos();
         }
     }
 }

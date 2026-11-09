@@ -267,10 +267,9 @@ namespace CapaDatos
                 {
                     valorBusqueda = valorBusqueda.Trim().ToLower();
                     consulta = consulta.Where(c =>
-                        c.dni.ToLower().Contains(valorBusqueda) ||
-                        c.email.ToLower().Contains(valorBusqueda) ||
-                        c.nombre.ToLower().Contains(valorBusqueda) ||
-                        c.apellido.ToLower().Contains(valorBusqueda));
+                        (c.dni != null && c.dni.ToLower().Contains(valorBusqueda)) ||
+                        (c.telefono != null && c.telefono.ToLower().Contains(valorBusqueda)) ||
+                        (c.apellido != null && c.apellido.ToLower().Contains(valorBusqueda)));
                 }
 
                 // 2. Filtro por Estado (-1 = Todos, 1 = Activo, 0 = Inactivo)

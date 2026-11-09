@@ -68,9 +68,21 @@ namespace CapaNegocio
             return objCD_Venta.ObtenerDetalleVenta(ventaId);
         }
 
+        //SECCION VENDEDOR
         public List<EVenta> ListarHistorialVentasPorUsuario(int usuarioId)
         {
             return objCD_Venta.ListarHistorialVentasPorUsuario(usuarioId);
+        }
+
+        public bool CambiarEstado(int ventaId, int nuevoEstado, out string mensaje)
+        {
+            mensaje = string.Empty;
+            if (ventaId <= 0)
+            {
+                mensaje = "El ID de la venta no es válido.";
+                return false;
+            }
+            return objCD_Venta.CambiarEstadoVenta(ventaId, nuevoEstado, out mensaje);
         }
 
         public List<EMarcaVenta> ObtenerVentasPorMarca(DateTime fechaDesde, DateTime fechaHasta)
@@ -125,16 +137,7 @@ namespace CapaNegocio
             return objCD_Venta.ObtenerVentasPorMetodoPago(fechaDesde, fechaHasta);
         }
 
-        public bool CambiarEstado(int ventaId, int nuevoEstado, out string mensaje)
-        {
-            mensaje = string.Empty;
-            if (ventaId <= 0)
-            {
-                mensaje = "El ID de la venta no es válido.";
-                return false;
-            }
-            return objCD_Venta.CambiarEstado(ventaId, nuevoEstado, out mensaje);
-        }
+      
 
         public List<EReporteVentaDetallado> ObtenerReportedetalladoVentas(DateTime fechaDesde, DateTime fechaHasta)
         {

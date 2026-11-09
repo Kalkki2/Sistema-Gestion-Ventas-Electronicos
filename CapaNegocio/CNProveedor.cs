@@ -12,109 +12,59 @@ namespace CapaNegocio
     {
         private CDProveedor objCDProveedor = new CDProveedor();
 
-        // LISTAR Proveedores
-        public List<EProveedor> Listar()
+        // LISTAR TODOS los  Proveedores(Gestion proveedor)
+        public List<EProveedor> ListarProveedores()
         {
             return objCDProveedor.ListarProveedores();
         }
 
-        // REGISTRAR proveedores
-        public bool Registrar(EProveedor oProveedor, out string mensaje)
+        // REGISTRAR proveedor (Gestion proveedor)
+        public bool RegistrarProveedor(EProveedor oProveedor, out string mensaje)
         {
             mensaje = string.Empty;
 
-            // Validaciones lógicas básicas antes de llegar a la base de datos
-            if (string.IsNullOrWhiteSpace(oProveedor.cuit))
+            if (string.IsNullOrWhiteSpace(oProveedor.cuit) ||
+                string.IsNullOrWhiteSpace(oProveedor.nombre_comercial) ||
+                string.IsNullOrWhiteSpace(oProveedor.razon_social) ||
+                string.IsNullOrWhiteSpace(oProveedor.email) ||
+                string.IsNullOrWhiteSpace(oProveedor.telefono) ||
+                string.IsNullOrWhiteSpace(oProveedor.direccion))
             {
-                mensaje = "Es necesario ingresar el CUIT del proveedor.";
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(oProveedor.nombre_comercial))
-            {
-                mensaje = "Es necesario ingresar el Nombre Comercial del proveedor.";
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(oProveedor.razon_social))
-            {
-                mensaje = "Es necesario ingresar la Razón Social del proveedor.";
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(oProveedor.email))
-            {
-                mensaje = "Es necesario ingresar el correo electrónico del proveedor.";
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(oProveedor.telefono))
-            {
-                mensaje = "Es necesario ingresar el teléfono del proveedor.";
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(oProveedor.direccion))
-            {
-                mensaje = "Es necesario ingresar la dirección del proveedor.";
+                mensaje = "Por favor, complete todos los campos obligatorios.";
                 return false;
             }
 
             return objCDProveedor.RegistrarProveedor(oProveedor, out mensaje);
         }
 
-        // EDITAR proveedor
+        // EDITAR proveedor (Gestion proveedor)
         public bool EditarProveedor(EProveedor oProveedor, out string mensaje)
         {
             mensaje = string.Empty;
 
+            // Validación específica del ID
             if (oProveedor.proveedor_id <= 0)
             {
                 mensaje = "ID de proveedor no válido para actualizar.";
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(oProveedor.cuit))
+            if (string.IsNullOrWhiteSpace(oProveedor.cuit) ||
+                string.IsNullOrWhiteSpace(oProveedor.nombre_comercial) ||
+                string.IsNullOrWhiteSpace(oProveedor.razon_social) ||
+                string.IsNullOrWhiteSpace(oProveedor.email) ||
+                string.IsNullOrWhiteSpace(oProveedor.telefono) ||
+                string.IsNullOrWhiteSpace(oProveedor.direccion))
             {
-                mensaje = "El CUIT no puede estar vacío.";
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(oProveedor.nombre_comercial))
-            {
-                mensaje = "El Nombre Comercial no puede estar vacío.";
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(oProveedor.razon_social))
-            {
-                mensaje = "La Razón Social no puede estar vacía.";
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(oProveedor.email))
-            {
-                mensaje = "El correo electrónico no puede estar vacío.";
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(oProveedor.telefono))
-            {
-                mensaje = "El teléfono no puede estar vacío.";
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(oProveedor.direccion))
-            {
-                mensaje = "La dirección no puede estar vacía.";
+                mensaje = "Por favor, complete todos los campos obligatorios.";
                 return false;
             }
 
             return objCDProveedor.EditarProveedor(oProveedor, out mensaje);
         }
 
-        // CAMBIAR ESTADO proveedor (Actualizado para recibir el out mensaje)
-        public bool CambiarEstado(int idProveedor, int nuevoEstado, out string mensaje)
+        //  CAMBIAR ESTADO proveedor (Gestion proveedor)
+        public bool CambiarEstadoProveedor(int idProveedor, int nuevoEstado, out string mensaje)
         {
             mensaje = string.Empty;
 
@@ -124,15 +74,15 @@ namespace CapaNegocio
                 return false;
             }
 
-            return objCDProveedor.CambiarEstado(idProveedor, nuevoEstado, out mensaje);
+            return objCDProveedor.CambiarEstadoProveedor(idProveedor, nuevoEstado, out mensaje);
         }
 
-        // BUSCAR proveedor (Llama al método unificado 'Buscar' de la Capa de Datos)
-        public List<EProveedor> Buscar(string busqueda)
+        // BUSCAR proveedor POR CUIT O CORREO
+        public List<EProveedor> BuscarProveedorPorCuitOCorreo(string busqueda)
         {
             if (string.IsNullOrWhiteSpace(busqueda))
             {
-                return Listar();
+                return ListarProveedores();
             }
             return objCDProveedor.BuscarProveedoresPorCuitOCorreo(busqueda);
         }
@@ -140,7 +90,7 @@ namespace CapaNegocio
         // FILTRAR proveedor por estado
         public List<EProveedor> FiltrarPorEstado(int? estado)
         {
-            return objCDProveedor.Filtrar(estado);
+            return objCDProveedor.FiltrarProveedorPoEstado(estado);
         }
 
         public List<EProveedor> ListarProveedoreActivos()
@@ -152,7 +102,7 @@ namespace CapaNegocio
         {
             if (categoria_id == 0)
             {
-                return Listar(); 
+                return ListarProveedores(); 
             }
             else
             {

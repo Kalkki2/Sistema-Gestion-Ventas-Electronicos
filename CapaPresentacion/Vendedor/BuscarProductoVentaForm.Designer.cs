@@ -30,22 +30,24 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlContenedorCluentes = new Guna.UI2.WinForms.Guna2Panel();
             this.dgvListaProductos = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.colNroCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMarca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSeleccionar = new System.Windows.Forms.DataGridViewImageColumn();
             this.lblTituloListaClientes = new System.Windows.Forms.Label();
             this.pnlContenedorFiltros = new Guna.UI2.WinForms.Guna2ShadowPanel();
-            this.btnFiltrar = new Guna.UI2.WinForms.Guna2Button();
-            this.btnBuscarProducto = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.guna2ComboBox2 = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.cmbFiltroMarca = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.cmbFiltroCategoria = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txtBuscarProducto = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -73,7 +75,8 @@
             // 
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
             this.dgvListaProductos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dgvListaProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
@@ -81,71 +84,90 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvListaProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvListaProductos.ColumnHeadersHeight = 25;
             this.dgvListaProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colNroCliente,
-            this.colDni,
+            this.colCodigo,
             this.colNombre,
-            this.colApellido,
-            this.colTelefono,
-            this.colDireccion,
+            this.colPrecio,
+            this.colStock,
+            this.colCategoria,
+            this.colMarca,
             this.colSeleccionar});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvListaProductos.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvListaProductos.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvListaProductos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvListaProductos.Location = new System.Drawing.Point(4, 34);
             this.dgvListaProductos.Name = "dgvListaProductos";
             this.dgvListaProductos.RowHeadersVisible = false;
-            this.dgvListaProductos.RowTemplate.Height = 23;
+            this.dgvListaProductos.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvListaProductos.RowTemplate.Height = 25;
             this.dgvListaProductos.Size = new System.Drawing.Size(700, 214);
             this.dgvListaProductos.TabIndex = 7;
             this.dgvListaProductos.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
             this.dgvListaProductos.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            this.dgvListaProductos.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvListaProductos.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvListaProductos.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvListaProductos.ThemeStyle.HeaderStyle.Height = 23;
+            this.dgvListaProductos.ThemeStyle.HeaderStyle.Height = 25;
             this.dgvListaProductos.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvListaProductos.ThemeStyle.RowsStyle.Height = 23;
+            this.dgvListaProductos.ThemeStyle.RowsStyle.Height = 25;
             this.dgvListaProductos.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
+            this.dgvListaProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaProductos_CellContentClick_1);
             // 
-            // colNroCliente
+            // colCodigo
             // 
-            this.colNroCliente.HeaderText = "Codigo";
-            this.colNroCliente.Name = "colNroCliente";
-            // 
-            // colDni
-            // 
-            this.colDni.HeaderText = "Nombre";
-            this.colDni.Name = "colDni";
+            this.colCodigo.FillWeight = 50F;
+            this.colCodigo.HeaderText = "Codigo";
+            this.colCodigo.Name = "colCodigo";
             // 
             // colNombre
             // 
-            this.colNombre.HeaderText = "Precio";
+            this.colNombre.FillWeight = 150F;
+            this.colNombre.HeaderText = "Nombre";
             this.colNombre.Name = "colNombre";
             // 
-            // colApellido
+            // colPrecio
             // 
-            this.colApellido.HeaderText = "Stock";
-            this.colApellido.Name = "colApellido";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colPrecio.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colPrecio.FillWeight = 90F;
+            this.colPrecio.HeaderText = "Precio ($)";
+            this.colPrecio.Name = "colPrecio";
             // 
-            // colTelefono
+            // colStock
             // 
-            this.colTelefono.HeaderText = "Categoria";
-            this.colTelefono.Name = "colTelefono";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colStock.DefaultCellStyle = dataGridViewCellStyle4;
+            this.colStock.FillWeight = 50F;
+            this.colStock.HeaderText = "Stock";
+            this.colStock.Name = "colStock";
             // 
-            // colDireccion
+            // colCategoria
             // 
-            this.colDireccion.HeaderText = "Marca";
-            this.colDireccion.Name = "colDireccion";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colCategoria.DefaultCellStyle = dataGridViewCellStyle5;
+            this.colCategoria.HeaderText = "Categoria";
+            this.colCategoria.Name = "colCategoria";
+            // 
+            // colMarca
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colMarca.DefaultCellStyle = dataGridViewCellStyle6;
+            this.colMarca.HeaderText = "Marca";
+            this.colMarca.Name = "colMarca";
             // 
             // colSeleccionar
             // 
+            this.colSeleccionar.FillWeight = 70F;
             this.colSeleccionar.HeaderText = "Seleccionar";
+            this.colSeleccionar.Image = global::CapaPresentacion.Properties.Resources.dedo;
+            this.colSeleccionar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.colSeleccionar.Name = "colSeleccionar";
             this.colSeleccionar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.colSeleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
@@ -165,10 +187,8 @@
             // pnlContenedorFiltros
             // 
             this.pnlContenedorFiltros.BackColor = System.Drawing.Color.Transparent;
-            this.pnlContenedorFiltros.Controls.Add(this.btnFiltrar);
-            this.pnlContenedorFiltros.Controls.Add(this.btnBuscarProducto);
-            this.pnlContenedorFiltros.Controls.Add(this.guna2ComboBox1);
-            this.pnlContenedorFiltros.Controls.Add(this.guna2ComboBox2);
+            this.pnlContenedorFiltros.Controls.Add(this.cmbFiltroMarca);
+            this.pnlContenedorFiltros.Controls.Add(this.cmbFiltroCategoria);
             this.pnlContenedorFiltros.Controls.Add(this.txtBuscarProducto);
             this.pnlContenedorFiltros.Controls.Add(this.label1);
             this.pnlContenedorFiltros.Controls.Add(this.label2);
@@ -184,85 +204,51 @@
             this.pnlContenedorFiltros.Size = new System.Drawing.Size(707, 127);
             this.pnlContenedorFiltros.TabIndex = 84;
             // 
-            // btnFiltrar
+            // cmbFiltroMarca
             // 
-            this.btnFiltrar.BackColor = System.Drawing.Color.Transparent;
-            this.btnFiltrar.BorderRadius = 5;
-            this.btnFiltrar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnFiltrar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnFiltrar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnFiltrar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnFiltrar.FillColor = System.Drawing.Color.Silver;
-            this.btnFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnFiltrar.ForeColor = System.Drawing.Color.Black;
-            this.btnFiltrar.Image = global::CapaPresentacion.Properties.Resources.icono_filtro;
-            this.btnFiltrar.Location = new System.Drawing.Point(618, 65);
-            this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(71, 27);
-            this.btnFiltrar.TabIndex = 45;
-            this.btnFiltrar.Text = "Filtrar";
-            // 
-            // btnBuscarProducto
-            // 
-            this.btnBuscarProducto.BackColor = System.Drawing.Color.Transparent;
-            this.btnBuscarProducto.BorderRadius = 5;
-            this.btnBuscarProducto.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnBuscarProducto.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnBuscarProducto.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnBuscarProducto.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnBuscarProducto.FillColor = System.Drawing.Color.Silver;
-            this.btnBuscarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnBuscarProducto.ForeColor = System.Drawing.Color.Black;
-            this.btnBuscarProducto.Image = global::CapaPresentacion.Properties.Resources.icono_lupa;
-            this.btnBuscarProducto.Location = new System.Drawing.Point(252, 65);
-            this.btnBuscarProducto.Name = "btnBuscarProducto";
-            this.btnBuscarProducto.Size = new System.Drawing.Size(71, 27);
-            this.btnBuscarProducto.TabIndex = 44;
-            this.btnBuscarProducto.Text = "Buscar";
-            // 
-            // guna2ComboBox1
-            // 
-            this.guna2ComboBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ComboBox1.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2ComboBox1.BorderRadius = 5;
-            this.guna2ComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.guna2ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.guna2ComboBox1.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.guna2ComboBox1.ForeColor = System.Drawing.Color.Black;
-            this.guna2ComboBox1.ItemHeight = 21;
-            this.guna2ComboBox1.Items.AddRange(new object[] {
+            this.cmbFiltroMarca.BackColor = System.Drawing.Color.Transparent;
+            this.cmbFiltroMarca.BorderColor = System.Drawing.Color.DimGray;
+            this.cmbFiltroMarca.BorderRadius = 5;
+            this.cmbFiltroMarca.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbFiltroMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFiltroMarca.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbFiltroMarca.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbFiltroMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.cmbFiltroMarca.ForeColor = System.Drawing.Color.Black;
+            this.cmbFiltroMarca.ItemHeight = 21;
+            this.cmbFiltroMarca.Items.AddRange(new object[] {
             "Todos"});
-            this.guna2ComboBox1.Location = new System.Drawing.Point(496, 65);
-            this.guna2ComboBox1.Name = "guna2ComboBox1";
-            this.guna2ComboBox1.Size = new System.Drawing.Size(118, 27);
-            this.guna2ComboBox1.StartIndex = 0;
-            this.guna2ComboBox1.TabIndex = 24;
+            this.cmbFiltroMarca.Location = new System.Drawing.Point(470, 65);
+            this.cmbFiltroMarca.Name = "cmbFiltroMarca";
+            this.cmbFiltroMarca.Size = new System.Drawing.Size(135, 27);
+            this.cmbFiltroMarca.StartIndex = 0;
+            this.cmbFiltroMarca.TabIndex = 24;
+            this.cmbFiltroMarca.SelectedIndexChanged += new System.EventHandler(this.cmbFiltroMarca_SelectedIndexChanged);
             // 
-            // guna2ComboBox2
+            // cmbFiltroCategoria
             // 
-            this.guna2ComboBox2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ComboBox2.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2ComboBox2.BorderRadius = 5;
-            this.guna2ComboBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.guna2ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.guna2ComboBox2.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox2.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.guna2ComboBox2.ForeColor = System.Drawing.Color.Black;
-            this.guna2ComboBox2.ItemHeight = 21;
-            this.guna2ComboBox2.Items.AddRange(new object[] {
+            this.cmbFiltroCategoria.BackColor = System.Drawing.Color.Transparent;
+            this.cmbFiltroCategoria.BorderColor = System.Drawing.Color.DimGray;
+            this.cmbFiltroCategoria.BorderRadius = 5;
+            this.cmbFiltroCategoria.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbFiltroCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFiltroCategoria.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbFiltroCategoria.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbFiltroCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.cmbFiltroCategoria.ForeColor = System.Drawing.Color.Black;
+            this.cmbFiltroCategoria.ItemHeight = 21;
+            this.cmbFiltroCategoria.Items.AddRange(new object[] {
             "Todos"});
-            this.guna2ComboBox2.Location = new System.Drawing.Point(372, 65);
-            this.guna2ComboBox2.Name = "guna2ComboBox2";
-            this.guna2ComboBox2.Size = new System.Drawing.Size(118, 27);
-            this.guna2ComboBox2.StartIndex = 0;
-            this.guna2ComboBox2.TabIndex = 22;
+            this.cmbFiltroCategoria.Location = new System.Drawing.Point(329, 65);
+            this.cmbFiltroCategoria.Name = "cmbFiltroCategoria";
+            this.cmbFiltroCategoria.Size = new System.Drawing.Size(135, 27);
+            this.cmbFiltroCategoria.StartIndex = 0;
+            this.cmbFiltroCategoria.TabIndex = 22;
+            this.cmbFiltroCategoria.SelectedIndexChanged += new System.EventHandler(this.cmbFiltroCategoria_SelectedIndexChanged);
             // 
             // txtBuscarProducto
             // 
-            this.txtBuscarProducto.BorderColor = System.Drawing.Color.DarkGray;
+            this.txtBuscarProducto.BorderColor = System.Drawing.Color.DimGray;
             this.txtBuscarProducto.BorderRadius = 5;
             this.txtBuscarProducto.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBuscarProducto.DefaultText = "";
@@ -274,12 +260,14 @@
             this.txtBuscarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.txtBuscarProducto.ForeColor = System.Drawing.Color.Black;
             this.txtBuscarProducto.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarProducto.IconLeft = global::CapaPresentacion.Properties.Resources.icono_lupa;
             this.txtBuscarProducto.Location = new System.Drawing.Point(4, 65);
             this.txtBuscarProducto.Name = "txtBuscarProducto";
             this.txtBuscarProducto.PlaceholderText = "";
             this.txtBuscarProducto.SelectedText = "";
             this.txtBuscarProducto.Size = new System.Drawing.Size(242, 27);
             this.txtBuscarProducto.TabIndex = 0;
+            this.txtBuscarProducto.TextChanged += new System.EventHandler(this.txtBuscarProducto_TextChanged);
             // 
             // label1
             // 
@@ -297,7 +285,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(493, 45);
+            this.label2.Location = new System.Drawing.Point(467, 45);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 17);
             this.label2.TabIndex = 12;
@@ -319,7 +307,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(374, 45);
+            this.label4.Location = new System.Drawing.Point(326, 45);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(73, 17);
             this.label4.TabIndex = 11;
@@ -349,23 +337,21 @@
 
         private Guna.UI2.WinForms.Guna2Panel pnlContenedorCluentes;
         private Guna.UI2.WinForms.Guna2DataGridView dgvListaProductos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNroCliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDni;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colApellido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTelefono;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDireccion;
-        private System.Windows.Forms.DataGridViewButtonColumn colSeleccionar;
         private System.Windows.Forms.Label lblTituloListaClientes;
         private Guna.UI2.WinForms.Guna2ShadowPanel pnlContenedorFiltros;
-        private Guna.UI2.WinForms.Guna2Button btnFiltrar;
-        private Guna.UI2.WinForms.Guna2Button btnBuscarProducto;
-        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
-        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox2;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbFiltroMarca;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbFiltroCategoria;
         private Guna.UI2.WinForms.Guna2TextBox txtBuscarProducto;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCodigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPrecio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colStock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCategoria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMarca;
+        private System.Windows.Forms.DataGridViewImageColumn colSeleccionar;
     }
 }

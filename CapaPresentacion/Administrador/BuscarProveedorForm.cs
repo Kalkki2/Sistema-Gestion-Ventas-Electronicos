@@ -117,5 +117,17 @@ namespace CapaPresentacion.Administrador
             // Actualizamos el DataGridView
             dgvListaProveedores.DataSource = listaProveedores;
         }
+
+        private void dgvListaProveedores_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.RowIndex == dgvListaProveedores.NewRowIndex) return;
+
+            string colName = dgvListaProveedores.Columns[e.ColumnIndex].Name;
+
+            if (colName == "btnSeleccionar")
+            {
+                e.Value = Properties.Resources.dedo;
+            }
+        }
     }
 }

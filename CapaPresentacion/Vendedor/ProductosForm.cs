@@ -14,7 +14,7 @@ namespace CapaPresentacion.Vendedor
 {
     public partial class ProductosForm : Form
     {
-        private readonly CNProducto objCNProducto = new CNProducto();
+        
 
         // Todos los productos traídos de la base; los filtros trabajan sobre esta lista
         private List<EProducto> todosLosProductos = new List<EProducto>();
@@ -25,14 +25,6 @@ namespace CapaPresentacion.Vendedor
         public ProductosForm()
         {
             InitializeComponent();
-
-            // Filtros dinámicos: se aplican mientras se escribe o se cambia un combo
-            txtBuscarProducto.TextChanged += (s, e) => AplicarFiltros();
-            cmbFiltroCategoria.SelectedIndexChanged += (s, e) => AplicarFiltros();
-            cmbFiltroMarca.SelectedIndexChanged += (s, e) => AplicarFiltros();
-            btnFiltrar.Click += (s, e) => AplicarFiltros();
-
-            dgvListaProductos.CellContentClick += dgvListaProductos_CellContentClick;
         }
 
         private void ProductosForm_Load(object sender, EventArgs e)
@@ -46,8 +38,14 @@ namespace CapaPresentacion.Vendedor
             System.Globalization.CultureInfo cultura = new System.Globalization.CultureInfo("es-ES");
             lblFecha.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy", cultura);
 
+            cargando = true; 
+
             LimpiarDetalle();
+            CargarCombosCategoriaYMarcas();
             CargarProductos();
+
+            cargando = false; 
+            AplicarFiltros();
         }
 
 
@@ -55,7 +53,6 @@ namespace CapaPresentacion.Vendedor
         {
             dgvListaProductos.AutoGenerateColumns = false;
 
-            // Mapear explícitamente las columnas con las propiedades de EProducto
             dgvListaProductos.Columns["colCodigo"].DataPropertyName = "codigo";
             dgvListaProductos.Columns["colNombre"].DataPropertyName = "nombre";
             dgvListaProductos.Columns["colPrecio"].DataPropertyName = "precio_venta";
@@ -63,89 +60,31 @@ namespace CapaPresentacion.Vendedor
             dgvListaProductos.Columns["colCategoria"].DataPropertyName = "NombreCategoria";
             dgvListaProductos.Columns["colMarca"].DataPropertyName = "NombreMarca";
 
-            todosLosProductos = objCNProducto.ListarProductos()
-                                     .Where(p => p.estado == 1)
-                                     .ToList();
+            CNProducto objCNProducto = new CNProducto();
 
-            CargarCombos();
-
-            AplicarFiltros();
+            var listaPoductosActivos = objCNProducto.ListarProductosActivos();
+            dgvListaProductos.DataSource = listaPoductosActivos;
         }
 
         // Llena los combos con las categorías y marcas que tienen los productos cargados
-        private void CargarCombos()
+        private void CargarCombosCategoriaYMarcas()
         {
-            cargando = true;
+            CNProducto objCNProducto = new CNProducto();
 
-            cmbFiltroCategoria.Items.Clear();
-            cmbFiltroCategoria.Items.Add("Todos");
-            foreach (string nombre in todosLosProductos
-                .Select(p => p.NombreCategoria)
-                .Where(n => !string.IsNullOrEmpty(n))
-                .Distinct()
-                .OrderBy(n => n))
-            {
-                cmbFiltroCategoria.Items.Add(nombre);
-            }
+            List<ECategoria> listaCategoria = objCNProducto.ListarCategorias();
+            listaCategoria.Insert(0, new ECategoria { categoria_id = 0, nombre = "Todos" });
+            cmbFiltroCategoria.DataSource = listaCategoria;
+            cmbFiltroCategoria.DisplayMember = "nombre";
+            cmbFiltroCategoria.ValueMember = "categoria_id";
             cmbFiltroCategoria.SelectedIndex = 0;
 
-            cmbFiltroMarca.Items.Clear();
-            cmbFiltroMarca.Items.Add("Todos");
-            foreach (string nombre in todosLosProductos
-                .Select(p => p.NombreMarca)
-                .Where(n => !string.IsNullOrEmpty(n))
-                .Distinct()
-                .OrderBy(n => n))
-            {
-                cmbFiltroMarca.Items.Add(nombre);
-            }
+            List<EMarca> listaMarca = objCNProducto.ListarMarcas();
+            listaMarca.Insert(0, new EMarca { marca_id = 0, nombre = "Todos" });
+            cmbFiltroMarca.DataSource = listaMarca;
+            cmbFiltroMarca.DisplayMember = "nombre";
+            cmbFiltroMarca.ValueMember = "marca_id";
             cmbFiltroMarca.SelectedIndex = 0;
-
-            cargando = false;
-        }
-
-        // Filtra por texto (código o nombre), categoría y marca, todo combinado
-        private void AplicarFiltros()
-        {
-            if (cargando) return;
-
-            string texto = txtBuscarProducto.Text.Trim();
-            string categoria = cmbFiltroCategoria.Text;
-            string marca = cmbFiltroMarca.Text;
-
-            var filtrados = todosLosProductos.Where(p =>
-                (string.IsNullOrEmpty(texto)
-                    || (p.codigo ?? "").IndexOf(texto, StringComparison.OrdinalIgnoreCase) >= 0
-                    || (p.nombre ?? "").IndexOf(texto, StringComparison.OrdinalIgnoreCase) >= 0)
-                && (string.IsNullOrEmpty(categoria) || categoria == "Todos" || p.NombreCategoria == categoria)
-                && (string.IsNullOrEmpty(marca) || marca == "Todos" || p.NombreMarca == marca)
-            ).ToList();
-
-            dgvListaProductos.DataSource = null;
-            dgvListaProductos.DataSource = filtrados;
-        }
-
-        private void btnBuscarProducto_Click(object sender, EventArgs e)
-        {
-            AplicarFiltros();
-        }
-
-        // Botón "Ver Detalles": pasa los datos del producto al panel de la derecha
-        private void dgvListaProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex < 0) return;
-            if (dgvListaProductos.Columns[e.ColumnIndex].Name != "Column1") return;
-
-            EProducto p = dgvListaProductos.Rows[e.RowIndex].DataBoundItem as EProducto;
-            if (p == null) return;
-
-            guna2TextBox2.Text = p.codigo;                       // Código
-            guna2TextBox3.Text = p.nombre;                       // Nombre
-            guna2TextBox4.Text = p.precio_venta.ToString("N2");  // Precio actual
-            guna2TextBox5.Text = p.stock + " Unidades";          // Stock disponible
-            guna2TextBox6.Text = p.NombreMarca;                  // Marca
-            guna2TextBox7.Text = p.NombreCategoria;              // Categoría
-            guna2TextBox8.Text = p.descripcion;                  // Descripción
+        
         }
 
         // Deja vacío el panel de detalles (el diseño trae un producto de ejemplo escrito a mano)
@@ -158,6 +97,65 @@ namespace CapaPresentacion.Vendedor
             guna2TextBox6.Text = string.Empty;
             guna2TextBox7.Text = string.Empty;
             guna2TextBox8.Text = string.Empty;
+        }
+
+
+
+        private void AplicarFiltros()
+        {
+            if (cargando) return; // Evita disparos mientras inicializan los combos
+
+            int idCategoria = 0;
+            if (cmbFiltroCategoria.SelectedValue != null)
+            {
+                int.TryParse(cmbFiltroCategoria.SelectedValue.ToString(), out idCategoria);
+            }
+
+            int idMarca = 0;
+            if (cmbFiltroMarca.SelectedValue != null)
+            {
+                int.TryParse(cmbFiltroMarca.SelectedValue.ToString(), out idMarca);
+            }
+
+            string textoBusqueda = txtBuscarProducto.Text.Trim();
+
+            CNProducto objCNProducto = new CNProducto();
+            var listaFiltrada = objCNProducto.BuscarProductosActivosPorFiltro(idCategoria, idMarca, textoBusqueda);
+
+            // Actualizamos la grilla
+            dgvListaProductos.DataSource = listaFiltrada;
+        }
+
+        private void txtBuscarProducto_TextChanged(object sender, EventArgs e)
+        {
+            AplicarFiltros();
+        }
+
+        private void cmbFiltroCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AplicarFiltros();
+        }
+
+        private void cmbFiltroMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AplicarFiltros();
+        }
+
+        private void dgvListaProductos_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            if (dgvListaProductos.Columns[e.ColumnIndex].Name != "colVerDetalle") return;
+
+            EProducto p = dgvListaProductos.Rows[e.RowIndex].DataBoundItem as EProducto;
+            if (p == null) return;
+
+            guna2TextBox2.Text = p.codigo;                       // Código
+            guna2TextBox3.Text = p.nombre;                       // Nombre
+            guna2TextBox4.Text = p.precio_venta.ToString("N2");  // Precio actual
+            guna2TextBox5.Text = p.stock + " Unidades";          // Stock disponible
+            guna2TextBox6.Text = p.NombreMarca;                  // Marca
+            guna2TextBox7.Text = p.NombreCategoria;              // Categoría
+            guna2TextBox8.Text = p.descripcion;                  // Descripción
         }
     }
 }

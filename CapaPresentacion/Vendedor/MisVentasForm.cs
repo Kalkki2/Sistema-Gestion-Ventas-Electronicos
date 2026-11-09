@@ -76,15 +76,38 @@ namespace CapaPresentacion.Vendedor
             }
         }
 
+        private void CargarFiltroMetodoPago()
+        {
+            CNMetodoPago objCNMetodoPagoFiltro = new CNMetodoPago();
+            var listaMetodos = objCNMetodoPagoFiltro.Listar();
+
+            listaMetodos.Insert(0, new EMetodoPago { metodo_pago_id = 0, nombre = "Todos" });
+
+            cmbFiltroMetodoPago.DisplayMember = "nombre";
+            cmbFiltroMetodoPago.ValueMember = "metodo_pago_id";
+            cmbFiltroMetodoPago.DataSource = listaMetodos;
+
+            cmbFiltroMetodoPago.SelectedIndex = 0;
+        }
+
+        private void CargarFiltroEstado()
+        {
+            cmbFiltroEstado.Items.Clear();
+            cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Todos", Valor = -1 });
+            cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Completados", Valor = 1 });
+            cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Anulados", Valor = 0 });
+            cmbFiltroEstado.DisplayMember = "Texto";
+            cmbFiltroEstado.ValueMember = "Valor";
+            cmbFiltroEstado.SelectedIndex = 0;
+        }
+
+
         private void dgvMisVentas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Validar que no se haga clic en los encabezados (fila -1)
             if (e.RowIndex < 0) return;
 
             string nombreColumna = dgvMisVentas.Columns[e.ColumnIndex].Name;
 
-            // Si hace clic en la columna configurada como botón "Ver Detalle" 
-            // (Asegúrate de que el nombre de la columna botón en tu grilla se llame "colVerDetalle")
             if (nombreColumna == "colVerDetalle")
             {
                 // Extraemos el objeto EVenta de la fila seleccionada en la grilla
@@ -95,7 +118,7 @@ namespace CapaPresentacion.Vendedor
                     // Abrimos el formulario modal DetalleVenta pasándole el objeto por el constructor
                     using (DetalleVenta modal = new DetalleVenta(ventaSeleccionada))
                     {
-                        modal.ShowDialog(); // Muestra el detalle con los productos, cantidades y precios
+                        modal.ShowDialog(); 
                     }
                 }
             }
@@ -194,35 +217,36 @@ namespace CapaPresentacion.Vendedor
             }
         }
 
-        private void CargarFiltroMetodoPago()
-        {
-            CNMetodoPago objCNMetodoPagoFiltro = new CNMetodoPago();
-            var listaMetodos = objCNMetodoPagoFiltro.Listar();
-
-            listaMetodos.Insert(0, new EMetodoPago { metodo_pago_id = 0, nombre = "Todos" });
-
-            cmbFiltroMetodoPago.DisplayMember = "nombre";
-            cmbFiltroMetodoPago.ValueMember = "metodo_pago_id";
-            cmbFiltroMetodoPago.DataSource = listaMetodos;
-
-            cmbFiltroMetodoPago.SelectedIndex = 0;
-        }
-
-        private void CargarFiltroEstado()
-        {
-            cmbFiltroEstado.Items.Clear();
-            cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Todos", Valor = -1 }); 
-            cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Completados", Valor = 1 });
-            cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Anulados", Valor = 0 });
-            cmbFiltroEstado.DisplayMember = "Texto";
-            cmbFiltroEstado.ValueMember = "Valor";
-            cmbFiltroEstado.SelectedIndex = 0; 
-        }
 
         private void cmbFiltroEstado_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cargandoFormulario) return;
             FiltrarVentas();
+        }
+
+        private void dgvMisVentas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.RowIndex == dgvMisVentas.NewRowIndex) return;
+
+            string colName = dgvMisVentas.Columns[e.ColumnIndex].Name;
+
+           
+            // Ícono dinámico para Cambiar Estado (Anular / Reactivar)
+            if (colName == "colCambiarEstado")
+            {
+                var ventaRow = dgvMisVentas.Rows[e.RowIndex].DataBoundItem as EVenta;
+                if (ventaRow != null)
+                {
+                    if (ventaRow.estado == 1)
+                    {
+                        e.Value = Properties.Resources.icono_eliminar;
+                    }
+                    else
+                    {
+                        e.Value = Properties.Resources.icono_reactivar;
+                    }
+                }
+            }
         }
     }
 }

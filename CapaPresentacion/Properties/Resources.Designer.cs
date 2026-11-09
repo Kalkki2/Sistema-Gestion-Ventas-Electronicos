@@ -63,9 +63,59 @@ namespace CapaPresentacion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap billetera {
+            get {
+                object obj = ResourceManager.GetObject("billetera", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap caja {
+            get {
+                object obj = ResourceManager.GetObject("caja", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap camion {
+            get {
+                object obj = ResourceManager.GetObject("camion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap carritocomprasnegro {
+            get {
+                object obj = ResourceManager.GetObject("carritocomprasnegro", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cross_wrong_close_delete_icon_191608 {
             get {
                 object obj = ResourceManager.GetObject("cross_wrong_close_delete_icon_191608", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dedo {
+            get {
+                object obj = ResourceManager.GetObject("dedo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -386,6 +436,16 @@ namespace CapaPresentacion.Properties {
         internal static System.Drawing.Bitmap icono_ventas {
             get {
                 object obj = ResourceManager.GetObject("icono_ventas", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap precaucion {
+            get {
+                object obj = ResourceManager.GetObject("precaucion", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

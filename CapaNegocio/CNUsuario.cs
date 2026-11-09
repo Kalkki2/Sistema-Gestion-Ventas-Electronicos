@@ -12,7 +12,7 @@ namespace CapaNegocio
     {
         private CDUsuario objCDUsuario = new CDUsuario();
 
-        public List<EUsuario> Listar()
+        public List<EUsuario> ListarUsuarios()
         {
             return objCDUsuario.ListarUsuarios();
         }
@@ -22,7 +22,7 @@ namespace CapaNegocio
             return objCDUsuario.CambiarEstado(idUsuario, nuevoEstado);
         }
 
-        public bool Registrar(EUsuario obj, out string Mensaje)
+        public bool RegistrarUsuario(EUsuario obj, out string Mensaje)
         {
             // Obtener lista actual para validar Unicidad
             List<EUsuario> lista = objCDUsuario.ListarUsuarios();
@@ -49,7 +49,7 @@ namespace CapaNegocio
             return objCDUsuario.Registrar(obj, out Mensaje);
         }
 
-        public bool Editar(EUsuario obj, out string Mensaje)
+        public bool EditarUsuario(EUsuario obj, out string Mensaje)
         {
             List<EUsuario> lista = objCDUsuario.ListarUsuarios();
 
@@ -72,17 +72,12 @@ namespace CapaNegocio
                 return false;
             }
 
-            return objCDUsuario.Editar(obj, out Mensaje);
+            return objCDUsuario.EditarUsuario(obj, out Mensaje);
         }
 
-        public List<EUsuario> Buscar(string busqueda)
+        public List<EUsuario> BuscarYFiltrarUsuario(string busqueda, int? idPerfil, int? estado)
         {
-            return objCDUsuario.BuscarUsuarios(busqueda);
-        }
-
-        public List<EUsuario> Filtrar(int? idPerfil, int? estado)
-        {
-            return objCDUsuario.FiltrarUsuarios(idPerfil, estado);
+            return objCDUsuario.BuscarYFiltrar(busqueda, idPerfil, estado);
         }
 
         public EUsuario Login(string dni, string contrasenia, out string mensaje)

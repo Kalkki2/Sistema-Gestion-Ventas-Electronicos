@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblFiltraEstado = new System.Windows.Forms.Label();
             this.pnlEncabezado = new System.Windows.Forms.Panel();
             this.pnlnfoUsuario = new System.Windows.Forms.Panel();
@@ -76,11 +76,6 @@
             this.btnExportarPDF = new Guna.UI2.WinForms.Guna2Button();
             this.btnExportarEXCEL = new Guna.UI2.WinForms.Guna2Button();
             this.dgvListaProveedores = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.lblTituloListaProveedores = new System.Windows.Forms.Label();
-            this.pnlCardTotalProveedores = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.lblCantTotalProveedores = new System.Windows.Forms.Label();
-            this.lblTituloTotalProveedores = new System.Windows.Forms.Label();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.colCuit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNombreComercial = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colRazonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -93,6 +88,12 @@
             this.colFechaModificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEditar = new System.Windows.Forms.DataGridViewImageColumn();
             this.colEliminar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.lblTituloListaProveedores = new System.Windows.Forms.Label();
+            this.lblCantTotalProveedores = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.pnlCardTotalVentas = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblTituloTotalVentas = new System.Windows.Forms.Label();
             this.pnlEncabezado.SuspendLayout();
             this.pnlnfoUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
@@ -100,8 +101,9 @@
             this.pnlContenedorFiltros.SuspendLayout();
             this.pnlContenedorProveedores.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaProveedores)).BeginInit();
-            this.pnlCardTotalProveedores.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.pnlCardTotalVentas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblFiltraEstado
@@ -231,7 +233,7 @@
             this.lblEstado.AutoSize = true;
             this.lblEstado.BackColor = System.Drawing.Color.Transparent;
             this.lblEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstado.Location = new System.Drawing.Point(274, 168);
+            this.lblEstado.Location = new System.Drawing.Point(274, 155);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(52, 17);
             this.lblEstado.TabIndex = 94;
@@ -240,7 +242,7 @@
             // cmbEstado
             // 
             this.cmbEstado.BackColor = System.Drawing.Color.Transparent;
-            this.cmbEstado.BorderColor = System.Drawing.Color.DarkGray;
+            this.cmbEstado.BorderColor = System.Drawing.Color.DimGray;
             this.cmbEstado.BorderRadius = 5;
             this.cmbEstado.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -252,24 +254,23 @@
             this.cmbEstado.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
-            this.cmbEstado.Location = new System.Drawing.Point(277, 189);
+            this.cmbEstado.Location = new System.Drawing.Point(277, 176);
             this.cmbEstado.Name = "cmbEstado";
-            this.cmbEstado.Size = new System.Drawing.Size(121, 27);
+            this.cmbEstado.Size = new System.Drawing.Size(140, 27);
             this.cmbEstado.StartIndex = 0;
             this.cmbEstado.TabIndex = 93;
             // 
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.Transparent;
-            this.btnCancelar.BorderRadius = 5;
             this.btnCancelar.CausesValidation = false;
             this.btnCancelar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnCancelar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnCancelar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnCancelar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnCancelar.FillColor = System.Drawing.Color.Silver;
+            this.btnCancelar.FillColor = System.Drawing.Color.Red;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.Color.Black;
+            this.btnCancelar.ForeColor = System.Drawing.Color.White;
             this.btnCancelar.Location = new System.Drawing.Point(277, 222);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(100, 35);
@@ -280,8 +281,8 @@
             // txtCorreo
             // 
             this.txtCorreo.BackColor = System.Drawing.Color.Transparent;
-            this.txtCorreo.BorderColor = System.Drawing.Color.DarkGray;
-            this.txtCorreo.BorderRadius = 8;
+            this.txtCorreo.BorderColor = System.Drawing.Color.DimGray;
+            this.txtCorreo.BorderRadius = 5;
             this.txtCorreo.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCorreo.DefaultText = "";
             this.txtCorreo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -298,7 +299,6 @@
             this.txtCorreo.SelectedText = "";
             this.txtCorreo.Size = new System.Drawing.Size(225, 27);
             this.txtCorreo.TabIndex = 91;
-            this.txtCorreo.Validating += new System.ComponentModel.CancelEventHandler(this.txtCorreo_Validating);
             // 
             // lblCorreo
             // 
@@ -314,8 +314,8 @@
             // txtDireccion
             // 
             this.txtDireccion.BackColor = System.Drawing.Color.Transparent;
-            this.txtDireccion.BorderColor = System.Drawing.Color.DarkGray;
-            this.txtDireccion.BorderRadius = 8;
+            this.txtDireccion.BorderColor = System.Drawing.Color.DimGray;
+            this.txtDireccion.BorderRadius = 5;
             this.txtDireccion.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtDireccion.DefaultText = "";
             this.txtDireccion.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -332,7 +332,6 @@
             this.txtDireccion.SelectedText = "";
             this.txtDireccion.Size = new System.Drawing.Size(225, 27);
             this.txtDireccion.TabIndex = 89;
-            this.txtDireccion.Validating += new System.ComponentModel.CancelEventHandler(this.txtDireccion_Validating);
             // 
             // lblDireccion
             // 
@@ -348,8 +347,8 @@
             // txtTelefono
             // 
             this.txtTelefono.BackColor = System.Drawing.Color.Transparent;
-            this.txtTelefono.BorderColor = System.Drawing.Color.DarkGray;
-            this.txtTelefono.BorderRadius = 8;
+            this.txtTelefono.BorderColor = System.Drawing.Color.DimGray;
+            this.txtTelefono.BorderRadius = 5;
             this.txtTelefono.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTelefono.DefaultText = "";
             this.txtTelefono.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -366,7 +365,6 @@
             this.txtTelefono.SelectedText = "";
             this.txtTelefono.Size = new System.Drawing.Size(225, 27);
             this.txtTelefono.TabIndex = 87;
-            this.txtTelefono.Validating += new System.ComponentModel.CancelEventHandler(this.txtTelefono_Validating);
             // 
             // lblTelefono
             // 
@@ -382,8 +380,8 @@
             // txtCuit
             // 
             this.txtCuit.BackColor = System.Drawing.Color.Transparent;
-            this.txtCuit.BorderColor = System.Drawing.Color.DarkGray;
-            this.txtCuit.BorderRadius = 8;
+            this.txtCuit.BorderColor = System.Drawing.Color.DimGray;
+            this.txtCuit.BorderRadius = 5;
             this.txtCuit.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCuit.DefaultText = "";
             this.txtCuit.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -400,7 +398,6 @@
             this.txtCuit.SelectedText = "";
             this.txtCuit.Size = new System.Drawing.Size(225, 27);
             this.txtCuit.TabIndex = 85;
-            this.txtCuit.Validating += new System.ComponentModel.CancelEventHandler(this.txtCuit_Validating);
             // 
             // lblCuit
             // 
@@ -418,7 +415,7 @@
             this.lblTituloInformacionProveedor.AutoSize = true;
             this.lblTituloInformacionProveedor.BackColor = System.Drawing.Color.Transparent;
             this.lblTituloInformacionProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloInformacionProveedor.Location = new System.Drawing.Point(16, 13);
+            this.lblTituloInformacionProveedor.Location = new System.Drawing.Point(16, 12);
             this.lblTituloInformacionProveedor.Name = "lblTituloInformacionProveedor";
             this.lblTituloInformacionProveedor.Size = new System.Drawing.Size(189, 16);
             this.lblTituloInformacionProveedor.TabIndex = 83;
@@ -427,8 +424,8 @@
             // txtRazonSocial
             // 
             this.txtRazonSocial.BackColor = System.Drawing.Color.Transparent;
-            this.txtRazonSocial.BorderColor = System.Drawing.Color.DarkGray;
-            this.txtRazonSocial.BorderRadius = 8;
+            this.txtRazonSocial.BorderColor = System.Drawing.Color.DimGray;
+            this.txtRazonSocial.BorderRadius = 5;
             this.txtRazonSocial.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtRazonSocial.DefaultText = "";
             this.txtRazonSocial.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -445,7 +442,6 @@
             this.txtRazonSocial.SelectedText = "";
             this.txtRazonSocial.Size = new System.Drawing.Size(225, 27);
             this.txtRazonSocial.TabIndex = 81;
-            this.txtRazonSocial.Validating += new System.ComponentModel.CancelEventHandler(this.txtRazonSocial_Validating);
             // 
             // lblRazonSocial
             // 
@@ -472,26 +468,25 @@
             // btnAgregarProveedor
             // 
             this.btnAgregarProveedor.BackColor = System.Drawing.Color.Transparent;
-            this.btnAgregarProveedor.BorderRadius = 10;
             this.btnAgregarProveedor.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAgregarProveedor.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnAgregarProveedor.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnAgregarProveedor.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnAgregarProveedor.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(110)))), ((int)(((byte)(253)))));
+            this.btnAgregarProveedor.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(96)))));
             this.btnAgregarProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregarProveedor.ForeColor = System.Drawing.Color.White;
-            this.btnAgregarProveedor.Location = new System.Drawing.Point(419, 222);
+            this.btnAgregarProveedor.Location = new System.Drawing.Point(383, 222);
             this.btnAgregarProveedor.Name = "btnAgregarProveedor";
-            this.btnAgregarProveedor.Size = new System.Drawing.Size(100, 35);
+            this.btnAgregarProveedor.Size = new System.Drawing.Size(151, 35);
             this.btnAgregarProveedor.TabIndex = 77;
-            this.btnAgregarProveedor.Text = "Agregar";
+            this.btnAgregarProveedor.Text = "Agregar Proveedor";
             this.btnAgregarProveedor.Click += new System.EventHandler(this.btnAgregarProveedor_Click);
             // 
             // txtNombreComercial
             // 
             this.txtNombreComercial.BackColor = System.Drawing.Color.Transparent;
-            this.txtNombreComercial.BorderColor = System.Drawing.Color.DarkGray;
-            this.txtNombreComercial.BorderRadius = 8;
+            this.txtNombreComercial.BorderColor = System.Drawing.Color.DimGray;
+            this.txtNombreComercial.BorderRadius = 5;
             this.txtNombreComercial.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtNombreComercial.DefaultText = "";
             this.txtNombreComercial.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -508,7 +503,6 @@
             this.txtNombreComercial.SelectedText = "";
             this.txtNombreComercial.Size = new System.Drawing.Size(225, 27);
             this.txtNombreComercial.TabIndex = 76;
-            this.txtNombreComercial.Validating += new System.ComponentModel.CancelEventHandler(this.txtNombreComercial_Validating);
             // 
             // pnlContenedorFiltros
             // 
@@ -672,17 +666,17 @@
             // 
             // dgvListaProveedores
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
-            this.dgvListaProveedores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
+            this.dgvListaProveedores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
             this.dgvListaProveedores.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListaProveedores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListaProveedores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
             this.dgvListaProveedores.ColumnHeadersHeight = 35;
             this.dgvListaProveedores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colCuit,
@@ -697,20 +691,20 @@
             this.colFechaModificacion,
             this.colEditar,
             this.colEliminar});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvListaProveedores.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle29.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvListaProveedores.DefaultCellStyle = dataGridViewCellStyle29;
             this.dgvListaProveedores.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvListaProveedores.Location = new System.Drawing.Point(3, 49);
             this.dgvListaProveedores.Name = "dgvListaProveedores";
             this.dgvListaProveedores.RowHeadersVisible = false;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvListaProveedores.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvListaProveedores.RowsDefaultCellStyle = dataGridViewCellStyle30;
             this.dgvListaProveedores.RowTemplate.Height = 25;
             this.dgvListaProveedores.Size = new System.Drawing.Size(1143, 265);
             this.dgvListaProveedores.TabIndex = 7;
@@ -726,62 +720,10 @@
             this.dgvListaProveedores.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaProveedores_CellContentClick);
             this.dgvListaProveedores.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvListaProveedores_CellFormatting);
             // 
-            // lblTituloListaProveedores
-            // 
-            this.lblTituloListaProveedores.AutoSize = true;
-            this.lblTituloListaProveedores.BackColor = System.Drawing.Color.Transparent;
-            this.lblTituloListaProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloListaProveedores.ForeColor = System.Drawing.Color.Black;
-            this.lblTituloListaProveedores.Location = new System.Drawing.Point(5, 15);
-            this.lblTituloListaProveedores.Name = "lblTituloListaProveedores";
-            this.lblTituloListaProveedores.Size = new System.Drawing.Size(159, 16);
-            this.lblTituloListaProveedores.TabIndex = 6;
-            this.lblTituloListaProveedores.Text = "Lista de proveedores:";
-            // 
-            // pnlCardTotalProveedores
-            // 
-            this.pnlCardTotalProveedores.BorderRadius = 10;
-            this.pnlCardTotalProveedores.Controls.Add(this.lblCantTotalProveedores);
-            this.pnlCardTotalProveedores.Controls.Add(this.lblTituloTotalProveedores);
-            this.pnlCardTotalProveedores.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(60)))), ((int)(((byte)(150)))));
-            this.pnlCardTotalProveedores.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(116)))), ((int)(((byte)(240)))));
-            this.pnlCardTotalProveedores.Location = new System.Drawing.Point(571, 80);
-            this.pnlCardTotalProveedores.Name = "pnlCardTotalProveedores";
-            this.pnlCardTotalProveedores.Size = new System.Drawing.Size(174, 80);
-            this.pnlCardTotalProveedores.TabIndex = 60;
-            // 
-            // lblCantTotalProveedores
-            // 
-            this.lblCantTotalProveedores.AutoSize = true;
-            this.lblCantTotalProveedores.BackColor = System.Drawing.Color.Transparent;
-            this.lblCantTotalProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantTotalProveedores.ForeColor = System.Drawing.Color.White;
-            this.lblCantTotalProveedores.Location = new System.Drawing.Point(23, 36);
-            this.lblCantTotalProveedores.Name = "lblCantTotalProveedores";
-            this.lblCantTotalProveedores.Size = new System.Drawing.Size(32, 33);
-            this.lblCantTotalProveedores.TabIndex = 19;
-            this.lblCantTotalProveedores.Text = "0";
-            // 
-            // lblTituloTotalProveedores
-            // 
-            this.lblTituloTotalProveedores.AutoSize = true;
-            this.lblTituloTotalProveedores.BackColor = System.Drawing.Color.Transparent;
-            this.lblTituloTotalProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloTotalProveedores.ForeColor = System.Drawing.Color.White;
-            this.lblTituloTotalProveedores.Location = new System.Drawing.Point(3, 16);
-            this.lblTituloTotalProveedores.Name = "lblTituloTotalProveedores";
-            this.lblTituloTotalProveedores.Size = new System.Drawing.Size(141, 16);
-            this.lblTituloTotalProveedores.TabIndex = 5;
-            this.lblTituloTotalProveedores.Text = "Total Proveedores:";
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            // 
             // colCuit
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colCuit.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colCuit.DefaultCellStyle = dataGridViewCellStyle23;
             this.colCuit.FillWeight = 70F;
             this.colCuit.HeaderText = "CUIT";
             this.colCuit.Name = "colCuit";
@@ -808,40 +750,40 @@
             // 
             // colTelefono
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colTelefono.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colTelefono.DefaultCellStyle = dataGridViewCellStyle24;
             this.colTelefono.FillWeight = 70F;
             this.colTelefono.HeaderText = "Telefono";
             this.colTelefono.Name = "colTelefono";
             // 
             // colCategoria
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colCategoria.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colCategoria.DefaultCellStyle = dataGridViewCellStyle25;
             this.colCategoria.FillWeight = 70F;
             this.colCategoria.HeaderText = "Categoria";
             this.colCategoria.Name = "colCategoria";
             // 
             // colEstado
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colEstado.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colEstado.DefaultCellStyle = dataGridViewCellStyle26;
             this.colEstado.FillWeight = 60F;
             this.colEstado.HeaderText = "Estado";
             this.colEstado.Name = "colEstado";
             // 
             // colFechaAlta
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colFechaAlta.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colFechaAlta.DefaultCellStyle = dataGridViewCellStyle27;
             this.colFechaAlta.FillWeight = 70F;
             this.colFechaAlta.HeaderText = "Fecha Alta";
             this.colFechaAlta.Name = "colFechaAlta";
             // 
             // colFechaModificacion
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colFechaModificacion.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colFechaModificacion.DefaultCellStyle = dataGridViewCellStyle28;
             this.colFechaModificacion.FillWeight = 70F;
             this.colFechaModificacion.HeaderText = "Fecha Modificacion";
             this.colFechaModificacion.Name = "colFechaModificacion";
@@ -862,12 +804,79 @@
             this.colEliminar.Name = "colEliminar";
             this.colEliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
+            // lblTituloListaProveedores
+            // 
+            this.lblTituloListaProveedores.AutoSize = true;
+            this.lblTituloListaProveedores.BackColor = System.Drawing.Color.Transparent;
+            this.lblTituloListaProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloListaProveedores.ForeColor = System.Drawing.Color.Black;
+            this.lblTituloListaProveedores.Location = new System.Drawing.Point(5, 15);
+            this.lblTituloListaProveedores.Name = "lblTituloListaProveedores";
+            this.lblTituloListaProveedores.Size = new System.Drawing.Size(159, 16);
+            this.lblTituloListaProveedores.TabIndex = 6;
+            this.lblTituloListaProveedores.Text = "Lista de proveedores:";
+            // 
+            // lblCantTotalProveedores
+            // 
+            this.lblCantTotalProveedores.AutoSize = true;
+            this.lblCantTotalProveedores.BackColor = System.Drawing.Color.Transparent;
+            this.lblCantTotalProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantTotalProveedores.ForeColor = System.Drawing.Color.Black;
+            this.lblCantTotalProveedores.Location = new System.Drawing.Point(30, 33);
+            this.lblCantTotalProveedores.Name = "lblCantTotalProveedores";
+            this.lblCantTotalProveedores.Size = new System.Drawing.Size(32, 33);
+            this.lblCantTotalProveedores.TabIndex = 19;
+            this.lblCantTotalProveedores.Text = "0";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // pnlCardTotalVentas
+            // 
+            this.pnlCardTotalVentas.BorderColor = System.Drawing.Color.Gray;
+            this.pnlCardTotalVentas.BorderThickness = 2;
+            this.pnlCardTotalVentas.Controls.Add(this.lblCantTotalProveedores);
+            this.pnlCardTotalVentas.Controls.Add(this.pictureBox1);
+            this.pnlCardTotalVentas.Controls.Add(this.lblTituloTotalVentas);
+            this.pnlCardTotalVentas.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.pnlCardTotalVentas.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.pnlCardTotalVentas.FillColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pnlCardTotalVentas.FillColor2 = System.Drawing.Color.White;
+            this.pnlCardTotalVentas.Location = new System.Drawing.Point(571, 68);
+            this.pnlCardTotalVentas.Name = "pnlCardTotalVentas";
+            this.pnlCardTotalVentas.Size = new System.Drawing.Size(174, 80);
+            this.pnlCardTotalVentas.TabIndex = 63;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::CapaPresentacion.Properties.Resources.camion;
+            this.pictureBox1.Location = new System.Drawing.Point(108, 30);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(58, 45);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 20;
+            this.pictureBox1.TabStop = false;
+            // 
+            // lblTituloTotalVentas
+            // 
+            this.lblTituloTotalVentas.AutoSize = true;
+            this.lblTituloTotalVentas.BackColor = System.Drawing.Color.Transparent;
+            this.lblTituloTotalVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloTotalVentas.ForeColor = System.Drawing.Color.Black;
+            this.lblTituloTotalVentas.Location = new System.Drawing.Point(3, 13);
+            this.lblTituloTotalVentas.Name = "lblTituloTotalVentas";
+            this.lblTituloTotalVentas.Size = new System.Drawing.Size(141, 16);
+            this.lblTituloTotalVentas.TabIndex = 5;
+            this.lblTituloTotalVentas.Text = "Total Proveedores:";
+            // 
             // GestionProveedoresForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1170, 561);
-            this.Controls.Add(this.pnlCardTotalProveedores);
+            this.Controls.Add(this.pnlCardTotalVentas);
             this.Controls.Add(this.pnlContenedorProveedores);
             this.Controls.Add(this.pnlContenedorFiltros);
             this.Controls.Add(this.pnlFormularioCliente);
@@ -887,9 +896,10 @@
             this.pnlContenedorProveedores.ResumeLayout(false);
             this.pnlContenedorProveedores.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaProveedores)).EndInit();
-            this.pnlCardTotalProveedores.ResumeLayout(false);
-            this.pnlCardTotalProveedores.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.pnlCardTotalVentas.ResumeLayout(false);
+            this.pnlCardTotalVentas.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -930,9 +940,7 @@
         private Guna.UI2.WinForms.Guna2Button btnExportarEXCEL;
         private Guna.UI2.WinForms.Guna2DataGridView dgvListaProveedores;
         private System.Windows.Forms.Label lblTituloListaProveedores;
-        private Guna.UI2.WinForms.Guna2GradientPanel pnlCardTotalProveedores;
         private System.Windows.Forms.Label lblCantTotalProveedores;
-        private System.Windows.Forms.Label lblTituloTotalProveedores;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -949,5 +957,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colFechaModificacion;
         private System.Windows.Forms.DataGridViewImageColumn colEditar;
         private System.Windows.Forms.DataGridViewImageColumn colEliminar;
+        private Guna.UI2.WinForms.Guna2GradientPanel pnlCardTotalVentas;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblTituloTotalVentas;
     }
 }

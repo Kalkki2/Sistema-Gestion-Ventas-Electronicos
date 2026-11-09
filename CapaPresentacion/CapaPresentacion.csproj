@@ -185,12 +185,6 @@
     <Compile Include="Administrador\NuevaCompraForm.Designer.cs">
       <DependentUpon>NuevaCompraForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Administrador\RegistrarEditarUsuarioForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Administrador\RegistrarEditarUsuarioForm.Designer.cs">
-      <DependentUpon>RegistrarEditarUsuarioForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormularioLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -310,9 +304,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Administrador\NuevaCompraForm.resx">
       <DependentUpon>NuevaCompraForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Administrador\RegistrarEditarUsuarioForm.resx">
-      <DependentUpon>RegistrarEditarUsuarioForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormularioLogin.resx">
       <DependentUpon>FormularioLogin.cs</DependentUpon>
@@ -500,6 +491,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icono_ojo_cerrado.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\carritocomprasnegro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\billetera.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\camion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono_detalles_producto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\caja.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\precaucion.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

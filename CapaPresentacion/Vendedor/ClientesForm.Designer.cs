@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlFormularioCliente = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.btnActualizar = new Guna.UI2.WinForms.Guna2Button();
             this.txtCorreo = new Guna.UI2.WinForms.Guna2TextBox();
@@ -58,6 +58,11 @@
             this.lblTitulo = new System.Windows.Forms.Label();
             this.pnlContenedorListaClientes = new Guna.UI2.WinForms.Guna2Panel();
             this.dgvListaClientes = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.lblTituloListaClientes = new System.Windows.Forms.Label();
+            this.pnlContenedorFiltros = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.txtBuscarCliente = new Guna.UI2.WinForms.Guna2TextBox();
+            this.lblBuscarPorDNIONombreOCorreo = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.colNroCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,11 +73,6 @@
             this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEditar = new System.Windows.Forms.DataGridViewImageColumn();
             this.colVerCompras = new System.Windows.Forms.DataGridViewImageColumn();
-            this.lblTituloListaClientes = new System.Windows.Forms.Label();
-            this.pnlContenedorFiltros = new Guna.UI2.WinForms.Guna2ShadowPanel();
-            this.txtBuscarCliente = new Guna.UI2.WinForms.Guna2TextBox();
-            this.lblBuscarPorDNIONombreOCorreo = new System.Windows.Forms.Label();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.pnlFormularioCliente.SuspendLayout();
             this.pnlEncabezado.SuspendLayout();
             this.pnlnfoUsuario.SuspendLayout();
@@ -105,9 +105,7 @@
             this.pnlFormularioCliente.FillColor = System.Drawing.Color.White;
             this.pnlFormularioCliente.Location = new System.Drawing.Point(5, 67);
             this.pnlFormularioCliente.Name = "pnlFormularioCliente";
-            this.pnlFormularioCliente.Radius = 5;
             this.pnlFormularioCliente.ShadowColor = System.Drawing.Color.Black;
-            this.pnlFormularioCliente.ShadowDepth = 25;
             this.pnlFormularioCliente.ShadowShift = 3;
             this.pnlFormularioCliente.Size = new System.Drawing.Size(550, 219);
             this.pnlFormularioCliente.TabIndex = 57;
@@ -481,17 +479,17 @@
             // 
             // dgvListaClientes
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
-            this.dgvListaClientes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
+            this.dgvListaClientes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvListaClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListaClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListaClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvListaClientes.ColumnHeadersHeight = 25;
             this.dgvListaClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colNroCliente,
@@ -504,21 +502,21 @@
             this.colEstado,
             this.colEditar,
             this.colVerCompras});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvListaClientes.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvListaClientes.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvListaClientes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvListaClientes.Location = new System.Drawing.Point(5, 49);
             this.dgvListaClientes.Name = "dgvListaClientes";
             this.dgvListaClientes.RowHeadersVisible = false;
             this.dgvListaClientes.RowHeadersWidth = 51;
             this.dgvListaClientes.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvListaClientes.RowTemplate.Height = 23;
+            this.dgvListaClientes.RowTemplate.Height = 25;
             this.dgvListaClientes.Size = new System.Drawing.Size(1132, 300);
             this.dgvListaClientes.TabIndex = 7;
             this.dgvListaClientes.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
@@ -528,71 +526,9 @@
             this.dgvListaClientes.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvListaClientes.ThemeStyle.HeaderStyle.Height = 25;
             this.dgvListaClientes.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvListaClientes.ThemeStyle.RowsStyle.Height = 23;
+            this.dgvListaClientes.ThemeStyle.RowsStyle.Height = 25;
             this.dgvListaClientes.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
             this.dgvListaClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaClientes_CellContentClick_1);
-            // 
-            // colNroCliente
-            // 
-            this.colNroCliente.FillWeight = 75F;
-            this.colNroCliente.HeaderText = "NroCliente";
-            this.colNroCliente.MinimumWidth = 6;
-            this.colNroCliente.Name = "colNroCliente";
-            // 
-            // colDni
-            // 
-            this.colDni.HeaderText = "DNI";
-            this.colDni.MinimumWidth = 6;
-            this.colDni.Name = "colDni";
-            // 
-            // colNombre
-            // 
-            this.colNombre.HeaderText = "Nombre";
-            this.colNombre.MinimumWidth = 6;
-            this.colNombre.Name = "colNombre";
-            // 
-            // colApellido
-            // 
-            this.colApellido.HeaderText = "Apellido";
-            this.colApellido.MinimumWidth = 6;
-            this.colApellido.Name = "colApellido";
-            // 
-            // colCorreo
-            // 
-            this.colCorreo.HeaderText = "Correo";
-            this.colCorreo.MinimumWidth = 6;
-            this.colCorreo.Name = "colCorreo";
-            // 
-            // colTelefono
-            // 
-            this.colTelefono.HeaderText = "Telefono";
-            this.colTelefono.MinimumWidth = 6;
-            this.colTelefono.Name = "colTelefono";
-            // 
-            // colDireccion
-            // 
-            this.colDireccion.HeaderText = "Direccion";
-            this.colDireccion.MinimumWidth = 6;
-            this.colDireccion.Name = "colDireccion";
-            // 
-            // colEstado
-            // 
-            this.colEstado.HeaderText = "Estado";
-            this.colEstado.Name = "colEstado";
-            // 
-            // colEditar
-            // 
-            this.colEditar.HeaderText = "Editar";
-            this.colEditar.MinimumWidth = 6;
-            this.colEditar.Name = "colEditar";
-            this.colEditar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // colVerCompras
-            // 
-            this.colVerCompras.HeaderText = "Ver compras";
-            this.colVerCompras.MinimumWidth = 6;
-            this.colVerCompras.Name = "colVerCompras";
-            this.colVerCompras.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // lblTituloListaClientes
             // 
@@ -614,10 +550,9 @@
             this.pnlContenedorFiltros.FillColor = System.Drawing.Color.White;
             this.pnlContenedorFiltros.Location = new System.Drawing.Point(584, 153);
             this.pnlContenedorFiltros.Name = "pnlContenedorFiltros";
-            this.pnlContenedorFiltros.Radius = 5;
             this.pnlContenedorFiltros.ShadowColor = System.Drawing.Color.Black;
-            this.pnlContenedorFiltros.ShadowDepth = 25;
             this.pnlContenedorFiltros.ShadowShift = 3;
+            this.pnlContenedorFiltros.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
             this.pnlContenedorFiltros.Size = new System.Drawing.Size(357, 127);
             this.pnlContenedorFiltros.TabIndex = 61;
             // 
@@ -659,6 +594,78 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // colNroCliente
+            // 
+            this.colNroCliente.FillWeight = 75F;
+            this.colNroCliente.HeaderText = "NroCliente";
+            this.colNroCliente.MinimumWidth = 6;
+            this.colNroCliente.Name = "colNroCliente";
+            // 
+            // colDni
+            // 
+            this.colDni.HeaderText = "DNI";
+            this.colDni.MinimumWidth = 6;
+            this.colDni.Name = "colDni";
+            // 
+            // colNombre
+            // 
+            this.colNombre.FillWeight = 130F;
+            this.colNombre.HeaderText = "Nombre";
+            this.colNombre.MinimumWidth = 6;
+            this.colNombre.Name = "colNombre";
+            // 
+            // colApellido
+            // 
+            this.colApellido.FillWeight = 130F;
+            this.colApellido.HeaderText = "Apellido";
+            this.colApellido.MinimumWidth = 6;
+            this.colApellido.Name = "colApellido";
+            // 
+            // colCorreo
+            // 
+            this.colCorreo.FillWeight = 130F;
+            this.colCorreo.HeaderText = "Correo";
+            this.colCorreo.MinimumWidth = 6;
+            this.colCorreo.Name = "colCorreo";
+            // 
+            // colTelefono
+            // 
+            this.colTelefono.HeaderText = "Telefono";
+            this.colTelefono.MinimumWidth = 6;
+            this.colTelefono.Name = "colTelefono";
+            // 
+            // colDireccion
+            // 
+            this.colDireccion.HeaderText = "Direccion";
+            this.colDireccion.MinimumWidth = 6;
+            this.colDireccion.Name = "colDireccion";
+            // 
+            // colEstado
+            // 
+            this.colEstado.FillWeight = 60F;
+            this.colEstado.HeaderText = "Estado";
+            this.colEstado.Name = "colEstado";
+            // 
+            // colEditar
+            // 
+            this.colEditar.FillWeight = 50F;
+            this.colEditar.HeaderText = "Editar";
+            this.colEditar.Image = global::CapaPresentacion.Properties.Resources.icono_editar;
+            this.colEditar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.colEditar.MinimumWidth = 6;
+            this.colEditar.Name = "colEditar";
+            this.colEditar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // colVerCompras
+            // 
+            this.colVerCompras.FillWeight = 80F;
+            this.colVerCompras.HeaderText = "Ver compras";
+            this.colVerCompras.Image = global::CapaPresentacion.Properties.Resources.icono_lupa;
+            this.colVerCompras.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.colVerCompras.MinimumWidth = 6;
+            this.colVerCompras.Name = "colVerCompras";
+            this.colVerCompras.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // ClientesForm
             // 

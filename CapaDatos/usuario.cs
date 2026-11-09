@@ -33,6 +33,7 @@ namespace CapaDatos
         public System.DateTime fecha_alta { get; set; }
         public System.DateTime fecha_ultima_modificacion { get; set; }
         public int perfil_id { get; set; }
+        public Nullable<System.DateTime> fecha_ultimo_ingreso { get; set; }
     
         public virtual perfil perfil { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

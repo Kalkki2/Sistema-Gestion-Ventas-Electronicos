@@ -17,6 +17,7 @@ namespace CapaPresentacion.Administrador
     public partial class GestionProductosForm : Form
     {
         private CNProducto objCNProducto = new CNProducto();
+        private CNProveedor objCNProveedor = new CNProveedor();
         private int idProductoSeleccionado = 0;
         public GestionProductosForm()
         {
@@ -29,38 +30,32 @@ namespace CapaPresentacion.Administrador
             txtCodigo.Clear();
             txtNombre.Clear();
             txtDescripcion.Clear();
+            txtPrecio.Clear();
+            txtStock.Clear();
 
-            // Deseleccionar los ComboBoxes (vuelven a quedar en blanco)
             cmbCategoria.SelectedIndex = -1;
             cmbMarca.SelectedIndex = -1;
             cmbProveedor.SelectedIndex = -1;
             cmbEstado.SelectedIndex = -1;
 
-            txtCodigo.Focus(); // Regresa el cursor al primer campo
+            errorProvider1.Clear();
+
+            idProductoSeleccionado = 0;
+
+            btnAgregarProducto.Text = "Agregar";
+            txtCodigo.Focus();
         }
 
         private void btnAgregarProducto_Click(object sender, EventArgs e)
         {
-            // 1. Validaciones de campos
-            if (!string.IsNullOrEmpty(errorProvider1.GetError(txtCodigo)) ||
-                !string.IsNullOrEmpty(errorProvider1.GetError(txtNombre)) ||
-                !string.IsNullOrEmpty(errorProvider1.GetError(txtDescripcion)) ||
-              
-                string.IsNullOrWhiteSpace(txtCodigo.Text) ||
-                string.IsNullOrWhiteSpace(txtNombre.Text) 
-               )
+            if (!ValidarCampos())
             {
-                MessageBox.Show("Hay campos con errores o vacíos. Corríjalos antes de continuar.", "Campos vacíos o con error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                MessageBox.Show("Existen campos vacíos o con datos incorrectos. Por favor, revíselos.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Detiene la ejecución si hay errores
             }
 
-            if (cmbCategoria.SelectedIndex == -1 || cmbMarca.SelectedIndex == -1 || cmbProveedor.SelectedIndex == -1 || cmbEstado.SelectedIndex == -1)
-            {
-                MessageBox.Show("Debe seleccionar Categoría, Proveedor, Marca y Estado.", "Selección requerida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // 2. Mapeo del objeto EProducto
+            
+            //  Mapeo del objeto EProducto
             OpcionCombo estadoSeleccionado = (OpcionCombo)cmbEstado.SelectedItem;
 
             // Validación y conversión segura para campos numéricos
@@ -110,8 +105,8 @@ namespace CapaPresentacion.Administrador
             if (resultado)
             {
                 MessageBox.Show(idProductoSeleccionado == 0 ? "Producto registrado con éxito." : "Producto actualizado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LimpiarCampos();
                 CargarProductos();
+                LimpiarCampos(); 
             }
             else
             {
@@ -119,21 +114,7 @@ namespace CapaPresentacion.Administrador
             }
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            errorProvider1.Clear();
-            if (string.IsNullOrWhiteSpace(txtCodigo.Text) && string.IsNullOrWhiteSpace(txtNombre.Text) &&
-                string.IsNullOrWhiteSpace(txtPrecio.Text) && string.IsNullOrWhiteSpace(txtDescripcion.Text) &&
-                cmbCategoria.SelectedIndex == -1 && cmbMarca.SelectedIndex == -1 &&
-                cmbProveedor.SelectedIndex == -1 && cmbEstado.SelectedIndex == -1)
-            {
-                MessageBox.Show("No hay nada cargado para limpiar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                LimpiarCampos();
-            }
-        }
+        
 
         private void CargarProductos()
         {
@@ -144,6 +125,7 @@ namespace CapaPresentacion.Administrador
             dgvListaProductos.Columns["colDescripcion"].DataPropertyName = "descripcion";
             dgvListaProductos.Columns["colPrecioVenta"].DataPropertyName = "precio_venta";
             dgvListaProductos.Columns["colStock"].DataPropertyName = "stock";
+            dgvListaProductos.Columns["colStockMinimo"].DataPropertyName = "stock_minimo";
             dgvListaProductos.Columns["colProveedor"].DataPropertyName = "NombreProveedor";
             dgvListaProductos.Columns["colCategoria"].DataPropertyName = "NombreCategoria";
             dgvListaProductos.Columns["colMarca"].DataPropertyName = "NombreMarca";
@@ -154,15 +136,10 @@ namespace CapaPresentacion.Administrador
             var lista = objCNProducto.ListarProductos();
             dgvListaProductos.DataSource = lista;
 
-            // Actualiza los contadores de la parte superior
             ActualizarContadores(lista);
         }
 
-        private void btnBuscarProducto_Click(object sender, EventArgs e)
-        {
-            // Hacemos que el botón de la lupa ejecute el mismo filtro general
-            btnFiltrar_Click(sender, e);
-        }
+       
 
         private void GestionProductosForm_Load(object sender, EventArgs e)
         {
@@ -174,10 +151,13 @@ namespace CapaPresentacion.Administrador
             System.Globalization.CultureInfo cultura = new System.Globalization.CultureInfo("es-ES");
             lblFecha.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy", cultura);
 
+            dgvListaProductos.CellFormatting -= dgvListaProductos_CellFormatting; 
+            dgvListaProductos.CellFormatting += dgvListaProductos_CellFormatting;
+
             CargarCategorias();
             CargarProveedores();
             CargarEstado();
-            CargarFiltrosCombos(); // <-- Inicializa los combos de filtrado
+            CargarFiltrosCombos(); 
             CargarProductos();
         }
 
@@ -199,71 +179,14 @@ namespace CapaPresentacion.Administrador
             cmbEstado.ValueMember = "Valor";
             cmbEstado.SelectedIndex = -1;
         }
-        public class OpcionCombo
-        {
-            public string Texto { get; set; }
-            public object Valor { get; set; }
-        }
 
         private void CargarProveedores()
         {
-            List<EProveedor> lista = objCNProducto.ListarProveedores();
+            List<EProveedor> lista = objCNProveedor.ListarProveedoreActivos();
             cmbProveedor.DataSource = lista;
             cmbProveedor.DisplayMember = "razon_social";
             cmbProveedor.ValueMember = "proveedor_id";
             cmbProveedor.SelectedIndex = -1;
-        }
-
-
-
-        private void txtCodigo_Validating(object sender, CancelEventArgs e)
-        {
-            string codigo = txtCodigo.Text.Trim();
-
-            if (!ulong.TryParse(codigo, out _))
-            {
-                errorProvider1.SetError(txtCodigo, "El código solo debe contener números.");
-            }else if (codigo.Length != 6)
-            {
-                errorProvider1.SetError(txtCodigo, "El código debe tener exactamente 6 dígitos.");
-            }
-            else
-            {
-                errorProvider1.SetError(txtCodigo, "");
-            }
-        }
-
-        private void txtNombre_Validating(object sender, CancelEventArgs e)
-        {
-            if (!Regex.IsMatch(txtNombre.Text, "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$"))
-            {
-                errorProvider1.SetError(txtNombre, "El nombre solo debe contener letras.");
-            }
-            else if (txtNombre.Text.Length < 3 || txtNombre.Text.Length > 40)
-            {
-                errorProvider1.SetError(txtNombre, "El nombre debe tener entre 3 y 40 caracteres.");
-            }
-            else
-            {
-                errorProvider1.SetError(txtNombre, "");
-            }
-        }
-
-        private void txtDescripcion_Validating(object sender, CancelEventArgs e)
-        {
-            if (!Regex.IsMatch(txtDescripcion.Text, "^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\\s]+$"))
-            {
-                errorProvider1.SetError(txtDescripcion, "La descripcion solo debe contener letras y números.");
-            }
-            else if (txtDescripcion.Text.Length < 3 || txtDescripcion.Text.Length > 40)
-            {
-                errorProvider1.SetError(txtDescripcion, "La descripcion debe tener entre 3 y 40 caracteres.");
-            }
-            else
-            {
-                errorProvider1.SetError(txtDescripcion, "");
-            }
-            
         }
 
         private void cmbCategoria_SelectedIndexChanged(object sender, EventArgs e)
@@ -292,24 +215,17 @@ namespace CapaPresentacion.Administrador
                 {
                     idProductoSeleccionado = producto.producto_id;
 
-                    // 1. DESVINCULAR temporalmente los eventos Validating (si los tienes implementados para validación en vivo)
-                    // txtCodigo.Validating -= txtCodigo_Validating;
-                    // txtNombre.Validating -= txtNombre_Validating;
-                    // txtPrecio.Validating -= txtPrecio_Validating;
-                    // txtStock.Validating -= txtStock_Validating;
-                    // txtDescripcion.Validating -= txtDescripcion_Validating;
-
-                    // 2. Cargar datos en las cajas de texto
+                    // Cargar datos en las cajas de texto
                     txtCodigo.Text = producto.codigo;
                     txtNombre.Text = producto.nombre;
                     txtDescripcion.Text = producto.descripcion;
                     txtPrecio.Text = producto.precio_venta.ToString();
                     txtStock.Text = producto.stock.ToString();
 
-                    // 3. Seleccionar valor en ComboBox Categoría
+                    // Seleccionar valor en ComboBox Categoría
                     cmbCategoria.SelectedValue = producto.categoria_id;
 
-                    // NOTA: Como la marca depende de la categoría (cascada), asegurate de cargar 
+                    // NOTA: Como la marca depende de la categoría (cascada),
                     // las marcas de esa categoría antes de asignar el SelectedValue de la marca:
                     if (cmbCategoria.SelectedValue != null)
                     {
@@ -332,18 +248,6 @@ namespace CapaPresentacion.Administrador
                             break;
                         }
                     }
-
-                    // 6. VINCULAR NUEVAMENTE los eventos Validating (si los desvinculaste antes)
-                    // txtCodigo.Validating += txtCodigo_Validating;
-                    // txtNombre.Validating += txtNombre_Validating;
-                    // txtPrecio.Validating += txtPrecio_Validating;
-                    // txtStock.Validating += txtStock_Validating;
-                    // txtDescripcion.Validating += txtDescripcion_Validating;
-
-                    errorProvider1.Clear();
-
-                    // Cambiar texto del botón de acción principal de "Agregar" a "Actualizar" 
-                    // (Asegúrate de cambiar "btnAgregarProducto" por el nombre de tu botón en el formulario)
                     btnAgregarProducto.Text = "Actualizar";
                 }
             }
@@ -388,18 +292,15 @@ namespace CapaPresentacion.Administrador
 
         private void ActualizarContadores(List<EProducto> lista)
         {
-            // Total de productos generales
             lblCantTotalProductos.Text = lista.Count.ToString();
 
-            // Cantidad de productos cuyo stock sea menor o igual al stock mínimo configurado
-            int stockBajo = lista.Count(p => p.stock <= p.stock_minimo);
-
-            lblCantProductosStockBajo.Text = stockBajo.ToString();
+            int stockBajo = lista.Count(p => p.stock < p.stock_minimo);
+            lblCantStockBajo.Text = stockBajo.ToString();
         }
 
         private void CargarFiltrosCombos()
         {
-            // 1. Filtro Categoría
+            // Filtro Categoría (Todas las categorías + "Todos")
             var listaCat = objCNProducto.ListarCategorias();
             listaCat.Insert(0, new ECategoria { categoria_id = 0, nombre = "Todos" });
             cmbFiltroCategoria.DataSource = listaCat;
@@ -407,15 +308,23 @@ namespace CapaPresentacion.Administrador
             cmbFiltroCategoria.ValueMember = "categoria_id";
             cmbFiltroCategoria.SelectedIndex = 0;
 
-            // 2. Filtro Proveedor
-            var listaProv = objCNProducto.ListarProveedores();
+            // Filtro Marca (Todas las marcas + "Todos" - Independiente)
+            var listaMar = objCNProducto.ListarMarcas();
+            listaMar.Insert(0, new EMarca { marca_id = 0, nombre = "Todos" });
+            cmbFiltroMarca.DataSource = listaMar;
+            cmbFiltroMarca.DisplayMember = "nombre";
+            cmbFiltroMarca.ValueMember = "marca_id";
+            cmbFiltroMarca.SelectedIndex = 0;
+
+            // Filtro Proveedor (Todos los proveedores + "Todos")
+            var listaProv = objCNProveedor.ListarProveedoreActivos();
             listaProv.Insert(0, new EProveedor { proveedor_id = 0, razon_social = "Todos" });
             cmbFiltroProveedor.DataSource = listaProv;
             cmbFiltroProveedor.DisplayMember = "razon_social";
             cmbFiltroProveedor.ValueMember = "proveedor_id";
             cmbFiltroProveedor.SelectedIndex = 0;
 
-            // 3. Filtro Estado
+            // Filtro Estado
             cmbFiltroEstado.Items.Clear();
             cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Todos", Valor = -1 });
             cmbFiltroEstado.Items.Add(new OpcionCombo { Texto = "Activo", Valor = 1 });
@@ -425,71 +334,180 @@ namespace CapaPresentacion.Administrador
             cmbFiltroEstado.SelectedIndex = 0;
         }
 
+        private void AplicarFiltros()
+        {
+            dgvListaProductos.AutoGenerateColumns = false;
+            int categoriaId = 0;
+            if (cmbFiltroCategoria.SelectedValue is int catId)
+                categoriaId = catId;
+
+            int marcaId = 0;
+            if (cmbFiltroMarca.SelectedValue is int mId)
+                marcaId = mId;
+
+            int proveedorId = 0;
+            if (cmbFiltroProveedor.SelectedValue is int provId)
+                proveedorId = provId;
+
+            int estado = -1;
+            if (cmbFiltroEstado.SelectedItem is OpcionCombo opEstado)
+                estado = Convert.ToInt32(opEstado.Valor);
+
+            string textoBusqueda = txtBuscarProducto.Text.Trim();
+
+            var listaFiltrada = objCNProducto.BuscarProductosGeneral(categoriaId, marcaId, proveedorId, estado, textoBusqueda);
+
+            dgvListaProductos.DataSource = listaFiltrada;
+            ActualizarContadores(listaFiltrada);
+            dgvListaProductos.Refresh();
+        }
+
+        private void txtBuscarProducto_TextChanged(object sender, EventArgs e)
+        {
+            AplicarFiltros();
+        }
+
         private void cmbFiltroCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbFiltroCategoria.SelectedIndex != -1 && cmbFiltroCategoria.SelectedValue is int categoriaId)
+            AplicarFiltros();
+        }
+
+        private void cmbFiltroMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AplicarFiltros();
+        }
+
+        private void cmbFiltroProveedor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AplicarFiltros();
+        }
+
+        private void cmbFiltroEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AplicarFiltros();
+        }
+
+        private void dgvListaProductos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.RowIndex == dgvListaProductos.NewRowIndex) return;
+            string colName = dgvListaProductos.Columns[e.ColumnIndex].Name;
+
+            var producto = dgvListaProductos.Rows[e.RowIndex].DataBoundItem as EProducto;
+
+            if (producto != null)
             {
-                if (categoriaId == 0)
+                if (producto.stock < producto.stock_minimo)
                 {
-                    cmbFiltroMarca.DataSource = null;
-                    cmbFiltroMarca.Items.Clear();
-                    cmbFiltroMarca.Items.Add(new EMarca { marca_id = 0, nombre = "Todos" });
-                    cmbFiltroMarca.SelectedIndex = 0;
+                    e.CellStyle.BackColor = Color.Gold;
+                    e.CellStyle.ForeColor = Color.Black; 
                 }
-                else
+            }
+
+            if (colName == "colEliminar")
+            {
+                var ProductoRow = dgvListaProductos.Rows[e.RowIndex].DataBoundItem as EProducto;
+
+                if (ProductoRow != null)
                 {
-                    var listaMarcas = objCNProducto.ListarMarcasPorCategoria(categoriaId);
-                    listaMarcas.Insert(0, new EMarca { marca_id = 0, nombre = "Todos" });
-                    cmbFiltroMarca.DataSource = listaMarcas;
-                    cmbFiltroMarca.DisplayMember = "nombre";
-                    cmbFiltroMarca.ValueMember = "marca_id";
-                    cmbFiltroMarca.SelectedIndex = 0;
+                    // Evaluamos si estado == 1 (Activo)
+                    if (ProductoRow.estado == 1)
+                    {
+                        e.Value = Properties.Resources.icono_eliminar;
+                    }
+                    else
+                    {
+                        e.Value = Properties.Resources.icono_reactivar;
+                    }
                 }
             }
         }
 
-        private void btnFiltrar_Click(object sender, EventArgs e)
+        private bool ValidarCampos()
         {
-            var listaProductos = objCNProducto.ListarProductos();
+            bool esValido = true;
+            errorProvider1.Clear(); // Limpia errores anteriores
 
-            // 1. Filtro por Texto (Código o Nombre) en la caja de búsqueda rápida
-            string textoBusqueda = txtBuscarProducto.Text.Trim().ToLower();
-            if (!string.IsNullOrWhiteSpace(textoBusqueda))
+            // Validar Código 
+            string codigo = txtCodigo.Text.Trim();
+            if (string.IsNullOrWhiteSpace(codigo))
             {
-                listaProductos = listaProductos.Where(p =>
-                    p.codigo.ToLower().Contains(textoBusqueda) ||
-                    p.nombre.ToLower().Contains(textoBusqueda)
-                ).ToList();
+                errorProvider1.SetError(txtCodigo, "El código del producto es obligatorio.");
+                esValido = false;
+            }
+            else if (!System.Text.RegularExpressions.Regex.IsMatch(codigo, @"^\d{6}$"))
+            {
+                errorProvider1.SetError(txtCodigo, "El código debe ser un número entero de exactamente 6 dígitos.");
+                esValido = false;
             }
 
-            // 2. Filtro por Categoría
-            if (cmbFiltroCategoria.SelectedIndex > 0 && cmbFiltroCategoria.SelectedValue is int idCat && idCat > 0)
+            // Validar Nombre
+            string nombre = txtNombre.Text.Trim();
+            if (string.IsNullOrWhiteSpace(nombre))
             {
-                listaProductos = listaProductos.Where(p => p.categoria_id == idCat).ToList();
+                errorProvider1.SetError(txtNombre, "El nombre del producto es obligatorio.");
+                esValido = false;
+            }
+            else if (!System.Text.RegularExpressions.Regex.IsMatch(nombre, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"))
+            {
+                errorProvider1.SetError(txtNombre, "El nombre solo debe contener letras.");
+                esValido = false;
+            }
+            else if (nombre.Length < 7)
+            {
+                errorProvider1.SetError(txtNombre, "El nombre debe tener al menos 7 caracteres.");
+                esValido = false;
             }
 
-            // 3. Filtro por Marca
-            if (cmbFiltroMarca.SelectedIndex > 0 && cmbFiltroMarca.SelectedValue is int idMarca && idMarca > 0)
+            // Validar Descripción
+            string descripcion = txtDescripcion.Text;
+            if (string.IsNullOrWhiteSpace(descripcion))
             {
-                listaProductos = listaProductos.Where(p => p.marca_id == idMarca).ToList();
+                errorProvider1.SetError(txtDescripcion, "La descripción del producto es obligatoria.");
+                esValido = false;
+            }
+            else if (descripcion.Replace(" ", "").Length < 10)
+            {
+                errorProvider1.SetError(txtDescripcion, "La descripción debe tener al menos 10 caracteres (sin contar espacios).");
+                esValido = false;
             }
 
-            // 4. Filtro por Proveedor
-            if (cmbFiltroProveedor.SelectedIndex > 0 && cmbFiltroProveedor.SelectedValue is int idProv && idProv > 0)
+            // Validar ComboBox de Categoría
+            if (cmbCategoria.SelectedIndex == -1)
             {
-                listaProductos = listaProductos.Where(p => p.proveedor_id == idProv).ToList();
+                errorProvider1.SetError(cmbCategoria, "Debe seleccionar una categoría.");
+                esValido = false;
             }
 
-            // 5. Filtro por Estado
-            if (cmbFiltroEstado.SelectedItem is OpcionCombo estadoOpt && Convert.ToInt32(estadoOpt.Valor) != -1)
+            // Validar ComboBox de Marca
+            if (cmbMarca.SelectedIndex == -1)
             {
-                int estadoVal = Convert.ToInt32(estadoOpt.Valor);
-                listaProductos = listaProductos.Where(p => p.estado == estadoVal).ToList();
+                errorProvider1.SetError(cmbMarca, "Debe seleccionar una marca.");
+                esValido = false;
             }
 
-            // Volcar los resultados filtrados al DataGridView y actualizar contadores
-            dgvListaProductos.DataSource = listaProductos;
-            ActualizarContadores(listaProductos);
+            //  Validar ComboBox de Proveedor
+            if (cmbProveedor.SelectedIndex == -1)
+            {
+                errorProvider1.SetError(cmbProveedor, "Debe seleccionar un proveedor.");
+                esValido = false;
+            }
+
+            //  Validar ComboBox de Estado
+            if (cmbEstado.SelectedIndex == -1)
+            {
+                errorProvider1.SetError(cmbEstado, "Debe seleccionar un estado.");
+                esValido = false;
+            }
+
+            return esValido;
+
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            errorProvider1.Clear();
+            LimpiarCampos();
+            MessageBox.Show("Se ha cancelado la operación y limpiado el formulario.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
  }

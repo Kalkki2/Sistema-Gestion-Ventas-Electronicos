@@ -43,16 +43,6 @@
             this.lblTitulo = new System.Windows.Forms.Label();
             this.pnlHistorialVentas = new Guna.UI2.WinForms.Guna2Panel();
             this.dgvMisVentas = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.colNroVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDniCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMetodoPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTipoAjuste = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colFechaVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCambiarEstado = new System.Windows.Forms.DataGridViewImageColumn();
-            this.colVerDetalle = new System.Windows.Forms.DataGridViewImageColumn();
             this.lblTituloHistorialVentas = new System.Windows.Forms.Label();
             this.pnlContenedorFiltros = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.cmbFiltroEstado = new Guna.UI2.WinForms.Guna2ComboBox();
@@ -68,6 +58,16 @@
             this.lblFiltrarPor = new System.Windows.Forms.Label();
             this.lblFiltrarMetodoPago = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.colNroVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDniCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMetodoPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTipoAjuste = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFechaVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCambiarEstado = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colVerDetalle = new System.Windows.Forms.DataGridViewImageColumn();
             this.pnlEncabezado.SuspendLayout();
             this.pnlnfoUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
@@ -212,63 +212,7 @@
             this.dgvMisVentas.ThemeStyle.RowsStyle.Height = 25;
             this.dgvMisVentas.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
             this.dgvMisVentas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMisVentas_CellContentClick);
-            // 
-            // colNroVenta
-            // 
-            this.colNroVenta.FillWeight = 60F;
-            this.colNroVenta.HeaderText = "Nro Venta";
-            this.colNroVenta.Name = "colNroVenta";
-            // 
-            // colDniCliente
-            // 
-            this.colDniCliente.FillWeight = 60F;
-            this.colDniCliente.HeaderText = "DNI Cliente";
-            this.colDniCliente.Name = "colDniCliente";
-            // 
-            // colCliente
-            // 
-            this.colCliente.FillWeight = 150F;
-            this.colCliente.HeaderText = "Cliente";
-            this.colCliente.Name = "colCliente";
-            // 
-            // colMetodoPago
-            // 
-            this.colMetodoPago.HeaderText = "Metodo Pago";
-            this.colMetodoPago.Name = "colMetodoPago";
-            // 
-            // colTipoAjuste
-            // 
-            this.colTipoAjuste.HeaderText = "Tipo Ajuste";
-            this.colTipoAjuste.Name = "colTipoAjuste";
-            // 
-            // colFechaVenta
-            // 
-            this.colFechaVenta.FillWeight = 70F;
-            this.colFechaVenta.HeaderText = "Fecha Venta";
-            this.colFechaVenta.Name = "colFechaVenta";
-            // 
-            // colTotal
-            // 
-            this.colTotal.FillWeight = 70F;
-            this.colTotal.HeaderText = "Total ($)";
-            this.colTotal.Name = "colTotal";
-            // 
-            // colEstado
-            // 
-            this.colEstado.HeaderText = "Estado";
-            this.colEstado.Name = "colEstado";
-            // 
-            // colCambiarEstado
-            // 
-            this.colCambiarEstado.HeaderText = "Anular/Activar";
-            this.colCambiarEstado.Name = "colCambiarEstado";
-            // 
-            // colVerDetalle
-            // 
-            this.colVerDetalle.FillWeight = 60F;
-            this.colVerDetalle.HeaderText = "Ver Detalle";
-            this.colVerDetalle.Name = "colVerDetalle";
-            this.colVerDetalle.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMisVentas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvMisVentas_CellFormatting);
             // 
             // lblTituloHistorialVentas
             // 
@@ -300,7 +244,6 @@
             this.pnlContenedorFiltros.FillColor = System.Drawing.Color.White;
             this.pnlContenedorFiltros.Location = new System.Drawing.Point(5, 67);
             this.pnlContenedorFiltros.Name = "pnlContenedorFiltros";
-            this.pnlContenedorFiltros.Radius = 5;
             this.pnlContenedorFiltros.ShadowColor = System.Drawing.Color.Black;
             this.pnlContenedorFiltros.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
             this.pnlContenedorFiltros.Size = new System.Drawing.Size(681, 178);
@@ -494,6 +437,67 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // colNroVenta
+            // 
+            this.colNroVenta.FillWeight = 60F;
+            this.colNroVenta.HeaderText = "Nro Venta";
+            this.colNroVenta.Name = "colNroVenta";
+            // 
+            // colDniCliente
+            // 
+            this.colDniCliente.FillWeight = 60F;
+            this.colDniCliente.HeaderText = "DNI Cliente";
+            this.colDniCliente.Name = "colDniCliente";
+            // 
+            // colCliente
+            // 
+            this.colCliente.FillWeight = 150F;
+            this.colCliente.HeaderText = "Cliente";
+            this.colCliente.Name = "colCliente";
+            // 
+            // colMetodoPago
+            // 
+            this.colMetodoPago.HeaderText = "Metodo Pago";
+            this.colMetodoPago.Name = "colMetodoPago";
+            // 
+            // colTipoAjuste
+            // 
+            this.colTipoAjuste.HeaderText = "Tipo Ajuste";
+            this.colTipoAjuste.Name = "colTipoAjuste";
+            // 
+            // colFechaVenta
+            // 
+            this.colFechaVenta.FillWeight = 70F;
+            this.colFechaVenta.HeaderText = "Fecha Venta";
+            this.colFechaVenta.Name = "colFechaVenta";
+            // 
+            // colTotal
+            // 
+            this.colTotal.FillWeight = 70F;
+            this.colTotal.HeaderText = "Total ($)";
+            this.colTotal.Name = "colTotal";
+            // 
+            // colEstado
+            // 
+            this.colEstado.HeaderText = "Estado";
+            this.colEstado.Name = "colEstado";
+            // 
+            // colCambiarEstado
+            // 
+            this.colCambiarEstado.FillWeight = 80F;
+            this.colCambiarEstado.HeaderText = "Anular/Activar";
+            this.colCambiarEstado.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.colCambiarEstado.Name = "colCambiarEstado";
+            // 
+            // colVerDetalle
+            // 
+            this.colVerDetalle.FillWeight = 60F;
+            this.colVerDetalle.HeaderText = "Ver Detalle";
+            this.colVerDetalle.Image = global::CapaPresentacion.Properties.Resources.icono_editar;
+            this.colVerDetalle.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.colVerDetalle.Name = "colVerDetalle";
+            this.colVerDetalle.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
             // MisVentasForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -544,6 +548,8 @@
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpDesde;
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpHasta;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbFiltroEstado;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNroVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDniCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCliente;
@@ -554,7 +560,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colEstado;
         private System.Windows.Forms.DataGridViewImageColumn colCambiarEstado;
         private System.Windows.Forms.DataGridViewImageColumn colVerDetalle;
-        private Guna.UI2.WinForms.Guna2ComboBox cmbFiltroEstado;
-        private System.Windows.Forms.Label label1;
     }
 }

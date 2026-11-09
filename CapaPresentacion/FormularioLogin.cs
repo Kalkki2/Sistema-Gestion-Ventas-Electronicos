@@ -27,12 +27,12 @@ namespace CapaPresentacion
         {
             string mensaje = string.Empty;
 
-            // Usamos el TextBox del DNI y el de la contraseña
+            // Al ejecutarse esta línea, el método Login de la CD guardará la fecha/hora en la BD
             EUsuario oUsuario = objCNUsuario.Login(txtDniLogin.Text, txtContraseniaLogin.Text, out mensaje);
 
             if (oUsuario != null)
             {
-                // 1. Guardamos el usuario en la sesión global para saber qué vendedor realiza operaciones
+                // Se asigna el usuario a la sesión con la fecha_ultimo_ingreso ya actualizada
                 SesionActual.UsuarioLogueado = oUsuario;
 
                 // 2. Evaluamos el perfil / rol para abrir su respectivo menú

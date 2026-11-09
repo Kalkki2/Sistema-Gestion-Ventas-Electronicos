@@ -191,6 +191,8 @@ namespace CapaDatos
             }
         }
 
+        //SECCION VENDEDOR
+        //Metodo que consulta las ventas relaizadas por un vededor
         public List<EVenta> ListarHistorialVentasPorUsuario(int usuarioId)
         {
             using (var db = new db_sistema_gestion_ventas_electronicosEntities())
@@ -199,7 +201,7 @@ namespace CapaDatos
                             join u in db.usuario on v.usuario_id equals u.usuario_id
                             join c in db.cliente on v.cliente_id equals c.cliente_id
                             join mp in db.metodo_pago on v.metodo_pago_id equals mp.metodo_pago_id
-                            where v.usuario_id == usuarioId // <--- FILTEAMOS SOLO LAS VENTAS DE ESTE USUARIO
+                            where v.usuario_id == usuarioId 
                             orderby v.fecha_venta descending
                             select new EVenta()
                             {
@@ -252,6 +254,35 @@ namespace CapaDatos
                             };
 
                 return query.ToList();
+            }
+        }
+
+        //Metodo que actualiza el estado de la venta
+        public bool CambiarEstadoVenta(int ventaId, int nuevoEstado, out string Mensaje)
+        {
+            Mensaje = string.Empty;
+            try
+            {
+                using (var db = new db_sistema_gestion_ventas_electronicosEntities())
+                {
+                    var ventaAModificar = db.venta.FirstOrDefault(v => v.venta_id == ventaId);
+                    if (ventaAModificar != null)
+                    {
+                        ventaAModificar.estado = (int)nuevoEstado;
+                        db.SaveChanges();
+                        return true;
+                    }
+                    else
+                    {
+                        Mensaje = "No se encontró la venta.";
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                return false;
             }
         }
 
@@ -687,33 +718,7 @@ namespace CapaDatos
             }
         }
 
-        public bool CambiarEstado(int ventaId, int nuevoEstado, out string Mensaje)
-        {
-            Mensaje = string.Empty;
-            try
-            {
-                using (var db = new db_sistema_gestion_ventas_electronicosEntities())
-                {
-                    var ventaAModificar = db.venta.FirstOrDefault(v => v.venta_id == ventaId);
-                    if (ventaAModificar != null)
-                    {
-                        ventaAModificar.estado = (int)nuevoEstado;
-                        db.SaveChanges();
-                        return true;
-                    }
-                    else
-                    {
-                        Mensaje = "No se encontró la venta.";
-                        return false;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Mensaje = ex.Message;
-                return false;
-            }
-        }
+       
 
         public List<EReporteVentaDetallado> ObtenerReportedetalladoVentas(DateTime fechaDesde, DateTime fechaHasta)
         {

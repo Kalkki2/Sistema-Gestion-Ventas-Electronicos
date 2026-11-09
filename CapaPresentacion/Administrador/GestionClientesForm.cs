@@ -29,40 +29,34 @@ namespace CapaPresentacion.Administrador
             txtApellido.Clear();
             txtDni.Clear();
             txtTelefono.Clear();
+            txtCorreo.Clear();
             txtDireccion.Clear();
             cmbEstado.SelectedIndex = 0;
 
-            txtNombre.Focus(); // Regresa el cursor al primer campo
+            errorProvider1.Clear(); 
+            idClienteSeleccionado = 0; 
+            btnActualizarClientes.Text = "Actualizar"; 
+
+            txtNombre.Focus(); 
         }
 
         private void btnActualizarClientes_Click(object sender, EventArgs e)
         {
-            // 1. Validar que se haya seleccionado un cliente de la grilla (idClienteSeleccionado debe ser mayor a 0)
+            //  Validar que se haya seleccionado un cliente de la grilla
             if (idClienteSeleccionado == 0)
             {
                 MessageBox.Show("Por favor, seleccione un cliente de la lista haciendo clic en el icono de editar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // 2. Validar que los TextBox no tengan errores de formato del ErrorProvider o estén vacíos
-            if (!string.IsNullOrEmpty(errorProvider1.GetError(txtNombre)) ||
-                !string.IsNullOrEmpty(errorProvider1.GetError(txtApellido)) ||
-                !string.IsNullOrEmpty(errorProvider1.GetError(txtDni)) ||
-                !string.IsNullOrEmpty(errorProvider1.GetError(txtCorreo)) ||
-                !string.IsNullOrEmpty(errorProvider1.GetError(txtDireccion)) ||
-                !string.IsNullOrEmpty(errorProvider1.GetError(txtTelefono)) ||
-                string.IsNullOrWhiteSpace(txtCorreo.Text) ||
-                string.IsNullOrWhiteSpace(txtNombre.Text) ||
-                string.IsNullOrWhiteSpace(txtApellido.Text) ||
-                string.IsNullOrWhiteSpace(txtDni.Text) ||
-                string.IsNullOrWhiteSpace(txtTelefono.Text) ||
-                string.IsNullOrWhiteSpace(txtDireccion.Text))
+            // Ejecutar las validaciones de formato y longitud
+            if (!ValidarCamposCliente())
             {
                 MessageBox.Show("Hay campos con errores o vacíos. Corríjalos antes de actualizar.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // 3. Confirmación previa del usuario
+            //  Confirmación previa del usuario
             DialogResult respuesta = MessageBox.Show(
                 "¿Está seguro de que desea guardar los cambios de este cliente?",
                 "Confirmar actualización",
@@ -72,7 +66,7 @@ namespace CapaPresentacion.Administrador
 
             if (respuesta == DialogResult.No) return;
 
-            // 4. Creamos el objeto ECliente con los datos actualizados de los textbox
+            // Creamos el objeto ECliente con los datos actualizados de los textbox
             ECliente objCliente = new ECliente()
             {
                 cliente_id = idClienteSeleccionado,
@@ -85,7 +79,7 @@ namespace CapaPresentacion.Administrador
                 estado = cmbEstado.SelectedIndex == 0 ? 1 : 0
             };
 
-            // 5. Ejecutamos el método Editar de la capa de negocio
+            // Ejecutamos el método Editar de la capa de negocio
             string mensaje = string.Empty;
             bool resultado = objCNCliente.Editar(objCliente, out mensaje);
 
@@ -97,7 +91,6 @@ namespace CapaPresentacion.Administrador
             }
             else
             {
-                // Aquí capturamos el mensaje de la base de datos si el DNI, Correo o Teléfono ya están repetidos
                 MessageBox.Show(mensaje, "No se pudo actualizar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -113,17 +106,6 @@ namespace CapaPresentacion.Administrador
             else
             {
                 LimpiarCampos();
-            }
-        }
-
-       
-
-        private void btnBuscarCliente_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtBuscarCliente.Text))
-            {
-                MessageBox.Show("Debe completar el campo para buscar.", "Campo vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
             }
         }
 
@@ -143,104 +125,7 @@ namespace CapaPresentacion.Administrador
             FiltrarClientes();
         }
 
-        private void txtNombre_Validating(object sender, CancelEventArgs e)
-        {
-            if (!Regex.IsMatch(txtNombre.Text, "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$"))
-            {
-                errorProvider1.SetError(txtNombre, "El nombre  solo debe contener letras.");
-            }
-            else if (txtNombre.Text.Length < 3 || txtNombre.Text.Length > 40)
-            {
-                errorProvider1.SetError(txtNombre, "El nombre  debe tener entre 3 y 40 caracteres.");
-            }
-            else
-            {
-                errorProvider1.SetError(txtNombre, "");
-            }
-        }
-
-        private void txtApellido_Validating(object sender, CancelEventArgs e)
-        {
-            if (!Regex.IsMatch(txtApellido.Text, "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$"))
-            {
-                errorProvider1.SetError(txtApellido, "El apellido solo debe contener letras.");
-            }
-            else if (txtApellido.Text.Length < 3 || txtApellido.Text.Length > 40)
-            {
-                errorProvider1.SetError(txtApellido, "El apellido  debe tener entre 3 y 40 caracteres.");
-            }
-            else
-            {
-                errorProvider1.SetError(txtApellido, "");
-            }
-        }
-
-        private void txtDni_Validating(object sender, CancelEventArgs e)
-        {
-            string cuit = txtDni.Text.Trim();
-
-            if (!ulong.TryParse(cuit, out _))
-            {
-                errorProvider1.SetError(txtDni, "El DNI solo debe contener números.");
-            }
-            else if (cuit.Length != 8)
-            {
-                errorProvider1.SetError(txtDni, "El DNI debe tener exactamente 8 dígitos.");
-            }
-            else
-            {
-                errorProvider1.SetError(txtDni, "");
-            }
-        }
-
-        private void txtCorreo_Validating(object sender, CancelEventArgs e)
-        {
-            string patronCorreo = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
-
-            if (!Regex.IsMatch(txtCorreo.Text, patronCorreo))
-            {
-                errorProvider1.SetError(txtCorreo, "Ingrese un correo electrónico válido (ej: usuario@dominio.com).");
-            }
-            else
-            {
-                errorProvider1.SetError(txtCorreo, "");
-            }
-        }
-
-        private void txtTelefono_Validating(object sender, CancelEventArgs e)
-        {
-            string telefono = txtTelefono.Text.Trim();
-
-            if (!ulong.TryParse(telefono, out _))
-            {
-                errorProvider1.SetError(txtTelefono, "El TELEFONO solo debe contener números.");
-            }
-            else if (telefono.Length != 10)
-            {
-                errorProvider1.SetError(txtTelefono, "El TELEFONO debe tener exactamente 10 dígitos.");
-            }
-            else
-            {
-                errorProvider1.SetError(txtTelefono, "");
-            }
-        }
-
-        private void txtDireccion_Validating(object sender, CancelEventArgs e)
-        {
-            if (!Regex.IsMatch(txtDireccion.Text, "^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\\s]+$"))
-            {
-                errorProvider1.SetError(txtDireccion, "La dirección solo debe contener letras y números.");
-            }
-            else if (txtDireccion.Text.Length < 3 || txtDireccion.Text.Length > 40)
-            {
-                errorProvider1.SetError(txtDireccion, "La dirección debe tener entre 3 y 40 caracteres.");
-            }
-            else
-            {
-                errorProvider1.SetError(txtDireccion, "");
-            }
-        }
-
+      
         private void CargarClientes(string filtro = "")
         {
             if (!string.IsNullOrEmpty(filtro))
@@ -311,7 +196,7 @@ namespace CapaPresentacion.Administrador
                     e.Value = clienteRow.estado == 1 ? Properties.Resources.icono_eliminar : Properties.Resources.icono_reactivar;
                 }
             }
-            else if (dgvListaClientes.Columns[e.ColumnIndex].Name == "colVer")
+            else if (dgvListaClientes.Columns[e.ColumnIndex].Name == "colVerCompras")
             {
                 e.Value = Properties.Resources.icono_lupa; // O tu recurso para ver compras
             }
@@ -343,7 +228,6 @@ namespace CapaPresentacion.Administrador
                 txtDireccion.Text = clienteSeleccionado.direccion;
                 cmbEstado.SelectedIndex = clienteSeleccionado.estado == 1 ? 0 : 1;
 
-                btnActualizarClientes.Text = "Guardar Cambios";
             }
 
             // CAMBIAR ESTADO (Activar / Desactivar)
@@ -394,6 +278,115 @@ namespace CapaPresentacion.Administrador
         private void cmbFiltroEstado_SelectedIndexChanged(object sender, EventArgs e)
         {
             FiltrarClientes();
+        }
+
+        private bool ValidarCamposCliente()
+        {
+            bool esValido = true;
+            errorProvider1.Clear(); // Limpia errores anteriores
+
+            // Validar Nombre (Obligatorio, solo letras, más de 5 caracteres)
+            string nombre = txtNombre.Text.Trim();
+            if (string.IsNullOrWhiteSpace(nombre))
+            {
+                errorProvider1.SetError(txtNombre, "El nombre es obligatorio.");
+                esValido = false;
+            }
+            else if (!Regex.IsMatch(nombre, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"))
+            {
+                errorProvider1.SetError(txtNombre, "El nombre solo debe contener letras.");
+                esValido = false;
+            }
+            else if (nombre.Length <= 5)
+            {
+                errorProvider1.SetError(txtNombre, "El nombre debe tener más de 5 caracteres.");
+                esValido = false;
+            }
+
+            // Validar Apellido (Obligatorio, solo letras, más de 5 caracteres)
+            string apellido = txtApellido.Text.Trim();
+            if (string.IsNullOrWhiteSpace(apellido))
+            {
+                errorProvider1.SetError(txtApellido, "El apellido es obligatorio.");
+                esValido = false;
+            }
+            else if (!Regex.IsMatch(apellido, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"))
+            {
+                errorProvider1.SetError(txtApellido, "El apellido solo debe contener letras.");
+                esValido = false;
+            }
+            else if (apellido.Length <= 5)
+            {
+                errorProvider1.SetError(txtApellido, "El apellido debe tener más de 5 caracteres.");
+                esValido = false;
+            }
+
+            //  Validar DNI (Obligatorio, numérico, exactamente 8 caracteres)
+            string dni = txtDni.Text.Trim();
+            if (string.IsNullOrWhiteSpace(dni))
+            {
+                errorProvider1.SetError(txtDni, "El DNI es obligatorio.");
+                esValido = false;
+            }
+            else if (!Regex.IsMatch(dni, @"^\d{8}$"))
+            {
+                errorProvider1.SetError(txtDni, "El DNI debe ser numérico y tener exactamente 8 caracteres.");
+                esValido = false;
+            }
+
+            // Validar Teléfono (Obligatorio, numérico, exactamente 10 dígitos)
+            string telefono = txtTelefono.Text.Trim();
+            if (string.IsNullOrWhiteSpace(telefono))
+            {
+                errorProvider1.SetError(txtTelefono, "El teléfono es obligatorio.");
+                esValido = false;
+            }
+            else if (!Regex.IsMatch(telefono, @"^\d{10}$"))
+            {
+                errorProvider1.SetError(txtTelefono, "El teléfono debe ser numérico y tener exactamente 10 dígitos.");
+                esValido = false;
+            }
+
+            //  Validar Correo (Obligatorio, más de 10 caracteres, formato válido)
+            string correo = txtCorreo.Text.Trim();
+            string patronCorreo = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            if (string.IsNullOrWhiteSpace(correo))
+            {
+                errorProvider1.SetError(txtCorreo, "El correo electrónico es obligatorio.");
+                esValido = false;
+            }
+            else if (correo.Length <= 10)
+            {
+                errorProvider1.SetError(txtCorreo, "El correo debe tener más de 10 caracteres.");
+                esValido = false;
+            }
+            else if (!Regex.IsMatch(correo, patronCorreo))
+            {
+                errorProvider1.SetError(txtCorreo, "Correo inválido. Ejemplo: usuario@dominio.com");
+                esValido = false;
+            }
+
+            //  Validar Dirección (Obligatorio, más de 10 caracteres)
+            string direccion = txtDireccion.Text.Trim();
+            if (string.IsNullOrWhiteSpace(direccion))
+            {
+                errorProvider1.SetError(txtDireccion, "La dirección es obligatoria.");
+                esValido = false;
+            }
+            else if (direccion.Length <= 10)
+            {
+                errorProvider1.SetError(txtDireccion, "La dirección debe tener más de 10 caracteres.");
+                esValido = false;
+            }
+
+            //  Validar ComboBox de Estado (Obligatorio)
+            if (cmbEstado.SelectedIndex == -1)
+            {
+                errorProvider1.SetError(cmbEstado, "Debe seleccionar un estado.");
+                esValido = false;
+            }
+
+            return esValido;
         }
     }
 }

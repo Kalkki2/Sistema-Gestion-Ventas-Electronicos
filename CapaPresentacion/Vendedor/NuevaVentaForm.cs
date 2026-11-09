@@ -113,7 +113,6 @@ namespace CapaPresentacion.Vendedor
 
 
         // ===== Buscadores =====
-
         private void btnBuscarProducto_Click(object sender, EventArgs e)
         {
             if (idClienteSeleccionado == 0)
@@ -169,7 +168,6 @@ namespace CapaPresentacion.Vendedor
         }
 
         // ===== Ítems de la venta =====
-
         private void btnAgregarItemVenta_Click(object sender, EventArgs e)
         {
             if (idClienteSeleccionado == 0)

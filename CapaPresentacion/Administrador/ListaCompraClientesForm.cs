@@ -54,7 +54,8 @@ namespace CapaPresentacion.Administrador
 
             // MOSTRAMOS EL MONTO TOTAL ACUMULADO
             decimal totalMonetario = listaCompras.Sum(v => v.TotalVenta);
-            lblTotalCompras.Text = $"{listaCompras.Count} compras (Total: $ {totalMonetario:N2})";
+            lblTotalArtVendidos.Text = $"{listaCompras.Count} ";
+             lblTotalVentas.Text = $"$ {totalMonetario:N2}";
         }
 
         private void dgvComprasCliente_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

@@ -156,6 +156,7 @@
           <Property Name="fecha_alta" Type="date" Nullable="false" />
           <Property Name="fecha_ultima_modificacion" Type="date" Nullable="false" />
           <Property Name="perfil_id" Type="int" Nullable="false" />
+          <Property Name="fecha_ultimo_ingreso" Type="datetime" />
         </EntityType>
         <EntityType Name="venta">
           <Key>
@@ -526,6 +527,7 @@
           <NavigationProperty Name="perfil" Relationship="Self.FK_usuario_perfil" FromRole="usuario" ToRole="perfil" />
           <NavigationProperty Name="compra" Relationship="db_sistema_gestion_ventas_electronicosModel.FK_compra_usuario" FromRole="usuario" ToRole="compra" />
           <NavigationProperty Name="venta" Relationship="db_sistema_gestion_ventas_electronicosModel.FK_venta_usuario" FromRole="usuario" ToRole="venta" />
+          <Property Name="fecha_ultimo_ingreso" Type="DateTime" Precision="3" />
         </EntityType>
         <Association Name="FK_categoria_marca_categoria">
           <End Role="categoria" Type="Self.categoria" Multiplicity="1" />
@@ -963,6 +965,7 @@
           <EntitySetMapping Name="usuario">
             <EntityTypeMapping TypeName="db_sistema_gestion_ventas_electronicosModel.usuario">
               <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="fecha_ultimo_ingreso" ColumnName="fecha_ultimo_ingreso" />
                 <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="apellido" ColumnName="apellido" />

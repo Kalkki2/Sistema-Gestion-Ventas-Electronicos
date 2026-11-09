@@ -12,7 +12,7 @@ namespace CapaNegocio
     {
         private CDCompra objCD_Compra = new CDCompra();
 
-        public bool Registrar(ECompra objCompra, List<EDetalleCompra> listaDetalles, out string Mensaje)
+        public bool RegistrarcCompra(ECompra objCompra, List<EDetalleCompra> listaDetalles, out string Mensaje)
         {
             Mensaje = string.Empty;
 

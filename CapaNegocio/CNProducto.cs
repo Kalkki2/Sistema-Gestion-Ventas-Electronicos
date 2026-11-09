@@ -13,29 +13,31 @@ namespace CapaNegocio
     {
         private CDProducto objCD_Producto = new CDProducto();
 
-        // 1. Listar Categorías
+        // Listar Todos los Productos
+        public List<EProducto> ListarProductos()
+        {
+            return objCD_Producto.ListarProductos();
+        }
+
+        // Listar Categorías
         public List<ECategoria> ListarCategorias()
         {
             return objCD_Producto.ListarCategorias();
         }
 
-        // 2. Listar Proveedores
-        public List<EProveedor> ListarProveedores()
+        // Listar Marca
+        public List<EMarca> ListarMarcas()
         {
-            return objCD_Producto.ListarProveedores();
+            return objCD_Producto.ListarMarcas();
         }
 
-        // 3. Listar Marcas por Categoría
+        // Listar Marcas por Categoría
         public List<EMarca> ListarMarcasPorCategoria(int categoriaId)
         {
             return objCD_Producto.ListarMarcasPorCategoria(categoriaId);
         }
 
-        // 4. Listar Productos
-        public List<EProducto> ListarProductos()
-        {
-            return objCD_Producto.ListarProductos();
-        }
+        
 
         // 5. Registrar Producto con validaciones de negocio
         public bool Registrar(EProducto obj, out string Mensaje)
@@ -140,6 +142,28 @@ namespace CapaNegocio
             }
 
             return objCD_Producto.ListarProductosPorProveedor(proveedorId);
+        }
+
+        public List<EProducto> BuscarProductosPorFiltro(int proveedorId, string busqueda, int marcaId)
+        {
+            return objCD_Producto.BuscarProductosPorProveedorPorFiltro(proveedorId, busqueda, marcaId);
+        }
+
+        public List<EProducto> BuscarProductosGeneral(int categoriaId, int marca_id, int proveedor_id, int estado, string busqueda)
+        {
+            return objCD_Producto.BuscarProductosGeneral(categoriaId, marca_id, proveedor_id, estado, busqueda);
+        }
+
+        //Lista productos activos (VENDEDOR: productos)
+        public List<EProducto> ListarProductosActivos()
+        {
+            return objCD_Producto.ListarProductosActivos();
+        }
+
+        //Lista Filtada de  productos activos (VENDEDOR: productos)
+        public List<EProducto> BuscarProductosActivosPorFiltro(int categoriaId, int marcaId, string busqueda)
+        {
+            return objCD_Producto.BuscarProductosActivosPorFiltro(categoriaId, marcaId, busqueda);
         }
     }
 

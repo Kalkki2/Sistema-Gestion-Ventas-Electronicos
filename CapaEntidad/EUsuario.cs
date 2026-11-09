@@ -19,6 +19,7 @@ namespace CapaEntidad
         public int estado { get; set; }
         public DateTime fecha_alta { get; set; }
         public DateTime fecha_ultima_modificacion { get; set; }
+        public DateTime? fecha_ultimo_ingreso { get; set; }
 
         public int perfil_id { get; set; }
         public EPerfil oPerfil { get; set; } // Objeto anidado de tipo EPerfil
