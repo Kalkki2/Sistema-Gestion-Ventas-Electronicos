@@ -157,25 +157,37 @@ namespace CapaPresentacion.GerenteComercial
             crtTendenciaVentas.Series[nombreSerie].Points.Clear();
             crtTendenciaVentas.Series[nombreSerie].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             crtTendenciaVentas.Series[nombreSerie].IsValueShownAsLabel = true;
-            crtTendenciaVentas.ChartAreas[0].AxisY.Minimum = 0;
+
+            // Obtener y configurar el Área del Gráfico
+            var chartArea = crtTendenciaVentas.ChartAreas[0];
+            chartArea.AxisY.Minimum = 0;
+
+            // Limpiar la cuadrícula vertical para que no choque con las fechas
+            chartArea.AxisX.MajorGrid.Enabled = false;
+            chartArea.AxisY.MajorGrid.LineColor = Color.FromArgb(230, 230, 230);
+
+            chartArea.AxisX.Interval = 1;                              
+            chartArea.AxisX.IntervalType = DateTimeIntervalType.Days;  
+            chartArea.AxisX.LabelStyle.Format = "dd/MM/yyyy";               // Formato corto de fecha (ej: 03/10) o "dd/MM/yy"
+            chartArea.AxisX.LabelStyle.Angle = -45;                    // Inclinar las fechas para que nunca se encimen
+            chartArea.AxisX.Tag = "Fechas";
 
             decimal totalGananciaMes = 0;
 
             foreach (var item in listaDatos)
             {
+                // Asegúrate de que item.Fecha sea de tipo DateTime en tu entidad ETendenciaVenta
                 int pointIndex = crtTendenciaVentas.Series[nombreSerie].Points.AddXY(item.Fecha, item.TotalVentas);
                 var punto = crtTendenciaVentas.Series[nombreSerie].Points[pointIndex];
 
                 punto.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-                punto.MarkerSize = 10;
+                punto.MarkerSize = 8;
                 punto.MarkerColor = Color.FromArgb(13, 110, 253);
-                punto.LabelForeColor = Color.FromArgb(13, 110, 253);
+                punto.LabelForeColor = Color.FromArgb(15, 23, 42);
 
-                // Sumamos al acumulador (asumiendo que item.TotalVentas es decimal o numérico)
                 totalGananciaMes += Convert.ToDecimal(item.TotalVentas);
             }
 
-            // Mostrar el total acumulado en el Label (reemplaza 'lblGananciaMes' por el nombre real de tu label)
             lblTotalVentaMensual.Text = "$ " + totalGananciaMes.ToString("N2");
         }
 
@@ -213,12 +225,12 @@ namespace CapaPresentacion.GerenteComercial
             CNVenta objCNVenta = new CNVenta();
             List<ECategoriaVenta> listaDatos = objCNVenta.ObtenerVentasMonetariasPorCategoria(fechaDesde, fechaHasta);
 
-            // 1. Limpiar el control Chart exclusivo
+            // Limpiar el control Chart exclusivo
             crtVentasMonetarias.Series.Clear();
             crtVentasMonetarias.ChartAreas.Clear();
             crtVentasMonetarias.Legends.Clear();
 
-            // 2. Configurar el área del gráfico
+            // Configurar el área del gráfico
             var chartArea = crtVentasMonetarias.ChartAreas.Add("AreaBarrasVerticales");
             chartArea.BackColor = Color.White;
             chartArea.AxisX.MajorGrid.Enabled = false;
@@ -305,7 +317,7 @@ namespace CapaPresentacion.GerenteComercial
             Color[] coloresMetodos = new Color[] {
                 Color.FromArgb(59, 173, 64) ,  // verde claro
                 Color.FromArgb(93, 159, 186),  // azul
-        
+                Color.FromArgb(149, 117, 205),
             };
 
             int colorIndex = 0;

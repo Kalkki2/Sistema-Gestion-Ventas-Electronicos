@@ -285,7 +285,7 @@
   <data name="txtBuscarProveedorPorCuit.IconLeft" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vgAADr4B6kKxwAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACJxSURBVHhe7d0J
+        vQAADr0BR/uQrQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACJxSURBVHhe7d0J
         1K51We/xLQgoCagIIg6AmjacShxyTnPWLLNzXEuPx9mjp5JAT07HVBRJE7XlUA7pyanWymE5a4p1chZT
         s5Csk/OUIwmI4ADn/K6AhM219373u5/neZ//fX8+a33XapHAZu/nup/7vYf/fxsAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -469,7 +469,7 @@
   <data name="txtBuscarCompraPorNroFactura.IconLeft" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vgAADr4B6kKxwAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACJxSURBVHhe7d0J
+        vQAADr0BR/uQrQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACJxSURBVHhe7d0J
         1K51We/xLQgoCagIIg6AmjacShxyTnPWLLNzXEuPx9mjp5JAT07HVBRJE7XlUA7pyanWymE5a4p1chZT
         s5Csk/OUIwmI4ADn/K6AhM219373u5/neZ//fX8+a33XapHAZu/nup/7vYf/fxsAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -623,7 +623,7 @@
   <data name="txtBuscarUsuarioPorDni.IconLeft" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vgAADr4B6kKxwAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACJxSURBVHhe7d0J
+        vQAADr0BR/uQrQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACJxSURBVHhe7d0J
         1K51We/xLQgoCagIIg6AmjacShxyTnPWLLNzXEuPx9mjp5JAT07HVBRJE7XlUA7pyanWymE5a4p1chZT
         s5Csk/OUIwmI4ADn/K6AhM219373u5/neZ//fX8+a33XapHAZu/nup/7vYf/fxsAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA

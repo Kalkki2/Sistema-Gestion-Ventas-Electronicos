@@ -350,7 +350,8 @@ namespace CapaPresentacion.Vendedor
                     dni = txtDni.Text.Trim(),
                     telefono = txtTelefono.Text.Trim(),
                     direccion = txtDireccion.Text.Trim(),
-                    email = txtCorreo.Text.Trim()
+                    email = txtCorreo.Text.Trim(),
+                    estado = 1
                 };
 
                 string mensaje;

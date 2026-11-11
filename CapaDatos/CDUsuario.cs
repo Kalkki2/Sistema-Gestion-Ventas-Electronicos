@@ -293,6 +293,30 @@ namespace CapaDatos
             }
         }
 
+        public bool ActualizarFechaUltimoIngreso(int usuarioId, out string mensaje)
+        {
+            mensaje = string.Empty;
+            try
+            {
+                using (var db = new db_sistema_gestion_ventas_electronicosEntities())
+                {
+                    var oUsuario = db.usuario.FirstOrDefault(u => u.usuario_id == usuarioId);
+                    if (oUsuario != null)
+                    {
+                        oUsuario.fecha_ultimo_ingreso = DateTime.Now;
+                        db.SaveChanges(); 
+                        return true;
+                    }
+                    mensaje = "Usuario no encontrado.";
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                mensaje = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
+                return false;
+            }
+        }
     }
 }
 

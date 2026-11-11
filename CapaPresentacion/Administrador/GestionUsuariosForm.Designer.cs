@@ -92,6 +92,7 @@
             this.txtApellido = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblDni = new System.Windows.Forms.Label();
             this.lblTituloInformacionProducto = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnlEncabezado.SuspendLayout();
             this.pnlnfoUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
@@ -194,7 +195,7 @@
             this.lblFiltraEstado.AutoSize = true;
             this.lblFiltraEstado.BackColor = System.Drawing.Color.Transparent;
             this.lblFiltraEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiltraEstado.Location = new System.Drawing.Point(206, 76);
+            this.lblFiltraEstado.Location = new System.Drawing.Point(212, 106);
             this.lblFiltraEstado.Name = "lblFiltraEstado";
             this.lblFiltraEstado.Size = new System.Drawing.Size(52, 17);
             this.lblFiltraEstado.TabIndex = 12;
@@ -205,7 +206,7 @@
             this.lblFiltraPerfil.AutoSize = true;
             this.lblFiltraPerfil.BackColor = System.Drawing.Color.Transparent;
             this.lblFiltraPerfil.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiltraPerfil.Location = new System.Drawing.Point(4, 76);
+            this.lblFiltraPerfil.Location = new System.Drawing.Point(10, 106);
             this.lblFiltraPerfil.Name = "lblFiltraPerfil";
             this.lblFiltraPerfil.Size = new System.Drawing.Size(40, 17);
             this.lblFiltraPerfil.TabIndex = 11;
@@ -216,7 +217,7 @@
             this.lblBuscarPorDniOCorreo.AutoSize = true;
             this.lblBuscarPorDniOCorreo.BackColor = System.Drawing.Color.Transparent;
             this.lblBuscarPorDniOCorreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuscarPorDniOCorreo.Location = new System.Drawing.Point(3, 14);
+            this.lblBuscarPorDniOCorreo.Location = new System.Drawing.Point(9, 44);
             this.lblBuscarPorDniOCorreo.Name = "lblBuscarPorDniOCorreo";
             this.lblBuscarPorDniOCorreo.Size = new System.Drawing.Size(225, 17);
             this.lblBuscarPorDniOCorreo.TabIndex = 22;
@@ -225,6 +226,7 @@
             // pnlContenedorFiltros
             // 
             this.pnlContenedorFiltros.BackColor = System.Drawing.Color.Transparent;
+            this.pnlContenedorFiltros.Controls.Add(this.label1);
             this.pnlContenedorFiltros.Controls.Add(this.cmbFiltroPerfil);
             this.pnlContenedorFiltros.Controls.Add(this.txtBuscarUsuario);
             this.pnlContenedorFiltros.Controls.Add(this.lblFiltraEstado);
@@ -256,7 +258,7 @@
             "Administrador",
             "Gerente Comercial",
             "Vendedor"});
-            this.cmbFiltroPerfil.Location = new System.Drawing.Point(3, 96);
+            this.cmbFiltroPerfil.Location = new System.Drawing.Point(9, 126);
             this.cmbFiltroPerfil.Name = "cmbFiltroPerfil";
             this.cmbFiltroPerfil.Size = new System.Drawing.Size(174, 27);
             this.cmbFiltroPerfil.StartIndex = 0;
@@ -278,7 +280,7 @@
             this.txtBuscarUsuario.ForeColor = System.Drawing.Color.Black;
             this.txtBuscarUsuario.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBuscarUsuario.IconLeft = global::CapaPresentacion.Properties.Resources.icono_lupa;
-            this.txtBuscarUsuario.Location = new System.Drawing.Point(6, 34);
+            this.txtBuscarUsuario.Location = new System.Drawing.Point(12, 64);
             this.txtBuscarUsuario.Name = "txtBuscarUsuario";
             this.txtBuscarUsuario.PlaceholderText = "";
             this.txtBuscarUsuario.SelectedText = "";
@@ -302,7 +304,7 @@
             "Todos",
             "Activo",
             "Inactivo"});
-            this.cmbFiltroEstado.Location = new System.Drawing.Point(209, 96);
+            this.cmbFiltroEstado.Location = new System.Drawing.Point(215, 126);
             this.cmbFiltroEstado.Name = "cmbFiltroEstado";
             this.cmbFiltroEstado.Size = new System.Drawing.Size(139, 27);
             this.cmbFiltroEstado.StartIndex = 0;
@@ -933,6 +935,18 @@
             this.lblTituloInformacionProducto.TabIndex = 43;
             this.lblTituloInformacionProducto.Text = "Informacion del usuario";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(10, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(181, 16);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "Buscar y Filtrar Usuarios:";
+            // 
             // GestionUsuariosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1028,5 +1042,6 @@
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
         private System.Windows.Forms.Label lblNombreUsuario;
         private System.Windows.Forms.Label lblRolUsuario;
+        private System.Windows.Forms.Label label1;
     }
 }

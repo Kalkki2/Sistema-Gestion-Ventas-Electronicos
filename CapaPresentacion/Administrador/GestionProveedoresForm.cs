@@ -93,13 +93,6 @@ namespace CapaPresentacion.Administrador
             cmbFiltroEstado.ValueMember = "Valor";
             cmbFiltroEstado.SelectedIndex = 0;
 
-            //Carga los comboBox de las Categorias
-            var listaCat = objCNProducto.ListarCategorias();
-            listaCat.Insert(0, new ECategoria { categoria_id = 0, nombre = "Todos" });
-            cmbFiltroCategoria.DataSource = listaCat;
-            cmbFiltroCategoria.DisplayMember = "nombre";
-            cmbFiltroCategoria.ValueMember = "categoria_id";
-            cmbFiltroCategoria.SelectedIndex = 0;
         }
 
 
@@ -324,22 +317,7 @@ namespace CapaPresentacion.Administrador
             lblCantTotalProveedores.Text = listaFiltrada.Count.ToString();
         }
 
-        private void cmbFiltroCategoria_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbFiltroCategoria.SelectedIndex == -1) return;
-
-            int categoriaId = 0;
-            if (cmbFiltroCategoria.SelectedValue != null)
-            {
-                int.TryParse(cmbFiltroCategoria.SelectedValue.ToString(), out categoriaId);
-            }
-
-            // Llamas a un método de tu capa de negocio específico para categoría
-            var listaFiltrada = objCNProveedor.ListarProveedorPorCategoria(categoriaId);
-
-            dgvListaProveedores.DataSource = listaFiltrada;
-            lblCantTotalProveedores.Text = listaFiltrada.Count.ToString();
-        }
+       
 
         private void txtBuscarProveedor_TextChanged(object sender, EventArgs e)
         {

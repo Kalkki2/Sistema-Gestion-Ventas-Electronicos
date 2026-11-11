@@ -36,8 +36,23 @@ namespace CapaDatos
                             db.venta.Add(nuevaVenta);
                             db.SaveChanges(); // Genera el ID autoincremental (venta_id) en la BD
 
-                            // 2. Formateamos el nro_venta a 8 dígitos basados en el ID real generado (ej: ID 321 -> "00000321")
-                            nuevaVenta.nro_venta = nuevaVenta.venta_id.ToString("D8");
+                            // 2. Obtener el último nro_venta registrado, sumarle 1 y formatearlo a 8 dígitos
+                            string ultimoNroVenta = db.venta
+                                .Where(v => v.nro_venta != "TEMP")
+                                .OrderByDescending(v => v.venta_id)
+                                .Select(v => v.nro_venta)
+                                .FirstOrDefault();
+
+                            int siguienteNumero = 1; // Valor por defecto si es la primera venta del sistema
+                            if (!string.IsNullOrEmpty(ultimoNroVenta))
+                            {
+                                if (int.TryParse(ultimoNroVenta, out int ultimoNumeroInt))
+                                {
+                                    siguienteNumero = ultimoNumeroInt + 1;
+                                }
+                            }
+
+                            nuevaVenta.nro_venta = siguienteNumero.ToString("D8");
 
                             // 3. Registrar los Detalles y Descontar el Stock de cada Producto
                             foreach (var item in listaDetalles)
@@ -83,6 +98,30 @@ namespace CapaDatos
                             objVenta.nro_venta = nuevaVenta.nro_venta;
 
                             return true;
+                        }
+                        catch (System.Data.Entity.Infrastructure.DbUpdateException dbUpdateEx)
+                        {
+                            transaction.Rollback();
+                            string detalleSql = dbUpdateEx.InnerException != null && dbUpdateEx.InnerException.InnerException != null
+                                ? dbUpdateEx.InnerException.InnerException.Message
+                                : (dbUpdateEx.InnerException != null ? dbUpdateEx.InnerException.Message : dbUpdateEx.Message);
+
+                            Mensaje = "Error de Base de Datos: " + detalleSql;
+                            return false;
+                        }
+                        catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+                        {
+                            transaction.Rollback();
+                            StringBuilder sb = new StringBuilder();
+                            foreach (var validationErrors in dbEx.EntityValidationErrors)
+                            {
+                                foreach (var validationError in validationErrors.ValidationErrors)
+                                {
+                                    sb.AppendLine($"Propiedad: {validationError.PropertyName} - Error: {validationError.ErrorMessage}");
+                                }
+                            }
+                            Mensaje = sb.ToString();
+                            return false;
                         }
                         catch (Exception ex)
                         {

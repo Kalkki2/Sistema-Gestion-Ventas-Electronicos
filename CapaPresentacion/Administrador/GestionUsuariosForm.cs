@@ -260,7 +260,7 @@ namespace CapaPresentacion.Administrador
             if (!ValidarCamposUsuario())
             {
                 MessageBox.Show("Por favor, corrija los errores marcados en el formulario antes de continuar.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return; 
+                return;
             }
             string mensaje = string.Empty;
 
@@ -279,6 +279,22 @@ namespace CapaPresentacion.Administrador
                 perfil_id = Convert.ToInt32(cmbPerfil.SelectedValue)
             };
 
+            // CONFIRMACIÓN SEGÚN LA ACCIÓN (REGISTRAR / EDITAR)
+            string accionTexto = idUsuarioEdicion == 0 ? "registrar" : "modificar";
+            string tituloTexto = idUsuarioEdicion == 0 ? "Confirmar registro" : "Confirmar modificación";
+
+            DialogResult respuesta = MessageBox.Show(
+                $"¿Está seguro de que desea {accionTexto} este usuario?",
+                tituloTexto,
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (respuesta == DialogResult.No)
+            {
+                return; // Se detiene la ejecución si el usuario elige "No"
+            }
+
             bool resultado = false;
 
             if (idUsuarioEdicion == 0)
@@ -289,7 +305,7 @@ namespace CapaPresentacion.Administrador
             else
             {
                 // Operación de Edición
-                resultado = objCNUsuario.EditarUsuario(usuarioObj, out mensaje); // Asegúrate de tener este método en tu Capa de Negocio
+                resultado = objCNUsuario.EditarUsuario(usuarioObj, out mensaje);
             }
 
             if (resultado)

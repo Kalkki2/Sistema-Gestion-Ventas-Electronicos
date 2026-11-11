@@ -88,6 +88,14 @@ namespace CapaPresentacion.Administrador
                 return;
             }
 
+            string nroFactura = txtNroFactura.Text.Trim();
+            if (nroFactura.Length != 13 || !nroFactura.All(char.IsDigit))
+            {
+                MessageBox.Show("El número de factura debe ser estrictamente numérico y tener exactamente 13 caracteres.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNroFactura.Focus();
+                return;
+            }
+
             if (idProveedorSeleccionado == 0)
             {
                 MessageBox.Show("Debe seleccionar un proveedor antes de generar la compra.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -258,10 +266,10 @@ namespace CapaPresentacion.Administrador
                 subtotal.ToString("0.00")          // Subtotal
              });
 
-            // 5. Calcular y actualizar el TOTAL GENERAL de la compra
+            // Calcular y actualizar el TOTAL GENERAL de la compra
             CalcularTotalCompra();
 
-            // 6. Limpiar los campos del producto para el siguiente ingreso
+            // Limpiar los campos del producto para el siguiente ingreso
             LimpiarCamposProducto();
         }
 
@@ -292,7 +300,7 @@ namespace CapaPresentacion.Administrador
 
             string nombreColumna = dgvItemsCompra.Columns[e.ColumnIndex].Name;
 
-            // 1. LÓGICA DE ELIMINAR ÍTEM
+            // ACCION ELIMINAR ÍTEM
             if (nombreColumna == "colEliminar")
             {
                 DialogResult resultado = MessageBox.Show(
@@ -315,7 +323,7 @@ namespace CapaPresentacion.Administrador
                 }
             }
 
-            // 2. ACCIÓN DE EDITAR
+            // ACCIÓN DE EDITAR
             else if (nombreColumna == "colEditar")
             {
                 DataGridViewRow fila = dgvItemsCompra.Rows[e.RowIndex];
@@ -396,7 +404,17 @@ namespace CapaPresentacion.Administrador
         // Cancela la compra y limpa formulario
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            LimpiarFormularioCompleto();
+            DialogResult respuesta = MessageBox.Show(
+                "¿Está seguro de que desea cancelar la compra?",
+                "Confirmar cancelación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (respuesta == DialogResult.Yes)
+            {
+                LimpiarFormularioCompleto();
+            }
         }
 
         // Limpia todo el formulario

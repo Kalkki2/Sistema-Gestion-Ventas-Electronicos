@@ -128,7 +128,7 @@ namespace CapaNegocio
                 return null;
             }
 
-            // Obtenemos la lista o buscamos al usuario por DNI
+            // Obtenemos la lista o buscamos al usuario por DNI (tus validaciones originales)
             List<EUsuario> lista = objCDUsuario.ListarUsuarios();
             EUsuario oUsuario = lista.FirstOrDefault(u => u.dni.Equals(dni.Trim(), StringComparison.OrdinalIgnoreCase));
 
@@ -154,7 +154,11 @@ namespace CapaNegocio
                 return null;
             }
 
-            return oUsuario; // Retorna el usuario completo si todo es correcto
+            objCDUsuario.ActualizarFechaUltimoIngreso(oUsuario.usuario_id, out mensaje);
+
+            oUsuario.fecha_ultimo_ingreso = DateTime.Now;
+
+            return oUsuario; // Retorna el usuario completo con sus validaciones y fecha al día
         }
     }
 }

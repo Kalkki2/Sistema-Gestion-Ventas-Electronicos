@@ -58,6 +58,11 @@
             this.colVerDetalle = new System.Windows.Forms.DataGridViewImageColumn();
             this.lblCatalogo = new System.Windows.Forms.Label();
             this.pnlEncabezado = new System.Windows.Forms.Panel();
+            this.pnlnfoUsuario = new System.Windows.Forms.Panel();
+            this.lblIniciales = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.lblNombreUsuario = new System.Windows.Forms.Label();
+            this.lblRolUsuario = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.pnlContenedorFiltros = new Guna.UI2.WinForms.Guna2ShadowPanel();
@@ -67,17 +72,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtBuscarUsuarioPorDni = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.pnlnfoUsuario = new System.Windows.Forms.Panel();
-            this.lblIniciales = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            this.lblNombreUsuario = new System.Windows.Forms.Label();
-            this.lblRolUsuario = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistorialCompras)).BeginInit();
             this.pnlEncabezado.SuspendLayout();
-            this.pnlContenedorFiltros.SuspendLayout();
             this.pnlnfoUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
+            this.pnlContenedorFiltros.SuspendLayout();
             this.SuspendLayout();
             // 
             // dtpHasta
@@ -87,7 +88,7 @@
             this.dtpHasta.FillColor = System.Drawing.Color.White;
             this.dtpHasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpHasta.Location = new System.Drawing.Point(528, 39);
+            this.dtpHasta.Location = new System.Drawing.Point(525, 61);
             this.dtpHasta.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpHasta.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpHasta.Name = "dtpHasta";
@@ -102,7 +103,7 @@
             this.dtpDesde.FillColor = System.Drawing.Color.White;
             this.dtpDesde.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDesde.Location = new System.Drawing.Point(355, 39);
+            this.dtpDesde.Location = new System.Drawing.Point(352, 61);
             this.dtpDesde.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpDesde.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpDesde.Name = "dtpDesde";
@@ -114,7 +115,7 @@
             // 
             this.lblFiltrarHasta.AutoSize = true;
             this.lblFiltrarHasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiltrarHasta.Location = new System.Drawing.Point(487, 43);
+            this.lblFiltrarHasta.Location = new System.Drawing.Point(484, 65);
             this.lblFiltrarHasta.Name = "lblFiltrarHasta";
             this.lblFiltrarHasta.Size = new System.Drawing.Size(45, 17);
             this.lblFiltrarHasta.TabIndex = 47;
@@ -124,7 +125,7 @@
             // 
             this.lblFiltrarDesde.AutoSize = true;
             this.lblFiltrarDesde.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiltrarDesde.Location = new System.Drawing.Point(300, 43);
+            this.lblFiltrarDesde.Location = new System.Drawing.Point(297, 65);
             this.lblFiltrarDesde.Name = "lblFiltrarDesde";
             this.lblFiltrarDesde.Size = new System.Drawing.Size(49, 17);
             this.lblFiltrarDesde.TabIndex = 46;
@@ -142,7 +143,7 @@
             this.btnFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.btnFiltrar.ForeColor = System.Drawing.Color.Black;
             this.btnFiltrar.Image = ((System.Drawing.Image)(resources.GetObject("btnFiltrar.Image")));
-            this.btnFiltrar.Location = new System.Drawing.Point(663, 39);
+            this.btnFiltrar.Location = new System.Drawing.Point(660, 61);
             this.btnFiltrar.Name = "btnFiltrar";
             this.btnFiltrar.Size = new System.Drawing.Size(89, 27);
             this.btnFiltrar.TabIndex = 45;
@@ -164,7 +165,7 @@
             this.txtBuscarProveedorPorCuit.ForeColor = System.Drawing.Color.Black;
             this.txtBuscarProveedorPorCuit.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBuscarProveedorPorCuit.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtBuscarProveedorPorCuit.IconLeft")));
-            this.txtBuscarProveedorPorCuit.Location = new System.Drawing.Point(25, 105);
+            this.txtBuscarProveedorPorCuit.Location = new System.Drawing.Point(22, 127);
             this.txtBuscarProveedorPorCuit.MaxLength = 11;
             this.txtBuscarProveedorPorCuit.Name = "txtBuscarProveedorPorCuit";
             this.txtBuscarProveedorPorCuit.PlaceholderText = "";
@@ -178,7 +179,7 @@
             this.lblBuscarPorCuit.AutoSize = true;
             this.lblBuscarPorCuit.BackColor = System.Drawing.Color.Transparent;
             this.lblBuscarPorCuit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuscarPorCuit.Location = new System.Drawing.Point(27, 85);
+            this.lblBuscarPorCuit.Location = new System.Drawing.Point(24, 107);
             this.lblBuscarPorCuit.Name = "lblBuscarPorCuit";
             this.lblBuscarPorCuit.Size = new System.Drawing.Size(208, 17);
             this.lblBuscarPorCuit.TabIndex = 21;
@@ -342,149 +343,6 @@
             this.pnlEncabezado.Size = new System.Drawing.Size(1222, 64);
             this.pnlEncabezado.TabIndex = 67;
             // 
-            // lblFecha
-            // 
-            this.lblFecha.AutoSize = true;
-            this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFecha.Location = new System.Drawing.Point(14, 7);
-            this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(47, 17);
-            this.lblFecha.TabIndex = 11;
-            this.lblFecha.Text = "Fecha";
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(12, 29);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(236, 26);
-            this.lblTitulo.TabIndex = 11;
-            this.lblTitulo.Text = "Historial de Compras";
-            // 
-            // pnlContenedorFiltros
-            // 
-            this.pnlContenedorFiltros.BackColor = System.Drawing.Color.Transparent;
-            this.pnlContenedorFiltros.Controls.Add(this.cmbFiltroEstado);
-            this.pnlContenedorFiltros.Controls.Add(this.lblFiltraEstado);
-            this.pnlContenedorFiltros.Controls.Add(this.txtBuscarCompraPorNroFactura);
-            this.pnlContenedorFiltros.Controls.Add(this.label2);
-            this.pnlContenedorFiltros.Controls.Add(this.txtBuscarUsuarioPorDni);
-            this.pnlContenedorFiltros.Controls.Add(this.label1);
-            this.pnlContenedorFiltros.Controls.Add(this.dtpHasta);
-            this.pnlContenedorFiltros.Controls.Add(this.txtBuscarProveedorPorCuit);
-            this.pnlContenedorFiltros.Controls.Add(this.lblBuscarPorCuit);
-            this.pnlContenedorFiltros.Controls.Add(this.dtpDesde);
-            this.pnlContenedorFiltros.Controls.Add(this.lblFiltrarHasta);
-            this.pnlContenedorFiltros.Controls.Add(this.btnFiltrar);
-            this.pnlContenedorFiltros.Controls.Add(this.lblFiltrarDesde);
-            this.pnlContenedorFiltros.FillColor = System.Drawing.Color.White;
-            this.pnlContenedorFiltros.Location = new System.Drawing.Point(25, 78);
-            this.pnlContenedorFiltros.Name = "pnlContenedorFiltros";
-            this.pnlContenedorFiltros.ShadowColor = System.Drawing.Color.Black;
-            this.pnlContenedorFiltros.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
-            this.pnlContenedorFiltros.Size = new System.Drawing.Size(773, 228);
-            this.pnlContenedorFiltros.TabIndex = 68;
-            // 
-            // cmbFiltroEstado
-            // 
-            this.cmbFiltroEstado.BackColor = System.Drawing.Color.Transparent;
-            this.cmbFiltroEstado.BorderColor = System.Drawing.Color.DimGray;
-            this.cmbFiltroEstado.BorderRadius = 5;
-            this.cmbFiltroEstado.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbFiltroEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbFiltroEstado.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmbFiltroEstado.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmbFiltroEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.cmbFiltroEstado.ForeColor = System.Drawing.Color.Black;
-            this.cmbFiltroEstado.ItemHeight = 21;
-            this.cmbFiltroEstado.Location = new System.Drawing.Point(303, 105);
-            this.cmbFiltroEstado.Name = "cmbFiltroEstado";
-            this.cmbFiltroEstado.Size = new System.Drawing.Size(121, 27);
-            this.cmbFiltroEstado.TabIndex = 57;
-            this.cmbFiltroEstado.SelectedIndexChanged += new System.EventHandler(this.cmbFiltroEstado_SelectedIndexChanged);
-            // 
-            // lblFiltraEstado
-            // 
-            this.lblFiltraEstado.AutoSize = true;
-            this.lblFiltraEstado.BackColor = System.Drawing.Color.Transparent;
-            this.lblFiltraEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiltraEstado.Location = new System.Drawing.Point(300, 85);
-            this.lblFiltraEstado.Name = "lblFiltraEstado";
-            this.lblFiltraEstado.Size = new System.Drawing.Size(52, 17);
-            this.lblFiltraEstado.TabIndex = 58;
-            this.lblFiltraEstado.Text = "Estado";
-            // 
-            // txtBuscarCompraPorNroFactura
-            // 
-            this.txtBuscarCompraPorNroFactura.BorderColor = System.Drawing.Color.DimGray;
-            this.txtBuscarCompraPorNroFactura.BorderRadius = 5;
-            this.txtBuscarCompraPorNroFactura.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtBuscarCompraPorNroFactura.DefaultText = "";
-            this.txtBuscarCompraPorNroFactura.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtBuscarCompraPorNroFactura.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtBuscarCompraPorNroFactura.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtBuscarCompraPorNroFactura.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtBuscarCompraPorNroFactura.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscarCompraPorNroFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.txtBuscarCompraPorNroFactura.ForeColor = System.Drawing.Color.Black;
-            this.txtBuscarCompraPorNroFactura.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscarCompraPorNroFactura.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtBuscarCompraPorNroFactura.IconLeft")));
-            this.txtBuscarCompraPorNroFactura.Location = new System.Drawing.Point(25, 39);
-            this.txtBuscarCompraPorNroFactura.MaxLength = 13;
-            this.txtBuscarCompraPorNroFactura.Name = "txtBuscarCompraPorNroFactura";
-            this.txtBuscarCompraPorNroFactura.PlaceholderText = "";
-            this.txtBuscarCompraPorNroFactura.SelectedText = "";
-            this.txtBuscarCompraPorNroFactura.Size = new System.Drawing.Size(226, 27);
-            this.txtBuscarCompraPorNroFactura.TabIndex = 55;
-            this.txtBuscarCompraPorNroFactura.TextChanged += new System.EventHandler(this.txtBuscarCompraPorNroFactura_TextChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(27, 19);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(156, 17);
-            this.label2.TabIndex = 56;
-            this.label2.Text = "Buscar por Nº Factura :";
-            // 
-            // txtBuscarUsuarioPorDni
-            // 
-            this.txtBuscarUsuarioPorDni.BorderColor = System.Drawing.Color.DimGray;
-            this.txtBuscarUsuarioPorDni.BorderRadius = 5;
-            this.txtBuscarUsuarioPorDni.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtBuscarUsuarioPorDni.DefaultText = "";
-            this.txtBuscarUsuarioPorDni.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtBuscarUsuarioPorDni.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtBuscarUsuarioPorDni.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtBuscarUsuarioPorDni.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtBuscarUsuarioPorDni.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscarUsuarioPorDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.txtBuscarUsuarioPorDni.ForeColor = System.Drawing.Color.Black;
-            this.txtBuscarUsuarioPorDni.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuscarUsuarioPorDni.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtBuscarUsuarioPorDni.IconLeft")));
-            this.txtBuscarUsuarioPorDni.Location = new System.Drawing.Point(25, 168);
-            this.txtBuscarUsuarioPorDni.MaxLength = 8;
-            this.txtBuscarUsuarioPorDni.Name = "txtBuscarUsuarioPorDni";
-            this.txtBuscarUsuarioPorDni.PlaceholderText = "";
-            this.txtBuscarUsuarioPorDni.SelectedText = "";
-            this.txtBuscarUsuarioPorDni.Size = new System.Drawing.Size(226, 27);
-            this.txtBuscarUsuarioPorDni.TabIndex = 52;
-            this.txtBuscarUsuarioPorDni.TextChanged += new System.EventHandler(this.txtBuscarUsuarioPorDni_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(27, 148);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(182, 17);
-            this.label1.TabIndex = 53;
-            this.label1.Text = "Buscar por DNI del usuario:";
-            // 
             // pnlnfoUsuario
             // 
             this.pnlnfoUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -539,6 +397,162 @@
             this.lblRolUsuario.TabIndex = 11;
             this.lblRolUsuario.Text = "Administrador";
             // 
+            // lblFecha
+            // 
+            this.lblFecha.AutoSize = true;
+            this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFecha.Location = new System.Drawing.Point(14, 7);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(47, 17);
+            this.lblFecha.TabIndex = 11;
+            this.lblFecha.Text = "Fecha";
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Location = new System.Drawing.Point(12, 29);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(236, 26);
+            this.lblTitulo.TabIndex = 11;
+            this.lblTitulo.Text = "Historial de Compras";
+            // 
+            // pnlContenedorFiltros
+            // 
+            this.pnlContenedorFiltros.BackColor = System.Drawing.Color.Transparent;
+            this.pnlContenedorFiltros.Controls.Add(this.label3);
+            this.pnlContenedorFiltros.Controls.Add(this.cmbFiltroEstado);
+            this.pnlContenedorFiltros.Controls.Add(this.lblFiltraEstado);
+            this.pnlContenedorFiltros.Controls.Add(this.txtBuscarCompraPorNroFactura);
+            this.pnlContenedorFiltros.Controls.Add(this.label2);
+            this.pnlContenedorFiltros.Controls.Add(this.txtBuscarUsuarioPorDni);
+            this.pnlContenedorFiltros.Controls.Add(this.label1);
+            this.pnlContenedorFiltros.Controls.Add(this.dtpHasta);
+            this.pnlContenedorFiltros.Controls.Add(this.txtBuscarProveedorPorCuit);
+            this.pnlContenedorFiltros.Controls.Add(this.lblBuscarPorCuit);
+            this.pnlContenedorFiltros.Controls.Add(this.dtpDesde);
+            this.pnlContenedorFiltros.Controls.Add(this.lblFiltrarHasta);
+            this.pnlContenedorFiltros.Controls.Add(this.btnFiltrar);
+            this.pnlContenedorFiltros.Controls.Add(this.lblFiltrarDesde);
+            this.pnlContenedorFiltros.FillColor = System.Drawing.Color.White;
+            this.pnlContenedorFiltros.Location = new System.Drawing.Point(25, 67);
+            this.pnlContenedorFiltros.Name = "pnlContenedorFiltros";
+            this.pnlContenedorFiltros.ShadowColor = System.Drawing.Color.Black;
+            this.pnlContenedorFiltros.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
+            this.pnlContenedorFiltros.Size = new System.Drawing.Size(773, 239);
+            this.pnlContenedorFiltros.TabIndex = 68;
+            // 
+            // cmbFiltroEstado
+            // 
+            this.cmbFiltroEstado.BackColor = System.Drawing.Color.Transparent;
+            this.cmbFiltroEstado.BorderColor = System.Drawing.Color.DimGray;
+            this.cmbFiltroEstado.BorderRadius = 5;
+            this.cmbFiltroEstado.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbFiltroEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFiltroEstado.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbFiltroEstado.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbFiltroEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.cmbFiltroEstado.ForeColor = System.Drawing.Color.Black;
+            this.cmbFiltroEstado.ItemHeight = 21;
+            this.cmbFiltroEstado.Location = new System.Drawing.Point(300, 127);
+            this.cmbFiltroEstado.Name = "cmbFiltroEstado";
+            this.cmbFiltroEstado.Size = new System.Drawing.Size(121, 27);
+            this.cmbFiltroEstado.TabIndex = 57;
+            this.cmbFiltroEstado.SelectedIndexChanged += new System.EventHandler(this.cmbFiltroEstado_SelectedIndexChanged);
+            // 
+            // lblFiltraEstado
+            // 
+            this.lblFiltraEstado.AutoSize = true;
+            this.lblFiltraEstado.BackColor = System.Drawing.Color.Transparent;
+            this.lblFiltraEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFiltraEstado.Location = new System.Drawing.Point(297, 107);
+            this.lblFiltraEstado.Name = "lblFiltraEstado";
+            this.lblFiltraEstado.Size = new System.Drawing.Size(52, 17);
+            this.lblFiltraEstado.TabIndex = 58;
+            this.lblFiltraEstado.Text = "Estado";
+            // 
+            // txtBuscarCompraPorNroFactura
+            // 
+            this.txtBuscarCompraPorNroFactura.BorderColor = System.Drawing.Color.DimGray;
+            this.txtBuscarCompraPorNroFactura.BorderRadius = 5;
+            this.txtBuscarCompraPorNroFactura.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtBuscarCompraPorNroFactura.DefaultText = "";
+            this.txtBuscarCompraPorNroFactura.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtBuscarCompraPorNroFactura.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtBuscarCompraPorNroFactura.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscarCompraPorNroFactura.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscarCompraPorNroFactura.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarCompraPorNroFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.txtBuscarCompraPorNroFactura.ForeColor = System.Drawing.Color.Black;
+            this.txtBuscarCompraPorNroFactura.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarCompraPorNroFactura.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtBuscarCompraPorNroFactura.IconLeft")));
+            this.txtBuscarCompraPorNroFactura.Location = new System.Drawing.Point(22, 61);
+            this.txtBuscarCompraPorNroFactura.MaxLength = 13;
+            this.txtBuscarCompraPorNroFactura.Name = "txtBuscarCompraPorNroFactura";
+            this.txtBuscarCompraPorNroFactura.PlaceholderText = "";
+            this.txtBuscarCompraPorNroFactura.SelectedText = "";
+            this.txtBuscarCompraPorNroFactura.Size = new System.Drawing.Size(226, 27);
+            this.txtBuscarCompraPorNroFactura.TabIndex = 55;
+            this.txtBuscarCompraPorNroFactura.TextChanged += new System.EventHandler(this.txtBuscarCompraPorNroFactura_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(24, 41);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(156, 17);
+            this.label2.TabIndex = 56;
+            this.label2.Text = "Buscar por Nº Factura :";
+            // 
+            // txtBuscarUsuarioPorDni
+            // 
+            this.txtBuscarUsuarioPorDni.BorderColor = System.Drawing.Color.DimGray;
+            this.txtBuscarUsuarioPorDni.BorderRadius = 5;
+            this.txtBuscarUsuarioPorDni.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtBuscarUsuarioPorDni.DefaultText = "";
+            this.txtBuscarUsuarioPorDni.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtBuscarUsuarioPorDni.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtBuscarUsuarioPorDni.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscarUsuarioPorDni.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBuscarUsuarioPorDni.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarUsuarioPorDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.txtBuscarUsuarioPorDni.ForeColor = System.Drawing.Color.Black;
+            this.txtBuscarUsuarioPorDni.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBuscarUsuarioPorDni.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtBuscarUsuarioPorDni.IconLeft")));
+            this.txtBuscarUsuarioPorDni.Location = new System.Drawing.Point(22, 190);
+            this.txtBuscarUsuarioPorDni.MaxLength = 8;
+            this.txtBuscarUsuarioPorDni.Name = "txtBuscarUsuarioPorDni";
+            this.txtBuscarUsuarioPorDni.PlaceholderText = "";
+            this.txtBuscarUsuarioPorDni.SelectedText = "";
+            this.txtBuscarUsuarioPorDni.Size = new System.Drawing.Size(226, 27);
+            this.txtBuscarUsuarioPorDni.TabIndex = 52;
+            this.txtBuscarUsuarioPorDni.TextChanged += new System.EventHandler(this.txtBuscarUsuarioPorDni_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(24, 170);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(182, 17);
+            this.label1.TabIndex = 53;
+            this.label1.Text = "Buscar por DNI del usuario:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(19, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(177, 16);
+            this.label3.TabIndex = 59;
+            this.label3.Text = "Buscar y Filtrar Compras";
+            // 
             // HistorialCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -555,11 +569,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistorialCompras)).EndInit();
             this.pnlEncabezado.ResumeLayout(false);
             this.pnlEncabezado.PerformLayout();
-            this.pnlContenedorFiltros.ResumeLayout(false);
-            this.pnlContenedorFiltros.PerformLayout();
             this.pnlnfoUsuario.ResumeLayout(false);
             this.pnlnfoUsuario.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
+            this.pnlContenedorFiltros.ResumeLayout(false);
+            this.pnlContenedorFiltros.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -600,5 +614,6 @@
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
         private System.Windows.Forms.Label lblNombreUsuario;
         private System.Windows.Forms.Label lblRolUsuario;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -38,6 +38,7 @@
             this.picVerContrasenia = new System.Windows.Forms.PictureBox();
             this.txtContraseniaLogin = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtDniLogin = new Guna.UI2.WinForms.Guna2TextBox();
+            this.btnSalir = new Guna.UI2.WinForms.Guna2Button();
             this.guna2GradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picVerContrasenia)).BeginInit();
             this.SuspendLayout();
@@ -185,12 +186,30 @@
             this.txtDniLogin.Size = new System.Drawing.Size(245, 30);
             this.txtDniLogin.TabIndex = 46;
             // 
+            // btnSalir
+            // 
+            this.btnSalir.BackColor = System.Drawing.Color.Transparent;
+            this.btnSalir.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSalir.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSalir.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSalir.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSalir.FillColor = System.Drawing.Color.Red;
+            this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.ForeColor = System.Drawing.Color.White;
+            this.btnSalir.Location = new System.Drawing.Point(59, 365);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(245, 35);
+            this.btnSalir.TabIndex = 54;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
             // FormularioLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(387, 450);
+            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.guna2GradientPanel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnIniciarSesion);
@@ -222,5 +241,6 @@
         private System.Windows.Forms.Label lblBuscarPorCodONombre;
         private Guna.UI2.WinForms.Guna2TextBox txtContraseniaLogin;
         private Guna.UI2.WinForms.Guna2TextBox txtDniLogin;
+        private Guna.UI2.WinForms.Guna2Button btnSalir;
     }
 }

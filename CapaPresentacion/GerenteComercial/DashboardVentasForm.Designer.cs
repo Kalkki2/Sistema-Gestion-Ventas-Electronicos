@@ -54,16 +54,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardVentasForm));
             this.crtTendenciaVentas = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.crtCantVentasXMarca = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.lblTotalClientes = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.lblTotalArticulos = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.pnlCardTotalProductos = new System.Windows.Forms.Panel();
             this.lblTotalVentas = new System.Windows.Forms.Label();
-            this.lblTituloTotalProductos = new System.Windows.Forms.Label();
             this.pnlEncabezado = new System.Windows.Forms.Panel();
+            this.pnlnfoUsuario = new System.Windows.Forms.Panel();
+            this.lblIniciales = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.lblNombreUsuario = new System.Windows.Forms.Label();
+            this.lblRolUsuario = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -90,23 +89,28 @@
             this.lblFiltrarDesde = new System.Windows.Forms.Label();
             this.cmbMesTendencia = new Guna.UI2.WinForms.Guna2ComboBox();
             this.cmbAnioTendencia = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.btnFiltrarTendencia = new Guna.UI2.WinForms.Guna2Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.lblTotalVentaMensual = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.lblTituloListaClientes = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.pnlnfoUsuario = new System.Windows.Forms.Panel();
-            this.lblIniciales = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            this.lblNombreUsuario = new System.Windows.Forms.Label();
-            this.lblRolUsuario = new System.Windows.Forms.Label();
+            this.pnlCardTotalVentas = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.lblTituloTotalVentas = new System.Windows.Forms.Label();
+            this.guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnFiltrarTendencia = new Guna.UI2.WinForms.Guna2Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.crtTendenciaVentas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.crtCantVentasXMarca)).BeginInit();
-            this.panel4.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.pnlCardTotalProductos.SuspendLayout();
             this.pnlEncabezado.SuspendLayout();
+            this.pnlnfoUsuario.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
             this.pnlContenedorDetalleVenta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTopProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.crtVentasMonetarias)).BeginInit();
@@ -114,9 +118,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvTopVendedores)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.crtMetodoPago)).BeginInit();
             this.guna2ShadowPanel1.SuspendLayout();
+            this.pnlCardTotalVentas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.guna2GradientPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.guna2GradientPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel1.SuspendLayout();
-            this.pnlnfoUsuario.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // crtTendenciaVentas
@@ -126,17 +134,18 @@
             this.crtTendenciaVentas.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.crtTendenciaVentas.Legends.Add(legend1);
-            this.crtTendenciaVentas.Location = new System.Drawing.Point(18, 769);
+            this.crtTendenciaVentas.Location = new System.Drawing.Point(8, 815);
             this.crtTendenciaVentas.Name = "crtTendenciaVentas";
             series1.BorderWidth = 4;
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.IsVisibleInLegend = false;
             series1.Legend = "Legend1";
             series1.MarkerSize = 7;
             series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
             series1.Name = "Series1";
             this.crtTendenciaVentas.Series.Add(series1);
-            this.crtTendenciaVentas.Size = new System.Drawing.Size(1128, 246);
+            this.crtTendenciaVentas.Size = new System.Drawing.Size(1159, 246);
             this.crtTendenciaVentas.TabIndex = 0;
             this.crtTendenciaVentas.Text = "chart1";
             title1.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -153,7 +162,7 @@
             legend2.IsTextAutoFit = false;
             legend2.Name = "Legend1";
             this.crtCantVentasXMarca.Legends.Add(legend2);
-            this.crtCantVentasXMarca.Location = new System.Drawing.Point(12, 398);
+            this.crtCantVentasXMarca.Location = new System.Drawing.Point(4, 430);
             this.crtCantVentasXMarca.Name = "crtCantVentasXMarca";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
@@ -168,101 +177,39 @@
             title2.Text = "VENTAS POR MARCA (en unidades)";
             this.crtCantVentasXMarca.Titles.Add(title2);
             // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.lblTotalClientes);
-            this.panel4.Controls.Add(this.label6);
-            this.panel4.Location = new System.Drawing.Point(421, 111);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(187, 75);
-            this.panel4.TabIndex = 27;
-            // 
             // lblTotalClientes
             // 
             this.lblTotalClientes.AutoSize = true;
+            this.lblTotalClientes.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalClientes.Location = new System.Drawing.Point(9, 27);
+            this.lblTotalClientes.Location = new System.Drawing.Point(12, 41);
             this.lblTotalClientes.Name = "lblTotalClientes";
             this.lblTotalClientes.Size = new System.Drawing.Size(27, 29);
             this.lblTotalClientes.TabIndex = 17;
             this.lblTotalClientes.Text = "0";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label6.Location = new System.Drawing.Point(3, 9);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(99, 15);
-            this.label6.TabIndex = 17;
-            this.label6.Text = "Total Clientes:";
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.lblTotalArticulos);
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Location = new System.Drawing.Point(217, 111);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(187, 75);
-            this.panel3.TabIndex = 26;
-            // 
             // lblTotalArticulos
             // 
             this.lblTotalArticulos.AutoSize = true;
+            this.lblTotalArticulos.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalArticulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalArticulos.Location = new System.Drawing.Point(15, 27);
+            this.lblTotalArticulos.Location = new System.Drawing.Point(12, 41);
             this.lblTotalArticulos.Name = "lblTotalArticulos";
             this.lblTotalArticulos.Size = new System.Drawing.Size(27, 29);
             this.lblTotalArticulos.TabIndex = 17;
             this.lblTotalArticulos.Text = "0";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label4.Location = new System.Drawing.Point(0, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(158, 15);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Total Artiulos Vendidos:";
-            // 
-            // pnlCardTotalProductos
-            // 
-            this.pnlCardTotalProductos.BackColor = System.Drawing.Color.White;
-            this.pnlCardTotalProductos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlCardTotalProductos.Controls.Add(this.lblTotalVentas);
-            this.pnlCardTotalProductos.Controls.Add(this.lblTituloTotalProductos);
-            this.pnlCardTotalProductos.Location = new System.Drawing.Point(15, 111);
-            this.pnlCardTotalProductos.Name = "pnlCardTotalProductos";
-            this.pnlCardTotalProductos.Size = new System.Drawing.Size(187, 75);
-            this.pnlCardTotalProductos.TabIndex = 25;
-            // 
             // lblTotalVentas
             // 
             this.lblTotalVentas.AutoSize = true;
+            this.lblTotalVentas.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalVentas.Location = new System.Drawing.Point(10, 27);
+            this.lblTotalVentas.ForeColor = System.Drawing.Color.Green;
+            this.lblTotalVentas.Location = new System.Drawing.Point(3, 42);
             this.lblTotalVentas.Name = "lblTotalVentas";
             this.lblTotalVentas.Size = new System.Drawing.Size(97, 29);
             this.lblTotalVentas.TabIndex = 17;
             this.lblTotalVentas.Text = "$ 00.00";
-            // 
-            // lblTituloTotalProductos
-            // 
-            this.lblTituloTotalProductos.AutoSize = true;
-            this.lblTituloTotalProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloTotalProductos.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblTituloTotalProductos.Location = new System.Drawing.Point(1, 9);
-            this.lblTituloTotalProductos.Name = "lblTituloTotalProductos";
-            this.lblTituloTotalProductos.Size = new System.Drawing.Size(184, 15);
-            this.lblTituloTotalProductos.TabIndex = 17;
-            this.lblTituloTotalProductos.Text = "Total Ventas(Completadas):";
             // 
             // pnlEncabezado
             // 
@@ -270,10 +217,64 @@
             this.pnlEncabezado.Controls.Add(this.pnlnfoUsuario);
             this.pnlEncabezado.Controls.Add(this.lblFecha);
             this.pnlEncabezado.Controls.Add(this.lblTitulo);
-            this.pnlEncabezado.Location = new System.Drawing.Point(0, 0);
+            this.pnlEncabezado.Location = new System.Drawing.Point(-3, 3);
             this.pnlEncabezado.Name = "pnlEncabezado";
             this.pnlEncabezado.Size = new System.Drawing.Size(1178, 64);
             this.pnlEncabezado.TabIndex = 28;
+            // 
+            // pnlnfoUsuario
+            // 
+            this.pnlnfoUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlnfoUsuario.Controls.Add(this.lblIniciales);
+            this.pnlnfoUsuario.Controls.Add(this.guna2CirclePictureBox1);
+            this.pnlnfoUsuario.Controls.Add(this.lblNombreUsuario);
+            this.pnlnfoUsuario.Controls.Add(this.lblRolUsuario);
+            this.pnlnfoUsuario.Location = new System.Drawing.Point(943, 4);
+            this.pnlnfoUsuario.Name = "pnlnfoUsuario";
+            this.pnlnfoUsuario.Size = new System.Drawing.Size(215, 55);
+            this.pnlnfoUsuario.TabIndex = 13;
+            // 
+            // lblIniciales
+            // 
+            this.lblIniciales.BackColor = System.Drawing.Color.Black;
+            this.lblIniciales.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIniciales.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblIniciales.Location = new System.Drawing.Point(12, 10);
+            this.lblIniciales.Name = "lblIniciales";
+            this.lblIniciales.Size = new System.Drawing.Size(31, 26);
+            this.lblIniciales.TabIndex = 12;
+            this.lblIniciales.Text = "AA";
+            // 
+            // guna2CirclePictureBox1
+            // 
+            this.guna2CirclePictureBox1.Image = global::CapaPresentacion.Properties.Resources.Fondo_negro;
+            this.guna2CirclePictureBox1.ImageRotate = 0F;
+            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(3, 0);
+            this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
+            this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(49, 50);
+            this.guna2CirclePictureBox1.TabIndex = 12;
+            this.guna2CirclePictureBox1.TabStop = false;
+            // 
+            // lblNombreUsuario
+            // 
+            this.lblNombreUsuario.AutoSize = true;
+            this.lblNombreUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreUsuario.Location = new System.Drawing.Point(58, 11);
+            this.lblNombreUsuario.Name = "lblNombreUsuario";
+            this.lblNombreUsuario.Size = new System.Drawing.Size(95, 17);
+            this.lblNombreUsuario.TabIndex = 11;
+            this.lblNombreUsuario.Text = "Perez, Juan";
+            // 
+            // lblRolUsuario
+            // 
+            this.lblRolUsuario.AutoSize = true;
+            this.lblRolUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRolUsuario.Location = new System.Drawing.Point(58, 31);
+            this.lblRolUsuario.Name = "lblRolUsuario";
+            this.lblRolUsuario.Size = new System.Drawing.Size(83, 15);
+            this.lblRolUsuario.TabIndex = 11;
+            this.lblRolUsuario.Text = "Administrador";
             // 
             // lblFecha
             // 
@@ -311,7 +312,7 @@
             this.pnlContenedorDetalleVenta.Controls.Add(this.label2);
             this.pnlContenedorDetalleVenta.Controls.Add(this.dgvTopProductos);
             this.pnlContenedorDetalleVenta.FillColor = System.Drawing.Color.Transparent;
-            this.pnlContenedorDetalleVenta.Location = new System.Drawing.Point(502, 203);
+            this.pnlContenedorDetalleVenta.Location = new System.Drawing.Point(561, 222);
             this.pnlContenedorDetalleVenta.Name = "pnlContenedorDetalleVenta";
             this.pnlContenedorDetalleVenta.Size = new System.Drawing.Size(579, 178);
             this.pnlContenedorDetalleVenta.TabIndex = 71;
@@ -406,7 +407,7 @@
             this.crtVentasMonetarias.ChartAreas.Add(chartArea3);
             legend3.Name = "Legend1";
             this.crtVentasMonetarias.Legends.Add(legend3);
-            this.crtVentasMonetarias.Location = new System.Drawing.Point(407, 398);
+            this.crtVentasMonetarias.Location = new System.Drawing.Point(399, 430);
             this.crtVentasMonetarias.Name = "crtVentasMonetarias";
             series3.ChartArea = "ChartArea1";
             series3.Legend = "Legend1";
@@ -427,9 +428,9 @@
             this.guna2Panel1.Controls.Add(this.dgvTopVendedores);
             this.guna2Panel1.Controls.Add(this.label1);
             this.guna2Panel1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Panel1.Location = new System.Drawing.Point(12, 203);
+            this.guna2Panel1.Location = new System.Drawing.Point(6, 222);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(484, 178);
+            this.guna2Panel1.Size = new System.Drawing.Size(552, 178);
             this.guna2Panel1.TabIndex = 72;
             // 
             // dgvTopVendedores
@@ -467,7 +468,7 @@
             this.dgvTopVendedores.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvTopVendedores.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             this.dgvTopVendedores.RowTemplate.Height = 25;
-            this.dgvTopVendedores.Size = new System.Drawing.Size(475, 144);
+            this.dgvTopVendedores.Size = new System.Drawing.Size(546, 144);
             this.dgvTopVendedores.TabIndex = 45;
             this.dgvTopVendedores.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
             this.dgvTopVendedores.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
@@ -509,7 +510,7 @@
             legend4.IsTextAutoFit = false;
             legend4.Name = "Legend1";
             this.crtMetodoPago.Legends.Add(legend4);
-            this.crtMetodoPago.Location = new System.Drawing.Point(790, 398);
+            this.crtMetodoPago.Location = new System.Drawing.Point(782, 430);
             this.crtMetodoPago.Name = "crtMetodoPago";
             this.crtMetodoPago.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
             series4.BorderColor = System.Drawing.Color.White;
@@ -530,17 +531,18 @@
             // guna2ShadowPanel1
             // 
             this.guna2ShadowPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ShadowPanel1.Controls.Add(this.label6);
             this.guna2ShadowPanel1.Controls.Add(this.dtpHasta);
             this.guna2ShadowPanel1.Controls.Add(this.dtpDesde);
             this.guna2ShadowPanel1.Controls.Add(this.lblFiltrarHasta);
             this.guna2ShadowPanel1.Controls.Add(this.btnFiltrar);
             this.guna2ShadowPanel1.Controls.Add(this.lblFiltrarDesde);
             this.guna2ShadowPanel1.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanel1.Location = new System.Drawing.Point(649, 70);
+            this.guna2ShadowPanel1.Location = new System.Drawing.Point(641, 73);
             this.guna2ShadowPanel1.Name = "guna2ShadowPanel1";
             this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black;
             this.guna2ShadowPanel1.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
-            this.guna2ShadowPanel1.Size = new System.Drawing.Size(517, 127);
+            this.guna2ShadowPanel1.Size = new System.Drawing.Size(493, 127);
             this.guna2ShadowPanel1.TabIndex = 74;
             // 
             // dtpHasta
@@ -626,7 +628,7 @@
             this.cmbMesTendencia.ItemHeight = 21;
             this.cmbMesTendencia.Items.AddRange(new object[] {
             "Mes"});
-            this.cmbMesTendencia.Location = new System.Drawing.Point(21, 736);
+            this.cmbMesTendencia.Location = new System.Drawing.Point(6, 750);
             this.cmbMesTendencia.Name = "cmbMesTendencia";
             this.cmbMesTendencia.Size = new System.Drawing.Size(150, 27);
             this.cmbMesTendencia.StartIndex = 0;
@@ -646,11 +648,178 @@
             this.cmbAnioTendencia.ItemHeight = 21;
             this.cmbAnioTendencia.Items.AddRange(new object[] {
             "Año"});
-            this.cmbAnioTendencia.Location = new System.Drawing.Point(177, 736);
+            this.cmbAnioTendencia.Location = new System.Drawing.Point(162, 750);
             this.cmbAnioTendencia.Name = "cmbAnioTendencia";
             this.cmbAnioTendencia.Size = new System.Drawing.Size(150, 27);
             this.cmbAnioTendencia.StartIndex = 0;
             this.cmbAnioTendencia.TabIndex = 76;
+            // 
+            // lblTotalVentaMensual
+            // 
+            this.lblTotalVentaMensual.AutoSize = true;
+            this.lblTotalVentaMensual.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalVentaMensual.Location = new System.Drawing.Point(1, 44);
+            this.lblTotalVentaMensual.Name = "lblTotalVentaMensual";
+            this.lblTotalVentaMensual.Size = new System.Drawing.Size(97, 29);
+            this.lblTotalVentaMensual.TabIndex = 18;
+            this.lblTotalVentaMensual.Text = "$ 00.00";
+            // 
+            // lblTituloListaClientes
+            // 
+            this.lblTituloListaClientes.AutoSize = true;
+            this.lblTituloListaClientes.BackColor = System.Drawing.Color.Transparent;
+            this.lblTituloListaClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloListaClientes.ForeColor = System.Drawing.Color.Black;
+            this.lblTituloListaClientes.Location = new System.Drawing.Point(3, 723);
+            this.lblTituloListaClientes.Name = "lblTituloListaClientes";
+            this.lblTituloListaClientes.Size = new System.Drawing.Size(138, 18);
+            this.lblTituloListaClientes.TabIndex = 79;
+            this.lblTituloListaClientes.Text = "Ventas Por  Mes:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(3, 73);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(151, 18);
+            this.label7.TabIndex = 80;
+            this.label7.Text = "Ventas  Historicas:";
+            // 
+            // pnlCardTotalVentas
+            // 
+            this.pnlCardTotalVentas.BorderColor = System.Drawing.Color.Gray;
+            this.pnlCardTotalVentas.BorderThickness = 2;
+            this.pnlCardTotalVentas.Controls.Add(this.lblTotalVentas);
+            this.pnlCardTotalVentas.Controls.Add(this.pictureBox1);
+            this.pnlCardTotalVentas.Controls.Add(this.label8);
+            this.pnlCardTotalVentas.CustomBorderColor = System.Drawing.Color.Green;
+            this.pnlCardTotalVentas.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.pnlCardTotalVentas.FillColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pnlCardTotalVentas.FillColor2 = System.Drawing.Color.White;
+            this.pnlCardTotalVentas.Location = new System.Drawing.Point(0, 109);
+            this.pnlCardTotalVentas.Name = "pnlCardTotalVentas";
+            this.pnlCardTotalVentas.ShadowDecoration.CustomizableEdges.BottomLeft = false;
+            this.pnlCardTotalVentas.ShadowDecoration.Depth = 0;
+            this.pnlCardTotalVentas.ShadowDecoration.Enabled = true;
+            this.pnlCardTotalVentas.Size = new System.Drawing.Size(207, 75);
+            this.pnlCardTotalVentas.TabIndex = 64;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::CapaPresentacion.Properties.Resources.billetera;
+            this.pictureBox1.Location = new System.Drawing.Point(160, 5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(35, 36);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 20;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(3, 11);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(121, 16);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "Total Ventas ($):";
+            // 
+            // guna2GradientPanel1
+            // 
+            this.guna2GradientPanel1.BorderColor = System.Drawing.Color.Gray;
+            this.guna2GradientPanel1.BorderThickness = 2;
+            this.guna2GradientPanel1.Controls.Add(this.lblTotalArticulos);
+            this.guna2GradientPanel1.Controls.Add(this.label3);
+            this.guna2GradientPanel1.Controls.Add(this.pictureBox2);
+            this.guna2GradientPanel1.Controls.Add(this.lblTituloTotalVentas);
+            this.guna2GradientPanel1.CustomBorderColor = System.Drawing.Color.Purple;
+            this.guna2GradientPanel1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.guna2GradientPanel1.FillColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.White;
+            this.guna2GradientPanel1.Location = new System.Drawing.Point(215, 109);
+            this.guna2GradientPanel1.Name = "guna2GradientPanel1";
+            this.guna2GradientPanel1.Size = new System.Drawing.Size(207, 75);
+            this.guna2GradientPanel1.TabIndex = 65;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(3, 25);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 16);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "Vendidos:";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = global::CapaPresentacion.Properties.Resources.carritocomprasnegro;
+            this.pictureBox2.Location = new System.Drawing.Point(157, 7);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(35, 36);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 20;
+            this.pictureBox2.TabStop = false;
+            // 
+            // lblTituloTotalVentas
+            // 
+            this.lblTituloTotalVentas.AutoSize = true;
+            this.lblTituloTotalVentas.BackColor = System.Drawing.Color.Transparent;
+            this.lblTituloTotalVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloTotalVentas.ForeColor = System.Drawing.Color.Black;
+            this.lblTituloTotalVentas.Location = new System.Drawing.Point(3, 5);
+            this.lblTituloTotalVentas.Name = "lblTituloTotalVentas";
+            this.lblTituloTotalVentas.Size = new System.Drawing.Size(107, 16);
+            this.lblTituloTotalVentas.TabIndex = 5;
+            this.lblTituloTotalVentas.Text = "Total Articulos";
+            // 
+            // guna2GradientPanel2
+            // 
+            this.guna2GradientPanel2.BorderColor = System.Drawing.Color.Gray;
+            this.guna2GradientPanel2.BorderThickness = 2;
+            this.guna2GradientPanel2.Controls.Add(this.lblTotalClientes);
+            this.guna2GradientPanel2.Controls.Add(this.pictureBox3);
+            this.guna2GradientPanel2.Controls.Add(this.label4);
+            this.guna2GradientPanel2.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(116)))), ((int)(((byte)(240)))));
+            this.guna2GradientPanel2.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.guna2GradientPanel2.FillColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.guna2GradientPanel2.FillColor2 = System.Drawing.Color.White;
+            this.guna2GradientPanel2.Location = new System.Drawing.Point(428, 109);
+            this.guna2GradientPanel2.Name = "guna2GradientPanel2";
+            this.guna2GradientPanel2.Size = new System.Drawing.Size(207, 75);
+            this.guna2GradientPanel2.TabIndex = 64;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox3.Image = global::CapaPresentacion.Properties.Resources.icono_usuarios;
+            this.pictureBox3.Location = new System.Drawing.Point(144, 3);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(51, 39);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 20;
+            this.pictureBox3.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(3, 11);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(107, 16);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Total Clientes:";
             // 
             // btnFiltrarTendencia
             // 
@@ -664,33 +833,12 @@
             this.btnFiltrarTendencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.btnFiltrarTendencia.ForeColor = System.Drawing.Color.Black;
             this.btnFiltrarTendencia.Image = ((System.Drawing.Image)(resources.GetObject("btnFiltrarTendencia.Image")));
-            this.btnFiltrarTendencia.Location = new System.Drawing.Point(333, 736);
+            this.btnFiltrarTendencia.Location = new System.Drawing.Point(318, 750);
             this.btnFiltrarTendencia.Name = "btnFiltrarTendencia";
             this.btnFiltrarTendencia.Size = new System.Drawing.Size(89, 27);
             this.btnFiltrarTendencia.TabIndex = 77;
             this.btnFiltrarTendencia.Text = "Filtrar";
             this.btnFiltrarTendencia.Click += new System.EventHandler(this.btnFiltrarTendencia_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.lblTotalVentaMensual);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Location = new System.Drawing.Point(959, 688);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(187, 75);
-            this.panel1.TabIndex = 78;
-            // 
-            // lblTotalVentaMensual
-            // 
-            this.lblTotalVentaMensual.AutoSize = true;
-            this.lblTotalVentaMensual.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalVentaMensual.Location = new System.Drawing.Point(8, 33);
-            this.lblTotalVentaMensual.Name = "lblTotalVentaMensual";
-            this.lblTotalVentaMensual.Size = new System.Drawing.Size(97, 29);
-            this.lblTotalVentaMensual.TabIndex = 18;
-            this.lblTotalVentaMensual.Text = "$ 00.00";
             // 
             // label5
             // 
@@ -703,90 +851,38 @@
             this.label5.TabIndex = 17;
             this.label5.Text = "Total Mensual:";
             // 
-            // lblTituloListaClientes
+            // panel1
             // 
-            this.lblTituloListaClientes.AutoSize = true;
-            this.lblTituloListaClientes.BackColor = System.Drawing.Color.Transparent;
-            this.lblTituloListaClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloListaClientes.ForeColor = System.Drawing.Color.Black;
-            this.lblTituloListaClientes.Location = new System.Drawing.Point(17, 709);
-            this.lblTituloListaClientes.Name = "lblTituloListaClientes";
-            this.lblTituloListaClientes.Size = new System.Drawing.Size(138, 18);
-            this.lblTituloListaClientes.TabIndex = 79;
-            this.lblTituloListaClientes.Text = "Ventas Por  Mes:";
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.lblTotalVentaMensual);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Location = new System.Drawing.Point(823, 723);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(289, 75);
+            this.panel1.TabIndex = 78;
             // 
-            // label7
+            // label6
             // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(15, 70);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(151, 18);
-            this.label7.TabIndex = 80;
-            this.label7.Text = "Ventas  Historicas:";
-            // 
-            // pnlnfoUsuario
-            // 
-            this.pnlnfoUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlnfoUsuario.Controls.Add(this.lblIniciales);
-            this.pnlnfoUsuario.Controls.Add(this.guna2CirclePictureBox1);
-            this.pnlnfoUsuario.Controls.Add(this.lblNombreUsuario);
-            this.pnlnfoUsuario.Controls.Add(this.lblRolUsuario);
-            this.pnlnfoUsuario.Location = new System.Drawing.Point(943, 4);
-            this.pnlnfoUsuario.Name = "pnlnfoUsuario";
-            this.pnlnfoUsuario.Size = new System.Drawing.Size(215, 55);
-            this.pnlnfoUsuario.TabIndex = 13;
-            // 
-            // lblIniciales
-            // 
-            this.lblIniciales.BackColor = System.Drawing.Color.Black;
-            this.lblIniciales.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIniciales.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblIniciales.Location = new System.Drawing.Point(12, 10);
-            this.lblIniciales.Name = "lblIniciales";
-            this.lblIniciales.Size = new System.Drawing.Size(31, 26);
-            this.lblIniciales.TabIndex = 12;
-            this.lblIniciales.Text = "AA";
-            // 
-            // guna2CirclePictureBox1
-            // 
-            this.guna2CirclePictureBox1.Image = global::CapaPresentacion.Properties.Resources.Fondo_negro;
-            this.guna2CirclePictureBox1.ImageRotate = 0F;
-            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(3, 0);
-            this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
-            this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(49, 50);
-            this.guna2CirclePictureBox1.TabIndex = 12;
-            this.guna2CirclePictureBox1.TabStop = false;
-            // 
-            // lblNombreUsuario
-            // 
-            this.lblNombreUsuario.AutoSize = true;
-            this.lblNombreUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreUsuario.Location = new System.Drawing.Point(58, 11);
-            this.lblNombreUsuario.Name = "lblNombreUsuario";
-            this.lblNombreUsuario.Size = new System.Drawing.Size(95, 17);
-            this.lblNombreUsuario.TabIndex = 11;
-            this.lblNombreUsuario.Text = "Perez, Juan";
-            // 
-            // lblRolUsuario
-            // 
-            this.lblRolUsuario.AutoSize = true;
-            this.lblRolUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRolUsuario.Location = new System.Drawing.Point(58, 31);
-            this.lblRolUsuario.Name = "lblRolUsuario";
-            this.lblRolUsuario.Size = new System.Drawing.Size(83, 15);
-            this.lblRolUsuario.TabIndex = 11;
-            this.lblRolUsuario.Text = "Administrador";
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(6, 12);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(159, 16);
+            this.label6.TabIndex = 57;
+            this.label6.Text = "Buscar y Filtrar Venta:";
             // 
             // DashboardVentasForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1170, 749);
+            this.ClientSize = new System.Drawing.Size(1196, 732);
+            this.Controls.Add(this.guna2GradientPanel2);
+            this.Controls.Add(this.guna2GradientPanel1);
+            this.Controls.Add(this.pnlCardTotalVentas);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.lblTituloListaClientes);
             this.Controls.Add(this.panel1);
@@ -799,24 +895,18 @@
             this.Controls.Add(this.crtVentasMonetarias);
             this.Controls.Add(this.pnlContenedorDetalleVenta);
             this.Controls.Add(this.crtCantVentasXMarca);
-            this.Controls.Add(this.panel4);
             this.Controls.Add(this.pnlEncabezado);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.pnlCardTotalProductos);
             this.Controls.Add(this.crtTendenciaVentas);
             this.Name = "DashboardVentasForm";
             this.Text = "DashboardVentasForm";
             this.Load += new System.EventHandler(this.DashboardVentasForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.crtTendenciaVentas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.crtCantVentasXMarca)).EndInit();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.pnlCardTotalProductos.ResumeLayout(false);
-            this.pnlCardTotalProductos.PerformLayout();
             this.pnlEncabezado.ResumeLayout(false);
             this.pnlEncabezado.PerformLayout();
+            this.pnlnfoUsuario.ResumeLayout(false);
+            this.pnlnfoUsuario.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
             this.pnlContenedorDetalleVenta.ResumeLayout(false);
             this.pnlContenedorDetalleVenta.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTopProductos)).EndInit();
@@ -827,11 +917,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.crtMetodoPago)).EndInit();
             this.guna2ShadowPanel1.ResumeLayout(false);
             this.guna2ShadowPanel1.PerformLayout();
+            this.pnlCardTotalVentas.ResumeLayout(false);
+            this.pnlCardTotalVentas.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.guna2GradientPanel1.ResumeLayout(false);
+            this.guna2GradientPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.guna2GradientPanel2.ResumeLayout(false);
+            this.guna2GradientPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.pnlnfoUsuario.ResumeLayout(false);
-            this.pnlnfoUsuario.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -841,15 +937,9 @@
 
         private System.Windows.Forms.DataVisualization.Charting.Chart crtTendenciaVentas;
         private System.Windows.Forms.DataVisualization.Charting.Chart crtCantVentasXMarca;
-        private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label lblTotalClientes;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label lblTotalArticulos;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel pnlCardTotalProductos;
         private System.Windows.Forms.Label lblTotalVentas;
-        private System.Windows.Forms.Label lblTituloTotalProductos;
         private System.Windows.Forms.Panel pnlEncabezado;
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.Label lblTitulo;
@@ -878,8 +968,6 @@
         private Guna.UI2.WinForms.Guna2ComboBox cmbMesTendencia;
         private Guna.UI2.WinForms.Guna2ComboBox cmbAnioTendencia;
         private Guna.UI2.WinForms.Guna2Button btnFiltrarTendencia;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblTituloListaClientes;
         private System.Windows.Forms.Label lblTotalVentaMensual;
         private System.Windows.Forms.Label label7;
@@ -888,5 +976,18 @@
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
         private System.Windows.Forms.Label lblNombreUsuario;
         private System.Windows.Forms.Label lblRolUsuario;
+        private Guna.UI2.WinForms.Guna2GradientPanel pnlCardTotalVentas;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label8;
+        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label lblTituloTotalVentas;
+        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label6;
     }
 }
